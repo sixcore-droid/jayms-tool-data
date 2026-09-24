@@ -878,7 +878,17 @@ add_action( 'wp_footer', function () {
       ENTRIES = doc.entries || [];
       ENTRIES.forEach(function (e) { BY_ID[e.id] = e; });
       state = readURL();
-      history.replaceState(state, "", writeURL(state));
+      // Landing straight on an entry, from a shared link or a refresh,
+      // used to leave no list entry underneath it, so the browser's back
+      // button walked off the tool while the breadcrumb went to the list.
+      // Seed the list below the entry so both do the same thing.
+      if (state.screen === "detail") {
+        var seed = { screen: "browse", id: null, q: "", filters: {}, page: 1 };
+        history.replaceState(seed, "", writeURL(seed));
+        history.pushState(state, "", writeURL(state));
+      } else {
+        history.replaceState(state, "", writeURL(state));
+      }
       paintFeatured();
       render();
     })
