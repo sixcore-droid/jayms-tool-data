@@ -145,6 +145,16 @@ add_action( 'wp_footer', function () {
 
 /* cards */
 .jayms-tool-alpha .a-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:13px}
+/* layout, set per page with data-layout / data-columns */
+.jayms-tool-alpha .a-cards.lay-list{grid-template-columns:1fr}
+.jayms-tool-alpha .a-cards.cols-2{grid-template-columns:repeat(2,1fr)}
+.jayms-tool-alpha .a-cards.cols-3{grid-template-columns:repeat(3,1fr)}
+.jayms-tool-alpha .a-cards.cols-4{grid-template-columns:repeat(4,1fr)}
+/* one long row reads better with the summary given room and the meta
+   pushed to the end, rather than a tall card stretched sideways */
+.jayms-tool-alpha .a-cards.lay-list .a-card{gap:7px}
+.jayms-tool-alpha .a-cards.lay-list .a-cmain{font-size:17px}
+.jayms-tool-alpha .a-cards.lay-list .a-meta{padding-top:2px}
 .jayms-tool-alpha .a-card{text-align:left;background:var(--a-panel);border:1px solid var(--a-line);
   border-left:3px solid var(--cc,var(--a-line));border-radius:9px;padding:16px;cursor:pointer;
   font-family:inherit;color:inherit;display:flex;flex-direction:column;gap:9px}
@@ -226,7 +236,10 @@ add_action( 'wp_footer', function () {
 .jayms-tool-alpha .a-note.method{color:var(--a-ink-soft)}
 
 @media(max-width:640px){
-  .jayms-tool-alpha .a-cards{grid-template-columns:1fr}
+  .jayms-tool-alpha .a-cards,
+  .jayms-tool-alpha .a-cards.cols-2,
+  .jayms-tool-alpha .a-cards.cols-3,
+  .jayms-tool-alpha .a-cards.cols-4{grid-template-columns:1fr}
   .jayms-tool-alpha .a-box{padding:13px 15px}
   .jayms-tool-alpha .a-box > .a-btext{font-size:16px}
 }
@@ -282,6 +295,8 @@ add_action( 'wp_footer', function () {
     hide:    (MOUNT.dataset.filtersHide || "").split(",").map(function (s) { return s.trim(); }).filter(Boolean),
     perPage: parseInt(MOUNT.dataset.perPage, 10) || null,
     search:  (MOUNT.dataset.search || "on").trim() !== "off",
+    layout:  (MOUNT.dataset.layout || "grid").trim().toLowerCase(),
+    columns: (MOUNT.dataset.columns || "auto").trim().toLowerCase(),
     defGroup: (MOUNT.dataset.defaultGroup || "").trim()
   };
 
@@ -493,6 +508,16 @@ add_action( 'wp_footer', function () {
     if (PAGE_HERO) PAGE_HERO.hidden = (state.screen === "detail");
   }
 
+  // data-layout="list" gives one full-width box per row; "grid" (the
+  // default) fills the screen. data-columns pins a grid to 2, 3 or 4,
+  // and both collapse to a single column on a phone regardless.
+  function cardsClass() {
+    var c = "";
+    if (PAGE.layout === "list") return " lay-list";
+    if (["2", "3", "4"].indexOf(PAGE.columns) !== -1) c = " cols-" + PAGE.columns;
+    return c;
+  }
+
   function jsArg(v) { return JSON.stringify(v).replace(/"/g, "&quot;"); }
 
   // One option, shared by both displays: colour dot, label, count, and
@@ -621,7 +646,7 @@ add_action( 'wp_footer', function () {
         '" value="' + esc(state.q) + '">' : "") +
       filtersHTML() +
       (slot("jayms-tool-count") ? "" : '<div class="a-count">' + esc(countText) + "</div>") +
-      '<div class="a-cards">' + (slice.map(cardHTML).join("") ||
+      '<div class="a-cards' + cardsClass() + '">' + (slice.map(cardHTML).join("") ||
         '<p class="a-empty">Nothing matches. Clear a filter and try again.</p>') + "</div>" +
       (pages > 1 ? '<div class="a-pg">' +
         '<button class="a-pgb"' + (state.page <= 1 ? " disabled" : "") +
