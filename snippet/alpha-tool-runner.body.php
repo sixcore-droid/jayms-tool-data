@@ -170,7 +170,9 @@ add_action( 'wp_footer', function () {
 .jayms-tool-alpha .a-back{background:transparent;border:0;color:var(--a-gold);cursor:pointer;padding:6px 0;
   font-family:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
 .jayms-tool-alpha h1.a-dtitle{font-size:clamp(25px,4.6vw,40px);line-height:1.14;margin:10px 0 10px;font-weight:600}
-.jayms-tool-alpha .a-dsum{font-size:19px;line-height:1.6;color:var(--a-ink-soft);margin:0 0 22px;max-width:70ch}
+/* no measure cap: a 70ch limit wrapped this line short while every box
+   below it ran the full width, which read as a layout fault */
+.jayms-tool-alpha .a-dsum{font-size:19px;line-height:1.6;color:var(--a-ink-soft);margin:0 0 22px}
 
 /* every piece of content is a box, and every box has a title */
 .jayms-tool-alpha .a-box{background:var(--a-panel);border:1px solid var(--a-line);
