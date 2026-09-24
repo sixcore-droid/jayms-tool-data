@@ -251,8 +251,32 @@ add_action( 'wp_footer', function () {
   //   data-per-page="12"                      override the dataset's page size
   //   data-search="off"                       drop the search box
   //   data-default-group="council"            land pre-filtered on a value
+  // data-filters takes one entry per row, "<field>:<state>", where state is
+  //   open    always expanded, every option visible
+  //   closed  one line showing the current value, tap to expand
+  //   off     not rendered at all, and its tag comes off the cards
+  // A row you do not name keeps the dataset's own default. Named rows lead,
+  // in the order you wrote them, so the list also reorders. "all" means
+  // every row at its default.
+  function parseFilterSpec(raw) {
+    var spec = { order: [], state: {} };
+    raw = (raw || "all").trim();
+    if (!raw || raw.toLowerCase() === "all") return spec;
+    raw.split(",").forEach(function (part) {
+      part = part.trim();
+      if (!part) return;
+      var bits = part.split(":");
+      var name = (bits[0] || "").trim();
+      if (!name) return;
+      spec.order.push(name);
+      var st = (bits[1] || "").trim().toLowerCase();
+      if (st) spec.state[name] = st;
+    });
+    return spec;
+  }
+
   var PAGE = {
-    show:    (MOUNT.dataset.filters || "all").trim(),
+    spec:    parseFilterSpec(MOUNT.dataset.filters),
     hide:    (MOUNT.dataset.filtersHide || "").split(",").map(function (s) { return s.trim(); }).filter(Boolean),
     perPage: parseInt(MOUNT.dataset.perPage, 10) || null,
     search:  (MOUNT.dataset.search || "on").trim() !== "off",
@@ -287,30 +311,32 @@ add_action( 'wp_footer', function () {
   }
   function catRow()  { return firstFilter("category"); }
 
-  // Which rows the page wants, in the order it asked for them.
-  function visibleFilters() {
-    var all = DOC.filters || [];
-    var rows;
-    if (PAGE.show && PAGE.show !== "all") {
-      var want = PAGE.show.split(",").map(function (s) { return s.trim(); }).filter(Boolean);
-      rows = want.map(function (name) {
-        return all.filter(function (r) { return r.field === name || r.role === name; })[0];
-      }).filter(Boolean);
-    } else {
-      rows = all.slice();
-    }
-    if (PAGE.hide.length) {
-      rows = rows.filter(function (r) {
-        return PAGE.hide.indexOf(r.field) === -1 && PAGE.hide.indexOf(r.role) === -1;
-      });
-    }
-    return rows;
+  function rowState(row) {
+    var s = PAGE.spec.state;
+    return s[row.field] || s[row.role] || null;
   }
 
-  // A row renders as chips or as one collapsed line. The dataset may say so
-  // per row; otherwise the category row is chips and everything else folds,
-  // which is what keeps a four-filter tool down to four lines.
+  // Rows the page wants, named ones first in the order given, the rest after
+  // in dataset order, minus anything switched off.
+  function visibleFilters() {
+    var all = DOC.filters || [];
+    var named = PAGE.spec.order.map(function (name) {
+      return all.filter(function (r) { return r.field === name || r.role === name; })[0];
+    }).filter(Boolean);
+    var rest = all.filter(function (r) { return named.indexOf(r) === -1; });
+    return named.concat(rest).filter(function (r) {
+      if (rowState(r) === "off") return false;
+      return PAGE.hide.indexOf(r.field) === -1 && PAGE.hide.indexOf(r.role) === -1;
+    });
+  }
+
+  // The page wins, then the dataset, then the built-in default: the category
+  // row open, everything else folded, which keeps a four-filter tool to four
+  // lines without anyone configuring it.
   function rowDisplay(row) {
+    var st = rowState(row);
+    if (st === "open") return "chips";
+    if (st === "closed") return "menu";
     if (row.display) return row.display;
     return row.role === "category" ? "chips" : "menu";
   }
