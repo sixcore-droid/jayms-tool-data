@@ -900,12 +900,14 @@ add_action( 'wp_footer', function () {
     // Seed the list beneath the entry so a shared link or a refresh leaves
     // Back and the breadcrumb doing the same thing.
     //
-    // Two pushes, not replace-then-push. Rewriting the entry the document
-    // was loaded with makes the browser re-fetch it on the way back, which
-    // is the reload this whole fix exists to remove. Pushing leaves that
-    // entry untouched and still puts the list directly behind the entry.
+    // This one path still costs a reload on the way back, and it is the
+    // only one that does. Measured: replace-then-push and push-then-push
+    // both reload, because any history entry created or rewritten during
+    // the initial load is re-fetched when the browser traverses to it.
+    // Replace is kept over two pushes because it leaves a clean stack:
+    // Back once lands on the list, Back again leaves the tool.
     var seed = { screen: "browse", id: null, q: "", filters: {}, page: 1 };
-    history.pushState(seed, "", writeURL(seed));
+    history.replaceState(seed, "", writeURL(seed));
     history.pushState(state, "", writeURL(state));
   } else {
     history.replaceState(state, "", writeURL(state));
