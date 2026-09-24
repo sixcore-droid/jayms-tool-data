@@ -898,7 +898,18 @@ add_action( 'wp_footer', function () {
         history.replaceState(seed, "", writeURL(seed));
         history.pushState(state, "", writeURL(state));
       } else {
-        history.replaceState(state, "", writeURL(state));
+        // Do not touch the entry when the URL is already right. This boot
+        // runs after the document has settled, and any replaceState on a
+        // committed entry makes the browser re-fetch it on the way back:
+        // paging to 2 and pressing back reloaded instead of stepping back.
+        // Measured both with and without a URL argument, same result.
+        // Skipping it costs nothing, because popstate falls back to reading
+        // the URL when an entry carries no state of its own.
+        var want = writeURL(state);
+        var target = want.charAt(0) === "?" ? location.pathname + want : want;
+        if (target !== location.pathname + location.search) {
+          history.replaceState(state, "", want);
+        }
       }
       paintFeatured();
       render();
