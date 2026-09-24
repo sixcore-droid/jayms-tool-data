@@ -30,6 +30,12 @@ add_action( 'wp_footer', function () {
 	$slug = $TOOLS[ $pid ];
 	$base = 'https://raw.githubusercontent.com/sixcore-droid/jayms-tool-data/main/';
 	$src  = esc_url( $base . $slug . '.json' );
+
+	// The page template does not output a featured image, so setting one in
+	// WordPress appeared to do nothing. Hand it to the engine instead.
+	$featured = has_post_thumbnail( $pid )
+		? get_the_post_thumbnail( $pid, 'large', array( 'class' => 'jayms-tool-featured' ) )
+		: '';
 	?>
 
 <style id="jayms-alpha-css">
@@ -74,6 +80,13 @@ add_action( 'wp_footer', function () {
 .jayms-tool-hero .jayms-tool-sub{font-size:18px;line-height:1.55;color:#c4b9a3;margin:0 0 18px;max-width:64ch}
 .jayms-tool-hero .jayms-tool-note{font-size:15px;line-height:1.65;color:#847a6a;margin:0 0 16px;max-width:70ch}
 .jayms-tool-hero img{max-width:100%;height:auto;border-radius:9px;margin:0 0 18px}
+.jayms-tool-featured{display:block;width:100%;max-width:100%;height:auto;border-radius:9px;margin:0 0 20px}
+/* the hero is a group block, so the theme's own group rules are in play */
+.wp-block-group.jayms-tool-hero{max-width:1100px;margin-left:auto;margin-right:auto;padding:8px 16px 4px}
+.jayms-tool-hero p.jayms-tool-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#d4a85c;margin:0 0 10px}
+.jayms-tool-hero h1.jayms-tool-title,
+.jayms-tool-hero .wp-block-heading.jayms-tool-title{font-size:clamp(30px,6vw,52px);line-height:1.08;margin:0 0 12px;font-weight:600;color:#ede4d3}
+.jayms-tool-hero p.jayms-tool-sub{font-size:18px;line-height:1.55;color:#c4b9a3;margin:0 0 18px;max-width:64ch}
 .jayms-tool-hero a{color:#d4a85c}
 #jayms-tool-dots{display:flex;gap:8px;margin-bottom:18px}
 #jayms-tool-dots .a-dot{width:11px;height:11px;border-radius:50%}
@@ -217,8 +230,9 @@ add_action( 'wp_footer', function () {
 (function () {
   "use strict";
 
-  var SRC   = <?php echo wp_json_encode( $src ); ?>;
-  var MOUNT = document.getElementById("app");
+  var SRC      = <?php echo wp_json_encode( $src ); ?>;
+  var FEATURED = <?php echo wp_json_encode( $featured ); ?>;
+  var MOUNT    = document.getElementById("app");
   if (!MOUNT) return;
 
   var DOC = null, ENTRIES = [], BY_ID = {};
@@ -420,6 +434,21 @@ add_action( 'wp_footer', function () {
       (t.heroSubtitle ? '<p class="a-sub">' + esc(t.heroSubtitle) + "</p>" : "") +
       (slot("jayms-tool-dots") ? "" : '<div class="a-dots">' + dotsHTML() + "</div>") +
       "</div>";
+  }
+
+  // The page's featured image. Drop a #jayms-tool-image div anywhere to
+  // place it yourself; otherwise it goes at the top of the hero, so simply
+  // setting a featured image in WordPress is enough.
+  function paintFeatured() {
+    if (!FEATURED) return;
+    var s = slot("jayms-tool-image");
+    if (s) {
+      if (!s.innerHTML.trim()) s.innerHTML = FEATURED;
+      return;
+    }
+    if (PAGE_HERO && !PAGE_HERO.querySelector(".jayms-tool-featured")) {
+      PAGE_HERO.insertAdjacentHTML("afterbegin", FEATURED);
+    }
   }
 
   // Fill whatever slots the page placed, and hide the page hero while an
@@ -794,6 +823,7 @@ add_action( 'wp_footer', function () {
       ENTRIES.forEach(function (e) { BY_ID[e.id] = e; });
       state = readURL();
       history.replaceState(state, "", writeURL(state));
+      paintFeatured();
       render();
     })
     .catch(function (err) {
