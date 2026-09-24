@@ -253,7 +253,13 @@ add_action( 'wp_footer', function () {
   var MOUNT    = document.getElementById("app");
   if (!MOUNT) return;
 
-  var DOC = null, ENTRIES = [], BY_ID = {};
+  // An empty document, not null. The popstate listener is live from the
+  // first line, so a back press during the data fetch would otherwise
+  // reach readURL and throw on DOC.filters. Same shape, no content.
+  var DOC = { tool: {}, card: {}, detail: {}, search: {},
+              filters: [], blocks: [], footer: [], entries: [] };
+  var LOADED = false;
+  var ENTRIES = [], BY_ID = {};
   var state = { screen: "browse", id: null, q: "", filters: {}, page: 1 };
   var openRows = {};
   var lastCount = "";
@@ -384,7 +390,7 @@ add_action( 'wp_footer', function () {
       var id = BY_ID[v] ? v : (/^\d+$/.test(v) && ENTRIES[+v] ? ENTRIES[+v].id : null);
       if (id) return { screen: "detail", id: id, q: "", filters: {}, page: 1 };
     }
-    var f = {}, q = p.get("q") || "", pg = parseInt(p.get("page"), 10) || 1;
+    var f = {}, q = p.get("q") || "", pg = parseInt(p.get("pg"), 10) || 1;
     var any = false;
     (DOC.filters || []).forEach(function (row) {
       var v = p.get("f_" + row.field);
@@ -408,7 +414,9 @@ add_action( 'wp_footer', function () {
       if (s.filters[k]) p.set("f_" + k, s.filters[k]);
     });
     if (s.q) p.set("q", s.q);
-    if (s.page && s.page !== 1) p.set("page", s.page);
+    // `page` is a reserved WordPress query var: it 301s to the clean URL
+    // before a line of this script runs. `pg` is not claimed.
+    if (s.page && s.page !== 1) p.set("pg", s.page);
     var qs = p.toString();
     return qs ? "?" + qs : location.pathname;
   }
@@ -834,6 +842,7 @@ add_action( 'wp_footer', function () {
   // ------------------------------------------------------------ render
 
   function render() {
+    if (!LOADED) { MOUNT.innerHTML = '<p class="a-empty">Loading\u2026</p>'; return; }
     MOUNT.innerHTML = state.screen === "detail" ? renderDetail() : renderBrowse();
     paintSlots(state.screen === "detail" ? "" : lastCount);
 
@@ -877,6 +886,7 @@ add_action( 'wp_footer', function () {
       DOC = doc;
       ENTRIES = doc.entries || [];
       ENTRIES.forEach(function (e) { BY_ID[e.id] = e; });
+      LOADED = true;
       state = readURL();
       // Landing straight on an entry, from a shared link or a refresh,
       // used to leave no list entry underneath it, so the browser's back
