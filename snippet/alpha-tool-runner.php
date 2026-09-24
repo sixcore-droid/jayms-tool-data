@@ -330,6 +330,12 @@ add_action( 'wp_footer', function () {
       }
       if (f.type === "suggest" && typeof jaymsSuggest !== "undefined" && jaymsSuggest.boxHTML) {
         try {
+          // Without this the shared box falls back to the generic kind
+          // 'suggestion' and the submission arrives with no tool on it.
+          // Every live tool currently misses this; the alphas do not.
+          if (jaymsSuggest.registerKind) {
+            jaymsSuggest.registerKind(f.kind, f.label || f.kind);
+          }
           return '<div class="a-note">' + jaymsSuggest.boxHTML(f.kind, {
             toggleText: f.toggleText, valuePlaceholder: f.valuePlaceholder
           }) + "</div>";
