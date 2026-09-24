@@ -383,29 +383,39 @@ add_action( 'wp_footer', function () {
 
   // ------------------------------------------------------------ routing
 
+  // Reads the URL alone. It must not touch DOC or ENTRIES, because it runs
+  // at parse time, before the dataset has been fetched.
   function readURL() {
     var p = new URLSearchParams(location.search);
     if (p.has("id")) {
       var v = p.get("id");
-      // slugs are the real ids; a bare integer is an old-style share link
-      var id = BY_ID[v] ? v : (/^\d+$/.test(v) && ENTRIES[+v] ? ENTRIES[+v].id : null);
-      if (id) return { screen: "detail", id: id, q: "", filters: {}, page: 1 };
+      if (v) return { screen: "detail", id: v, q: "", filters: {}, page: 1 };
     }
-    var f = {}, q = p.get("q") || "", pg = parseInt(p.get("pg"), 10) || 1;
-    var any = false;
-    (DOC.filters || []).forEach(function (row) {
-      var v = p.get("f_" + row.field);
-      if (v) { f[row.field] = v; any = true; }
+    var f = {};
+    // every f_<field> param, without needing to know the filter list yet
+    p.forEach(function (val, key) {
+      if (key.indexOf("f_") === 0 && val) f[key.slice(2)] = val;
     });
-    // the page can pick a landing filter; a real URL always wins over it
-    if (!any && !q && PAGE.defGroup) {
-      var g = visibleFilters().filter(function (r) { return r.field === "group"; })[0]
-           || visibleFilters().filter(function (r) { return r.role !== "category"; })[0];
-      if (g && g.options.some(function (o) { return o.k === PAGE.defGroup; })) {
-        f[g.field] = PAGE.defGroup;
-      }
+    return {
+      screen: "browse", id: null,
+      q: p.get("q") || "",
+      filters: f,
+      page: parseInt(p.get("pg"), 10) || 1
+    };
+  }
+
+  // The landing filter a page can request. Needs the dataset, so it runs
+  // once the data is in, and only when the URL asked for nothing itself.
+  function applyDefaultGroup() {
+    if (!PAGE.defGroup) return;
+    if (state.screen !== "browse") return;
+    if (state.q || Object.keys(state.filters).length) return;
+    var rows = visibleFilters();
+    var g = rows.filter(function (r) { return r.field === "group"; })[0]
+         || rows.filter(function (r) { return r.role !== "category"; })[0];
+    if (g && g.options.some(function (o) { return o.k === PAGE.defGroup; })) {
+      state.filters[g.field] = PAGE.defGroup;
     }
-    return { screen: "browse", id: null, q: q, filters: f, page: pg };
   }
 
   function writeURL(s) {
@@ -876,7 +886,28 @@ add_action( 'wp_footer', function () {
 
   // ------------------------------------------------------------ boot
 
-  MOUNT.innerHTML = '<p class="a-empty">Loading…</p>';
+  // Everything that touches history runs NOW, during parse, not inside the
+  // fetch callback. Two reasons, both measured:
+  //   * the popstate listener above has to be live before a reader can
+  //     press Back, or the browser falls through to a full page load
+  //   * a replaceState made after the document has committed makes the
+  //     browser re-fetch that entry on a back traversal, which turned
+  //     paging to 2 and pressing Back into a full reload
+  // This is the pattern the shared Tool Engine already uses for Word Study:
+  // boot with a placeholder, swap the real data in when it arrives.
+  state = readURL();
+
+  if (state.screen === "detail") {
+    // Seed the list beneath the entry so a shared link or a refresh leaves
+    // Back and the breadcrumb doing the same thing.
+    var seed = { screen: "browse", id: null, q: "", filters: {}, page: 1 };
+    history.replaceState(seed, "", writeURL(seed));
+    history.pushState(state, "", writeURL(state));
+  } else {
+    history.replaceState(state, "", writeURL(state));
+  }
+
+  render();   // the loading line, until LOADED flips
 
   fetch(SRC, { cache: "no-cache" })
     .then(function (r) {
@@ -888,35 +919,22 @@ add_action( 'wp_footer', function () {
       ENTRIES = doc.entries || [];
       ENTRIES.forEach(function (e) { BY_ID[e.id] = e; });
       LOADED = true;
-      state = readURL();
-      // Landing straight on an entry, from a shared link or a refresh,
-      // used to leave no list entry underneath it, so the browser's back
-      // button walked off the tool while the breadcrumb went to the list.
-      // Seed the list below the entry so both do the same thing.
-      if (state.screen === "detail") {
-        var seed = { screen: "browse", id: null, q: "", filters: {}, page: 1 };
-        history.replaceState(seed, "", writeURL(seed));
-        history.pushState(state, "", writeURL(state));
-      } else {
-        // Do not touch the entry when the URL is already right. This boot
-        // runs after the document has settled, and any replaceState on a
-        // committed entry makes the browser re-fetch it on the way back:
-        // paging to 2 and pressing back reloaded instead of stepping back.
-        // Measured both with and without a URL argument, same result.
-        // Skipping it costs nothing, because popstate falls back to reading
-        // the URL when an entry carries no state of its own.
-        var want = writeURL(state);
-        var target = want.charAt(0) === "?" ? location.pathname + want : want;
-        if (target !== location.pathname + location.search) {
-          history.replaceState(state, "", want);
-        }
+
+      // a bare integer is an old-style share link, resolvable only now
+      if (state.screen === "detail" && !BY_ID[state.id] &&
+          /^\d+$/.test(state.id) && ENTRIES[+state.id]) {
+        state.id = ENTRIES[+state.id].id;
       }
+      applyDefaultGroup();
+
       paintFeatured();
       render();
     })
     .catch(function (err) {
+      LOADED = true;
       MOUNT.innerHTML = '<p class="a-empty">This tool could not load its data. ' + esc(String(err)) + "</p>";
     });
+
 })();
 </script>
 	<?php
