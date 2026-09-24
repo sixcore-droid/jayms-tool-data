@@ -900,8 +900,13 @@ add_action( 'wp_footer', function () {
   if (state.screen === "detail") {
     // Seed the list beneath the entry so a shared link or a refresh leaves
     // Back and the breadcrumb doing the same thing.
+    //
+    // Two pushes, not replace-then-push. Rewriting the entry the document
+    // was loaded with makes the browser re-fetch it on the way back, which
+    // is the reload this whole fix exists to remove. Pushing leaves that
+    // entry untouched and still puts the list directly behind the entry.
     var seed = { screen: "browse", id: null, q: "", filters: {}, page: 1 };
-    history.replaceState(seed, "", writeURL(seed));
+    history.pushState(seed, "", writeURL(seed));
     history.pushState(state, "", writeURL(state));
   } else {
     history.replaceState(state, "", writeURL(state));
