@@ -468,21 +468,29 @@ add_action( 'wp_footer', function () {
     var key = version + "|" + ref;
     if (verseCache[key]) return verseCache[key];
     var out = "";
-    try {
-      if (typeof window.jaymsFetchVerse === "function") {
-        out = await window.jaymsFetchVerse(ref, version);
-      }
-    } catch (e) { out = ""; }
-    if (!out && version === "net") {
+
+    // NET comes straight from labs.bible.org because it returns one row per
+    // verse, which is what lets the box carry superscript verse numbers.
+    // jaymsFetchVerse returns {text, version, ref} or {error} and flattens
+    // the numbering away, so it is the route for the other translations.
+    if (version === "net") {
       try {
         var r = await fetch("https://labs.bible.org/api/?passage=" +
           encodeURIComponent(ref) + "&type=json&formatting=plain");
         var j = await r.json();
         out = (j || []).map(function (v) {
-          return '<sup>' + esc(v.verse) + "</sup>" + esc(v.text);
+          return "<sup>" + esc(v.verse) + "</sup>" + esc(v.text);
         }).join(" ");
+      } catch (e) { out = ""; }
+    }
+
+    if (!out && typeof window.jaymsFetchVerse === "function") {
+      try {
+        var res = await window.jaymsFetchVerse(ref, version);
+        if (res && res.text) out = esc(res.text);
       } catch (e2) { out = ""; }
     }
+
     if (out) verseCache[key] = out;
     return out;
   }
@@ -492,14 +500,17 @@ add_action( 'wp_footer', function () {
     if (!boxEl) return;
     var textEl = boxEl.querySelector(".a-btext");
     var labelEl = boxEl.querySelector(".a-blabel");
+    // the reference and the translation are this box's title, so the body
+    // is the verse text alone rather than repeating the reference
     labelEl.innerHTML = esc(ref) + esc(sep || " · ") + esc(version.toUpperCase());
     textEl.classList.add("a-loading");
     textEl.innerHTML = "Loading…";
     var t = await fetchVerse(ref, version);
     textEl.classList.remove("a-loading");
     textEl.innerHTML = t
-      ? "<p><b>" + esc(ref) + "</b>" + esc(sep || " · ") + t + "</p>"
-      : '<p class="a-loading">(' + esc(version.toUpperCase()) + " unavailable)</p>";
+      ? "<p>" + t + "</p>"
+      : '<p class="a-loading">(' + esc(version.toUpperCase()) +
+        " does not resolve this reference)</p>";
   }
 
   window.jaymsAlphaVersion = function (ref, version, btn) {
