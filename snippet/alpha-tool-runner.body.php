@@ -79,7 +79,11 @@ add_action( 'wp_footer', function () {
 .jayms-tool-hero .jayms-tool-sub{font-size:18px;line-height:1.55;color:#c4b9a3;margin:0 0 18px;max-width:64ch}
 .jayms-tool-hero .jayms-tool-note{font-size:15px;line-height:1.65;color:#847a6a;margin:0 0 16px;max-width:70ch}
 .jayms-tool-hero img{max-width:100%;height:auto;border-radius:9px;margin:0 0 18px}
-.jayms-tool-featured{display:block;width:100%;max-width:100%;height:auto;border-radius:9px;margin:0 0 20px}
+/* a hero banner, not a wall: a tall portrait image would otherwise fill the
+   whole first screen before a reader sees the tool at all */
+.jayms-tool-featured{display:block;width:100%;max-width:100%;height:auto;
+  max-height:240px;object-fit:cover;object-position:center;border-radius:9px;margin:0 0 20px}
+@media(max-width:640px){.jayms-tool-featured{max-height:160px}}
 /* the hero is a group block, so the theme's own group rules are in play */
 .wp-block-group.jayms-tool-hero{max-width:1100px;margin-left:auto;margin-right:auto;padding:8px 16px 4px}
 .jayms-tool-hero p.jayms-tool-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#d4a85c;margin:0 0 10px}
