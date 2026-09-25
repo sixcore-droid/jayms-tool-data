@@ -144,6 +144,28 @@ add_action( 'wp_footer', function () {
 
 /* cards */
 .jayms-tool-alpha .a-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:13px}
+/* the tick is a sibling of the card, never a child: a button inside a
+   button is invalid markup and swallows the click */
+.jayms-tool-alpha .a-cardwrap{position:relative;display:flex}
+.jayms-tool-alpha .a-cardwrap .a-card{flex:1 1 auto}
+.jayms-tool-alpha .a-tick{position:absolute;top:10px;right:10px;width:26px;height:26px;
+  display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;
+  background:var(--a-panel-2);border:1px solid var(--a-line);color:transparent;
+  font-family:inherit;font-size:15px;line-height:1;padding:0}
+.jayms-tool-alpha .a-tick:hover{border-color:var(--a-gold);color:var(--a-muted)}
+.jayms-tool-alpha .a-tick.on{border-color:var(--a-aramaic);color:var(--a-aramaic);background:transparent}
+.jayms-tool-alpha .a-cardwrap.done .a-card{opacity:.55}
+.jayms-tool-alpha .a-cardwrap.done:hover .a-card{opacity:1}
+.jayms-tool-alpha .a-dtick{display:inline-flex;align-items:center;gap:9px;margin:0 0 18px;
+  background:transparent;border:1px solid var(--a-line);border-radius:7px;padding:8px 14px;
+  cursor:pointer;font-family:inherit;font-size:14px;color:var(--a-ink-soft)}
+.jayms-tool-alpha .a-dtick:hover{border-color:var(--a-gold);color:var(--a-ink)}
+.jayms-tool-alpha .a-dtick.on{border-color:var(--a-aramaic);color:var(--a-aramaic)}
+.jayms-tool-alpha .a-dtick .box{width:18px;height:18px;border-radius:4px;border:1px solid currentColor;
+  display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1}
+.jayms-tool-alpha .a-reset{background:transparent;border:0;color:var(--a-muted);cursor:pointer;
+  font-family:inherit;font-size:12px;text-decoration:underline;padding:0 0 0 8px}
+.jayms-tool-alpha .a-reset:hover{color:var(--a-rust)}
 /* layout, set per page with data-layout / data-columns */
 .jayms-tool-alpha .a-cards.lay-list{grid-template-columns:1fr}
 .jayms-tool-alpha .a-cards.cols-2{grid-template-columns:repeat(2,1fr)}
@@ -249,6 +271,7 @@ add_action( 'wp_footer', function () {
   "use strict";
 
   var SRC      = <?php echo wp_json_encode( $src ); ?>;
+  var SLUG     = <?php echo wp_json_encode( $slug ); ?>;
   var FEATURED = <?php echo wp_json_encode( $featured ); ?>;
   var MOUNT    = document.getElementById("app");
   if (!MOUNT) return;
@@ -300,9 +323,50 @@ add_action( 'wp_footer', function () {
     hide:    (MOUNT.dataset.filtersHide || "").split(",").map(function (s) { return s.trim(); }).filter(Boolean),
     perPage: parseInt(MOUNT.dataset.perPage, 10) || null,
     search:  (MOUNT.dataset.search || "on").trim() !== "off",
+    progress: (MOUNT.dataset.progress || "on").trim() !== "off",
     layout:  (MOUNT.dataset.layout || "grid").trim().toLowerCase(),
     columns: (MOUNT.dataset.columns || "auto").trim().toLowerCase(),
     defGroup: (MOUNT.dataset.defaultGroup || "").trim()
+  };
+
+  // ---------------------------------------------------------- progress
+  //
+  // Which entries a reader has worked through. Browser only, on purpose.
+  // PROGRESS-AND-ACCOUNTS.md in the data repo records what moving this to
+  // real accounts would take, and what has to stay true for that to be a
+  // copy rather than a rebuild. The shape is deliberately portable:
+  //   { "<entry id>": 1 }   stored per tool slug.
+  // Every read and write is guarded: storage throws in a private window and
+  // returns nothing when a reader has site data blocked.
+  var PROGRESS_KEY = "jayms.progress." + SLUG;
+  var progress = {};
+
+  function loadProgress() {
+    try {
+      progress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}") || {};
+    } catch (e) { progress = {}; }
+  }
+  function saveProgress() {
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (e) {}
+  }
+  function isDone(id) { return progress[id] === 1; }
+  function doneCount() {
+    var n = 0;
+    for (var i = 0; i < ENTRIES.length; i++) if (isDone(ENTRIES[i].id)) n++;
+    return n;
+  }
+  loadProgress();
+
+  window.jaymsAlphaToggleDone = function (id) {
+    if (isDone(id)) delete progress[id]; else progress[id] = 1;
+    saveProgress();
+    render();
+  };
+
+  window.jaymsAlphaResetProgress = function () {
+    progress = {};
+    saveProgress();
+    render();
   };
 
   // Slots the page may place anywhere. Absent slot, no output, no error.
@@ -615,13 +679,21 @@ add_action( 'wp_footer', function () {
         var o = r.options.filter(function (x) { return x.k === d[r.field]; })[0];
         return o ? '<span class="a-tag">' + esc(o.n) + "</span>" : "";
       }).join("");
-    return '<button class="a-card" style="--cc:' + colourVar(c && c.c) + '" onclick="jaymsAlphaGo({screen:\'detail\',id:' +
-      JSON.stringify(d.id).replace(/"/g, "&quot;") + '})">' +
+    var done = PAGE.progress && isDone(d.id);
+    var tick = PAGE.progress
+      ? '<button class="a-tick' + (done ? " on" : "") + '" title="' +
+        (done ? "Done, tap to clear" : "Mark as done") + '" aria-pressed="' + (!!done) +
+        '" onclick="jaymsAlphaToggleDone(' + jsArg(d.id) + ')">\u2713</button>'
+      : "";
+
+    return '<div class="a-cardwrap' + (done ? " done" : "") + '">' +
+      '<button class="a-card" style="--cc:' + colourVar(c && c.c) + '" onclick="jaymsAlphaGo({screen:\'detail\',id:' +
+      jsArg(d.id) + '})">' +
       (label ? '<div class="a-clabel">' + esc(label) + "</div>" : "") +
       '<div class="a-cmain">' + esc(main) + "</div>" +
       '<div class="a-meta">' + tags +
       '<span class="a-badge" style="--cc:' + colourVar(c && c.c) + '">' + esc(c ? c.n : d.category) + "</span>" +
-      "</div></button>";
+      "</div></button>" + tick + "</div>";
   }
 
   function footerHTML() {
@@ -655,6 +727,8 @@ add_action( 'wp_footer', function () {
     var slice = rows.slice((state.page - 1) * per, state.page * per);
     var filtered = state.q || Object.keys(state.filters).length;
     var countText = rows.length + " of " + ENTRIES.length + (filtered ? " · filtered" : "");
+    var nDone = PAGE.progress ? doneCount() : 0;
+    if (nDone) countText += " · " + nDone + " done";
     lastCount = countText;
 
     return heroHTML() +
@@ -662,7 +736,9 @@ add_action( 'wp_footer', function () {
         esc((DOC.tool && DOC.tool.searchPlaceholder) || "Search…") +
         '" value="' + esc(state.q) + '">' : "") +
       filtersHTML() +
-      (slot("jayms-tool-count") ? "" : '<div class="a-count">' + esc(countText) + "</div>") +
+      (slot("jayms-tool-count") ? "" : '<div class="a-count">' + esc(countText) +
+        (nDone ? '<button class="a-reset" onclick="jaymsAlphaResetProgress()">reset</button>' : "") +
+        "</div>") +
       '<div class="a-cards' + cardsClass() + '">' + (slice.map(cardHTML).join("") ||
         '<p class="a-empty">Nothing matches. Clear a filter and try again.</p>') + "</div>" +
       (pages > 1 ? '<div class="a-pg">' +
@@ -846,6 +922,12 @@ add_action( 'wp_footer', function () {
       '<span class="a-badge" style="--cc:' + colourVar(c && c.c) + '">' + esc(c ? c.n : d.category) + "</span>" +
       '<h1 class="a-dtitle">' + esc(d[det.titleField || "title"]) + "</h1>" +
       '<p class="a-dsum">' + esc(d[det.headlineField || "summary"]) + "</p>" +
+      (PAGE.progress
+        ? '<button class="a-dtick' + (isDone(d.id) ? " on" : "") + '" aria-pressed="' +
+          isDone(d.id) + '" onclick="jaymsAlphaToggleDone(' + jsArg(d.id) + ')">' +
+          '<span class="box">' + (isDone(d.id) ? "\u2713" : "") + "</span>" +
+          (isDone(d.id) ? "Worked through" : "Mark as worked through") + "</button>"
+        : "") +
       blocks;
   }
 
