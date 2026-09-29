@@ -174,24 +174,29 @@ add_action( 'wp_footer', function () {
 	$preload = $current ? array( $current[0] => $current[2] ) : array();
 	?>
 <script id="jayms-outline-preload">
-window.JAYMS_OUTLINE_BOOKS   = <?php echo wp_json_encode( $names ); ?>;
-window.JAYMS_OUTLINE_PRELOAD = <?php echo wp_json_encode( $preload ); ?>;
+window.JAYMS_OUTLINE_BOOKS   = <?php echo wp_json_encode( (object) $names ); ?>;
+window.JAYMS_OUTLINE_PRELOAD = <?php echo wp_json_encode( (object) $preload ); ?>;
 window.JAYMS_OUTLINE_BASE    = <?php echo wp_json_encode( JAYMS_OUTLINE_BASE ); ?>;
 </script>
 	<?php
 }, 4 );
 
 /* Titles and canonical per book, so each ?book= URL is its own result. */
-add_filter( 'document_title_parts', function ( $parts ) {
+/* The page has a Jetpack custom title, which outranks document_title_parts
+   and was serving the Luke title on every book's URL. pre_get_document_title
+   short-circuits the whole chain, so it is the only hook that wins here. */
+add_filter( 'pre_get_document_title', function ( $title ) {
 	if ( ! is_page( JAYMS_OUTLINE_PAGE ) ) {
-		return $parts;
+		return $title;
 	}
 	$current = jayms_outline_current();
-	if ( $current ) {
-		$parts['title'] = $current[0] . ': Interactive Outline';
+	if ( ! $current ) {
+		return $title;
 	}
-	return $parts;
-} );
+	$book = $current[2];
+	$sub  = ! empty( $book['title'] ) ? $book['title'] : $current[0];
+	return $sub . ' — Interactive Outline, Chapter by Chapter | JAYMS.COM';
+}, 99 );
 
 add_filter( 'get_canonical_url', function ( $url, $post ) {
 	if ( ! $post || JAYMS_OUTLINE_PAGE !== (int) $post->ID ) {
