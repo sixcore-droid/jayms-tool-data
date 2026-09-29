@@ -175,6 +175,10 @@ add_action( 'wp_footer', function () {
 	?>
 <script id="jayms-outline-preload">
 window.JAYMS_OUTLINE_BOOKS   = <?php echo wp_json_encode( (object) $names ); ?>;
+/* Ordered, because a short #id= is an index into this list. Changing the
+   order changes every shared link, so it comes from index.json and
+   nowhere else. */
+window.JAYMS_OUTLINE_ORDER   = <?php echo wp_json_encode( array_keys( $names ) ); ?>;
 window.JAYMS_OUTLINE_PRELOAD = <?php echo wp_json_encode( (object) $preload ); ?>;
 window.JAYMS_OUTLINE_BASE    = <?php echo wp_json_encode( JAYMS_OUTLINE_BASE ); ?>;
 </script>
