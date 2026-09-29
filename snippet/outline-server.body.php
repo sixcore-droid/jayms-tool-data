@@ -316,8 +316,9 @@ add_action( 'wp_footer', function () {
    wrapping to two lines, which made that card taller than its neighbours and
    threw the whole row out of line. Smaller type, no wrapping, fixed height. */
 #app .wcard-links{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start}
-#app .wcard-links .fullentry-btn{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
-  padding:5px 10px;white-space:nowrap;line-height:1.2;min-height:26px;display:inline-flex;
+#app .wcard-links .fullentry-btn{flex:1 1 0;min-width:0;justify-content:center;
+  font-size:10px;letter-spacing:.04em;text-transform:uppercase;
+  padding:5px 6px;white-space:nowrap;line-height:1.2;min-height:26px;display:inline-flex;
   align-items:center}
 
 /* a verse is a box, its reference is the box label */
