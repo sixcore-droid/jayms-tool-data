@@ -201,6 +201,14 @@ add_action( 'wp_footer', function () {
 /* detail */
 .jayms-tool-alpha .a-back{background:transparent;border:0;color:var(--a-gold);cursor:pointer;padding:6px 0;
   font-family:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+/* the crumbs own their line: nothing else sits beside them */
+.jayms-tool-alpha .a-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
+.jayms-tool-alpha .a-crumb{background:transparent;border:0;color:var(--a-gold);cursor:pointer;padding:6px 0;
+  font-family:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-align:left;line-height:1.35}
+.jayms-tool-alpha .a-crumb:hover{color:var(--a-ink);text-decoration:underline}
+.jayms-tool-alpha .a-crumb-sep{color:var(--a-muted);font-size:13px}
+/* every tag the entry carries, on a line of its own under the summary */
+.jayms-tool-alpha .a-dtags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
 .jayms-tool-alpha h1.a-dtitle{font-size:clamp(25px,4.6vw,40px);line-height:1.14;margin:10px 0 10px;font-weight:600}
 /* no measure cap: a 70ch limit wrapped this line short while every box
    below it ran the full width, which read as a layout fault */
@@ -452,7 +460,7 @@ add_action( 'wp_footer', function () {
     var p = new URLSearchParams(location.search);
     if (p.has("id")) {
       var v = p.get("id");
-      if (v) return { screen: "detail", id: v, q: "", filters: {}, page: 1 };
+      if (v) return { screen: "detail", id: v, q: "", filters: {}, page: 1, trail: [v] };
     }
     var f = {};
     // every f_<field> param, without needing to know the filter list yet
@@ -463,7 +471,8 @@ add_action( 'wp_footer', function () {
       screen: "browse", id: null,
       q: p.get("q") || "",
       filters: f,
-      page: parseInt(p.get("pg"), 10) || 1
+      page: parseInt(p.get("pg"), 10) || 1,
+      trail: []
     };
   }
 
@@ -499,6 +508,20 @@ add_action( 'wp_footer', function () {
   function go(patch) {
     var was = state.screen;
     if (was === "browse") browseY = window.scrollY;
+
+    // The trail is the route taken to get here, so following "Reads with"
+    // from one entry to the next leaves a path back through both. It lives
+    // on the history state, which is what makes Back and the crumbs agree.
+    if (patch.screen === "detail" && patch.id) {
+      var t = (was === "detail" && Array.isArray(state.trail)) ? state.trail.slice() : [];
+      var at = t.indexOf(patch.id);
+      if (at >= 0) t = t.slice(0, at);   // stepping back onto a link already walked
+      t.push(patch.id);
+      patch.trail = t;
+    } else if (patch.screen === "browse") {
+      patch.trail = [];
+    }
+
     Object.assign(state, patch);
     history.pushState(state, "", writeURL(state));
     render();
@@ -911,17 +934,44 @@ add_action( 'wp_footer', function () {
 
   // ------------------------------------------------------------ detail
 
+  // Every step walked to get here, each one clickable. The entry you are
+  // on is not repeated, because its own title is the next thing on screen.
+  function crumbsHTML() {
+    var back = esc((DOC.tool && DOC.tool.backLabel) || "All entries");
+    var out = ['<button class="a-crumb" onclick="jaymsAlphaGo({screen:\'browse\'})">&larr; ' + back + "</button>"];
+    var trail = Array.isArray(state.trail) ? state.trail : [];
+    for (var i = 0; i < trail.length - 1; i++) {
+      var prev = BY_ID[trail[i]];
+      if (!prev) continue;
+      out.push('<span class="a-crumb-sep">\u203a</span>');
+      out.push('<button class="a-crumb" onclick="jaymsAlphaGo({screen:\'detail\',id:' +
+        jsArg(prev.id) + '})">' + esc(prev.title) + "</button>");
+    }
+    return '<div class="a-crumbs">' + out.join("") + "</div>";
+  }
+
+  // Every axis the entry sits on, not just the graded one.
+  function detailTagsHTML(d) {
+    var out = visibleFilters().map(function (row) {
+      var o = row.options.filter(function (x) { return x.k === d[row.field]; })[0];
+      if (!o) return "";
+      if (row.role === "category") {
+        return '<span class="a-badge" style="--cc:' + colourVar(o.c) + '">' + esc(o.n) + "</span>";
+      }
+      return '<span class="a-tag">' + esc(o.n) + "</span>";
+    }).filter(Boolean).join("");
+    return out ? '<div class="a-dtags">' + out + "</div>" : "";
+  }
+
   function renderDetail() {
     var d = BY_ID[state.id];
     if (!d) return '<p class="a-empty">Entry not found. <button class="a-lnk" onclick="jaymsAlphaGo({screen:\'browse\'})">Back to the list</button></p>';
-    var c = catOf(d.category);
     var det = DOC.detail || {};
     var blocks = (DOC.blocks || []).map(function (b) { return renderBlock(b, d); }).join("");
-    return '<button class="a-back" onclick="jaymsAlphaGo({screen:\'browse\'})">&larr; ' +
-        esc((DOC.tool && DOC.tool.backLabel) || "All entries") + "</button>" +
-      '<span class="a-badge" style="--cc:' + colourVar(c && c.c) + '">' + esc(c ? c.n : d.category) + "</span>" +
+    return crumbsHTML() +
       '<h1 class="a-dtitle">' + esc(d[det.titleField || "title"]) + "</h1>" +
       '<p class="a-dsum">' + esc(d[det.headlineField || "summary"]) + "</p>" +
+      detailTagsHTML(d) +
       (PAGE.progress
         ? '<button class="a-dtick' + (isDone(d.id) ? " on" : "") + '" aria-pressed="' +
           isDone(d.id) + '" onclick="jaymsAlphaToggleDone(' + jsArg(d.id) + ')">' +
@@ -930,8 +980,6 @@ add_action( 'wp_footer', function () {
         : "") +
       blocks;
   }
-
-  // ------------------------------------------------------------ render
 
   function render() {
     if (!LOADED) { MOUNT.innerHTML = '<p class="a-empty">Loading\u2026</p>'; return; }
