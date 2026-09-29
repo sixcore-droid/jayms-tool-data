@@ -260,7 +260,10 @@ add_action( 'wp_footer', function () {
 #app .crumb button,#app .crumb-link{background:transparent;border:0;color:var(--o-gold);cursor:pointer;
   font-family:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:6px 0;line-height:1.35}
 #app .crumb button:hover,#app .crumb-link:hover{color:var(--o-ink);text-decoration:underline}
-#app .crumb .path{color:var(--o-muted);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+#app .crumb .path{display:inline-flex;align-items:center;gap:8px;color:var(--o-muted);
+  font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+#app .crumb .path b{color:var(--o-ink-soft);font-weight:400}
+#app .crumb .path button{padding:0}
 
 /* the book grid reads as Divine Council's cards */
 #app .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:13px}
@@ -309,6 +312,13 @@ add_action( 'wp_footer', function () {
   color:var(--o-gold);border-radius:999px;padding:6px 14px;cursor:pointer;font-family:inherit;
   font-size:13px;line-height:1.35;text-decoration:none}
 #app .fullentry-btn:hover{border-color:var(--o-gold)}
+/* Inside a word card the pill has to fit a narrow column. "Word Study" was
+   wrapping to two lines, which made that card taller than its neighbours and
+   threw the whole row out of line. Smaller type, no wrapping, fixed height. */
+#app .wcard-links{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start}
+#app .wcard-links .fullentry-btn{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 10px;white-space:nowrap;line-height:1.2;min-height:26px;display:inline-flex;
+  align-items:center}
 
 /* a verse is a box, its reference is the box label */
 #app .passage-verse{background:var(--o-panel);border:1px solid var(--o-line);
