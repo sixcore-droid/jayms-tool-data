@@ -538,6 +538,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return prev[b.length];
   }
 
+  // Spelling folded to sound: Zechariah and "zekaria" land on the same
+  // string, and so do Habakkuk/habakuk and Philippians/philipians.
+  function fold(s) {
+    return s.replace(/ph/g, "f").replace(/ch/g, "k").replace(/ck/g, "k")
+      .replace(/h/g, "").replace(/[cq]/g, "k").replace(/x/g, "ks")
+      .replace(/z/g, "s").replace(/y/g, "i").replace(/(.)\1+/g, "$1");
+  }
+
   function scoreName(q, n) {
     if (!n) return 0;
     if (n.indexOf(q) === 0) return 1000 - n.length;
@@ -553,9 +561,11 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   }
 
   function score(book, q) {
-    var best = scoreName(q, norm(book.name));
+    var n = norm(book.name);
+    var best = Math.max(scoreName(q, n), scoreName(fold(q), fold(n)) - 20);
     (ALIAS[book.name] || []).forEach(function (a) {
-      var v = scoreName(q, norm(a));
+      var an = norm(a);
+      var v = Math.max(scoreName(q, an), scoreName(fold(q), fold(an)) - 20);
       if (v > best) best = v - 1;   // an alias never outranks the real name
     });
     return best;
