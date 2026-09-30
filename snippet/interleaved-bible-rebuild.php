@@ -630,14 +630,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     });
     if (key) rows.push("<dt>Strong’s</dt><dd>" + esc(key) + "</dd>");
 
-    var def = "";
+    var def = "", kjv = "", deriv = "";
     if (key) {
       if (!LEX || !Object.keys(LEX).length) { ensureLexicon(); def = "Loading the lexicon…"; }
       else {
+        // the lexicon's own field names are def, kjv, derivation
         var e = LEX[key], s = e && e.strong;
-        def = s ? [s.strongs_def, s.kjv_def].filter(Boolean).join(" — ")
-                : "No lexicon entry for " + key + ".";
-        if (e && e.classic && e.classic.def) def = def + " " + e.classic.def;
+        def = (s && s.def) ? s.def : "No lexicon entry for " + key + ".";
+        kjv = (s && s.kjv) ? s.kjv : "";
+        deriv = (s && s.derivation) ? s.derivation : "";
       }
     }
 
@@ -661,6 +662,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       '<p class="ib-panel-gloss">' + esc(w.gloss || w.english || "") + "</p>" +
       (rows.length ? '<dl class="ib-parse">' + rows.join("") + "</dl>" : "") +
       (def ? '<div class="ib-def"><p class="a-clabel">Definition</p><p>' + esc(def) + "</p>" +
+             (kjv ? '<p class="ib-note">Rendered in the King James as ' + esc(kjv) + "</p>" : "") +
+             (deriv ? '<p class="ib-note">' + esc(deriv) + "</p>" : "") +
              (occ ? '<p class="ib-note">' + esc(occ) + "</p>" : "") + "</div>" : "") +
       "</aside>";
   }
@@ -681,7 +684,6 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   render();
   if (VIEW.screen === "book" || VIEW.screen === "read") ensureOutline(VIEW.book);
 })();
-
 </script>
 	<?php
 } );
