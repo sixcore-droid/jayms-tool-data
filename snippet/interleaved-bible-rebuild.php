@@ -44,11 +44,29 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-hero{margin:0 0 22px}
 .jayms-tool-outline .ib-find{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:0 0 4px}
 .jayms-tool-outline .ib-find .a-search{flex:1 1 320px;min-width:260px}
+/* the rule row: a label, its controls, and a line above and below */
+.jayms-tool-outline .ib-rule{display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:14px 0 22px}
+.jayms-tool-outline .ib-key{display:inline-flex;align-items:center;gap:7px;background:none;border:0;
+  padding:4px 2px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink-soft)}
+.jayms-tool-outline .ib-key.on{color:var(--ink)}
+.jayms-tool-outline .ib-key-all{border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.jayms-tool-outline .ib-key-all.on{border-color:var(--gold);color:var(--gold)}
+.jayms-tool-outline .ib-rescount{margin:-10px 0 16px;min-height:1em}
+.jayms-tool-outline .ib-swatch{width:3px;height:15px;border-radius:2px;display:inline-block;flex:0 0 auto}
+
+.jayms-tool-outline .ib-main{display:flex;gap:40px;align-items:flex-start}
+.jayms-tool-outline .ib-results{flex:1 1 auto;min-width:0}
+.jayms-tool-outline .ib-jump{position:sticky;top:20px;flex:0 0 264px;display:flex;flex-direction:column;
+  gap:12px;border-left:1px solid var(--line);padding-left:28px}
+.jayms-tool-outline .ib-jump-note{margin:0;color:var(--ink-soft)}
+.jayms-tool-outline .ib-jump .a-lnk{align-self:flex-start}
+.jayms-tool-outline .ib-jump-foot{margin-top:6px}
+
 /* the reference picker: three lists that narrow each other down */
 .jayms-tool-outline .ib-jsel{width:100%;box-sizing:border-box;background:var(--paper-deep);
   border:1px solid var(--line);border-radius:9px;padding:11px 12px;color:var(--ink);
-  font-family:inherit;font-size:15px;cursor:pointer;
-  appearance:none;-webkit-appearance:none}
+  font-family:inherit;font-size:15px;cursor:pointer;appearance:none;-webkit-appearance:none}
 .jayms-tool-outline .ib-jsel:focus{outline:none;border-color:var(--gold)}
 .jayms-tool-outline .ib-jbook{font-size:16px}
 .jayms-tool-outline .ib-jrow{display:flex;gap:8px}
