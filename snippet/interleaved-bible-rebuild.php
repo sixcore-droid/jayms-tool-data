@@ -392,8 +392,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     restoreFor = (v.screen === "book" && bookScroll[v.book] != null) ? v.book : null;
     var h = hashFor(v);
     if (location.hash !== h) { selfSetHash = true; location.hash = h; }
+    // render() consumes restoreFor, so the decision has to be taken first
+    var keepingPlace = !!restoreFor;
     render();
-    if (!restoreFor) MOUNT.scrollIntoView({ block: "start" });
+    if (!keepingPlace) MOUNT.scrollIntoView({ block: "start" });
   }
   window.ibGo = go;
 
