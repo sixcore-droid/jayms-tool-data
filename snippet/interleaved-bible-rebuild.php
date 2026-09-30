@@ -44,38 +44,15 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-hero{margin:0 0 22px}
 .jayms-tool-outline .ib-find{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:0 0 4px}
 .jayms-tool-outline .ib-find .a-search{flex:1 1 320px;min-width:260px}
-.jayms-tool-outline .ib-findbox{position:relative;display:block;width:100%}
-.jayms-tool-outline .ib-findbox .a-search{width:100%;box-sizing:border-box}
-.jayms-tool-outline .ib-sugg{position:absolute;z-index:30;right:0;left:auto;top:calc(100% + 6px);
-  min-width:100%;width:max-content;max-width:min(340px,78vw);
-  margin:0;padding:6px;list-style:none;background:var(--paper-deep);border:1px solid var(--line);
-  border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.45);max-height:340px;overflow:auto}
-.jayms-tool-outline .ib-sugg-item{display:flex;align-items:center;gap:10px;padding:9px 10px;
-  border-radius:7px;cursor:pointer}
-.jayms-tool-outline .ib-sugg-item.on{background:var(--paper-deeper)}
-.jayms-tool-outline .ib-sugg-item.on .ib-sugg-name{color:var(--gold)}
-.jayms-tool-outline .ib-sugg-item.on .ib-sugg-meta{color:var(--ink-soft)}
-.jayms-tool-outline .ib-sugg-name{flex:1 1 auto;color:var(--ink);font-size:16px}
-.jayms-tool-outline .ib-sugg-meta{flex:0 0 auto;color:var(--muted);font-size:12px}
-
-/* the rule row: a label, its controls, and a line above and below */
-.jayms-tool-outline .ib-rule{display:flex;flex-wrap:wrap;align-items:center;gap:14px;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:14px 0 24px}
-.jayms-tool-outline .ib-key{display:inline-flex;align-items:center;gap:7px;background:none;border:0;
-  padding:4px 2px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink-soft)}
-.jayms-tool-outline .ib-key.on{color:var(--ink)}
-.jayms-tool-outline .ib-key-all{border:1px solid var(--line);border-radius:999px;padding:4px 12px}
-.jayms-tool-outline .ib-key-all.on{border-color:var(--gold);color:var(--gold)}
-.jayms-tool-outline .ib-rescount{margin:-10px 0 16px;min-height:1em}
-.jayms-tool-outline .ib-swatch{width:3px;height:15px;border-radius:2px;display:inline-block;flex:0 0 auto}
-
-.jayms-tool-outline .ib-main{display:flex;gap:40px;align-items:flex-start}
-.jayms-tool-outline .ib-results{flex:1 1 auto;min-width:0}
-.jayms-tool-outline .ib-jump{position:sticky;top:20px;flex:0 0 264px;display:flex;flex-direction:column;
-  gap:12px;border-left:1px solid var(--line);padding-left:28px}
-.jayms-tool-outline .ib-jump-note{margin:0;color:var(--ink-soft)}
-.jayms-tool-outline .ib-jump .a-lnk{align-self:flex-start}
-.jayms-tool-outline .ib-jump-foot{margin-top:6px}
+/* the reference picker: three lists that narrow each other down */
+.jayms-tool-outline .ib-jsel{width:100%;box-sizing:border-box;background:var(--paper-deep);
+  border:1px solid var(--line);border-radius:9px;padding:11px 12px;color:var(--ink);
+  font-family:inherit;font-size:15px;cursor:pointer;
+  appearance:none;-webkit-appearance:none}
+.jayms-tool-outline .ib-jsel:focus{outline:none;border-color:var(--gold)}
+.jayms-tool-outline .ib-jbook{font-size:16px}
+.jayms-tool-outline .ib-jrow{display:flex;gap:8px}
+.jayms-tool-outline .ib-jfield{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:5px}
 
 .jayms-tool-outline .ib-gsec{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px}
 .jayms-tool-outline .ib-gsec:first-child{margin-top:0}
@@ -343,6 +320,13 @@ add_action( 'wp_footer', function () {
 }
 </style>
 
+<script id="jayms-outline-verse-counts">
+/* How many verses each chapter holds, counted from the interlinear at
+   build time, so the reference picker can offer real chapters and real
+   verses without fetching a book. Keyed by the same slug the data uses. */
+window.JAYMS_VERSE_COUNTS = {"1chronicles":[54,55,24,43,41,66,40,40,44,14,47,41,14,17,29,43,27,17,19,8,30,19,32,31,31,32,34,21,30],"1corinthians":[31,16,23,21,13,20,40,13,27,33,34,31,13,40,58,24],"1john":[10,29,24,21,21],"1kings":[53,46,28,20,32,38,51,66,28,29,43,33,34,31,34,34,24,46,21,43,29,54],"1peter":[25,25,22,19,14],"1samuel":[28,36,21,22,12,21,17,22,27,27,15,25,23,52,35,23,58,30,24,42,16,23,28,23,44,25,12,25,11,31,13],"1thessalonians":[10,20,13,18,28],"1timothy":[20,15,16,16,25,21],"2chronicles":[18,17,17,22,14,42,22,18,31,19,23,16,23,14,19,14,19,34,11,37,20,12,21,27,28,23,9,27,36,27,21,33,25,33,27,23],"2corinthians":[24,17,18,18,21,18,16,24,15,18,33,21,13],"2john":[13],"2kings":[18,25,27,44,27,33,20,29,37,36,20,22,25,29,38,20,41,37,37,21,26,20,37,20,30],"2peter":[21,22,18],"2samuel":[27,32,39,12,25,23,29,18,13,19,27,31,39,33,37,23,29,32,44,26,22,51,39,25],"2thessalonians":[12,17,18],"2timothy":[18,26,17,22],"3john":[15],"acts":[26,47,26,37,42,15,60,40,43,48,30,25,52,28,41,40,34,28,40,38,40,30,35,27,27,32,44,31],"amos":[15,16,15,13,27,14,17,14,15],"colossians":[29,23,25,18],"daniel":[21,49,33,34,30,29,28,27,27,21,45,13],"deuteronomy":[46,37,29,49,33,25,26,20,29,22,32,31,19,29,23,22,20,22,21,20,23,29,26,22,19,19,26,69,28,20,30,52,29,12],"ecclesiastes":[18,26,22,17,19,12,29,17,18,20,10,14],"ephesians":[23,22,21,32,33,24],"esther":[22,23,15,17,14,14,10,17,32,3],"exodus":[22,25,22,31,23,30,29,28,35,29,10,51,22,31,27,36,16,27,25,26,37,30,33,18,40,37,21,43,46,38,18,35,23,35,35,38,29,31,43,38],"ezekiel":[28,10,27,17,17,14,27,18,11,22,25,28,23,23,8,63,24,32,14,44,37,31,49,27,17,21,36,26,21,26,18,32,33,31,15,38,28,23,29,49,26,20,27,31,25,24,23,35],"ezra":[11,70,13,24,17,22,28,36,15,44],"galatians":[24,21,29,31,26,18],"genesis":[31,25,24,26,32,22,24,22,29,32,32,20,18,24,21,16,27,33,38,18,34,24,20,67,34,35,46,22,35,43,54,33,20,31,29,43,36,30,23,23,57,38,34,34,28,34,31,22,33,26],"habakkuk":[17,20,19],"haggai":[15,23],"hebrews":[14,18,19,16,14,20,28,13,28,39,40,29,25],"hosea":[9,25,5,19,15,11,16,14,17,15,11,15,15,10],"isaiah":[31,22,26,6,30,13,25,23,20,34,16,6,22,32,9,14,14,7,25,6,17,25,18,23,12,21,13,29,24,33,9,20,24,17,10,22,38,22,8,31,29,25,28,28,25,13,15,22,26,11,23,15,12,17,13,12,21,14,21,22,11,12,19,11,25,24],"james":[27,26,18,17,20],"jeremiah":[19,37,25,31,31,30,34,23,25,25,23,17,27,22,21,21,27,23,15,18,14,30,40,10,38,24,22,17,32,24,40,44,26,22,19,32,21,28,18,16,18,22,13,30,5,28,7,47,39,46,64,34],"job":[22,13,26,21,27,30,21,22,35,22,20,25,28,22,35,22,16,21,29,29,34,30,17,25,6,14,23,28,25,31,40,22,33,37,16,33,24,41,30,32,26,17],"joel":[20,27,5,21],"john":[51,25,36,54,47,71,53,59,41,42,57,50,38,31,27,33,26,40,42,31,25],"jonah":[16,11,10,11],"joshua":[18,24,17,24,15,27,26,35,27,43,23,24,33,15,63,10,18,28,51,9,45,34,16,33],"jude":[25],"judges":[36,23,31,24,31,40,25,35,57,18,40,15,25,20,20,31,13,31,30,48,25],"lamentations":[22,22,66,22,22],"leviticus":[17,16,17,35,26,23,38,36,24,20,47,8,59,57,33,34,16,30,37,27,24,33,44,23,55,46,34],"luke":[80,52,38,44,39,49,50,56,62,42,54,59,35,35,32,31,37,43,48,47,38,71,56,53],"malachi":[14,17,24],"mark":[45,28,35,41,43,56,37,38,50,52,33,44,37,72,47,20],"matthew":[25,23,17,25,48,34,29,34,38,42,30,50,58,36,39,28,27,35,30,34,46,46,39,51,46,75,66,20],"micah":[16,13,12,14,14,16,20],"nahum":[14,14,19],"nehemiah":[11,20,38,17,19,19,72,18,37,40,36,47,31],"numbers":[54,34,51,49,31,27,89,26,23,36,35,16,33,45,41,35,28,32,22,29,35,41,30,25,19,65,23,31,39,17,54,42,56,29,34,13],"obadiah":[21],"philemon":[25],"philippians":[30,30,21,23],"proverbs":[33,22,35,27,23,35,27,36,18,32,31,28,25,35,33,33,28,24,29,30,31,29,35,34,28,28,27,28,27,33,31],"psalms":[6,12,9,9,13,11,18,10,21,18,7,9,6,7,5,11,15,51,15,10,14,32,6,10,22,12,14,9,11,13,25,11,22,23,28,13,40,23,14,18,14,12,5,27,18,12,10,15,21,23,21,11,7,9,24,14,12,12,18,14,9,13,12,11,14,20,8,36,37,6,24,20,28,23,11,13,21,72,13,20,17,8,19,13,14,17,7,19,53,17,16,16,5,23,11,13,12,9,9,5,8,29,22,35,45,48,43,14,31,7,10,10,9,8,18,19,2,29,176,7,8,9,4,8,5,6,5,6,8,8,3,18,3,3,21,26,9,8,24,14,10,8,12,15,21,10,20,14,9,6],"revelation":[20,29,22,11,14,17,17,13,21,11,19,18,18,20,8,21,18,24,21,15,27,21],"romans":[32,29,31,25,21,23,25,39,33,21,36,21,14,23,33,24],"ruth":[22,23,18,22],"songofsolomon":[17,17,11,16,16,12,14,14],"titus":[16,15,15],"zechariah":[17,17,10,14,11,15,14,23,17,12,17,14,9,21],"zephaniah":[18,15,20]};
+</script>
+
 <script id="jayms-outline-counts">
 /* How many events each outline holds, counted at build time so the
    picker can show it without fetching 66 files. Keyed by outline slug. */
@@ -371,6 +355,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var PRELOAD    = window.JAYMS_OUTLINE_PRELOAD || {};
   var VERSIFICATION = window.JAYMS_VERSIFICATION || {};
   var COUNTS = window.JAYMS_OUTLINE_COUNTS || {};
+  var VERSE_COUNTS = window.JAYMS_VERSE_COUNTS || {};   // book slug -> verses per chapter
 
   var OUTLINES = {};
   var DATA = {};
@@ -630,6 +615,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var openFolds = {};     // passages a reader has opened, kept across repaints
   var uiOnly = false;     // showing only what this book alone carries
   var uiDiff = null;      // which translation-difference entry is open
+  var uiJump = { book: "Genesis", ch: 1, v1: 1, v2: 1 };   // the reference picker
 
   // The outline tags every event with one of four kinds. A standard event
   // is the default and carries no flag; the other three each get a token.
@@ -719,6 +705,17 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   window.ibGenre     = function (g) { uiGenre = g; render(); };
   window.ibKind      = function (k) { uiKind = k; render(); };
   window.ibOnly      = function (b) { uiOnly = b; render(); };
+
+  // the reference picker: a change further up resets what is below it, so
+  // it can never offer a chapter or a verse that does not exist
+  window.ibJumpSet   = function (field, value) {
+    var v = parseInt(value, 10);
+    if (field === "book") { uiJump = { book: value, ch: 1, v1: 1, v2: 1 }; }
+    else if (field === "ch") { uiJump.ch = v; uiJump.v1 = 1; uiJump.v2 = 1; }
+    else if (field === "v1") { uiJump.v1 = v; if (uiJump.v2 < v) uiJump.v2 = v; }
+    else { uiJump.v2 = v < uiJump.v1 ? uiJump.v1 : v; }
+    render();
+  };
   window.ibDiff      = function (id) {
     uiDiff = (uiDiff === id) ? null : id;
     if (uiDiff != null) ensureDiffFull();
@@ -877,111 +874,6 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (head) head.textContent = resultNote();
   };
 
-  // ------------------------------------------------- the reference box
-  // It answers while you type, because nobody should have to spell the
-  // book before they are allowed to name the chapter.
-  var SUGG_MAX = 8;
-  var uiSugg = -1;
-  var suggOpen = false;
-  var refText = "";
-
-  // the book part is whatever comes before the first digit
-  function refBookPart() {
-    var m = refText.replace(/[\u2013\u2014]/g, "-").match(/^(.*?)(\d.*)?$/);
-    return { name: (m && m[1] || "").trim(), rest: (m && m[2] || "").trim() };
-  }
-
-  function suggList() {
-    var part = refBookPart();
-    var q = norm(part.name);
-    if (!q) return [];
-    var hits = [];
-    BOOKS.forEach(function (b, i) {
-      var v = score(b, q);
-      if (v > 0) hits.push({ b: b, v: v, i: i });
-    });
-    hits.sort(function (x, y) { return (y.v - x.v) || (x.i - y.i); });
-    // once the name is typed out in full there is nothing left to suggest
-    if (hits.length === 1 && norm(hits[0].b.name) === q && part.rest) return [];
-    return hits.slice(0, SUGG_MAX).map(function (h) { return h.b; });
-  }
-
-  function suggHTML() {
-    var list = suggOpen ? suggList() : [];
-    if (!list.length) return "";
-    return '<ul class="ib-sugg" id="ib-sugg" role="listbox" aria-label="Matching books">' +
-      list.map(function (b, i) {
-        return '<li id="ib-sugg-' + i + '" role="option" aria-selected="' + (i === uiSugg) + '"' +
-          ' class="ib-sugg-item' + (i === uiSugg ? " on" : "") + '"' +
-          ' onmousedown="event.preventDefault();ibPick(' + i + ')" onmouseenter="ibSuggHover(' + i + ')">' +
-          '<span class="ib-swatch" aria-hidden="true" style="background:var(' + GENRE_TOKEN[b.genre] + ')"></span>' +
-          '<span class="ib-sugg-name">' + esc(b.name) + "</span>" +
-          '<span class="ib-sugg-meta">' + esc(b.genre) + " · " + b.chapters +
-          " chapter" + (b.chapters === 1 ? "" : "s") + "</span></li>";
-      }).join("") + "</ul>";
-  }
-
-  function paintSugg() {
-    var wrap = document.getElementById("ib-suggwrap");
-    if (wrap) wrap.innerHTML = suggHTML();
-    var box = document.getElementById("ib-ref");
-    if (!box) return;
-    var open = !!(wrap && wrap.firstChild);
-    box.setAttribute("aria-expanded", open ? "true" : "false");
-    if (open && uiSugg > -1) box.setAttribute("aria-activedescendant", "ib-sugg-" + uiSugg);
-    else box.removeAttribute("aria-activedescendant");
-  }
-
-  window.ibSuggHover = function (i) { uiSugg = i; paintSugg(); };
-
-  window.ibRef = function (v) {
-    refText = v;
-    uiSugg = -1;
-    suggOpen = true;
-    var msg = document.getElementById("ib-jump-msg");
-    if (msg) msg.hidden = true;
-    paintSugg();
-  };
-
-  // choosing a book fills the name in and leaves you on the chapter
-  window.ibPick = function (i) {
-    var b = suggList()[i];
-    if (!b) return;
-    var box = document.getElementById("ib-ref");
-    var rest = refBookPart().rest;
-    refText = b.name + " " + rest;
-    if (box) { box.value = refText; box.focus(); }
-    suggOpen = false;
-    uiSugg = -1;
-    paintSugg();
-    if (rest) ibJump();
-  };
-
-  window.ibRefKey = function (e) {
-    var list = suggOpen ? suggList() : [];
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      if (!suggOpen) { suggOpen = true; paintSugg(); list = suggList(); }
-      uiSugg = Math.min(uiSugg + 1, list.length - 1);
-      paintSugg();
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      uiSugg = Math.max(uiSugg - 1, -1);
-      paintSugg();
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      // a highlighted book, or a name with no chapter yet, fills the box;
-      // anything else is a finished reference and goes
-      if (list.length && (uiSugg > -1 || !refBookPart().rest)) ibPick(uiSugg < 0 ? 0 : uiSugg);
-      else ibJump();
-    } else if (e.key === "Escape") {
-      suggOpen = false;
-      paintSugg();
-    }
-  };
-
-  window.ibRefOpen = function () { if (refText.trim()) { suggOpen = true; paintSugg(); } };
-  window.ibRefShut = function () { suggOpen = false; paintSugg(); };
 
   // ---------------------------------------------------------- the search
   // Typed by someone who should not have to spell Ecclesiastes. Four ways
@@ -1170,18 +1062,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var jump = '<aside class="ib-jump" aria-label="Jump straight in">' +
       '<h2 class="a-clabel">Jump straight in</h2>' +
-      '<p class="ib-jump-note">Type a reference and go directly to the passage.</p>' +
-      '<label class="ib-sr" for="ib-ref">Go to a reference</label>' +
-      '<span class="ib-findbox">' +
-      '<input id="ib-ref" class="a-search" type="text" autocomplete="off" spellcheck="false"' +
-      ' role="combobox" aria-expanded="false" aria-controls="ib-sugg" aria-autocomplete="list"' +
-      ' placeholder="John 1:1-18" value="' + esc(refText) + '"' +
-      ' oninput="ibRef(this.value)" onkeydown="ibRefKey(event)"' +
-      ' onfocus="ibRefOpen()" onblur="ibRefShut()">' +
-      '<span id="ib-suggwrap">' + suggHTML() + "</span></span>" +
-      '<button type="button" class="a-lnk" onclick="ibJump()">Go to passage ›</button>' +
-      '<p class="ib-note ib-jump-foot">66 of 66 books · no login · free</p>' +
-      '<p class="ib-note" id="ib-jump-msg" hidden></p></aside>';
+      '<p class="ib-jump-note">Pick a book, a chapter and a verse.</p>' +
+      pickBook() + pickNumbers() +
+      '<button type="button" class="a-lnk" onclick="ibJump()">Go to passage \u203a</button>' +
+      '<p class="ib-note ib-jump-foot">66 of 66 books \u00b7 no login \u00b7 free</p></aside>';
 
     return head + find + legend() +
       '<p class="a-count ib-rescount" id="ib-rescount">' + esc(resultNote()) + "</p>" +
@@ -1190,31 +1074,62 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   }
 
   // The reference box takes the same spelling licence as the search.
+  // The reference picker. Three lists, each built from the one before it,
+  // so every chapter and verse offered is one that exists.
+  function chapterCount(book) {
+    var c = VERSE_COUNTS[dataSlug(book)];
+    if (c && c.length) return c.length;
+    for (var i = 0; i < BOOKS.length; i++) if (BOOKS[i].name === book) return BOOKS[i].chapters;
+    return 1;
+  }
+  function verseCount(book, chapter) {
+    var c = VERSE_COUNTS[dataSlug(book)];
+    var n = c && c[chapter - 1];
+    return n && n > 0 ? n : 1;
+  }
+  function numbers(from, to) {
+    var out = [];
+    for (var i = from; i <= to; i++) out.push(i);
+    return out;
+  }
+  function options(list, chosen) {
+    return list.map(function (v) {
+      return '<option value="' + esc(v) + '"' +
+        (String(v) === String(chosen) ? " selected" : "") + ">" + esc(v) + "</option>";
+    }).join("");
+  }
+  function field(id, label, html) {
+    return '<span class="ib-jfield"><label class="a-clabel" for="' + id + '">' + esc(label) +
+      "</label>" + html + "</span>";
+  }
+
+  function pickBook() {
+    return '<label class="ib-sr" for="ib-jb">Book</label>' +
+      '<select id="ib-jb" class="ib-jsel ib-jbook" onchange="ibJumpSet(\'book\',this.value)">' +
+      BOOKS.map(function (b) {
+        return '<option value="' + esc(b.name) + '"' +
+          (b.name === uiJump.book ? " selected" : "") + ">" + esc(b.name) + "</option>";
+      }).join("") + "</select>";
+  }
+
+  function pickNumbers() {
+    var chs = chapterCount(uiJump.book), vs = verseCount(uiJump.book, uiJump.ch);
+    return '<div class="ib-jrow">' +
+      field("ib-jc", "Chapter",
+        '<select id="ib-jc" class="ib-jsel" onchange="ibJumpSet(\'ch\',this.value)">' +
+        options(numbers(1, chs), uiJump.ch) + "</select>") +
+      field("ib-jv", "Verse",
+        '<select id="ib-jv" class="ib-jsel" onchange="ibJumpSet(\'v1\',this.value)">' +
+        options(numbers(1, vs), uiJump.v1) + "</select>") +
+      field("ib-jv2", "Through",
+        '<select id="ib-jv2" class="ib-jsel" onchange="ibJumpSet(\'v2\',this.value)">' +
+        options(numbers(uiJump.v1, vs), uiJump.v2) + "</select>") + "</div>";
+  }
+
   window.ibJump = function () {
-    var box = document.getElementById("ib-ref");
-    var msg = document.getElementById("ib-jump-msg");
-    var raw = ((box && box.value) || refText || "").trim();
-    function fail(t) { if (msg) { msg.hidden = false; msg.textContent = t; } }
-    if (!raw) return fail("Type something like John 1:1-18.");
-
-    // split the reference off the back, whatever the book is called
-    var m = raw.replace(/[–—]/g, "-").match(/^(.*?)\s*(\d+)(?::(\d+)(?:\s*-\s*(\d+))?)?\s*$/);
-    var namePart = m ? m[1] : raw;
-    var flat = norm(namePart);
-    if (!flat) return fail("Start with a book name, like John 1:1-18.");
-
-    var hit = null;
-    BOOKS.forEach(function (b) {
-      var v = score(b, flat);
-      if (v > 0 && (!hit || v > hit.v)) hit = { b: b, v: v };
-    });
-    if (!hit) return fail("That book name did not match one of the 66.");
-    if (!m || !m[2]) return fail("Add a chapter, like " + hit.b.name + " 1 or " + hit.b.name + " 1:1-18.");
-
-    var ref = m[3]
-      ? hit.b.name + " " + m[2] + ":" + m[3] + (m[4] ? "-" + m[4] : "")
-      : hit.b.name + " " + m[2] + ":1";
-    go({ screen: "read", book: hit.b.name, ref: ref });
+    var ref = uiJump.book + " " + uiJump.ch + ":" + uiJump.v1 +
+      (uiJump.v2 > uiJump.v1 ? "-" + uiJump.v2 : "");
+    go({ screen: "read", book: uiJump.book, ref: ref });
   };
 
   // ---------------------------------------------------------------- book
