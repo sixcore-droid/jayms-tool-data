@@ -199,7 +199,10 @@ add_action( 'wp_footer', function () {
   border-left:1px solid var(--line);padding:28px 30px;display:flex;flex-direction:column;gap:16px;
   max-height:calc(100vh - 40px);overflow:auto}
 .jayms-tool-outline .ib-panel-word{margin:0;font-size:2.1em;line-height:1.2}
-.jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft);font-size:1.05em}
+.jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft);font-size:1.45em}
+.jayms-tool-outline .ib-count{display:inline-flex;align-items:center;justify-content:center;
+  align-self:flex-start;width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);
+  color:var(--gold);font-size:16px;line-height:1;flex:0 0 auto}
 .jayms-tool-outline .ib-panel-gloss{margin:0;color:var(--gold);font-size:1.45em;line-height:1.35}
 .jayms-tool-outline .ib-parse{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 20px;font-size:15px}
 .jayms-tool-outline .ib-parse dt{margin:0;color:var(--muted)}
@@ -1317,7 +1320,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         : "No lexicon entry for this word.";
     }
 
-    var occ = "";
+    var occ = "", occN = null;
     if (key) {
       if (!idxReady(key)) { ensureWordIndex(key); occ = "Counting occurrences…"; }
       else {
@@ -1325,14 +1328,22 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         if (entry && entry.occ) {
           var books = [];
           entry.occ.forEach(function (o) { if (books.indexOf(o.b) < 0) books.push(o.b); });
-          occ = entry.occ.length + " time" + (entry.occ.length === 1 ? "" : "s") +
+          occN = entry.occ.length;
+          occ = occN + " time" + (occN === 1 ? "" : "s") +
                 " across " + books.length + " book" + (books.length === 1 ? "" : "s") + ".";
         }
       }
     }
 
+    // how many times the word is used, where the eye lands first
+    var badge = occN == null ? "" :
+      '<span class="ib-count" title="' + occN + " occurrence" + (occN === 1 ? "" : "s") +
+      ' in the Bible" aria-label="' + occN + " occurrence" + (occN === 1 ? "" : "s") +
+      ' in the Bible">' + occN + "</span>";
+
     return '<aside class="ib-panel" aria-label="Word detail">' +
       '<p class="ib-panel-word' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '">' + esc(w.text) + "</p>" +
+      badge +
       (w.translit ? '<p class="ib-panel-translit">' + esc(w.translit) + "</p>" : "") +
       '<p class="ib-panel-gloss">' + esc(String(w.gloss || w.english || "").replace(/\./g, " ")) + "</p>" +
       (rows.length ? '<dl class="ib-parse">' + rows.join("") + "</dl>" : "") +
