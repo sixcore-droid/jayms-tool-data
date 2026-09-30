@@ -140,10 +140,7 @@ add_action( 'wp_footer', function () {
 
 /* ------------------------------------------------------------ the read */
 .jayms-tool-outline .ib-read{display:flex;gap:0;align-items:flex-start}
-/* the reading column keeps its measure, but sits in the middle of the
-   space it has instead of hard against the left with a void beside it */
-.jayms-tool-outline .ib-text{flex:1 1 auto;min-width:0;padding-right:44px;
-  max-width:900px;margin-inline:auto}
+.jayms-tool-outline .ib-text{flex:1 1 auto;min-width:0;padding-right:44px}
 .jayms-tool-outline .ib-readhead{display:flex;flex-wrap:wrap;align-items:flex-end;
   justify-content:space-between;gap:20px;margin:0 0 24px}
 .jayms-tool-outline .ib-readhead-t{flex:1 1 320px;min-width:0}
@@ -163,7 +160,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-w:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-w.on{background:var(--gold);color:var(--paper-deep)}
 
-.jayms-tool-outline .ib-panel{position:sticky;top:20px;flex:0 0 352px;background:var(--paper-deep);
+.jayms-tool-outline .ib-panel{position:sticky;top:20px;flex:0 0 clamp(330px,24vw,460px);background:var(--paper-deep);
   border-left:1px solid var(--line);padding:28px 30px;display:flex;flex-direction:column;gap:16px}
 .jayms-tool-outline .ib-panel-word{margin:0;font-size:2.1em;line-height:1.2}
 .jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft)}
@@ -176,6 +173,19 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-def p{margin:0}
 .jayms-tool-outline .ib-defbody{line-height:1.55}
 .jayms-tool-outline .ib-occ{color:var(--ink-soft)}
+
+/* A wide screen is the whole point of an interlinear: past 1400 the
+   original stops sitting under the English and stands beside it, so the
+   eye compares across instead of down, and the row is full of text
+   instead of half full with a hole in it. */
+@media (min-width: 1400px) {
+  .jayms-tool-outline .ib-read:not(.no-orig) .ib-verse{display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 24px;align-items:start}
+  .jayms-tool-outline .ib-read:not(.no-orig) .ib-verse > .a-clabel{grid-column:1 / -1}
+  .jayms-tool-outline .ib-read:not(.no-orig) .ib-verse .ib-passage{max-width:none}
+  .jayms-tool-outline .ib-read:not(.no-orig) .ib-origbox{margin:0;max-width:none}
+  .jayms-tool-outline .ib-read.no-orig .ib-passage{max-width:72ch}
+}
 
 @media (max-width: 900px) {
   /* align-items:flex-start is right while these are rows and wrong the
@@ -1019,7 +1029,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</span></div>";
 
     return head +
-      '<div class="ib-read">' +
+      '<div class="ib-read' + (uiHebrew ? "" : " no-orig") + '">' +
         '<main class="ib-text">' + top +
           rows.map(function (r) { return verseBlock(book, r); }).join("") + attribution() + "</main>" +
         wordPanel(book) +
