@@ -882,6 +882,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       return VERSION_ORDER.indexOf(x) > -1;
     });
     if (cols.length) uiCols = VERSION_ORDER.filter(function (x) { return cols.indexOf(x) > -1; });
+    // a reader who has never built a parallel set of their own reads it in
+    // the translation they picked, not in whatever this tool shipped with
+    else uiCols = [uiVersion];
   })();
 
   // .a-chip is the site's pill. Nothing here invents one.
