@@ -120,6 +120,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-readhead .a-eyebrow{margin:6px 0 0}
 .jayms-tool-outline .ib-verse{margin:0 0 22px}
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
+.jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
 .jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
   border-left:3px solid var(--aramaic);border-radius:9px;padding:14px 20px;margin:12px 0 0;
   display:flex;flex-direction:column;gap:8px}
