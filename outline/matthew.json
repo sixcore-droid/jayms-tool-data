@@ -37,17 +37,19 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Matthew 2:1-12",
-     "title": "The Magi and the Star ✔Mt",
+     "title": "The Magi and the Star",
      "books": "Matthew 2:1-12",
-     "detail": "Found only in Matthew: foreign astrologers, not shepherds, follow a star to Bethlehem and bring gold, frankincense, and myrrh — while Herod, threatened, quietly plots. The magi's gifts and their refusal to report back to Herod set up everything that follows in this chapter."
+     "detail": "Found only in Matthew: foreign astrologers, not shepherds, follow a star to Bethlehem and bring gold, frankincense, and myrrh — while Herod, threatened, quietly plots. The magi's gifts and their refusal to report back to Herod set up everything that follows in this chapter.",
+     "only": "Matthew"
     },
     {
      "colour": "red",
      "kind": "Major Event",
      "date": "Matthew 2:13-23",
-     "title": "Flight to Egypt; the Slaughter of the Innocents ✔Mt",
+     "title": "Flight to Egypt; the Slaughter of the Innocents",
      "books": "Matthew 2:13-23",
-     "detail": "Also unique to Matthew: Herod's massacre of Bethlehem's infant boys, and the family's escape to Egypt and eventual return — each step marked by its own fulfilled prophecy (Hosea's 'out of Egypt I called my son,' Jeremiah's Rachel weeping for her children). No other Gospel records this material at all."
+     "detail": "Also unique to Matthew: Herod's massacre of Bethlehem's infant boys, and the family's escape to Egypt and eventual return — each step marked by its own fulfilled prophecy (Hosea's 'out of Egypt I called my son,' Jeremiah's Rachel weeping for her children). No other Gospel records this material at all.",
+     "only": "Matthew"
     }
    ]
   },
@@ -317,9 +319,10 @@
      "colour": "green",
      "kind": "Miracle / Sign",
      "date": "Matthew 14:22-36",
-     "title": "Walking on Water; Peter Steps Out ✔Mt",
+     "title": "Walking on Water; Peter Steps Out",
      "books": "Matthew 14:22-36",
-     "detail": "Unique to Matthew: Peter asks to walk out on the water too, manages several steps, then sinks the moment he notices the wind — 'you of little faith, why did you doubt?' — a scene found in no other Gospel."
+     "detail": "Unique to Matthew: Peter asks to walk out on the water too, manages several steps, then sinks the moment he notices the wind — 'you of little faith, why did you doubt?' — a scene found in no other Gospel.",
+     "only": "Matthew"
     },
     {
      "colour": "blue",
@@ -381,9 +384,10 @@
      "colour": "green",
      "kind": "Miracle / Sign",
      "date": "Matthew 17:14-27",
-     "title": "A Boy Healed; the Coin in the Fish's Mouth ✔Mt",
+     "title": "A Boy Healed; the Coin in the Fish's Mouth",
      "books": "Matthew 17:14-27",
-     "detail": "The disciples fail to heal a boy with seizures where Jesus succeeds ('because of your little faith'), and the chapter closes with a detail found nowhere else in the Gospels: rather than offend the temple tax collectors, Jesus tells Peter to catch a fish that will have the exact coin needed inside its mouth."
+     "detail": "The disciples fail to heal a boy with seizures where Jesus succeeds ('because of your little faith'), and the chapter closes with a detail found nowhere else in the Gospels: rather than offend the temple tax collectors, Jesus tells Peter to catch a fish that will have the exact coin needed inside its mouth.",
+     "only": "Matthew"
     }
    ]
   },
@@ -437,9 +441,10 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Matthew 20:1-16",
-     "title": "The Laborers in the Vineyard ✔Mt",
+     "title": "The Laborers in the Vineyard",
      "books": "Matthew 20:1-16",
-     "detail": "Unique to Matthew: workers hired at different hours of the day all receive the same wage, and the landowner's answer to the grumbling of those hired first — 'is your eye envious because I am generous?' — makes the parable's point about grace rather than fairness explicit."
+     "detail": "Unique to Matthew: workers hired at different hours of the day all receive the same wage, and the landowner's answer to the grumbling of those hired first — 'is your eye envious because I am generous?' — makes the parable's point about grace rather than fairness explicit.",
+     "only": "Matthew"
     },
     {
      "colour": "red",
@@ -485,9 +490,10 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Matthew 22:1-14",
-     "title": "The Wedding Feast ✔Mt",
+     "title": "The Wedding Feast",
      "books": "Matthew 22:1-14",
-     "detail": "A king's wedding invitation refused, then reissued to 'the main highways' — and a guest thrown out for showing up without wedding clothes, a detail unique to Matthew's version of this parable, closing on the line 'many are called, but few are chosen.'"
+     "detail": "A king's wedding invitation refused, then reissued to 'the main highways' — and a guest thrown out for showing up without wedding clothes, a detail unique to Matthew's version of this parable, closing on the line 'many are called, but few are chosen.'",
+     "only": "Matthew"
     },
     {
      "colour": "blue",
@@ -549,17 +555,19 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Matthew 25:1-30",
-     "title": "Ten Virgins; the Talents ✔Mt",
+     "title": "Ten Virgins; the Talents",
      "books": "Matthew 25:1-30",
-     "detail": "Two parables unique to Matthew's version of this discourse: five prepared and five unprepared bridesmaids locked out of a wedding feast, and three servants given different sums of money, judged not by how much they started with but by what they did with it."
+     "detail": "Two parables unique to Matthew's version of this discourse: five prepared and five unprepared bridesmaids locked out of a wedding feast, and three servants given different sums of money, judged not by how much they started with but by what they did with it.",
+     "only": "Matthew"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Matthew 25:31-46",
-     "title": "The Sheep and the Goats ✔Mt",
+     "title": "The Sheep and the Goats",
      "books": "Matthew 25:31-46",
-     "detail": "Found only in Matthew: a final judgment scene where nations are separated by how they treated 'the least of these' — the hungry, the stranger, the sick, the imprisoned — with the King's own verdict collapsing the distance between himself and the most vulnerable: 'you did it to Me.'"
+     "detail": "Found only in Matthew: a final judgment scene where nations are separated by how they treated 'the least of these' — the hungry, the stranger, the sick, the imprisoned — with the King's own verdict collapsing the distance between himself and the most vulnerable: 'you did it to Me.'",
+     "only": "Matthew"
     }
    ]
   },
@@ -629,9 +637,10 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Matthew 27:1-10",
-     "title": "Judas's Remorse and Death ✔Mt",
+     "title": "Judas's Remorse and Death",
      "books": "Matthew 27:1-10",
-     "detail": "Unique to Matthew: Judas, seeing Jesus condemned, tries to return the silver, is refused, throws the coins into the temple, and hangs himself — the chief priests using the blood money to buy the 'Field of Blood,' a detail Matthew ties to a prophecy from Jeremiah."
+     "detail": "Unique to Matthew: Judas, seeing Jesus condemned, tries to return the silver, is refused, throws the coins into the temple, and hangs himself — the chief priests using the blood money to buy the 'Field of Blood,' a detail Matthew ties to a prophecy from Jeremiah.",
+     "only": "Matthew"
     },
     {
      "colour": "red",
@@ -661,9 +670,10 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Matthew 27:57-66",
-     "title": "Burial; the Guard at the Tomb ✔Mt",
+     "title": "Burial; the Guard at the Tomb",
      "books": "Matthew 27:57-66",
-     "detail": "Joseph of Arimathea buries the body in his own new tomb; unique to Matthew, the chief priests then ask Pilate for a guard and a sealed stone specifically to prevent a claimed resurrection — setting up the cover story this Gospel alone bothers to rebut."
+     "detail": "Joseph of Arimathea buries the body in his own new tomb; unique to Matthew, the chief priests then ask Pilate for a guard and a sealed stone specifically to prevent a claimed resurrection — setting up the cover story this Gospel alone bothers to rebut.",
+     "only": "Matthew"
     }
    ]
   },
@@ -685,9 +695,10 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Matthew 28:11-15",
-     "title": "The Guards Bribed ✔Mt",
+     "title": "The Guards Bribed",
      "books": "Matthew 28:11-15",
-     "detail": "Found only in Matthew: the chief priests pay the guards to spread a story that the disciples stole the body while they slept — a story, Matthew notes pointedly, 'widely spread among the Jews, and is to this day,' meaning this Gospel is directly answering a rumor still circulating when it was written."
+     "detail": "Found only in Matthew: the chief priests pay the guards to spread a story that the disciples stole the body while they slept — a story, Matthew notes pointedly, 'widely spread among the Jews, and is to this day,' meaning this Gospel is directly answering a rumor still circulating when it was written.",
+     "only": "Matthew"
     },
     {
      "colour": "red",

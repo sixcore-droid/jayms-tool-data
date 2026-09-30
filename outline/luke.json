@@ -14,7 +14,7 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 1:1-4",
-     "title": "The Prologue — An Orderly Account for Theophilus ✦L",
+     "title": "The Prologue — An Orderly Account for Theophilus",
      "books": "Luke 1:1-4",
      "detail": "The most polished Greek sentence in the NT — Luke states his method like a historian: sources consulted, eyewitnesses interviewed, everything investigated from the beginning.",
      "verses": [
@@ -26,13 +26,14 @@
        "ref": "Luke 1:3-4",
        "text": "“I myself have carefully investigated everything from the beginning… so that you may know the certainty (asphaleia) of the things you have been taught.” — written so faith can stand on verified ground."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 1:5-25",
-     "title": "Gabriel in the Temple — John Announced ✦L",
+     "title": "Gabriel in the Temple — John Announced",
      "books": "Luke 1:5-25",
      "detail": "Four hundred years of prophetic silence end at the incense altar — Malachi’s promised Elijah-figure announced to a priest too old to believe it.",
      "verses": [
@@ -44,13 +45,14 @@
        "ref": "Luke 1:18-20",
        "text": "Zechariah: “How can I be sure of this?” — struck mute until the birth. The priest of the house of speech silenced for unbelief."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 1:26-38",
-     "title": "The Annunciation to Mary ✦L",
+     "title": "The Annunciation to Mary",
      "books": "Luke 1:26-38",
      "detail": "Gabriel sent to Nazareth — the Davidic covenant lands on a teenage girl, and her consent becomes the hinge of history.",
      "verses": [
@@ -66,13 +68,14 @@
        "ref": "Luke 1:38",
        "text": "“I am the Lord’s servant. May your word to me be fulfilled.” — the yes that reverses Eden’s no."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 1:39-80",
-     "title": "The Visitation; Magnificat & Benedictus ✦L",
+     "title": "The Visitation; Magnificat & Benedictus",
      "books": "Luke 1:39-80",
      "detail": "Luke opens with songs — Mary’s Magnificat and Zechariah’s Benedictus frame the whole Gospel as the God of reversal keeping covenant.",
      "verses": [
@@ -84,13 +87,14 @@
        "ref": "Luke 1:68-79",
        "text": "“He has raised up a horn of salvation for us in the house of his servant David… to remember his holy covenant, the oath he swore to our father Abraham.” — Abraham and David converge on one child."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 2:1-20",
-     "title": "The Birth at Bethlehem; Shepherds First ✦L",
+     "title": "The Birth at Bethlehem; Shepherds First",
      "books": "Luke 2:1-20",
      "detail": "Caesar’s census moves the family to David’s town; the King laid in a manger; the birth announcement goes to night-shift shepherds.",
      "verses": [
@@ -106,13 +110,14 @@
        "ref": "Luke 2:19",
        "text": "“Mary treasured up all these things and pondered them in her heart” — Luke’s likely source signature."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 2:21-52",
-     "title": "Presentation — Simeon & Anna; The Boy in the Temple ✦L",
+     "title": "Presentation — Simeon & Anna; The Boy in the Temple",
      "books": "Luke 2:21-52",
      "detail": "The Law kept to the letter; two elderly watchers recognize the consolation of Israel; twelve-year-old Jesus already knows whose Son he is.",
      "verses": [
@@ -128,7 +133,8 @@
        "ref": "Luke 2:49",
        "text": "“Didn’t you know I had to be in my Father’s house?” — the first recorded words of Jesus; the only childhood scene in the Gospels."
       }
-     ]
+     ],
+     "only": "Luke"
     }
    ]
   },
@@ -212,7 +218,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 4:14-30",
-     "title": "Nazareth — The Mission Statement and the Cliff ✦L",
+     "title": "Nazareth — The Mission Statement and the Cliff",
      "books": "Luke 4:14-30",
      "detail": "Luke moves this scene to the front as the programmatic announcement: Isaiah 61 read, fulfillment declared, and a near-lynching when grace goes to Gentiles.",
      "verses": [
@@ -228,7 +234,8 @@
        "ref": "Luke 4:25-29",
        "text": "Elijah and a Sidonian widow; Elisha and Naaman the Syrian — grace outside Israel, and the synagogue tries to throw him off the cliff. The Gentile theme draws blood on day one."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "green",
@@ -300,7 +307,7 @@
      "colour": "green",
      "kind": "Miracle / Sign",
      "date": "Luke 7:1-17",
-     "title": "The Centurion’s Faith; The Widow of Nain ✦L",
+     "title": "The Centurion’s Faith; The Widow of Nain",
      "books": "Luke 7:1-17",
      "detail": "A Gentile soldier astonishes Jesus; then at Nain’s gate he interrupts a funeral — Luke’s twin concerns, the outsider and the widow, in back-to-back scenes.",
      "verses": [
@@ -312,13 +319,14 @@
        "ref": "Luke 7:13-15",
        "text": "“His heart went out to her… ‘Young man, I say to you, get up!’… and Jesus gave him back to his mother.” — Elijah at Zarephath replayed ( 1 Kgs 17:23 ); the only son of a widow, Luke’s signature compassion."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 7:18-8:3",
-     "title": "John’s Doubt; The Sinful Woman ✦L; The Women Patrons ✦L",
+     "title": "John’s Doubt; The Sinful Woman; The Women Patrons",
      "books": "Luke 7:18-8:3",
      "detail": "Even the forerunner wavers in prison; a forgiven woman out-loves a Pharisee host; and Luke names the women funding the movement.",
      "verses": [
@@ -334,7 +342,8 @@
        "ref": "Luke 8:2-3",
        "text": "Mary Magdalene, Joanna (wife of Herod’s steward), Susanna “and many others… were helping to support them out of their own means.” — named female patrons; no other Gospel records this."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "green",
@@ -426,7 +435,7 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 10:1-24",
-     "title": "The Seventy-Two Sent ✦L — Satan Falls Like Lightning",
+     "title": "The Seventy-Two Sent — Satan Falls Like Lightning",
      "books": "Luke 10:1-24",
      "detail": "A second mission wave, recorded only by Luke — seventy(-two), the number of the nations in Genesis 10. The mission to the world is rehearsed on the road.",
      "verses": [
@@ -442,13 +451,14 @@
        "ref": "Luke 10:20",
        "text": "“Do not rejoice that the spirits submit to you, but rejoice that your names are written in heaven.” — power kept in its place."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 10:25-42",
-     "title": "The Good Samaritan ✦L; Mary and Martha ✦L",
+     "title": "The Good Samaritan; Mary and Martha",
      "books": "Luke 10:25-42",
      "detail": "“Who is my neighbor?” answered with the most subversive story Jesus ever told — then Bethany, where one thing is needed.",
      "verses": [
@@ -460,13 +470,14 @@
        "ref": "Luke 10:41-42",
        "text": "“Martha, Martha… few things are needed — or indeed only one. Mary has chosen what is better.” — a woman seated at the rabbi’s feet, the posture of a disciple, defended by the rabbi."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 11:1-13",
-     "title": "Teaching on Prayer — The Lord’s Prayer; The Friend at Midnight ✦L",
+     "title": "Teaching on Prayer — The Lord’s Prayer; The Friend at Midnight",
      "books": "Luke 11:1-13",
      "detail": "The disciples watch him pray and ask to learn — Luke’s shorter Lord’s Prayer, then a parable about shameless midnight asking.",
      "verses": [
@@ -478,7 +489,8 @@
        "ref": "Luke 11:9-13",
        "text": "“Ask and it will be given to you… how much more will your Father in heaven give the Holy Spirit to those who ask him!” — Luke’s version climaxes in the Spirit, not “good gifts.”"
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
@@ -506,7 +518,7 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 12:1-59",
-     "title": "The Rich Fool ✦L; Do Not Worry; Watchfulness; Fire on the Earth",
+     "title": "The Rich Fool; Do Not Worry; Watchfulness; Fire on the Earth",
      "books": "Luke 12:1-59",
      "detail": "A chapter on money, anxiety, and readiness — anchored by Luke’s parable of the man who built bigger barns the night he died.",
      "verses": [
@@ -522,13 +534,14 @@
        "ref": "Luke 12:32-34",
        "text": "“Do not be afraid, little flock, for your Father has been pleased to give you the kingdom. Sell your possessions and give to the poor… For where your treasure is, there your heart will be also.”"
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 13:1-21",
-     "title": "Repent or Perish; The Barren Fig Tree ✦L; The Bent Woman ✦L",
+     "title": "Repent or Perish; The Barren Fig Tree; The Bent Woman",
      "books": "Luke 13:1-21",
      "detail": "Two headlines about sudden death reframed; a fig tree given one more year; and a daughter of Abraham unbent after eighteen years of satanic binding.",
      "verses": [
@@ -544,7 +557,8 @@
        "ref": "Luke 13:16",
        "text": "“Should not this woman, a daughter of Abraham, whom Satan has kept bound for eighteen long years, be set free on the Sabbath day?” — illness framed as bondage to a hostile power; the Sabbath as exactly the right day for release."
       }
-     ]
+     ],
+     "only": "Luke"
     }
    ]
   },
@@ -558,7 +572,7 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 13:22-14:24",
-     "title": "The Narrow Door; Lament Over Jerusalem; Banquet Teachings ✦L",
+     "title": "The Narrow Door; Lament Over Jerusalem; Banquet Teachings",
      "books": "Luke 13:22-14:24",
      "detail": "Warnings sharpen as Jerusalem nears — and a Sabbath dinner at a Pharisee’s house becomes a seminar on seats, guest lists, and the great banquet.",
      "verses": [
@@ -582,13 +596,14 @@
        "ref": "Luke 14:21-23",
        "text": "The Great Banquet ✦L: the invited make excuses; the poor, crippled, blind, and lame are brought in — then the highways and hedges, “so that my house will be full.”"
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 14:25-35",
-     "title": "Counting the Cost — Tower and King ✦L",
+     "title": "Counting the Cost — Tower and King",
      "books": "Luke 14:25-35",
      "detail": "Large crowds follow — so Jesus thins them with the hardest discipleship sayings in the Gospel.",
      "verses": [
@@ -600,13 +615,14 @@
        "ref": "Luke 14:28-32",
        "text": "The tower-builder and the king at war ✦L: “Suppose one of you wants to build a tower. Won’t you first sit down and estimate the cost?” — faith with its eyes open."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 15:1-32",
-     "title": "The Lost Sheep, the Lost Coin ✦L, the Prodigal Son ✦L",
+     "title": "The Lost Sheep, the Lost Coin, the Prodigal Son",
      "books": "Luke 15:1-32",
      "detail": "The summit of the parables — three lost things, one escalating joy, told against the grumble of 15:2: “This man welcomes sinners and eats with them.”",
      "verses": [
@@ -626,13 +642,14 @@
        "ref": "Luke 15:28-32",
        "text": "The elder brother refuses to come in: “All these years I’ve been slaving for you…” The parable ends unresolved — aimed at the grumbling Pharisees, and at every reader who has stayed home and resented grace."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 16:1-31",
-     "title": "The Shrewd Manager ✦L; The Rich Man and Lazarus ✦L",
+     "title": "The Shrewd Manager; The Rich Man and Lazarus",
      "books": "Luke 16:1-31",
      "detail": "Two money parables found only in Luke — one praising shrewdness redirected toward eternity, one showing the reversal carried past the grave.",
      "verses": [
@@ -652,7 +669,8 @@
        "ref": "Luke 16:31",
        "text": "“If they do not listen to Moses and the Prophets, they will not be convinced even if someone rises from the dead.” — spoken weeks before a man named Lazarus does, and months before Jesus himself does."
       }
-     ]
+     ],
+     "only": "Luke"
     }
    ]
   },
@@ -666,7 +684,7 @@
      "colour": "green",
      "kind": "Miracle / Sign",
      "date": "Luke 17:11-37",
-     "title": "Ten Lepers, One Samaritan ✦L; The Kingdom in Your Midst",
+     "title": "Ten Lepers, One Samaritan; The Kingdom in Your Midst",
      "books": "Luke 17:11-37",
      "detail": "Ten healed, one returns — and he is the foreigner. Then the question of when the kingdom comes gets an answer no one expected.",
      "verses": [
@@ -678,13 +696,14 @@
        "ref": "Luke 17:20-21",
        "text": "“The coming of the kingdom of God is not something that can be observed… because the kingdom of God is in your midst.” — already present in the King standing in front of them."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 18:1-17",
-     "title": "The Persistent Widow ✦L; The Pharisee and the Tax Collector ✦L",
+     "title": "The Persistent Widow; The Pharisee and the Tax Collector",
      "books": "Luke 18:1-17",
      "detail": "Two prayer parables only Luke preserves — prayer that refuses to quit, and the only posture justification accepts.",
      "verses": [
@@ -696,7 +715,8 @@
        "ref": "Luke 18:13-14",
        "text": "“God, have mercy on me, a sinner.’ I tell you that this man, rather than the other, went home justified before God.” — justification language, in a parable, before Paul ever wrote it."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "gold",
@@ -724,7 +744,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 19:1-27",
-     "title": "Zacchaeus ✦L — The Thesis Verse; The Ten Minas",
+     "title": "Zacchaeus — The Thesis Verse; The Ten Minas",
      "books": "Luke 19:1-27",
      "detail": "A chief tax collector up a sycamore tree, salvation at his table by sundown — and Luke’s thesis sentence for the whole Gospel.",
      "verses": [
@@ -740,7 +760,8 @@
        "ref": "Luke 19:12-27",
        "text": "The minas: a nobleman goes to receive a kingdom while his servants are entrusted to do business until he returns — the journey is ending, and the King is about to be rejected by his citizens."
       }
-     ]
+     ],
+     "only": "Luke"
     }
    ]
   },
@@ -754,7 +775,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 19:28-48",
-     "title": "The Triumphal Entry; Jesus Weeps Over the City ✦L; The Temple Cleansed",
+     "title": "The Triumphal Entry; Jesus Weeps Over the City; The Temple Cleansed",
      "books": "Luke 19:28-48",
      "detail": "Zechariah 9:9 staged deliberately — then, in a scene only Luke records, the King stops on the descent and weeps over the city that cannot see its visitation.",
      "verses": [
@@ -770,7 +791,8 @@
        "ref": "Luke 19:45-46",
        "text": "“My house will be a house of prayer ( Isa 56:7 ); but you have made it a den of robbers ( Jer 7:11 ).”"
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "gold",
@@ -884,7 +906,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 22:66-23:25",
-     "title": "The Trials — Sanhedrin, Pilate, Herod ✦L; Barabbas Released",
+     "title": "The Trials — Sanhedrin, Pilate, Herod; Barabbas Released",
      "books": "Luke 22:66-23:25",
      "detail": "Luke alone records the Herod Antipas hearing — and stacks three formal declarations of innocence against one surrendered verdict.",
      "verses": [
@@ -904,7 +926,8 @@
        "ref": "Luke 23:25",
        "text": "“He released the man who had been thrown into prison for insurrection and murder, the one they asked for, and surrendered Jesus to their will.” — substitution acted out in the verdict."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "red",
@@ -966,7 +989,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 24:13-35",
-     "title": "The Emmaus Road ✦L — Hearts Burning, Known in the Breaking of Bread",
+     "title": "The Emmaus Road — Hearts Burning, Known in the Breaking of Bread",
      "books": "Luke 24:13-35",
      "detail": "Luke’s masterpiece — the risen Lord incognito, walking two despairing disciples through the whole Bible, then recognized at the table.",
      "verses": [
@@ -978,7 +1001,8 @@
        "ref": "Luke 24:30-32",
        "text": "Known in the breaking of the bread: “Were not our hearts burning within us while he talked with us on the road and opened the Scriptures to us?” — the Gospel of the table to the last."
       }
-     ]
+     ],
+     "only": "Luke"
     },
     {
      "colour": "gold",
