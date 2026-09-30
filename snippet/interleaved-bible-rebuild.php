@@ -172,15 +172,15 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-u{display:inline-flex;flex-direction:column;align-items:center;
   gap:3px;padding:4px 5px;margin:0;border:0;border-radius:6px;background:none;
   font:inherit;color:inherit;cursor:pointer;text-align:center}
-.jayms-tool-outline .ib-u-en{font-size:15px;line-height:1.25;color:var(--ink-soft);white-space:nowrap}
-.jayms-tool-outline .ib-u-he{font-size:24px;line-height:1.3;color:var(--ink);white-space:nowrap}
+.jayms-tool-outline .ib-u-en{font-size:24px;line-height:1.3;color:var(--ink);white-space:nowrap}
+.jayms-tool-outline .ib-u-he{font-size:15px;line-height:1.25;color:var(--ink-soft);white-space:nowrap}
 .jayms-tool-outline .ib-u:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-u.on{background:var(--gold)}
 .jayms-tool-outline .ib-u.on .ib-u-en,
 .jayms-tool-outline .ib-u.on .ib-u-he{color:var(--paper-deep)}
 /* the versions differ on this word: say so before it is clicked */
-.jayms-tool-outline .ib-u-diff .ib-u-en{color:var(--rust)}
-.jayms-tool-outline .ib-u-diff .ib-u-he{border-bottom:1px dotted var(--rust)}
+.jayms-tool-outline .ib-u-diff .ib-u-en{color:var(--rust);border-bottom:1px dotted var(--rust)}
+.jayms-tool-outline .ib-u-diff .ib-u-he{color:var(--rust)}
 .jayms-tool-outline .ib-u-diff.on .ib-u-en{color:var(--paper-deep)}
 .jayms-tool-outline .ib-u-diff.on .ib-u-he{border-bottom-color:var(--paper-deep)}
 .jayms-tool-outline .ib-read.is-il .ib-text{padding-right:36px}
