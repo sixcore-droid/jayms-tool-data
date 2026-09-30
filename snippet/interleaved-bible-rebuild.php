@@ -116,6 +116,7 @@ add_action( 'wp_footer', function () {
 /* On the book screen the text takes the column it is given. The measure
    caps belong on the read screen, where you read a passage straight
    through; here they left two thirds of the row empty. */
+.jayms-tool-outline .ib-hero .a-sub,
 .jayms-tool-outline .ib-bookhead .a-sub,
 .jayms-tool-outline .ib-eras .ib-detail,
 .jayms-tool-outline .ib-eras .ib-passage{max-width:none}
