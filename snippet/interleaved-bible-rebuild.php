@@ -51,6 +51,9 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-key{display:inline-flex;align-items:center;gap:7px;background:none;border:0;
   padding:4px 2px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink-soft)}
 .jayms-tool-outline .ib-key.on{color:var(--ink)}
+.jayms-tool-outline .ib-key-all{border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.jayms-tool-outline .ib-key-all.on{border-color:var(--gold);color:var(--gold)}
+.jayms-tool-outline .ib-rescount{margin:-10px 0 16px;min-height:1em}
 .jayms-tool-outline .ib-swatch{width:3px;height:15px;border-radius:2px;display:inline-block;flex:0 0 auto}
 
 .jayms-tool-outline .ib-main{display:flex;gap:40px;align-items:flex-start}
@@ -201,8 +204,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   Object.keys(PRELOAD).forEach(function (b) { OUTLINES[b] = PRELOAD[b]; });
 
-  // name, testament, chapters, genre. Acts sits with the Gospels so that
-  // "History" names one thing on the page and the legend has no repeat.
+  // name, testament, chapters, genre. Acts is history, and there is one
+  // History -- a testament is not a genre, so it does not split the list.
   var BOOKS = [
 ["Genesis","OT",50,"Law"],["Exodus","OT",40,"Law"],["Leviticus","OT",27,"Law"],
 ["Numbers","OT",36,"Law"],["Deuteronomy","OT",34,"Law"],["Joshua","OT",24,"History"],
@@ -218,8 +221,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 ["Obadiah","OT",1,"Minor Prophets"],["Jonah","OT",4,"Minor Prophets"],["Micah","OT",7,"Minor Prophets"],
 ["Nahum","OT",3,"Minor Prophets"],["Habakkuk","OT",3,"Minor Prophets"],["Zephaniah","OT",3,"Minor Prophets"],
 ["Haggai","OT",2,"Minor Prophets"],["Zechariah","OT",14,"Minor Prophets"],["Malachi","OT",4,"Minor Prophets"],
-["Matthew","NT",28,"Gospels & Acts"],["Mark","NT",16,"Gospels & Acts"],["Luke","NT",24,"Gospels & Acts"],
-["John","NT",21,"Gospels & Acts"],["Acts","NT",28,"Gospels & Acts"],
+["Matthew","NT",28,"Gospels"],["Mark","NT",16,"Gospels"],["Luke","NT",24,"Gospels"],
+["John","NT",21,"Gospels"],["Acts","NT",28,"History"],
 ["Romans","NT",16,"Letters"],["1 Corinthians","NT",16,"Letters"],
 ["2 Corinthians","NT",13,"Letters"],["Galatians","NT",6,"Letters"],["Ephesians","NT",6,"Letters"],
 ["Philippians","NT",4,"Letters"],["Colossians","NT",4,"Letters"],["1 Thessalonians","NT",5,"Letters"],
@@ -234,10 +237,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var GENRE_TOKEN = {
     "Law": "--gold", "History": "--olive", "Wisdom": "--aramaic",
     "Major Prophets": "--blue", "Minor Prophets": "--lavender",
-    "Gospels & Acts": "--rust", "Letters": "--gold", "Apocalyptic": "--lavender"
+    "Gospels": "--rust", "Letters": "--gold", "Apocalyptic": "--lavender"
   };
   var GENRE_ORDER = ["Law","History","Wisdom","Major Prophets","Minor Prophets",
-                     "Gospels & Acts","Letters","Apocalyptic"];
+                     "Gospels","Letters","Apocalyptic"];
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -482,14 +485,103 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     uiFind = v;
     var host = document.getElementById("ib-results");
     if (host) host.innerHTML = pickerResults();
+    var head = document.getElementById("ib-rescount");
+    if (head) head.textContent = resultNote();
   };
 
-  // "Gen", "1 sam", "songofsolomon" all find the book they look like
-  function matches(book) {
-    var q = uiFind.trim().toLowerCase().replace(/\s+/g, "");
-    if (!q) return true;
-    var n = book.name.toLowerCase().replace(/\s+/g, "");
-    return n.indexOf(q) === 0 || n.indexOf(q) > -1;
+  // ---------------------------------------------------------- the search
+  // Typed by someone who should not have to spell Ecclesiastes. Four ways
+  // in, in order of confidence: it starts the name, it is somewhere in the
+  // name, its letters run through the name in order, or it is simply close
+  // to the name. Anything that clears the bar is shown, best first.
+
+  var ALIAS = {
+    "Song of Solomon": ["songofsongs", "canticles", "song"],
+    "Revelation": ["revelations", "apocalypse"],
+    "Psalms": ["psalm", "psalter"],
+    "Acts": ["actsoftheapostles", "book of acts"],
+    "Ecclesiastes": ["qoheleth", "preacher"],
+    "Lamentations": ["lament"],
+    "1 Chronicles": ["1chron"], "2 Chronicles": ["2chron"],
+    "Matthew": ["mt"], "Mark": ["mk"], "Luke": ["lk"], "John": ["jn"],
+    "Philemon": ["philem"], "Philippians": ["philip"],
+    "Deuteronomy": ["deut"], "Ephesians": ["eph"], "Colossians": ["col"],
+    "1 Samuel": ["1sm"], "2 Samuel": ["2sm"]
+  };
+
+  // "First", "1st" and "I" are all the numeral the book is filed under
+  function norm(s) {
+    return String(s == null ? "" : s).toLowerCase()
+      .replace(/\bfirst\b|\bi\b/g, "1").replace(/\bsecond\b|\bii\b/g, "2")
+      .replace(/\bthird\b|\biii\b/g, "3")
+      .replace(/(\d)(st|nd|rd|th)\b/g, "$1")
+      .replace(/[^a-z0-9]/g, "");
+  }
+
+  function subseq(q, n) {
+    var i = 0;
+    for (var j = 0; j < n.length && i < q.length; j++) if (n[j] === q[i]) i++;
+    return i === q.length;
+  }
+
+  function dist(a, b) {
+    var prev = [], cur = [], i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur[0] = i;
+      for (j = 1; j <= b.length; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1,
+                          prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      prev = cur.slice();
+    }
+    return prev[b.length];
+  }
+
+  function scoreName(q, n) {
+    if (!n) return 0;
+    if (n.indexOf(q) === 0) return 1000 - n.length;
+    if (n.indexOf(q) > -1) return 800 - n.length;
+    if (subseq(q, n)) return 640 - n.length;
+    // a typo in the whole word, or in the part of it that was typed
+    var whole = dist(q, n);
+    var head  = dist(q, n.slice(0, q.length));
+    var d = Math.min(whole, head);
+    var allow = q.length <= 4 ? 1 : (q.length <= 7 ? 2 : 3);
+    if (d <= allow) return 500 - d * 60 - n.length;
+    return 0;
+  }
+
+  function score(book, q) {
+    var best = scoreName(q, norm(book.name));
+    (ALIAS[book.name] || []).forEach(function (a) {
+      var v = scoreName(q, norm(a));
+      if (v > best) best = v - 1;   // an alias never outranks the real name
+    });
+    return best;
+  }
+
+  function found() {
+    var pool = BOOKS.filter(function (b) {
+      return (!uiTestament || b.testament === uiTestament) && (!uiGenre || b.genre === uiGenre);
+    });
+    var q = norm(uiFind);
+    if (!q) return { q: "", list: pool };
+    var hits = [];
+    pool.forEach(function (b) {
+      var v = score(b, q);
+      if (v > 0) hits.push({ b: b, v: v });
+    });
+    hits.sort(function (x, y) { return y.v - x.v; });
+    return { q: q, list: hits.map(function (h) { return h.b; }) };
+  }
+
+  function resultNote() {
+    var r = found();
+    if (!r.q) return "";
+    if (!r.list.length) return "Nothing close to that.";
+    return r.list.length + " book" + (r.list.length === 1 ? "" : "s") +
+      " close to “" + uiFind.trim() + "”";
   }
 
   function tile(b) {
@@ -503,14 +595,18 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   }
 
   function pickerResults() {
-    var shown = BOOKS.filter(function (b) {
-      return (!uiTestament || b.testament === uiTestament) &&
-             (!uiGenre || b.genre === uiGenre) && matches(b);
-    });
-    if (!shown.length) return '<p class="ib-note">Nothing matches that. Try a shorter piece of the name.</p>';
-
+    var r = found();
+    if (!r.list.length) {
+      return '<p class="ib-note">Nothing close to that. Try fewer letters — ' +
+        '“ecc”, “hab”, “2 kin”.</p>';
+    }
+    // a search is ranked across the whole Bible, so it is one list, not
+    // eight genre bins with the best answer buried in the sixth
+    if (r.q) {
+      return '<div class="a-cards cols-3 ib-grid">' + r.list.map(tile).join("") + "</div>";
+    }
     return GENRE_ORDER.map(function (g) {
-      var run = shown.filter(function (b) { return b.genre === g; });
+      var run = r.list.filter(function (b) { return b.genre === g; });
       if (!run.length) return "";
       return '<h2 class="a-clabel ib-gsec">' + esc(g) +
         ' <span class="ib-slash" aria-hidden="true">/</span> <span class="a-count">' +
@@ -520,14 +616,16 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   }
 
   function legend() {
-    return '<div class="ib-rule"><span class="a-clabel">Genre</span>' +
+    var keys = '<button type="button" class="ib-key ib-key-all' + (uiGenre ? "" : " on") +
+      '" aria-pressed="' + (uiGenre ? "false" : "true") + '" onclick="ibGenre(null)">Show all</button>' +
       GENRE_ORDER.map(function (g) {
         var on = uiGenre === g;
         return '<button type="button" class="ib-key' + (on ? " on" : "") + '" aria-pressed="' + (on ? "true" : "false") +
           '" onclick="ibGenre(' + (on ? "null" : attr(g)) + ')">' +
           '<span class="ib-swatch" aria-hidden="true" style="background:var(' + GENRE_TOKEN[g] + ')"></span>' +
           esc(g) + "</button>";
-      }).join("") + "</div>";
+      }).join("");
+    return '<div class="ib-rule"><span class="a-clabel">Genre</span>' + keys + "</div>";
   }
 
   function renderPicker() {
@@ -540,7 +638,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var find = '<div class="ib-find">' +
       '<label class="ib-sr" for="ib-q">Find a book</label>' +
-      '<input id="ib-q" class="a-search" type="search" placeholder="Find a book — type Gen, Psa, Rom…"' +
+      '<input id="ib-q" class="a-search" type="search" autocomplete="off" spellcheck="false"' +
+      ' placeholder="Find a book — spelling does not have to be right"' +
       ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)">' +
       '<span class="a-row">' +
         chip("All 66", !uiTestament, "ibTestament(null)") +
@@ -552,19 +651,19 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       '<h2 class="a-clabel">Jump straight in</h2>' +
       '<p class="ib-jump-note">Type a reference and go directly to the passage.</p>' +
       '<label class="ib-sr" for="ib-ref">Go to a reference</label>' +
-      '<input id="ib-ref" class="a-search" type="text" placeholder="John 1:1-18"' +
+      '<input id="ib-ref" class="a-search" type="text" autocomplete="off" spellcheck="false" placeholder="John 1:1-18"' +
       ' onkeydown="if(event.key===\'Enter\'){event.preventDefault();ibJump()}">' +
       '<button type="button" class="a-lnk" onclick="ibJump()">Go to passage ›</button>' +
       '<p class="ib-note ib-jump-foot">66 of 66 books · no login · free</p>' +
       '<p class="ib-note" id="ib-jump-msg" hidden></p></aside>';
 
     return head + find + legend() +
+      '<p class="a-count ib-rescount" id="ib-rescount">' + esc(resultNote()) + "</p>" +
       '<div class="ib-main"><div class="ib-results" id="ib-results">' + pickerResults() + "</div>" +
       jump + "</div>";
   }
 
-  // The reference box: longest book name wins, so "1 John 1:1" does not
-  // resolve to John.
+  // The reference box takes the same spelling licence as the search.
   window.ibJump = function () {
     var box = document.getElementById("ib-ref");
     var msg = document.getElementById("ib-jump-msg");
@@ -572,20 +671,23 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     function fail(t) { if (msg) { msg.hidden = false; msg.textContent = t; } }
     if (!raw) return fail("Type something like John 1:1-18.");
 
-    var flat = raw.toLowerCase().replace(/\s+/g, ""), hit = null;
+    // split the reference off the back, whatever the book is called
+    var m = raw.replace(/[–—]/g, "-").match(/^(.*?)\s*(\d+)(?::(\d+)(?:\s*-\s*(\d+))?)?\s*$/);
+    var namePart = m ? m[1] : raw;
+    var flat = norm(namePart);
+    if (!flat) return fail("Start with a book name, like John 1:1-18.");
+
+    var hit = null;
     BOOKS.forEach(function (b) {
-      var n = b.name.toLowerCase().replace(/\s+/g, "");
-      if (flat.indexOf(n) === 0 && (!hit || n.length > hit.n.length)) hit = { b: b, n: n };
+      var v = score(b, flat);
+      if (v > 0 && (!hit || v > hit.v)) hit = { b: b, v: v };
     });
     if (!hit) return fail("That book name did not match one of the 66.");
+    if (!m || !m[2]) return fail("Add a chapter, like " + hit.b.name + " 1 or " + hit.b.name + " 1:1-18.");
 
-    var rest = flat.slice(hit.n.length).replace(/[–—]/g, "-");
-    var m = rest.match(/^(\d+)(?::(\d+)(?:-(\d+))?)?$/);
-    if (!m) return fail("Add a chapter, like " + hit.b.name + " 1 or " + hit.b.name + " 1:1-18.");
-
-    var ref = m[2]
-      ? hit.b.name + " " + m[1] + ":" + m[2] + (m[3] ? "-" + m[3] : "")
-      : hit.b.name + " " + m[1] + ":1";
+    var ref = m[3]
+      ? hit.b.name + " " + m[2] + ":" + m[3] + (m[4] ? "-" + m[4] : "")
+      : hit.b.name + " " + m[2] + ":1";
     go({ screen: "read", book: hit.b.name, ref: ref });
   };
 
