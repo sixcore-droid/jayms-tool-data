@@ -51,6 +51,8 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-sugg-item{display:flex;align-items:center;gap:10px;padding:9px 10px;
   border-radius:7px;cursor:pointer}
 .jayms-tool-outline .ib-sugg-item.on{background:var(--paper-deeper)}
+.jayms-tool-outline .ib-sugg-item.on .ib-sugg-name{color:var(--gold)}
+.jayms-tool-outline .ib-sugg-item.on .ib-sugg-meta{color:var(--ink-soft)}
 .jayms-tool-outline .ib-sugg-name{flex:1 1 auto;color:var(--ink);font-size:16px}
 .jayms-tool-outline .ib-sugg-meta{flex:0 0 auto;color:var(--muted);font-size:12px}
 
