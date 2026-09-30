@@ -1163,15 +1163,30 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return false;
   };
 
+  // The movement you are reading is the last one whose heading has gone
+  // past the top of the screen. An IntersectionObserver band missed jumps
+  // that cleared it in one frame, so this measures instead of listening.
   function wireRail() {
-    if (eraWatch) { eraWatch.disconnect(); eraWatch = null; }
-    if (VIEW.screen !== "book" || !window.IntersectionObserver) return;
-    var secs = MOUNT.querySelectorAll(".ib-era");
+    if (eraWatch) { window.removeEventListener("scroll", eraWatch); eraWatch = null; }
+    if (VIEW.screen !== "book") return;
+    var secs = [].slice.call(MOUNT.querySelectorAll(".ib-era"));
     if (!secs.length) return;
-    eraWatch = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) markEra(en.target.id); });
-    }, { rootMargin: "-12% 0px -78% 0px", threshold: 0 });
-    for (var i = 0; i < secs.length; i++) eraWatch.observe(secs[i]);
+    var queued = false;
+    eraWatch = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        var best = secs[0], bestTop = -Infinity;
+        for (var i = 0; i < secs.length; i++) {
+          var t = secs[i].getBoundingClientRect().top;
+          if (t <= 140 && t > bestTop) { bestTop = t; best = secs[i]; }
+        }
+        markEra(best.id);
+      });
+    };
+    window.addEventListener("scroll", eraWatch, { passive: true });
+    eraWatch();
   }
 
   // ----------------------------------------------------------------- paint
