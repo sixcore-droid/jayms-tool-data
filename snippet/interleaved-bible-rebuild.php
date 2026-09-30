@@ -185,24 +185,35 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-vnum-diff:hover,
 .jayms-tool-outline .ib-vnum-diff.on{color:var(--ink);border-bottom-color:var(--ink)}
 
-.jayms-tool-outline .ib-diff{margin:8px 0 26px;background:var(--paper-deep);
-  border:1px solid var(--line);border-left:3px solid var(--rust);border-radius:10px;
-  padding:22px 24px;display:flex;flex-direction:column;gap:14px}
-.jayms-tool-outline .ib-diff-head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px}
-.jayms-tool-outline .ib-diff-head > div:first-child{flex:1 1 320px;min-width:0}
-.jayms-tool-outline .ib-diff-h{margin:6px 0 0;font-size:1.45em;line-height:1.3;color:var(--ink)}
-.jayms-tool-outline .ib-diff-x{flex:0 0 auto}
-.jayms-tool-outline .ib-dw{flex:0 0 auto;align-self:center;font-size:11px;letter-spacing:.1em;
-  text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 12px;
-  color:var(--muted);white-space:nowrap}
+.jayms-tool-outline .ib-diff{margin:10px 0 26px;padding:26px 0 0;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:18px}
+.jayms-tool-outline .ib-diff-head{display:flex;flex-wrap:wrap;align-items:flex-start;
+  justify-content:space-between;gap:16px}
+.jayms-tool-outline .ib-diff-t{flex:1 1 340px;min-width:0}
+.jayms-tool-outline .ib-diff-h{margin:0}
+.jayms-tool-outline .ib-diff-gist{margin:8px 0 0;font-style:italic;font-size:1.15em;
+  line-height:1.5;color:var(--ink-soft)}
+.jayms-tool-outline .ib-diff-tools{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.jayms-tool-outline .ib-dw{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:999px;padding:6px 13px;color:var(--muted);white-space:nowrap}
 .jayms-tool-outline .ib-dw-claim{color:var(--rust);border-color:var(--rust)}
 .jayms-tool-outline .ib-dw-emphasis{color:var(--gold);border-color:var(--gold)}
-.jayms-tool-outline .ib-diff-lemma{margin:0;color:var(--aramaic);font-size:1.15em}
-.jayms-tool-outline .ib-diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:16px 28px}
-.jayms-tool-outline .ib-df p{margin:0}
-.jayms-tool-outline .ib-df-body{margin-top:5px;line-height:1.6;color:var(--ink-soft)}
-.jayms-tool-outline .ib-df-srcs{border-top:1px solid var(--line);padding-top:12px}
+
+.jayms-tool-outline .ib-dq{background:var(--paper-deep);border:1px solid var(--line);
+  border-left:3px solid var(--gold);border-radius:9px;padding:16px 20px}
+.jayms-tool-outline .ib-dq p{margin:0}
+.jayms-tool-outline .ib-dq-text{margin-top:8px;font-size:1.15em;line-height:1.6;color:var(--ink)}
+.jayms-tool-outline .ib-dq-note{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
+
+.jayms-tool-outline .ib-dprose{display:flex;flex-direction:column;gap:16px}
+.jayms-tool-outline .ib-dp{margin:0;font-size:1.12em;line-height:1.65;color:var(--ink-soft)}
+.jayms-tool-outline .ib-dp b{color:var(--ink);font-weight:600}
+.jayms-tool-outline .ib-dlemma{margin:0;padding:12px 18px;border-left:3px solid var(--aramaic);
+  background:var(--paper-deep);border-radius:0 9px 9px 0;color:var(--ink-soft)}
+.jayms-tool-outline .ib-dlemma b{color:var(--ink)}
+.jayms-tool-outline .ib-dsrc ul{margin:8px 0 0;padding-left:20px;display:flex;
+  flex-direction:column;gap:6px}
+.jayms-tool-outline .ib-dsrc li{font-size:15px;line-height:1.5;color:var(--ink-soft)}
 
 .jayms-tool-outline .ib-wdiff{border-top:1px solid var(--line);padding-top:16px;
   display:flex;flex-direction:column;gap:8px}
@@ -1511,10 +1522,19 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   // --------------------------------------------- where versions disagree
 
-  function diffField(label, text) {
+  // Set the way the differences page sets it: the verse first, then the two
+  // readings boxed and quoted, then the argument as prose with its lead-ins
+  // in line. One column, because these are paragraphs, not columns.
+  function diffQuote(label, text, note) {
     if (!text) return "";
-    return '<div class="ib-df"><p class="a-clabel">' + esc(label) + "</p>" +
-      '<p class="ib-df-body">' + esc(text) + "</p></div>";
+    return '<div class="ib-dq"><p class="a-clabel">' + esc(label) + "</p>" +
+      '<p class="ib-dq-text">' + esc(text) + "</p>" +
+      (note ? '<p class="ib-dq-note">' + esc(note) + "</p>" : "") + "</div>";
+  }
+
+  function diffPara(lead, text) {
+    if (!text) return "";
+    return '<p class="ib-dp">' + (lead ? '<b>' + esc(lead) + ":</b> " : "") + esc(text) + "</p>";
   }
 
   function diffPanel() {
@@ -1526,26 +1546,30 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       esc(d.weight === "claim" ? "Changes the claim" :
           d.weight === "emphasis" ? "Changes the emphasis" : "Cosmetic") + "</span>" : "";
 
-    var srcs = d.srcs ? '<p class="ib-note ib-df-srcs">' + esc(d.srcs) + "</p>" : "";
+    var srcs = (d.srcs && d.srcs.length)
+      ? '<div class="ib-dsrc"><p class="a-clabel">Sources</p><ul>' +
+        d.srcs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>"
+      : "";
 
     return '<section class="ib-diff" aria-label="Why the translations differ">' +
       '<div class="ib-diff-head">' +
-        '<div><p class="a-eyebrow">' + esc(d.ref || "") +
-          (d.lang ? " \u00b7 " + esc(d.lang) : "") + "</p>" +
-          '<h2 class="ib-diff-h">' + esc(d.gist || "") + "</h2></div>" +
-        badge +
-        '<button type="button" class="a-lnk ib-diff-x" onclick="ibDiff(' + uiDiff + ')">Close</button>' +
+        '<div class="ib-diff-t"><h2 class="a-title ib-diff-h">' + esc(d.ref || "") + "</h2>" +
+          (d.gist ? '<p class="ib-diff-gist">' + esc(d.gist) + "</p>" : "") + "</div>" +
+        '<span class="ib-diff-tools">' + badge +
+          '<button type="button" class="a-lnk" onclick="ibDiff(' + uiDiff + ')">Close</button>' +
+        "</span>" +
       "</div>" +
-      (d.lemma ? '<p class="ib-diff-lemma">' + esc(d.lemma) + "</p>" : "") +
-      '<div class="ib-diff-grid">' +
-        diffField("King James", d.kjv) +
-        diffField("Other versions", d.others) +
-        diffField("What is going on", d.plain) +
-        diffField("What you are seeing", d.seeing) +
-        diffField("Why they differ", d.why) +
-        diffField("Choosing between them", d.choosing) +
-        diffField("The rule", d.rule) +
-      "</div>" + srcs + "</section>";
+      diffQuote((d.ref || "") + " \u00b7 KJV", d.kjv, d.kjvWhy) +
+      diffQuote("How modern translations read it", d.others) +
+      '<div class="ib-dprose">' +
+        diffPara("", d.plain) +
+        diffPara("What\u2019s actually there", d.seeing) +
+        diffPara("Why English can\u2019t just say it", d.why) +
+        diffPara("The pattern to watch for", d.rule) +
+        diffPara("What each choice commits you to", d.choosing) +
+      "</div>" +
+      (d.lemma ? '<p class="ib-dlemma"><b>Lemma:</b> ' + esc(d.lemma) + "</p>" : "") +
+      srcs + "</section>";
   }
 
   // ------------------------------------------------------------ the rail
