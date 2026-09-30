@@ -105,8 +105,11 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-raillist::-webkit-scrollbar-thumb:hover{background:var(--border-bright)}
 /* the site underlines every link inside a tool; in a list of them that
    reads as a rule between the rows */
+/* the underline is set on "#app a", and an id outranks any class here, so
+   this has to meet it rather than out-specify it */
 .jayms-tool-outline .ib-rail a{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;
-  border:0;border-radius:7px;text-decoration:none;font-size:14px;line-height:1.4;color:var(--ink-soft)}
+  border:0 !important;border-radius:7px;text-decoration:none;font-size:14px;line-height:1.4;
+  color:var(--ink-soft)}
 .jayms-tool-outline .ib-rail a span + span{color:var(--muted);flex:0 0 auto}
 .jayms-tool-outline .ib-rail a.on{background:var(--paper-deep);color:var(--ink)}
 .jayms-tool-outline .ib-rail a:hover{background:var(--paper-deep);color:var(--ink)}
