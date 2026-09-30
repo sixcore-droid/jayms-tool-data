@@ -166,9 +166,9 @@ add_action( 'wp_footer', function () {
    text straight on the page is harder on the eye than text on a card. */
 .jayms-tool-outline .ib-il{display:flex;flex-wrap:wrap;align-items:flex-end;
   gap:16px 8px;margin:0 0 26px;background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--edge);border-radius:10px;padding:22px 24px}
+  border-left:3px solid var(--edge-original);border-radius:10px;padding:22px 24px}
 .jayms-tool-outline .ib-reader{background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--edge);border-radius:10px;padding:2px 24px;margin:0 0 26px}
+  border-left:3px solid var(--edge-text);border-radius:10px;padding:2px 24px;margin:0 0 26px}
 /* the number opens a verse, so it sits high and keeps its distance from
    the word before it, or it reads as that word's footnote */
 .jayms-tool-outline .ib-vnum{align-self:flex-start;margin-left:14px;padding:0 1px;
@@ -212,7 +212,8 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-dw-emphasis{color:var(--gold);border-color:var(--gold)}
 
 .jayms-tool-outline .ib-dq{background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--edge);border-radius:9px;padding:16px 20px}
+  border-left:3px solid var(--edge-text);border-radius:9px;padding:16px 20px}
+.jayms-tool-outline .ib-dq-modern{border-left-color:var(--edge-modern)}
 .jayms-tool-outline .ib-dq p{margin:0}
 .jayms-tool-outline .ib-dq-text{margin-top:8px;font-size:1.15em;line-height:1.6;color:var(--ink)}
 .jayms-tool-outline .ib-dq-note{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
@@ -221,11 +222,11 @@ add_action( 'wp_footer', function () {
    the eye can carry back to the start of the next line */
 .jayms-tool-outline .ib-dprose{display:flex;flex-direction:column;gap:16px;
   background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--edge);border-radius:10px;padding:22px 24px}
+  border-left:3px solid var(--edge-note);border-radius:10px;padding:22px 24px}
 .jayms-tool-outline .ib-dp{margin:0;max-width:82ch;font-size:1.12em;line-height:1.65;
   color:var(--ink-soft)}
 .jayms-tool-outline .ib-dp b{color:var(--ink);font-weight:600}
-.jayms-tool-outline .ib-dlemma{margin:0;padding:12px 18px;border-left:3px solid var(--edge);
+.jayms-tool-outline .ib-dlemma{margin:0;padding:12px 18px;border-left:3px solid var(--edge-original);
   background:var(--paper-deep);border-radius:0 9px 9px 0;color:var(--ink-soft)}
 .jayms-tool-outline .ib-dlemma b{color:var(--ink)}
 .jayms-tool-outline .ib-dsrc ul{margin:8px 0 0;padding-left:20px;display:flex;
@@ -260,7 +261,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
 .jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--edge);border-radius:9px;padding:14px 20px;margin:12px 0 0;
+  border-left:3px solid var(--edge-original);border-radius:9px;padding:14px 20px;margin:12px 0 0;
   display:flex;flex-direction:column;gap:8px}
 .jayms-tool-outline .ib-origlabel{color:var(--aramaic);margin:0}
 .jayms-tool-outline .ib-orig{margin:0;line-height:1.95;font-size:1.22em}
@@ -1650,9 +1651,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   // Set the way the differences page sets it: the verse first, then the two
   // readings boxed and quoted, then the argument as prose with its lead-ins
   // in line. One column, because these are paragraphs, not columns.
-  function diffQuote(label, text, note) {
+  function diffQuote(kind, label, text, note) {
     if (!text) return "";
-    return '<div class="ib-dq"><p class="a-clabel">' + esc(label) + "</p>" +
+    return '<div class="ib-dq ib-dq-' + kind + '"><p class="a-clabel">' + esc(label) + "</p>" +
       '<p class="ib-dq-text">' + safeInline(text) + "</p>" +
       (note ? '<p class="ib-dq-note">' + safeInline(note) + "</p>" : "") + "</div>";
   }
@@ -1703,8 +1704,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
           '<button type="button" class="a-lnk" onclick="ibDiff(' + uiDiff + ')">Close</button>' +
         "</span>" +
       "</div>" +
-      diffQuote((d.ref || "") + " \u00b7 KJV", d.kjv, d.kjvWhy) +
-      diffQuote("How modern translations read it", d.others) +
+      diffQuote("text", (d.ref || "") + " \u00b7 KJV", d.kjv, d.kjvWhy) +
+      diffQuote("modern", "How modern translations read it", d.others) +
       '<div class="ib-dprose">' +
         diffPara("", d.plain) +
         diffPara("What\u2019s actually there", d.seeing) +
