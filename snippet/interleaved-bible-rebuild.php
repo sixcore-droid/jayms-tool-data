@@ -112,7 +112,13 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-eras{flex:1 1 auto;min-width:0}
 .jayms-tool-outline .ib-era{margin:0 0 30px;scroll-margin-top:24px}
 .jayms-tool-outline .ib-era-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
-.jayms-tool-outline .ib-era-note{margin:8px 0 0;max-width:72ch;color:var(--ink-soft)}
+.jayms-tool-outline .ib-era-note{margin:8px 0 0;color:var(--ink-soft)}
+/* On the book screen the text takes the column it is given. The measure
+   caps belong on the read screen, where you read a passage straight
+   through; here they left two thirds of the row empty. */
+.jayms-tool-outline .ib-bookhead .a-sub,
+.jayms-tool-outline .ib-eras .ib-detail,
+.jayms-tool-outline .ib-eras .ib-passage{max-width:none}
 
 /* one container, hairline-separated, not a stack of cards */
 .jayms-tool-outline .ib-rows{display:flex;flex-direction:column;gap:1px;background:var(--line);
