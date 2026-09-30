@@ -236,7 +236,7 @@ add_action( 'wp_footer', function () {
 /* The reading is the thing. It is set in plain white so that it, and not
    the headings or the chips, is the brightest thing on the screen, and
    each verse is closed off by a hairline so the rows do not run together. */
-.jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--muted)}
+.jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--muted) !important}
 /* the theme sets colour on body, p and li with !important, so a
    paragraph cannot be recoloured without meeting it */
 .jayms-tool-outline .ib-verse .ib-passage{color:var(--ink-bright) !important}
