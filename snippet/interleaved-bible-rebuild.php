@@ -198,10 +198,14 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-panel{position:sticky;top:20px;flex:0 0 clamp(330px,24vw,460px);background:var(--paper-deep);
   border-left:1px solid var(--line);padding:28px 30px;display:flex;flex-direction:column;gap:16px;
   max-height:calc(100vh - 40px);overflow:auto}
+/* the count and the word share a line: the count on the left, the word
+   where a Hebrew reader expects it */
+.jayms-tool-outline .ib-panel-top{display:flex;align-items:center;justify-content:space-between;
+  gap:16px;min-height:52px}
 .jayms-tool-outline .ib-panel-word{margin:0;font-size:2.1em;line-height:1.2}
 .jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft);font-size:1.45em}
 .jayms-tool-outline .ib-count{display:inline-flex;align-items:center;justify-content:center;
-  align-self:flex-start;width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);
+  width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);
   color:var(--gold);font-size:16px;line-height:1;flex:0 0 auto}
 .jayms-tool-outline .ib-panel-gloss{margin:0;color:var(--gold);font-size:1.45em;line-height:1.35}
 .jayms-tool-outline .ib-parse{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 20px;font-size:15px}
@@ -1342,8 +1346,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       ' in the Bible">' + occN + "</span>";
 
     return '<aside class="ib-panel" aria-label="Word detail">' +
-      '<p class="ib-panel-word' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '">' + esc(w.text) + "</p>" +
-      badge +
+      '<div class="ib-panel-top">' + badge +
+        '<p class="ib-panel-word' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '">' +
+        esc(w.text) + "</p></div>" +
       (w.translit ? '<p class="ib-panel-translit">' + esc(w.translit) + "</p>" : "") +
       '<p class="ib-panel-gloss">' + esc(String(w.gloss || w.english || "").replace(/\./g, " ")) + "</p>" +
       (rows.length ? '<dl class="ib-parse">' + rows.join("") + "</dl>" : "") +
