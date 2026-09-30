@@ -247,7 +247,10 @@ add_action( 'wp_footer', function () {
 /* the theme sets colour on body, p and li with !important, so a
    paragraph cannot be recoloured without meeting it */
 .jayms-tool-outline .ib-verse .ib-passage{color:var(--ink-bright) !important}
-.jayms-tool-outline .ib-verse{border-bottom:1px solid var(--line);padding:20px 0}
+/* a global rule paints every section with the page colour, !important,
+   which covered the panel everywhere the text actually sits */
+.jayms-tool-outline .ib-verse{border-bottom:1px solid var(--line);padding:20px 0;
+  background:transparent !important}
 .jayms-tool-outline .ib-verse:last-of-type{border-bottom:0}
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
