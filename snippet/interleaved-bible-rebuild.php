@@ -43,7 +43,16 @@ add_action( 'wp_footer', function () {
 
 .jayms-tool-outline .ib-hero{margin:0 0 22px}
 .jayms-tool-outline .ib-find{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:0 0 4px}
-.jayms-tool-outline .ib-find .a-search{flex:1 1 320px;min-width:260px}
+.jayms-tool-outline .ib-findbox{position:relative;flex:1 1 320px;min-width:260px}
+.jayms-tool-outline .ib-findbox .a-search{width:100%;box-sizing:border-box}
+.jayms-tool-outline .ib-sugg{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);
+  margin:0;padding:6px;list-style:none;background:var(--paper-deep);border:1px solid var(--line);
+  border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.45);max-height:340px;overflow:auto}
+.jayms-tool-outline .ib-sugg-item{display:flex;align-items:center;gap:10px;padding:9px 10px;
+  border-radius:7px;cursor:pointer}
+.jayms-tool-outline .ib-sugg-item.on{background:var(--paper-deeper)}
+.jayms-tool-outline .ib-sugg-name{flex:1 1 auto;color:var(--ink);font-size:16px}
+.jayms-tool-outline .ib-sugg-meta{flex:0 0 auto;color:var(--muted);font-size:12px}
 
 /* the rule row: a label, its controls, and a line above and below */
 .jayms-tool-outline .ib-rule{display:flex;flex-wrap:wrap;align-items:center;gap:14px;
@@ -481,13 +490,85 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   // -------------------------------------------------------------- picker
 
+  // The picker repaints in place rather than through render(), or the box
+  // you are typing in loses focus on every keystroke.
+  var SUGG_MAX = 8;
+  var uiSugg = -1;
+  var suggOpen = false;
+
   window.ibFind = function (v) {
     uiFind = v;
+    uiSugg = -1;
+    suggOpen = true;
     var host = document.getElementById("ib-results");
     if (host) host.innerHTML = pickerResults();
     var head = document.getElementById("ib-rescount");
     if (head) head.textContent = resultNote();
+    paintSugg();
   };
+
+  function suggList() {
+    var r = found();
+    return r.q ? r.list.slice(0, SUGG_MAX) : [];
+  }
+
+  function suggHTML() {
+    var list = suggOpen ? suggList() : [];
+    if (!list.length) return "";
+    return '<ul class="ib-sugg" id="ib-sugg" role="listbox" aria-label="Matching books">' +
+      list.map(function (b, i) {
+        return '<li id="ib-sugg-' + i + '" role="option" aria-selected="' + (i === uiSugg) + '"' +
+          ' class="ib-sugg-item' + (i === uiSugg ? " on" : "") + '"' +
+          ' onmousedown="event.preventDefault();ibPick(' + i + ')" onmouseenter="ibSuggHover(' + i + ')">' +
+          '<span class="ib-swatch" aria-hidden="true" style="background:var(' + GENRE_TOKEN[b.genre] + ')"></span>' +
+          '<span class="ib-sugg-name">' + esc(b.name) + "</span>" +
+          '<span class="ib-sugg-meta">' + esc(b.genre) + " · " + b.chapters +
+          " chapter" + (b.chapters === 1 ? "" : "s") + "</span></li>";
+      }).join("") + "</ul>";
+  }
+
+  function paintSugg() {
+    var wrap = document.getElementById("ib-suggwrap");
+    if (wrap) wrap.innerHTML = suggHTML();
+    var box = document.getElementById("ib-q");
+    if (!box) return;
+    var open = !!(wrap && wrap.firstChild);
+    box.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open && uiSugg > -1) box.setAttribute("aria-activedescendant", "ib-sugg-" + uiSugg);
+    else box.removeAttribute("aria-activedescendant");
+  }
+
+  window.ibSuggHover = function (i) { uiSugg = i; paintSugg(); };
+
+  window.ibPick = function (i) {
+    var b = suggList()[i];
+    if (!b) return;
+    suggOpen = false;
+    go({ screen: "book", book: b.name });
+  };
+
+  window.ibFindKey = function (e) {
+    var list = suggOpen ? suggList() : [];
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (!suggOpen) { suggOpen = true; paintSugg(); list = suggList(); }
+      uiSugg = Math.min(uiSugg + 1, list.length - 1);
+      paintSugg();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      uiSugg = Math.max(uiSugg - 1, -1);
+      paintSugg();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (list.length) ibPick(uiSugg < 0 ? 0 : uiSugg);
+    } else if (e.key === "Escape") {
+      suggOpen = false;
+      paintSugg();
+    }
+  };
+
+  window.ibFindOpen = function () { if (uiFind.trim()) { suggOpen = true; paintSugg(); } };
+  window.ibFindShut = function () { suggOpen = false; paintSugg(); };
 
   // ---------------------------------------------------------- the search
   // Typed by someone who should not have to spell Ecclesiastes. Four ways
@@ -660,9 +741,13 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var find = '<div class="ib-find">' +
       '<label class="ib-sr" for="ib-q">Find a book</label>' +
+      '<span class="ib-findbox">' +
       '<input id="ib-q" class="a-search" type="search" autocomplete="off" spellcheck="false"' +
-      ' placeholder="Find a book — spelling does not have to be right"' +
-      ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)">' +
+      ' role="combobox" aria-expanded="false" aria-controls="ib-sugg" aria-autocomplete="list"' +
+      ' placeholder="Find a book. Spelling does not have to be right."' +
+      ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)" onkeydown="ibFindKey(event)"' +
+      ' onfocus="ibFindOpen()" onblur="ibFindShut()">' +
+      '<span id="ib-suggwrap">' + suggHTML() + "</span></span>" +
       '<span class="a-row">' +
         chip("All 66", !uiTestament, "ibTestament(null)") +
         chip("Old Testament", uiTestament === "OT", "ibTestament('OT')") +
