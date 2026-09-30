@@ -50,6 +50,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-verse{margin:0 0 14px}
 .jayms-tool-outline .ib-words{display:flex;gap:10px;overflow-x:auto;padding:2px 0 10px}
 .jayms-tool-outline .ib-word{flex:0 0 200px;display:flex;flex-direction:column;gap:6px}
+.jayms-tool-outline .ib-grams{display:flex;flex-direction:column;gap:2px}
 .jayms-tool-outline .ib-gram{display:flex;justify-content:space-between;gap:10px}
 .jayms-tool-outline .ib-rtl{direction:rtl;text-align:right}
 .jayms-tool-outline .ib-hidden{display:none}
@@ -544,15 +545,16 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var key = w.strong || "";
     var gram = [];
     ["stem","tense","voice","mood","person","number","gender","case","state"].forEach(function (k) {
-      if (w[k]) gram.push('<span class="ib-gram"><span class="a-tag">' + esc(k) +
-        '</span><span class="a-tag">' + esc(w[k]) + "</span></span>");
+      if (w[k]) gram.push('<span class="ib-gram"><span>' + esc(k) + "</span><span>" + esc(w[k]) + "</span></span>");
     });
+    // Only the two actions are components. Everything else on the card is
+    // plain text -- a card of eight chips reads as eight buttons.
     return '<div class="a-card ib-word">' +
-      '<span class="a-cmain' + (/[֐-׿]/.test(w.text || "") ? " ib-rtl" : "") + '">' + esc(w.text) + "</span>" +
-      (w.translit ? '<span class="a-tag">' + esc(w.translit) + "</span>" : "") +
+      '<span class="a-lead' + (/[\u0590-\u05FF]/.test(w.text || "") ? " ib-rtl" : "") + '">' + esc(w.text) + "</span>" +
+      (w.translit ? "<span><i>" + esc(w.translit) + "</i></span>" : "") +
       '<span class="a-clabel">' + esc(w.gloss || w.english || "") + "</span>" +
-      gram.join("") +
-      (key ? '<span class="a-tag">Strong’s ' + esc(key) + "</span>" : "") +
+      (gram.length ? '<span class="ib-grams">' + gram.join("") + "</span>" : "") +
+      (key ? "<span><small>Strong\u2019s " + esc(key) + "</small></span>" : "") +
       (key
         ? '<span class="ib-row">' +
             '<button class="a-lnk" onclick="ibLexicon(\'' + esc(key) + '\')">Lexicon</button>' +
