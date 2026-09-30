@@ -87,7 +87,8 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-verse{margin:0 0 26px}
 .jayms-tool-outline .ib-orig{margin:10px 0 0;max-width:62ch;line-height:1.95}
 .jayms-tool-outline .ib-rtl{direction:rtl;text-align:right}
-.jayms-tool-outline .ib-w{background:none;border:0;padding:0 3px;margin:0;font:inherit;color:inherit;
+.jayms-tool-outline .ib-wd{display:inline-block;white-space:nowrap}
+.jayms-tool-outline .ib-w{background:none;border:0;padding:0 1px;margin:0;font:inherit;color:inherit;
   cursor:pointer;border-radius:3px}
 .jayms-tool-outline .ib-w:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-w.on{background:var(--gold);color:var(--paper-deep)}
@@ -585,11 +586,18 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var en = toEnglishVerse(book, row.c, row.v);
     var id = "v" + row.c + "-" + row.v;
     var rtl = row.words.length && /[֐-׿]/.test(row.words[0].text || "");
-    var words = row.words.map(function (w, i) {
+    // The data is morphemes, not words: a token whose "after" is empty is
+    // glued to the next one. Grouping them keeps the line reading as Hebrew
+    // instead of as a row of fragments.
+    var groups = [], run = [];
+    row.words.forEach(function (w, i) {
       var on = uiWord && uiWord.c === row.c && uiWord.v === row.v && uiWord.i === i;
-      return '<button type="button" class="ib-w' + (on ? " on" : "") + '" onclick="ibWord(' +
-        row.c + "," + row.v + "," + i + ')">' + esc(w.text) + "</button>";
-    }).join(" ");
+      run.push('<button type="button" class="ib-w' + (on ? " on" : "") + '" onclick="ibWord(' +
+        row.c + "," + row.v + "," + i + ')">' + esc(w.text) + "</button>");
+      if (w.after !== "") { groups.push(run); run = []; }
+    });
+    if (run.length) groups.push(run);
+    var words = groups.map(function (g) { return '<span class="ib-wd">' + g.join("") + "</span>"; }).join(" ");
 
     return '<section class="ib-verse">' +
       '<p class="a-clabel">' + esc(book + " " + en.chapter + ":" + en.verse) + "</p>" +
