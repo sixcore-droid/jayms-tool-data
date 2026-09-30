@@ -560,13 +560,25 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return 0;
   }
 
+  // The fold is only trustworthy while it leaves enough of the query
+  // standing; "qqqzzz" folds down to two letters and would match anything.
+  function usableFold(q) {
+    var f = fold(q);
+    return (f.length >= 3 && f.length >= Math.ceil(q.length * 0.6)) ? f : null;
+  }
+
   function score(book, q) {
-    var n = norm(book.name);
-    var best = Math.max(scoreName(q, n), scoreName(fold(q), fold(n)) - 20);
+    var fq = usableFold(q);
+    function one(name) {
+      var n = norm(name);
+      var v = scoreName(q, n);
+      if (fq) v = Math.max(v, scoreName(fq, fold(n)) - 20);
+      return v;
+    }
+    var best = one(book.name);
     (ALIAS[book.name] || []).forEach(function (a) {
-      var an = norm(a);
-      var v = Math.max(scoreName(q, an), scoreName(fold(q), fold(an)) - 20);
-      if (v > best) best = v - 1;   // an alias never outranks the real name
+      var v = one(a) - 1;           // an alias never outranks the real name
+      if (v > best) best = v;
     });
     return best;
   }
