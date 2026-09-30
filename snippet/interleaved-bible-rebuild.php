@@ -237,7 +237,9 @@ add_action( 'wp_footer', function () {
    the headings or the chips, is the brightest thing on the screen, and
    each verse is closed off by a hairline so the rows do not run together. */
 .jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--muted)}
-.jayms-tool-outline .ib-verse .ib-passage{color:var(--ink-bright)}
+/* the theme sets colour on body, p and li with !important, so a
+   paragraph cannot be recoloured without meeting it */
+.jayms-tool-outline .ib-verse .ib-passage{color:var(--ink-bright) !important}
 .jayms-tool-outline .ib-verse{border-bottom:1px solid var(--line);padding-bottom:20px}
 .jayms-tool-outline .ib-verse:last-of-type{border-bottom:0}
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
