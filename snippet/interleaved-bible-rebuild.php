@@ -167,12 +167,12 @@ add_action( 'wp_footer', function () {
 /* the number opens a verse, so it sits high and keeps its distance from
    the word before it, or it reads as that word's footnote */
 .jayms-tool-outline .ib-vnum{align-self:flex-start;margin-left:14px;padding:0 1px;
-  font-size:12px;font-weight:600;color:var(--gold);line-height:1.2}
+  font-size:14px;font-weight:600;color:var(--gold);line-height:1.25}
 .jayms-tool-outline .ib-il > .ib-vnum:first-child{margin-left:0}
 .jayms-tool-outline .ib-u{display:inline-flex;flex-direction:column;align-items:center;
   gap:3px;padding:4px 5px;margin:0;border:0;border-radius:6px;background:none;
   font:inherit;color:inherit;cursor:pointer;text-align:center}
-.jayms-tool-outline .ib-u-en{font-size:13px;line-height:1.2;color:var(--ink-soft);white-space:nowrap}
+.jayms-tool-outline .ib-u-en{font-size:17px;line-height:1.25;color:var(--ink-soft);white-space:nowrap}
 .jayms-tool-outline .ib-u-he{font-size:24px;line-height:1.3;color:var(--ink);white-space:nowrap}
 .jayms-tool-outline .ib-u:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-u.on{background:var(--gold)}
