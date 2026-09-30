@@ -92,7 +92,9 @@ add_action( 'wp_footer', function () {
 
 .jayms-tool-outline .ib-book{display:flex;gap:44px;align-items:flex-start;margin-top:4px}
 .jayms-tool-outline .ib-rail{position:sticky;top:20px;flex:0 0 210px;display:flex;flex-direction:column;
-  gap:2px;border-right:1px solid var(--line);padding-right:24px}
+  gap:8px;border-right:1px solid var(--line);padding-right:24px;max-height:calc(100vh - 40px)}
+.jayms-tool-outline .ib-raillist{display:flex;flex-direction:column;gap:2px;overflow:auto;min-height:0;
+  scrollbar-width:thin}
 .jayms-tool-outline .ib-rail a{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;
   border-radius:7px;text-decoration:none;font-size:13px;color:var(--ink-soft)}
 .jayms-tool-outline .ib-rail a span + span{color:var(--muted);flex:0 0 auto}
@@ -170,7 +172,8 @@ add_action( 'wp_footer', function () {
   .jayms-tool-outline .ib-jump{position:static;flex:1 1 auto;border-left:0;
     border-top:1px solid var(--line);padding:18px 0 0}
   .jayms-tool-outline .ib-rail{position:static;flex:1 1 auto;border-right:0;
-    border-bottom:1px solid var(--line);padding:0 0 12px}
+    border-bottom:1px solid var(--line);padding:0 0 12px;max-height:none}
+  .jayms-tool-outline .ib-raillist{max-height:230px}
   .jayms-tool-outline .ib-panel{position:static;flex:1 1 auto;border-left:0;
     border-top:1px solid var(--line);padding:22px 0 0}
   .jayms-tool-outline .ib-text{padding-right:0}
@@ -381,6 +384,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   // through to a full document load.
   window.addEventListener("hashchange", function () {
     if (selfSetHash) { selfSetHash = false; return; }
+    // an in-page anchor is not a screen: #era7 must not be read as "no
+    // screen named that, so show the picker"
+    var h = decodeURIComponent(location.hash.replace(/^#/, ""));
+    if (h && !/^(books$|book=|read=)/.test(h)) return;
     VIEW = viewFromHash();
     uiWord = null;
     render();
@@ -856,11 +863,13 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     }).filter(function (x) { return x.events.length; });
 
     var rail = '<nav class="ib-rail" aria-label="Movements"><p class="a-clabel">Movements</p>' +
+      '<div class="ib-raillist">' +
       eras.map(function (x, i) {
         var range = String(x.era.label || "").split("·").pop().trim().replace(/^[A-Za-z .]+/, "");
-        return '<a href="#' + x.id + '"' + (i === 0 ? ' class="on"' : "") + '><span>' +
+        return '<a href="#' + x.id + '" onclick="return ibEra(event,\'' + x.id + '\')"' +
+          (i === 0 ? ' class="on" aria-current="true"' : "") + '><span>' +
           esc(x.era.name) + "</span><span>" + esc(range || String(i + 1)) + "</span></a>";
-      }).join("") + "</nav>";
+      }).join("") + "</div></nav>";
 
     var body = eras.map(function (x) {
       return '<section id="' + x.id + '" class="ib-era">' +
@@ -1121,6 +1130,48 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</aside>";
   }
 
+  // ------------------------------------------------------------ the rail
+  // A movement is a place on this page, not another screen: clicking one
+  // scrolls, and the rail marks where you are as you scroll past.
+
+  var eraWatch = null;
+
+  function markEra(id) {
+    var links = MOUNT.querySelectorAll(".ib-rail a");
+    for (var i = 0; i < links.length; i++) {
+      var on = links[i].getAttribute("href") === "#" + id;
+      links[i].classList.toggle("on", on);
+      if (on) {
+        links[i].setAttribute("aria-current", "true");
+        var list = links[i].parentNode, top = links[i].offsetTop;
+        if (list && (top < list.scrollTop || top > list.scrollTop + list.clientHeight - 40)) {
+          list.scrollTop = top - list.clientHeight / 2;
+        }
+      } else {
+        links[i].removeAttribute("aria-current");
+      }
+    }
+  }
+
+  window.ibEra = function (e, id) {
+    if (e && e.preventDefault) e.preventDefault();
+    var node = document.getElementById(id);
+    if (node) node.scrollIntoView({ block: "start", behavior: "smooth" });
+    markEra(id);
+    return false;
+  };
+
+  function wireRail() {
+    if (eraWatch) { eraWatch.disconnect(); eraWatch = null; }
+    if (VIEW.screen !== "book" || !window.IntersectionObserver) return;
+    var secs = MOUNT.querySelectorAll(".ib-era");
+    if (!secs.length) return;
+    eraWatch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) markEra(en.target.id); });
+    }, { rootMargin: "-12% 0px -78% 0px", threshold: 0 });
+    for (var i = 0; i < secs.length; i++) eraWatch.observe(secs[i]);
+  }
+
   // ----------------------------------------------------------------- paint
 
   function render() {
@@ -1129,6 +1180,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       VIEW.screen === "read" ? renderRead() :
                                renderPicker();
     fillReadVerses();
+    wireRail();
   }
 
   // ------------------------------------------------------------------ boot
