@@ -53,6 +53,8 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-grams{display:flex;flex-direction:column;gap:2px}
 .jayms-tool-outline .ib-gram{display:flex;justify-content:space-between;gap:10px}
 .jayms-tool-outline .ib-rtl{direction:rtl;text-align:right}
+.jayms-tool-outline .a-card > .a-tag,
+.jayms-tool-outline .a-card > .ib-row{align-self:flex-start}
 .jayms-tool-outline .ib-hidden{display:none}
 .jayms-tool-outline .ib-occ{margin:0 0 14px}
 </style>
@@ -338,7 +340,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return '<button class="a-card" onclick="ibGo({screen:\'book\',book:' +
       JSON.stringify(b.name).replace(/"/g, "&quot;") + '})">' +
       '<span class="a-clabel">' + esc(b.name) + "</span>" +
-      '<span class="a-cmain">' + b.chapters + " chapters</span>" +
+      '<span class="a-cmain">' + b.chapters + " chapter" + (b.chapters === 1 ? "" : "s") + "</span>" +
       '<span class="a-tag">' + esc(b.genre) + "</span></button>";
   }
 
