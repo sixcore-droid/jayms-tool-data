@@ -43,9 +43,11 @@ add_action( 'wp_footer', function () {
 
 .jayms-tool-outline .ib-hero{margin:0 0 22px}
 .jayms-tool-outline .ib-find{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:0 0 4px}
-.jayms-tool-outline .ib-findbox{position:relative;flex:1 1 320px;min-width:260px}
+.jayms-tool-outline .ib-find .a-search{flex:1 1 320px;min-width:260px}
+.jayms-tool-outline .ib-findbox{position:relative;display:block;width:100%}
 .jayms-tool-outline .ib-findbox .a-search{width:100%;box-sizing:border-box}
-.jayms-tool-outline .ib-sugg{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);
+.jayms-tool-outline .ib-sugg{position:absolute;z-index:30;right:0;left:auto;top:calc(100% + 6px);
+  min-width:100%;width:max-content;max-width:min(340px,78vw);
   margin:0;padding:6px;list-style:none;background:var(--paper-deep);border:1px solid var(--line);
   border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.45);max-height:340px;overflow:auto}
 .jayms-tool-outline .ib-sugg-item{display:flex;align-items:center;gap:10px;padding:9px 10px;
@@ -494,24 +496,41 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   // The picker repaints in place rather than through render(), or the box
   // you are typing in loses focus on every keystroke.
-  var SUGG_MAX = 8;
-  var uiSugg = -1;
-  var suggOpen = false;
-
   window.ibFind = function (v) {
     uiFind = v;
-    uiSugg = -1;
-    suggOpen = true;
     var host = document.getElementById("ib-results");
     if (host) host.innerHTML = pickerResults();
     var head = document.getElementById("ib-rescount");
     if (head) head.textContent = resultNote();
-    paintSugg();
   };
 
+  // ------------------------------------------------- the reference box
+  // It answers while you type, because nobody should have to spell the
+  // book before they are allowed to name the chapter.
+  var SUGG_MAX = 8;
+  var uiSugg = -1;
+  var suggOpen = false;
+  var refText = "";
+
+  // the book part is whatever comes before the first digit
+  function refBookPart() {
+    var m = refText.replace(/[\u2013\u2014]/g, "-").match(/^(.*?)(\d.*)?$/);
+    return { name: (m && m[1] || "").trim(), rest: (m && m[2] || "").trim() };
+  }
+
   function suggList() {
-    var r = found();
-    return r.q ? r.list.slice(0, SUGG_MAX) : [];
+    var part = refBookPart();
+    var q = norm(part.name);
+    if (!q) return [];
+    var hits = [];
+    BOOKS.forEach(function (b, i) {
+      var v = score(b, q);
+      if (v > 0) hits.push({ b: b, v: v, i: i });
+    });
+    hits.sort(function (x, y) { return (y.v - x.v) || (x.i - y.i); });
+    // once the name is typed out in full there is nothing left to suggest
+    if (hits.length === 1 && norm(hits[0].b.name) === q && part.rest) return [];
+    return hits.slice(0, SUGG_MAX).map(function (h) { return h.b; });
   }
 
   function suggHTML() {
@@ -532,7 +551,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function paintSugg() {
     var wrap = document.getElementById("ib-suggwrap");
     if (wrap) wrap.innerHTML = suggHTML();
-    var box = document.getElementById("ib-q");
+    var box = document.getElementById("ib-ref");
     if (!box) return;
     var open = !!(wrap && wrap.firstChild);
     box.setAttribute("aria-expanded", open ? "true" : "false");
@@ -542,14 +561,30 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   window.ibSuggHover = function (i) { uiSugg = i; paintSugg(); };
 
+  window.ibRef = function (v) {
+    refText = v;
+    uiSugg = -1;
+    suggOpen = true;
+    var msg = document.getElementById("ib-jump-msg");
+    if (msg) msg.hidden = true;
+    paintSugg();
+  };
+
+  // choosing a book fills the name in and leaves you on the chapter
   window.ibPick = function (i) {
     var b = suggList()[i];
     if (!b) return;
+    var box = document.getElementById("ib-ref");
+    var rest = refBookPart().rest;
+    refText = b.name + " " + rest;
+    if (box) { box.value = refText; box.focus(); }
     suggOpen = false;
-    go({ screen: "book", book: b.name });
+    uiSugg = -1;
+    paintSugg();
+    if (rest) ibJump();
   };
 
-  window.ibFindKey = function (e) {
+  window.ibRefKey = function (e) {
     var list = suggOpen ? suggList() : [];
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -562,15 +597,18 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       paintSugg();
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (list.length) ibPick(uiSugg < 0 ? 0 : uiSugg);
+      // a highlighted book, or a name with no chapter yet, fills the box;
+      // anything else is a finished reference and goes
+      if (list.length && (uiSugg > -1 || !refBookPart().rest)) ibPick(uiSugg < 0 ? 0 : uiSugg);
+      else ibJump();
     } else if (e.key === "Escape") {
       suggOpen = false;
       paintSugg();
     }
   };
 
-  window.ibFindOpen = function () { if (uiFind.trim()) { suggOpen = true; paintSugg(); } };
-  window.ibFindShut = function () { suggOpen = false; paintSugg(); };
+  window.ibRefOpen = function () { if (refText.trim()) { suggOpen = true; paintSugg(); } };
+  window.ibRefShut = function () { suggOpen = false; paintSugg(); };
 
   // ---------------------------------------------------------- the search
   // Typed by someone who should not have to spell Ecclesiastes. Four ways
@@ -748,13 +786,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var find = '<div class="ib-find">' +
       '<label class="ib-sr" for="ib-q">Find a book</label>' +
-      '<span class="ib-findbox">' +
       '<input id="ib-q" class="a-search" type="search" autocomplete="off" spellcheck="false"' +
-      ' role="combobox" aria-expanded="false" aria-controls="ib-sugg" aria-autocomplete="list"' +
       ' placeholder="Find a book. Spelling does not have to be right."' +
-      ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)" onkeydown="ibFindKey(event)"' +
-      ' onfocus="ibFindOpen()" onblur="ibFindShut()">' +
-      '<span id="ib-suggwrap">' + suggHTML() + "</span></span>" +
+      ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)">' +
       '<span class="a-row">' +
         chip("All 66", !uiTestament, "ibTestament(null)") +
         chip("Old Testament", uiTestament === "OT", "ibTestament('OT')") +
@@ -765,8 +799,13 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       '<h2 class="a-clabel">Jump straight in</h2>' +
       '<p class="ib-jump-note">Type a reference and go directly to the passage.</p>' +
       '<label class="ib-sr" for="ib-ref">Go to a reference</label>' +
-      '<input id="ib-ref" class="a-search" type="text" autocomplete="off" spellcheck="false" placeholder="John 1:1-18"' +
-      ' onkeydown="if(event.key===\'Enter\'){event.preventDefault();ibJump()}">' +
+      '<span class="ib-findbox">' +
+      '<input id="ib-ref" class="a-search" type="text" autocomplete="off" spellcheck="false"' +
+      ' role="combobox" aria-expanded="false" aria-controls="ib-sugg" aria-autocomplete="list"' +
+      ' placeholder="John 1:1-18" value="' + esc(refText) + '"' +
+      ' oninput="ibRef(this.value)" onkeydown="ibRefKey(event)"' +
+      ' onfocus="ibRefOpen()" onblur="ibRefShut()">' +
+      '<span id="ib-suggwrap">' + suggHTML() + "</span></span>" +
       '<button type="button" class="a-lnk" onclick="ibJump()">Go to passage ›</button>' +
       '<p class="ib-note ib-jump-foot">66 of 66 books · no login · free</p>' +
       '<p class="ib-note" id="ib-jump-msg" hidden></p></aside>';
@@ -781,7 +820,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   window.ibJump = function () {
     var box = document.getElementById("ib-ref");
     var msg = document.getElementById("ib-jump-msg");
-    var raw = (box && box.value || "").trim();
+    var raw = ((box && box.value) || refText || "").trim();
     function fail(t) { if (msg) { msg.hidden = false; msg.textContent = t; } }
     if (!raw) return fail("Type something like John 1:1-18.");
 
