@@ -385,10 +385,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   // The outline tags every event with one of four kinds. A standard event
   // is the default and carries no flag; the other three each get a token.
+  // The names are the outline's own, word for word -- shortening "Teaching
+  // / Parable" to "Teaching" hid every parable in the Gospels.
   var KINDS = {
-    "Major Event":        { chip: "Major events", flag: "Major event", cls: "k-major" },
-    "Teaching / Parable": { chip: "Teaching",     flag: "Teaching",    cls: "k-teach" },
-    "Miracle / Sign":     { chip: "Miracles",     flag: "Miracle",     cls: "k-sign"  }
+    "Major Event":        "k-major",
+    "Teaching / Parable": "k-teach",
+    "Miracle / Sign":     "k-sign"
   };
   var uiVersion = "net";
   var uiHebrew = true;
@@ -967,7 +969,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</div>" +
       '<span class="a-row">' + chip("All events", !uiKind, "ibKind(null)") +
         present.map(function (k) {
-          return chip(KINDS[k].chip + " " + tally[k], uiKind === k, "ibKind(" + attr(k) + ")");
+          return chip(k + " " + tally[k], uiKind === k, "ibKind(" + attr(k) + ")");
         }).join("") +
       "</span></div>" +
       versionBar("Applies to every passage you open on this page.") +
@@ -978,14 +980,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function eventRow(ev) {
     var ref = ev.date || "", en = toEnglishRef(ref);
     var id = "p" + en.replace(/[^A-Za-z0-9]/g, "");
-    var k = KINDS[ev.kind];
+    var cls = KINDS[ev.kind];
     var key = VIEW.book + "|" + en;
-    return '<details class="ib-fold' + (k ? " kind " + k.cls : "") + '"' +
+    return '<details class="ib-fold' + (cls ? " kind " + cls : "") + '"' +
       (openFolds[key] ? " open" : "") + ' data-ref="' + esc(en) + '" data-key="' + esc(key) + '" data-node="' + id + '">' +
       "<summary>" +
         '<span class="ib-ref">' + esc(en) + "</span>" +
         '<span class="ib-title">' + esc(ev.title) +
-          (k ? ' <span class="ib-flag">' + esc(k.flag) + "</span>" : "") + "</span>" +
+          (cls ? ' <span class="ib-flag">' + esc(ev.kind) + "</span>" : "") + "</span>" +
         '<span class="ib-caret" aria-hidden="true">›</span>' +
       "</summary>" +
       '<div class="ib-fold-body">' +
