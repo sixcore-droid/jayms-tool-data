@@ -91,6 +91,12 @@ add_action( 'wp_footer', function () {
 /* ------------------------------------------------------------ the book */
 .jayms-tool-outline .ib-bookhead{display:flex;flex-wrap:wrap;align-items:flex-end;
   justify-content:space-between;gap:24px}
+/* one row of controls: what to show on the left, what to read it in on
+   the right */
+.jayms-tool-outline .ib-controls{justify-content:space-between;gap:16px 28px}
+.jayms-tool-outline .ib-ctl-left,
+.jayms-tool-outline .ib-ctl-right{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.jayms-tool-outline .ib-ctl-right{margin-left:auto}
 .jayms-tool-outline .ib-bookhead-t{flex:1 1 380px;min-width:0}
 .jayms-tool-outline .ib-bookhead .a-sub{margin-bottom:0}
 
@@ -880,13 +886,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return '<nav class="a-crumbs" aria-label="Breadcrumb">' + out.join("") + "</nav>";
   }
 
-  function versionBar(note) {
-    return '<div class="ib-rule"><span class="a-clabel" id="ib-tr">Translation</span>' +
+  function versionBar() {
+    return '<span class="ib-ctl-right"><span class="a-clabel" id="ib-tr">Translation</span>' +
       '<span role="group" aria-labelledby="ib-tr" class="a-row">' +
       VERSION_ORDER.map(function (v) {
         return chip(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
-      }).join("") + "</span>" +
-      (note ? '<span class="ib-note">' + esc(note) + "</span>" : "") + "</div>";
+      }).join("") + "</span></span>";
   }
 
   function attribution() {
@@ -1211,14 +1216,16 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         '<h1 class="a-title">' + esc(book) + "</h1>" +
         (doc.desc ? '<p class="a-sub">' + esc(doc.desc) + "</p>" : "") +
       "</div>" +
-      '<span class="a-row">' + chip("All events", !uiKind, "ibKind(null)") +
-        present.map(function (k) {
-          return chip(k + " " + tally[k], uiKind === k, "ibKind(" + attr(k) + ")");
-        }).join("") +
-        (onlyCount ? chip("Only in " + book + " " + onlyCount, uiOnly,
-                          "ibOnly(" + (uiOnly ? "false" : "true") + ")") : "") +
-      "</span></div>" +
-      versionBar("Applies to every passage you open on this page.") +
+      "</div>" +
+      '<div class="ib-rule ib-controls">' +
+        '<span class="a-row ib-ctl-left">' + chip("All events", !uiKind, "ibKind(null)") +
+          present.map(function (k) {
+            return chip(k + " " + tally[k], uiKind === k, "ibKind(" + attr(k) + ")");
+          }).join("") +
+          (onlyCount ? chip("Only in " + book + " " + onlyCount, uiOnly,
+                            "ibOnly(" + (uiOnly ? "false" : "true") + ")") : "") +
+        "</span>" + versionBar() +
+      "</div>" +
       '<div class="ib-book">' + rail + '<div class="ib-eras">' + body + "</div></div>" +
       attribution();
   }
