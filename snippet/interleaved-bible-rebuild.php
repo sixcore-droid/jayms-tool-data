@@ -938,7 +938,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</div>" +
       '<span class="a-row">' +
         chip("All events", !uiTurningOnly, "ibTurning(false)") +
-        chip("Turning points", uiTurningOnly, "ibTurning(true)") +
+        chip("Major events", uiTurningOnly, "ibTurning(true)") +
       "</span></div>" +
       versionBar("Applies to every passage you open on this page.") +
       '<div class="ib-book">' + rail + '<div class="ib-eras">' + body + "</div></div>" +
@@ -952,14 +952,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return '<details class="ib-fold' + (turning ? " turning" : "") + '" data-ref="' + esc(en) + '" data-node="' + id + '">' +
       "<summary>" +
         '<span class="ib-ref">' + esc(en) + "</span>" +
-        '<span class="ib-title">' + esc(ev.title) + (turning ? ' <span class="ib-flag">Turning point</span>' : "") + "</span>" +
+        '<span class="ib-title">' + esc(ev.title) + (turning ? ' <span class="ib-flag">Major event</span>' : "") + "</span>" +
         '<span class="ib-caret" aria-hidden="true">›</span>' +
       "</summary>" +
       '<div class="ib-fold-body">' +
         (ev.detail ? '<p class="ib-detail">' + esc(ev.detail) + "</p>" : "") +
         '<p class="ib-passage" id="' + id + '">Open to read it.</p>' +
         '<div class="a-row">' +
-          '<button type="button" class="a-lnk" onclick="ibGo({screen:\'read\',book:' + attr(VIEW.book) + ",ref:" + attr(ref) + '})">Read it word by word ›</button>' +
+          '<button type="button" class="a-lnk" onclick="ibGo({screen:\'read\',book:' + attr(VIEW.book) + ",ref:" + attr(ref) + '})">Interleaving ›</button>' +
           '<span class="ib-note">' + esc(VERSION_LABEL[uiVersion]) + "</span>" +
         "</div>" +
       "</div></details>";
