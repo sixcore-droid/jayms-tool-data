@@ -97,10 +97,16 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-book{display:flex;gap:44px;align-items:flex-start;margin-top:4px}
 .jayms-tool-outline .ib-rail{position:sticky;top:20px;flex:0 0 210px;display:flex;flex-direction:column;
   gap:8px;border-right:1px solid var(--line);padding-right:24px;max-height:calc(100vh - 40px)}
-.jayms-tool-outline .ib-raillist{display:flex;flex-direction:column;gap:2px;overflow:auto;min-height:0;
-  scrollbar-width:thin}
-.jayms-tool-outline .ib-rail a{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;
-  border-radius:7px;text-decoration:none;font-size:13px;color:var(--ink-soft)}
+.jayms-tool-outline .ib-raillist{display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0;
+  padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.jayms-tool-outline .ib-raillist::-webkit-scrollbar{width:8px}
+.jayms-tool-outline .ib-raillist::-webkit-scrollbar-track{background:transparent}
+.jayms-tool-outline .ib-raillist::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+.jayms-tool-outline .ib-raillist::-webkit-scrollbar-thumb:hover{background:var(--border-bright)}
+/* the site underlines every link inside a tool; in a list of them that
+   reads as a rule between the rows */
+.jayms-tool-outline .ib-rail a{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;
+  border:0;border-radius:7px;text-decoration:none;font-size:14px;line-height:1.4;color:var(--ink-soft)}
 .jayms-tool-outline .ib-rail a span + span{color:var(--muted);flex:0 0 auto}
 .jayms-tool-outline .ib-rail a.on{background:var(--paper-deep);color:var(--ink)}
 .jayms-tool-outline .ib-rail a:hover{background:var(--paper-deep);color:var(--ink)}
