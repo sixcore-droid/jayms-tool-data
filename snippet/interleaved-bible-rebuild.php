@@ -80,6 +80,9 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-gsec{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px}
 .jayms-tool-outline .ib-gsec:first-child{margin-top:0}
 .jayms-tool-outline .ib-slash{color:var(--line)}
+/* the mock was drawn on a 1280 canvas; on a real screen the row takes
+   as many books as it has room for rather than three wide ones */
+.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
 .jayms-tool-outline .ib-tile{gap:3px;align-items:flex-start;text-align:left}
 .jayms-tool-outline .ib-tile-name{font-size:22px;line-height:1.25;color:var(--ink)}
 .jayms-tool-outline .ib-tile-meta{font-size:12px;color:var(--muted)}
@@ -131,7 +134,10 @@ add_action( 'wp_footer', function () {
 
 /* ------------------------------------------------------------ the read */
 .jayms-tool-outline .ib-read{display:flex;gap:0;align-items:flex-start}
-.jayms-tool-outline .ib-text{flex:1 1 auto;min-width:0;padding-right:44px}
+/* the reading column keeps its measure, but sits in the middle of the
+   space it has instead of hard against the left with a void beside it */
+.jayms-tool-outline .ib-text{flex:1 1 auto;min-width:0;padding-right:44px;
+  max-width:900px;margin-inline:auto}
 .jayms-tool-outline .ib-readhead{display:flex;flex-wrap:wrap;align-items:flex-end;
   justify-content:space-between;gap:20px;margin:0 0 24px}
 .jayms-tool-outline .ib-readhead-t{flex:1 1 320px;min-width:0}
