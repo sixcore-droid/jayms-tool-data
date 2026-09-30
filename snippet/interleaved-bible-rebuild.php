@@ -158,6 +158,25 @@ add_action( 'wp_footer', function () {
   justify-content:space-between;gap:20px;margin:0 0 24px}
 .jayms-tool-outline .ib-readhead-t{flex:1 1 320px;min-width:0}
 .jayms-tool-outline .ib-readhead .a-eyebrow{margin:6px 0 0}
+/* The interlinear: one column per word, its gloss above the original, the
+   whole passage wrapping like a paragraph. Reading order runs left to
+   right even though each Hebrew word is set right to left inside itself,
+   which is how a printed interlinear does it. */
+.jayms-tool-outline .ib-il{display:flex;flex-wrap:wrap;align-items:flex-end;
+  gap:10px 8px;margin:0 0 26px}
+.jayms-tool-outline .ib-vnum{align-self:flex-end;padding:0 2px 4px 0;font-size:13px;
+  font-weight:600;color:var(--gold);line-height:1}
+.jayms-tool-outline .ib-u{display:inline-flex;flex-direction:column;align-items:center;
+  gap:3px;padding:4px 5px;margin:0;border:0;border-radius:6px;background:none;
+  font:inherit;color:inherit;cursor:pointer;text-align:center}
+.jayms-tool-outline .ib-u-en{font-size:13px;line-height:1.2;color:var(--ink-soft);white-space:nowrap}
+.jayms-tool-outline .ib-u-he{font-size:24px;line-height:1.3;color:var(--ink);white-space:nowrap}
+.jayms-tool-outline .ib-u:hover{background:var(--paper-deeper)}
+.jayms-tool-outline .ib-u.on{background:var(--gold)}
+.jayms-tool-outline .ib-u.on .ib-u-en,
+.jayms-tool-outline .ib-u.on .ib-u-he{color:var(--paper-deep)}
+.jayms-tool-outline .ib-read.is-il .ib-text{padding-right:36px}
+
 .jayms-tool-outline .ib-verse{margin:0 0 22px}
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
@@ -468,7 +487,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   window.ibGenre     = function (g) { uiGenre = g; render(); };
   window.ibKind      = function (k) { uiKind = k; render(); };
   window.ibOnly      = function (b) { uiOnly = b; render(); };
-  window.ibHebrew    = function () { uiHebrew = !uiHebrew; render(); };
+  window.ibHebrew    = function (on) { uiHebrew = !!on; render(); };
   window.ibVersion   = function (v) { uiVersion = v; render(); };
 
   // ------------------------------------------------------------- verses
@@ -1094,53 +1113,69 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var top = '<div class="ib-readhead"><div class="ib-readhead-t">' +
       '<h1 class="a-title">' + esc(ev && ev.title ? ev.title : en) + "</h1>" +
-      '<p class="a-eyebrow">' + esc(en) + " · " + esc(VERSION_LABEL[uiVersion]) + "</p></div>" +
+      '<p class="a-eyebrow">' + esc(en) + (uiHebrew ? "" : " · " + esc(VERSION_LABEL[uiVersion])) + "</p></div>" +
       '<span class="a-row">' +
-        ["net","web","nlt","esv"].map(function (v) {
+        chip("Interlinear", uiHebrew, "ibHebrew(true)") +
+        chip("Translation", !uiHebrew, "ibHebrew(false)") +
+        (uiHebrew ? "" : ["net","web","nlt","esv"].map(function (v) {
           return chip(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
-        }).join("") +
-        chip(uiHebrew ? "Original on" : "Original off", uiHebrew, "ibHebrew()") +
+        }).join("")) +
       "</span></div>";
 
+    var body = uiHebrew ? interlinear(book, rows)
+                        : rows.map(function (r) { return verseBlock(book, r); }).join("");
+
     return head +
-      '<div class="ib-read' + (uiHebrew ? "" : " no-orig") + '">' +
-        '<main class="ib-text">' + top +
-          rows.map(function (r) { return verseBlock(book, r); }).join("") + attribution() + "</main>" +
+      '<div class="ib-read' + (uiHebrew ? " is-il" : " no-orig") + '">' +
+        '<main class="ib-text">' + top + body + attribution() + "</main>" +
         wordPanel(book) +
       "</div>";
   }
 
+  // The interlinear proper: every word is a column, its gloss over the
+  // original, and the whole passage runs as one line of reading that wraps
+  // like prose. Morphemes glued by "after" stay in one column so a word is
+  // not split into fragments the eye has to reassemble.
+  function interlinear(book, rows) {
+    var out = [];
+    rows.forEach(function (row) {
+      var en = toEnglishVerse(book, row.c, row.v);
+      out.push('<span class="ib-vnum" id="v' + row.c + "-" + row.v + '">[' + en.verse + "]</span>");
+
+      var run = [], first = 0;
+      row.words.forEach(function (w, i) {
+        if (!run.length) first = i;
+        run.push(w);
+        if (w.after !== "") { out.push(unit(row, run, first)); run = []; }
+      });
+      if (run.length) out.push(unit(row, run, first));
+    });
+    return '<div class="ib-il">' + out.join("") + "</div>";
+  }
+
+  function unit(row, run, i) {
+    var on = uiWord && uiWord.c === row.c && uiWord.v === row.v && uiWord.i === i;
+    var word = run.map(function (w) { return esc(w.text); }).join("");
+    var gloss = run.map(function (w) { return String(w.gloss || w.english || ""); })
+                   .join(" ").replace(/\./g, " ").replace(/\s+/g, " ").trim();
+    var rtl = /[\u0590-\u05FF]/.test(run[0].text || "");
+    return '<button type="button" class="ib-u' + (on ? " on" : "") + '" onclick="ibWord(' +
+      row.c + "," + row.v + "," + i + ')">' +
+      '<span class="ib-u-en">' + esc(gloss || "\u00b7") + "</span>" +
+      '<span class="ib-u-he" lang="' + (rtl ? "he" : "grc") + '"' + (rtl ? ' dir="rtl"' : "") + ">" +
+      word + "</span></button>";
+  }
+
+  // the plain reading: the translation on its own, no original underneath
   function verseBlock(book, row) {
     var en = toEnglishVerse(book, row.c, row.v);
-    var id = "v" + row.c + "-" + row.v;
-    var rtl = row.words.length && /[֐-׿]/.test(row.words[0].text || "");
-
-    // The data is morphemes, not words: a token whose "after" is empty is
-    // glued to the next one. Grouping them keeps the line reading as Hebrew
-    // instead of as a row of fragments.
-    var groups = [], run = [];
-    row.words.forEach(function (w, i) {
-      var on = uiWord && uiWord.c === row.c && uiWord.v === row.v && uiWord.i === i;
-      run.push('<button type="button" class="ib-w' + (on ? " on" : "") + '" onclick="ibWord(' +
-        row.c + "," + row.v + "," + i + ')">' + esc(w.text) + "</button>");
-      if (w.after !== "") { groups.push(run); run = []; }
-    });
-    if (run.length) groups.push(run);
-    var words = groups.map(function (g) { return '<span class="ib-wd">' + g.join("") + "</span>"; }).join(" ");
-
     return '<section class="ib-verse">' +
       '<p class="a-clabel">' + esc(book + " " + en.chapter + ":" + en.verse) + "</p>" +
-      '<p class="ib-passage" id="' + id + '">Loading…</p>' +
-      (uiHebrew ? '<div class="ib-origbox">' +
-        '<p class="a-clabel ib-origlabel">' + (rtl ? "Hebrew" : "Greek") +
-        " · verse " + en.verse + "</p>" +
-        '<p class="ib-orig' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '"' +
-        (rtl ? ' dir="rtl"' : "") + ">" + words + "</p></div>" : "") +
-      "</section>";
+      '<p class="ib-passage" id="v' + row.c + "-" + row.v + '">Loading\u2026</p></section>';
   }
 
   function fillReadVerses() {
-    if (VIEW.screen !== "read") return;
+    if (VIEW.screen !== "read" || uiHebrew) return;   // the interlinear fetches nothing
     var p = parseRef(VIEW.ref);
     if (!p || !DATA[VIEW.book]) return;
     versesIn(VIEW.book, p).forEach(function (row) {
