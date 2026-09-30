@@ -118,22 +118,25 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-rows{display:flex;flex-direction:column;gap:1px;background:var(--line);
   border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
 .jayms-tool-outline .ib-fold{background:var(--paper-deep)}
-.jayms-tool-outline .ib-fold.turning{border-left:3px solid var(--rust)}
+.jayms-tool-outline .ib-fold.kind{border-left:3px solid var(--k)}
+.jayms-tool-outline .ib-fold.k-major{--k:var(--rust)}
+.jayms-tool-outline .ib-fold.k-teach{--k:var(--blue)}
+.jayms-tool-outline .ib-fold.k-sign{--k:var(--aramaic)}
 .jayms-tool-outline .ib-fold > summary{display:flex;align-items:baseline;gap:18px;padding:15px 18px;
   list-style:none;cursor:pointer;min-height:44px;box-sizing:border-box}
-.jayms-tool-outline .ib-fold.turning > summary{padding-left:15px}
+.jayms-tool-outline .ib-fold.kind > summary{padding-left:15px}
 .jayms-tool-outline .ib-fold > summary::-webkit-details-marker{display:none}
 .jayms-tool-outline .ib-fold > summary:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-ref{flex:0 0 122px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--gold)}
-.jayms-tool-outline .ib-fold.turning .ib-ref{color:var(--rust)}
+.jayms-tool-outline .ib-fold.kind .ib-ref{color:var(--k)}
 .jayms-tool-outline .ib-title{flex:1 1 auto;min-width:0;font-size:20px;color:var(--ink)}
 .jayms-tool-outline .ib-flag{margin-left:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--rust)}
+  color:var(--k,var(--muted))}
 .jayms-tool-outline .ib-caret{flex:0 0 auto;color:var(--gold);font-size:13px}
 .jayms-tool-outline .ib-fold[open] > summary .ib-caret{display:inline-block;transform:rotate(90deg)}
 .jayms-tool-outline .ib-fold-body{padding:2px 22px 20px 158px;display:flex;flex-direction:column;gap:14px}
-.jayms-tool-outline .ib-fold.turning .ib-fold-body{padding-left:155px}
+.jayms-tool-outline .ib-fold.kind .ib-fold-body{padding-left:155px}
 .jayms-tool-outline .ib-detail{margin:0;max-width:66ch;color:var(--ink-soft)}
 .jayms-tool-outline .ib-passage{margin:0;max-width:62ch;line-height:1.72}
 .jayms-tool-outline .ib-vn{font-size:.58em;vertical-align:super;color:var(--muted);padding:0 3px 0 4px}
@@ -203,7 +206,7 @@ add_action( 'wp_footer', function () {
     border-top:1px solid var(--line);padding:22px 0 0}
   .jayms-tool-outline .ib-text{padding-right:0}
   .jayms-tool-outline .ib-fold-body,
-  .jayms-tool-outline .ib-fold.turning .ib-fold-body{padding-left:18px}
+  .jayms-tool-outline .ib-fold.kind .ib-fold-body{padding-left:18px}
   .jayms-tool-outline .ib-fold > summary{flex-wrap:wrap;gap:4px 14px}
   .jayms-tool-outline .ib-ref{flex:0 0 100%}
 }
@@ -377,7 +380,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var uiTestament = null;
   var uiGenre = null;
   var uiFind = "";
-  var uiTurningOnly = false;
+  var uiKind = null;      // which kind of event the page is filtered to
+
+  // The outline tags every event with one of four kinds. A standard event
+  // is the default and carries no flag; the other three each get a token.
+  var KINDS = {
+    "Major Event":        { chip: "Major events", flag: "Major event", cls: "k-major" },
+    "Teaching / Parable": { chip: "Teaching",     flag: "Teaching",    cls: "k-teach" },
+    "Miracle / Sign":     { chip: "Miracles",     flag: "Miracle",     cls: "k-sign"  }
+  };
   var uiVersion = "net";
   var uiHebrew = true;
   var uiWord = null;
@@ -441,7 +452,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   window.ibTestament = function (t) { uiTestament = t; render(); };
   window.ibGenre     = function (g) { uiGenre = g; render(); };
-  window.ibTurning   = function (b) { uiTurningOnly = b; render(); };
+  window.ibKind      = function (k) { uiKind = k; render(); };
   window.ibHebrew    = function () { uiHebrew = !uiHebrew; render(); };
   window.ibVersion   = function (v) { uiVersion = v; render(); };
 
@@ -910,9 +921,19 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (!doc) { ensureOutline(book); return crumbs([{ label: book }]) + '<p class="ib-note">Loading the outline…</p>'; }
 
     var eras = (doc.eras || []).map(function (era, i) {
-      var events = (era.events || []).filter(function (e) { return !uiTurningOnly || e.colour === "red"; });
+      var events = (era.events || []).filter(function (e) { return !uiKind || e.kind === uiKind; });
       return { era: era, events: events, id: "era" + i };
     }).filter(function (x) { return x.events.length; });
+
+    // only offer a filter for the kinds this book actually holds
+    var present = [], tally = {};
+    (doc.eras || []).forEach(function (era) {
+      (era.events || []).forEach(function (e) {
+        if (!KINDS[e.kind]) return;
+        if (present.indexOf(e.kind) < 0) present.push(e.kind);
+        tally[e.kind] = (tally[e.kind] || 0) + 1;
+      });
+    });
 
     var rail = '<nav class="ib-rail" aria-label="Movements"><p class="a-clabel">Movements</p>' +
       '<div class="ib-raillist">' +
@@ -936,9 +957,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         '<h1 class="a-title">' + esc(book) + "</h1>" +
         (doc.desc ? '<p class="a-sub">' + esc(doc.desc) + "</p>" : "") +
       "</div>" +
-      '<span class="a-row">' +
-        chip("All events", !uiTurningOnly, "ibTurning(false)") +
-        chip("Major events", uiTurningOnly, "ibTurning(true)") +
+      '<span class="a-row">' + chip("All events", !uiKind, "ibKind(null)") +
+        present.map(function (k) {
+          return chip(KINDS[k].chip + " " + tally[k], uiKind === k, "ibKind(" + attr(k) + ")");
+        }).join("") +
       "</span></div>" +
       versionBar("Applies to every passage you open on this page.") +
       '<div class="ib-book">' + rail + '<div class="ib-eras">' + body + "</div></div>" +
@@ -948,11 +970,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function eventRow(ev) {
     var ref = ev.date || "", en = toEnglishRef(ref);
     var id = "p" + en.replace(/[^A-Za-z0-9]/g, "");
-    var turning = ev.colour === "red";
-    return '<details class="ib-fold' + (turning ? " turning" : "") + '" data-ref="' + esc(en) + '" data-node="' + id + '">' +
+    var k = KINDS[ev.kind];
+    return '<details class="ib-fold' + (k ? " kind " + k.cls : "") + '" data-ref="' + esc(en) + '" data-node="' + id + '">' +
       "<summary>" +
         '<span class="ib-ref">' + esc(en) + "</span>" +
-        '<span class="ib-title">' + esc(ev.title) + (turning ? ' <span class="ib-flag">Major event</span>' : "") + "</span>" +
+        '<span class="ib-title">' + esc(ev.title) +
+          (k ? ' <span class="ib-flag">' + esc(k.flag) + "</span>" : "") + "</span>" +
         '<span class="ib-caret" aria-hidden="true">›</span>' +
       "</summary>" +
       '<div class="ib-fold-body">' +
