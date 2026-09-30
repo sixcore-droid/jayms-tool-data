@@ -163,9 +163,12 @@ add_action( 'wp_footer', function () {
    right even though each Hebrew word is set right to left inside itself,
    which is how a printed interlinear does it. */
 .jayms-tool-outline .ib-il{display:flex;flex-wrap:wrap;align-items:flex-end;
-  gap:10px 8px;margin:0 0 26px}
-.jayms-tool-outline .ib-vnum{align-self:flex-end;padding:0 2px 4px 0;font-size:13px;
-  font-weight:600;color:var(--gold);line-height:1}
+  gap:16px 8px;margin:0 0 26px}
+/* the number opens a verse, so it sits high and keeps its distance from
+   the word before it, or it reads as that word's footnote */
+.jayms-tool-outline .ib-vnum{align-self:flex-start;margin-left:14px;padding:0 1px;
+  font-size:12px;font-weight:600;color:var(--gold);line-height:1.2}
+.jayms-tool-outline .ib-il > .ib-vnum:first-child{margin-left:0}
 .jayms-tool-outline .ib-u{display:inline-flex;flex-direction:column;align-items:center;
   gap:3px;padding:4px 5px;margin:0;border:0;border-radius:6px;background:none;
   font:inherit;color:inherit;cursor:pointer;text-align:center}
@@ -1154,13 +1157,21 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   }
 
   function unit(row, run, i) {
-    var on = uiWord && uiWord.c === row.c && uiWord.v === row.v && uiWord.i === i;
+    // a click should open the word, not the letter stuck to the front of
+    // it: the head of the group is its longest morpheme
+    var head = i, longest = -1;
+    run.forEach(function (w, n) {
+      var len = String(w.text || "").replace(/[\u0591-\u05C7]/g, "").length;
+      if (len > longest) { longest = len; head = i + n; }
+    });
+    var on = uiWord && uiWord.c === row.c && uiWord.v === row.v &&
+             uiWord.i >= i && uiWord.i < i + run.length;
     var word = run.map(function (w) { return esc(w.text); }).join("");
     var gloss = run.map(function (w) { return String(w.gloss || w.english || ""); })
                    .join(" ").replace(/\./g, " ").replace(/\s+/g, " ").trim();
     var rtl = /[\u0590-\u05FF]/.test(run[0].text || "");
     return '<button type="button" class="ib-u' + (on ? " on" : "") + '" onclick="ibWord(' +
-      row.c + "," + row.v + "," + i + ')">' +
+      row.c + "," + row.v + "," + head + ')">' +
       '<span class="ib-u-en">' + esc(gloss || "\u00b7") + "</span>" +
       '<span class="ib-u-he" lang="' + (rtl ? "he" : "grc") + '"' + (rtl ? ' dir="rtl"' : "") + ">" +
       word + "</span></button>";
