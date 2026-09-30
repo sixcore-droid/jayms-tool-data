@@ -233,7 +233,10 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
 /* reading in parallel: one column per translation, verse against verse */
 .jayms-tool-outline .ib-par{display:grid;gap:8px 28px;align-items:start}
-.jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--gold)}
+/* the reading is the thing: the text stays bright and the column heading
+   steps back, or the eye lands on the label instead of the verse */
+.jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--muted)}
+.jayms-tool-outline .ib-verse .ib-passage{color:var(--ink)}
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
 .jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
