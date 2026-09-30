@@ -178,6 +178,11 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-u.on{background:var(--gold)}
 .jayms-tool-outline .ib-u.on .ib-u-en,
 .jayms-tool-outline .ib-u.on .ib-u-he{color:var(--paper-deep)}
+/* the versions differ on this word: say so before it is clicked */
+.jayms-tool-outline .ib-u-diff .ib-u-en{color:var(--rust)}
+.jayms-tool-outline .ib-u-diff .ib-u-he{border-bottom:1px dotted var(--rust)}
+.jayms-tool-outline .ib-u-diff.on .ib-u-en{color:var(--paper-deep)}
+.jayms-tool-outline .ib-u-diff.on .ib-u-he{border-bottom-color:var(--paper-deep)}
 .jayms-tool-outline .ib-read.is-il .ib-text{padding-right:36px}
 /* a verse the versions argue over says so, and opens the argument below */
 .jayms-tool-outline .ib-vnum-diff{background:none;border:0;padding:0 1px;font:inherit;
@@ -1281,7 +1286,16 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return hit;
   }
 
-  window.ibWord = function (c, v, i) { uiWord = { c: c, v: v, i: i }; render(); };
+  window.ibWord = function (c, v, i) {
+    uiWord = { c: c, v: v, i: i };
+    // if the versions differ on this word, the argument opens with it
+    var data = DATA[VIEW.book];
+    var ch = data && data.chapters && data.chapters[c];
+    var w = ch && ch.verses[v] && ch.verses[v].words[i];
+    var ids = w ? diffsForStrong(strongKey(w.strong)) : [];
+    if (ids.length) { uiDiff = ids[0]; ensureDiffFull(); }
+    render();
+  };
 
   function renderRead() {
     var book = VIEW.book, ref = VIEW.ref, en = toEnglishRef(ref);
@@ -1358,12 +1372,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     });
     var on = uiWord && uiWord.c === row.c && uiWord.v === row.v &&
              uiWord.i >= i && uiWord.i < i + run.length;
+    // a word the versions argue over is marked before you click it
+    var argued = diffsForStrong(strongKey(run[head - i].strong)).length > 0;
     var word = run.map(function (w) { return esc(w.text); }).join("");
     var gloss = run.map(function (w) { return String(w.gloss || w.english || ""); })
                    .join(" ").replace(/\./g, " ").replace(/\s+/g, " ").trim();
     var rtl = /[\u0590-\u05FF]/.test(run[0].text || "");
-    return '<button type="button" class="ib-u' + (on ? " on" : "") + '" onclick="ibWord(' +
-      row.c + "," + row.v + "," + head + ')">' +
+    return '<button type="button" class="ib-u' + (on ? " on" : "") + (argued ? " ib-u-diff" : "") +
+      '" onclick="ibWord(' + row.c + "," + row.v + "," + head + ')"' +
+      (argued ? ' title="The versions differ on this word"' : "") + ">" +
       '<span class="ib-u-en">' + esc(gloss || "\u00b7") + "</span>" +
       '<span class="ib-u-he" lang="' + (rtl ? "he" : "grc") + '"' + (rtl ? ' dir="rtl"' : "") + ">" +
       word + "</span></button>";
