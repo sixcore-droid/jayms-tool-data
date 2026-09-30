@@ -678,6 +678,18 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     } catch (e) { return fallback; }
   }
 
+  // Which translation you read in is a preference for the whole site, not a
+  // setting belonging to one tool: it lives under a single key, so a reader
+  // who picks KJV here is still in KJV in the Divine Council Index and
+  // anywhere else that offers the switch.
+  function sharedVersion() {
+    try { return window.localStorage.getItem("jayms.version") || ""; }
+    catch (e) { return ""; }
+  }
+  function setSharedVersion(v) {
+    try { window.localStorage.setItem("jayms.version", v); } catch (e) {}
+  }
+
   var uiVersion = "net";      // the one a passage on the book screen opens in
   var uiCols = ["net"];       // the translations set side by side when reading
   var uiHebrew = recall("mode", "il") !== "par";
@@ -765,7 +777,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     remember("mode", uiHebrew ? "il" : "par");
     render();
   };
-  window.ibVersion   = function (v) { uiVersion = v; remember("version", v); render(); };
+  window.ibVersion   = function (v) { uiVersion = v; setSharedVersion(v); render(); };
   // reading in parallel: a translation goes in or comes out, and the last
   // one standing cannot be removed or there would be nothing to read
   window.ibCol       = function (v) {
@@ -862,7 +874,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var VERSION_ORDER = ["net", "kjv", "web", "nlt", "esv"];
 
   (function restorePicks() {
-    var v = recall("version", "");
+    // the site-wide key first; the tool's own older key is still read so a
+    // choice made before the key was shared is not thrown away
+    var v = sharedVersion() || recall("version", "");
     if (VERSION_ORDER.indexOf(v) > -1) uiVersion = v;
     var cols = recall("cols", "").split(",").filter(function (x) {
       return VERSION_ORDER.indexOf(x) > -1;
