@@ -808,6 +808,11 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   }
 
   function fetchVerse(ref, version) {
+    // the shared fetcher owns the book table, so it also owns the shape a
+    // reference has to be in: "Psalm 82:1" before "Psalms 82:1", "Jude 6"
+    // before "Jude 1:6". Asking it here means the walk below is walking a
+    // reference every version can actually read.
+    if (typeof window.jaymsNormRef === "function") ref = window.jaymsNormRef(ref);
     var key = version + "|" + ref;
     if (verseCache[key]) return Promise.resolve(verseCache[key]);
 
