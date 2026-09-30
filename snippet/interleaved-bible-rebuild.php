@@ -217,8 +217,13 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-dq-text{margin-top:8px;font-size:1.15em;line-height:1.6;color:var(--ink)}
 .jayms-tool-outline .ib-dq-note{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
 
-.jayms-tool-outline .ib-dprose{display:flex;flex-direction:column;gap:16px}
-.jayms-tool-outline .ib-dp{margin:0;font-size:1.12em;line-height:1.65;color:var(--ink-soft)}
+/* the argument reads on a panel like everything else, and keeps a measure
+   the eye can carry back to the start of the next line */
+.jayms-tool-outline .ib-dprose{display:flex;flex-direction:column;gap:16px;
+  background:var(--paper-deep);border:1px solid var(--line);border-radius:10px;
+  padding:22px 24px}
+.jayms-tool-outline .ib-dp{margin:0;max-width:82ch;font-size:1.12em;line-height:1.65;
+  color:var(--ink-soft)}
 .jayms-tool-outline .ib-dp b{color:var(--ink);font-weight:600}
 .jayms-tool-outline .ib-dlemma{margin:0;padding:12px 18px;border-left:3px solid var(--aramaic);
   background:var(--paper-deep);border-radius:0 9px 9px 0;color:var(--ink-soft)}
@@ -1648,13 +1653,32 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function diffQuote(label, text, note) {
     if (!text) return "";
     return '<div class="ib-dq"><p class="a-clabel">' + esc(label) + "</p>" +
-      '<p class="ib-dq-text">' + esc(text) + "</p>" +
-      (note ? '<p class="ib-dq-note">' + esc(note) + "</p>" : "") + "</div>";
+      '<p class="ib-dq-text">' + safeInline(text) + "</p>" +
+      (note ? '<p class="ib-dq-note">' + safeInline(note) + "</p>" : "") + "</div>";
+  }
+
+  // The entries write their own emphasis in as <b>, so it is let through
+  // rather than printed as angle brackets. Nothing else is.
+  function safeInline(text) {
+    var box = document.createElement("div");
+    box.innerHTML = String(text == null ? "" : text);
+    var ok = { B: 1, I: 1, EM: 1, STRONG: 1, BR: 1 };
+    var all = box.querySelectorAll("*");
+    for (var i = all.length - 1; i >= 0; i--) {
+      var el = all[i];
+      if (!ok[el.tagName]) {
+        while (el.firstChild) el.parentNode.insertBefore(el.firstChild, el);
+        el.parentNode.removeChild(el);
+        continue;
+      }
+      for (var j = el.attributes.length - 1; j >= 0; j--) el.removeAttribute(el.attributes[j].name);
+    }
+    return box.innerHTML;
   }
 
   function diffPara(lead, text) {
     if (!text) return "";
-    return '<p class="ib-dp">' + (lead ? '<b>' + esc(lead) + ":</b> " : "") + esc(text) + "</p>";
+    return '<p class="ib-dp">' + (lead ? "<b>" + esc(lead) + ":</b> " : "") + safeInline(text) + "</p>";
   }
 
   function diffPanel() {
