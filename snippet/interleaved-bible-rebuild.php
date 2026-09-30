@@ -231,6 +231,10 @@ add_action( 'wp_footer', function () {
 
 .jayms-tool-outline .ib-verse{margin:0 0 22px}
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
+/* reading in parallel: one column per translation, verse against verse */
+.jayms-tool-outline .ib-par{display:grid;gap:8px 28px;align-items:start}
+.jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--gold)}
+.jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
 .jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
   border-left:3px solid var(--aramaic);border-radius:9px;padding:14px 20px;margin:12px 0 0;
@@ -308,6 +312,7 @@ add_action( 'wp_footer', function () {
   .jayms-tool-outline .ib-text{padding-right:0}
   .jayms-tool-outline .ib-fold-body,
   .jayms-tool-outline .ib-fold.kind .ib-fold-body{padding-left:18px}
+  .jayms-tool-outline .ib-par{grid-template-columns:minmax(0,1fr) !important}
   .jayms-tool-outline .ib-fold > summary{flex-wrap:wrap;gap:4px 14px}
   .jayms-tool-outline .ib-ref{flex:0 0 100%}
 }
@@ -610,7 +615,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     "Teaching / Parable": "k-teach",
     "Miracle / Sign":     "k-sign"
   };
-  var uiVersion = "net";
+  var uiVersion = "net";      // the one a passage on the book screen opens in
+  var uiCols = ["net"];       // the translations set side by side when reading
   var uiHebrew = true;
   var uiWord = null;
   var uiEra = null;
@@ -682,6 +688,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   };
   window.ibHebrew    = function (on) { uiHebrew = !!on; render(); };
   window.ibVersion   = function (v) { uiVersion = v; render(); };
+  // reading in parallel: a translation goes in or comes out, and the last
+  // one standing cannot be removed or there would be nothing to read
+  window.ibCol       = function (v) {
+    var at = uiCols.indexOf(v);
+    if (at < 0) uiCols = uiCols.concat([v]);
+    else if (uiCols.length > 1) uiCols = uiCols.filter(function (x) { return x !== v; });
+    uiCols = VERSION_ORDER.filter(function (x) { return uiCols.indexOf(x) > -1; });
+    render();
+  };
 
   // ------------------------------------------------------------- verses
 
@@ -750,20 +765,22 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     });
   }
 
-  function fillVerse(id, ref) {
+  function fillVerse(id, ref, version) {
+    var ver = version || uiVersion;
     var node = document.getElementById(id);
-    if (!node || node.dataset.v === uiVersion) return;
-    node.dataset.v = uiVersion;
+    if (!node || node.dataset.v === ver) return;
+    node.dataset.v = ver;
     node.textContent = "Loading…";
-    fetchVerse(ref, uiVersion).then(function (html) {
+    fetchVerse(ref, ver).then(function (html) {
       if (!node.isConnected) return;
-      node.innerHTML = html || "(" + uiVersion.toUpperCase() + " does not resolve this reference)";
+      node.innerHTML = html || "(" + ver.toUpperCase() + " does not resolve this reference)";
     });
   }
 
   // ------------------------------------------------------- shared pieces
 
-  var VERSION_LABEL = { net: "NET", web: "WEB", nlt: "NLT", esv: "ESV" };
+  var VERSION_LABEL = { net: "NET", kjv: "KJV", web: "WEB", nlt: "NLT", esv: "ESV" };
+  var VERSION_ORDER = ["net", "kjv", "web", "nlt", "esv"];
 
   // .a-chip is the site's pill. Nothing here invents one.
   function chip(label, on, call) {
@@ -784,7 +801,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function versionBar(note) {
     return '<div class="ib-rule"><span class="a-clabel" id="ib-tr">Translation</span>' +
       '<span role="group" aria-labelledby="ib-tr" class="a-row">' +
-      ["net","web","nlt","esv"].map(function (v) {
+      VERSION_ORDER.map(function (v) {
         return chip(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
       }).join("") + "</span>" +
       (note ? '<span class="ib-note">' + esc(note) + "</span>" : "") + "</div>";
@@ -1315,13 +1332,16 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var top = '<div class="ib-readhead"><div class="ib-readhead-t">' +
       '<h1 class="a-title">' + esc(ev && ev.title ? ev.title : en) + "</h1>" +
-      '<p class="a-eyebrow">' + esc(en) + (uiHebrew ? "" : " · " + esc(VERSION_LABEL[uiVersion])) + "</p></div>" +
+      '<p class="a-eyebrow">' + esc(en) +
+        (uiHebrew ? "" : " \u00b7 " + esc(uiCols.map(function (v) { return VERSION_LABEL[v]; }).join(", "))) +
+      "</p></div>" +
       '<span class="a-row">' +
         chip("Interlinear", uiHebrew, "ibHebrew(true)") +
         chip("Translation", !uiHebrew, "ibHebrew(false)") +
-        (uiHebrew ? "" : ["net","web","nlt","esv"].map(function (v) {
-          return chip(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
-        }).join("")) +
+        (uiHebrew ? "" : '<span class="ib-colsep" aria-hidden="true"></span>' +
+          VERSION_ORDER.map(function (v) {
+            return chip(VERSION_LABEL[v], uiCols.indexOf(v) > -1, "ibCol('" + v + "')");
+          }).join("")) +
       "</span></div>";
 
     ensureDiffs();
@@ -1386,14 +1406,20 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       word + "</span></button>";
   }
 
-  // the plain reading: the translation on its own, no original underneath
+  // the plain reading: the translations side by side, verse against verse
   function verseBlock(book, row) {
     var en = toEnglishVerse(book, row.c, row.v);
+    var many = uiCols.length > 1;
+    var cols = uiCols.map(function (v) {
+      return '<div class="ib-parcol">' +
+        (many ? '<p class="a-clabel ib-parv">' + esc(VERSION_LABEL[v]) + "</p>" : "") +
+        '<p class="ib-passage" id="v' + row.c + "-" + row.v + "-" + v + '">Loading' + "\u2026" + '</p></div>';
+    }).join("");
     return '<section class="ib-verse">' +
       '<p class="a-clabel">' + esc(book + " " + en.chapter + ":" + en.verse) + "</p>" +
-      '<p class="ib-passage" id="v' + row.c + "-" + row.v + '">Loading\u2026</p></section>';
+      '<div class="ib-par" style="grid-template-columns:repeat(' + uiCols.length +
+      ',minmax(0,1fr))">' + cols + "</div></section>";
   }
-
   function fillReadVerses() {
     if (VIEW.screen !== "read" || uiHebrew) return;   // the interlinear fetches nothing
     var p = parseRef(VIEW.ref);
@@ -1402,7 +1428,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       var en = toEnglishVerse(VIEW.book, row.c, row.v);
       // asked for by its own English number, or the two halves of the row
       // drift apart wherever the numbering differs
-      fillVerse("v" + row.c + "-" + row.v, VIEW.book + " " + en.chapter + ":" + en.verse);
+      var ref = VIEW.book + " " + en.chapter + ":" + en.verse;
+      uiCols.forEach(function (v) { fillVerse("v" + row.c + "-" + row.v + "-" + v, ref, v); });
     });
   }
 
