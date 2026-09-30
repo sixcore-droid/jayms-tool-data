@@ -196,18 +196,31 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-w.on{background:var(--gold);color:var(--paper-deep)}
 
 .jayms-tool-outline .ib-panel{position:sticky;top:20px;flex:0 0 clamp(330px,24vw,460px);background:var(--paper-deep);
-  border-left:1px solid var(--line);padding:28px 30px;display:flex;flex-direction:column;gap:16px}
+  border-left:1px solid var(--line);padding:28px 30px;display:flex;flex-direction:column;gap:16px;
+  max-height:calc(100vh - 40px);overflow:auto}
 .jayms-tool-outline .ib-panel-word{margin:0;font-size:2.1em;line-height:1.2}
-.jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft)}
-.jayms-tool-outline .ib-panel-gloss{margin:0;color:var(--gold);font-size:1.4em;line-height:1.35}
-.jayms-tool-outline .ib-parse{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 18px;font-size:13px}
+.jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft);font-size:1.05em}
+.jayms-tool-outline .ib-panel-gloss{margin:0;color:var(--gold);font-size:1.45em;line-height:1.35}
+.jayms-tool-outline .ib-parse{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 20px;font-size:15px}
 .jayms-tool-outline .ib-parse dt{margin:0;color:var(--muted)}
 .jayms-tool-outline .ib-parse dd{margin:0;color:var(--ink)}
 .jayms-tool-outline .ib-def{border-top:1px solid var(--line);padding-top:16px;display:flex;
-  flex-direction:column;gap:8px}
+  flex-direction:column;gap:9px}
 .jayms-tool-outline .ib-def p{margin:0}
-.jayms-tool-outline .ib-defbody{line-height:1.55}
+.jayms-tool-outline .ib-defbody{font-size:1.12em;line-height:1.55}
+.jayms-tool-outline .ib-def .ib-note{font-size:14px;line-height:1.5;color:var(--ink-soft)}
 .jayms-tool-outline .ib-occ{color:var(--ink-soft)}
+
+/* the classic lexicon entry, as its own editors set it: a headword, then
+   numbered senses stepped in by their depth */
+.jayms-tool-outline .ib-lex{border-top:1px solid var(--line);padding-top:16px;
+  display:flex;flex-direction:column;gap:8px}
+.jayms-tool-outline .ib-lex-body{font-size:15px;line-height:1.6;color:var(--ink)}
+.jayms-tool-outline .ib-lex-body .lx-head{font-size:17px;line-height:1.4;color:var(--gold);
+  margin:0 0 10px}
+.jayms-tool-outline .ib-lex-body .lx-sense{margin-top:6px}
+.jayms-tool-outline .ib-lex-body .lx-num{color:var(--gold);font-weight:600;margin-right:5px}
+.jayms-tool-outline .ib-lex .ib-note{font-size:13px;color:var(--muted)}
 
 /* A wide screen is the whole point of an interlinear: past 1400 the
    original stops sitting under the English and stands beside it, so the
@@ -1225,11 +1238,45 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   function lexFor(w) {
     var key = strongKey(w.strong), e = LEX[key], s = e && e.strong;
-    if (s && bareHeb(s.lemma) === bareHeb(w.lemma)) return { key: key, s: s };
+    if (s && bareHeb(s.lemma) === bareHeb(w.lemma)) return { key: key, s: s, c: e.classic };
     var alt = lemmaIndex()[bareHeb(w.lemma)];
-    if (alt) return { key: alt, s: LEX[alt].strong };
+    if (alt) return { key: alt, s: LEX[alt].strong, c: LEX[alt].classic };
     if (AFFIX[w.pos] && bareHeb(w.text).length <= 2) return null;
-    return s ? { key: key, s: s } : null;
+    return s ? { key: key, s: s, c: e.classic } : null;
+  }
+
+  // The classic entry is Brown-Driver-Briggs or Abbott-Smith, and it ships
+  // as markup: headword, numbered senses, each sense indented by a margin.
+  // Only those tags and that one style are let through.
+  function safeLex(html) {
+    var box = document.createElement("div");
+    box.innerHTML = String(html == null ? "" : html);
+    var all = box.querySelectorAll("*");
+    for (var i = all.length - 1; i >= 0; i--) {
+      var el = all[i], tag = el.tagName.toLowerCase();
+      if (tag !== "div" && tag !== "b") {
+        while (el.firstChild) el.parentNode.insertBefore(el.firstChild, el);
+        el.parentNode.removeChild(el);
+        continue;
+      }
+      for (var j = el.attributes.length - 1; j >= 0; j--) {
+        var a = el.attributes[j].name;
+        if (a !== "class" && a !== "style") el.removeAttribute(a);
+      }
+      var st = el.getAttribute("style");
+      if (st && !/^\s*margin-left:\s*\d+px;?\s*$/.test(st)) el.removeAttribute("style");
+    }
+    return box.innerHTML;
+  }
+
+  function lexBlock(hit) {
+    var c = hit && hit.c;
+    if (!c || !c.entry) return "";
+    var source = [c.full || c.name, c.page && c.page !== "None" ? "page " + c.page : ""]
+                   .filter(Boolean).join(", ");
+    return '<div class="ib-lex"><p class="a-clabel">' + esc(c.name || "Lexicon") + "</p>" +
+      '<div class="ib-lex-body">' + safeLex(c.entry) + "</div>" +
+      (source ? '<p class="ib-note">' + esc(source) + "</p>" : "") + "</div>";
   }
 
   function wordPanel(book) {
@@ -1293,6 +1340,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
              (kjv ? '<p class="ib-note">Rendered in the King James as ' + esc(kjv) + "</p>" : "") +
              (deriv ? '<p class="ib-note">' + esc(deriv) + "</p>" : "") +
              (occ ? '<p class="ib-note ib-occ">' + esc(occ) + "</p>" : "") + "</div>" : "") +
+      lexBlock(hit) +
       "</aside>";
   }
 
