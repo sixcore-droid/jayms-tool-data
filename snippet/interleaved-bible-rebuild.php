@@ -460,6 +460,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   var verseCache = {};
 
+  // Verse numbers go in round brackets on purpose: a screen reader skips
+  // what is in parentheses, so the passage is heard as prose instead of
+  // "one Now after the Sabbath two Suddenly". Square brackets and braces
+  // are read aloud, so they would not do.
+  function verseNo(n) {
+    return '<sup class="ib-vn">(' + esc(n) + ")</sup>";
+  }
+
   // the shared fetcher signs every verse "(ESV)", and the row already says
   // which translation it is
   function stripSig(t) {
@@ -480,8 +488,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
             // one verse carries its own label above it; numbers are only
             // useful once the passage is a run of them
             return list.map(function (v) {
-              return (list.length > 1 ? '<sup class="ib-vn">' + esc(v.verse) + "</sup>" : "") +
-                esc(String(v.text).trim());
+              return (list.length > 1 ? verseNo(v.verse) : "") + esc(String(v.text).trim());
             }).join(" ");
           }).catch(function () { return ""; })
       : Promise.resolve("");
@@ -504,7 +511,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       for (var n = from; n <= to; n++) {
         (function (n) {
           jobs.push(window.jaymsFetchVerse(m[1] + " " + m[2] + ":" + n, version)
-            .then(function (r) { return r && r.text ? '<sup class="ib-vn">' + n + "</sup>" + esc(stripSig(r.text)) : ""; })
+            .then(function (r) { return r && r.text ? verseNo(n) + esc(stripSig(r.text)) : ""; })
             .catch(function () { return ""; }));
         })(n);
       }
