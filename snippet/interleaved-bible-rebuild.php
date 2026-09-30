@@ -485,17 +485,43 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function refKeys(ref) {
     var out = [];
     String(ref == null ? "" : ref).split(/\s*;\s*/).forEach(function (part) {
-      var m = part.match(/^\s*((?:[1-3]\s*)?[A-Za-z][A-Za-z' ]*?)\s+(\d+)(?::([\d,\s\-\u2013ab]+))?\s*$/);
+      part = part.replace(/[\u2013\u2014]/g, "-").trim();
+
+      // Book C:V-C:V, a range that crosses a chapter
+      var m = part.match(/^((?:[1-3]\s*)?[A-Za-z][A-Za-z' ]*?)\s+(\d+):(\d+)[a-d]?\s*-\s*(\d+):(\d+)[a-d]?$/);
+      if (m) {
+        var bk = canonBook(m[1]);
+        if (!bk) return;
+        var c1 = +m[2], v1 = +m[3], c2 = +m[4], v2 = +m[5];
+        for (var c = c1; c <= c2 && c - c1 < 10; c++) {
+          var from = (c === c1) ? v1 : 1;
+          var to   = (c === c2) ? v2 : 200;
+          for (var v = from; v <= to; v++) out.push(bk + "|" + c + ":" + v);
+        }
+        return;
+      }
+
+      // Book C-C, whole chapters
+      m = part.match(/^((?:[1-3]\s*)?[A-Za-z][A-Za-z' ]*?)\s+(\d+)\s*-\s*(\d+)$/);
+      if (m) {
+        var b2 = canonBook(m[1]);
+        if (!b2) return;
+        for (var ch = +m[2]; ch <= +m[3] && ch - +m[2] < 20; ch++) out.push(b2 + "|" + ch);
+        return;
+      }
+
+      // Book C, or Book C:V with a list and ranges inside it
+      m = part.match(/^((?:[1-3]\s*)?[A-Za-z][A-Za-z' ]*?)\s+(\d+)(?::([\d,\s\-a-d]+))?$/);
       if (!m) return;
       var book = canonBook(m[1]);
       if (!book) return;
-      var ch = parseInt(m[2], 10);
-      if (!m[3]) { out.push(book + "|" + ch); return; }
+      var chap = +m[2];
+      if (!m[3]) { out.push(book + "|" + chap); return; }
       m[3].split(/\s*,\s*/).forEach(function (bit) {
-        var r = bit.match(/^\s*(\d+)[ab]?(?:\s*[-\u2013]\s*(\d+)[ab]?)?\s*$/);
+        var r = bit.match(/^\s*(\d+)[a-d]?(?:\s*-\s*(\d+)[a-d]?)?\s*$/);
         if (!r) return;
-        var a = parseInt(r[1], 10), b = r[2] ? parseInt(r[2], 10) : a;
-        for (var v = a; v <= b && v - a < 200; v++) out.push(book + "|" + ch + ":" + v);
+        var a = +r[1], z = r[2] ? +r[2] : a;
+        for (var n = a; n <= z && n - a < 200; n++) out.push(book + "|" + chap + ":" + n);
       });
     });
     return out;
