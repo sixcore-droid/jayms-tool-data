@@ -449,6 +449,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   var verseCache = {};
 
+  // the shared fetcher signs every verse "(ESV)", and the row already says
+  // which translation it is
+  function stripSig(t) {
+    return String(t == null ? "" : t).replace(/\s*\([A-Z]{2,6}\)\s*$/, "").trim();
+  }
+
   function fetchVerse(ref, version) {
     var key = version + "|" + ref;
     if (verseCache[key]) return Promise.resolve(verseCache[key]);
@@ -473,7 +479,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       if (out) return out;
       if (typeof window.jaymsFetchVerse !== "function") return "";
       return window.jaymsFetchVerse(ref, version)
-        .then(function (r) { return r && r.text ? esc(r.text) : ""; })
+        .then(function (r) { return r && r.text ? esc(stripSig(r.text)) : ""; })
         .catch(function () { return ""; });
     }).then(function (out) {
       if (out) { verseCache[key] = out; return out; }
@@ -487,7 +493,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       for (var n = from; n <= to; n++) {
         (function (n) {
           jobs.push(window.jaymsFetchVerse(m[1] + " " + m[2] + ":" + n, version)
-            .then(function (r) { return r && r.text ? '<sup class="ib-vn">' + n + "</sup>" + esc(r.text) : ""; })
+            .then(function (r) { return r && r.text ? '<sup class="ib-vn">' + n + "</sup>" + esc(stripSig(r.text)) : ""; })
             .catch(function () { return ""; }));
         })(n);
       }
@@ -954,7 +960,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         '<p class="ib-passage" id="' + id + '">Open to read it.</p>' +
         '<div class="a-row">' +
           '<button type="button" class="a-lnk" onclick="ibGo({screen:\'read\',book:' + attr(VIEW.book) + ",ref:" + attr(ref) + '})">Read it word by word ›</button>' +
-          '<span class="ib-note">' + esc(VERSION_LABEL[uiVersion]) + " · fetched live</span>" +
+          '<span class="ib-note">' + esc(VERSION_LABEL[uiVersion]) + "</span>" +
         "</div>" +
       "</div></details>";
   }
