@@ -172,7 +172,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-u{display:inline-flex;flex-direction:column;align-items:center;
   gap:3px;padding:4px 5px;margin:0;border:0;border-radius:6px;background:none;
   font:inherit;color:inherit;cursor:pointer;text-align:center}
-.jayms-tool-outline .ib-u-en{font-size:24px;line-height:1.3;color:var(--ink);white-space:nowrap}
+.jayms-tool-outline .ib-u-en{font-size:24px;line-height:1.3;color:var(--ink-bright);white-space:nowrap}
 .jayms-tool-outline .ib-u-he{font-size:15px;line-height:1.25;color:var(--ink-soft);white-space:nowrap}
 .jayms-tool-outline .ib-u:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-u.on{background:var(--gold)}
@@ -233,10 +233,13 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
 /* reading in parallel: one column per translation, verse against verse */
 .jayms-tool-outline .ib-par{display:grid;gap:8px 28px;align-items:start}
-/* the reading is the thing: the text stays bright and the column heading
-   steps back, or the eye lands on the label instead of the verse */
+/* The reading is the thing. It is set in plain white so that it, and not
+   the headings or the chips, is the brightest thing on the screen, and
+   each verse is closed off by a hairline so the rows do not run together. */
 .jayms-tool-outline .ib-parv{margin:0 0 4px;color:var(--muted)}
-.jayms-tool-outline .ib-verse .ib-passage{color:var(--ink)}
+.jayms-tool-outline .ib-verse .ib-passage{color:var(--ink-bright)}
+.jayms-tool-outline .ib-verse{border-bottom:1px solid var(--line);padding-bottom:20px}
+.jayms-tool-outline .ib-verse:last-of-type{border-bottom:0}
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
 .jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
