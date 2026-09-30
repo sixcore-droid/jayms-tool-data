@@ -80,9 +80,15 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-gsec{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px}
 .jayms-tool-outline .ib-gsec:first-child{margin-top:0}
 .jayms-tool-outline .ib-slash{color:var(--line)}
-/* the mock was drawn on a 1280 canvas; on a real screen the row takes
-   as many books as it has room for rather than three wide ones */
-.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+/* The mock was drawn on a 1280 canvas. On a real screen the row takes
+   as many books as it has room for. Counted rather than auto-filled,
+   because the results sit next to a 264px rail and auto-fill measures
+   the container it is in, which lands one column short at 1280. */
+.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:1200px){.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1560px){.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1960px){.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (max-width:520px){.jayms-tool-outline .a-cards.ib-grid{grid-template-columns:1fr}}
 .jayms-tool-outline .ib-tile{gap:3px;align-items:flex-start;text-align:left}
 .jayms-tool-outline .ib-tile-name{font-size:22px;line-height:1.25;color:var(--ink)}
 .jayms-tool-outline .ib-tile-meta{font-size:12px;color:var(--muted)}
