@@ -381,6 +381,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var uiGenre = null;
   var uiFind = "";
   var uiKind = null;      // which kind of event the page is filtered to
+  var openFolds = {};     // passages a reader has opened, kept across repaints
 
   // The outline tags every event with one of four kinds. A standard event
   // is the default and carries no flag; the other three each get a token.
@@ -978,7 +979,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var ref = ev.date || "", en = toEnglishRef(ref);
     var id = "p" + en.replace(/[^A-Za-z0-9]/g, "");
     var k = KINDS[ev.kind];
-    return '<details class="ib-fold' + (k ? " kind " + k.cls : "") + '" data-ref="' + esc(en) + '" data-node="' + id + '">' +
+    var key = VIEW.book + "|" + en;
+    return '<details class="ib-fold' + (k ? " kind " + k.cls : "") + '"' +
+      (openFolds[key] ? " open" : "") + ' data-ref="' + esc(en) + '" data-key="' + esc(key) + '" data-node="' + id + '">' +
       "<summary>" +
         '<span class="ib-ref">' + esc(en) + "</span>" +
         '<span class="ib-title">' + esc(ev.title) +
@@ -995,12 +998,27 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</div></details>";
   }
 
-  // a fold only fetches when a reader actually opens it
+  // A fold only fetches when a reader actually opens it, and what they
+  // opened is remembered: changing translation repaints the page, and the
+  // passages you were reading should still be in front of you afterwards.
   document.addEventListener("toggle", function (e) {
     var d = e.target;
-    if (!d.classList || !d.classList.contains("ib-fold") || !d.open) return;
-    fillVerse(d.dataset.node, d.dataset.ref);
+    if (!d.classList || !d.classList.contains("ib-fold")) return;
+    if (d.open) {
+      openFolds[d.dataset.key] = 1;
+      fillVerse(d.dataset.node, d.dataset.ref);
+    } else {
+      delete openFolds[d.dataset.key];
+    }
   }, true);
+
+  // a fold written out already open fires no toggle, so it is filled here
+  function fillOpenFolds() {
+    var open = MOUNT.querySelectorAll(".ib-fold[open]");
+    for (var i = 0; i < open.length; i++) {
+      fillVerse(open[i].dataset.node, open[i].dataset.ref);
+    }
+  }
 
   // ---------------------------------------------------------------- read
 
@@ -1278,6 +1296,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       VIEW.screen === "read" ? renderRead() :
                                renderPicker();
     fillReadVerses();
+    fillOpenFolds();
     wireRail();
     // the outline may only have arrived on this paint, so the place we
     // were keeping is only restorable once the sections are really there
