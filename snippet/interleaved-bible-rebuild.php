@@ -296,7 +296,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var OUTLINES = {};
   var DATA = {};
   var LEX = {};
-  var WORD_INDEX = { hebrew: {}, greek: {} };
+  var COUNTS_WORD = {};   // strong -> [times used, books it appears in]
 
   Object.keys(PRELOAD).forEach(function (b) { OUTLINES[b] = PRELOAD[b]; });
 
@@ -412,15 +412,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         .then(function (d) { LEX = d; render(); });
     });
   }
-  function idxKind(key) { return (key && key[0] === "H") ? "hebrew" : "greek"; }
-  function idxReady(key) { return Object.keys(WORD_INDEX[idxKind(key)]).length > 0; }
-  function ensureWordIndex(key) {
-    if (idxReady(key)) return Promise.resolve();
-    var kind = idxKind(key);
-    return once("i:" + kind, function () {
-      return fetch(GH + (kind === "hebrew" ? "/word-index-hebrew.json" : "/word-index.json"))
-        .then(function (r) { return r.json(); })
-        .then(function (d) { WORD_INDEX[kind] = d; render(); });
+  // How often a word is used is a number, not an atlas: this is 198KB and
+  // covers every Strong's number in the corpus, where the two word indexes
+  // were 12MB between them and still missed seven hundred of them.
+  function countsReady() { return Object.keys(COUNTS_WORD).length > 0; }
+  function ensureCounts() {
+    if (countsReady()) return Promise.resolve();
+    return once("counts", function () {
+      return fetch(GH + "/word-counts.json").then(function (r) { return r.json(); })
+        .then(function (d) { COUNTS_WORD = d; render(); });
     });
   }
 
@@ -1326,15 +1326,13 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     var occ = "", occN = null;
     if (key) {
-      if (!idxReady(key)) { ensureWordIndex(key); occ = "Counting occurrences…"; }
+      if (!countsReady()) { ensureCounts(); }
       else {
-        var entry = WORD_INDEX[idxKind(key)][key];
-        if (entry && entry.occ) {
-          var books = [];
-          entry.occ.forEach(function (o) { if (books.indexOf(o.b) < 0) books.push(o.b); });
-          occN = entry.occ.length;
+        var tally = COUNTS_WORD[key];
+        if (tally) {
+          occN = tally[0];
           occ = occN + " time" + (occN === 1 ? "" : "s") +
-                " across " + books.length + " book" + (books.length === 1 ? "" : "s") + ".";
+                " across " + tally[1] + " book" + (tally[1] === 1 ? "" : "s") + ".";
         }
       }
     }
