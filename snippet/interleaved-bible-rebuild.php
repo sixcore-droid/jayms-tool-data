@@ -34,87 +34,141 @@ add_action( 'wp_footer', function () {
 	}
 	?>
 <style id="jayms-outline-layout">
-/* Layout, and the three things only this tool has. Any line here that
-   starts deciding how something LOOKS belongs in global styles 90171. */
-.jayms-tool-outline .ib-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.jayms-tool-outline .ib-filters{margin:18px 0 0}
-.jayms-tool-outline .ib-legend{display:flex;flex-wrap:wrap;align-items:center;gap:14px;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:14px 0 22px}
-.jayms-tool-outline .ib-key{display:inline-flex;align-items:center;gap:7px;background:none;border:0;
-  padding:4px 2px;cursor:pointer;font-family:inherit;color:var(--ink-soft);font-size:13px}
-.jayms-tool-outline .ib-key.on{color:var(--ink)}
-.jayms-tool-outline .ib-swatch{width:3px;height:15px;border-radius:2px;display:inline-block}
-.jayms-tool-outline .ib-note{color:var(--muted);font-size:13px}
+/* Layout, and the few things only this tool has. Every component here --
+   the pill, the card, the search box, the crumb, the label -- is the
+   site's, from global styles 90171. Nothing below picks a colour that is
+   not a token, and nothing below restyles a shared component. */
+.jayms-tool-outline .ib-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.jayms-tool-outline .ib-note{color:var(--muted);font-size:13px;margin:0}
 
-.jayms-tool-outline .ib-sec{margin:28px 0 0}
-.jayms-tool-outline .ib-sub{margin:18px 0 8px;display:flex;gap:8px}
-.jayms-tool-outline .ib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-.jayms-tool-outline .ib-tile{gap:2px}
-.jayms-tool-outline .ib-tile-name{font-size:21px;line-height:1.25;color:var(--ink)}
+.jayms-tool-outline .ib-hero{margin:0 0 22px}
+.jayms-tool-outline .ib-find{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:0 0 4px}
+.jayms-tool-outline .ib-find .a-search{flex:1 1 320px;min-width:260px}
+
+/* the rule row: a label, its controls, and a line above and below */
+.jayms-tool-outline .ib-rule{display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:14px 0 24px}
+.jayms-tool-outline .ib-key{display:inline-flex;align-items:center;gap:7px;background:none;border:0;
+  padding:4px 2px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink-soft)}
+.jayms-tool-outline .ib-key.on{color:var(--ink)}
+.jayms-tool-outline .ib-swatch{width:3px;height:15px;border-radius:2px;display:inline-block;flex:0 0 auto}
+
+.jayms-tool-outline .ib-main{display:flex;gap:40px;align-items:flex-start}
+.jayms-tool-outline .ib-results{flex:1 1 auto;min-width:0}
+.jayms-tool-outline .ib-jump{position:sticky;top:20px;flex:0 0 264px;display:flex;flex-direction:column;
+  gap:12px;border-left:1px solid var(--line);padding-left:28px}
+.jayms-tool-outline .ib-jump-note{margin:0;color:var(--ink-soft)}
+.jayms-tool-outline .ib-jump .a-lnk{align-self:flex-start}
+.jayms-tool-outline .ib-jump-foot{margin-top:6px}
+
+.jayms-tool-outline .ib-gsec{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px}
+.jayms-tool-outline .ib-gsec:first-child{margin-top:0}
+.jayms-tool-outline .ib-slash{color:var(--line)}
+.jayms-tool-outline .ib-tile{gap:3px;align-items:flex-start;text-align:left}
+.jayms-tool-outline .ib-tile-name{font-size:22px;line-height:1.25;color:var(--ink)}
 .jayms-tool-outline .ib-tile-meta{font-size:12px;color:var(--muted)}
 
-.jayms-tool-outline .ib-book{display:flex;gap:40px;align-items:flex-start;margin-top:22px}
-.jayms-tool-outline .ib-rail{position:sticky;top:20px;flex:0 0 200px;display:flex;flex-direction:column;gap:2px;
-  border-right:1px solid var(--line);padding-right:20px}
-.jayms-tool-outline .ib-rail a{display:flex;justify-content:space-between;gap:10px;padding:7px 9px;
+/* ------------------------------------------------------------ the book */
+.jayms-tool-outline .ib-bookhead{display:flex;flex-wrap:wrap;align-items:flex-end;
+  justify-content:space-between;gap:24px}
+.jayms-tool-outline .ib-bookhead-t{flex:1 1 380px;min-width:0}
+.jayms-tool-outline .ib-bookhead .a-sub{margin-bottom:0}
+
+.jayms-tool-outline .ib-book{display:flex;gap:44px;align-items:flex-start;margin-top:4px}
+.jayms-tool-outline .ib-rail{position:sticky;top:20px;flex:0 0 210px;display:flex;flex-direction:column;
+  gap:2px;border-right:1px solid var(--line);padding-right:24px}
+.jayms-tool-outline .ib-rail a{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;
   border-radius:7px;text-decoration:none;font-size:13px;color:var(--ink-soft)}
+.jayms-tool-outline .ib-rail a span + span{color:var(--muted);flex:0 0 auto}
+.jayms-tool-outline .ib-rail a.on{background:var(--paper-deep);color:var(--ink)}
 .jayms-tool-outline .ib-rail a:hover{background:var(--paper-deep);color:var(--ink)}
 .jayms-tool-outline .ib-eras{flex:1 1 auto;min-width:0}
 .jayms-tool-outline .ib-era{margin:0 0 30px}
-.jayms-tool-outline .ib-era-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
-.jayms-tool-outline .ib-era-note{margin:8px 0 0;max-width:72ch}
+.jayms-tool-outline .ib-era-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
+.jayms-tool-outline .ib-era-note{margin:8px 0 0;max-width:72ch;color:var(--ink-soft)}
+
+/* one container, hairline-separated, not a stack of cards */
 .jayms-tool-outline .ib-rows{display:flex;flex-direction:column;gap:1px;background:var(--line);
   border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
-
 .jayms-tool-outline .ib-fold{background:var(--paper-deep)}
 .jayms-tool-outline .ib-fold.turning{border-left:3px solid var(--rust)}
 .jayms-tool-outline .ib-fold > summary{display:flex;align-items:baseline;gap:18px;padding:15px 18px;
   list-style:none;cursor:pointer;min-height:44px;box-sizing:border-box}
+.jayms-tool-outline .ib-fold.turning > summary{padding-left:15px}
 .jayms-tool-outline .ib-fold > summary::-webkit-details-marker{display:none}
-.jayms-tool-outline .ib-ref{flex:0 0 132px}
-.jayms-tool-outline .ib-title{flex:1 1 auto;min-width:0}
-.jayms-tool-outline .ib-flag{margin-left:8px}
-.jayms-tool-outline .ib-caret{flex:0 0 auto;color:var(--gold)}
-.jayms-tool-outline .ib-fold[open] > summary .ib-caret{transform:rotate(90deg);display:inline-block}
-.jayms-tool-outline .ib-fold-body{padding:0 22px 18px 150px;display:flex;flex-direction:column;gap:12px}
-.jayms-tool-outline .ib-detail{margin:0;max-width:66ch}
-.jayms-tool-outline .ib-passage{margin:0;max-width:62ch}
-.jayms-tool-outline .ib-vn{font-size:.62em;vertical-align:super;color:var(--muted);padding-right:2px}
+.jayms-tool-outline .ib-fold > summary:hover{background:var(--paper-deeper)}
+.jayms-tool-outline .ib-ref{flex:0 0 122px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold)}
+.jayms-tool-outline .ib-fold.turning .ib-ref{color:var(--rust)}
+.jayms-tool-outline .ib-title{flex:1 1 auto;min-width:0;font-size:20px;color:var(--ink)}
+.jayms-tool-outline .ib-flag{margin-left:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--rust)}
+.jayms-tool-outline .ib-caret{flex:0 0 auto;color:var(--gold);font-size:13px}
+.jayms-tool-outline .ib-fold[open] > summary .ib-caret{display:inline-block;transform:rotate(90deg)}
+.jayms-tool-outline .ib-fold-body{padding:2px 22px 20px 158px;display:flex;flex-direction:column;gap:14px}
+.jayms-tool-outline .ib-fold.turning .ib-fold-body{padding-left:155px}
+.jayms-tool-outline .ib-detail{margin:0;max-width:66ch;color:var(--ink-soft)}
+.jayms-tool-outline .ib-passage{margin:0;max-width:62ch;line-height:1.72}
+.jayms-tool-outline .ib-vn{font-size:.58em;vertical-align:super;color:var(--muted);padding:0 3px 0 4px}
 
-.jayms-tool-outline .ib-readref{margin:4px 0 0}
-.jayms-tool-outline .ib-read{display:flex;gap:0;align-items:flex-start;margin-top:22px}
-.jayms-tool-outline .ib-text{flex:1 1 auto;min-width:0;padding-right:40px}
-.jayms-tool-outline .ib-verse{margin:0 0 26px}
-.jayms-tool-outline .ib-orig{margin:10px 0 0;max-width:62ch;line-height:1.95}
+/* ------------------------------------------------------------ the read */
+.jayms-tool-outline .ib-read{display:flex;gap:0;align-items:flex-start}
+.jayms-tool-outline .ib-text{flex:1 1 auto;min-width:0;padding-right:44px}
+.jayms-tool-outline .ib-readhead{display:flex;flex-wrap:wrap;align-items:flex-end;
+  justify-content:space-between;gap:20px;margin:0 0 24px}
+.jayms-tool-outline .ib-readhead-t{flex:1 1 320px;min-width:0}
+.jayms-tool-outline .ib-readhead .a-eyebrow{margin:6px 0 0}
+.jayms-tool-outline .ib-verse{margin:0 0 22px}
+.jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
+.jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
+  border-left:3px solid var(--aramaic);border-radius:9px;padding:14px 20px;margin:12px 0 0;
+  display:flex;flex-direction:column;gap:8px}
+.jayms-tool-outline .ib-origlabel{color:var(--aramaic);margin:0}
+.jayms-tool-outline .ib-orig{margin:0;line-height:1.95;font-size:1.22em}
 .jayms-tool-outline .ib-rtl{direction:rtl;text-align:right}
 .jayms-tool-outline .ib-wd{display:inline-block;white-space:nowrap}
 .jayms-tool-outline .ib-w{background:none;border:0;padding:0 1px;margin:0;font:inherit;color:inherit;
   cursor:pointer;border-radius:3px}
 .jayms-tool-outline .ib-w:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-w.on{background:var(--gold);color:var(--paper-deep)}
-.jayms-tool-outline .ib-panel{position:sticky;top:20px;flex:0 0 330px;background:var(--paper-deep);
-  border-left:1px solid var(--line);padding:24px 26px;display:flex;flex-direction:column;gap:14px}
-.jayms-tool-outline .ib-panel-word{margin:0;font-size:2em;line-height:1.25}
+
+.jayms-tool-outline .ib-panel{position:sticky;top:20px;flex:0 0 352px;background:var(--paper-deep);
+  border-left:1px solid var(--line);padding:28px 30px;display:flex;flex-direction:column;gap:16px}
+.jayms-tool-outline .ib-panel-word{margin:0;font-size:2.1em;line-height:1.2}
 .jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft)}
-.jayms-tool-outline .ib-panel-gloss{margin:0;color:var(--gold);font-size:1.25em}
-.jayms-tool-outline .ib-parse{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:13px}
+.jayms-tool-outline .ib-panel-gloss{margin:0;color:var(--gold);font-size:1.4em;line-height:1.35}
+.jayms-tool-outline .ib-parse{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 18px;font-size:13px}
 .jayms-tool-outline .ib-parse dt{margin:0;color:var(--muted)}
 .jayms-tool-outline .ib-parse dd{margin:0;color:var(--ink)}
-.jayms-tool-outline .ib-def{border-top:1px solid var(--line);padding-top:14px;display:flex;
-  flex-direction:column;gap:7px}
+.jayms-tool-outline .ib-def{border-top:1px solid var(--line);padding-top:16px;display:flex;
+  flex-direction:column;gap:8px}
 .jayms-tool-outline .ib-def p{margin:0}
+.jayms-tool-outline .ib-defbody{line-height:1.55}
+.jayms-tool-outline .ib-occ{color:var(--ink-soft)}
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
+  .jayms-tool-outline .ib-main,
   .jayms-tool-outline .ib-book,
-  .jayms-tool-outline .ib-read{flex-direction:column}
+  .jayms-tool-outline .ib-read{flex-direction:column;gap:22px}
+  .jayms-tool-outline .ib-jump{position:static;flex:1 1 auto;border-left:0;
+    border-top:1px solid var(--line);padding:18px 0 0}
   .jayms-tool-outline .ib-rail{position:static;flex:1 1 auto;border-right:0;
     border-bottom:1px solid var(--line);padding:0 0 12px}
   .jayms-tool-outline .ib-panel{position:static;flex:1 1 auto;border-left:0;
-    border-top:1px solid var(--line)}
+    border-top:1px solid var(--line);padding:22px 0 0}
   .jayms-tool-outline .ib-text{padding-right:0}
-  .jayms-tool-outline .ib-fold-body{padding-left:18px}
+  .jayms-tool-outline .ib-fold-body,
+  .jayms-tool-outline .ib-fold.turning .ib-fold-body{padding-left:18px}
+  .jayms-tool-outline .ib-fold > summary{flex-wrap:wrap;gap:4px 14px}
+  .jayms-tool-outline .ib-ref{flex:0 0 100%}
 }
 </style>
+
+<script id="jayms-outline-counts">
+/* How many events each outline holds, counted at build time so the
+   picker can show it without fetching 66 files. Keyed by outline slug. */
+window.JAYMS_OUTLINE_COUNTS = {"1-chronicles":[53,21],"1-corinthians":[50,16],"1-john":[17,5],"1-kings":[71,21],"1-peter":[14,5],"1-samuel":[32,22],"1-thessalonians":[14,5],"1-timothy":[20,5],"2-chronicles":[56,32],"2-corinthians":[28,13],"2-john":[4,1],"2-kings":[69,25],"2-peter":[10,3],"2-samuel":[25,20],"2-thessalonians":[10,3],"2-timothy":[16,4],"3-john":[4,1],"acts":[56,11],"amos":[14,9],"colossians":[15,4],"daniel":[16,12],"deuteronomy":[50,34],"ecclesiastes":[19,12],"ephesians":[16,6],"esther":[14,10],"exodus":[64,30],"ezekiel":[89,35],"ezra":[13,10],"galatians":[19,6],"genesis":[100,50],"habakkuk":[6,3],"haggai":[5,2],"hebrews":[29,13],"hosea":[20,14],"isaiah":[131,51],"james":[14,5],"jeremiah":[123,47],"job":[43,25],"joel":[7,4],"john":[53,10],"jonah":[8,4],"joshua":[24,15],"jude":[5,1],"judges":[22,15],"lamentations":[7,5],"leviticus":[36,22],"luke":[43,9],"malachi":[8,3],"mark":[65,10],"matthew":[70,16],"micah":[15,7],"nahum":[6,3],"nehemiah":[16,13],"numbers":[51,31],"obadiah":[3,1],"philemon":[6,1],"philippians":[16,4],"proverbs":[54,22],"psalms":[104,42],"revelation":[40,22],"romans":[49,16],"ruth":[7,4],"song-of-solomon":[11,8],"titus":[10,3],"zechariah":[24,14],"zephaniah":[6,3]};
+</script>
 
 <script id="jayms-outline-versification">
 /* Hebrew and Greek numbering is not English numbering; they part company in
@@ -137,15 +191,17 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var BOOK_SLUGS = window.JAYMS_OUTLINE_BOOKS || {};
   var PRELOAD    = window.JAYMS_OUTLINE_PRELOAD || {};
   var VERSIFICATION = window.JAYMS_VERSIFICATION || {};
+  var COUNTS = window.JAYMS_OUTLINE_COUNTS || {};
 
   var OUTLINES = {};
   var DATA = {};
-  var LEX = null;
-  var WORD_INDEX = { hebrew: null, greek: null };
+  var LEX = {};
+  var WORD_INDEX = { hebrew: {}, greek: {} };
 
   Object.keys(PRELOAD).forEach(function (b) { OUTLINES[b] = PRELOAD[b]; });
 
-  // name, testament, chapters, genre
+  // name, testament, chapters, genre. Acts sits with the Gospels so that
+  // "History" names one thing on the page and the legend has no repeat.
   var BOOKS = [
 ["Genesis","OT",50,"Law"],["Exodus","OT",40,"Law"],["Leviticus","OT",27,"Law"],
 ["Numbers","OT",36,"Law"],["Deuteronomy","OT",34,"Law"],["Joshua","OT",24,"History"],
@@ -161,8 +217,9 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 ["Obadiah","OT",1,"Minor Prophets"],["Jonah","OT",4,"Minor Prophets"],["Micah","OT",7,"Minor Prophets"],
 ["Nahum","OT",3,"Minor Prophets"],["Habakkuk","OT",3,"Minor Prophets"],["Zephaniah","OT",3,"Minor Prophets"],
 ["Haggai","OT",2,"Minor Prophets"],["Zechariah","OT",14,"Minor Prophets"],["Malachi","OT",4,"Minor Prophets"],
-["Matthew","NT",28,"Gospels"],["Mark","NT",16,"Gospels"],["Luke","NT",24,"Gospels"],["John","NT",21,"Gospels"],
-["Acts","NT",28,"History"],["Romans","NT",16,"Letters"],["1 Corinthians","NT",16,"Letters"],
+["Matthew","NT",28,"Gospels & Acts"],["Mark","NT",16,"Gospels & Acts"],["Luke","NT",24,"Gospels & Acts"],
+["John","NT",21,"Gospels & Acts"],["Acts","NT",28,"Gospels & Acts"],
+["Romans","NT",16,"Letters"],["1 Corinthians","NT",16,"Letters"],
 ["2 Corinthians","NT",13,"Letters"],["Galatians","NT",6,"Letters"],["Ephesians","NT",6,"Letters"],
 ["Philippians","NT",4,"Letters"],["Colossians","NT",4,"Letters"],["1 Thessalonians","NT",5,"Letters"],
 ["2 Thessalonians","NT",3,"Letters"],["1 Timothy","NT",6,"Letters"],["2 Timothy","NT",4,"Letters"],
@@ -172,14 +229,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 ["Jude","NT",1,"Letters"],["Revelation","NT",22,"Apocalyptic"]
   ].map(function (b) { return { name: b[0], testament: b[1], chapters: b[2], genre: b[3] }; });
 
-  // Colour says genre, never selection. Every token is one the site already has.
+  // Colour says genre, never selection, and every one is a site token.
   var GENRE_TOKEN = {
     "Law": "--gold", "History": "--olive", "Wisdom": "--aramaic",
     "Major Prophets": "--blue", "Minor Prophets": "--lavender",
-    "Gospels": "--rust", "Letters": "--gold", "Apocalyptic": "--lavender"
+    "Gospels & Acts": "--rust", "Letters": "--gold", "Apocalyptic": "--lavender"
   };
-  var GENRE_ORDER_OT = ["Law","History","Wisdom","Major Prophets","Minor Prophets"];
-  var GENRE_ORDER_NT = ["Gospels","History","Letters","Apocalyptic"];
+  var GENRE_ORDER = ["Law","History","Wisdom","Major Prophets","Minor Prophets",
+                     "Gospels & Acts","Letters","Apocalyptic"];
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -209,8 +266,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (!m[5]) return book + " " + a.chapter + ":" + a.verse;
     var endCh = m[4] ? parseInt(m[4], 10) : ch;
     var b = toEnglishVerse(book, endCh, parseInt(m[5], 10));
-    if (b.chapter === a.chapter) return book + " " + a.chapter + ":" + a.verse + "-" + b.verse;
-    return book + " " + a.chapter + ":" + a.verse + "-" + b.chapter + ":" + b.verse;
+    if (b.chapter === a.chapter) return book + " " + a.chapter + ":" + a.verse + "–" + b.verse;
+    return book + " " + a.chapter + ":" + a.verse + "–" + b.chapter + ":" + b.verse;
+  }
+
+  // strips the book name off a reference, for the last crumb and the title
+  function refTail(ref) {
+    var m = String(ref).match(/^(.+?)\s+(\d+:.*)$/);
+    return m ? m[2] : ref;
   }
 
   // ------------------------------------------------------------- loading
@@ -243,14 +306,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     });
   }
   function ensureLexicon() {
-    if (LEX && Object.keys(LEX).length) return Promise.resolve();
+    if (Object.keys(LEX).length) return Promise.resolve();
     return once("lex", function () {
       return fetch(GH + "/lexicon.json").then(function (r) { return r.json(); })
         .then(function (d) { LEX = d; render(); });
     });
   }
   function idxKind(key) { return (key && key[0] === "H") ? "hebrew" : "greek"; }
-  function idxReady(key) { var i = WORD_INDEX[idxKind(key)]; return !!(i && Object.keys(i).length); }
+  function idxReady(key) { return Object.keys(WORD_INDEX[idxKind(key)]).length > 0; }
   function ensureWordIndex(key) {
     if (idxReady(key)) return Promise.resolve();
     var kind = idxKind(key);
@@ -268,11 +331,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   var uiTestament = null;
   var uiGenre = null;
+  var uiFind = "";
   var uiTurningOnly = false;
   var uiVersion = "net";
   var uiHebrew = true;
-  var uiWord = null;      // { book, c, v, i }
-  var openRow = null;     // which passage fold is open on the book screen
+  var uiWord = null;
+  var uiEra = null;
 
   function hashFor(v) {
     if (v.screen === "book")    return "#book=" + encodeURIComponent(v.book);
@@ -288,6 +352,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function go(v) {
     VIEW = v;
     uiWord = null;
+    uiEra = null;
     var h = hashFor(v);
     if (location.hash !== h) { selfSetHash = true; location.hash = h; }
     render();
@@ -308,12 +373,11 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   window.ibGenre     = function (g) { uiGenre = g; render(); };
   window.ibTurning   = function (b) { uiTurningOnly = b; render(); };
   window.ibHebrew    = function () { uiHebrew = !uiHebrew; render(); };
-  window.ibVersion   = function (v) { uiVersion = v; verseNodes = {}; render(); };
+  window.ibVersion   = function (v) { uiVersion = v; render(); };
 
   // ------------------------------------------------------------- verses
 
   var verseCache = {};
-  var verseNodes = {};
 
   function fetchVerse(ref, version) {
     var key = version + "|" + ref;
@@ -376,87 +440,159 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     });
   }
 
-  // -------------------------------------------------------------- picker
+  // ------------------------------------------------------- shared pieces
 
   var VERSION_LABEL = { net: "NET", web: "WEB", nlt: "NLT", esv: "ESV" };
 
-  function pill(label, on, call) {
-    return '<button type="button" class="ib-pill' + (on ? " on" : "") +
+  // .a-chip is the site's pill. Nothing here invents one.
+  function chip(label, on, call) {
+    return '<button type="button" class="a-chip' + (on ? " on" : "") +
       '" aria-pressed="' + (on ? "true" : "false") + '" onclick="' + call + '">' + esc(label) + "</button>";
   }
-
-  function renderPicker() {
-    var shown = BOOKS.filter(function (b) {
-      return (!uiTestament || b.testament === uiTestament) && (!uiGenre || b.genre === uiGenre);
-    });
-    var genres = [];
-    BOOKS.forEach(function (b) { if (genres.indexOf(b.genre) < 0) genres.push(b.genre); });
-
-    var controls =
-      '<div class="ib-row">' +
-        pill("All 66", !uiTestament, "ibTestament(null)") +
-        pill("Old Testament", uiTestament === "OT", "ibTestament('OT')") +
-        pill("New Testament", uiTestament === "NT", "ibTestament('NT')") +
-      "</div>";
-
-    var legend = '<div class="ib-legend"><span class="a-clabel">Genre</span>' +
-      genres.map(function (g) {
-        var on = uiGenre === g;
-        return '<button type="button" class="ib-key' + (on ? " on" : "") + '" aria-pressed="' + (on ? "true" : "false") +
-          '" onclick="ibGenre(' + (on ? "null" : attr(g)) + ')">' +
-          '<span class="ib-swatch" aria-hidden="true" style="background:var(' + GENRE_TOKEN[g] + ')"></span>' +
-          esc(g) + "</button>";
-      }).join("") + "</div>";
-
-    function section(t, title, order) {
-      var list = shown.filter(function (b) { return b.testament === t; });
-      if (!list.length) return "";
-      var out = '<h2 class="a-h2 ib-sec">' + title + ' <span class="a-count">' + list.length + " books</span></h2>";
-      order.forEach(function (g) {
-        var run = list.filter(function (b) { return b.genre === g; });
-        if (!run.length) return;
-        out += '<h3 class="a-clabel ib-sub">' + esc(g) + " <span>" + run.length + "</span></h3>" +
-          '<div class="ib-grid">' + run.map(tile).join("") + "</div>";
-      });
-      return out;
-    }
-
-    return controls + legend +
-      section("OT", "Old Testament", GENRE_ORDER_OT) +
-      section("NT", "New Testament", GENRE_ORDER_NT);
-  }
-
-  function tile(b) {
-    return '<button type="button" class="a-card ib-tile" style="border-left-color:var(' + GENRE_TOKEN[b.genre] + ')"' +
-      ' onclick="ibGo({screen:\'book\',book:' + attr(b.name) + "})\">" +
-      '<span class="ib-tile-name">' + esc(b.name) + "</span>" +
-      '<span class="ib-tile-meta">' + b.chapters + " chapter" + (b.chapters === 1 ? "" : "s") + "</span></button>";
-  }
-
-  // ---------------------------------------------------------------- book
 
   function crumbs(trail) {
     var out = ['<button type="button" class="a-crumb" onclick="ibGo({screen:\'picker\'})">← All books</button>'];
     trail.forEach(function (t) {
       out.push('<span class="a-crumb-sep">›</span>');
       out.push(t.go ? '<button type="button" class="a-crumb" onclick="' + t.go + '">' + esc(t.label) + "</button>"
-                    : '<span class="a-crumb">' + esc(t.label) + "</span>");
+                    : '<span class="a-crumb is-here">' + esc(t.label) + "</span>");
     });
     return '<nav class="a-crumbs" aria-label="Breadcrumb">' + out.join("") + "</nav>";
   }
 
-  function versionBar() {
-    return '<div class="ib-legend"><span class="a-clabel" id="ib-tr">Translation</span>' +
-      '<span role="group" aria-labelledby="ib-tr" class="ib-row">' +
+  function versionBar(note) {
+    return '<div class="ib-rule"><span class="a-clabel" id="ib-tr">Translation</span>' +
+      '<span role="group" aria-labelledby="ib-tr" class="a-row">' +
       ["net","web","nlt","esv"].map(function (v) {
-        return pill(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
+        return chip(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
       }).join("") + "</span>" +
-      '<span class="ib-note">Applies to every passage you open on this page.</span></div>';
+      (note ? '<span class="ib-note">' + esc(note) + "</span>" : "") + "</div>";
   }
+
+  function attribution() {
+    return '<p class="a-credit">NET text fetched live from ' +
+      '<a href="https://labs.bible.org/" rel="noopener" target="_blank">bible.org’s web service</a>. ' +
+      "Hebrew and Greek from the open Macula and SBLGNT datasets.</p>";
+  }
+
+  // -------------------------------------------------------------- picker
+
+  window.ibFind = function (v) {
+    uiFind = v;
+    var host = document.getElementById("ib-results");
+    if (host) host.innerHTML = pickerResults();
+  };
+
+  // "Gen", "1 sam", "songofsolomon" all find the book they look like
+  function matches(book) {
+    var q = uiFind.trim().toLowerCase().replace(/\s+/g, "");
+    if (!q) return true;
+    var n = book.name.toLowerCase().replace(/\s+/g, "");
+    return n.indexOf(q) === 0 || n.indexOf(q) > -1;
+  }
+
+  function tile(b) {
+    var c = COUNTS[outlineSlug(b.name)];
+    var meta = b.chapters + " chapter" + (b.chapters === 1 ? "" : "s") +
+      (c ? " · " + c[0] + " event" + (c[0] === 1 ? "" : "s") : "");
+    return '<button type="button" class="a-card ib-tile" style="border-left-color:var(' + GENRE_TOKEN[b.genre] + ')"' +
+      ' onclick="ibGo({screen:\'book\',book:' + attr(b.name) + "})\">" +
+      '<span class="ib-tile-name">' + esc(b.name) + "</span>" +
+      '<span class="ib-tile-meta">' + meta + "</span></button>";
+  }
+
+  function pickerResults() {
+    var shown = BOOKS.filter(function (b) {
+      return (!uiTestament || b.testament === uiTestament) &&
+             (!uiGenre || b.genre === uiGenre) && matches(b);
+    });
+    if (!shown.length) return '<p class="ib-note">Nothing matches that. Try a shorter piece of the name.</p>';
+
+    return GENRE_ORDER.map(function (g) {
+      var run = shown.filter(function (b) { return b.genre === g; });
+      if (!run.length) return "";
+      return '<h2 class="a-clabel ib-gsec">' + esc(g) +
+        ' <span class="ib-slash" aria-hidden="true">/</span> <span class="a-count">' +
+        run.length + " book" + (run.length === 1 ? "" : "s") + "</span></h2>" +
+        '<div class="a-cards cols-3 ib-grid">' + run.map(tile).join("") + "</div>";
+    }).join("");
+  }
+
+  function legend() {
+    return '<div class="ib-rule"><span class="a-clabel">Genre</span>' +
+      GENRE_ORDER.map(function (g) {
+        var on = uiGenre === g;
+        return '<button type="button" class="ib-key' + (on ? " on" : "") + '" aria-pressed="' + (on ? "true" : "false") +
+          '" onclick="ibGenre(' + (on ? "null" : attr(g)) + ')">' +
+          '<span class="ib-swatch" aria-hidden="true" style="background:var(' + GENRE_TOKEN[g] + ')"></span>' +
+          esc(g) + "</button>";
+      }).join("") + "</div>";
+  }
+
+  function renderPicker() {
+    var head = '<div class="a-hero ib-hero">' +
+      '<p class="a-eyebrow">Bible study tools</p>' +
+      '<h1 class="a-title">Interleaved Bible</h1>' +
+      '<p class="a-sub">Every book laid out by its own structure, so you can see the shape of the ' +
+      "argument before you read a line of it. Open any passage to read it with the Hebrew or " +
+      "Greek underneath.</p></div>";
+
+    var find = '<div class="ib-find">' +
+      '<label class="ib-sr" for="ib-q">Find a book</label>' +
+      '<input id="ib-q" class="a-search" type="search" placeholder="Find a book — type Gen, Psa, Rom…"' +
+      ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)">' +
+      '<span class="a-row">' +
+        chip("All 66", !uiTestament, "ibTestament(null)") +
+        chip("Old Testament", uiTestament === "OT", "ibTestament('OT')") +
+        chip("New Testament", uiTestament === "NT", "ibTestament('NT')") +
+      "</span></div>";
+
+    var jump = '<aside class="ib-jump" aria-label="Jump straight in">' +
+      '<h2 class="a-clabel">Jump straight in</h2>' +
+      '<p class="ib-jump-note">Type a reference and go directly to the passage.</p>' +
+      '<label class="ib-sr" for="ib-ref">Go to a reference</label>' +
+      '<input id="ib-ref" class="a-search" type="text" placeholder="John 1:1-18"' +
+      ' onkeydown="if(event.key===\'Enter\'){event.preventDefault();ibJump()}">' +
+      '<button type="button" class="a-lnk" onclick="ibJump()">Go to passage ›</button>' +
+      '<p class="ib-note ib-jump-foot">66 of 66 books · no login · free</p>' +
+      '<p class="ib-note" id="ib-jump-msg" hidden></p></aside>';
+
+    return head + find + legend() +
+      '<div class="ib-main"><div class="ib-results" id="ib-results">' + pickerResults() + "</div>" +
+      jump + "</div>";
+  }
+
+  // The reference box: longest book name wins, so "1 John 1:1" does not
+  // resolve to John.
+  window.ibJump = function () {
+    var box = document.getElementById("ib-ref");
+    var msg = document.getElementById("ib-jump-msg");
+    var raw = (box && box.value || "").trim();
+    function fail(t) { if (msg) { msg.hidden = false; msg.textContent = t; } }
+    if (!raw) return fail("Type something like John 1:1-18.");
+
+    var flat = raw.toLowerCase().replace(/\s+/g, ""), hit = null;
+    BOOKS.forEach(function (b) {
+      var n = b.name.toLowerCase().replace(/\s+/g, "");
+      if (flat.indexOf(n) === 0 && (!hit || n.length > hit.n.length)) hit = { b: b, n: n };
+    });
+    if (!hit) return fail("That book name did not match one of the 66.");
+
+    var rest = flat.slice(hit.n.length).replace(/[–—]/g, "-");
+    var m = rest.match(/^(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+    if (!m) return fail("Add a chapter, like " + hit.b.name + " 1 or " + hit.b.name + " 1:1-18.");
+
+    var ref = m[2]
+      ? hit.b.name + " " + m[1] + ":" + m[2] + (m[3] ? "-" + m[3] : "")
+      : hit.b.name + " " + m[1] + ":1";
+    go({ screen: "read", book: hit.b.name, ref: ref });
+  };
+
+  // ---------------------------------------------------------------- book
 
   function renderBook() {
     var book = VIEW.book, doc = OUTLINES[book];
-    if (!doc) { ensureOutline(book); return crumbs([{ label: book }]) + "<p class=\"ib-note\">Loading the outline…</p>"; }
+    if (!doc) { ensureOutline(book); return crumbs([{ label: book }]) + '<p class="ib-note">Loading the outline…</p>'; }
 
     var eras = (doc.eras || []).map(function (era, i) {
       var events = (era.events || []).filter(function (e) { return !uiTurningOnly || e.colour === "red"; });
@@ -464,9 +600,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     }).filter(function (x) { return x.events.length; });
 
     var rail = '<nav class="ib-rail" aria-label="Movements"><p class="a-clabel">Movements</p>' +
-      eras.map(function (x) {
-        var range = String(x.era.label || "").split("·").pop().trim();
-        return '<a href="#' + x.id + '"><span>' + esc(x.era.name) + "</span><span>" + esc(range) + "</span></a>";
+      eras.map(function (x, i) {
+        var range = String(x.era.label || "").split("·").pop().trim().replace(/^[A-Za-z .]+/, "");
+        return '<a href="#' + x.id + '"' + (i === 0 ? ' class="on"' : "") + '><span>' +
+          esc(x.era.name) + "</span><span>" + esc(range || String(i + 1)) + "</span></a>";
       }).join("") + "</nav>";
 
     var body = eras.map(function (x) {
@@ -478,13 +615,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     }).join("");
 
     return crumbs([{ label: book }]) +
-      "<h1>" + esc(book) + "</h1>" +
-      (doc.desc ? '<p class="a-sub">' + esc(doc.desc) + "</p>" : "") +
-      '<div class="ib-row ib-filters">' +
-        pill("All events", !uiTurningOnly, "ibTurning(false)") +
-        pill("Turning points", uiTurningOnly, "ibTurning(true)") +
+      '<div class="ib-bookhead"><div class="ib-bookhead-t">' +
+        '<h1 class="a-title">' + esc(book) + "</h1>" +
+        (doc.desc ? '<p class="a-sub">' + esc(doc.desc) + "</p>" : "") +
       "</div>" +
-      versionBar() +
+      '<span class="a-row">' +
+        chip("All events", !uiTurningOnly, "ibTurning(false)") +
+        chip("Turning points", uiTurningOnly, "ibTurning(true)") +
+      "</span></div>" +
+      versionBar("Applies to every passage you open on this page.") +
       '<div class="ib-book">' + rail + '<div class="ib-eras">' + body + "</div></div>" +
       attribution();
   }
@@ -502,7 +641,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       '<div class="ib-fold-body">' +
         (ev.detail ? '<p class="ib-detail">' + esc(ev.detail) + "</p>" : "") +
         '<p class="ib-passage" id="' + id + '">Open to read it.</p>' +
-        '<div class="ib-row">' +
+        '<div class="a-row">' +
           '<button type="button" class="a-lnk" onclick="ibGo({screen:\'read\',book:' + attr(VIEW.book) + ",ref:" + attr(ref) + '})">Read it word by word ›</button>' +
           '<span class="ib-note">' + esc(VERSION_LABEL[uiVersion]) + " · fetched live</span>" +
         "</div>" +
@@ -515,12 +654,6 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (!d.classList || !d.classList.contains("ib-fold") || !d.open) return;
     fillVerse(d.dataset.node, d.dataset.ref);
   }, true);
-
-  function attribution() {
-    return '<p class="a-credit">NET text fetched live from ' +
-      '<a href="https://labs.bible.org/" rel="noopener" target="_blank">bible.org’s web service</a>. ' +
-      "Hebrew and Greek from the open Macula and SBLGNT datasets.</p>";
-  }
 
   // ---------------------------------------------------------------- read
 
@@ -563,25 +696,31 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var ev = eventTitleFor(book, ref);
     var head = crumbs([
       { label: book, go: "ibGo({screen:'book',book:" + attr(book) + "})" },
-      { label: en }
-    ]) +
-      "<h1>" + esc(ev && ev.title ? ev.title : en) + "</h1>" +
-      '<p class="a-clabel ib-readref">' + esc(en) + " · " + esc(VERSION_LABEL[uiVersion]) + "</p>";
+      { label: refTail(en) }
+    ]);
 
     var p = parseRef(ref);
-    if (!p) return head + "<p class=\"ib-note\">That reference could not be read.</p>";
-    if (!DATA[book]) { ensureBook(book); return head + '<p class="ib-note">Loading ' + esc(book) + "…</p>"; }
+    if (!p) return head + '<p class="ib-note">That reference could not be read.</p>';
+    if (!DATA[book]) { ensureBook(book); ensureOutline(book);
+      return head + '<p class="ib-note">Loading ' + esc(book) + "…</p>"; }
 
     var rows = versesIn(book, p);
-    if (!rows.length) return head + "<p class=\"ib-note\">No original-language rows for that reference.</p>";
+    if (!rows.length) return head + '<p class="ib-note">No original-language rows for that reference.</p>';
 
-    var controls = '<div class="ib-row ib-filters">' +
-      ["net","web","nlt","esv"].map(function (v) { return pill(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')"); }).join("") +
-      pill(uiHebrew ? "Original on" : "Original off", uiHebrew, "ibHebrew()") + "</div>";
+    var top = '<div class="ib-readhead"><div class="ib-readhead-t">' +
+      '<h1 class="a-title">' + esc(ev && ev.title ? ev.title : en) + "</h1>" +
+      '<p class="a-eyebrow">' + esc(en) + " · " + esc(VERSION_LABEL[uiVersion]) + "</p></div>" +
+      '<span class="a-row">' +
+        ["net","web","nlt","esv"].map(function (v) {
+          return chip(VERSION_LABEL[v], uiVersion === v, "ibVersion('" + v + "')");
+        }).join("") +
+        chip(uiHebrew ? "Original on" : "Original off", uiHebrew, "ibHebrew()") +
+      "</span></div>";
 
-    return head + controls +
+    return head +
       '<div class="ib-read">' +
-        '<main class="ib-text">' + rows.map(function (r) { return verseBlock(book, r); }).join("") + attribution() + "</main>" +
+        '<main class="ib-text">' + top +
+          rows.map(function (r) { return verseBlock(book, r); }).join("") + attribution() + "</main>" +
         wordPanel(book) +
       "</div>";
   }
@@ -590,6 +729,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var en = toEnglishVerse(book, row.c, row.v);
     var id = "v" + row.c + "-" + row.v;
     var rtl = row.words.length && /[֐-׿]/.test(row.words[0].text || "");
+
     // The data is morphemes, not words: a token whose "after" is empty is
     // glued to the next one. Grouping them keeps the line reading as Hebrew
     // instead of as a row of fragments.
@@ -606,8 +746,11 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return '<section class="ib-verse">' +
       '<p class="a-clabel">' + esc(book + " " + en.chapter + ":" + en.verse) + "</p>" +
       '<p class="ib-passage" id="' + id + '">Loading…</p>' +
-      (uiHebrew ? '<p class="ib-orig' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '"' +
-        (rtl ? ' dir="rtl"' : "") + ">" + words + "</p>" : "") +
+      (uiHebrew ? '<div class="ib-origbox">' +
+        '<p class="a-clabel ib-origlabel">' + (rtl ? "Hebrew" : "Greek") +
+        " · verse " + en.verse + "</p>" +
+        '<p class="ib-orig' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '"' +
+        (rtl ? ' dir="rtl"' : "") + ">" + words + "</p></div>" : "") +
       "</section>";
   }
 
@@ -626,8 +769,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   // The interlinear numbers Greek bare and Hebrew with an H, and it hands
   // prefixes and pronominal suffixes a number that is not theirs. So an
   // entry is trusted only when its lemma is the word's lemma; failing that
-  // the word's own lemma is looked up, and a bare particle is left with
-  // no entry rather than someone else's.
+  // the word's own lemma is looked up, and a bare particle is left with no
+  // entry rather than someone else's.
   var AFFIX = { preposition: 1, particle: 1, conjunction: 1, suffix: 1 };
   var byLemma = null;
 
@@ -635,7 +778,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var k = String(raw == null ? "" : raw);
     return /^\d/.test(k) ? "G" + k : k;
   }
-  function bareHeb(s) { return String(s == null ? "" : s).replace(/[\u0591-\u05C7]/g, ""); }
+  function bareHeb(s) { return String(s == null ? "" : s).replace(/[֑-ׇ]/g, ""); }
 
   function lemmaIndex() {
     if (byLemma) return byLemma;
@@ -661,43 +804,44 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   function wordPanel(book) {
     if (!uiWord) {
       return '<aside class="ib-panel" aria-label="Word detail"><p class="ib-note">' +
-        "Tap any word in the original to open it here.</p></aside>";
+        "Tap any word in the original and it opens here — parsing, definition and " +
+        "how often it is used.</p></aside>";
     }
     var data = DATA[book];
     var ch = data && data.chapters && data.chapters[uiWord.c];
     var w = ch && ch.verses[uiWord.v] && ch.verses[uiWord.v].words[uiWord.i];
     if (!w) return '<aside class="ib-panel" aria-label="Word detail"><p class="ib-note">Not found.</p></aside>';
 
-    var rtl = /[\u0590-\u05FF]/.test(w.text || "");
-    var loading = !LEX || !Object.keys(LEX).length;
+    var rtl = /[֐-׿]/.test(w.text || "");
+    var loading = !Object.keys(LEX).length;
     if (loading) ensureLexicon();
 
     var hit = loading ? null : lexFor(w);
     var key = hit ? hit.key : "";
 
     var rows = [];
+    if (w.pos) rows.push("<dt>Part of speech</dt><dd>" + esc(w.pos) + "</dd>");
     [["stem","Stem"],["tense","Tense"],["voice","Voice"],["mood","Mood"],["person","Person"],
      ["number","Number"],["gender","Gender"],["case","Case"],["state","State"]].forEach(function (pair) {
       if (w[pair[0]]) rows.push("<dt>" + esc(pair[1]) + "</dt><dd>" + esc(w[pair[0]]) + "</dd>");
     });
-    if (w.pos) rows.unshift("<dt>Part of speech</dt><dd>" + esc(w.pos) + "</dd>");
-    if (key) rows.push("<dt>Strong\u2019s</dt><dd>" + esc(key) + "</dd>");
+    if (key) rows.push("<dt>Strong’s</dt><dd>" + esc(key) + "</dd>");
 
     var def = "", kjv = "", deriv = "";
-    if (loading) def = "Loading the lexicon\u2026";
+    if (loading) def = "Loading the lexicon…";
     else if (hit) {
       def   = hit.s.def || "";
       kjv   = hit.s.kjv || "";
       deriv = hit.s.derivation || "";
     } else {
       def = AFFIX[w.pos]
-        ? "A prefix Strong\u2019s does not number. It is read with the word it is attached to."
+        ? "A prefix Strong’s does not number. It is read with the word it is attached to."
         : "No lexicon entry for this word.";
     }
 
     var occ = "";
     if (key) {
-      if (!idxReady(key)) { ensureWordIndex(key); occ = "Counting occurrences\u2026"; }
+      if (!idxReady(key)) { ensureWordIndex(key); occ = "Counting occurrences…"; }
       else {
         var entry = WORD_INDEX[idxKind(key)][key];
         if (entry && entry.occ) {
@@ -714,10 +858,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       (w.translit ? '<p class="ib-panel-translit">' + esc(w.translit) + "</p>" : "") +
       '<p class="ib-panel-gloss">' + esc(String(w.gloss || w.english || "").replace(/\./g, " ")) + "</p>" +
       (rows.length ? '<dl class="ib-parse">' + rows.join("") + "</dl>" : "") +
-      (def ? '<div class="ib-def"><p class="a-clabel">Definition</p><p>' + esc(def) + "</p>" +
+      (def ? '<div class="ib-def"><p class="a-clabel">Definition</p><p class="ib-defbody">' + esc(def) + "</p>" +
              (kjv ? '<p class="ib-note">Rendered in the King James as ' + esc(kjv) + "</p>" : "") +
              (deriv ? '<p class="ib-note">' + esc(deriv) + "</p>" : "") +
-             (occ ? '<p class="ib-note">' + esc(occ) + "</p>" : "") + "</div>" : "") +
+             (occ ? '<p class="ib-note ib-occ">' + esc(occ) + "</p>" : "") + "</div>" : "") +
       "</aside>";
   }
 
