@@ -184,6 +184,8 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-u-diff.on .ib-u-en{color:var(--paper-deep)}
 .jayms-tool-outline .ib-u-diff.on .ib-u-he{border-bottom-color:var(--paper-deep)}
 .jayms-tool-outline .ib-read.is-il .ib-text{padding-right:36px}
+/* no panel in parallel, so the reading takes the whole row */
+.jayms-tool-outline .ib-read.no-orig .ib-text{padding-right:0}
 /* a verse the versions argue over says so, and opens the argument below */
 .jayms-tool-outline .ib-vnum-diff{background:none;border:0;padding:0 1px;font:inherit;
   color:var(--rust);cursor:pointer;border-bottom:1px dotted var(--rust)}
@@ -623,9 +625,22 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     "Teaching / Parable": "k-teach",
     "Miracle / Sign":     "k-sign"
   };
+  // What a reader picked, kept for the next visit. Browser storage can be
+  // absent or refuse to answer, so every read and write is guarded and the
+  // tool works the same when it comes back empty.
+  function remember(key, value) {
+    try { window.localStorage.setItem("jayms.ib." + key, value); } catch (e) {}
+  }
+  function recall(key, fallback) {
+    try {
+      var v = window.localStorage.getItem("jayms.ib." + key);
+      return v == null ? fallback : v;
+    } catch (e) { return fallback; }
+  }
+
   var uiVersion = "net";      // the one a passage on the book screen opens in
   var uiCols = ["net"];       // the translations set side by side when reading
-  var uiHebrew = true;
+  var uiHebrew = recall("mode", "il") !== "par";
   var uiWord = null;
   var uiEra = null;
 
@@ -694,8 +709,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (uiDiff != null) ensureDiffFull();
     render();
   };
-  window.ibHebrew    = function (on) { uiHebrew = !!on; render(); };
-  window.ibVersion   = function (v) { uiVersion = v; render(); };
+  window.ibHebrew    = function (on) {
+    uiHebrew = !!on;
+    remember("mode", uiHebrew ? "il" : "par");
+    render();
+  };
+  window.ibVersion   = function (v) { uiVersion = v; remember("version", v); render(); };
   // reading in parallel: a translation goes in or comes out, and the last
   // one standing cannot be removed or there would be nothing to read
   window.ibCol       = function (v) {
@@ -703,6 +722,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (at < 0) uiCols = uiCols.concat([v]);
     else if (uiCols.length > 1) uiCols = uiCols.filter(function (x) { return x !== v; });
     uiCols = VERSION_ORDER.filter(function (x) { return uiCols.indexOf(x) > -1; });
+    remember("cols", uiCols.join(","));
     render();
   };
 
@@ -789,6 +809,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   var VERSION_LABEL = { net: "NET", kjv: "KJV", web: "WEB", nlt: "NLT", esv: "ESV" };
   var VERSION_ORDER = ["net", "kjv", "web", "nlt", "esv"];
+
+  (function restorePicks() {
+    var v = recall("version", "");
+    if (VERSION_ORDER.indexOf(v) > -1) uiVersion = v;
+    var cols = recall("cols", "").split(",").filter(function (x) {
+      return VERSION_ORDER.indexOf(x) > -1;
+    });
+    if (cols.length) uiCols = VERSION_ORDER.filter(function (x) { return cols.indexOf(x) > -1; });
+  })();
 
   // .a-chip is the site's pill. Nothing here invents one.
   function chip(label, on, call) {
@@ -1345,7 +1374,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</p></div>" +
       '<span class="a-row">' +
         chip("Interlinear", uiHebrew, "ibHebrew(true)") +
-        chip("Translation", !uiHebrew, "ibHebrew(false)") +
+        chip("Parallel", !uiHebrew, "ibHebrew(false)") +
         (uiHebrew ? "" : '<span class="ib-colsep" aria-hidden="true"></span>' +
           VERSION_ORDER.map(function (v) {
             return chip(VERSION_LABEL[v], uiCols.indexOf(v) > -1, "ibCol('" + v + "')");
@@ -1360,7 +1389,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return head +
       '<div class="ib-read' + (uiHebrew ? " is-il" : " no-orig") + '">' +
         '<main class="ib-text">' + top + body + attribution() + "</main>" +
-        wordPanel(book) +
+        // the panel belongs to the interlinear: in parallel there is no
+        // original to tap, so it would sit there inviting a click that
+        // cannot happen
+        (uiHebrew ? wordPanel(book) : "") +
       "</div>";
   }
 
