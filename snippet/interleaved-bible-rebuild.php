@@ -162,8 +162,13 @@ add_action( 'wp_footer', function () {
    whole passage wrapping like a paragraph. Reading order runs left to
    right even though each Hebrew word is set right to left inside itself,
    which is how a printed interlinear does it. */
+/* Reading sits on a panel, the way every passage on the book screen does:
+   text straight on the page is harder on the eye than text on a card. */
 .jayms-tool-outline .ib-il{display:flex;flex-wrap:wrap;align-items:flex-end;
-  gap:16px 8px;margin:0 0 26px}
+  gap:16px 8px;margin:0 0 26px;background:var(--paper-deep);border:1px solid var(--line);
+  border-radius:10px;padding:22px 24px}
+.jayms-tool-outline .ib-reader{background:var(--paper-deep);border:1px solid var(--line);
+  border-radius:10px;padding:2px 24px;margin:0 0 26px}
 /* the number opens a verse, so it sits high and keeps its distance from
    the word before it, or it reads as that word's footnote */
 .jayms-tool-outline .ib-vnum{align-self:flex-start;margin-left:14px;padding:0 1px;
@@ -231,7 +236,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-wdiff-ref{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust)}
 .jayms-tool-outline .ib-wdiff-gist{font-size:14px;line-height:1.45;color:var(--ink-soft)}
 
-.jayms-tool-outline .ib-verse{margin:0 0 22px}
+.jayms-tool-outline .ib-verse{margin:0}
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
 /* reading in parallel: one column per translation, verse against verse */
 .jayms-tool-outline .ib-par{display:grid;gap:8px 28px;align-items:start}
@@ -242,7 +247,7 @@ add_action( 'wp_footer', function () {
 /* the theme sets colour on body, p and li with !important, so a
    paragraph cannot be recoloured without meeting it */
 .jayms-tool-outline .ib-verse .ib-passage{color:var(--ink-bright) !important}
-.jayms-tool-outline .ib-verse{border-bottom:1px solid var(--line);padding-bottom:20px}
+.jayms-tool-outline .ib-verse{border-bottom:1px solid var(--line);padding:20px 0}
 .jayms-tool-outline .ib-verse:last-of-type{border-bottom:0}
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
@@ -1382,8 +1387,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "</span></div>";
 
     ensureDiffs();
-    var body = uiHebrew ? interlinear(book, rows)
-                        : rows.map(function (r) { return verseBlock(book, r); }).join("");
+    var body = uiHebrew
+      ? interlinear(book, rows)
+      : '<div class="ib-reader">' +
+          rows.map(function (r) { return verseBlock(book, r); }).join("") + "</div>";
     body += diffPanel();
 
     return head +
