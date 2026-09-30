@@ -163,6 +163,11 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-il{display:flex;flex-wrap:wrap;align-items:flex-end;
   gap:16px 8px;margin:0 0 26px;background:var(--paper-deep);border:1px solid var(--line);
   border-left:3px solid var(--edge-original);border-radius:10px;padding:22px 24px}
+/* stepping through a book: back on the left, forward on the right, and
+   the side with nowhere to go keeps its space so the other stays put */
+.jayms-tool-outline .ib-pager{display:flex;justify-content:space-between;align-items:center;
+  gap:16px;margin:0 0 24px}
+.jayms-tool-outline .ib-pg-gap{flex:0 0 auto}
 .jayms-tool-outline .ib-reader{background:var(--paper-deep);border:1px solid var(--line);
   border-left:3px solid var(--edge-text);border-radius:10px;padding:2px 24px;margin:0 0 26px}
 /* the number opens a verse, so it sits high and keeps its distance from
@@ -275,6 +280,7 @@ add_action( 'wp_footer', function () {
    where a Hebrew reader expects it */
 .jayms-tool-outline .ib-panel-top{display:flex;align-items:center;justify-content:space-between;
   gap:16px;min-height:52px}
+.jayms-tool-outline .ib-panel-hint{margin:0;font-size:1.12em;line-height:1.6;color:var(--ink-soft)}
 .jayms-tool-outline .ib-panel-word{margin:0;font-size:2.1em;line-height:1.2}
 .jayms-tool-outline .ib-panel-translit{margin:0;font-style:italic;color:var(--ink-soft);font-size:1.45em}
 .jayms-tool-outline .ib-count{display:inline-flex;align-items:center;justify-content:center;
@@ -1288,6 +1294,50 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return hit;
   }
 
+  // Stepping through a book a passage at a time. Every verse in the book is
+  // laid end to end, so a step can cross a chapter without knowing it has,
+  // and the passage it lands on is the length of the one you left.
+  function bookVerses(book) {
+    var counts = VERSE_COUNTS[dataSlug(book)] || [];
+    var flat = [];
+    for (var c = 0; c < counts.length; c++) {
+      for (var v = 1; v <= counts[c]; v++) flat.push([c + 1, v]);
+    }
+    return flat;
+  }
+  function indexOfVerse(flat, c, v) {
+    for (var i = 0; i < flat.length; i++) if (flat[i][0] === c && flat[i][1] === v) return i;
+    return -1;
+  }
+  function stepRef(book, ref, dir) {
+    var p = parseRef(ref), flat = bookVerses(book);
+    if (!p || !flat.length) return null;
+    var from = indexOfVerse(flat, p.c1, p.v1), to = indexOfVerse(flat, p.c2, p.v2);
+    if (from < 0 || to < 0) return null;
+    var span = to - from + 1;
+    if (dir < 0 && from === 0) return null;
+    var start = dir > 0 ? to + 1 : Math.max(0, from - span);
+    if (start > flat.length - 1) return null;
+    var end = Math.min(start + span - 1, flat.length - 1);
+    var a = flat[start], b = flat[end];
+    return book + " " + a[0] + ":" + a[1] +
+      (a[0] === b[0] && a[1] === b[1] ? "" :
+       a[0] === b[0] ? "-" + b[1] : "-" + b[0] + ":" + b[1]);
+  }
+
+  function pager(book, ref) {
+    var back = stepRef(book, ref, -1), fwd = stepRef(book, ref, 1);
+    if (!back && !fwd) return "";
+    function side(target, label) {
+      if (!target) return '<span class="ib-pg-gap"></span>';
+      return '<button type="button" class="a-lnk" onclick="ibGo({screen:\'read\',book:' +
+        attr(book) + ",ref:" + attr(target) + '})">' + esc(label) + "</button>";
+    }
+    return '<nav class="ib-pager" aria-label="Move through the book">' +
+      side(back, "\u2039 " + (back ? refTail(toEnglishRef(back)) : "")) +
+      side(fwd, (fwd ? refTail(toEnglishRef(fwd)) : "") + " \u203a") + "</nav>";
+  }
+
   window.ibWord = function (c, v, i) {
     uiWord = { c: c, v: v, i: i };
     // if the versions differ on this word, the argument opens with it
@@ -1338,7 +1388,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
     return head +
       '<div class="ib-read' + (uiHebrew ? " is-il" : " no-orig") + '">' +
-        '<main class="ib-text">' + top + body + attribution() + "</main>" +
+        '<main class="ib-text">' + top + body + pager(book, ref) + attribution() + "</main>" +
         // the panel belongs to the interlinear: in parallel there is no
         // original to tap, so it would sit there inviting a click that
         // cannot happen
@@ -1509,7 +1559,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   function wordPanel(book) {
     if (!uiWord) {
-      return '<aside class="ib-panel" aria-label="Word detail"><p class="ib-note">' +
+      return '<aside class="ib-panel" aria-label="Word detail"><p class="ib-panel-hint">' +
         "Tap any word in the original and it opens here — parsing, definition and " +
         "how often it is used.</p></aside>";
     }
