@@ -178,9 +178,12 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-occ{color:var(--ink-soft)}
 
 @media (max-width: 900px) {
+  /* align-items:flex-start is right while these are rows and wrong the
+     moment they stack: it shrinks every child to its own content width */
   .jayms-tool-outline .ib-main,
   .jayms-tool-outline .ib-book,
-  .jayms-tool-outline .ib-read{flex-direction:column;gap:22px}
+  .jayms-tool-outline .ib-read{flex-direction:column;gap:22px;align-items:stretch}
+  .jayms-tool-outline .ib-text{max-width:none;padding-right:0}
   .jayms-tool-outline .ib-jump{position:static;flex:1 1 auto;border-left:0;
     border-top:1px solid var(--line);padding:18px 0 0}
   .jayms-tool-outline .ib-rail{position:static;flex:1 1 auto;border-right:0;
