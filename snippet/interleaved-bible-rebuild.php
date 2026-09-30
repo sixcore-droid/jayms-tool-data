@@ -369,14 +369,31 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if ((m = h.match(/^read=([^|]+)\|(.+)$/)))   return { screen: "read", book: m[1], ref: m[2] };
     return { screen: "picker" };
   }
+  // Where you were in each book's outline. Coming back from a passage to
+  // a fifty-movement page and landing at the top -- or, as the browser
+  // preferred, at the bottom -- loses your place every time.
+  var bookScroll = {};
+  var restoreFor = null;
+
+  function rememberScroll() {
+    if (VIEW.screen === "book" && VIEW.book) {
+      bookScroll[VIEW.book] = document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
+  }
+
   function go(v) {
+    rememberScroll();
+    // a book chosen off the picker starts at its beginning, not wherever
+    // it was left the last time
+    if (v.screen === "book" && VIEW.screen === "picker") delete bookScroll[v.book];
     VIEW = v;
     uiWord = null;
     uiEra = null;
+    restoreFor = (v.screen === "book" && bookScroll[v.book] != null) ? v.book : null;
     var h = hashFor(v);
     if (location.hash !== h) { selfSetHash = true; location.hash = h; }
     render();
-    MOUNT.scrollIntoView({ block: "start" });
+    if (!restoreFor) MOUNT.scrollIntoView({ block: "start" });
   }
   window.ibGo = go;
 
@@ -388,8 +405,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     // screen named that, so show the picker"
     var h = decodeURIComponent(location.hash.replace(/^#/, ""));
     if (h && !/^(books$|book=|read=)/.test(h)) return;
+    rememberScroll();
     VIEW = viewFromHash();
     uiWord = null;
+    restoreFor = (VIEW.screen === "book" && bookScroll[VIEW.book] != null) ? VIEW.book : null;
     render();
   });
 
@@ -1197,10 +1216,20 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
                                renderPicker();
     fillReadVerses();
     wireRail();
+    // the outline may only have arrived on this paint, so the place we
+    // were keeping is only restorable once the sections are really there
+    if (restoreFor && VIEW.screen === "book" && VIEW.book === restoreFor &&
+        MOUNT.querySelector(".ib-era")) {
+      window.scrollTo(0, bookScroll[restoreFor]);
+      restoreFor = null;
+      wireRail();
+    }
   }
 
   // ------------------------------------------------------------------ boot
 
+  // the browser's own guess at where to put you is worse than ours
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   VIEW = viewFromHash();
   render();
   if (VIEW.screen === "book" || VIEW.screen === "read") ensureOutline(VIEW.book);
