@@ -460,12 +460,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   var verseCache = {};
 
-  // Verse numbers go in round brackets on purpose: a screen reader skips
-  // what is in parentheses, so the passage is heard as prose instead of
-  // "one Now after the Sabbath two Suddenly". Square brackets and braces
-  // are read aloud, so they would not do.
+  // Verse numbers go in square brackets on purpose: Speechify is set to
+  // skip bracketed text, so the passage is heard as prose instead of "one
+  // Now after the Sabbath two Suddenly". Parentheses are read aloud there,
+  // so they would not do.
   function verseNo(n) {
-    return '<sup class="ib-vn">(' + esc(n) + ")</sup>";
+    return '<sup class="ib-vn">[' + esc(n) + "]</sup>";
   }
 
   // the shared fetcher signs every verse "(ESV)", and the row already says
