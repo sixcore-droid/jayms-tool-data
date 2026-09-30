@@ -629,15 +629,18 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   function scoreName(q, n) {
     if (!n) return 0;
-    if (n.indexOf(q) === 0) return 1000 - n.length;
-    if (n.indexOf(q) > -1) return 800 - n.length;
-    if (subseq(q, n)) return 640 - n.length;
+    if (n.indexOf(q) === 0) return 1000;
+    // one or two letters is the start of a name, nothing looser: "e" means
+    // the books beginning with E, not every book with an e in it
+    if (q.length < 3) return 0;
+    if (n.indexOf(q) > -1) return 800;
+    if (subseq(q, n)) return 640;
     // a typo in the whole word, or in the part of it that was typed
     var whole = dist(q, n);
     var head  = dist(q, n.slice(0, q.length));
     var d = Math.min(whole, head);
     var allow = q.length <= 4 ? 1 : (q.length <= 7 ? 2 : 3);
-    if (d <= allow) return 500 - d * 60 - n.length;
+    if (d <= allow) return 500 - d * 60;
     return 0;
   }
 
@@ -671,11 +674,13 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var q = norm(uiFind);
     if (!q) return { q: "", list: pool };
     var hits = [];
-    pool.forEach(function (b) {
+    pool.forEach(function (b, i) {
       var v = score(b, q);
-      if (v > 0) hits.push({ b: b, v: v });
+      if (v > 0) hits.push({ b: b, v: v, i: i });
     });
-    hits.sort(function (x, y) { return y.v - x.v; });
+    // equal matches come back in the order they sit in the Bible, not in
+    // the order of their name lengths
+    hits.sort(function (x, y) { return (y.v - x.v) || (x.i - y.i); });
     return { q: q, list: hits.map(function (h) { return h.b; }) };
   }
 
