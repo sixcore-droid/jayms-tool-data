@@ -132,7 +132,11 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-fold.kind .ib-ref{color:var(--k)}
 .jayms-tool-outline .ib-title{flex:1 1 auto;min-width:0;font-size:20px;color:var(--ink)}
 .jayms-tool-outline .ib-flag{margin-left:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--k,var(--muted))}
+  color:var(--k,var(--muted));white-space:nowrap}
+/* what only this Gospel carries: a quieter mark than the event kind, and
+   never the kind's colour, or the two would read as one label */
+.jayms-tool-outline .ib-only{color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:2px 8px;letter-spacing:.08em}
 .jayms-tool-outline .ib-caret{flex:0 0 auto;color:var(--gold);font-size:13px}
 .jayms-tool-outline .ib-fold[open] > summary .ib-caret{display:inline-block;transform:rotate(90deg)}
 .jayms-tool-outline .ib-fold-body{padding:2px 22px 20px 158px;display:flex;flex-direction:column;gap:14px}
@@ -382,6 +386,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var uiFind = "";
   var uiKind = null;      // which kind of event the page is filtered to
   var openFolds = {};     // passages a reader has opened, kept across repaints
+  var uiOnly = false;     // showing only what this book alone carries
 
   // The outline tags every event with one of four kinds. A standard event
   // is the default and carries no flag; the other three each get a token.
@@ -456,6 +461,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   window.ibTestament = function (t) { uiTestament = t; render(); };
   window.ibGenre     = function (g) { uiGenre = g; render(); };
   window.ibKind      = function (k) { uiKind = k; render(); };
+  window.ibOnly      = function (b) { uiOnly = b; render(); };
   window.ibHebrew    = function () { uiHebrew = !uiHebrew; render(); };
   window.ibVersion   = function (v) { uiVersion = v; render(); };
 
@@ -931,14 +937,17 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     if (!doc) { ensureOutline(book); return crumbs([{ label: book }]) + '<p class="ib-note">Loading the outline…</p>'; }
 
     var eras = (doc.eras || []).map(function (era, i) {
-      var events = (era.events || []).filter(function (e) { return !uiKind || e.kind === uiKind; });
+      var events = (era.events || []).filter(function (e) {
+        return (!uiKind || e.kind === uiKind) && (!uiOnly || e.only);
+      });
       return { era: era, events: events, id: "era" + i };
     }).filter(function (x) { return x.events.length; });
 
     // only offer a filter for the kinds this book actually holds
-    var present = [], tally = {};
+    var present = [], tally = {}, onlyCount = 0;
     (doc.eras || []).forEach(function (era) {
       (era.events || []).forEach(function (e) {
+        if (e.only) onlyCount++;
         if (!KINDS[e.kind]) return;
         if (present.indexOf(e.kind) < 0) present.push(e.kind);
         tally[e.kind] = (tally[e.kind] || 0) + 1;
@@ -971,6 +980,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         present.map(function (k) {
           return chip(k + " " + tally[k], uiKind === k, "ibKind(" + attr(k) + ")");
         }).join("") +
+        (onlyCount ? chip("Only in " + book + " " + onlyCount, uiOnly,
+                          "ibOnly(" + (uiOnly ? "false" : "true") + ")") : "") +
       "</span></div>" +
       versionBar("Applies to every passage you open on this page.") +
       '<div class="ib-book">' + rail + '<div class="ib-eras">' + body + "</div></div>" +
@@ -987,7 +998,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       "<summary>" +
         '<span class="ib-ref">' + esc(en) + "</span>" +
         '<span class="ib-title">' + esc(ev.title) +
-          (cls ? ' <span class="ib-flag">' + esc(ev.kind) + "</span>" : "") + "</span>" +
+          (cls ? ' <span class="ib-flag">' + esc(ev.kind) + "</span>" : "") +
+          (ev.only ? ' <span class="ib-flag ib-only">Only in ' + esc(ev.only) + "</span>" : "") + "</span>" +
         '<span class="ib-caret" aria-hidden="true">›</span>' +
       "</summary>" +
       '<div class="ib-fold-body">' +
