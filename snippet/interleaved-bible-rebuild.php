@@ -179,6 +179,39 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-u.on .ib-u-en,
 .jayms-tool-outline .ib-u.on .ib-u-he{color:var(--paper-deep)}
 .jayms-tool-outline .ib-read.is-il .ib-text{padding-right:36px}
+/* a verse the versions argue over says so, and opens the argument below */
+.jayms-tool-outline .ib-vnum-diff{background:none;border:0;padding:0 1px;font:inherit;
+  color:var(--rust);cursor:pointer;border-bottom:1px dotted var(--rust)}
+.jayms-tool-outline .ib-vnum-diff:hover,
+.jayms-tool-outline .ib-vnum-diff.on{color:var(--ink);border-bottom-color:var(--ink)}
+
+.jayms-tool-outline .ib-diff{margin:8px 0 26px;background:var(--paper-deep);
+  border:1px solid var(--line);border-left:3px solid var(--rust);border-radius:10px;
+  padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.jayms-tool-outline .ib-diff-head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px}
+.jayms-tool-outline .ib-diff-head > div:first-child{flex:1 1 320px;min-width:0}
+.jayms-tool-outline .ib-diff-h{margin:6px 0 0;font-size:1.45em;line-height:1.3;color:var(--ink)}
+.jayms-tool-outline .ib-diff-x{flex:0 0 auto}
+.jayms-tool-outline .ib-dw{flex:0 0 auto;align-self:center;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 12px;
+  color:var(--muted);white-space:nowrap}
+.jayms-tool-outline .ib-dw-claim{color:var(--rust);border-color:var(--rust)}
+.jayms-tool-outline .ib-dw-emphasis{color:var(--gold);border-color:var(--gold)}
+.jayms-tool-outline .ib-diff-lemma{margin:0;color:var(--aramaic);font-size:1.15em}
+.jayms-tool-outline .ib-diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:16px 28px}
+.jayms-tool-outline .ib-df p{margin:0}
+.jayms-tool-outline .ib-df-body{margin-top:5px;line-height:1.6;color:var(--ink-soft)}
+.jayms-tool-outline .ib-df-srcs{border-top:1px solid var(--line);padding-top:12px}
+
+.jayms-tool-outline .ib-wdiff{border-top:1px solid var(--line);padding-top:16px;
+  display:flex;flex-direction:column;gap:8px}
+.jayms-tool-outline .ib-wdiff-row{display:flex;flex-direction:column;gap:3px;text-align:left;
+  background:none;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+  font:inherit;color:inherit;cursor:pointer}
+.jayms-tool-outline .ib-wdiff-row:hover{border-color:var(--rust)}
+.jayms-tool-outline .ib-wdiff-ref{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust)}
+.jayms-tool-outline .ib-wdiff-gist{font-size:14px;line-height:1.45;color:var(--ink-soft)}
 
 .jayms-tool-outline .ib-verse{margin:0 0 22px}
 .jayms-tool-outline .ib-verse > .a-clabel{margin:0 0 6px}
@@ -298,6 +331,15 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var LEX = {};
   var COUNTS_WORD = {};   // strong -> [times used, books it appears in]
 
+  // Where the translations part company. The entries live on jayms.com, in
+  // the same set the Why Does My Bible Say That? page reads, so there is
+  // one copy of them and the tools cannot drift apart.
+  var DIFF_BASE = "/wp-json/jayms/v1/differences";
+  var DIFFS = [];         // the lean rows: id, ref, lemma, weight, family, gist
+  var DIFF_FULL = {};     // id -> the whole entry, fetched when one is opened
+  var DIFF_BY_VERSE = null;
+  var DIFF_BY_STRONG = null;
+
   Object.keys(PRELOAD).forEach(function (b) { OUTLINES[b] = PRELOAD[b]; });
 
   // name, testament, chapters, genre. Acts is history, and there is one
@@ -415,6 +457,86 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   // How often a word is used is a number, not an atlas: this is 198KB and
   // covers every Strong's number in the corpus, where the two word indexes
   // were 12MB between them and still missed seven hundred of them.
+  // "John 1:18", "Romans 3:22; Galatians 2:16", "Ezekiel 37:5, 9, 14",
+  // "Genesis 1:26b", "Psalm 82" -- all of them, into verse keys.
+  var BOOK_ALIAS = { "psalm": "Psalms", "song of songs": "Song of Solomon",
+                     "canticles": "Song of Solomon", "qoheleth": "Ecclesiastes" };
+  var BOOK_BY_NAME = null;
+  function canonBook(name) {
+    if (!BOOK_BY_NAME) {
+      BOOK_BY_NAME = {};
+      BOOKS.forEach(function (b) { BOOK_BY_NAME[b.name.toLowerCase()] = b.name; });
+    }
+    var k = String(name || "").toLowerCase().replace(/\s+/g, " ").trim();
+    return BOOK_BY_NAME[k] || BOOK_ALIAS[k] || null;
+  }
+
+  function refKeys(ref) {
+    var out = [];
+    String(ref == null ? "" : ref).split(/\s*;\s*/).forEach(function (part) {
+      var m = part.match(/^\s*((?:[1-3]\s*)?[A-Za-z][A-Za-z' ]*?)\s+(\d+)(?::([\d,\s\-\u2013ab]+))?\s*$/);
+      if (!m) return;
+      var book = canonBook(m[1]);
+      if (!book) return;
+      var ch = parseInt(m[2], 10);
+      if (!m[3]) { out.push(book + "|" + ch); return; }
+      m[3].split(/\s*,\s*/).forEach(function (bit) {
+        var r = bit.match(/^\s*(\d+)[ab]?(?:\s*[-\u2013]\s*(\d+)[ab]?)?\s*$/);
+        if (!r) return;
+        var a = parseInt(r[1], 10), b = r[2] ? parseInt(r[2], 10) : a;
+        for (var v = a; v <= b && v - a < 200; v++) out.push(book + "|" + ch + ":" + v);
+      });
+    });
+    return out;
+  }
+
+  function diffIndex() {
+    if (DIFF_BY_VERSE) return;
+    DIFF_BY_VERSE = {}; DIFF_BY_STRONG = {};
+    DIFFS.forEach(function (d) {
+      refKeys(d.ref).forEach(function (k) {
+        (DIFF_BY_VERSE[k] = DIFF_BY_VERSE[k] || []).push(d.id);
+      });
+      (String(d.lemma || "").match(/\b[HG]\d{1,5}\b/g) || []).forEach(function (sn) {
+        (DIFF_BY_STRONG[sn] = DIFF_BY_STRONG[sn] || []).push(d.id);
+      });
+    });
+  }
+
+  function diffsFor(book, chapter, verse) {
+    if (!DIFFS.length) return [];
+    diffIndex();
+    var a = DIFF_BY_VERSE[book + "|" + chapter + ":" + verse] || [];
+    var b = DIFF_BY_VERSE[book + "|" + chapter] || [];
+    return a.concat(b.filter(function (x) { return a.indexOf(x) < 0; }));
+  }
+  function diffsForStrong(key) {
+    if (!DIFFS.length || !key) return [];
+    diffIndex();
+    return DIFF_BY_STRONG[key] || [];
+  }
+  function diffById(id) {
+    return DIFF_FULL[id] || null;
+  }
+
+  function ensureDiffs() {
+    if (DIFFS.length) return Promise.resolve();
+    return once("diffs", function () {
+      return fetch(DIFF_BASE + "?shape=map").then(function (r) { return r.json(); })
+        .then(function (d) { DIFFS = Array.isArray(d) ? d : []; DIFF_BY_VERSE = null; render(); });
+    });
+  }
+  function ensureDiffFull() {
+    if (Object.keys(DIFF_FULL).length) return Promise.resolve();
+    return once("diffsFull", function () {
+      return fetch(DIFF_BASE).then(function (r) { return r.json(); })
+        .then(function (d) {
+          (Array.isArray(d) ? d : []).forEach(function (row) { DIFF_FULL[row.id] = row; });
+          render();
+        });
+    });
+  }
+
   function countsReady() { return Object.keys(COUNTS_WORD).length > 0; }
   function ensureCounts() {
     if (countsReady()) return Promise.resolve();
@@ -435,6 +557,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   var uiKind = null;      // which kind of event the page is filtered to
   var openFolds = {};     // passages a reader has opened, kept across repaints
   var uiOnly = false;     // showing only what this book alone carries
+  var uiDiff = null;      // which translation-difference entry is open
 
   // The outline tags every event with one of four kinds. A standard event
   // is the default and carries no flag; the other three each get a token.
@@ -510,6 +633,11 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   window.ibGenre     = function (g) { uiGenre = g; render(); };
   window.ibKind      = function (k) { uiKind = k; render(); };
   window.ibOnly      = function (b) { uiOnly = b; render(); };
+  window.ibDiff      = function (id) {
+    uiDiff = (uiDiff === id) ? null : id;
+    if (uiDiff != null) ensureDiffFull();
+    render();
+  };
   window.ibHebrew    = function (on) { uiHebrew = !!on; render(); };
   window.ibVersion   = function (v) { uiVersion = v; render(); };
 
@@ -1145,8 +1273,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
         }).join("")) +
       "</span></div>";
 
+    ensureDiffs();
     var body = uiHebrew ? interlinear(book, rows)
                         : rows.map(function (r) { return verseBlock(book, r); }).join("");
+    body += diffPanel();
 
     return head +
       '<div class="ib-read' + (uiHebrew ? " is-il" : " no-orig") + '">' +
@@ -1163,7 +1293,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var out = [];
     rows.forEach(function (row) {
       var en = toEnglishVerse(book, row.c, row.v);
-      out.push('<span class="ib-vnum" id="v' + row.c + "-" + row.v + '">[' + en.verse + "]</span>");
+      var hits = diffsFor(book, en.chapter, en.verse);
+      out.push(hits.length
+        ? '<button type="button" class="ib-vnum ib-vnum-diff' + (uiDiff === hits[0] ? " on" : "") +
+          '" id="v' + row.c + "-" + row.v + '" onclick="ibDiff(' + hits[0] + ')"' +
+          ' title="Why the translations differ here">[' + en.verse + "]</button>"
+        : '<span class="ib-vnum" id="v' + row.c + "-" + row.v + '">[' + en.verse + "]</span>");
 
       var run = [], first = 0;
       row.words.forEach(function (w, i) {
@@ -1276,6 +1411,21 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     return box.innerHTML;
   }
 
+  // a word the versions argue over says so, under its lexicon entry
+  function diffsForWord(key) {
+    var ids = diffsForStrong(key);
+    if (!ids.length) return "";
+    return '<div class="ib-wdiff"><p class="a-clabel">Versions differ here</p>' +
+      ids.map(function (id) {
+        var d = null;
+        for (var i = 0; i < DIFFS.length; i++) if (DIFFS[i].id === id) { d = DIFFS[i]; break; }
+        if (!d) return "";
+        return '<button type="button" class="ib-wdiff-row" onclick="ibDiff(' + id + ')">' +
+          '<span class="ib-wdiff-ref">' + esc(d.ref) + "</span>" +
+          '<span class="ib-wdiff-gist">' + esc(d.gist || "") + "</span></button>";
+      }).join("") + "</div>";
+  }
+
   function lexBlock(hit) {
     var c = hit && hit.c;
     if (!c || !c.entry) return "";
@@ -1355,7 +1505,47 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
              (deriv ? '<p class="ib-note">' + esc(deriv) + "</p>" : "") +
              (occ ? '<p class="ib-note ib-occ">' + esc(occ) + "</p>" : "") + "</div>" : "") +
       lexBlock(hit) +
+      diffsForWord(key) +
       "</aside>";
+  }
+
+  // --------------------------------------------- where versions disagree
+
+  function diffField(label, text) {
+    if (!text) return "";
+    return '<div class="ib-df"><p class="a-clabel">' + esc(label) + "</p>" +
+      '<p class="ib-df-body">' + esc(text) + "</p></div>";
+  }
+
+  function diffPanel() {
+    if (uiDiff == null) return "";
+    var d = diffById(uiDiff);
+    if (!d) { ensureDiffFull(); return '<div class="ib-diff"><p class="ib-note">Loading\u2026</p></div>'; }
+
+    var badge = d.weight ? '<span class="ib-dw ib-dw-' + esc(String(d.weight).toLowerCase()) + '">' +
+      esc(d.weight === "claim" ? "Changes the claim" :
+          d.weight === "emphasis" ? "Changes the emphasis" : "Cosmetic") + "</span>" : "";
+
+    var srcs = d.srcs ? '<p class="ib-note ib-df-srcs">' + esc(d.srcs) + "</p>" : "";
+
+    return '<section class="ib-diff" aria-label="Why the translations differ">' +
+      '<div class="ib-diff-head">' +
+        '<div><p class="a-eyebrow">' + esc(d.ref || "") +
+          (d.lang ? " \u00b7 " + esc(d.lang) : "") + "</p>" +
+          '<h2 class="ib-diff-h">' + esc(d.gist || "") + "</h2></div>" +
+        badge +
+        '<button type="button" class="a-lnk ib-diff-x" onclick="ibDiff(' + uiDiff + ')">Close</button>' +
+      "</div>" +
+      (d.lemma ? '<p class="ib-diff-lemma">' + esc(d.lemma) + "</p>" : "") +
+      '<div class="ib-diff-grid">' +
+        diffField("King James", d.kjv) +
+        diffField("Other versions", d.others) +
+        diffField("What is going on", d.plain) +
+        diffField("What you are seeing", d.seeing) +
+        diffField("Why they differ", d.why) +
+        diffField("Choosing between them", d.choosing) +
+        diffField("The rule", d.rule) +
+      "</div>" + srcs + "</section>";
   }
 
   // ------------------------------------------------------------ the rail
