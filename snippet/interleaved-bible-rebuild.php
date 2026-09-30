@@ -611,6 +611,41 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     });
   }
 
+  // The interlinear numbers Greek bare and Hebrew with an H, and it hands
+  // prefixes and pronominal suffixes a number that is not theirs. So an
+  // entry is trusted only when its lemma is the word's lemma; failing that
+  // the word's own lemma is looked up, and a bare particle is left with
+  // no entry rather than someone else's.
+  var AFFIX = { preposition: 1, particle: 1, conjunction: 1, suffix: 1 };
+  var byLemma = null;
+
+  function strongKey(raw) {
+    var k = String(raw == null ? "" : raw);
+    return /^\d/.test(k) ? "G" + k : k;
+  }
+  function bareHeb(s) { return String(s == null ? "" : s).replace(/[\u0591-\u05C7]/g, ""); }
+
+  function lemmaIndex() {
+    if (byLemma) return byLemma;
+    byLemma = {};
+    Object.keys(LEX).forEach(function (k) {
+      var lm = LEX[k] && LEX[k].strong && LEX[k].strong.lemma;
+      if (!lm) return;
+      var b = bareHeb(lm);
+      if (!byLemma[b]) byLemma[b] = k;
+    });
+    return byLemma;
+  }
+
+  function lexFor(w) {
+    var key = strongKey(w.strong), e = LEX[key], s = e && e.strong;
+    if (s && bareHeb(s.lemma) === bareHeb(w.lemma)) return { key: key, s: s };
+    var alt = lemmaIndex()[bareHeb(w.lemma)];
+    if (alt) return { key: alt, s: LEX[alt].strong };
+    if (AFFIX[w.pos] && bareHeb(w.text).length <= 2) return null;
+    return s ? { key: key, s: s } : null;
+  }
+
   function wordPanel(book) {
     if (!uiWord) {
       return '<aside class="ib-panel" aria-label="Word detail"><p class="ib-note">' +
@@ -621,30 +656,36 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var w = ch && ch.verses[uiWord.v] && ch.verses[uiWord.v].words[uiWord.i];
     if (!w) return '<aside class="ib-panel" aria-label="Word detail"><p class="ib-note">Not found.</p></aside>';
 
-    var key = w.strong || "";
-    var rtl = /[֐-׿]/.test(w.text || "");
+    var rtl = /[\u0590-\u05FF]/.test(w.text || "");
+    var loading = !LEX || !Object.keys(LEX).length;
+    if (loading) ensureLexicon();
+
+    var hit = loading ? null : lexFor(w);
+    var key = hit ? hit.key : "";
+
     var rows = [];
     [["stem","Stem"],["tense","Tense"],["voice","Voice"],["mood","Mood"],["person","Person"],
      ["number","Number"],["gender","Gender"],["case","Case"],["state","State"]].forEach(function (pair) {
       if (w[pair[0]]) rows.push("<dt>" + esc(pair[1]) + "</dt><dd>" + esc(w[pair[0]]) + "</dd>");
     });
-    if (key) rows.push("<dt>Strong’s</dt><dd>" + esc(key) + "</dd>");
+    if (w.pos) rows.unshift("<dt>Part of speech</dt><dd>" + esc(w.pos) + "</dd>");
+    if (key) rows.push("<dt>Strong\u2019s</dt><dd>" + esc(key) + "</dd>");
 
     var def = "", kjv = "", deriv = "";
-    if (key) {
-      if (!LEX || !Object.keys(LEX).length) { ensureLexicon(); def = "Loading the lexicon…"; }
-      else {
-        // the lexicon's own field names are def, kjv, derivation
-        var e = LEX[key], s = e && e.strong;
-        def = (s && s.def) ? s.def : "No lexicon entry for " + key + ".";
-        kjv = (s && s.kjv) ? s.kjv : "";
-        deriv = (s && s.derivation) ? s.derivation : "";
-      }
+    if (loading) def = "Loading the lexicon\u2026";
+    else if (hit) {
+      def   = hit.s.def || "";
+      kjv   = hit.s.kjv || "";
+      deriv = hit.s.derivation || "";
+    } else {
+      def = AFFIX[w.pos]
+        ? "A prefix Strong\u2019s does not number. It is read with the word it is attached to."
+        : "No lexicon entry for this word.";
     }
 
     var occ = "";
     if (key) {
-      if (!idxReady(key)) { ensureWordIndex(key); occ = "Counting occurrences…"; }
+      if (!idxReady(key)) { ensureWordIndex(key); occ = "Counting occurrences\u2026"; }
       else {
         var entry = WORD_INDEX[idxKind(key)][key];
         if (entry && entry.occ) {
@@ -652,14 +693,14 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
           entry.occ.forEach(function (o) { if (books.indexOf(o.b) < 0) books.push(o.b); });
           occ = entry.occ.length + " time" + (entry.occ.length === 1 ? "" : "s") +
                 " across " + books.length + " book" + (books.length === 1 ? "" : "s") + ".";
-        } else occ = "Not in the word index.";
+        }
       }
     }
 
     return '<aside class="ib-panel" aria-label="Word detail">' +
       '<p class="ib-panel-word' + (rtl ? " ib-rtl" : "") + '" lang="' + (rtl ? "he" : "grc") + '">' + esc(w.text) + "</p>" +
       (w.translit ? '<p class="ib-panel-translit">' + esc(w.translit) + "</p>" : "") +
-      '<p class="ib-panel-gloss">' + esc(w.gloss || w.english || "") + "</p>" +
+      '<p class="ib-panel-gloss">' + esc(String(w.gloss || w.english || "").replace(/\./g, " ")) + "</p>" +
       (rows.length ? '<dl class="ib-parse">' + rows.join("") + "</dl>" : "") +
       (def ? '<div class="ib-def"><p class="a-clabel">Definition</p><p>' + esc(def) + "</p>" +
              (kjv ? '<p class="ib-note">Rendered in the King James as ' + esc(kjv) + "</p>" : "") +
