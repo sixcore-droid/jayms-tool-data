@@ -166,9 +166,9 @@ add_action( 'wp_footer', function () {
    text straight on the page is harder on the eye than text on a card. */
 .jayms-tool-outline .ib-il{display:flex;flex-wrap:wrap;align-items:flex-end;
   gap:16px 8px;margin:0 0 26px;background:var(--paper-deep);border:1px solid var(--line);
-  border-radius:10px;padding:22px 24px}
+  border-left:3px solid var(--edge-original);border-radius:10px;padding:22px 24px}
 .jayms-tool-outline .ib-reader{background:var(--paper-deep);border:1px solid var(--line);
-  border-radius:10px;padding:2px 24px;margin:0 0 26px}
+  border-left:3px solid var(--edge-source);border-radius:10px;padding:2px 24px;margin:0 0 26px}
 /* the number opens a verse, so it sits high and keeps its distance from
    the word before it, or it reads as that word's footnote */
 .jayms-tool-outline .ib-vnum{align-self:flex-start;margin-left:14px;padding:0 1px;
@@ -212,7 +212,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-dw-emphasis{color:var(--gold);border-color:var(--gold)}
 
 .jayms-tool-outline .ib-dq{background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--gold);border-radius:9px;padding:16px 20px}
+  border-left:3px solid var(--edge-source);border-radius:9px;padding:16px 20px}
 .jayms-tool-outline .ib-dq p{margin:0}
 .jayms-tool-outline .ib-dq-text{margin-top:8px;font-size:1.15em;line-height:1.6;color:var(--ink)}
 .jayms-tool-outline .ib-dq-note{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
@@ -220,12 +220,12 @@ add_action( 'wp_footer', function () {
 /* the argument reads on a panel like everything else, and keeps a measure
    the eye can carry back to the start of the next line */
 .jayms-tool-outline .ib-dprose{display:flex;flex-direction:column;gap:16px;
-  background:var(--paper-deep);border:1px solid var(--line);border-radius:10px;
-  padding:22px 24px}
+  background:var(--paper-deep);border:1px solid var(--line);
+  border-left:3px solid var(--edge-note);border-radius:10px;padding:22px 24px}
 .jayms-tool-outline .ib-dp{margin:0;max-width:82ch;font-size:1.12em;line-height:1.65;
   color:var(--ink-soft)}
 .jayms-tool-outline .ib-dp b{color:var(--ink);font-weight:600}
-.jayms-tool-outline .ib-dlemma{margin:0;padding:12px 18px;border-left:3px solid var(--aramaic);
+.jayms-tool-outline .ib-dlemma{margin:0;padding:12px 18px;border-left:3px solid var(--edge-original);
   background:var(--paper-deep);border-radius:0 9px 9px 0;color:var(--ink-soft)}
 .jayms-tool-outline .ib-dlemma b{color:var(--ink)}
 .jayms-tool-outline .ib-dsrc ul{margin:8px 0 0;padding-left:20px;display:flex;
@@ -260,7 +260,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-colsep{width:1px;height:22px;background:var(--line);margin:0 4px}
 .jayms-tool-outline .ib-verse .ib-passage{font-size:1.15em;line-height:1.75}
 .jayms-tool-outline .ib-origbox{max-width:62ch;background:var(--paper-deep);border:1px solid var(--line);
-  border-left:3px solid var(--aramaic);border-radius:9px;padding:14px 20px;margin:12px 0 0;
+  border-left:3px solid var(--edge-original);border-radius:9px;padding:14px 20px;margin:12px 0 0;
   display:flex;flex-direction:column;gap:8px}
 .jayms-tool-outline .ib-origlabel{color:var(--aramaic);margin:0}
 .jayms-tool-outline .ib-orig{margin:0;line-height:1.95;font-size:1.22em}
