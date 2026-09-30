@@ -1155,8 +1155,8 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   window.ibEra = function (e, id) {
     if (e && e.preventDefault) e.preventDefault();
-    // smooth scrolling is a no-op on this theme, so this lands instead of
-    // looking like the click did nothing
+    // instant, not smooth: the rail runs to fifty movements and sliding
+    // twelve thousand pixels is not a journey anyone wants to watch
     var node = document.getElementById(id);
     if (node) node.scrollIntoView({ block: "start" });
     markEra(id);
@@ -1164,26 +1164,25 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
   };
 
   // The movement you are reading is the last one whose heading has gone
-  // past the top of the screen. An IntersectionObserver band missed jumps
-  // that cleared it in one frame, so this measures instead of listening.
+  // past the top of the screen. Measured on a timer rather than queued on
+  // a frame, because a frame never comes in a background tab and the rail
+  // would sit frozen on the first movement.
   function wireRail() {
     if (eraWatch) { window.removeEventListener("scroll", eraWatch); eraWatch = null; }
     if (VIEW.screen !== "book") return;
     var secs = [].slice.call(MOUNT.querySelectorAll(".ib-era"));
     if (!secs.length) return;
-    var queued = false;
+    var last = 0;
     eraWatch = function () {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(function () {
-        queued = false;
-        var best = secs[0], bestTop = -Infinity;
-        for (var i = 0; i < secs.length; i++) {
-          var t = secs[i].getBoundingClientRect().top;
-          if (t <= 140 && t > bestTop) { bestTop = t; best = secs[i]; }
-        }
-        markEra(best.id);
-      });
+      var now = Date.now();
+      if (now - last < 80) return;
+      last = now;
+      var best = secs[0], bestTop = -Infinity;
+      for (var i = 0; i < secs.length; i++) {
+        var t = secs[i].getBoundingClientRect().top;
+        if (t <= 140 && t > bestTop) { bestTop = t; best = secs[i]; }
+      }
+      markEra(best.id);
     };
     window.addEventListener("scroll", eraWatch, { passive: true });
     eraWatch();
