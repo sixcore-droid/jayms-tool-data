@@ -101,7 +101,7 @@ add_action( 'wp_footer', function () {
 .jayms-tool-outline .ib-rail a.on{background:var(--paper-deep);color:var(--ink)}
 .jayms-tool-outline .ib-rail a:hover{background:var(--paper-deep);color:var(--ink)}
 .jayms-tool-outline .ib-eras{flex:1 1 auto;min-width:0}
-.jayms-tool-outline .ib-era{margin:0 0 30px}
+.jayms-tool-outline .ib-era{margin:0 0 30px;scroll-margin-top:24px}
 .jayms-tool-outline .ib-era-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
 .jayms-tool-outline .ib-era-note{margin:8px 0 0;max-width:72ch;color:var(--ink-soft)}
 
@@ -1155,8 +1155,10 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
 
   window.ibEra = function (e, id) {
     if (e && e.preventDefault) e.preventDefault();
+    // smooth scrolling is a no-op on this theme, so this lands instead of
+    // looking like the click did nothing
     var node = document.getElementById(id);
-    if (node) node.scrollIntoView({ block: "start", behavior: "smooth" });
+    if (node) node.scrollIntoView({ block: "start" });
     markEra(id);
     return false;
   };
