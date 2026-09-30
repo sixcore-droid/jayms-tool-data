@@ -325,8 +325,12 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       ? fetch("https://labs.bible.org/api/?passage=" + encodeURIComponent(ref) + "&type=json&formatting=plain")
           .then(function (r) { return r.json(); })
           .then(function (j) {
-            return (j || []).map(function (v) {
-              return '<sup class="ib-vn">' + esc(v.verse) + "</sup>" + esc(String(v.text).trim());
+            var list = j || [];
+            // one verse carries its own label above it; numbers are only
+            // useful once the passage is a run of them
+            return list.map(function (v) {
+              return (list.length > 1 ? '<sup class="ib-vn">' + esc(v.verse) + "</sup>" : "") +
+                esc(String(v.text).trim());
             }).join(" ");
           }).catch(function () { return ""; })
       : Promise.resolve("");
