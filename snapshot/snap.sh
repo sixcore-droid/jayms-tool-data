@@ -35,7 +35,7 @@ PY
     printf '| %s | %s | `%s` | %s |\n' "$V" "$(date +%F)" "${C:0:8}" "$MSG" >> "$(vlog)"
     echo "$V $C"
     ;;
-  list)    grep -E '^\| v[0-9]' "$(vlog)" ;;
+  list)    grep -E '^\| v[0-9]{3} \| 20' "$(vlog)" ;;
   show)    grep -E "^\| ${2:-${1:-}} " "$(vlog)" ;;
   restore)
     FILE="$1"; ID="$2"; V="$3"
