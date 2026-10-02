@@ -115,6 +115,22 @@ add_action( 'init', function () {
 	}
 }, 11 );
 
+// An entry id that is not in the data file is not a thin page, it is no
+// page: say so with a 404 rather than serving the tool and a 200.
+add_action( 'wp', function () {
+	$pid = jayms_ssr_page();
+	$id  = jayms_ssr_current();
+	if ( ! $pid || ! $id || '__sitemap__' === $id ) { return; }
+	$map  = jayms_ssr_map();
+	$data = jayms_ssr_data( $map[ $pid ] );
+	if ( $data && ! jayms_ssr_entry( $data, $id ) ) {
+		global $wp_query;
+		$wp_query->set_404();
+		status_header( 404 );
+		nocache_headers();
+	}
+}, 20 );
+
 /** The entry asked for on this request, or '' . */
 function jayms_ssr_current() {
 	$e = get_query_var( 'jentry' );
