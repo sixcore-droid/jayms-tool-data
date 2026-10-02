@@ -396,7 +396,14 @@ add_filter( 'robots_txt', function ( $t ) {
 // CSS, which leaves a second H1 in the markup carrying the word BETA. Hidden
 // is not the same as absent: drop the block on a tool page instead.
 add_filter( 'render_block', function ( $html, $block ) {
-	if ( ( $block['blockName'] ?? '' ) === 'core/post-title' && jayms_ssr_page() ) {
+	if ( ( $block['blockName'] ?? '' ) !== 'core/post-title' ) { return $html; }
+	$pid = jayms_ssr_page();
+	if ( ! $pid ) { return $html; }
+	// Only where the page prints a heading of its own. Word Study has no
+	// hero block, and dropping the theme's title there left the page with no
+	// H1 at all, which is worse than the duplicate it was meant to fix.
+	$post = get_post( $pid );
+	if ( $post && strpos( (string) $post->post_content, 'jayms-tool-title' ) !== false ) {
 		return '';
 	}
 	return $html;
