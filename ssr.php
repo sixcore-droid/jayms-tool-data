@@ -387,3 +387,36 @@ add_action( 'template_redirect', function () {
 add_filter( 'robots_txt', function ( $t ) {
 	return $t . "\nSitemap: " . home_url( '/jayms-tool-entries-sitemap.xml' ) . "\n";
 }, 20 );
+
+/* -------------------------------------------------------------------------
+   One H1 per page, and the URL contract the runner's router reads.
+   ------------------------------------------------------------------------- */
+
+// The theme prints the page title as an H1 and the tool pages hide it with
+// CSS, which leaves a second H1 in the markup carrying the word BETA. Hidden
+// is not the same as absent: drop the block on a tool page instead.
+add_filter( 'render_block', function ( $html, $block ) {
+	if ( ( $block['blockName'] ?? '' ) === 'core/post-title' && jayms_ssr_page() ) {
+		return '';
+	}
+	return $html;
+}, 10, 2 );
+
+// On an entry page the entry is the subject, so the tool's own hero title
+// steps down to a paragraph and the entry keeps the H1.
+add_filter( 'the_content', function ( $c ) {
+	if ( ! jayms_ssr_page() || ! jayms_ssr_current() ) { return $c; }
+	return preg_replace(
+		'/<h1([^>]*class="[^"]*jayms-tool-title[^"]*"[^>]*)>(.*?)<\/h1>/s',
+		'<p$1>$2</p>', $c, 1 );
+}, 8 );
+
+// What the runner's router needs to read a path instead of a hash. Printed
+// rather than guessed from location.pathname, because only the server knows
+// where the tool page actually sits.
+add_action( 'wp_head', function () {
+	$pid = jayms_ssr_page();
+	if ( ! $pid ) { return; }
+	echo "\n<script>window.jaymsEntryBase=" . wp_json_encode( trailingslashit( wp_parse_url( get_permalink( $pid ), PHP_URL_PATH ) ) )
+		. ";window.jaymsEntryId=" . wp_json_encode( jayms_ssr_current() ) . ";</script>\n";
+}, 4 );
