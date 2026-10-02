@@ -116,7 +116,10 @@ add_action( 'init', function () {
 }, 11 );
 
 // An entry id that is not in the data file is not a thin page, it is no
-// page: say so with a 404 rather than serving the tool and a 200.
+// page. Marking the query a 404 stops it being served as the tool page with
+// a 200; WordPress then offers its own guess, which for these URLs is the
+// parent tool page, so a stale or mistyped entry link lands on the index
+// with a 301 rather than on a dead end.
 add_action( 'wp', function () {
 	$pid = jayms_ssr_page();
 	$id  = jayms_ssr_current();
