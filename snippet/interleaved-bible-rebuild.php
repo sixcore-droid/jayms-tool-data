@@ -1,4 +1,4 @@
-<?php
+
 /**
  * JAYMS — Interleaved Bible.
  *
@@ -39,6 +39,14 @@ add_action( 'wp_footer', function () {
    site's, from global styles 90171. Nothing below picks a colour that is
    not a token, and nothing below restyles a shared component. */
 .jayms-tool-outline .ib-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.jayms-tool-outline .ib-wordlook { display: block; margin: 0 0 18px; padding: 14px 16px;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; }
+.jayms-tool-outline .ib-wordlook:hover { border-color: var(--gold); }
+.jayms-tool-outline .ib-wl-lab { display: block; font-family: Archivo, system-ui, sans-serif;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.jayms-tool-outline .ib-wl-q { display: block; margin-top: 4px; font-size: 20px; color: var(--ink); }
+.jayms-tool-outline .ib-wl-note { display: block; margin-top: 6px;
+  font-family: Archivo, system-ui, sans-serif; font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
 .jayms-tool-outline .ib-note{color:var(--muted);font-size:13px;margin:0}
 
 .jayms-tool-outline .ib-hero{margin:0 0 22px}
@@ -1067,7 +1075,28 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
       '<span class="ib-tile-meta">' + meta + "</span></button>";
   }
 
-  function pickerResults() {
+  function wordLookupCard(q) {
+  // The book finder cannot search the Hebrew and Greek, and should not try
+  // to: Word Study already holds every form of every tagged word. Hand the
+  // query over rather than ending at "nothing close to that".
+  q = String(q || "").trim();
+  if (!q) return "";
+  var u = "https://jayms.com/bible-study-tools-2/bible-word-study-tool/#q=" +
+          encodeURIComponent(q);
+  return '<a class="ib-wordlook" href="' + u + '">' +
+    '<span class="ib-wl-lab">Look it up as a word</span>' +
+    '<span class="ib-wl-q">' + esc(q) + "</span>" +
+    '<span class="ib-wl-note">Word Study takes a Strong\u2019s number, a ' +
+    'transliteration, or the word written as it stands in the text.</span>' +
+    "</a>";
+}
+function pickerResults() {
+  // Use what was typed, not what the book finder made of it: the finder
+  // folds a query down to Latin letters, so Hebrew and Greek fold to
+  // nothing and would never reach the hand-off.
+  return wordLookupCard(uiFind) + pickerResultsBase();
+}
+function pickerResultsBase() {
     var r = found();
     if (!r.list.length) {
       return '<p class="ib-note">Nothing close to that. Try fewer letters — ' +
@@ -1112,7 +1141,7 @@ window.JAYMS_VERSIFICATION = {"1 Chronicles": {"5": [[1, 26, 5, 0], [27, 41, 6, 
     var find = '<div class="ib-find">' +
       '<label class="ib-sr" for="ib-q">Find a book</label>' +
       '<input id="ib-q" class="a-search" type="search" autocomplete="off" spellcheck="false"' +
-      ' placeholder="Find a book. Spelling does not have to be right."' +
+      ' placeholder="Find a book, or a word in the Hebrew or Greek."' +
       ' value="' + esc(uiFind) + '" oninput="ibFind(this.value)">' +
       '<span class="a-row">' +
         chip("All 66", !uiTestament, "ibTestament(null)") +
