@@ -1,0 +1,1262 @@
+[
+{
+"book": "1 Chronicles",
+"engChapter": 6,
+"hebBook": "1 Chronicles",
+"hebChapter": 5,
+"fromVerse": 1,
+"toVerse": 15,
+"verseOffset": 26
+},
+{
+"book": "1 Chronicles",
+"engChapter": 6,
+"hebBook": "1 Chronicles",
+"hebChapter": 6,
+"fromVerse": 16,
+"toVerse": 81,
+"verseOffset": -15
+},
+{
+"book": "1 Chronicles",
+"engChapter": 12,
+"hebBook": "1 Chronicles",
+"hebChapter": 12,
+"fromVerse": 4,
+"toVerse": 40,
+"verseOffset": 1
+},
+{
+"book": "1 Kings",
+"engChapter": 4,
+"hebBook": "1 Kings",
+"hebChapter": 5,
+"fromVerse": 21,
+"toVerse": 34,
+"verseOffset": -20
+},
+{
+"book": "1 Kings",
+"engChapter": 5,
+"hebBook": "1 Kings",
+"hebChapter": 5,
+"fromVerse": 1,
+"toVerse": 18,
+"verseOffset": 14
+},
+{
+"book": "1 Kings",
+"engChapter": 22,
+"hebBook": "1 Kings",
+"hebChapter": 22,
+"fromVerse": 43,
+"toVerse": 53,
+"verseOffset": 1
+},
+{
+"book": "1 Samuel",
+"engChapter": 20,
+"hebBook": "1 Samuel",
+"hebChapter": 21,
+"fromVerse": 42,
+"toVerse": 42,
+"verseOffset": -41
+},
+{
+"book": "1 Samuel",
+"engChapter": 21,
+"hebBook": "1 Samuel",
+"hebChapter": 21,
+"fromVerse": 1,
+"toVerse": 15,
+"verseOffset": 1
+},
+{
+"book": "1 Samuel",
+"engChapter": 23,
+"hebBook": "1 Samuel",
+"hebChapter": 24,
+"fromVerse": 29,
+"toVerse": 29,
+"verseOffset": -28
+},
+{
+"book": "1 Samuel",
+"engChapter": 24,
+"hebBook": "1 Samuel",
+"hebChapter": 24,
+"fromVerse": 1,
+"toVerse": 22,
+"verseOffset": 1
+},
+{
+"book": "2 Chronicles",
+"engChapter": 2,
+"hebBook": "2 Chronicles",
+"hebChapter": 1,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 17
+},
+{
+"book": "2 Chronicles",
+"engChapter": 2,
+"hebBook": "2 Chronicles",
+"hebChapter": 2,
+"fromVerse": 2,
+"toVerse": 18,
+"verseOffset": -1
+},
+{
+"book": "2 Chronicles",
+"engChapter": 14,
+"hebBook": "2 Chronicles",
+"hebChapter": 13,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 22
+},
+{
+"book": "2 Chronicles",
+"engChapter": 14,
+"hebBook": "2 Chronicles",
+"hebChapter": 14,
+"fromVerse": 2,
+"toVerse": 15,
+"verseOffset": -1
+},
+{
+"book": "2 Kings",
+"engChapter": 11,
+"hebBook": "2 Kings",
+"hebChapter": 12,
+"fromVerse": 21,
+"toVerse": 21,
+"verseOffset": -20
+},
+{
+"book": "2 Kings",
+"engChapter": 12,
+"hebBook": "2 Kings",
+"hebChapter": 12,
+"fromVerse": 1,
+"toVerse": 21,
+"verseOffset": 1
+},
+{
+"book": "2 Samuel",
+"engChapter": 18,
+"hebBook": "2 Samuel",
+"hebChapter": 19,
+"fromVerse": 33,
+"toVerse": 33,
+"verseOffset": -32
+},
+{
+"book": "2 Samuel",
+"engChapter": 19,
+"hebBook": "2 Samuel",
+"hebChapter": 19,
+"fromVerse": 1,
+"toVerse": 43,
+"verseOffset": 1
+},
+{
+"book": "Daniel",
+"engChapter": 4,
+"hebBook": "Daniel",
+"hebChapter": 3,
+"fromVerse": 1,
+"toVerse": 3,
+"verseOffset": 30
+},
+{
+"book": "Daniel",
+"engChapter": 4,
+"hebBook": "Daniel",
+"hebChapter": 4,
+"fromVerse": 4,
+"toVerse": 37,
+"verseOffset": -3
+},
+{
+"book": "Daniel",
+"engChapter": 5,
+"hebBook": "Daniel",
+"hebChapter": 6,
+"fromVerse": 31,
+"toVerse": 31,
+"verseOffset": -30
+},
+{
+"book": "Daniel",
+"engChapter": 6,
+"hebBook": "Daniel",
+"hebChapter": 6,
+"fromVerse": 1,
+"toVerse": 28,
+"verseOffset": 1
+},
+{
+"book": "Deuteronomy",
+"engChapter": 12,
+"hebBook": "Deuteronomy",
+"hebChapter": 13,
+"fromVerse": 32,
+"toVerse": 32,
+"verseOffset": -31
+},
+{
+"book": "Deuteronomy",
+"engChapter": 13,
+"hebBook": "Deuteronomy",
+"hebChapter": 13,
+"fromVerse": 1,
+"toVerse": 18,
+"verseOffset": 1
+},
+{
+"book": "Deuteronomy",
+"engChapter": 22,
+"hebBook": "Deuteronomy",
+"hebChapter": 23,
+"fromVerse": 30,
+"toVerse": 30,
+"verseOffset": -29
+},
+{
+"book": "Deuteronomy",
+"engChapter": 23,
+"hebBook": "Deuteronomy",
+"hebChapter": 23,
+"fromVerse": 1,
+"toVerse": 25,
+"verseOffset": 1
+},
+{
+"book": "Deuteronomy",
+"engChapter": 29,
+"hebBook": "Deuteronomy",
+"hebChapter": 28,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 68
+},
+{
+"book": "Deuteronomy",
+"engChapter": 29,
+"hebBook": "Deuteronomy",
+"hebChapter": 29,
+"fromVerse": 2,
+"toVerse": 29,
+"verseOffset": -1
+},
+{
+"book": "Ecclesiastes",
+"engChapter": 5,
+"hebBook": "Ecclesiastes",
+"hebChapter": 4,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 16
+},
+{
+"book": "Ecclesiastes",
+"engChapter": 5,
+"hebBook": "Ecclesiastes",
+"hebChapter": 5,
+"fromVerse": 2,
+"toVerse": 20,
+"verseOffset": -1
+},
+{
+"book": "Exodus",
+"engChapter": 8,
+"hebBook": "Exodus",
+"hebChapter": 7,
+"fromVerse": 1,
+"toVerse": 4,
+"verseOffset": 25
+},
+{
+"book": "Exodus",
+"engChapter": 8,
+"hebBook": "Exodus",
+"hebChapter": 8,
+"fromVerse": 5,
+"toVerse": 32,
+"verseOffset": -4
+},
+{
+"book": "Exodus",
+"engChapter": 22,
+"hebBook": "Exodus",
+"hebChapter": 21,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 36
+},
+{
+"book": "Exodus",
+"engChapter": 22,
+"hebBook": "Exodus",
+"hebChapter": 22,
+"fromVerse": 2,
+"toVerse": 31,
+"verseOffset": -1
+},
+{
+"book": "Ezekiel",
+"engChapter": 20,
+"hebBook": "Ezekiel",
+"hebChapter": 21,
+"fromVerse": 45,
+"toVerse": 49,
+"verseOffset": -44
+},
+{
+"book": "Ezekiel",
+"engChapter": 21,
+"hebBook": "Ezekiel",
+"hebChapter": 21,
+"fromVerse": 1,
+"toVerse": 32,
+"verseOffset": 5
+},
+{
+"book": "Genesis",
+"engChapter": 31,
+"hebBook": "Genesis",
+"hebChapter": 32,
+"fromVerse": 55,
+"toVerse": 55,
+"verseOffset": -54
+},
+{
+"book": "Genesis",
+"engChapter": 32,
+"hebBook": "Genesis",
+"hebChapter": 32,
+"fromVerse": 1,
+"toVerse": 32,
+"verseOffset": 1
+},
+{
+"book": "Hosea",
+"engChapter": 1,
+"hebBook": "Hosea",
+"hebChapter": 2,
+"fromVerse": 10,
+"toVerse": 11,
+"verseOffset": -9
+},
+{
+"book": "Hosea",
+"engChapter": 2,
+"hebBook": "Hosea",
+"hebChapter": 2,
+"fromVerse": 1,
+"toVerse": 23,
+"verseOffset": 2
+},
+{
+"book": "Hosea",
+"engChapter": 11,
+"hebBook": "Hosea",
+"hebChapter": 12,
+"fromVerse": 12,
+"toVerse": 12,
+"verseOffset": -11
+},
+{
+"book": "Hosea",
+"engChapter": 12,
+"hebBook": "Hosea",
+"hebChapter": 12,
+"fromVerse": 1,
+"toVerse": 14,
+"verseOffset": 1
+},
+{
+"book": "Hosea",
+"engChapter": 13,
+"hebBook": "Hosea",
+"hebChapter": 14,
+"fromVerse": 16,
+"toVerse": 16,
+"verseOffset": -15
+},
+{
+"book": "Hosea",
+"engChapter": 14,
+"hebBook": "Hosea",
+"hebChapter": 14,
+"fromVerse": 1,
+"toVerse": 9,
+"verseOffset": 1
+},
+{
+"book": "Isaiah",
+"engChapter": 9,
+"hebBook": "Isaiah",
+"hebChapter": 8,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 22
+},
+{
+"book": "Isaiah",
+"engChapter": 9,
+"hebBook": "Isaiah",
+"hebChapter": 9,
+"fromVerse": 2,
+"toVerse": 21,
+"verseOffset": -1
+},
+{
+"book": "Isaiah",
+"engChapter": 64,
+"hebBook": "Isaiah",
+"hebChapter": 63,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 18
+},
+{
+"book": "Isaiah",
+"engChapter": 64,
+"hebBook": "Isaiah",
+"hebChapter": 64,
+"fromVerse": 2,
+"toVerse": 12,
+"verseOffset": -1
+},
+{
+"book": "Jeremiah",
+"engChapter": 9,
+"hebBook": "Jeremiah",
+"hebChapter": 8,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 22
+},
+{
+"book": "Jeremiah",
+"engChapter": 9,
+"hebBook": "Jeremiah",
+"hebChapter": 9,
+"fromVerse": 2,
+"toVerse": 26,
+"verseOffset": -1
+},
+{
+"book": "Job",
+"engChapter": 41,
+"hebBook": "Job",
+"hebChapter": 40,
+"fromVerse": 1,
+"toVerse": 8,
+"verseOffset": 24
+},
+{
+"book": "Job",
+"engChapter": 41,
+"hebBook": "Job",
+"hebChapter": 41,
+"fromVerse": 9,
+"toVerse": 34,
+"verseOffset": -8
+},
+{
+"book": "Joel",
+"engChapter": 2,
+"hebBook": "Joel",
+"hebChapter": 3,
+"fromVerse": 28,
+"toVerse": 32,
+"verseOffset": -27
+},
+{
+"book": "Joel",
+"engChapter": 3,
+"hebBook": "Joel",
+"hebChapter": 4,
+"fromVerse": 1,
+"toVerse": 21,
+"verseOffset": 0
+},
+{
+"book": "Jonah",
+"engChapter": 1,
+"hebBook": "Jonah",
+"hebChapter": 2,
+"fromVerse": 17,
+"toVerse": 17,
+"verseOffset": -16
+},
+{
+"book": "Jonah",
+"engChapter": 2,
+"hebBook": "Jonah",
+"hebChapter": 2,
+"fromVerse": 1,
+"toVerse": 10,
+"verseOffset": 1
+},
+{
+"book": "Leviticus",
+"engChapter": 6,
+"hebBook": "Leviticus",
+"hebChapter": 5,
+"fromVerse": 1,
+"toVerse": 7,
+"verseOffset": 19
+},
+{
+"book": "Leviticus",
+"engChapter": 6,
+"hebBook": "Leviticus",
+"hebChapter": 6,
+"fromVerse": 8,
+"toVerse": 30,
+"verseOffset": -7
+},
+{
+"book": "Malachi",
+"engChapter": 4,
+"hebBook": "Malachi",
+"hebChapter": 3,
+"fromVerse": 1,
+"toVerse": 6,
+"verseOffset": 18
+},
+{
+"book": "Micah",
+"engChapter": 5,
+"hebBook": "Micah",
+"hebChapter": 4,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 13
+},
+{
+"book": "Micah",
+"engChapter": 5,
+"hebBook": "Micah",
+"hebChapter": 5,
+"fromVerse": 2,
+"toVerse": 15,
+"verseOffset": -1
+},
+{
+"book": "Nahum",
+"engChapter": 1,
+"hebBook": "Nahum",
+"hebChapter": 2,
+"fromVerse": 15,
+"toVerse": 15,
+"verseOffset": -14
+},
+{
+"book": "Nahum",
+"engChapter": 2,
+"hebBook": "Nahum",
+"hebChapter": 2,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Nehemiah",
+"engChapter": 4,
+"hebBook": "Nehemiah",
+"hebChapter": 3,
+"fromVerse": 1,
+"toVerse": 6,
+"verseOffset": 32
+},
+{
+"book": "Nehemiah",
+"engChapter": 4,
+"hebBook": "Nehemiah",
+"hebChapter": 4,
+"fromVerse": 7,
+"toVerse": 23,
+"verseOffset": -6
+},
+{
+"book": "Nehemiah",
+"engChapter": 7,
+"hebBook": "Nehemiah",
+"hebChapter": 7,
+"fromVerse": 69,
+"toVerse": 73,
+"verseOffset": -1
+},
+{
+"book": "Nehemiah",
+"engChapter": 9,
+"hebBook": "Nehemiah",
+"hebChapter": 10,
+"fromVerse": 38,
+"toVerse": 38,
+"verseOffset": -37
+},
+{
+"book": "Nehemiah",
+"engChapter": 10,
+"hebBook": "Nehemiah",
+"hebChapter": 10,
+"fromVerse": 1,
+"toVerse": 39,
+"verseOffset": 1
+},
+{
+"book": "Numbers",
+"engChapter": 16,
+"hebBook": "Numbers",
+"hebChapter": 17,
+"fromVerse": 36,
+"toVerse": 50,
+"verseOffset": -35
+},
+{
+"book": "Numbers",
+"engChapter": 17,
+"hebBook": "Numbers",
+"hebChapter": 17,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 15
+},
+{
+"book": "Numbers",
+"engChapter": 26,
+"hebBook": "Numbers",
+"hebChapter": 25,
+"fromVerse": 1,
+"toVerse": 1,
+"verseOffset": 18
+},
+{
+"book": "Numbers",
+"engChapter": 29,
+"hebBook": "Numbers",
+"hebChapter": 30,
+"fromVerse": 40,
+"toVerse": 40,
+"verseOffset": -39
+},
+{
+"book": "Numbers",
+"engChapter": 30,
+"hebBook": "Numbers",
+"hebChapter": 30,
+"fromVerse": 1,
+"toVerse": 16,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 3,
+"hebBook": "Psalm",
+"hebChapter": 3,
+"fromVerse": 1,
+"toVerse": 8,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 4,
+"hebBook": "Psalm",
+"hebChapter": 4,
+"fromVerse": 1,
+"toVerse": 8,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 5,
+"hebBook": "Psalm",
+"hebChapter": 5,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 6,
+"hebBook": "Psalm",
+"hebChapter": 6,
+"fromVerse": 1,
+"toVerse": 10,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 7,
+"hebBook": "Psalm",
+"hebChapter": 7,
+"fromVerse": 1,
+"toVerse": 17,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 8,
+"hebBook": "Psalm",
+"hebChapter": 8,
+"fromVerse": 1,
+"toVerse": 9,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 9,
+"hebBook": "Psalm",
+"hebChapter": 9,
+"fromVerse": 1,
+"toVerse": 20,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 12,
+"hebBook": "Psalm",
+"hebChapter": 12,
+"fromVerse": 1,
+"toVerse": 8,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 13,
+"hebBook": "Psalm",
+"hebChapter": 13,
+"fromVerse": 1,
+"toVerse": 5,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 18,
+"hebBook": "Psalm",
+"hebChapter": 18,
+"fromVerse": 1,
+"toVerse": 50,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 19,
+"hebBook": "Psalm",
+"hebChapter": 19,
+"fromVerse": 1,
+"toVerse": 14,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 20,
+"hebBook": "Psalm",
+"hebChapter": 20,
+"fromVerse": 1,
+"toVerse": 9,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 21,
+"hebBook": "Psalm",
+"hebChapter": 21,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 22,
+"hebBook": "Psalm",
+"hebChapter": 22,
+"fromVerse": 1,
+"toVerse": 31,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 30,
+"hebBook": "Psalm",
+"hebChapter": 30,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 31,
+"hebBook": "Psalm",
+"hebChapter": 31,
+"fromVerse": 1,
+"toVerse": 24,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 34,
+"hebBook": "Psalm",
+"hebChapter": 34,
+"fromVerse": 1,
+"toVerse": 22,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 36,
+"hebBook": "Psalm",
+"hebChapter": 36,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 38,
+"hebBook": "Psalm",
+"hebChapter": 38,
+"fromVerse": 1,
+"toVerse": 22,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 39,
+"hebBook": "Psalm",
+"hebChapter": 39,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 40,
+"hebBook": "Psalm",
+"hebChapter": 40,
+"fromVerse": 1,
+"toVerse": 17,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 41,
+"hebBook": "Psalm",
+"hebChapter": 41,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 42,
+"hebBook": "Psalm",
+"hebChapter": 42,
+"fromVerse": 1,
+"toVerse": 11,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 44,
+"hebBook": "Psalm",
+"hebChapter": 44,
+"fromVerse": 1,
+"toVerse": 26,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 45,
+"hebBook": "Psalm",
+"hebChapter": 45,
+"fromVerse": 1,
+"toVerse": 17,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 46,
+"hebBook": "Psalm",
+"hebChapter": 46,
+"fromVerse": 1,
+"toVerse": 11,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 47,
+"hebBook": "Psalm",
+"hebChapter": 47,
+"fromVerse": 1,
+"toVerse": 9,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 48,
+"hebBook": "Psalm",
+"hebChapter": 48,
+"fromVerse": 1,
+"toVerse": 14,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 49,
+"hebBook": "Psalm",
+"hebChapter": 49,
+"fromVerse": 1,
+"toVerse": 20,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 51,
+"hebBook": "Psalm",
+"hebChapter": 51,
+"fromVerse": 1,
+"toVerse": 19,
+"verseOffset": 2
+},
+{
+"book": "Psalm",
+"engChapter": 52,
+"hebBook": "Psalm",
+"hebChapter": 52,
+"fromVerse": 1,
+"toVerse": 9,
+"verseOffset": 2
+},
+{
+"book": "Psalm",
+"engChapter": 53,
+"hebBook": "Psalm",
+"hebChapter": 53,
+"fromVerse": 1,
+"toVerse": 6,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 54,
+"hebBook": "Psalm",
+"hebChapter": 54,
+"fromVerse": 1,
+"toVerse": 7,
+"verseOffset": 2
+},
+{
+"book": "Psalm",
+"engChapter": 55,
+"hebBook": "Psalm",
+"hebChapter": 55,
+"fromVerse": 1,
+"toVerse": 23,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 56,
+"hebBook": "Psalm",
+"hebChapter": 56,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 57,
+"hebBook": "Psalm",
+"hebChapter": 57,
+"fromVerse": 1,
+"toVerse": 11,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 58,
+"hebBook": "Psalm",
+"hebChapter": 58,
+"fromVerse": 1,
+"toVerse": 11,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 59,
+"hebBook": "Psalm",
+"hebChapter": 59,
+"fromVerse": 1,
+"toVerse": 17,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 60,
+"hebBook": "Psalm",
+"hebChapter": 60,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 2
+},
+{
+"book": "Psalm",
+"engChapter": 61,
+"hebBook": "Psalm",
+"hebChapter": 61,
+"fromVerse": 1,
+"toVerse": 8,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 62,
+"hebBook": "Psalm",
+"hebChapter": 62,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 63,
+"hebBook": "Psalm",
+"hebChapter": 63,
+"fromVerse": 1,
+"toVerse": 11,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 64,
+"hebBook": "Psalm",
+"hebChapter": 64,
+"fromVerse": 1,
+"toVerse": 10,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 65,
+"hebBook": "Psalm",
+"hebChapter": 65,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 67,
+"hebBook": "Psalm",
+"hebChapter": 67,
+"fromVerse": 1,
+"toVerse": 7,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 68,
+"hebBook": "Psalm",
+"hebChapter": 68,
+"fromVerse": 1,
+"toVerse": 35,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 69,
+"hebBook": "Psalm",
+"hebChapter": 69,
+"fromVerse": 1,
+"toVerse": 36,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 70,
+"hebBook": "Psalm",
+"hebChapter": 70,
+"fromVerse": 1,
+"toVerse": 5,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 75,
+"hebBook": "Psalm",
+"hebChapter": 75,
+"fromVerse": 1,
+"toVerse": 10,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 76,
+"hebBook": "Psalm",
+"hebChapter": 76,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 77,
+"hebBook": "Psalm",
+"hebChapter": 77,
+"fromVerse": 1,
+"toVerse": 20,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 80,
+"hebBook": "Psalm",
+"hebChapter": 80,
+"fromVerse": 1,
+"toVerse": 19,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 81,
+"hebBook": "Psalm",
+"hebChapter": 81,
+"fromVerse": 1,
+"toVerse": 16,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 83,
+"hebBook": "Psalm",
+"hebChapter": 83,
+"fromVerse": 1,
+"toVerse": 18,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 84,
+"hebBook": "Psalm",
+"hebChapter": 84,
+"fromVerse": 1,
+"toVerse": 12,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 85,
+"hebBook": "Psalm",
+"hebChapter": 85,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 88,
+"hebBook": "Psalm",
+"hebChapter": 88,
+"fromVerse": 1,
+"toVerse": 18,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 89,
+"hebBook": "Psalm",
+"hebChapter": 89,
+"fromVerse": 1,
+"toVerse": 52,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 92,
+"hebBook": "Psalm",
+"hebChapter": 92,
+"fromVerse": 1,
+"toVerse": 15,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 102,
+"hebBook": "Psalm",
+"hebChapter": 102,
+"fromVerse": 1,
+"toVerse": 28,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 108,
+"hebBook": "Psalm",
+"hebChapter": 108,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 140,
+"hebBook": "Psalm",
+"hebChapter": 140,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Psalm",
+"engChapter": 142,
+"hebBook": "Psalm",
+"hebChapter": 142,
+"fromVerse": 1,
+"toVerse": 7,
+"verseOffset": 1
+},
+{
+"book": "Song of Solomon",
+"engChapter": 6,
+"hebBook": "Song of Solomon",
+"hebChapter": 7,
+"fromVerse": 13,
+"toVerse": 13,
+"verseOffset": -12
+},
+{
+"book": "Song of Solomon",
+"engChapter": 7,
+"hebBook": "Song of Solomon",
+"hebChapter": 7,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 1
+},
+{
+"book": "Zechariah",
+"engChapter": 1,
+"hebBook": "Zechariah",
+"hebChapter": 2,
+"fromVerse": 18,
+"toVerse": 21,
+"verseOffset": -17
+},
+{
+"book": "Zechariah",
+"engChapter": 2,
+"hebBook": "Zechariah",
+"hebChapter": 2,
+"fromVerse": 1,
+"toVerse": 13,
+"verseOffset": 4
+}
+]
