@@ -14,7 +14,12 @@
  */
 
 defined( 'JAYMS_SSR_VER' )  || define( 'JAYMS_SSR_VER', '7' );   // bump to reflush rewrites
-defined( 'JAYMS_SSR_TTL' )  || define( 'JAYMS_SSR_TTL', 21600 ); // 6 hours
+defined( 'JAYMS_SSR_TTL' )  || define( 'JAYMS_SSR_TTL', 900 );   // 15 min between checks
+// The old value was six hours, and it was six hours of staleness: a push was not
+// live for a crawler until the file aged out. The check is now cheap enough to run
+// every fifteen minutes because it is conditional. raw.githubusercontent sends an
+// ETag and honours If-None-Match, so an unchanged file answers 304 with a zero
+// byte body; only a file that really moved is downloaded again.
 defined( 'JAYMS_SSR_BASE' ) || define( 'JAYMS_SSR_BASE',
 	'https://raw.githubusercontent.com/sixcore-droid/jayms-tool-data/main/' );
 
@@ -67,12 +72,26 @@ function jayms_ssr_data( $slug ) {
 		$lock = 'jayms_ssr_lock_' . $slug;
 		if ( ! get_transient( $lock ) ) {
 			set_transient( $lock, 1, 120 );
-			$r = wp_remote_get( JAYMS_SSR_BASE . $slug . '.json', array( 'timeout' => 20 ) );
-			if ( ! is_wp_error( $r ) && 200 === wp_remote_retrieve_response_code( $r ) ) {
+			$ekey = 'jayms_ssr_etag_' . $slug;
+			$etag = get_option( $ekey );
+			$args = array( 'timeout' => 20 );
+			if ( $etag && file_exists( $file ) ) {
+				$args['headers'] = array( 'If-None-Match' => $etag );
+			}
+			$r    = wp_remote_get( JAYMS_SSR_BASE . $slug . '.json', $args );
+			$code = is_wp_error( $r ) ? 0 : (int) wp_remote_retrieve_response_code( $r );
+			if ( 200 === $code ) {
 				$body = wp_remote_retrieve_body( $r );
 				if ( $body && json_decode( $body ) !== null ) {
 					file_put_contents( $file, $body );
+					$new = wp_remote_retrieve_header( $r, 'etag' );
+					if ( $new ) { update_option( $ekey, $new, false ); }
 				}
+			} elseif ( file_exists( $file ) ) {
+				// 304, or a bad day at GitHub. Either way the copy on disk is the
+				// best available, and touching it stops every request from
+				// retrying for another TTL.
+				touch( $file );
 			}
 			delete_transient( $lock );
 		}
