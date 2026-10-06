@@ -2,21 +2,21 @@
  "url": "https://jayms.com/bible-study-tools-2/the-gospel-of-luke-timeline/",
  "title": "The Gospel of Luke Timeline",
  "sub": "An Orderly Account · Luke’s Own Architecture · Every Chapter, Chapter & Verse",
- "desc": "The third Gospel traced by its own structure — from the Temple to the Temple, with the long road to Jerusalem at its heart. Entries marked ✦L are Lukan exclusives, found nowhere else.",
+ "desc": "The third Gospel traced by its own structure: from the Temple to the Temple, with the long road to Jerusalem at its heart. Entries marked ✦L are Lukan exclusives, found nowhere else.",
  "eras": [
   {
    "number": "I",
    "label": "Era One · Luke 1–2",
    "name": "Prologue & Advent",
-   "dates": "It begins in the Temple — with an old priest and incense",
+   "dates": "It begins in the Temple, with an old priest and incense",
    "events": [
     {
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 1:1-4",
-     "title": "The Prologue — An Orderly Account for Theophilus",
+     "title": "The Prologue: An Orderly Account for Theophilus",
      "books": "Luke 1:1-4",
-     "detail": "The most polished Greek sentence in the NT — Luke states his method like a historian: sources consulted, eyewitnesses interviewed, everything investigated from the beginning.",
+     "detail": "The most polished Greek sentence in the NT: Luke states his method like a historian: sources consulted, eyewitnesses interviewed, everything investigated from the beginning.",
      "verses": [
       {
        "ref": "Luke 1:1-2",
@@ -33,9 +33,9 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 1:5-25",
-     "title": "Gabriel in the Temple — John Announced",
+     "title": "Gabriel in the Temple: John Announced",
      "books": "Luke 1:5-25",
-     "detail": "Four hundred years of prophetic silence end at the incense altar — Malachi’s promised Elijah-figure announced to a priest too old to believe it.",
+     "detail": "Four hundred years of prophetic silence end at the incense altar: Malachi’s promised Elijah-figure announced to a priest too old to believe it.",
      "verses": [
       {
        "ref": "Luke 1:13,17",
@@ -54,7 +54,7 @@
      "date": "Luke 1:26-38",
      "title": "The Annunciation to Mary",
      "books": "Luke 1:26-38",
-     "detail": "Gabriel sent to Nazareth — the Davidic covenant lands on a teenage girl, and her consent becomes the hinge of history.",
+     "detail": "Gabriel sent to Nazareth: the Davidic covenant lands on a teenage girl, and her consent becomes the hinge of history.",
      "verses": [
       {
        "ref": "Luke 1:32-33",
@@ -77,7 +77,7 @@
      "date": "Luke 1:39-80",
      "title": "The Visitation; Magnificat & Benedictus",
      "books": "Luke 1:39-80",
-     "detail": "Luke opens with songs — Mary’s Magnificat and Zechariah’s Benedictus frame the whole Gospel as the God of reversal keeping covenant.",
+     "detail": "Luke opens with songs: Mary’s Magnificat and Zechariah’s Benedictus frame the whole Gospel as the God of reversal keeping covenant.",
      "verses": [
       {
        "ref": "Luke 1:46-55",
@@ -117,7 +117,7 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 2:21-52",
-     "title": "Presentation — Simeon & Anna; The Boy in the Temple",
+     "title": "Presentation: Simeon & Anna; The Boy in the Temple",
      "books": "Luke 2:21-52",
      "detail": "The Law kept to the letter; two elderly watchers recognize the consolation of Israel; twelve-year-old Jesus already knows whose Son he is.",
      "verses": [
@@ -142,15 +142,15 @@
    "number": "II",
    "label": "Era Two · Luke 3:1–4:13",
    "name": "Preparation",
-   "dates": "Anchored in world history — the fifteenth year of Tiberius",
+   "dates": "Anchored in world history: the fifteenth year of Tiberius",
    "events": [
     {
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 3:1-20",
-     "title": "John at the Jordan — History Anchored, Israel Summoned",
+     "title": "John at the Jordan: History Anchored, Israel Summoned",
      "books": "Luke 3:1-20",
-     "detail": "Luke nails the moment with seven rulers named — then the word of God bypasses every one of them and comes to a man in the wilderness.",
+     "detail": "Luke nails the moment with seven rulers named, then the word of God bypasses every one of them and comes to a man in the wilderness.",
      "verses": [
       {
        "ref": "Luke 3:1-2",
@@ -170,9 +170,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 3:21-38",
-     "title": "Baptism — The Voice; The Genealogy Back to Adam",
+     "title": "Baptism: The Voice; The Genealogy Back to Adam",
      "books": "Luke 3:21-38",
-     "detail": "Heaven opens while Jesus prays — Luke alone notes the prayer — and the genealogy runs backward past Abraham to “Adam, the son of God.”",
+     "detail": "Heaven opens while Jesus prays, Luke alone notes the prayer, and the genealogy runs backward past Abraham to “Adam, the son of God.”",
      "verses": [
       {
        "ref": "Luke 3:21-22",
@@ -188,9 +188,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 4:1-13",
-     "title": "The Temptation — Forty Days, Three Tests",
+     "title": "The Temptation: Forty Days, Three Tests",
      "books": "Luke 4:1-13",
-     "detail": "Where Israel failed forty years, the true Son stands forty days — every answer from Deuteronomy, the wilderness book.",
+     "detail": "Where Israel failed forty years, the true Son stands forty days: every answer from Deuteronomy, the wilderness book.",
      "verses": [
       {
        "ref": "Luke 4:5-7",
@@ -218,7 +218,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 4:14-30",
-     "title": "Nazareth — The Mission Statement and the Cliff",
+     "title": "Nazareth: The Mission Statement and the Cliff",
      "books": "Luke 4:14-30",
      "detail": "Luke moves this scene to the front as the programmatic announcement: Isaiah 61 read, fulfillment declared, and a near-lynching when grace goes to Gentiles.",
      "verses": [
@@ -241,9 +241,9 @@
      "colour": "green",
      "kind": "Miracle / Sign",
      "date": "Luke 4:31-5:26",
-     "title": "Capernaum Power — Demons, Fevers, the Catch, the Paralytic",
+     "title": "Capernaum Power: Demons, Fevers, the Catch, the Paralytic",
      "books": "Luke 4:31-5:26",
-     "detail": "Authority demonstrated across every domain — spirits, sickness, creation, and sin itself.",
+     "detail": "Authority demonstrated across every domain: spirits, sickness, creation, and sin itself.",
      "verses": [
       {
        "ref": "Luke 4:36",
@@ -285,9 +285,9 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 6:17-49",
-     "title": "The Sermon on the Plain — Blessings and Woes",
+     "title": "The Sermon on the Plain: Blessings and Woes",
      "books": "Luke 6:17-49",
-     "detail": "Luke’s version is shorter, flatter terrain, sharper edge — four blessings matched by four woes that Matthew doesn’t carry.",
+     "detail": "Luke’s version is shorter, flatter terrain, sharper edge: four blessings matched by four woes that Matthew doesn’t carry.",
      "verses": [
       {
        "ref": "Luke 6:20-26",
@@ -309,7 +309,7 @@
      "date": "Luke 7:1-17",
      "title": "The Centurion’s Faith; The Widow of Nain",
      "books": "Luke 7:1-17",
-     "detail": "A Gentile soldier astonishes Jesus; then at Nain’s gate he interrupts a funeral — Luke’s twin concerns, the outsider and the widow, in back-to-back scenes.",
+     "detail": "A Gentile soldier astonishes Jesus; then at Nain’s gate he interrupts a funeral: Luke’s twin concerns, the outsider and the widow, in back-to-back scenes.",
      "verses": [
       {
        "ref": "Luke 7:9",
@@ -351,7 +351,7 @@
      "date": "Luke 8:4-56",
      "title": "The Sower; Storm, Legion, the Bleeding Woman, Jairus’s Daughter",
      "books": "Luke 8:4-56",
-     "detail": "The parable of the four soils, then four escalating demonstrations — chaos, demons, uncleanness, death — all answered.",
+     "detail": "The parable of the four soils, then four escalating demonstrations (chaos, demons, uncleanness, death) all answered.",
      "verses": [
       {
        "ref": "Luke 8:15",
@@ -407,7 +407,7 @@
    "number": "IV",
    "label": "Era Four · Luke 9:51–13:21 · The Travel Narrative Begins",
    "name": "The Journey to Jerusalem — Part I",
-   "dates": "“He resolutely set out for Jerusalem” — ten chapters on the road",
+   "dates": "“He resolutely set out for Jerusalem”: ten chapters on the road",
    "events": [
     {
      "colour": "red",
@@ -415,7 +415,7 @@
      "date": "Luke 9:51-62",
      "title": "The Face Set Toward Jerusalem; The Cost of Following",
      "books": "Luke 9:51-62",
-     "detail": "The hinge of the whole Gospel — everything from here to 19:27 happens on the road to the cross, Luke’s unique central section and the home of most of his greatest material.",
+     "detail": "The hinge of the whole Gospel, everything from here to 19:27 happens on the road to the cross, Luke’s unique central section and the home of most of his greatest material.",
      "verses": [
       {
        "ref": "Luke 9:51",
@@ -435,9 +435,9 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 10:1-24",
-     "title": "The Seventy-Two Sent — Satan Falls Like Lightning",
+     "title": "The Seventy-Two Sent: Satan Falls Like Lightning",
      "books": "Luke 10:1-24",
-     "detail": "A second mission wave, recorded only by Luke — seventy(-two), the number of the nations in Genesis 10. The mission to the world is rehearsed on the road.",
+     "detail": "A second mission wave, recorded only by Luke: seventy(-two), the number of the nations in Genesis 10. The mission to the world is rehearsed on the road.",
      "verses": [
       {
        "ref": "Luke 10:2-3",
@@ -460,7 +460,7 @@
      "date": "Luke 10:25-42",
      "title": "The Good Samaritan; Mary and Martha",
      "books": "Luke 10:25-42",
-     "detail": "“Who is my neighbor?” answered with the most subversive story Jesus ever told — then Bethany, where one thing is needed.",
+     "detail": "“Who is my neighbor?” answered with the most subversive story Jesus ever told, then Bethany, where one thing is needed.",
      "verses": [
       {
        "ref": "Luke 10:33-37",
@@ -477,9 +477,9 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 11:1-13",
-     "title": "Teaching on Prayer — The Lord’s Prayer; The Friend at Midnight",
+     "title": "Teaching on Prayer: The Lord’s Prayer; The Friend at Midnight",
      "books": "Luke 11:1-13",
-     "detail": "The disciples watch him pray and ask to learn — Luke’s shorter Lord’s Prayer, then a parable about shameless midnight asking.",
+     "detail": "The disciples watch him pray and ask to learn: Luke’s shorter Lord’s Prayer, then a parable about shameless midnight asking.",
      "verses": [
       {
        "ref": "Luke 11:2-4",
@@ -498,7 +498,7 @@
      "date": "Luke 11:14-54",
      "title": "The Beelzebul Charge; The Strong Man; Woes on Pharisees and Lawyers",
      "books": "Luke 11:14-54",
-     "detail": "Accused of casting out demons by the prince of demons, Jesus explains the real cosmic situation — then turns the prophetic woes on the religious establishment.",
+     "detail": "Accused of casting out demons by the prince of demons, Jesus explains the real cosmic situation, then turns the prophetic woes on the religious establishment.",
      "verses": [
       {
        "ref": "Luke 11:20",
@@ -520,7 +520,7 @@
      "date": "Luke 12:1-59",
      "title": "The Rich Fool; Do Not Worry; Watchfulness; Fire on the Earth",
      "books": "Luke 12:1-59",
-     "detail": "A chapter on money, anxiety, and readiness — anchored by Luke’s parable of the man who built bigger barns the night he died.",
+     "detail": "A chapter on money, anxiety, and readiness: anchored by Luke’s parable of the man who built bigger barns the night he died.",
      "verses": [
       {
        "ref": "Luke 12:15",
@@ -566,7 +566,7 @@
    "number": "V",
    "label": "Era Five · Luke 13:22–17:10",
    "name": "The Journey — Part II: The Banquet and the Lost",
-   "dates": "Table fellowship as theology — and the three lost things",
+   "dates": "Table fellowship as theology, and the three lost things",
    "events": [
     {
      "colour": "blue",
@@ -574,7 +574,7 @@
      "date": "Luke 13:22-14:24",
      "title": "The Narrow Door; Lament Over Jerusalem; Banquet Teachings",
      "books": "Luke 13:22-14:24",
-     "detail": "Warnings sharpen as Jerusalem nears — and a Sabbath dinner at a Pharisee’s house becomes a seminar on seats, guest lists, and the great banquet.",
+     "detail": "Warnings sharpen as Jerusalem nears, and a Sabbath dinner at a Pharisee’s house becomes a seminar on seats, guest lists, and the great banquet.",
      "verses": [
       {
        "ref": "Luke 13:29-30",
@@ -603,9 +603,9 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 14:25-35",
-     "title": "Counting the Cost — Tower and King",
+     "title": "Counting the Cost: Tower and King",
      "books": "Luke 14:25-35",
-     "detail": "Large crowds follow — so Jesus thins them with the hardest discipleship sayings in the Gospel.",
+     "detail": "Large crowds follow, so Jesus thins them with the hardest discipleship sayings in the Gospel.",
      "verses": [
       {
        "ref": "Luke 14:26-27",
@@ -624,7 +624,7 @@
      "date": "Luke 15:1-32",
      "title": "The Lost Sheep, the Lost Coin, the Prodigal Son",
      "books": "Luke 15:1-32",
-     "detail": "The summit of the parables — three lost things, one escalating joy, told against the grumble of 15:2: “This man welcomes sinners and eats with them.”",
+     "detail": "The summit of the parables: three lost things, one escalating joy, told against the grumble of 15:2: “This man welcomes sinners and eats with them.”",
      "verses": [
       {
        "ref": "Luke 15:7",
@@ -651,7 +651,7 @@
      "date": "Luke 16:1-31",
      "title": "The Shrewd Manager; The Rich Man and Lazarus",
      "books": "Luke 16:1-31",
-     "detail": "Two money parables found only in Luke — one praising shrewdness redirected toward eternity, one showing the reversal carried past the grave.",
+     "detail": "Two money parables found only in Luke, one praising shrewdness redirected toward eternity, one showing the reversal carried past the grave.",
      "verses": [
       {
        "ref": "Luke 16:9",
@@ -678,7 +678,7 @@
    "number": "VI",
    "label": "Era Six · Luke 17:11–19:27",
    "name": "The Final Approach",
-   "dates": "Through Samaria and Jericho — the last miles",
+   "dates": "Through Samaria and Jericho: the last miles",
    "events": [
     {
      "colour": "green",
@@ -686,7 +686,7 @@
      "date": "Luke 17:11-37",
      "title": "Ten Lepers, One Samaritan; The Kingdom in Your Midst",
      "books": "Luke 17:11-37",
-     "detail": "Ten healed, one returns — and he is the foreigner. Then the question of when the kingdom comes gets an answer no one expected.",
+     "detail": "Ten healed, one returns, and he is the foreigner. Then the question of when the kingdom comes gets an answer no one expected.",
      "verses": [
       {
        "ref": "Luke 17:15-18",
@@ -705,7 +705,7 @@
      "date": "Luke 18:1-17",
      "title": "The Persistent Widow; The Pharisee and the Tax Collector",
      "books": "Luke 18:1-17",
-     "detail": "Two prayer parables only Luke preserves — prayer that refuses to quit, and the only posture justification accepts.",
+     "detail": "Two prayer parables only Luke preserves: prayer that refuses to quit, and the only posture justification accepts.",
      "verses": [
       {
        "ref": "Luke 18:7-8",
@@ -744,9 +744,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 19:1-27",
-     "title": "Zacchaeus — The Thesis Verse; The Ten Minas",
+     "title": "Zacchaeus: The Thesis Verse; The Ten Minas",
      "books": "Luke 19:1-27",
-     "detail": "A chief tax collector up a sycamore tree, salvation at his table by sundown — and Luke’s thesis sentence for the whole Gospel.",
+     "detail": "A chief tax collector up a sycamore tree, salvation at his table by sundown, and Luke’s thesis sentence for the whole Gospel.",
      "verses": [
       {
        "ref": "Luke 19:8",
@@ -777,7 +777,7 @@
      "date": "Luke 19:28-48",
      "title": "The Triumphal Entry; Jesus Weeps Over the City; The Temple Cleansed",
      "books": "Luke 19:28-48",
-     "detail": "Zechariah 9:9 staged deliberately — then, in a scene only Luke records, the King stops on the descent and weeps over the city that cannot see its visitation.",
+     "detail": "Zechariah 9:9 staged deliberately, then, in a scene only Luke records, the King stops on the descent and weeps over the city that cannot see its visitation.",
      "verses": [
       {
        "ref": "Luke 19:38-40",
@@ -798,9 +798,9 @@
      "colour": "gold",
      "kind": "Standard Event",
      "date": "Luke 20:1-21:4",
-     "title": "The Day of Traps — Authority, Tenants, Caesar’s Coin, the Widow’s Coins",
+     "title": "The Day of Traps: Authority, Tenants, Caesar’s Coin, the Widow’s Coins",
      "books": "Luke 20:1-21:4",
-     "detail": "Every faction takes its shot in the Temple courts and every trap fails — the day ends with two copper coins outweighing the treasury.",
+     "detail": "Every faction takes its shot in the Temple courts and every trap fails: the day ends with two copper coins outweighing the treasury.",
      "verses": [
       {
        "ref": "Luke 20:17-18",
@@ -824,9 +824,9 @@
      "colour": "blue",
      "kind": "Teaching / Parable",
      "date": "Luke 21:5-38",
-     "title": "The Olivet Discourse — Jerusalem Surrounded; The Son of Man Coming",
+     "title": "The Olivet Discourse: Jerusalem Surrounded; The Son of Man Coming",
      "books": "Luke 21:5-38",
-     "detail": "Luke’s version is the most historically concrete — armies around Jerusalem, the times of the Gentiles, and the horizon of the Son of Man beyond it.",
+     "detail": "Luke’s version is the most historically concrete: armies around Jerusalem, the times of the Gentiles, and the horizon of the Son of Man beyond it.",
      "verses": [
       {
        "ref": "Luke 21:6",
@@ -854,7 +854,7 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 22:1-38",
-     "title": "The Last Supper — New Covenant; Greatness Redefined; Peter Warned",
+     "title": "The Last Supper: New Covenant; Greatness Redefined; Peter Warned",
      "books": "Luke 22:1-38",
      "detail": "Satan re-enters the story through Judas; Passover becomes the new covenant meal; and even at this table the disciples argue about rank.",
      "verses": [
@@ -880,9 +880,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 22:39-65",
-     "title": "Gethsemane — The Cup; Arrest; The Look That Broke Peter",
+     "title": "Gethsemane: The Cup; Arrest; The Look That Broke Peter",
      "books": "Luke 22:39-65",
-     "detail": "The real battle fought in prayer under the olive trees — then a kiss, a severed ear healed, and a rooster.",
+     "detail": "The real battle fought in prayer under the olive trees, then a kiss, a severed ear healed, and a rooster.",
      "verses": [
       {
        "ref": "Luke 22:42-44",
@@ -906,9 +906,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 22:66-23:25",
-     "title": "The Trials — Sanhedrin, Pilate, Herod; Barabbas Released",
+     "title": "The Trials: Sanhedrin, Pilate, Herod; Barabbas Released",
      "books": "Luke 22:66-23:25",
-     "detail": "Luke alone records the Herod Antipas hearing — and stacks three formal declarations of innocence against one surrendered verdict.",
+     "detail": "Luke alone records the Herod Antipas hearing, and stacks three formal declarations of innocence against one surrendered verdict.",
      "verses": [
       {
        "ref": "Luke 22:69-70",
@@ -933,9 +933,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 23:26-56",
-     "title": "The Crucifixion — Father Forgive; The Thief; Into Your Hands",
+     "title": "The Crucifixion: Father Forgive; The Thief; Into Your Hands",
      "books": "Luke 23:26-56",
-     "detail": "Luke’s cross is marked by mercy — forgiveness for the executioners, paradise for a thief, and a final prayer of trust rather than dereliction.",
+     "detail": "Luke’s cross is marked by mercy: forgiveness for the executioners, paradise for a thief, and a final prayer of trust rather than dereliction.",
      "verses": [
       {
        "ref": "Luke 23:28-31",
@@ -965,15 +965,15 @@
    "number": "IX",
    "label": "Era Nine · Luke 24",
    "name": "Risen — Emmaus, the Upper Room, the Ascension",
-   "dates": "It ends where it began — in the Temple, with praise",
+   "dates": "It ends where it began: in the Temple, with praise",
    "events": [
     {
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 24:1-12",
-     "title": "The Empty Tomb — “Why Do You Look for the Living Among the Dead?”",
+     "title": "The Empty Tomb: “Why Do You Look for the Living Among the Dead?”",
      "books": "Luke 24:1-12",
-     "detail": "The women who funded the ministry are the first witnesses of its vindication — and are not believed.",
+     "detail": "The women who funded the ministry are the first witnesses of its vindication, and are not believed.",
      "verses": [
       {
        "ref": "Luke 24:5-7",
@@ -989,9 +989,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 24:13-35",
-     "title": "The Emmaus Road — Hearts Burning, Known in the Breaking of Bread",
+     "title": "The Emmaus Road: Hearts Burning, Known in the Breaking of Bread",
      "books": "Luke 24:13-35",
-     "detail": "Luke’s masterpiece — the risen Lord incognito, walking two despairing disciples through the whole Bible, then recognized at the table.",
+     "detail": "Luke’s masterpiece: the risen Lord incognito, walking two despairing disciples through the whole Bible, then recognized at the table.",
      "verses": [
       {
        "ref": "Luke 24:25-27",
@@ -1010,7 +1010,7 @@
      "date": "Luke 24:36-49",
      "title": "Flesh and Bones, Broiled Fish; Minds Opened; The Promise of Power",
      "books": "Luke 24:36-49",
-     "detail": "Bodily resurrection demonstrated at the dinner table; the Scriptures opened; the mission and the Spirit promised — Luke’s bridge to Acts.",
+     "detail": "Bodily resurrection demonstrated at the dinner table; the Scriptures opened; the mission and the Spirit promised: Luke’s bridge to Acts.",
      "verses": [
       {
        "ref": "Luke 24:39-43",
@@ -1030,9 +1030,9 @@
      "colour": "red",
      "kind": "Major Event",
      "date": "Luke 24:50-53",
-     "title": "The Ascension — Great Joy, Back to the Temple",
+     "title": "The Ascension: Great Joy, Back to the Temple",
      "books": "Luke 24:50-53",
-     "detail": "Not grief but joy — the enthronement of the King. Luke’s Gospel closes exactly where it opened: in the Temple, praising God. But now everything has changed.",
+     "detail": "Not grief but joy: the enthronement of the King. Luke’s Gospel closes exactly where it opened: in the Temple, praising God. But now everything has changed.",
      "verses": [
       {
        "ref": "Luke 24:50-51",
