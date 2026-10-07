@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "tool": {
-  "slug": "genesis-beginning-alpha",
+  "slug": "genesis-beginning",
   "name": "Genesis, the Beginning",
   "status": "beta",
   "heroTitle": "Genesis, the Beginning",
@@ -214,8 +214,8 @@
   },
   {
    "type": "suggest",
-   "kind": "genesis-alpha",
-   "label": "Genesis, the Beginning (beta)",
+   "kind": "genesis",
+   "label": "Genesis, the Beginning (alpha)",
    "toggleText": "Is there a question about Genesis 1 to 11 we should map? Suggest it ›",
    "valuePlaceholder": "What question should we cover?"
   },

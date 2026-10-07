@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "tool": {
-  "slug": "lewis-cosmology-alpha",
+  "slug": "lewis-cosmology",
   "name": "C. S. Lewis's Cosmology",
   "status": "beta",
   "heroTitle": "C. S. Lewis's Cosmology",
@@ -206,8 +206,8 @@
   },
   {
    "type": "suggest",
-   "kind": "lewis-alpha",
-   "label": "C. S. Lewis's Cosmology (beta)",
+   "kind": "lewis-cosmology",
+   "label": "C. S. Lewis's Cosmology (alpha)",
    "toggleText": "Is there a scene or idea from Lewis we should cover? Suggest it ›",
    "valuePlaceholder": "What should we cover?"
   },
