@@ -1,0 +1,1002 @@
+{
+ "schema": 1,
+ "tool": {
+  "slug": "lewis-cosmology-alpha",
+  "name": "C. S. Lewis's Cosmology",
+  "status": "beta",
+  "heroTitle": "C. S. Lewis's Cosmology",
+  "heroSubtitle": "Where Lewis's heavens follow Scripture, where they come from the medieval picture of the cosmos, and where he made them up.",
+  "searchPlaceholder": "Oyarsa, Thulcandra, eldila, Un-man, Tash",
+  "backLabel": "All entries",
+  "perPage": 200
+ },
+ "card": {
+  "labelField": "title",
+  "mainField": "summary"
+ },
+ "detail": {
+  "titleField": "title",
+  "headlineField": "summary"
+ },
+ "search": {
+  "fields": [
+   "title",
+   "summary",
+   "plain",
+   "wrote",
+   "where",
+   "bib",
+   "got",
+   "dep",
+   "not",
+   "sources"
+  ]
+ },
+ "filters": [
+  {
+   "role": "category",
+   "field": "category",
+   "allLabel": "Show all",
+   "options": [
+    {
+     "k": "scripture",
+     "n": "Tracks Scripture",
+     "c": "aramaic",
+     "short": "SCRP"
+    },
+    {
+     "k": "medieval",
+     "n": "From the medieval model",
+     "c": "gold",
+     "short": "MED"
+    },
+    {
+     "k": "lewis",
+     "n": "Lewis's own",
+     "c": "lavender",
+     "short": "OWN"
+    }
+   ]
+  },
+  {
+   "field": "group",
+   "allLabel": "All threads",
+   "options": [
+    {
+     "k": "rulers",
+     "n": "Rulers and territories"
+    },
+    {
+     "k": "maker",
+     "n": "Maleldil"
+    },
+    {
+     "k": "eldila",
+     "n": "The eldila"
+    },
+    {
+     "k": "bent",
+     "n": "The Bent One and the fall"
+    },
+    {
+     "k": "tempter",
+     "n": "Temptation and the Un-man"
+    },
+    {
+     "k": "nations",
+     "n": "Gods of the nations"
+    },
+    {
+     "k": "heavens",
+     "n": "The old heavens"
+    },
+    {
+     "k": "myth",
+     "n": "Myth and fact"
+    }
+   ]
+  },
+  {
+   "field": "work",
+   "allLabel": "All books",
+   "options": [
+    {
+     "k": "osp",
+     "n": "Out of the Silent Planet"
+    },
+    {
+     "k": "per",
+     "n": "Perelandra"
+    },
+    {
+     "k": "ths",
+     "n": "That Hideous Strength"
+    },
+    {
+     "k": "narnia",
+     "n": "Narnia"
+    },
+    {
+     "k": "screwtape",
+     "n": "The Screwtape Letters"
+    },
+    {
+     "k": "prose",
+     "n": "The Problem of Pain and other prose"
+    }
+   ]
+  }
+ ],
+ "blocks": [
+  {
+   "type": "scripture",
+   "refField": "bibleRef",
+   "overrideField": "bibleRefOverride",
+   "versions": [
+    "net",
+    "kjv",
+    "web",
+    "nlt",
+    "esv"
+   ],
+   "default": "net",
+   "interlinearLink": true,
+   "separator": " · "
+  },
+  {
+   "type": "box",
+   "variant": "plain",
+   "title": "First, in plain English",
+   "field": "plain"
+  },
+  {
+   "type": "box",
+   "variant": "wording",
+   "title": "What Lewis wrote",
+   "field": "wrote",
+   "noteField": "where"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "The biblical picture",
+   "field": "bib"
+  },
+  {
+   "type": "box",
+   "variant": "witness",
+   "title": "Where he got it",
+   "field": "got"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "Where he departs",
+   "field": "dep"
+  },
+  {
+   "type": "box",
+   "variant": "not",
+   "title": "What this is not",
+   "field": "not"
+  },
+  {
+   "type": "out",
+   "title": "Read with the Divine Council Index",
+   "field": "xref"
+  },
+  {
+   "type": "linkrow",
+   "title": "Reads with",
+   "field": "related"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Sources",
+   "field": "sources",
+   "list": "ordered"
+  }
+ ],
+ "footer": [
+  {
+   "type": "note",
+   "class": "method",
+   "text": "The method. Lewis is quoted as though he were doing exegesis, and he was not. He was a medievalist writing fiction, and his heavens come from three places: what Scripture says, what the medieval picture of the cosmos said, and what he invented to make a story work. Each entry here says which. The point is not to grade Lewis down. It is that he arrived at a picture of a cosmos with rulers, rebels and territories through medieval cosmology rather than through the Hebrew text, and in several places landed where the Hebrew text is. The entries that do not land there are filed as such."
+  },
+  {
+   "type": "suggest",
+   "kind": "lewis-alpha",
+   "label": "C. S. Lewis's Cosmology (beta)",
+   "toggleText": "Is there a scene or idea from Lewis we should cover? Suggest it ›",
+   "valuePlaceholder": "What should we cover?"
+  },
+  {
+   "type": "note",
+   "text": "How to read the grades. Tracks Scripture means the idea is in the biblical text, whatever Lewis dressed it in. From the medieval model means Lewis took it from the picture of the cosmos he taught and loved, the one he called the old Model. Lewis's own means he made it up, sometimes as a deliberate guess and sometimes for the story. An entry is filed as medieval only where the medieval source can be shown, through Lewis's own text or a book about him. Where it cannot yet be shown, the entry is filed as Lewis's own."
+  }
+ ],
+ "entries": [
+  {
+   "title": "Thulcandra, the silent planet",
+   "id": "thulcandra",
+   "summary": "Earth is the one world whose ruler went bent, was bound in its air, and was cut off from the rest of the heavens.",
+   "plain": "The real question: is Lewis's picture of Earth as a planet under a rebel ruler just a story, or does it come from somewhere? **A town under occupation goes quiet on the radio.** No messages in, none out. Everyone else on the network knows something has gone wrong there. That is Thulcandra, the silent planet. Where Lewis got each piece of it is what the boxes below sort out.",
+   "category": "scripture",
+   "group": "rulers",
+   "work": "osp",
+   "bibleRef": "Ephesians 2:2",
+   "bibleRefOverride": "John 12:31; 2 Corinthians 4:4; Ephesians 2:2",
+   "wrote": "The Oyarsa of Malacandra tells Ransom that Earth is \"the world we do not know.\" Its own Oyarsa was once brighter and greater than he, became bent before any life came on Earth, tried to spoil other worlds, and was driven back in a great war and bound in the air of his own world. Since then no message comes from it. The other worlds have heard stories that Maleldil has wrestled with the Bent One there.",
+   "where": "Out of the Silent Planet, ch. 18",
+   "bib": "The New Testament calls Satan the ruler of this world (John 12:31), the god of this age who blinds unbelievers (2 Corinthians 4:4), and the ruler of the authority of the air (Ephesians 2:2). Jesus's ministry is presented as an invasion of occupied ground. Lewis's detail of the Bent One bound in the air of his own world sits close to Ephesians 2:2. That pairing is drawn here; the novel does not cite the verse.",
+   "got": "Lewis said in Mere Christianity that Christianity sees this world as enemy-occupied territory, a part of the universe held by a rebel, which is the same idea in prose. The planetary dress, a ruler per planet, is from the medieval model; see the entry on the Oyarsa.",
+   "dep": "The silence, the quarantine and the timing are Lewis's. Scripture does not say Earth is cut off from the rest of the heavens, and the Bent One's attacks on the moon and Mars are pure invention.",
+   "not": "**Not a claim that Lewis read Heiser's sources.** He reached a cosmos with a rebel ruler over Earth through medieval cosmology and the New Testament, not through Ugaritic or the Dead Sea Scrolls reading of Deuteronomy 32.",
+   "related": [
+    "every-world-has-an-oyarsa",
+    "the-bent-one",
+    "enemy-occupied-territory"
+   ],
+   "sources": [
+    "C. S. Lewis, Out of the Silent Planet (Bodley Head, 1938), ch. 18",
+    "Lewis, Mere Christianity (1952), Book 2, ch. 2, The Invasion"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-10-13-20-21/",
+     "n": "Daniel 10:13, 20-21",
+     "s": "A prince of Persia resists for twenty-one days, a prince of Greece is coming, and Michael fights for Israel.",
+     "r": "Daniel 10:13, 20-21"
+    }
+   ]
+  },
+  {
+   "title": "Every world has an Oyarsa",
+   "id": "every-world-has-an-oyarsa",
+   "summary": "Each planet has a ruling spirit. Lewis takes the word from a twelfth-century Platonist and the idea from the medieval heavens.",
+   "plain": "The real question: where did Lewis get the idea that each world has its own ruling spirit? **Every state has a governor.** One country, one president, and the states run by people he answers for. Lewis gave every planet a governor. Whether that idea came from the Bible, from older Christian writers, or from Lewis is the question.",
+   "category": "medieval",
+   "group": "rulers",
+   "work": "osp",
+   "bibleRef": "Deuteronomy 32:8-9",
+   "bibleRefOverride": "Deuteronomy 32:8-9; Daniel 10:13, 20-21",
+   "wrote": "Each planet in the trilogy has an Oyarsa, a great eldil who rules it under Maleldil. In the final chapter of Out of the Silent Planet, the narrator, the author stepping into his own story, says he was working on the twelfth-century Platonists and found the word Oyarses in Bernardus Silvestris, where it seems to mean the \"intelligence\" or tutelary spirit of a heavenly sphere, a planet. The two of them decide the word is not an accident.",
+   "where": "Out of the Silent Planet, chs. 11, 18 and 22",
+   "bib": "Deuteronomy 32:8-9, in the reading preserved in the Dead Sea Scrolls, says God divided the nations according to the number of the sons of God and kept Israel for himself. Daniel 10 has a prince of Persia and a prince of Greece who resist a heavenly messenger. Scripture assigns rulers to nations and peoples.",
+   "got": "The medieval model of the cosmos, which Lewis taught at Oxford for years in the lectures that became The Discarded Image (1964), put a guiding intelligence in each planetary sphere. McGrath records Lewis saying the old Model delighted him as he believed it delighted his ancestors. Lewis takes the term itself straight from Bernardus Silvestris, and says so inside the novel.",
+   "dep": "In Scripture the rulers are over nations and peoples on earth. In Lewis they are over planets. And in Lewis the rulers of the other worlds are loyal. In Psalm 82 and Deuteronomy 32 the rulers of the nations are the problem.",
+   "not": "**Not exegesis.** Lewis does not cite Deuteronomy 32 for the Oyarsa. He cites Bernardus Silvestris. The resemblance comes from two traditions describing a delegated cosmos, not from Lewis reading the Hebrew.",
+   "related": [
+    "thulcandra",
+    "the-descent-of-the-gods",
+    "the-heavens-not-space"
+   ],
+   "sources": [
+    "Lewis, Out of the Silent Planet (1938), chs. 11, 18, 22",
+    "Alister E. McGrath, C. S. Lewis, A Life: Eccentric Genius, Reluctant Prophet (Tyndale, 2013), on The Discarded Image",
+    "C. S. Lewis, The Discarded Image (1964), not in the vault; cite from print"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-10-13-20-21/",
+     "n": "Daniel 10:13, 20-21",
+     "s": "A prince of Persia resists for twenty-one days, a prince of Greece is coming, and Michael fights for Israel.",
+     "r": "Daniel 10:13, 20-21"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    }
+   ]
+  },
+  {
+   "title": "Maleldil the Young and the Old One",
+   "id": "maleldil",
+   "summary": "On Mars the creatures know who made the world: Maleldil the Young, who lives with the Old One. The Earthman is the one who needs the catechism.",
+   "plain": "The real question: who is Maleldil, and why does Lewis give God a new name? **A familiar word can stop you seeing.** Call God by a strange name in a strange place and you hear what is being said about him again. Lewis's Maleldil the Young is the Son, the maker and ruler of the world, and he lives with the Old One.",
+   "category": "scripture",
+   "group": "maker",
+   "work": "osp",
+   "bibleRef": "Colossians 1:15-17",
+   "bibleRefOverride": "John 1:1-3; Colossians 1:15-17; Hebrews 1:2",
+   "wrote": "When Ransom asks the hrossa whether their Oyarsa made the world, they almost bark in denial: everyone knows Maleldil the Young made it and still rules it, and that he lives with the Old One, who is not the sort that has to live anywhere. Ransom, who had been wondering whether to give them religious instruction, finds himself treated as the savage and given what Lewis calls a first sketch of civilized religion.",
+   "where": "Out of the Silent Planet, ch. 11",
+   "bib": "John 1 and Colossians 1 say all things were made through the Son and hold together in him. Hebrews 1 says God made the world through the Son and appointed him heir of all things. The Old One who does not have to live anywhere matches the God whom the highest heaven cannot contain.",
+   "got": "The theology is orthodox Christian teaching on the Son as agent of creation. The names are Lewis's invention.",
+   "dep": "Lewis keeps the Spirit nearly offstage in Out of the Silent Planet. The hrossa's catechism has the Father and the Son, and the trilogy brings the rest in later.",
+   "not": "**Not a different god.** Maleldil is the Christian God renamed so a reader meets him fresh.",
+   "related": [
+    "my-name-also-is-ransom",
+    "thulcandra"
+   ],
+   "sources": [
+    "Lewis, Out of the Silent Planet (1938), ch. 11"
+   ],
+   "post": null
+  },
+  {
+   "title": "My name also is Ransom",
+   "id": "my-name-also-is-ransom",
+   "summary": "On Perelandra, when Ransom realizes he may have to fight, the Voice tells him the name he bears is also the name of the one who paid the price for his own world.",
+   "plain": "The real question: why is the hero of the trilogy called Ransom? **His name was on the check before he knew what it paid for.** Lewis's hero carries the name of what Christ did. On Perelandra he learns that the name was not a coincidence.",
+   "category": "scripture",
+   "group": "maker",
+   "work": "per",
+   "bibleRef": "Mark 10:45",
+   "bibleRefOverride": "Mark 10:45; 1 Timothy 2:5-6",
+   "wrote": "Ransom is fighting the conviction that he must physically stop the tempter. He reflects that before his ancestors were called Ransom, before ransom was the name for a payment that delivers, all of it stood together in eternity. Then the Voice says, \"My name also is Ransom.\" He understands that Maleldil was the world's ransom, and that if he fails now, this world too would need redeeming.",
+   "where": "Perelandra, ch. 11",
+   "bib": "Jesus says the Son of Man came to give his life as a ransom for many (Mark 10:45). Paul calls Christ the one mediator who gave himself as a ransom for all (1 Timothy 2:5-6).",
+   "got": "The theology is the New Testament's. The use of a character's surname as a sign is Lewis's own device, and in the same chapter he has Ransom realize that the line between accident and design, like the line between fact and myth, is purely terrestrial.",
+   "dep": "Lewis puts a man in a place where his obedience protects a whole unfallen world. The New Testament gives that role to Christ alone. Lewis is careful: Ransom is not a second redeemer, he is sent so that a second fall does not need one.",
+   "not": "**Not a claim that Ransom saves anyone.** The point of the scene is that he is being asked to prevent a fall, not to undo one.",
+   "related": [
+    "maleldil",
+    "ransom-fights-the-un-man",
+    "myth-and-fact"
+   ],
+   "sources": [
+    "Lewis, Perelandra (Bodley Head, 1943), ch. 11"
+   ],
+   "post": null
+  },
+  {
+   "title": "The eldila",
+   "id": "the-eldila",
+   "summary": "Beings of light whose bodies move so fast that ours look like cloud to them. Lewis gave angels a physics.",
+   "plain": "The real question: what are the eldila made of, and are they angels? **A fan spinning fast looks like a blur you could put your hand through.** Lewis turned that around: to an eldil, we are the blur. How much of that picture is old and how much is Lewis's is what this card sorts out.",
+   "category": "lewis",
+   "group": "eldila",
+   "work": "osp",
+   "bibleRef": "Psalm 104:4",
+   "bibleRefOverride": "Psalm 104:4; Hebrews 1:7, 14",
+   "wrote": "A sorn explains to Ransom that the body of an eldil is a movement swift as light. What we call light is to them like water, something they can bathe in. What we call firm things, flesh and earth, seem to them thinner and harder to see than our light, nearly nothing. To us an eldil is a thin, half-real body that goes through walls; to itself it goes through walls because it is solid and the walls are cloud.",
+   "where": "Out of the Silent Planet, ch. 15",
+   "bib": "Psalm 104:4, quoted in Hebrews 1:7, says God makes his messengers winds and his ministers flames of fire. Hebrews 1:14 calls the angels ministering spirits. Scripture describes angels by what they do and how they appear, not by what they are made of.",
+   "got": "The medieval model filled the heavens with intelligences and gave them a nature finer than ours. Lewis's swift-as-light body is his own attempt to make that nature imaginable to a twentieth-century reader.",
+   "dep": "Scripture never speculates about angelic physics. Lewis does, and he says so through the sorn, who breaks off: we will not talk of that.",
+   "not": "**Not a doctrine.** It is a story's way of making the unseen realm feel more solid than the seen, which is the opposite of the usual picture.",
+   "related": [
+    "every-world-has-an-oyarsa",
+    "the-heavens-not-space",
+    "the-descent-of-the-gods"
+   ],
+   "sources": [
+    "Lewis, Out of the Silent Planet (1938), ch. 15"
+   ],
+   "post": null
+  },
+  {
+   "title": "Aslan sings Narnia into being",
+   "id": "aslan-sings-narnia",
+   "summary": "In The Magician's Nephew, Narnia is made by a song. The stars appear singing, and the Lion's voice calls the land, the animals and the waters into being.",
+   "plain": "The real question: why does Lewis have Narnia made by singing? **A song and a speech can say the same words.** One is heard as a command, the other as something beautiful. Genesis has God speak. Lewis has Aslan sing. What that choice keeps from the Bible and what it adds is the question.",
+   "category": "scripture",
+   "group": "maker",
+   "work": "narnia",
+   "bibleRef": "Job 38:4-7",
+   "bibleRefOverride": "Job 38:4-7; Genesis 1:3; Psalm 33:6-9",
+   "wrote": "In the dark of the unmade world a Voice begins to sing. Stars appear at the moment the high voices begin, and Digory is certain \"it was the stars themselves which were singing,\" made to appear and sing by the First Voice. The singing Lion then calls up the land, plants and animals, and finally speaks: \"Narnia, Narnia, Narnia, awake. Love. Think. Speak.\"",
+   "where": "The Magician's Nephew, chs. 8 and 9",
+   "bib": "In Job 38 God asks where Job was when he laid the foundations of the earth, when the morning stars sang together and all the sons of God shouted for joy. Genesis 1 and Psalm 33 have creation by God's spoken word.",
+   "got": "The singing stars at the founding of the world are Job 38:7. Creation by the voice is Genesis 1 and Psalm 33. Making the creative word a song is Lewis's own.",
+   "dep": "Scripture has the stars sing while God creates. Lewis has the creator sing. The Bible never calls God's creative word a song.",
+   "not": "**Not a different creation story.** Narnia is a separate world in the fiction, but the shape, a voice in the dark and a world appearing at its word, is the shape of Genesis 1.",
+   "related": [
+    "stars-as-persons",
+    "maleldil",
+    "the-great-dance"
+   ],
+   "sources": [
+    "Lewis, The Magician's Nephew (1955), chs. 8-9"
+   ],
+   "post": null
+  },
+  {
+   "title": "The Bent One",
+   "id": "the-bent-one",
+   "summary": "Earth's Oyarsa went bent before any life appeared on Earth, made war on the heavens, lost, and was bound. Lewis's word for the devil is a word for something warped.",
+   "plain": "The real question: where does Lewis's story of a great spirit who went wrong before the world began come from? **Bent, not broken.** A bent nail was once a straight nail. Lewis chose a word for evil that says it was made good first. Whether the rest of his story lines up with the Bible is the question.",
+   "category": "scripture",
+   "group": "bent",
+   "work": "osp",
+   "bibleRef": "Revelation 12:7-9",
+   "bibleRefOverride": "Revelation 12:7-9; Isaiah 14:12-15; Ezekiel 28:12-17",
+   "wrote": "In the Bent Years, before life came on Earth, its Oyarsa became bent, tried to spoil other worlds, and was driven back in a great war and bound in the air of his own world. The Malacandrians use bent as their word for evil; the nearest hrossian word for the two men who brought Ransom is bent men.",
+   "where": "Out of the Silent Planet, chs. 11 and 18",
+   "bib": "Revelation 12 describes war in heaven, Michael and his angels against the dragon, who is thrown down to earth and identified as the ancient serpent. Isaiah 14 and Ezekiel 28 describe a figure cast down from a high place, and have long been read of Satan. Scripture presents evil as the corruption of something made good.",
+   "got": "Lewis said in The Problem of Pain that the story of an older and mightier being who became apostate before man is not in the creeds but seems to be implied in several sayings of Jesus, Paul and John. The planetary war is the medieval heavens again.",
+   "dep": "The bombardment of the moon and the cold death brought on Mars are Lewis's invention. So is the timing, though The Problem of Pain makes the same guess in prose.",
+   "not": "**Not dualism.** The Bent One is a creature who rebelled. Lewis rejects any picture of two equal powers.",
+   "related": [
+    "thulcandra",
+    "a-fallen-power-and-animal-pain",
+    "enemy-occupied-territory"
+   ],
+   "sources": [
+    "Lewis, Out of the Silent Planet (1938), chs. 11, 18",
+    "Lewis, The Problem of Pain (1940), ch. 9"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-14-12-15/",
+     "n": "Isaiah 14:12-15",
+     "s": "Helel ben-shachar, shining one, son of the dawn, falls from heaven.",
+     "r": "Isaiah 14:12-15"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ezekiel-28-11-19/",
+     "n": "Ezekiel 28:11-19",
+     "s": "A guardian cherub in Eden, on the holy mountain, cast out for pride.",
+     "r": "Ezekiel 28:11-19"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    }
+   ]
+  },
+  {
+   "title": "A fallen power and animal pain",
+   "id": "a-fallen-power-and-animal-pain",
+   "summary": "Lewis's prose guess that a fallen spirit corrupted the animal world before man appeared. John Lennox quotes it in his book on Genesis 1.",
+   "plain": "The real question: if animals suffered and died long before humans existed, whose fault was it? **Someone got into the workshop before the owner's son came home.** Lewis guessed that the rot in nature was older than Adam because a rebel spirit had already been at work. He offered it as a supposition, and said so.",
+   "category": "lewis",
+   "group": "bent",
+   "work": "prose",
+   "bibleRef": "Romans 8:19-22",
+   "wrote": "In The Problem of Pain Lewis says animals existed long before men, so carnivorousness is older than humanity. He calls it a reasonable supposition that some mighty created power had already been at work for ill on the material universe, or at least the planet, before man came on the scene, and that if such a power exists, as he himself believed, it may well have corrupted the animal creation before man appeared.",
+   "where": "The Problem of Pain, ch. 9, Animal Pain",
+   "bib": "Romans 8 says creation was subjected to futility and waits to be set free from bondage to decay. Scripture does not say a fallen angel corrupted the animal world. Lennox, quoting Lewis, treats it as one direction to look for the origin of animal pain without claiming to have solved it.",
+   "got": "Lewis says it is a sacred story widely believed in the church though never included in the creeds. The application to animal suffering is his.",
+   "dep": "The text of Scripture gives no mechanism for pre-human animal suffering. Lewis supplies one and labels it a supposition, not doctrine.",
+   "not": "**Not Lewis claiming certainty.** He calls it a supposition and a hypothesis, and says it is not a general explanation of evil.",
+   "related": [
+    "the-bent-one",
+    "the-fall-as-a-socratic-myth"
+   ],
+   "sources": [
+    "Lewis, The Problem of Pain (1940), ch. 9",
+    "John C. Lennox, Seven Days that Divide the World, 10th anniversary ed. (Zondervan Reflective, 2021), ch. 4, quoting Lewis"
+   ],
+   "post": null
+  },
+  {
+   "title": "Enemy-occupied territory",
+   "id": "enemy-occupied-territory",
+   "summary": "Lewis's plainest statement of the cosmic war: not two equal powers, but a civil war, a rebellion, and a world held by the rebel.",
+   "plain": "The real question: is the world a battlefield between equal good and evil, or something else? **Resistance radio in an occupied country.** The rightful king has landed in disguise and is calling people to sabotage. That is how Lewis described Christianity to a wartime audience on the BBC.",
+   "category": "scripture",
+   "group": "rulers",
+   "work": "prose",
+   "bibleRef": "1 John 5:19",
+   "bibleRefOverride": "1 John 5:19; Luke 4:5-6; John 12:31",
+   "wrote": "Lewis sets Christianity against Dualism, the belief in two equal and independent powers. Christianity agrees the universe is at war but holds it is a civil war, a rebellion, and that we live in a part of the universe occupied by the rebel. He calls this world enemy-occupied territory, and Christianity the story of how the rightful king has landed in disguise.",
+   "where": "Mere Christianity, Book 2, ch. 2, The Invasion",
+   "bib": "1 John 5:19 says the whole world lies in the power of the evil one. In Luke 4 the devil offers Jesus the kingdoms of the world and says their authority has been handed over to him. John 12:31 calls him the ruler of this world, about to be driven out.",
+   "got": "Straight from the New Testament. The wartime metaphor is Lewis's, written for broadcast during the Second World War.",
+   "dep": "Little here departs from Scripture. The image is Lewis's; the claim is the New Testament's.",
+   "not": "**Not Manichaeism.** Lewis's whole point is that the rebel was created good by God and went wrong.",
+   "related": [
+    "thulcandra",
+    "the-bent-one"
+   ],
+   "sources": [
+    "Lewis, Mere Christianity (1952), Book 2, ch. 2"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-10-13-20-21/",
+     "n": "Daniel 10:13, 20-21",
+     "s": "A prince of Persia resists for twenty-one days, a prince of Greece is coming, and Michael fights for Israel.",
+     "r": "Daniel 10:13, 20-21"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    }
+   ]
+  },
+  {
+   "title": "The Deep Magic",
+   "id": "the-deep-magic",
+   "summary": "The White Witch claims Edmund by the law built into Narnia. Aslan dies in his place, and a deeper magic undoes death. Lewis drew the shape from the popular atonement drama of the Middle Ages.",
+   "plain": "The real question: what is the Deep Magic, and why does Aslan have to die? **The contract says the house goes to the bank.** Everyone agrees on the contract. The surprise is a clause older than the bank. Lewis builds Aslan's death on that kind of turn, and where he got it is what the boxes below sort out.",
+   "category": "medieval",
+   "group": "bent",
+   "work": "narnia",
+   "bibleRef": "Colossians 2:13-15",
+   "bibleRefOverride": "Colossians 2:13-15; Hebrews 2:14-15; Mark 10:45",
+   "wrote": "The Witch reminds Aslan of the Deep Magic the Emperor put into Narnia at the beginning: \"every traitor belongs to me as my lawful prey.\" Aslan dies in Edmund's place on the Stone Table. After he rises he explains that there is \"a magic deeper still,\" from before time, by which the death of a willing victim who has committed no treachery in a traitor's place makes the Table crack and death itself start working backward.",
+   "where": "The Lion, the Witch and the Wardrobe, chs. 13 and 15",
+   "bib": "Colossians 2 says God cancelled the record of debt against us, nailing it to the cross, and disarmed the rulers and authorities. Hebrews 2 says Christ through death destroyed the one who has the power of death. Mark 10:45 calls his life a ransom for many. Scripture does not say to whom a ransom is paid, and it never says God outwitted the devil.",
+   "got": "McGrath traces the shape to the popular religious literature of the Middle Ages, especially the mystery plays: Satan has a right over sinful humanity, God outwits him because Christ is sinless, and the risen Christ breaks down the gates of hell and frees its prisoners, the Harrowing of Hell. McGrath notes Lewis knew theology mostly through literature, and that Lewis said theories of the atonement were secondary to the fact of it.",
+   "dep": "The Witch's legal right over traitors, and the trick by which she loses it, come from medieval drama, not from the New Testament. McGrath records that most theologians find Lewis's depiction muddled, and argues they misread his sources and his aim.",
+   "not": "**Not a worked-out theory of the atonement.** Lewis said he would not invent one, and McGrath reads the Stone Table as a story in the tradition of the mystery plays, not a doctrine.",
+   "related": [
+    "the-bent-one",
+    "tash-is-real",
+    "my-name-also-is-ransom"
+   ],
+   "sources": [
+    "Lewis, The Lion, the Witch and the Wardrobe (1950), chs. 13 and 15",
+    "McGrath, C. S. Lewis, A Life (2013), The Deeper Magic: Atonement in Narnia"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-peter-3-18-22/",
+     "n": "1 Peter 3:18-22",
+     "s": "Christ proclaims to the spirits in prison, the ones disobedient in the days of Noah.",
+     "r": "1 Peter 3:18-22"
+    }
+   ]
+  },
+  {
+   "title": "Perelandra, an unfallen world",
+   "id": "an-unfallen-world",
+   "summary": "A second Eve on a world of floating islands, with one command: do not stay overnight on the Fixed Land.",
+   "plain": "The real question: what would the Genesis 3 temptation look like if it happened somewhere else, and could it go the other way? **Same test, different house rule.** In Eden it was one tree. On Perelandra it is one kind of ground. Lewis asks what a first pair would do with a small command and nobody explaining it.",
+   "category": "lewis",
+   "group": "tempter",
+   "work": "per",
+   "bibleRef": "Genesis 2:16-17",
+   "bibleRefOverride": "Genesis 2:16-17; 3:1-6",
+   "wrote": "The Green Lady, the first woman of Perelandra, lives on floating islands. Maleldil allows her and the King to land on the Fixed Land and walk on it, but not to dwell there, to sleep and wake there. She is surprised to learn that on Earth people live on fixed land and Maleldil has never forbidden it, and concludes there can be different laws in different worlds.",
+   "where": "Perelandra, ch. 6",
+   "bib": "Genesis 2 gives one prohibition, the tree of the knowledge of good and evil, with no reason attached. Genesis 3 is the story of that one command being reframed until it looks unreasonable.",
+   "got": "The shape is Genesis 2-3. The planet, the islands and the specific command are Lewis's own.",
+   "dep": "The whole premise is speculation: another world, another first pair, another test. Lewis also lets this one end differently.",
+   "not": "**Not an allegory of Eden.** Lewis is not retelling Genesis; he is asking what an unfallen obedience would look like from the inside.",
+   "related": [
+    "the-un-man",
+    "ransom-fights-the-un-man"
+   ],
+   "sources": [
+    "Lewis, Perelandra (1943), ch. 6"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    }
+   ]
+  },
+  {
+   "title": "The Un-man",
+   "id": "the-un-man",
+   "summary": "Weston arrives on Perelandra and something else is wearing him. Lewis's tempter argues tirelessly and wins by attrition.",
+   "plain": "The real question: what does a tempter actually do? **A salesman who never gets tired and never takes no.** Lewis's Un-man talks to the Lady day after day. How closely his method follows the serpent in Genesis 3 is the question.",
+   "category": "scripture",
+   "group": "tempter",
+   "work": "per",
+   "bibleRef": "Genesis 3:1-5",
+   "bibleRefOverride": "Genesis 3:1-5; 2 Corinthians 11:3, 14",
+   "wrote": "Ransom watches Weston's body move as if an outside force were managing it, an imitation of living motion that lacks the master touch, and names it the Un-man, a managed corpse. It talks to the Lady day after day. Ransom finds it ripping open small frogs, slowly, almost surgically. When it finally speaks to Ransom it pronounces his name, and when he answers, it says, \"Nothing.\"",
+   "where": "Perelandra, ch. 9",
+   "bib": "In Genesis 3 the serpent begins with a question that distorts the command and then contradicts the penalty. Paul fears the Corinthians will be led astray as the serpent deceived Eve by its cunning, and warns that Satan disguises himself as an angel of light (2 Corinthians 11:3, 14).",
+   "got": "The tactics are Genesis 3. The possession of a human body draws on the Gospels' accounts of demons inhabiting people.",
+   "dep": "The Un-man's tirelessness and its torture of animals are Lewis's additions, made to show that what wears down the Lady is persistence, not brilliance.",
+   "not": "**Not a talking snake.** Lewis deliberately puts the tempter in a human body to remove any cartoon from the scene.",
+   "related": [
+    "an-unfallen-world",
+    "ransom-fights-the-un-man",
+    "the-bent-one"
+   ],
+   "sources": [
+    "Lewis, Perelandra (1943), chs. 9-11"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    }
+   ]
+  },
+  {
+   "title": "Ransom fights the Un-man",
+   "id": "ransom-fights-the-un-man",
+   "summary": "Ransom concludes that the only way to stop the tempter is to destroy the body it is using, and fights it with his fists. He comes home bleeding from the heel.",
+   "plain": "The real question: can spiritual evil be fought with physical means? **Sometimes the argument ends when someone closes the door.** Ransom realizes he cannot out-talk the Un-man and that the body is the enemy's only foothold. So he fights it. When he returns to Earth his heel is bleeding and will not stop.",
+   "category": "lewis",
+   "group": "tempter",
+   "work": "per",
+   "bibleRef": "Genesis 3:15",
+   "wrote": "Ransom first resists the idea as degrading the spiritual war to mythology, then sees that Weston's body is the Enemy's only foothold on Perelandra and can be destroyed. The fight follows. At the start of the book he returns to Earth bleeding from the heel; in That Hideous Strength he has a wound in his foot that will not heal and is called the Fisher-King.",
+   "where": "Perelandra, chs. 2, 11 and 12; That Hideous Strength, ch. 5",
+   "bib": "Genesis 3:15 says the seed of the woman will strike the serpent's head and the serpent will strike his heel. Lewis's hero kills the tempter and carries a heel wound that never heals.",
+   "got": "The heel echoes Genesis 3:15; that connection is my reading, and Lewis does not spell it out in the passages checked. The Fisher-King with the unhealing wound is from Arthurian legend, which That Hideous Strength draws on throughout.",
+   "dep": "A fist fight with a possessed body is Lewis's own and it is meant to shock. Scripture's victory over the serpent belongs to the seed of the woman, Christ, not to a man acting as his stand-in.",
+   "not": "**Not a model for spiritual warfare.** It is a story about obedience under orders, and Ransom is forbidden to lie even when the truth seems fatal.",
+   "related": [
+    "the-un-man",
+    "my-name-also-is-ransom",
+    "myth-and-fact"
+   ],
+   "sources": [
+    "Lewis, Perelandra (1943), chs. 2, 11, 12",
+    "Lewis, That Hideous Strength (Bodley Head, 1945), ch. 5"
+   ],
+   "post": null
+  },
+  {
+   "title": "The Screwtape Lowerarchy",
+   "id": "screwtape-lowerarchy",
+   "summary": "Devils as an organization, with ranks, reports and quotas. Lewis opened the book by naming the two ways to get devils wrong.",
+   "plain": "The real question: are the powers of darkness organized? **Middle management in hell.** Screwtape writes memos, worries about his reputation, and answers to spirits further down. Some of that picture has a biblical root and some of it is a joke. The boxes below say which is which.",
+   "category": "lewis",
+   "group": "bent",
+   "work": "screwtape",
+   "bibleRef": "Ephesians 6:11-12",
+   "wrote": "The preface says there are two equal and opposite errors about devils: to disbelieve in them, and to believe and feel an excessive and unhealthy interest in them, and that the devils are pleased by both. In the letters, Screwtape mentions spirits far deeper down in the Lowerarchy who shape the fashions of each age.",
+   "where": "The Screwtape Letters, preface and letter 20",
+   "bib": "Ephesians 6:12 names rulers, authorities, cosmic powers of this darkness, and spiritual forces of evil in the heavenly realms. Scripture describes ranked powers without giving their organization chart.",
+   "got": "The existence of ranked powers is Scripture's. The bureaucracy, the memos and the word Lowerarchy are Lewis's satire.",
+   "dep": "Lewis invents the internal life of hell for comic and moral effect. He does not offer it as information.",
+   "not": "**Not a demonology.** The preface's two errors are a warning against reading it as one.",
+   "related": [
+    "the-un-man",
+    "macrobes"
+   ],
+   "sources": [
+    "Lewis, The Screwtape Letters (1942), preface and letter 20"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    }
+   ]
+  },
+  {
+   "title": "Tash is real",
+   "id": "tash-is-real",
+   "summary": "The Calormene god turns out to be an actual being, and he comes when he is called.",
+   "plain": "The real question: are false gods nothing, or something? **The Ape said Tash was just another name for Aslan.** He was lying, and the lie called up the real thing. Lewis lets a false god be an actual being. Whether that fits what the Bible says about idols is the question.",
+   "category": "scripture",
+   "group": "nations",
+   "work": "narnia",
+   "bibleRef": "1 Corinthians 10:19-21",
+   "bibleRefOverride": "1 Corinthians 10:19-21; Deuteronomy 32:17",
+   "wrote": "The Ape and the Calormenes claim Tash and Aslan are one, \"Tashlan.\" Rishda Tarkaan starts to suspect \"there might be a real Tash.\" Then Tash appears, vulture-headed and four-armed, says \"Thou hast called me into Narnia,\" and seizes Rishda, until a voice orders him to take his lawful prey to his own place in the name of Aslan.",
+   "where": "The Last Battle, chs. 3, 9 and 12",
+   "bib": "Paul says an idol is nothing, and then that what the pagans sacrifice they sacrifice to demons, not to God (1 Corinthians 10:19-20). Deuteronomy 32:17 says Israel sacrificed to demons, to gods they had not known. Scripture holds both: the statue is nothing, and there is something behind it.",
+   "got": "Lewis follows Paul closely here: the idolater is not dealing with nothing.",
+   "dep": "Tash's monstrous form is Lewis's own, and his name for Calormen's god is invented.",
+   "not": "**Not a claim that all religions worship the same God.** The Ape's claim that Tash and Aslan are one is the lie the whole book is about.",
+   "related": [
+    "emeth",
+    "the-descent-of-the-gods"
+   ],
+   "sources": [
+    "Lewis, The Last Battle (1956), chs. 3, 9, 12"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ]
+  },
+  {
+   "title": "Emeth",
+   "id": "emeth",
+   "summary": "A Calormene who served Tash all his life finds himself welcomed by Aslan. Lewis's most debated scene.",
+   "plain": "The real question: can someone who served a false god in good faith be accepted by the true one? **The letter was addressed wrong but delivered anyway.** Aslan tells Emeth that good service done in Tash's name was really done to him. Lewis wrote it that way on purpose, and readers have argued about it ever since.",
+   "category": "lewis",
+   "group": "nations",
+   "work": "narnia",
+   "bibleRef": "Acts 10:34-35",
+   "wrote": "Emeth asks Aslan whether it is true that he and Tash are one. Aslan says it is false, and that because they are opposites he takes Emeth's services to Tash as done to himself: no service which is vile can be done to Aslan, and none which is not vile can be done to Tash. An oath kept for the oath's sake, sworn by Tash, was truly sworn by Aslan. A cruelty done in Aslan's name is accepted by Tash.",
+   "where": "The Last Battle, ch. 15",
+   "bib": "Peter tells Cornelius that God shows no partiality, but in every nation the one who fears him and does what is right is acceptable to him (Acts 10:34-35). Cornelius, though, is then told about Christ and believes. Scripture elsewhere ties salvation to knowing Christ (Acts 4:12).",
+   "got": "Lewis's own. The scene works out his view that Aslan judges the heart's direction rather than the label.",
+   "dep": "This is where Lewis goes furthest beyond the text, and many readers who love Narnia think he went too far. The entry is filed as Lewis's own for that reason.",
+   "not": "**Not the Ape's claim.** Aslan explicitly denies that he and Tash are one. Emeth is accepted because Tash and Aslan are opposites, not because they are the same.",
+   "related": [
+    "tash-is-real"
+   ],
+   "sources": [
+    "Lewis, The Last Battle (1956), ch. 15"
+   ],
+   "post": null
+  },
+  {
+   "title": "That hideous strength and Babel",
+   "id": "that-hideous-strength-and-babel",
+   "summary": "The title comes from a sixteenth-century poem about the Tower of Babel, and the novel ends with Belbury's leaders speaking gibberish at a banquet.",
+   "plain": "The real question: why does a 1945 novel about a research institute take its title from the Tower of Babel? **A building can be a statement.** Lewis put a sixteenth-century poem about Babel at the front of the book. How far the story follows Genesis 11 is the question.",
+   "category": "scripture",
+   "group": "nations",
+   "work": "ths",
+   "bibleRef": "Genesis 11:1-9",
+   "wrote": "The epigraph quotes Sir David Lindsay's Ane Dialog on the Tower of Babel: \"The Shadow of that hyddeous strength / Sax myle and more it is of length.\" At the banquet at Belbury the speeches dissolve into gibberish, the leaders cannot understand one another, and the room descends into chaos.",
+   "where": "That Hideous Strength, epigraph and ch. 16",
+   "bib": "In Genesis 11 the builders want to make a name for themselves and God confuses their language so they cannot understand one another. The Divine Council Index reads Babel as the moment the nations were divided and allotted.",
+   "got": "The Babel framing is announced in the epigraph. The confusion of tongues at the banquet follows Genesis 11 directly.",
+   "dep": "In Lewis the confusion comes through Merlin, empowered by the planetary powers. In Genesis it comes from God.",
+   "not": "**Not an attack on science.** Lewis's preface says the serious point behind the story is the one he made in The Abolition of Man.",
+   "related": [
+    "macrobes",
+    "the-descent-of-the-gods"
+   ],
+   "sources": [
+    "Lewis, That Hideous Strength (1945), epigraph, preface and ch. 16",
+    "Sir David Lindsay, Ane Dialog, as quoted in Lewis's epigraph"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-11-1-9/",
+     "n": "Genesis 11:1-9",
+     "s": "Babel, the scattering, and the moment the nations are set aside.",
+     "r": "Genesis 11:1-9"
+    }
+   ]
+  },
+  {
+   "title": "The heavens, not space",
+   "id": "the-heavens-not-space",
+   "summary": "Ransom finds that space is not dead and dark but an ocean of light, and decides the old name was better.",
+   "plain": "The real question: is the sky empty, or full? **A dark room or a lit stage.** Modern people picture space as black and empty. Lewis's hero finds it pouring life into him, and the book ends hoping readers will trade the idea of Space for the idea of Heaven.",
+   "category": "medieval",
+   "group": "heavens",
+   "work": "osp",
+   "bibleRef": "Psalm 19:1",
+   "bibleRefOverride": "Psalm 19:1-4; Psalm 148:1-4",
+   "wrote": "On the voyage Ransom finds that the name Space is a libel on the radiance around him. He decides that \"older thinkers had been wiser when they named it simply the heavens,\" quotes Psalm 19 and Milton, and feels life pouring into him. At the end of the book the narrator says that if even one per cent of readers change from the conception of Space to the conception of Heaven, it would be a beginning.",
+   "where": "Out of the Silent Planet, chs. 5 and 22",
+   "bib": "Psalm 19 says the heavens declare the glory of God. Psalm 148 calls the heavens, the angels, the sun, moon and stars to praise him. Scripture's heavens are full and speaking.",
+   "got": "The medieval model pictured the heavens as full of light, music and intelligence, and Lewis taught that model for years. McGrath records that Lewis found it delightful and that his Oxford lectures on it became The Discarded Image.",
+   "dep": "Lewis's heavens are physically full of life in a way Scripture does not describe. The psalmist's heavens praise; Lewis's heavens also nourish.",
+   "not": "**Not anti-science.** Lewis is attacking an imagination of space as dead, not astronomy.",
+   "related": [
+    "every-world-has-an-oyarsa",
+    "the-great-dance",
+    "stars-as-persons"
+   ],
+   "sources": [
+    "Lewis, Out of the Silent Planet (1938), chs. 5 and 22",
+    "McGrath, C. S. Lewis, A Life (2013), on The Discarded Image"
+   ],
+   "post": null
+  },
+  {
+   "title": "The descent of the gods",
+   "id": "the-descent-of-the-gods",
+   "summary": "In That Hideous Strength the planetary rulers, Mercury, Venus, Mars, Saturn and Jupiter, come down to St. Anne's. They are on God's side.",
+   "plain": "The real question: what did Lewis do with the old gods of the planets? **The names stayed, the jobs changed.** Mercury, Venus and Mars were gods to the Romans. In Lewis they are great created spirits who serve Maleldil, and they come down to help a small household in England.",
+   "category": "medieval",
+   "group": "heavens",
+   "work": "ths",
+   "bibleRef": "Deuteronomy 4:19",
+   "bibleRefOverride": "Deuteronomy 4:19; Psalm 82; Job 38:7",
+   "wrote": "Ransom says the Oyéresu are his masters. In the chapter called The Descent of the Gods, the powers of Mercury (Viritrilbia), Venus (Perelandra), Mars (Malacandra) and then mightier ones, ancient eldils who steer giant worlds, come to St. Anne's: Saturn, called Lurga, and great Glund-Oyarsa, King of Kings, known to men of old as Jove. Lewis makes Mercury the source of language itself.",
+   "where": "That Hideous Strength, chs. 9, 10, 13 and 15",
+   "bib": "Deuteronomy 4:19 warns Israel not to worship the sun, moon and stars, the host of heaven, which God has allotted to the nations. Psalm 82 judges the gods of the nations for misrule. In Scripture the heavenly powers over the nations are the ones who went wrong.",
+   "got": "The planetary characters are the medieval seven planets and their influences. In the novel Dimble says the Oyéresu are not exactly angels: technically, they are Intelligences, the medieval term Lewis took from Bernardus Silvestris in the first book. McGrath reports Michael Ward's argument, first made in 2008, that Lewis built the seven Narnia books on the same seven planets, which John Donne called the Heptarchy. Ward's reading is an argument about Lewis, not something Lewis said; McGrath finds it persuasive.",
+   "dep": "This is the sharpest departure in the tool. Lewis's planetary powers are loyal. In Deuteronomy 32 and Psalm 82, the powers allotted to the nations are corrupt and judged. Lewis's medieval heavens are cleaner than the Bible's.",
+   "not": "**Not paganism.** Lewis's planetary powers are created servants of Maleldil, not gods. Dimble says that technically they are Intelligences.",
+   "related": [
+    "every-world-has-an-oyarsa",
+    "macrobes",
+    "stars-as-persons"
+   ],
+   "sources": [
+    "Lewis, That Hideous Strength (1945), chs. 9, 10, 13, 15",
+    "McGrath, C. S. Lewis, A Life (2013), The Seven Planets: Medieval Symbolism in Narnia",
+    "Michael Ward, Planet Narnia (2008), as reported by McGrath"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-4-19-20/",
+     "n": "Deuteronomy 4:19-20",
+     "s": "Israel must not worship the host of heaven, which Yahweh allotted to all the other peoples.",
+     "r": "Deuteronomy 4:19-20"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ]
+  },
+  {
+   "title": "The macrobes are the bent eldila",
+   "id": "macrobes",
+   "summary": "Belbury's scientists believe they are in contact with a higher form of life. The household at St. Anne's knows what they are: Earth's own fallen eldila.",
+   "plain": "The real question: what is behind the N.I.C.E.? **The scientists think they discovered something.** They named it macrobes, the opposite of microbes, life above the level of animals. MacPhee puts it more plainly: the criminal class of spirits has its headquarters on Earth, and the institute is taking orders from them.",
+   "category": "scripture",
+   "group": "rulers",
+   "work": "ths",
+   "bibleRef": "Ephesians 2:2",
+   "bibleRefOverride": "Ephesians 2:2; Ephesians 6:12; Daniel 10:13, 20",
+   "wrote": "Frost tells Mark that the mind speaking through the preserved head is not Alcasan's but belongs to macrobes, organisms above the level of animal life. At St. Anne's, MacPhee explains the Director's view: the terrestrial eldils are behind the whole conspiracy, and Earth is a world where \"the criminal classes of the eldils have established their headquarters.\"",
+   "where": "That Hideous Strength, chs. 9 and 12",
+   "bib": "Ephesians 2:2 speaks of the spirit now at work in the disobedient. Ephesians 6:12 says the struggle is against rulers and authorities in the heavenly realms, not flesh and blood. Daniel 10 has spiritual princes behind earthly empires.",
+   "got": "The idea of spiritual powers behind human institutions is the New Testament's and Daniel's. The scientific vocabulary, macrobes, is Lewis's satire on his own era.",
+   "dep": "Lewis gives the powers a laboratory and a severed head. The text gives them no such technology.",
+   "not": "**Not a claim that science is demonic.** The preface says the target is the outlook argued against in The Abolition of Man.",
+   "related": [
+    "thulcandra",
+    "screwtape-lowerarchy",
+    "the-descent-of-the-gods"
+   ],
+   "sources": [
+    "Lewis, That Hideous Strength (1945), preface and chs. 9, 12"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-10-13-20-21/",
+     "n": "Daniel 10:13, 20-21",
+     "s": "A prince of Persia resists for twenty-one days, a prince of Greece is coming, and Michael fights for Israel.",
+     "r": "Daniel 10:13, 20-21"
+    }
+   ]
+  },
+  {
+   "title": "The Great Dance",
+   "id": "the-great-dance",
+   "summary": "Perelandra ends with a vision of everything that exists moving in a pattern so large that every part is the centre.",
+   "plain": "The real question: is history going anywhere, or is it chaos? **A dance looks like confusion if you watch one dancer.** Watch from the balcony and every movement fits. Lewis ends Perelandra with that view of the cosmos, and gives Ramandu in Narnia the same phrase.",
+   "category": "lewis",
+   "group": "heavens",
+   "work": "per",
+   "bibleRef": "Ephesians 1:9-10",
+   "wrote": "The King, Tor, calls what is beginning the Great Game, the Great Dance. Then the eldila speak, and Ransom cannot tell which words are his and which are theirs. In The Voyage of the Dawn Treader, Ramandu says that when he is young again he will take his rising and once more tread the great dance.",
+   "where": "Perelandra, ch. 17; The Voyage of the Dawn Treader, ch. 14",
+   "bib": "Ephesians 1 says God's plan for the fullness of time is to unite all things in Christ, things in heaven and things on earth.",
+   "got": "Lewis uses the image twice, at the end of Perelandra and in Ramandu's speech in The Voyage of the Dawn Treader. Whether he took it from the medieval writers he taught cannot be confirmed from the sources checked; The Discarded Image is where to look. Until then it is filed as his own.",
+   "dep": "Scripture gives the goal, all things united in Christ. Lewis gives a visual picture of the whole pattern that Scripture does not provide.",
+   "not": "**Not pantheism.** The dance is around Maleldil, not the same thing as him.",
+   "related": [
+    "the-heavens-not-space",
+    "stars-as-persons"
+   ],
+   "sources": [
+    "Lewis, Perelandra (1943), ch. 17",
+    "Lewis, The Voyage of the Dawn Treader (1952), ch. 14"
+   ],
+   "post": null
+  },
+  {
+   "title": "The stars are people",
+   "id": "stars-as-persons",
+   "summary": "Ramandu is a retired star. Coriakin is a star being punished. Lewis's Narnian stars are persons with histories.",
+   "plain": "The real question: are the stars in Narnia just pretty, or do they mean something? **Eustace says a star is a ball of flaming gas.** Ramandu answers that this is only what a star is made of, not what a star is. Where Lewis got the idea of stars as persons is the question.",
+   "category": "lewis",
+   "group": "heavens",
+   "work": "narnia",
+   "bibleRef": "Job 38:7",
+   "bibleRefOverride": "Job 38:7; Judges 5:20; Isaiah 14:13",
+   "wrote": "Ramandu tells the travellers he is a star at rest, carried to the island when he set for the last time. When Eustace says that in his world a star is a huge ball of flaming gas, Ramandu replies that \"that is not what a star is but only what it is made of.\" Coriakin, he says, is also a star, set to govern the Duffers as a kind of punishment.",
+   "where": "The Voyage of the Dawn Treader, ch. 14",
+   "bib": "Job 38:7 sets the morning stars singing alongside the sons of God shouting for joy. Judges 5:20 says the stars fought from heaven against Sisera. Isaiah 14:13 speaks of the stars of God. The Bible uses star language for heavenly beings.",
+   "got": "Job 38:7 gives Lewis the singing stars. The retired, rejuvenated and punished stars are his own. Lewis's own trilogy ties the planets to the medieval Intelligences of the spheres, but the sources checked do not say the same of the stars, so this entry is filed as Lewis's own until The Discarded Image can be checked.",
+   "dep": "The biblical texts use stars for the heavenly host. Lewis turns them into old men with histories.",
+   "not": "**Not astrology.** Ramandu's stars do not rule human fate; they serve Aslan.",
+   "related": [
+    "the-great-dance",
+    "the-descent-of-the-gods",
+    "the-heavens-not-space"
+   ],
+   "sources": [
+    "Lewis, The Voyage of the Dawn Treader (1952), ch. 14"
+   ],
+   "post": null
+  },
+  {
+   "title": "Myth and fact",
+   "id": "myth-and-fact",
+   "summary": "On Perelandra the line between myth and fact disappears. Lewis's hero comes to think that what is myth in one world may be fact in another.",
+   "plain": "The real question: what did Lewis think myths were? **A rumour that turns out to be true.** Lewis's hero keeps meeting things on other worlds that he only knew as stories on this one. He comes to think our mythology is a distorted memory of something real.",
+   "category": "lewis",
+   "group": "myth",
+   "work": "per",
+   "bibleRef": "2 Peter 1:16",
+   "wrote": "Ransom remembers \"his old suspicion that what was myth in one world might always be fact in some other.\" Later he realizes the division of truth from myth and of both from fact is purely terrestrial, a result of the Fall, and that the Incarnation was the beginning of its end. At the end he learns that our mythology is based on a solider reality than we dream, though at an almost infinite distance from it.",
+   "where": "Perelandra, chs. 8, 11 and 16",
+   "bib": "Peter insists the apostles did not follow cleverly devised myths but were eyewitnesses (2 Peter 1:16). Scripture's claim is that the gospel happened.",
+   "got": "This is Lewis's own view of myth, worked out in his fiction and his essays. McGrath notes that by mythology Lewis meant something like a worldview or grand story.",
+   "dep": "Lewis's theory that pagan myths are faint memories of real celestial beings goes beyond anything Scripture says. Paul's account of idolatry in Romans 1 is harsher.",
+   "not": "**Not a claim that the gospel is a myth.** Lewis's point is the reverse: the one story that is both myth and fact is the gospel.",
+   "related": [
+    "the-fall-as-a-socratic-myth",
+    "my-name-also-is-ransom"
+   ],
+   "sources": [
+    "Lewis, Perelandra (1943), chs. 8, 11, 16",
+    "McGrath, C. S. Lewis, A Life (2013), The Shift to Fiction: The Ransom Trilogy"
+   ],
+   "post": null
+  },
+  {
+   "title": "The fall as a Socratic myth",
+   "id": "the-fall-as-a-socratic-myth",
+   "summary": "In The Problem of Pain Lewis offers a picture of the fall: an animal form perfected over ages, then made man. His word for it is a myth in the Socratic sense.",
+   "plain": "The real question: what did Lewis himself think happened in Genesis 3? **A likely story.** Lewis did not claim to know. He offered a picture he thought could be true and said that was all it was. Where it sits against other readings of Genesis is in the boxes below.",
+   "category": "lewis",
+   "group": "myth",
+   "work": "prose",
+   "bibleRef": "Genesis 3:1-7",
+   "wrote": "Lewis says we do not know exactly what happened when man fell, and offers a picture, \"a 'myth' in the Socratic sense, a not unlikely tale\": for long centuries God perfected the animal form that would become the vehicle of humanity and his image, which may have existed for ages in that state before it became man. He also says the gravitation away from God must be a product of the Fall.",
+   "where": "The Problem of Pain, ch. 5, The Fall of Man",
+   "bib": "Genesis 2-3 tells of the first humans formed from the ground, placed in the garden, and disobeying. Romans 5 treats the entry of sin through one man as real.",
+   "got": "Lewis's own. A Socratic myth is Plato's term for a likely account offered where certainty is not available.",
+   "dep": "Lewis's long period of an animal form before it became man is not in Genesis, and it is a mechanism: a body developed over ages and then made human. That puts it nearer the accounts John Lennox argues against, such as Denis Alexander's model of Adam and Eve chosen from an existing population, than nearer Walton. Walton's point is that the forming of Adam in Genesis 2 is archetypal and does not describe a mechanism at all, so Lewis's picture does not sit with him either. Lennox and Walton both stand with Lewis on a real fall: Walton holds that Paul's argument needs a historical moment when sin entered the world.",
+   "not": "**Not a denial of the fall.** Lewis is explicit that something happened and that our nature is the result.",
+   "related": [
+    "a-fallen-power-and-animal-pain",
+    "myth-and-fact"
+   ],
+   "sources": [
+    "Lewis, The Problem of Pain (1940), ch. 5",
+    "Lennox, Seven Days that Divide the World (2021), ch. 4",
+    "John H. Walton, The Lost World of Adam and Eve (IVP Academic, 2015), propositions 8 and 11"
+   ],
+   "post": null
+  }
+ ]
+}

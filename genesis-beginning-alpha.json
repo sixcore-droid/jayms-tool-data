@@ -1,0 +1,1411 @@
+{
+ "schema": 1,
+ "tool": {
+  "slug": "genesis-beginning-alpha",
+  "name": "Genesis, the Beginning",
+  "status": "beta",
+  "heroTitle": "Genesis, the Beginning",
+  "heroSubtitle": "What Genesis 1 to 11 says, what it does not say, and where the real arguments are.",
+  "searchPlaceholder": "yom, bara, Walton, Lennox, flood, Adam",
+  "backLabel": "All questions",
+  "perPage": 200
+ },
+ "card": {
+  "labelField": "title",
+  "mainField": "summary"
+ },
+ "detail": {
+  "titleField": "title",
+  "headlineField": "summary"
+ },
+ "search": {
+  "fields": [
+   "title",
+   "summary",
+   "plain",
+   "q",
+   "heb",
+   "len",
+   "wal",
+   "others",
+   "cost",
+   "not",
+   "kjv",
+   "kjvNote",
+   "sources"
+  ]
+ },
+ "filters": [
+  {
+   "role": "category",
+   "field": "category",
+   "allLabel": "Show all",
+   "options": [
+    {
+     "k": "settled",
+     "n": "The text settles it",
+     "c": "aramaic",
+     "short": "TEXT"
+    },
+    {
+     "k": "contested",
+     "n": "Contested",
+     "c": "blue",
+     "short": "CONT"
+    },
+    {
+     "k": "voice",
+     "n": "Who holds what",
+     "c": "lavender",
+     "short": "WHO"
+    }
+   ]
+  },
+  {
+   "field": "group",
+   "allLabel": "All threads",
+   "options": [
+    {
+     "k": "text",
+     "n": "What kind of text"
+    },
+    {
+     "k": "days",
+     "n": "The days"
+    },
+    {
+     "k": "cosmology",
+     "n": "Function or material"
+    },
+    {
+     "k": "adam",
+     "n": "Adam and Eve"
+    },
+    {
+     "k": "fall",
+     "n": "The serpent and the fall"
+    },
+    {
+     "k": "genealogies",
+     "n": "Genealogies and dates"
+    },
+    {
+     "k": "flood",
+     "n": "The flood and after"
+    },
+    {
+     "k": "ane",
+     "n": "The ancient world"
+    },
+    {
+     "k": "voices",
+     "n": "Who holds what"
+    }
+   ]
+  }
+ ],
+ "blocks": [
+  {
+   "type": "scripture",
+   "refField": "bibleRef",
+   "overrideField": "bibleRefOverride",
+   "versions": [
+    "net",
+    "kjv",
+    "web",
+    "nlt",
+    "esv"
+   ],
+   "default": "net",
+   "interlinearLink": true,
+   "separator": " · "
+  },
+  {
+   "type": "box",
+   "variant": "plain",
+   "title": "First, in plain English",
+   "field": "plain"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "The question",
+   "field": "q"
+  },
+  {
+   "type": "box",
+   "variant": "wording",
+   "title": "What the Hebrew does and does not say",
+   "field": "heb"
+  },
+  {
+   "type": "box",
+   "variant": "scripture",
+   "title": "King James",
+   "field": "kjv",
+   "titleSuffixField": "kjvRef",
+   "subtitleField": "kjvRole",
+   "quote": true,
+   "noteField": "kjvNote"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "Lennox: what happened, and in what order",
+   "field": "len",
+   "noteField": "lenSrc"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "Walton: what it was for",
+   "field": "wal",
+   "noteField": "walSrc"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "Other readings held by serious people",
+   "field": "others"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "What each side still has to explain",
+   "field": "cost"
+  },
+  {
+   "type": "box",
+   "variant": "not",
+   "title": "What this is not",
+   "field": "not"
+  },
+  {
+   "type": "out",
+   "title": "Read with the Divine Council Index",
+   "field": "xref"
+  },
+  {
+   "type": "linkrow",
+   "title": "Reads with",
+   "field": "related"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Sources",
+   "field": "sources",
+   "list": "ordered"
+  },
+  {
+   "type": "credit",
+   "lines": [],
+   "link": {
+    "field": "post",
+    "empty": "No post on this question yet."
+   }
+  }
+ ],
+ "footer": [
+  {
+   "type": "note",
+   "class": "method",
+   "text": "The method. Most writing on Genesis 1 to 11 is advocacy: pick a camp, defend it, treat everyone else as the problem. This is a map instead. Each entry states the question, what the Hebrew does and does not support, and the two poles held by people who take the text seriously. John Lennox asks what the days correspond to in the history of the universe. John Walton argues the account is about function and not material origins at all. They are not arguing about whether Genesis is true. They are arguing about what kind of question it answers. Neither pole is graded here. Where one of them, or someone else, leaves something unexplained, the entry says so."
+  },
+  {
+   "type": "suggest",
+   "kind": "genesis-alpha",
+   "label": "Genesis, the Beginning (beta)",
+   "toggleText": "Is there a question about Genesis 1 to 11 we should map? Suggest it ›",
+   "valuePlaceholder": "What question should we cover?"
+  },
+  {
+   "type": "note",
+   "text": "How to read the grades. The text settles it means the Hebrew closes the question and both poles agree. Contested means serious readers differ and the text allows more than one reading. Who holds what marks the entries that set out a position rather than a passage."
+  }
+ ],
+ "entries": [
+  {
+   "title": "What kind of text is Genesis 1?",
+   "id": "what-kind-of-text",
+   "summary": "Before anyone argues about the days, they have already decided what sort of writing this is. Most of the fight starts there.",
+   "plain": "The real question: is Genesis 1 a report of events in order, a picture built to teach, or something the ancient world would have recognized that we have lost the feel for? **The surgeon and the builder both describe the same hospital.** The builder tells you what went up first. The surgeon tells you the theatre is on the second floor with wards above and below. Neither is wrong, and neither is lying. You have to know which one is talking before you can tell whether he got it right.",
+   "category": "contested",
+   "group": "text",
+   "bibleRef": "Genesis 1:1-2:3",
+   "q": "Genesis 1 reads like narrative. It also repeats its refrains like a song, groups its material in sixes and sevens, and God is the only one who acts in it. Every reading of the days, the light, the sun and Adam is built on a prior decision about what kind of text this is, and that decision is usually made without being said out loud.",
+   "heb": "The chapter runs on the ordinary Hebrew narrative verb form that moves a story forward, one event after another. It does not use the two-line parallelism that marks Hebrew poetry. It does use heavy repetition: God said, let there be, it was so, God saw that it was good, evening and morning. Collins, quoted by Lennox, calls it a narrative but an unusual one, because of the unique events, the lack of other actors and the highly patterned way of telling it.",
+   "len": "Lennox follows E. J. Young: prose narrative describing a succession of events, written in exalted, semi-poetic language that makes it memorable without making it poetry. He takes Genesis 1 to 11 as talking about actual things, events, places and people, and he warns against separating theology from history. He grants that the text comes from the ancient Near East and cannot be read as a modern Western document, but holds that its central statements can be understood in any century if read properly.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3 and appendix A",
+   "wal": "Walton's first proposition is that Genesis 1 is ancient cosmology. The Israelites received no revelation to update their picture of the cosmos: a solid sky holding back waters, thinking done with the heart and the entrails. God communicated in their terms rather than correcting their science. On Walton's count there is not a single passage in the Bible that gives Israel a science beyond its own culture. So reading Genesis 1 for modern scientific content, which he calls concordism, misreads the genre before it reads a word.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 1",
+   "others": "The framework reading, traced by Lennox to Clement and Augustine, treats the days as a literary structure with a logical rather than a chronological order. Wenham, quoted by Lennox, calls the six-day scheme one of several devices in the chapter for expressing order, alongside the repeated formulae, the grouping in tens and sevens, and the matching panels.",
+   "cost": "Lennox has to explain the features that do not behave like ordinary narrative, above all three days with evening and morning before there is a sun. Walton has to show that recognizing the chapter as ancient cosmology rules out any interest in the material world, not just modern science. Each one concedes part of the other's point and stops at a different place.",
+   "not": "**Not a choice between true and false.** Both poles hold that Genesis 1 is inspired and true. The disagreement is about what kind of truth it is telling.",
+   "related": [
+    "the-two-panels",
+    "functional-or-material",
+    "how-old-is-the-earth"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World: The Beginning According to Genesis and Science, 10th anniversary ed. (Zondervan Reflective, 2021), ch. 3 and appendix A",
+    "Walton, The Lost World of Genesis One: Ancient Cosmology and the Origins Debate (IVP Academic, 2009), proposition 1",
+    "C. John Collins, Genesis 1-4 (P&R, 2006), as quoted in Lennox, appendix A",
+    "Gordon Wenham, Genesis 1-15 (Word, 1987), as quoted in Lennox, ch. 3"
+   ],
+   "post": {
+    "url": "https://jayms.com/what-happens-in-genesis-1-11/",
+    "title": "What Happens in Genesis 1-11?"
+   }
+  },
+  {
+   "title": "In the beginning, or when God began?",
+   "id": "in-the-beginning",
+   "summary": "Is verse 1 a complete sentence or the opening of a longer one, and if it is complete, is it a first act or a heading? Three readings, two questions.",
+   "plain": "The real question: is verse 1 a sentence of its own, or the opening of a longer one? **In the beginning I built the shop.** That can be the first thing I did, or the heading over the story of my early years. **When I began to build the shop, the lot was mud.** Now the same words set the scene for what comes next. Genesis 1:1 has been read all three ways, and the choice decides what exists before God's first word.",
+   "category": "contested",
+   "group": "text",
+   "bibleRef": "Genesis 1:1-2",
+   "q": "Two questions sit under one verse. First, grammar: is bereshit absolute, \"In the beginning God created the heavens and the earth,\" a sentence of its own, or a temporal clause, \"When God began to create heaven and earth,\" with the main clause coming at verse 2 or verse 3? Second, if it is a complete sentence: is it a first act before day one, or a heading over the seven days? The answers decide whether the earth and the deep of verse 2 exist before God's first spoken word.",
+   "heb": "The Jewish Study Bible notes that a tradition over two thousand years old reads 1:1 as a complete sentence, and that the medieval commentator Rashi argued it is a temporal clause, which is how some ancient Near Eastern creation stories begin, including the account that starts at Genesis 2:4b. The JPS translation follows Rashi. Separately, the verb \"created\" in verse 1 is a perfect, and the storyline switches to the narrative verb at verse 3. The noun behind \"beginning\" usually introduces a stretch of time, as in the early part of Job's life (Job 8:7) and the first part of Zedekiah's reign (Jeremiah 28:1).",
+   "kjv": "In the beginning God created the heaven and the earth.",
+   "kjvRef": "Genesis 1:1",
+   "kjvRole": "the King James makes verse 1 a complete sentence",
+   "kjvNote": "Translations split here. The King James and most English versions make verse 1 a sentence of its own. The JPS Tanakh reads \"When God began to create heaven and earth,\" and the NRSV Updated Edition reads \"When God began to create the heavens and the earth.\" This is a translation problem: the versions disagree on the grammar of the first clause.",
+   "len": "Lennox takes verse 1 as a complete sentence and a separate act. Following C. John Collins, he notes that a perfect at the very start of a passage normally denotes something that happened before the storyline gets going, and that the narrative tense begins at verse 3. So the initial creation may have come before day one, and Genesis does not say how long before. On his reading the text leaves the age of the universe open before science is brought in.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Nature of the Creation Week, citing Collins, Genesis 1-4, 51",
+   "wal": "Walton keeps \"In the beginning\" but reads the beginning as the seven-day period itself, not a point before it, matching Egyptian talk of a first occasion and an Akkadian term for a first installment. Verse 1 is then a literary introduction, closed by Genesis 2:1. In the sources checked he does not argue the temporal-clause grammar, but his reading lands near it: verse 1 is not an act that happens before verse 2. His paraphrase: in the initial period, God created by assigning functions throughout the heavens and the earth, and this is how he did it.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 3; NIV Cultural Backgrounds Study Bible, note on Genesis 1:1",
+   "others": "The temporal-clause reading, set out in the Jewish Study Bible and the JPS translation, makes verse 2 describe things just before creation began: an earth unformed and void, darkness, and the deep. The note records an old rabbinic unease with that, since it seems to have God working with material already there.",
+   "cost": "The complete-sentence reading has to explain why other ancient creation accounts, and Genesis 2:4b itself, open with a when-clause. The temporal-clause reading has to accept that the deep and the darkness of verse 2 are simply there when God first speaks, so creation from nothing has to be taught somewhere other than this verse. Walton accepts that cost openly and says creation from nothing is true; Lennox's reading keeps verse 1 as the material beginning but rests on a tense observation he calls plausible though not obvious.",
+   "not": "**Not the gap theory.** Lennox's separation of verse 1 from day one is not a destroyed first world with a rebuilt second one. It leaves time unmeasured. It does not insert a catastrophe.",
+   "related": [
+    "what-bara-does",
+    "formless-and-void",
+    "how-old-is-the-earth"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 3, with C. John Collins, Genesis 1-4 (P&R, 2006), 51",
+    "Walton, The Lost World of Genesis One (2009), proposition 3",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener, note on Genesis 1:1",
+    "The Jewish Study Bible, 2nd ed., ed. Adele Berlin and Marc Zvi Brettler (Oxford University Press), note on Genesis 1:1-2",
+    "Walton, The Lost World of Genesis One, proposition 12, Other Theories",
+    "New Revised Standard Version Updated Edition, Genesis 1:1"
+   ],
+   "post": null
+  },
+  {
+   "title": "What does bara do?",
+   "id": "what-bara-does",
+   "summary": "The verb for create is used only of God. What it takes as its object is the argument.",
+   "plain": "The real question: what kind of making is \"create\"? **She created a garden.** She did not make the dirt. She may have planted every plant herself, or she may have laid out the beds and decided what goes where. English create covers both, and the sentence does not say which. The Hebrew word has its own range, and the argument is about which end of it Genesis 1 sits on.",
+   "category": "contested",
+   "group": "cosmology",
+   "bibleRef": "Genesis 1:1",
+   "bibleRefOverride": "Genesis 1:1, 21, 27; 2:3-4",
+   "q": "The Hebrew verb bara is often taught as the special word for creation out of nothing. Whether that is what it means, or what it can mean, depends on what the verb is used with across the whole Old Testament, not on how English hears \"create.\"",
+   "heb": "Bara occurs about fifty times. God is always the subject, or the implied subject when the verb is passive, and every commentator agrees on that. No materials are ever mentioned with it. Its objects include the heavens and the earth, people, Israel, a pure heart, darkness, disaster, praise, Jerusalem, the north and the south, and a blacksmith.",
+   "len": "Lennox agrees the verb is used in the Bible mostly with God as subject and treats Genesis 1:1 as primary creation. In a note he points out that bara does not always mean direct primary action: Amos 4:13 has God creating the wind, which Lennox reads as God working through natural processes he set up. The material creation of the heavens and the earth is the plain sense of verse 1 on his reading.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3 and n. 43",
+   "wal": "Walton's table of every object of bara is the core of his case. None of them, he argues, clearly demands a material reading, many are ambiguous, and a large share require a functional one. He turns the old argument around: scholars took the absence of materials as proof of creation out of nothing, but that only follows if creating is already assumed to be material. If bara assigns function, nobody would expect materials to be named. He is explicit that God is responsible for material origins and that they do involve creation out of nothing at some point. His claim is that Genesis 1 is not the text that says so.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 3, Subjects and Objects",
+   "cost": "Walton's own data does not prove a functional meaning, as he says himself. It shows support. Lennox, for his part, relies on bara meaning material creation in 1:1 without engaging the full list of objects, several of which (a pure heart, disaster, Jerusalem as a delight) are hard to read materially.",
+   "not": "**Not a denial of creation out of nothing.** Neither pole denies it. The question is only which text teaches it.",
+   "related": [
+    "in-the-beginning",
+    "functional-or-material",
+    "formless-and-void"
+   ],
+   "sources": [
+    "Walton, The Lost World of Genesis One (2009), proposition 3, Table 1",
+    "Lennox, Seven Days that Divide the World (2021), ch. 3, n. 43"
+   ],
+   "post": null
+  },
+  {
+   "title": "Formless and void",
+   "id": "formless-and-void",
+   "summary": "The starting point in verse 2 is tohu and bohu. Whether that means shapeless matter or a world not yet working changes what the days are doing.",
+   "plain": "The real question: what was missing in verse 2? **The house was empty.** Empty of furniture, empty of people, or not finished enough to live in yet? Each reading is natural and the sentence does not choose. Translators have mostly picked shapeless. Others read the Hebrew as not yet working. The words themselves carry more than one of those.",
+   "category": "contested",
+   "group": "cosmology",
+   "bibleRef": "Genesis 1:2",
+   "q": "Translations agree to a remarkable degree: formless and void, without form and void, formless and empty. That agreement can hide the fact that the meaning of tohu is a study in itself.",
+   "heb": "Tohu occurs twenty times. It describes howling wilderness, idols that accomplish nothing, trackless waste, empty arguments, the worthlessness of the nations, and the desolation of Jeremiah 4:23 where the light is gone, there are no people and the towns are in ruins. Bohu occurs only three times, always with tohu. David Tsumura, after a full analysis, translates tohu as \"unproductive.\" Verse 2 also already has material in it: the waters of the deep.",
+   "kjv": "And the earth was without form, and void; and darkness was upon the face of the deep.",
+   "kjvRef": "Genesis 1:2",
+   "kjvRole": "the King James shows the range in its own pages",
+   "kjvNote": "The same word tohu is rendered \"without form\" here and \"in vain\" at Isaiah 45:18, where God \"created it not in vain, he formed it to be inhabited.\" One translation, one word, two meanings, decided by context.",
+   "len": "Lennox reads the movement of the chapter as starting from a world without form and void and shaping and filling it step by step until it is fit for creatures who bear God's image. He ties this to Isaiah's statement that God did not create the world empty but formed it to be inhabited: emptiness was the first stage, not the last.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, table of contents of Genesis 1:1-2:3",
+   "wal": "Walton argues nothing in the twenty uses of tohu concerns material form. The contexts point to what is nonfunctional and unproductive. So Genesis 1 begins with no functions rather than with no matter, which matches ancient Near Eastern accounts that describe the time before creation by what is missing: no productivity, no order, no temple. He reads \"it was good\" the same way, as functioning properly, on the strength of Genesis 2:18, where \"not good\" plainly means not yet complete.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 4",
+   "others": "The gap theory read verse 2 as a fall into ruin, \"the earth became formless.\" Walton reports that the Hebrew will not bear \"became\" and that the theory has largely disappeared.",
+   "cost": "The two poles are closer here than anywhere else. Both read verse 2 as a world not yet fit for its purpose. The difference is whether shaping and filling are material acts (Lennox) or the assigning of roles in an ordered system (Walton).",
+   "not": "**Not chaos as a rival god.** Lennox, citing Kitchen, notes that the Hebrew word for the deep, tehom, means deep or abyss. It is not the goddess Tiamat of the Babylonian epic.",
+   "related": [
+    "in-the-beginning",
+    "what-bara-does",
+    "enuma-elish"
+   ],
+   "sources": [
+    "Walton, The Lost World of Genesis One (2009), proposition 4, Table 2",
+    "David Tsumura, Creation and Destruction (Eisenbrauns, 2005), as cited by Walton",
+    "Lennox, Seven Days that Divide the World (2021), ch. 3 and appendix A"
+   ],
+   "post": null
+  },
+  {
+   "title": "What yom does",
+   "id": "what-yom-does",
+   "summary": "The Hebrew word for day covers daylight, a full day, and an era, and Genesis 1 and 2 use more than one of those.",
+   "plain": "The real question: when Genesis says \"day,\" does it have to mean a 24-hour day? **In my grandfather's day, nobody locked the door.** Nobody hears that as a Tuesday. The word \"day\" covers a stretch of daylight, a full day and night, and a whole era, and the sentence tells you which. Hebrew does the same thing, sometimes in the same verse.",
+   "category": "contested",
+   "group": "days",
+   "bibleRef": "Genesis 1:5",
+   "bibleRefOverride": "Genesis 1:5; 2:4",
+   "q": "Every argument about the age of the earth from this chapter runs through one noun. Its range of meaning is a matter of record. What it means in Genesis 1 is a judgment, and the two should not be confused.",
+   "heb": "In 1:5, \"God called the light day\" is daylight, set against night. In the same verse, evening and morning make a full day. In 2:4 \"in the day that the LORD God made\" is a period of time, rendered \"when\" in some translations. Days one to five have no definite article in Hebrew, day one is literally \"one day,\" and the article appears only with the sixth and seventh days.",
+   "kjv": "These are the generations of the heavens and of the earth when they were created, in the day that the LORD God made the earth and the heavens,",
+   "kjvRef": "Genesis 2:4",
+   "kjvRole": "the King James keeps \"in the day\"",
+   "kjvNote": "The King James preserves the Hebrew \"in the day\" here, which makes the range visible to an English reader. Versions that render it \"when\" are not wrong, but they hide the second use of the word in the same account.",
+   "len": "Lennox counts several literal, ordinary meanings of yom in Genesis 1:1-2:4 alone: daytime, a day of evening and morning, the open-ended seventh day, and the \"day\" of 2:4. All are natural meanings, none figurative. He notes the missing definite article on days one to five and its presence on days six and seven. He does not land on one reading of the days. He sets out the 24-hour, day-age and framework views, takes C. John Collins's analogical days and David Gooding's creation days separated by long periods seriously, and says no major doctrine depends on which is right.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Meaning of the Word Day",
+   "wal": "Walton grants the young-earth reading its strongest point: yom in Genesis 1 is a 24-hour day, and he says so plainly. What he denies is that the seven days are the time over which the material cosmos came into being. They are seven days of the inauguration of the cosmic temple, possibly reenacted every year, and so they have nothing to say about the age of the earth.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 9, 10 and 12",
+   "others": "The young-earth position, stated at its strongest by the MacArthur Study Bible, says \"day\" with a number and with evening and morning cannot mean an age, that Exodus 20:8-11 confirms the week, and that Scripture does not support a creation date earlier than about 10,000 years ago. Collins's analogical view takes day in its ordinary sense applied by analogy to God, the way \"the eyes of the Lord\" uses the ordinary word eye.",
+   "cost": "The 24-hour reading has to explain three days of evening and morning before the sun. The day-age reading has to explain why a numbered day with evening and morning would mean an era. Walton keeps the 24-hour day but must persuade readers that the week is about something other than the making of things, which is the thing the young-earth reader thinks the verses plainly say.",
+   "not": "**Not a problem of translation.** English \"day\" has the same range as Hebrew yom. Every version translates the word correctly. The disagreement is about what the sentence is doing.",
+   "related": [
+    "the-seventh-day",
+    "light-before-the-sun",
+    "the-two-panels",
+    "young-earth-at-its-strongest"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 3",
+    "Walton, The Lost World of Genesis One (2009), propositions 9, 10, 12",
+    "The MacArthur Study Bible (ESV), ed. John MacArthur (Crossway, 2010), notes on Genesis 1:1 and 1:5",
+    "C. John Collins, Science and Faith (Crossway, 2003), 95, as quoted in Lennox, ch. 3"
+   ],
+   "post": null
+  },
+  {
+   "title": "The seventh day has no evening",
+   "id": "the-seventh-day",
+   "summary": "Days one to six close with evening and morning. Day seven does not. Both poles make that silence carry weight, in different directions.",
+   "plain": "The real question: what does it mean for God to rest? **He rested on Sunday.** Did he lie down because he was tired, stop because the job was finished, or sit down at the head of the table to run things? English rest covers all three. God does not get tired, so it is one of the other two, and the readings below pick different ones.",
+   "category": "contested",
+   "group": "days",
+   "bibleRef": "Genesis 2:1-3",
+   "q": "If God does not get tired, what is his rest? And if the seventh day has no closing formula, is it still going on?",
+   "heb": "The verb in 2:2 is shabat, to cease, the root of Sabbath. Exodus 20:11 describes the same seventh day with a different word, nuach, to settle into a place of stability. Psalm 132 calls the temple God's resting place, menuchah, from the same root, and puts his throne there.",
+   "len": "Lennox calls the missing evening and morning striking. He follows Augustine: the seventh day is an epoch that runs on into eternity, God rests from the work of creation and not from upholding the world, and we are still in God's Sabbath rest, which is why Jesus could say his Father is working until now (John 5:17). Hebrews 4 then uses this rest for the gospel: God did the work and rested, and we enter his rest by resting on what Christ has done.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Meaning of the Word Day; ch. 5, The Sabbath",
+   "wal": "For Walton the seventh day is the climax, not an appendix. Everyone in the ancient world knew that deity rests in a temple, and only in a temple. Divine rest means taking up the throne and beginning to rule from it, the way a new president takes up his rest in the White House. Psalm 132 ties rest, temple and enthronement together, and the Babylonian epic has Marduk build his house after creation and the gods declare they will find rest there. On the eighth day and every day since, God has been running the cosmos he set up.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 7 and 8",
+   "others": "The young-earth reading takes day seven as a 24-hour day like the six, and Exodus 20:11 as tying it to the human week. Lennox points out the danger of reading day seven as an era and then assuming the other six must be eras too: the text itself marks day seven as different.",
+   "cost": "Lennox's reading makes day seven a different kind of day from the six that precede it, which he accepts and then has to stop from spreading to the others. Walton's reading depends on readers accepting that an ancient audience would hear \"rest\" as temple language without Genesis 2 using the word temple.",
+   "not": "**Not God recovering from effort.** Both poles agree on that. Lennox cites Psalm 121:4, he neither slumbers nor sleeps, and Walton describes rest as engagement without obstacles rather than disengagement.",
+   "related": [
+    "genesis-1-as-temple",
+    "what-yom-does",
+    "the-two-panels"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 3 and ch. 5",
+    "Walton, The Lost World of Genesis One (2009), proposition 7, with Enuma Elish 5.121-24 and 6.51-52 as Walton cites them"
+   ],
+   "post": null
+  },
+  {
+   "title": "Light before the sun",
+   "id": "light-before-the-sun",
+   "summary": "Light on day one, plants on day three, sun and moon on day four. Origen asked about it in the third century. Every reading has to answer him.",
+   "plain": "The real question: how can there be days, mornings and evenings before there is a sun? **The team made him captain. The factory made the bat.** Same verb, one making a thing, the other giving a role. Day four uses a Hebrew verb with that kind of range, and the readings split over which use this is.",
+   "category": "contested",
+   "group": "days",
+   "bibleRef": "Genesis 1:14-19",
+   "q": "Leo Strauss, quoted by Lennox, called the order of the third and fourth days \"the most massive difficulty of the account given in the first chapter of the Bible.\" Origen raised it long before modern science, so it is a difficulty inside the text, not one imported into it.",
+   "heb": "The verb in 1:16, \"God made the two great lights,\" is asah, a broad word for making or doing. Collins, cited by Lennox, notes it can mean making, working on something already there, or appointing. The same verb is used for the land animals on day six and for \"God made man,\" and the Greek Septuagint uses one verb for all of them. The sun and moon are not named; the text says the greater light and the lesser light.",
+   "kjv": "And God made two great lights; the greater light to rule the day, and the lesser light to rule the night: he made the stars also.",
+   "kjvRef": "Genesis 1:16",
+   "kjvRole": "same verb, same open question",
+   "len": "Lennox lays out the options without forcing one. Day one could be non-solar light, or the sun's light before its source is named. Hugh Ross holds the sun appeared on day four as cloud cover cleared. Collins reads day four as the sun and moon being appointed to their role. Lennox weighs the counter-evidence: the same verb for animals and for man, and the Septuagint's single verb. He then takes Leon Kass seriously: the incongruity may be deliberate, demoting a sun the ancient world worshipped to a mere lamp, so that the temporal order serves as an image for the order of beings. His conclusion is that an adequate reading may need both a temporal and a logical order.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Creation of Light and the Problematic Fourth Day",
+   "wal": "Walton starts with verse 5: God called the light \"day.\" Light is not day, so \"light\" must mean a period of light, and then the same must hold in verses 4 and 3. \"Let there be light\" becomes \"let there be a period of light,\" and day one is the creation of time, the alternation of day and night. Day four then installs the sun and moon as functionaries for signs, seasons, days and years, and the text says nothing about their material nature.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 5 and 6",
+   "others": "The young-earth reading in the MacArthur Study Bible holds that the earth was already rotating with a source of light on one side before the sun was created on day four. The framework reading has day four revisit day one from another angle, which Lennox notes some object to because it effectively reduces six days to three.",
+   "cost": "Lennox's options each solve the sun and leave something else: an appearance reading has to explain why the Septuagint and the animals share the verb, and a logical-order reading costs some of the chronology he wants to keep. Walton's metonymy argument is neat at verse 5 and has to carry a lot of weight back into verse 3.",
+   "not": "**Not a modern science problem.** Origen raised it in the third century and Augustine said the nature of those first days was difficult or impossible for us to imagine.",
+   "related": [
+    "what-yom-does",
+    "the-two-panels",
+    "functional-or-material"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 3, including Origen, Augustine, Strauss, Ross, Collins and Kass as quoted there",
+    "Walton, The Lost World of Genesis One (2009), propositions 5 and 6",
+    "The MacArthur Study Bible (ESV), note on Genesis 1:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "The two panels",
+   "id": "the-two-panels",
+   "summary": "Days one to three make spaces. Days four to six fill them. Is that a timeline, a design, or both?",
+   "plain": "The real question: are the six days a sequence, or a pattern arranged on purpose? **A tour guide shows you the house room by room.** She might be walking you through in the order it was built, or in the order that makes sense to visit. Both are real tours of a real house. Days one to three and four to six line up too neatly for some readers to think it is only a timeline, and not neatly enough for others to think it is only a design.",
+   "category": "contested",
+   "group": "days",
+   "bibleRef": "Genesis 1:3-31",
+   "q": "Light and the lights, sky and seas with birds and fish, dry land with animals and humans. The match between the two halves of the week has been noticed since the early church. What it means is the question.",
+   "heb": "The pattern is real but not perfect. The lights of day four are placed in the expanse, which first appears on day two. The sea creatures of day five belong to the seas gathered on day three, or to the deep of verse 2. The word divide or separate runs through the chapter, five times explicitly by Kass's count as quoted by Lennox.",
+   "len": "Lennox sets out the framework view in a table and grants that the parallel is striking and of a type found elsewhere in Scripture. He does not think it cancels sequence. You cannot have plants on dry land that does not yet exist. He quotes Derek Kidner: the march of the days is too majestic to carry no implication of ordered sequence. His position is that sequence and framework are not mutually exclusive.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Main Views of the Genesis Days",
+   "wal": "Walton grants the literary structure without objection and agrees with the theological points framework readers draw from it. His complaint is that the framework hypothesis does not go far enough: it stops at literary and theological affirmation and risks reducing the text to that. Framework readers, he says, do not need to drop their view, only add the functional reading alongside it.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 6 and 12, Framework Hypothesis",
+   "others": "The framework view as such, which Lennox traces to Clement and Augustine, treats the days as a logical rather than chronological order, the way a surgeon describes a hospital by floors rather than by construction schedule.",
+   "cost": "Anyone reading strictly in sequence has to explain the imperfect fit and the sun on day four. Anyone reading the days purely as design has to explain why the text numbers them and closes each with evening and morning.",
+   "not": "**Not a recent invention to escape science.** Lennox's point is that the logical-order reading is ancient, held by Clement and Augustine centuries before geology.",
+   "related": [
+    "light-before-the-sun",
+    "what-yom-does",
+    "what-kind-of-text"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 3, with Kidner and Kass as quoted there",
+    "Walton, The Lost World of Genesis One (2009), proposition 12"
+   ],
+   "post": null
+  },
+  {
+   "title": "How old is the earth?",
+   "id": "how-old-is-the-earth",
+   "summary": "The question everyone brings to Genesis 1. Both poles conclude the chapter does not answer it, for different reasons.",
+   "plain": "The real question: does the Bible tell us how old the earth is? **A family album starts with the wedding.** It does not tell you how old the house was when they moved in. If you want the age of the house, you need a different record. Whether Genesis 1 is that record is the question.",
+   "category": "contested",
+   "group": "days",
+   "bibleRef": "Genesis 1:1-2:3",
+   "bibleRefOverride": "Genesis 1:1-2:3; Exodus 20:8-11",
+   "q": "The young-earth position holds that Scripture fixes the age of the earth at thousands of years. The two poles in this tool both reject that, but neither does it by bending the text to science.",
+   "heb": "Nothing in the Hebrew of Genesis 1 states a date. The dates people derive come from three steps added together: reading the days as one 24-hour week, treating verse 1 as part of day one, and adding up the genealogies of Genesis 5 and 11. Each step is a separate judgment.",
+   "len": "Lennox's route is textual first. Verse 1 can stand before day one, so the age of the universe is indeterminate on the text alone, and the age of the earth may be a different question from the length of the days. He also argues from history: the church changed its reading of the earth's foundations and pillars once the motion of the earth was settled, and it is no shame to do the same about age. He quotes two young-earth authors, Paul Nelson and John Mark Reynolds, who concede that over the long term their position is not tenable as things stand scientifically, and adds that he is not convinced the old-earth reading is any less natural, since the text separates the initial creation from day one.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Nature of the Creation Week and The Objection; ch. 4, The Way Forward",
+   "wal": "Walton's route is that Genesis 1 is about functional origins, so it contributes nothing to the age of the earth. He is careful: this is not a claim that the Bible supports an old earth, only that there is no biblical position on the age of the earth. If the earth turned out young, so be it. But believers have no biblical obligation to defend a young earth against science.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 10",
+   "others": "The young-earth case, stated in the MacArthur Study Bible, holds that creation was recent, out of nothing, and in six consecutive 24-hour days, and that Scripture does not support a date earlier than about 10,000 years ago.",
+   "cost": "The young-earth reading has to account for the evidence of great age, which Walton notes it does with alternative science, light created in transit and appearance of age. The two poles have to explain to young-earth readers why Exodus 20:11, \"in six days the LORD made,\" does not settle the matter. Lennox's answer is that God's week is a pattern for ours, not identical to it.",
+   "not": "**Not a concession to evolution.** Lennox stresses that the cosmological evidence for an old universe is independent of biology, and that accepting it does not commit anyone to an unguided evolutionary account of life.",
+   "related": [
+    "in-the-beginning",
+    "what-yom-does",
+    "genealogies-and-ussher",
+    "young-earth-at-its-strongest"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), chs. 3 and 4, including Nelson and Reynolds as quoted at ch. 3, n. 77",
+    "Walton, The Lost World of Genesis One (2009), propositions 10 and 12",
+    "The MacArthur Study Bible (ESV), note on Genesis 1:1"
+   ],
+   "post": null
+  },
+  {
+   "title": "Functional or material origins",
+   "id": "functional-or-material",
+   "summary": "Is Genesis 1 an account of things being made, or of things being given their place and purpose? This is the deepest split in the field.",
+   "plain": "The real question: is Genesis 1 telling us how the stuff of the world was made, or how the world was set up to work? **When was the stadium built?** One answer gives the year the concrete was poured. Another gives the year the team played its first game there. Both are true answers; they answer different questions. Walton says Genesis 1 answers the second. Lennox says it answers both.",
+   "category": "contested",
+   "group": "cosmology",
+   "bibleRef": "Genesis 1:1-2:3",
+   "q": "Walton's thesis is that the ancient world defined existence by function, not by material, and that Genesis 1 shares that outlook. If he is right, much of the modern argument about Genesis and science is beside the point, because the text was never answering the material question.",
+   "heb": "Walton marshals the textual case: bara takes objects that are hard to read materially; tohu describes the nonfunctional; \"it was good\" means functioning properly; three of the seven days create no material component at all; the expanse of day two is a solid dome nobody believes is there; days four and six describe their creatures by their roles. Lennox counters with the surface of the text: God speaks and things appear, step by step, toward a goal.",
+   "len": "Lennox accepts Walton's starting observation, that we do not swim in the same cultural river as the first readers, and he accepts that describing the functions and ordering of the universe is one of the objectives of Genesis 1. He is sceptical that it is the only purpose and asks: why not both? He notes he is not alone, pointing to published critiques including Noel Weeks in the Westminster Theological Journal. And he draws on Andrew Parker, an evolutionary biologist with no faith commitment, who was struck by how closely the sequence of Genesis 1 tracks the scientific account of life's history.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, with nn. 38-39",
+   "wal": "Walton answers \"why not both?\" directly: a material element has to be demonstrated from the text, not retained because it is familiar. On his reading the material phase could have run through long ages before the seven days, with the sun shining, plants growing and animals present. Those ages were like rehearsals before a play: necessary, but not the play. The seven days are the opening night, when the cosmos becomes God's residence and people take up their role as his image.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 2 and 10",
+   "others": "Walton notes that framework readers can add the functional reading to their own without giving theirs up. Old-earth readers like Hugh Ross would not have to give up their scientific correlations, only stop treating them as what the text claims.",
+   "cost": "Walton's position asks readers to accept a premise about ancient ontology that most have never heard of, and to set aside a material reading of passages like day five, where creatures are made and bara is used. Lennox's \"why not both\" keeps the material reading but has to carry its costs: the sun on day four and a solid expanse that a material reading must either find or redefine. Lennox's appeal to Andrew Parker carries its own cost, which Lennox acknowledges: Parker's claim that the Genesis sequence matches the scientific one is hotly contested.",
+   "not": "**Not a denial that God made matter.** Walton is explicit that God is fully responsible for material origins. His claim is about what Genesis 1 is describing, not about what God did.",
+   "related": [
+    "what-bara-does",
+    "formless-and-void",
+    "genesis-1-as-temple",
+    "john-walton",
+    "john-lennox"
+   ],
+   "sources": [
+    "Walton, The Lost World of Genesis One (2009), propositions 2, 3, 4, 10",
+    "Lennox, Seven Days that Divide the World (2021), ch. 3",
+    "Noel K. Weeks, \"The Bible and the 'Universal' Ancient World: A Critique of John Walton,\" Westminster Theological Journal 78 (2016): 1-28, as cited by Lennox",
+    "Andrew Parker, The Genesis Enigma (Dutton, 2009), as quoted in Lennox, ch. 3"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    }
+   ]
+  },
+  {
+   "title": "The firmament",
+   "id": "the-firmament",
+   "summary": "Day two makes a raqia to separate the waters above from the waters below. Firmament, expanse, vault or dome: each translation carries a different picture of the sky.",
+   "plain": "The real question: when Genesis says God made a firmament to separate the waters, what did the first readers picture? **Look up inside a domed stadium.** The dome is the hard shell overhead. The space under it is where the lights hang and the game is played. The word raqia could name the shell or the space under it, and firmament, vault, dome and expanse each lean one way.",
+   "category": "contested",
+   "group": "cosmology",
+   "bibleRef": "Genesis 1:6-8",
+   "bibleRefOverride": "Genesis 1:6-8, 14-17",
+   "q": "Day two has God make a raqia that divides waters above from waters below and names it sky or heaven. The sun, moon and stars are later set in it. What was it, and does the answer matter for how the chapter is read?",
+   "heb": "The word is raqia. The NIV Cultural Backgrounds Study Bible, edited by Walton, notes that the King James \"firmament\" was understood as the solid sky, that \"expanse\" came into favour more recently as an attempt to bridge science and Scripture, and that some translations have returned to \"vault\" and \"dome.\" The same note says the Israelites unquestionably understood the sky to be a solid dome, but that it is uncertain whether raqia is the Hebrew word for that dome, since stronger candidates exist. It also points out that the sun, moon and stars are said to be in the raqia.",
+   "kjv": "And God said, Let there be a firmament in the midst of the waters, and let it divide the waters from the waters.",
+   "kjvRef": "Genesis 1:6",
+   "kjvRole": "the King James keeps the solid-sky word",
+   "kjvNote": "The King James uses the same word again at 1:14, where the lights are set \"in the firmament of the heaven,\" so the picture of the sky in day two carries into day four.",
+   "len": "Lennox mentions the firmament only in passing, through Leon Kass, as one of the acts of separation that structure the chapter: the firmament or vault of heaven divides the waters above from those below. He does not take a position on what it physically is. His concern on day two is the order and separation the text describes.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, The Creation of Light and the Problematic Fourth Day",
+   "wal": "Walton uses the firmament as a test case. Israel thought of the sky as material, solid enough to hold back waters and support the dwelling of God, and God did not revise that picture any more than he revised the idea that people think with their hearts. If Genesis 1 were a material account, a reader would have to find something solid up there, not change the meaning of the word as concordists tend to do. On his functional reading, day two addresses weather, described in terms the Israelites understood.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 1 and 10; NIV Cultural Backgrounds Study Bible, word note on raqia",
+   "others": "The MacArthur Study Bible reads the expanse as the atmospheric and stellar heaven, the waters under it as subterranean reservoirs, and the waters above as possibly a canopy of water vapour that made the early earth like a hothouse and filtered out ultraviolet rays.",
+   "cost": "Material readings have to say what the raqia is and how the stars can be in it, whether by redefining it as atmosphere or proposing a canopy. Walton's reading has to carry the uncertainty his own study Bible admits, that raqia may not be the word for the solid dome, which weakens his cleanest example. The vapour canopy is a scientific proposal; the text itself does not describe one.",
+   "not": "**Not a mistranslation dispute.** Firmament, expanse, vault and dome can each be defended. They differ on what the translator thinks the first readers pictured.",
+   "related": [
+    "functional-or-material",
+    "what-kind-of-text",
+    "light-before-the-sun",
+    "the-flood-and-its-extent"
+   ],
+   "sources": [
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener, notes on Genesis 1:6 and the word note on raqia",
+    "Walton, The Lost World of Genesis One (2009), propositions 1 and 10",
+    "Lennox, Seven Days that Divide the World (2021), ch. 3, with Leon Kass, The Beginning of Wisdom (University of Chicago Press, 2006), as quoted there",
+    "The MacArthur Study Bible (ESV), notes on Genesis 1:6-7"
+   ],
+   "post": null
+  },
+  {
+   "title": "Genesis 1 as a temple text",
+   "id": "genesis-1-as-temple",
+   "summary": "Seven days, a climactic rest, a cosmos ordered around a throne. Walton reads the chapter as the dedication of the universe as God's temple.",
+   "plain": "The real question: is the seventh day the point of the chapter or its ending? **The family had a dinner the night the house was finished.** Was the dinner the reason for the whole build, or a nice way to close it out? How you answer changes how you read everything before it.",
+   "category": "contested",
+   "group": "cosmology",
+   "bibleRef": "Genesis 2:1-3",
+   "bibleRefOverride": "Genesis 2:1-3; Psalm 132:7-8, 13-14; Isaiah 66:1",
+   "q": "If divine rest happens in a temple, and Genesis 1 ends in divine rest, is the cosmos itself being presented as God's temple?",
+   "heb": "Psalm 132 sets rest (menuchah), dwelling place and throne together as one idea. Walton notes that seven appears pervasively in temple accounts in the Bible and the ancient world. Solomon's prayer at the temple dedication in 1 Kings 8:27 says the highest heaven cannot contain God, how much less the house he built, which Walton reads as treating the cosmos itself as temple.",
+   "len": "Lennox describes Walton's cosmic temple view and accepts that setting out the functions of the cosmos is one of the aims of Genesis 1. His own account of day seven is Augustine's open-ended rest and the use Hebrews 4 makes of it. He does draw a contrast Walton would welcome: the Babylonian seven-day cycles were tied to the moon and their Sabattu was a day of ill luck, while Israel's seventh day, following Kass, was tied to nothing in the heavens except their Creator.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 5, The Sabbath",
+   "wal": "Walton's propositions 7 to 9 build the case: deity rests only in a temple; temple building is linked with cosmic creation in ancient texts; Marduk's temple is built after his work of creation in the Babylonian epic, where the gods will find rest; the absence of a temple appears in descriptions of the world before creation; and the seven days of Genesis 1 match the seven-day inauguration of a temple. In the \"after\" picture the cosmos is God's residence and people serve as his vice-regents.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 7, 8 and 9",
+   "others": "Heiser reads Eden as God's home on earth, his residence, and says that where the King lives, his council meets. Ancient divine abodes were pictured as gardens and mountains, and Eden is described as both. That reading sits easily with a temple reading without depending on it.",
+   "cost": "The temple reading needs Genesis 1 to be understood against ancient temple texts that it never names. Its critics, including the Weeks article Lennox cites, question how far the wider ancient world can be used to read Israel's text.",
+   "not": "**Not a claim that Genesis copies the Babylonian epic.** Walton uses the parallels to recover what an ancient reader would have assumed, not to derive Genesis from them.",
+   "related": [
+    "the-seventh-day",
+    "functional-or-material",
+    "enuma-elish"
+   ],
+   "sources": [
+    "Walton, The Lost World of Genesis One (2009), propositions 7-9",
+    "Lennox, Seven Days that Divide the World (2021), ch. 5",
+    "Michael S. Heiser, The Unseen Realm (Lexham, 2015), chs. 3 and 5"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    }
+   ]
+  },
+  {
+   "title": "Let us make",
+   "id": "let-us-make",
+   "summary": "God speaks in the plural and acts in the singular one verse later. Lennox and Heiser read the plural differently. Walton's argument does not turn on it.",
+   "plain": "The real question: who is God talking to when he says \"let us make\"? **We are not amused.** A queen alone can say we. A man talking himself into a job says let's go. A captain says it to the team. A plural can mean more than one person, or a way one person speaks, and the candidates for this \"us\" are the Trinity, a heavenly council, or a way of speaking.",
+   "category": "contested",
+   "group": "adam",
+   "bibleRef": "Genesis 1:26-27",
+   "q": "Genesis 1:26 has God say \"let us make man in our image.\" Genesis 1:27 has God create, singular verb, in his image. Any reading has to hold both verses at once.",
+   "heb": "The verb in 1:26 is a plural cohortative, let us make. The verb in 1:27 is singular, he created. The image and likeness language uses first-person plural pronouns, our image, our likeness.",
+   "len": "Lennox reads the plural, together with the Spirit hovering in verse 2 and the repeated \"God said,\" as statements that surely anticipate New Testament teaching on the Trinity. John 1 and Colossians 1 then identify the Word through whom all things were made with Christ.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 5, God Is a Fellowship",
+   "wal": "Walton's functional argument does not depend on the plural. His treatment of day six focuses on the image as role, identity, representation and relationship, and he notes that both asah (1:26) and bara (three times in 1:27) are used for the making of humanity.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, proposition 3, Day Six",
+   "others": "Heiser reads 1:26 as God announcing his intention to his divine council, with 1:27 recording that God alone did the creating. The singular verb answers the charge that this view makes the council co-creators. The full case is in the Divine Council Index entry linked below.",
+   "cost": "The Trinitarian reading may be theologically true and still not describe what a first hearer would have understood. The council reading has to say who was in the room, and the text does not say. Neither pole of this tool is built on the verse.",
+   "not": "**Not multiple creators.** The singular verb in 1:27 closes that off on every reading.",
+   "related": [
+    "image-of-god",
+    "michael-heiser"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 5",
+    "Walton, The Lost World of Adam and Eve (IVP Academic, 2015), proposition 3",
+    "Heiser, The Unseen Realm (2015), chs. 3 and 5"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    }
+   ]
+  },
+  {
+   "title": "What the image of God is",
+   "id": "image-of-god",
+   "summary": "Only humans are made in God's image. What the image is has been argued for two thousand years.",
+   "plain": "The real question: what does it mean that people are made in God's image? **He is the image of his father.** Does that mean he looks like him, acts like him, or stands in for him when his father is away? English uses image all three ways, and readers of Genesis 1:27 have picked each.",
+   "category": "contested",
+   "group": "adam",
+   "bibleRef": "Genesis 1:26-28",
+   "q": "Lists of human capacities, reason, conscience, language, are often offered as the image of God. The text itself attaches the image to ruling and filling the earth.",
+   "heb": "The noun is tselem. The site's Word Study tool, following Strong's, gives its range as a resemblance and a representative figure, especially an idol; the King James renders it image and vain shew. It is paired here with demut, likeness or resemblance, and in Genesis 5:3 the two words trade places with their prepositions reversed, which makes a sharp distinction between them hard to hold. The image language is followed at once by the commission to be fruitful, fill, subdue and rule.",
+   "len": "Lennox stresses that of all creation only humans are made in God's image: the heavens declare his glory, but Scripture never says they bear his image. He reads the two \"God said\" statements of day six as marking a discontinuity between animals and humans that no unguided process crosses, and points to the stewardship over the animals in 1:26 and the search for a helper in Genesis 2 as further marks of the difference.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4",
+   "wal": "Walton gives four aspects: role and function (subdue and rule), identity, representation of God's presence (as Assyrian kings set up their images in conquered cities), and relationship. Unlike the rest of the ancient Near East, where the image was the king's, the Bible gives it to all humanity. It is not stronger in some than others, regardless of age, ability, behaviour, ethnicity or gender.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, proposition 3, Day Six, and Excursus: Image of God",
+   "others": "Heiser argues the preposition in \"in our image\" can be read as \"as,\" so that humankind is created as God's image, which makes the image a status and a function rather than a property. To be human is to image God, as his representatives on earth, which is why 1:26-27 runs straight into the dominion mandate. He rejects the usual capacity lists, intelligence, reason, emotion, self-awareness, on the ground that if the image were any of them, believers would have to abandon the sanctity of human life in the womb.",
+   "cost": "The functional readings have to say what grounds the role, since a role must be given to someone. The capacity readings have to explain why the text names none of them. Lennox's emphasis on special creation has to be squared with Walton's argument that the forming of Adam in Genesis 2 is archetypal.",
+   "not": "**Not something a person can lose by being less capable.** Walton and Heiser both draw that conclusion from the functional reading, and Lennox's stress on human dignity points the same way.",
+   "related": [
+    "let-us-make",
+    "adam-archetype-or-individual"
+   ],
+   "sources": [
+    "Walton, The Lost World of Adam and Eve (2015), proposition 3 and Excursus: Image of God",
+    "Heiser, The Unseen Realm (2015), ch. 5",
+    "Lennox, Seven Days that Divide the World (2021), ch. 4",
+    "JAYMS Bible Word Study Tool, tselem (H6754), from Strong's",
+    "JAYMS Why Do Bible Translations Differ?, Genesis 1:26b"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    }
+   ]
+  },
+  {
+   "title": "Who bears the image",
+   "id": "who-bears-the-image",
+   "summary": "Male and female, and only humans. What the image is gets argued. Who has it does not.",
+   "plain": "The real question: does every human being bear God's image, or only some? **Every coin carries the face.** Worn ones, new ones, the ones in the gutter. Genesis 1 gives the image to humanity, male and female, and to nothing else in creation.",
+   "category": "settled",
+   "group": "adam",
+   "bibleRef": "Genesis 1:27",
+   "q": "People ask whether the image belongs to men more than women, to believers more than others, or to some animals too. The verse answers all three.",
+   "heb": "Genesis 1:27 says God created humankind in his image, male and female he created them. The image is said of humankind as a whole, and of no other creature.",
+   "len": "Lennox stresses that only humans are made in God's image. The heavens declare God's glory, but Scripture never says they bear his image.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4",
+   "wal": "Walton says the image applies to all people, regardless of age, physical ability or inability, moral behaviour, ethnic identity or gender, and that it is not stronger in some than in others. Unlike the rest of the ancient Near East, where it belonged to the king, the Bible gives it to everyone.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, proposition 3, Day Six",
+   "cost": "Nothing in the text is left open on who bears the image. Everything left open is in the entry on what the image is.",
+   "not": "**Not something earned, lost or ranked.** Both poles reject that.",
+   "related": [
+    "image-of-god",
+    "let-us-make"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 4",
+    "Walton, The Lost World of Adam and Eve (2015), proposition 3"
+   ],
+   "post": null
+  },
+  {
+   "title": "Two creation accounts?",
+   "id": "two-creation-accounts",
+   "summary": "Genesis 1 puts plants before people. Genesis 2 seems to put the man first. A contradiction, a different kind of order, or a sequel?",
+   "plain": "The real question: do Genesis 1 and 2 tell the same story twice, and if so, why do they not match? **Two people describe the same wedding.** One starts with the hall being set up and ends with the vows. The other starts with the groom and works outward. Are they contradicting each other, telling different parts, or telling one part after the other?",
+   "category": "contested",
+   "group": "adam",
+   "bibleRef": "Genesis 2:4-9",
+   "bibleRefOverride": "Genesis 2:4-9, 19",
+   "q": "Critical scholarship often treats Genesis 1 and 2 as two competing origin stories. Readers who reject that still have to explain why the order of plants, animals and the man differs.",
+   "heb": "In 2:5 the word erets can mean the earth or a particular land. Hebrew has no separate pluperfect tense, so \"had formed\" in 2:19 is a translation decision; Walton notes the constructions in that verse are not the usual way Hebrew conveys the past perfect.",
+   "len": "Lennox reports Collins's reading: the land in 2:5 is a particular land in the dry season, waiting for rain and for someone to work the ground, not the whole earth before plants existed. He then objects that the same word erets is used three times in one sentence in 2:4-5, and Collins's reading needs the third to mean something different from the first two. He prefers a second solution: Genesis 1 is mainly chronological, Genesis 2 mainly logical, placing man at the centre.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, appendix C",
+   "wal": "Walton reads Genesis 2:4-24 as a sequel rather than a retelling of day six. Genesis 1 deals with humanity in general, Genesis 2 with what happened to Adam and Eve in the garden afterward. He rejects the view that the two chapters are inherently contradictory.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, proposition 7",
+   "others": "Some, as Walton reports, have put millions of years between the two accounts, with Genesis 2 describing something like the Neolithic period. Walton says that view leaves hard theological questions unanswered: were the earlier humans in God's image, subject to death, involved in the fall?",
+   "cost": "The sequel reading makes Adam and Eve something other than the first humans in every sense, which Walton accepts and others resist. The logical-order reading has to explain why a narrative that looks sequential is not meant that way in its second telling.",
+   "not": "**Not two sources stitched together carelessly.** Both poles reject that conclusion, whatever they make of the sources.",
+   "related": [
+    "adam-archetype-or-individual",
+    "the-two-panels"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), appendix C, with Collins, Genesis 1-4, as quoted there",
+    "Walton, The Lost World of Adam and Eve (2015), proposition 7 and notes",
+    "Walton, The Lost World of Genesis One (2009), proposition 12, Other Theories"
+   ],
+   "post": null
+  },
+  {
+   "title": "Adam: archetype, individual, or both?",
+   "id": "adam-archetype-or-individual",
+   "summary": "Formed from dust, Eve built from his side. Is that how the first man was made, or what every human is?",
+   "plain": "The real question: is the forming of Adam from dust about how one man's body was made, or about what every human is? **She was made for this job.** That can be about how she was born and raised, or about what she is now. Genesis 2:7 has been read both ways, and as both at once.",
+   "category": "contested",
+   "group": "adam",
+   "bibleRef": "Genesis 2:7",
+   "bibleRefOverride": "Genesis 2:7, 21-23",
+   "q": "If the forming of Adam is a description of a physical event, Genesis makes a claim about human origins that science can test. If it is a statement about identity, it makes a different kind of claim. Both poles affirm a real, historical Adam. They disagree about what the forming means.",
+   "heb": "The verb \"formed,\" yatsar, occurs forty-two times; it is used for forming the human spirit in Zechariah 12:1, for summer and winter, for events planned long ago, and for Israel as a people. \"Dust\" returns in 3:19, where the man is told he is dust and will return to dust, which ties it to mortality. The word translated \"rib,\" tsela, appears about forty times and is otherwise never anatomical; it usually means a side of something, often in tabernacle and temple building. Adam's own response is \"bone of my bones and flesh of my flesh.\"",
+   "kjv": "And the LORD God formed man of the dust of the ground, and breathed into his nostrils the breath of life; and man became a living soul.",
+   "kjvRef": "Genesis 2:7",
+   "kjvRole": "\"living soul\" is the same phrase used of animals",
+   "kjvNote": "The Hebrew phrase behind \"living soul\" is used for the animals in Genesis 1, where the King James renders it \"living creature.\" Modern versions use \"living being\" in both places.",
+   "len": "Lennox reads Genesis as going out of its way to describe a direct, special creation of man from dust, not development from earlier hominids. He calls the making of the woman from the man the decisive point: if the first females came from pre-existing hominids, the account does not fit at all, and if it is a metaphor, a metaphor for what? He engages Denis Alexander's model of Adam and Eve as two chosen Neolithic farmers and finds it hard to square with Genesis 2:5 and Romans 5:12.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4",
+   "wal": "Walton argues forming from dust and building from the side are archetypal claims, about every human being's identity, not material origins. Dust signals mortality; the tree of life was provided because people were mortal. Egyptian reliefs show the god Khnum forming the pharaoh on a potter's wheel at his coronation, a statement about role, not birth. He still holds Adam and Eve to be real people in a real past, because they stand in ancient genealogies, which list real people, and because Paul's argument requires a historical entry of sin.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, propositions 8 and 11",
+   "others": "The young-earth position takes the forming and the rib as a literal, physical account of the first two humans, created on day six.",
+   "cost": "Walton has to explain why a text that names materials (dust) and a procedure (sleep, opening, closing) is not describing a procedure. Lennox has to explain why, on his own reading, the animals formed from the ground in 2:19 are not read with the same weight, a point Walton raises.",
+   "not": "**Not a denial of a historical Adam.** Walton and Lennox both affirm Adam and Eve as real people. The question is whether Genesis 2 tells us how their bodies came to be.",
+   "related": [
+    "two-creation-accounts",
+    "death-before-the-fall",
+    "image-of-god",
+    "the-day-you-eat"
+   ],
+   "sources": [
+    "Walton, The Lost World of Adam and Eve (2015), propositions 8 and 11",
+    "Lennox, Seven Days that Divide the World (2021), ch. 4, engaging Denis Alexander, Creation or Evolution: Do We Have to Choose? (Monarch, 2014)"
+   ],
+   "post": null
+  },
+  {
+   "title": "Cain's wife",
+   "id": "cains-wife",
+   "summary": "Cain marries, fears that whoever finds him will kill him, and builds a city. Who were these people?",
+   "plain": "The real question: where did Cain's wife come from? **A family Bible lists the parents and the first two sons.** The daughters may be missing because nobody wrote daughters down, or there may have been other families nearby that this Bible was never about. Both happen, and the list alone does not tell you which.",
+   "category": "contested",
+   "group": "adam",
+   "bibleRef": "Genesis 4:14-17",
+   "bibleRefOverride": "Genesis 4:14-17; 5:4",
+   "q": "Genesis names Adam, Eve, Cain and Abel. Then Cain has a wife, is afraid of whoever finds him, and builds a city. The text never says who any of these people are.",
+   "heb": "Genesis 5:4 says Adam had other sons and daughters after Seth. Cain says \"whoever finds me will kill me\" (4:14). He builds an ir, a city (4:17).",
+   "len": "Lennox does not discuss Cain or his wife in Seven Days. He holds that Adam was the first man, as Paul says, and rejects models with other humans alive alongside Adam and Eve. On that position Cain's wife has to come from Adam's own family; that last step is an inference drawn here, not a statement of his.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4",
+   "wal": "Walton argues that if Genesis 2 is a sequel to Genesis 1, there may be other people in Genesis 2 to 4 besides Adam and Eve's family, and that this helps with Genesis 4. The sister option, he says, has never been attractive, though many have taken it as the only possibility. Cain's fear of being killed once he is driven away from his family, and the word city, which implies a settlement of some size, suggest to him that the text assumes other people.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, proposition 7",
+   "others": "The MacArthur Study Bible says Cain's wife was one of Adam's later daughters (5:4), that such close marriage was later forbidden in Leviticus 18, and that Cain's fear shows the population had by then greatly increased. The NIV Cultural Backgrounds Study Bible reads 4:14 as assuming that Abel has an extended family who might seek revenge.",
+   "cost": "The sister reading leans on Genesis 5:4, but the daughters there are born after Seth, and Seth's birth comes at 4:25, after Cain's wife and city in 4:17. So that reading has to assume either that Genesis 4 is not told in strict order or that Adam had daughters before Seth whom 5:4 does not name. It also has to account for the fear and the city in a world of one family, which it does by assuming a large, unrecorded population. The other-people reading has to answer Paul's \"one man\" and Acts 17:26; Walton takes up both in his propositions on Paul's use of Adam and on whether all people descend from Adam and Eve.",
+   "not": "**Not a question the text answers.** Every reading here fills a silence.",
+   "related": [
+    "two-creation-accounts",
+    "adam-archetype-or-individual",
+    "genealogies-and-ussher"
+   ],
+   "sources": [
+    "Walton, The Lost World of Adam and Eve (2015), propositions 7, 19 and 20",
+    "Lennox, Seven Days that Divide the World (2021), ch. 4",
+    "The MacArthur Study Bible (ESV), notes on Genesis 4:14 and 4:17",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener, note on Genesis 4:14"
+   ],
+   "post": null
+  },
+  {
+   "title": "Where was Eden?",
+   "id": "where-was-eden",
+   "summary": "Four rivers, two of them known. Mesopotamia, a lost pre-flood geography, or a holy mountain described as a garden.",
+   "plain": "The real question: can Eden be found on a map? **Meet me where the two creeks join.** Perfectly clear to people who live there. Useless if one creek has dried up and nobody remembers the other's name. Genesis names four rivers. Two are still on the map and two are not.",
+   "category": "contested",
+   "group": "adam",
+   "bibleRef": "Genesis 2:8-14",
+   "q": "Genesis 2 places the garden in Eden, in the east, and traces four rivers from it: the Pishon, the Gihon, the Tigris and the Euphrates. Readers have tried to find it ever since.",
+   "heb": "The garden is planted \"in Eden, in the east.\" The Tigris and the Euphrates are well known. The Pishon and the Gihon, and the land of Havilah, are not securely identified.",
+   "len": "Lennox does not try to locate Eden. His point is that the whole world was not like Eden: God planted a garden, and the text leaves open what differed inside and outside it.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4",
+   "wal": "The NIV Cultural Backgrounds Study Bible, edited by Walton, says most scholars place Eden in or near the northern end of the Persian Gulf, that \"in the east\" simply indicates Mesopotamia and is typical of primordial narratives, and that some look instead near the sources of the Tigris and Euphrates in the mountains. In The Lost World of Adam and Eve he reads the garden as an ancient Near Eastern motif for sacred space, a symbol that stands for something beyond itself, without denying that it was real.",
+   "walSrc": "NIV Cultural Backgrounds Study Bible, note on Genesis 2:10-14; Walton, The Lost World of Adam and Eve, proposition 13",
+   "others": "Heiser reads Eden as God's home on earth, the place his council met, and notes that the Old Testament describes Eden both as a garden and as a mountain, the two common pictures of a divine dwelling. The MacArthur Study Bible says the Pishon and Havilah are uncertain because the text describes pre-flood geography that has since been dramatically altered.",
+   "cost": "The Mesopotamian placement has to explain the two unknown rivers. The altered-geography reading cannot be checked against anything. The sacred-space and divine-mountain readings have to say how a garden with named rivers relates to a mountain of God.",
+   "not": "**Not vague.** Two of the four rivers are named exactly and are still flowing.",
+   "related": [
+    "genesis-1-as-temple",
+    "the-serpent",
+    "tree-of-knowledge"
+   ],
+   "sources": [
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener, note on Genesis 2:10-14",
+    "Walton, The Lost World of Adam and Eve (2015), proposition 13",
+    "Heiser, The Unseen Realm (2015), on Eden",
+    "Lennox, Seven Days that Divide the World (2021), ch. 4",
+    "The MacArthur Study Bible (ESV), notes on Genesis 2:10-11"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ezekiel-28-11-19/",
+     "n": "Ezekiel 28:11-19",
+     "s": "A guardian cherub in Eden, on the holy mountain, cast out for pride.",
+     "r": "Ezekiel 28:11-19"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    }
+   ]
+  },
+  {
+   "title": "The serpent",
+   "id": "the-serpent",
+   "summary": "A snake that talks, more crafty than any beast. Satan, a chaos creature, or a divine being?",
+   "plain": "The real question: who or what was the serpent in the garden? **The man at the door said he was from the gas company.** He might have been a man doing a job, a con artist working alone, or someone sent by someone else. The story gives you what he said and what happened, not who he worked for.",
+   "category": "contested",
+   "group": "fall",
+   "bibleRef": "Genesis 3:1-5",
+   "q": "Genesis 3 never calls the serpent evil and never names Satan. The New Testament calls Satan \"that ancient serpent.\" How much of the later identification was in the text from the start?",
+   "heb": "The serpent is nachash, an ordinary word for snake, and it is called arum, crafty or shrewd, a word that can describe the wise in Proverbs. The same word nachash describes Leviathan in Isaiah 27:1.",
+   "kjv": "Now the serpent was more subtil than any beast of the field which the LORD God had made.",
+   "kjvRef": "Genesis 3:1",
+   "kjvRole": "\"subtil\" keeps the neutral edge",
+   "kjvNote": "Subtil in older English meant clever or crafty as much as sly. The word in Proverbs that praises the prudent is the same Hebrew root.",
+   "len": "Lennox is direct: the key thing about the serpent is not its species but that it represents Satan, \"that ancient serpent\" of Revelation 12:9 and 20:2. Whether Satan used a literal snake or took an animal form is open; God spoke through Balaam's donkey, and Satan entered Judas. What matters is that evil appears to antedate Adam's sin, and Lennox quotes C. S. Lewis's Problem of Pain in support.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4, A Theological Objection",
+   "wal": "Walton argues an Israelite reader would not have identified the serpent as Satan, since Israel's idea of Satan was far less developed than the New Testament's. He reads it as a chaos creature from the non-ordered realm, amoral and disruptive rather than evil, on the strength of nachash for Leviathan and the dragon of Revelation 12:9. The serpent is the catalyst, not the cause. He notes the serpent's words are closer to \"don't think that death is such an immediate threat\" than to a flat denial.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, proposition 14",
+   "others": "Heiser reads the nachash as a divine being. He notes the serpent was a common image for a divine throne guardian and, given Eden as God's residence where his council met, identifies the villain as a divine adversary. The Divine Council Index pairs Genesis 3 with Ezekiel 28. The MacArthur Study Bible holds that Satan, a fallen archangel, possessed the body of a snake. The Divine Council Index has the full council reading.",
+   "cost": "Lennox's reading imports the New Testament identification and has to say what the first readers understood. Walton's leaves the Old Testament with no ongoing role for the serpent and has to account for how quickly Second Temple and New Testament writers made the identification.",
+   "not": "**Not a talking-animal fable.** Every reading here takes the serpent as more than a snake: a chaos creature, Satan, or a divine rebel.",
+   "related": [
+    "the-day-you-eat",
+    "death-before-the-fall",
+    "michael-heiser"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 4",
+    "Walton, The Lost World of Adam and Eve (2015), proposition 14",
+    "Heiser, The Unseen Realm (2015), on Genesis 3",
+    "The MacArthur Study Bible (ESV), note on Genesis 3:1"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ezekiel-28-11-19/",
+     "n": "Ezekiel 28:11-19",
+     "s": "A guardian cherub in Eden, on the holy mountain, cast out for pride.",
+     "r": "Ezekiel 28:11-19"
+    }
+   ]
+  },
+  {
+   "title": "The tree of the knowledge of good and evil",
+   "id": "tree-of-knowledge",
+   "summary": "One tree, one command, no reason given. What the tree was, and why it was off limits, is read three ways.",
+   "plain": "The real question: what was the tree, and why was it forbidden? **The car keys are on the counter. Don't touch them.** A sixteen-year-old can hear that as a test of whether he listens, or as a line about who decides when he is ready to drive. Same rule, two readings, and readers of Genesis 2 split much the same way.",
+   "category": "contested",
+   "group": "fall",
+   "bibleRef": "Genesis 2:9",
+   "bibleRefOverride": "Genesis 2:9, 16-17; 3:5-7, 22",
+   "q": "Genesis names two trees in the middle of the garden, gives one prohibition, and attaches no reason to it. After they eat, God says the man has become like one of us, knowing good and evil. What did the tree stand for?",
+   "heb": "The phrase is the tree of the knowledge of good and evil. In 3:5 the serpent says that eating will make them like God, knowing good and evil, and in 3:22 God says the man has become like one of us in that knowledge. The NIV Cultural Backgrounds Study Bible notes that nothing is known of this tree from any ancient Near Eastern tradition.",
+   "kjv": "For God doth know that in the day ye eat thereof, then your eyes shall be opened, and ye shall be as gods, knowing good and evil.",
+   "kjvRef": "Genesis 3:5",
+   "kjvRole": "the King James reads \"as gods\"",
+   "kjvNote": "The King James reads gods, plural. Whether the serpent means God himself or divine beings in general belongs with 3:22, where God says the man has become \"as one of us.\"",
+   "len": "Lennox says we need not discuss the nature of the fruit or what quality it had. Reading it that way misses the point. The first humans had the capacity to eat from every tree but not the permission to eat from one, and that is what made them moral beings. To do anything contrary to the will and word of the Creator is itself lawlessness. He quotes Theophilus of Antioch: \"It was not the tree, as some think, but the disobedience which had the death in it.\"",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4, A Theological Objection",
+   "wal": "Walton reads the tree of the knowledge of good and evil as a tree of wisdom. Adam and Eve had access to immortality through the tree of life but lacked wisdom, the reverse of the sage Adapa in Mesopotamian tradition, who had wisdom but not immortality. Their sin was choosing to make themselves the centre of order and the source of wisdom, instead of receiving wisdom in relationship with God. The garden and trees are symbols in his reading, which he says does not mean they were not real.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, propositions 13 and 15",
+   "others": "The MacArthur Study Bible reads the tree as a test of obedience, with nothing magical about it. Eating it after it was forbidden would give the knowledge of evil, since evil can be defined as disobeying God, and man already had the knowledge of good.",
+   "cost": "Lennox's reading explains the prohibition but not why the tree carries this name. Walton's has to explain why wisdom, which Proverbs urges everyone to get, is forbidden here; his answer is that the problem is the source, wisdom seized apart from God. The test reading has to explain why a test of obedience is named for knowledge at all.",
+   "not": "**Not a story about a fruit with powers.** Lennox and the MacArthur Study Bible both put the death in the disobedience, not the fruit. Walton reads the tree as standing for something beyond itself.",
+   "related": [
+    "the-day-you-eat",
+    "the-serpent",
+    "death-before-the-fall"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 4, quoting Theophilus of Antioch",
+    "Walton, The Lost World of Adam and Eve (2015), propositions 13 and 15",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener, note on Genesis 2:9",
+    "The MacArthur Study Bible (ESV), notes on Genesis 2:9 and 2:17"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    }
+   ]
+  },
+  {
+   "title": "In the day you eat of it",
+   "id": "the-day-you-eat",
+   "summary": "God says they will die the day they eat. They do not die that day. Who told the truth?",
+   "plain": "The real question: if Adam and Eve did not die the day they ate, what did the warning mean? **The day you skip practice, you are off the team.** The coach might mean you are cut that afternoon, that your place is gone even if your name stays on the roster until Friday, or that something changed between you and him the moment you skipped. Each reading is live, and so is the question of whether the day means the calendar day or simply when.",
+   "category": "contested",
+   "group": "fall",
+   "bibleRef": "Genesis 2:16-17",
+   "bibleRefOverride": "Genesis 2:16-17; 3:22-24",
+   "q": "Genesis 2:17 warns that \"in the day\" they eat they will \"surely die.\" Adam lives to 930. Either the warning failed, or \"day,\" \"die\" or both mean something other than a modern reader assumes.",
+   "heb": "\"In the day that\" is a common Hebrew way of saying \"when.\" The doubled verb, often rendered \"surely die,\" expresses certainty, which Walton reads as \"doomed to die.\" The penalty in Genesis 3 is carried out by removing access to the tree of life.",
+   "kjv": "for in the day that thou eatest thereof thou shalt surely die.",
+   "kjvRef": "Genesis 2:17",
+   "kjvRole": "the King James keeps the literal \"in the day\"",
+   "len": "Lennox reads death in layers. The first death is the death of fellowship with God, seen at once when they hide. That rupture unweaves everything else, aesthetic, relational, until it reaches the body's return to dust. He notes Irenaeus's older reading: one day with the Lord is a thousand years, and Adam died within the thousand. He asks whether Adam ever had inherent immortality, since 1 Timothy 6:16 says God alone has it, or depended from the start on the tree of life.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3 (Irenaeus) and ch. 4",
+   "wal": "Walton reads the warning as a sentence, not a timetable. When they ate, they were doomed to die, and the sentence was carried out by barring the way to the tree of life, the antidote to a mortality they already had. Humans were formed from dust, which marks them as mortal; the tree was there because they needed it. So God told the truth, and the serpent's line exploited the woman's misstatement of the command.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, propositions 8 and 14; The Lost World of Genesis One, proposition 10, Death",
+   "others": "The MacArthur Study Bible reads \"die\" as separation: spiritual death at once, physical death later, with Adam's 930 years as an act of mercy.",
+   "cost": "The layered-death reading has to explain why the first meaning, spiritual death, is not the one the narrative stresses in chapter 3, where the tree of life is the issue. The mortal-from-the-start reading has to answer readers who take Romans 5:12 to mean that human death of every kind came only through sin.",
+   "not": "**Not God bluffing.** All three readings above hold that what God said came true.",
+   "related": [
+    "death-before-the-fall",
+    "adam-archetype-or-individual",
+    "the-serpent"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), chs. 3 and 4",
+    "Walton, The Lost World of Adam and Eve (2015), propositions 8 and 14",
+    "Walton, The Lost World of Genesis One (2009), proposition 10",
+    "The MacArthur Study Bible (ESV), notes on Genesis 2:17 and 5:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "Death before the fall",
+   "id": "death-before-the-fall",
+   "summary": "Did anything die before Genesis 3? The two poles of this tool answer the same way. The fight is with a third position.",
+   "plain": "The real question: if the world is old, animals died long before Adam. Does the Bible forbid that? **Since the storm, the whole town has been without power.** Does the whole town include the streetlights, the farms outside the limits, the hospital on its generator? A sentence about all can mean every person or every thing, and readers of Romans 5:12 split on how far it reaches.",
+   "category": "contested",
+   "group": "fall",
+   "bibleRef": "Romans 5:12",
+   "bibleRefOverride": "Romans 5:12; 8:20-21; Genesis 1:29-30",
+   "q": "For many readers this is the argument that decides whether an old earth is compatible with Scripture. It rests on what Romans 5:12 and Romans 8:20-21 claim about whose death came through sin.",
+   "heb": "Romans 5:12 says death spread to all people because all sinned. Genesis 1:29-30 gives plants as food. Romans 8:20-21 speaks of creation subjected to futility and bondage to decay.",
+   "kjv": "Wherefore, as by one man sin entered into the world, and death by sin; and so death passed upon all men, for that all have sinned:",
+   "kjvRef": "Romans 5:12",
+   "kjvRole": "same scope in every version",
+   "len": "Lennox notes what Paul says and what he does not: death spread to all human beings, not all living things. Humans are moral beings and their death is the wages of sin; nobody accuses a lion of sinning. Plant death is built into the God-given diet. Predators, venom, camouflage and the woodpecker's neck would otherwise have to be products of Adam's sin. He reads Romans 8 as speaking of decay and corruption, distinct from the death that is part of the cycle of nature, and leaves animal pain as an open question he points toward a dark power that corrupted part of creation.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4, A Theological Objection",
+   "wal": "Walton reaches the same place by a slightly different route. Romans 5:12 is about how death came to people. Day three describes plant life that involves death at every stage; a caterpillar eats a leaf, a bird eats the caterpillar; Adam had skin, and the outer layer of skin is dead cells. People were created mortal and kept alive by the tree of life. When access was cut off, they were left to their natural mortality, and so death came through sin.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 10, Death; The Lost World of Adam and Eve, proposition 8",
+   "others": "The young-earth position holds that there was no death before the fall and that the original creation was \"very good\" in a sense that excludes it. Walton replies that \"very good,\" tov meod, is also said of the Promised Land in Numbers 14:7, a land full of enemies and predators. C. S. Lewis, quoted by Lennox, suggested a fallen angelic power may have corrupted the animal creation before man.",
+   "cost": "Lennox and Walton both have to explain why a good creation contains predation and pain, and Lennox says plainly he has not solved animal suffering. The no-death position has to explain where predators came from and how Romans 5:12 grew to cover all life.",
+   "not": "**Not a denial that human death came through sin.** Both poles affirm it. They limit the verse to what it names.",
+   "related": [
+    "the-day-you-eat",
+    "how-old-is-the-earth",
+    "the-serpent",
+    "young-earth-at-its-strongest"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 4, with C. S. Lewis, The Problem of Pain, ch. 9, as quoted there",
+    "Walton, The Lost World of Genesis One (2009), proposition 10",
+    "Walton, The Lost World of Adam and Eve (2015), propositions 5 and 8"
+   ],
+   "post": null
+  },
+  {
+   "title": "The genealogies and Ussher",
+   "id": "genealogies-and-ussher",
+   "summary": "Add up the ages in Genesis 5 and 11 and you get a date for Adam. Ussher did. Does the text intend it?",
+   "plain": "The real question: can you add up the ages in the genealogies to get the age of humanity? **Some family trees list every generation. Some jump to the one that matters.** You cannot always tell which kind you are holding from a single line. Only the first kind can be added up, and the question is which kind Genesis 5 and 11 are.",
+   "category": "contested",
+   "group": "genealogies",
+   "bibleRef": "Genesis 5:1-32",
+   "bibleRefOverride": "Genesis 5:1-32; 11:10-26; Matthew 1:8",
+   "q": "Archbishop Ussher's famous date for creation came from two moves: a single literal week, and the genealogies treated as an unbroken father-to-son chain with no gaps. The second move can be checked against how the Bible's own genealogies work.",
+   "heb": "The formula is \"A fathered B, and after fathering B lived x years.\" Kenneth Kitchen, quoted by Lennox, shows that such lists can record actual fatherhood or condense a longer series: in Matthew 1:8 Jehoram is called the father of Uzziah, which skips three generations. The pre-flood life spans run to the 900s.",
+   "len": "Lennox follows Kitchen: on the internal evidence of Scripture the age of humanity is indeterminate, though whether it stretches far enough to fit current estimates is another matter. He keeps four ages distinct, the universe, the earth, life and humanity, and says the supernatural character of human creation matters more than its date.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 4, The Antiquity of Humanity",
+   "wal": "In the IVP Bible Background Commentary, Walton and his co-authors say there is no satisfactory explanation of the long pre-flood life spans. They note that the Sumerian King List gives pre-flood reigns as long as 43,200 years, and that converted from the Sumerian base-sixty system to decimal, the numbers fall in the range of the Genesis ages. They also note that Enoch, seventh in the line and taken by God, parallels the seventh pre-flood sage Utuabzu, who ascended to heaven. Separately, Walton argues the presence of Adam in genealogies shows the authors treated him as a historical person, since ancient genealogies list real people.",
+   "walSrc": "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament, on Genesis 5; Walton, The Lost World of Adam and Eve, proposition 11",
+   "others": "The MacArthur Study Bible reads the ages as literal years and attributes them to a pre-flood water canopy that filtered ultraviolet light, and puts creation no earlier than about 10,000 years ago.",
+   "cost": "The gap reading has to explain why Genesis gives the father's age at the son's birth, which looks designed for counting. The literal reading has to explain the skipping that other biblical genealogies plainly do. The Sumerian King List comparison carries its own cost and should not be leaned on: it assumes a base-sixty count was carried into a base-ten text, while the same commentary notes the Hebrews used base ten as far back as writing goes, and the converted numbers only land in the general range of the Genesis ages. They do not match name for name or figure for figure. The MacArthur explanation of the long lives, a pre-flood water canopy filtering ultraviolet light, is likewise a scientific proposal the text does not state.",
+   "not": "**Not a dismissal of the genealogies.** Walton uses them to argue for a historical Adam, and Lennox takes the people in them as real.",
+   "related": [
+    "how-old-is-the-earth",
+    "adam-archetype-or-individual"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 4, with K. A. Kitchen, On the Reliability of the Old Testament (Eerdmans, 2003), as quoted there",
+    "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament (IVP, 2000), on Genesis 5:3-32 and 5:21-24",
+    "Walton, The Lost World of Adam and Eve (2015), proposition 11",
+    "The MacArthur Study Bible (ESV), notes on Genesis 1:1 and 5:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "The flood and its extent",
+   "id": "the-flood-and-its-extent",
+   "summary": "The whole earth, all flesh, every high mountain. Global, or the whole known world?",
+   "plain": "The real question: was Noah's flood worldwide, or did it cover the world Noah's readers knew? **It rained everywhere this weekend.** From the state weather desk, that means the state. Said of the planet, it means the planet. Everywhere and all take their range from the speaker's frame, and the question is whose frame the flood narrative uses.",
+   "category": "contested",
+   "group": "flood",
+   "bibleRef": "Genesis 7:17-24",
+   "bibleRefOverride": "Genesis 7:17-24; 9:19; Psalm 104:9",
+   "q": "The flood narrative uses universal-sounding phrases again and again. Whether they mean the planet or the known world is the question, and it bears on how the Nephilim reappear after the flood in Numbers 13:33.",
+   "heb": "The phrase \"the whole earth,\" kol erets, appears in passages that are plainly local (Heiser lists Genesis 13:9 and 41:57 among others, where the frame is a region). \"All humankind,\" kol adam, also appears where it cannot mean every person on the planet. Genesis 10 lists the nations descended from Noah's sons, and all of them sit in the ancient Near East, the Mediterranean and the Aegean.",
+   "kjv": "And the waters prevailed exceedingly upon the earth; and all the high hills, that were under the whole heaven, were covered.",
+   "kjvRef": "Genesis 7:19",
+   "kjvRole": "\"high hills\" where the ESV has \"high mountains\"",
+   "kjvNote": "The King James reads \"all the high hills\" and the ESV \"all the high mountains.\" The MacArthur Study Bible builds part of its global argument on the mountains. Either way the verse adds \"under the whole heaven,\" which is the phrase the extent argument turns on.",
+   "len": "Lennox does not take up the extent of the flood in Seven Days. His concern is creation and the days. He treats Genesis 1 to 11 as describing actual events, including the flood through which Noah and his family were preserved.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3",
+   "wal": "In the IVP Bible Background Commentary, Walton and his co-authors set out the Atrahasis and Gilgamesh flood accounts and say there is no reason to doubt that they and Genesis refer to the same flood. The similarities come from a shared event, the differences from each culture viewing it through its own theology. The commentary reads \"windows of heaven\" as observer's language, not scientific description.",
+   "walSrc": "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament, on Genesis 7-8 and the sidebar on ancient Near Eastern flood accounts",
+   "others": "Heiser sets out the textual case for a regional flood: kol erets and kol adam in local contexts, the Table of Nations confined to the known world, and Psalm 104:9, which he reads as God promising never to cover the earth with water as at creation. He offers it as one of two ways to explain giants after the flood. The MacArthur Study Bible argues the opposite: \"under the whole heaven\" and waters above the highest mountains prove a global flood, and more than 270 flood stories worldwide trace to it.",
+   "cost": "The regional reading has to account for the repeated universal language and for 7:19-20. The global reading has to explain the local use of the same phrases elsewhere and the Nephilim of Numbers 13:33, who appear after a flood that, on that reading, left no one but Noah's family. Two supports on either side are weaker than they look. Psalm 104:9 does not mention the flood; reading it as ruling one out is Heiser's inference from its creation setting. The MacArthur note's figure of more than 270 flood stories worldwide is given without a source.",
+   "not": "**Not the same as denying the flood happened.** Every source here treats it as a real event.",
+   "related": [
+    "sons-of-god",
+    "michael-heiser"
+   ],
+   "sources": [
+    "Heiser, Reversing Hermon (2017), ch. 1, Nephilim after the Flood, and nn. 38-39",
+    "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament (2000), on Genesis 7:11-8:12 and Ancient Near Eastern Flood Accounts",
+    "The MacArthur Study Bible (ESV), notes on Genesis 7:19-20"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/numbers-13-33/",
+     "n": "Numbers 13:33",
+     "s": "The spies report the Nephilim, the sons of Anak, and call themselves grasshoppers.",
+     "r": "Numbers 13:33"
+    }
+   ]
+  },
+  {
+   "title": "The sons of God and the daughters of men",
+   "id": "sons-of-god",
+   "summary": "Genesis 6:1-4 is the strangest passage in Genesis 1 to 11. The Divine Council Index has the full treatment; this is how it sits in the primeval history.",
+   "plain": "The real question: who were the \"sons of God\" in Genesis 6, and why does the story sit right before the flood? **\"Sons of the prophets\" were not the prophets' children.** Hebrew uses \"son of\" for belonging to a group. So \"sons of God\" could mean divine beings, godly men or kings who claimed divine descent.",
+   "category": "contested",
+   "group": "flood",
+   "bibleRef": "Genesis 6:1-4",
+   "q": "Four verses introduce the sons of God, the daughters of men, a limit of 120 years and the Nephilim, and then the narrative moves straight into the flood. How they connect decides how much of the flood story is about human sin alone.",
+   "heb": "The phrase is bene ha-elohim, the same phrase used of heavenly beings in Job 1:6 and 38:7. The Nephilim are said to be on the earth \"in those days, and also afterward.\"",
+   "len": "Lennox does not address Genesis 6:1-4 in Seven Days.",
+   "lenSrc": "Lennox, Seven Days that Divide the World",
+   "wal": "The IVP Bible Background Commentary notes that sons of God refers to angels elsewhere, but that ancient kings were often thought to be engendered by deity, and reads the offense in light of the Gilgamesh Epic's royal abuse of the wedding night. Walton's fuller case for the royal reading, and his three objections to the divine reading, are summarized in the Divine Council Index.",
+   "walSrc": "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament, on Genesis 6:2-3",
+   "others": "Heiser reads the sons of God as divine beings, with 1 Enoch preserving the original Mesopotamian backstory. The MacArthur Study Bible also reads them as fallen angels, who it says possessed human male bodies. It reports and rejects two other views: that the sons of God were the line of Seth marrying the daughters of Cain, and that they were human kings building harems.",
+   "cost": "See the Divine Council Index entry for what each reading still leaves open.",
+   "not": "**Not a side story.** Its placement before the flood is part of why the passage matters.",
+   "related": [
+    "the-flood-and-its-extent",
+    "michael-heiser"
+   ],
+   "sources": [
+    "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament (2000), on Genesis 6:1-4",
+    "Heiser, Reversing Hermon (2017), chs. 1-3",
+    "The MacArthur Study Bible (ESV), note on Genesis 6:2"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/jude-6-2-peter-2-4/",
+     "n": "Jude 6; 2 Peter 2:4",
+     "s": "Angels who abandoned their proper dwelling, held in chains until judgment.",
+     "r": "Jude 6; 2 Peter 2:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/numbers-13-33/",
+     "n": "Numbers 13:33",
+     "s": "The spies report the Nephilim, the sons of Anak, and call themselves grasshoppers.",
+     "r": "Numbers 13:33"
+    }
+   ]
+  },
+  {
+   "title": "Babel",
+   "id": "babel",
+   "summary": "One language, a tower with its top in the heavens, and the scattering of the nations. The tower is a Mesopotamian building with a Mesopotamian purpose.",
+   "plain": "The real question: what were they building at Babel, and why did it matter to God? **The town put up a tower you could see from three counties.** It might have been about pride, worship, defense, or a way to keep everyone together. The building tells you what they made. The text tells you what God thought of it.",
+   "category": "contested",
+   "group": "flood",
+   "bibleRef": "Genesis 11:1-9",
+   "q": "The story is short and the tower gets more attention than the verses give it. What was it, and what does the scattering do?",
+   "heb": "The account is set in Shinar, the lower Tigris-Euphrates basin, linguistically equivalent to Sumer. The builders use baked brick and bitumen, the technology of southern Mesopotamia, where stone had to be hauled from far away.",
+   "len": "Lennox does not address Babel in Seven Days. In appendix A he cites Kitchen that the theme of the division of languages is very old, recorded in a Sumerian composition about a king of around 2600 BC, as evidence for the early date of the material.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, appendix A",
+   "wal": "The IVP Bible Background Commentary connects the account with Sumerian urbanization and ziggurat building, notes a Sumerian epic, Enmerkar and the Lord of Aratta, that remembers a time when all spoke to Enlil in one tongue, and reads the brick technology as authentically Mesopotamian.",
+   "walSrc": "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament, on Genesis 11:1-9",
+   "others": "Heiser reads Babel as the event behind Deuteronomy 32:8-9, where God divided the nations and allotted them to the sons of God, which begins the cosmic geography of the rest of the Bible. The MacArthur Study Bible reads it as an act of pride led by Nimrod.",
+   "cost": "The background reading explains the building. It does not by itself say why God's response was to divide languages and nations. The council reading needs Deuteronomy 32:8 in its Dead Sea Scrolls form, the most contested text in the Divine Council Index.",
+   "not": "**Not settled by the building.** The ziggurat as a staircase for a god to come down is the background reading the IVP commentary gives for the tower. The MacArthur Study Bible reads the same tower as a monument to pride. The brick and bitumen fit both.",
+   "related": [
+    "the-flood-and-its-extent",
+    "enuma-elish"
+   ],
+   "sources": [
+    "Walton, Matthews and Chavalas, IVP Bible Background Commentary: Old Testament (2000), on Genesis 11:1-9",
+    "Lennox, Seven Days that Divide the World (2021), appendix A",
+    "Heiser, The Unseen Realm (2015), on Deuteronomy 32",
+    "The MacArthur Study Bible (ESV), notes on Genesis 11:1-4"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-11-1-9/",
+     "n": "Genesis 11:1-9",
+     "s": "Babel, the scattering, and the moment the nations are set aside.",
+     "r": "Genesis 11:1-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ]
+  },
+  {
+   "title": "Enuma Elish and Genesis 1",
+   "id": "enuma-elish",
+   "summary": "A Babylonian creation epic on seven tablets, with humans made on the sixth. Borrowing, a shared world, or a reply?",
+   "plain": "The real question: did Genesis copy older Babylonian creation stories? **Two families tell the story of how the town was founded.** Some details match. One borrowed from the other, both remember the same thing, or one is answering the other. Comparing Genesis with its neighbours shows how much they share and where they part.",
+   "category": "contested",
+   "group": "ane",
+   "bibleRef": "Genesis 1:1-2:3",
+   "q": "Since the nineteenth century the parallels between Genesis 1 and the Babylonian epic Enuma Elish have been used to argue that Genesis is derived from it. The parallels are real. What they prove is the question.",
+   "heb": "The Hebrew tehom, the deep, is related to Tiamat, the goddess Marduk splits to make heaven and earth. Kitchen, quoted by Lennox, points out that the word also exists in Ugaritic and means simply deep or abyss. Genesis 1 does not use the ordinary names for the sun and moon.",
+   "len": "Lennox grants the surface similarities: seven tablets and seven days, a similar order, humans on the sixth tablet and sixth day. Then he lists the differences: no theogony, no warring gods, nothing made out of a god's body, no deified sun or stars, and humans as the image of God rather than slaves to ease the gods' labour. He follows Kitchen that in the ancient world simple accounts grow into elaborate legends, not the reverse, and that there is no proven link between the two texts.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, appendix A, with Kitchen and Millard as quoted there",
+   "wal": "Walton uses the ancient texts to recover what an ancient reader assumed, not to derive Genesis from them. In Genesis 1 as Ancient Cosmology he calls many attempts to trace literary trails from ancient Near Eastern texts to Genesis too facile, more like a Rorschach test than clear literary links, and turns instead to the shared cognitive environment. In Enuma Elish, Marduk's creating is followed by building a temple where the gods find rest, which he reads as the same cluster of creation, temple, rest and rule that Genesis 1 ends on. He also points out where Genesis differs: in the Bible, God has no needs and orders the cosmos around people, not around the gods.",
+   "walSrc": "Walton, Genesis 1 as Ancient Cosmology, introduction; The Lost World of Genesis One, propositions 2, 4 and 7",
+   "others": "The de-deification theory, which Lennox reports and rejects with Kitchen and Millard, holds that Israel took a mythological text and stripped the gods out of it during the exile.",
+   "cost": "Lennox's emphasis on difference has to make room for the shared features Walton finds meaningful, such as the temple and rest. Walton's use of the parallels has to keep them as background without letting them set the meaning.",
+   "not": "**Not a copy.** Neither pole thinks Genesis was copied from Enuma Elish, and Kitchen's verdict, as Lennox quotes it, is that the attempts to prove a direct relationship have had to be abandoned.",
+   "related": [
+    "genesis-1-as-temple",
+    "formless-and-void",
+    "light-before-the-sun"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), appendix A, quoting Enuma Elish and K. A. Kitchen and A. R. Millard",
+    "Walton, The Lost World of Genesis One (2009), propositions 2, 4, 7",
+    "Walton, Genesis 1 as Ancient Cosmology (Eisenbrauns, 2011), introduction",
+    "L. W. King, Enuma Elish: The Seven Tablets of Creation (1902), for the primary text"
+   ],
+   "post": null
+  },
+  {
+   "title": "Genesis 1 never says sun",
+   "id": "genesis-never-says-sun",
+   "summary": "Day four has the greater light and the lesser light. The ordinary Hebrew words for sun and moon are not used. On that fact, every reading agrees.",
+   "plain": "The real question: why does Genesis 1 call the sun and moon \"the greater light\" and \"the lesser light\"? **Call the boss \"the guy with the bigger desk.\"** Everyone still knows who you mean, but the title is gone. That the names are missing is a fact anyone can check. What it was meant to say is where readers differ.",
+   "category": "settled",
+   "group": "ane",
+   "bibleRef": "Genesis 1:14-18",
+   "q": "Readers notice the roundabout phrasing in 1:16 and wonder whether it means anything. The fact itself is not in dispute. The text uses lights, the greater light and the lesser light, and never the ordinary words.",
+   "heb": "Lennox notes, with Kitchen and others, that the usual names of the sun and moon are not used in Genesis 1. The lights are given jobs: to separate day from night, to serve as signs for seasons, days and years, and to give light on the earth.",
+   "len": "Lennox reads the omission as part of Genesis 1's protest against idolatry. In Egypt the sun god Ra was chief god, his name embedded in the title Pharaoh. Paul Marston, quoted by Lennox, imagines the shock of finding that Ra was a mere lamp created on day four. Leon Kass goes further: the sun is the common feature of every incongruity in the chapter, and its demotion is deliberate.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3 and appendix A",
+   "wal": "Walton reads day four as installing functionaries. The text offers no indication of the material nature of the celestial bodies. All it says of them is where they are placed and what they are for: signs, seasons, days and years.",
+   "walSrc": "Walton, The Lost World of Genesis One, proposition 6",
+   "cost": "The fact is settled. What it was for is a separate question: a polemic against sun worship (Lennox, Kass, Marston), or simply the functional focus of the whole chapter (Walton). The two answers fit together.",
+   "not": "**Not a claim that the sun is unimportant.** The lights rule the day and the night. They are demoted from gods, not from their work.",
+   "related": [
+    "light-before-the-sun",
+    "enuma-elish",
+    "functional-or-material"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), ch. 3, quoting Paul Marston and Leon Kass, and appendix A",
+    "Walton, The Lost World of Genesis One (2009), proposition 6"
+   ],
+   "post": null
+  },
+  {
+   "title": "Does Genesis rule on evolution?",
+   "id": "does-genesis-rule-on-evolution",
+   "summary": "Lennox reads two \"and God said\" moments as lines no unguided process crosses. Walton reads the text as making no material claim at all.",
+   "plain": "The real question: does Genesis 1 say anything about how living things came to be, or only that God did it? **The recipe says: add eggs.** It does not tell you which hen laid them. Lennox thinks the recipe still marks the steps that cannot happen on their own. Walton thinks it is not a recipe.",
+   "category": "contested",
+   "group": "cosmology",
+   "bibleRef": "Genesis 1:11-12",
+   "bibleRefOverride": "Genesis 1:11-12, 24-27",
+   "q": "The question is not whether God created. Both poles say he did. It is whether the text draws lines that rule out particular mechanisms.",
+   "heb": "Day three has two \"And God said\" statements: one for dry land and seas, one for vegetation. Day six has two: one for land animals, one for humans. The earth \"brings forth\" vegetation and living creatures at God's command.",
+   "len": "Lennox sees the double \"And God said\" on days three and six as deliberate: you do not get from non-life to life, or from animals to humans, without a word from God. Genesis affirms that life has a material, chemical substrate (let the earth bring forth) but denies that it is nothing but chemistry. He thinks human evolution from earlier hominids does not fit Genesis 2, especially the making of the woman. His appendix D engages theistic evolution at length.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, ch. 3, ch. 4 and appendix D",
+   "wal": "Walton argues that since Genesis makes no claim about material mechanisms, it does not offer a competing claim to the scientific account of human origins. That does not mean the science is right, only that the Bible's claim is that whatever happened, God did it. He holds that humans could be viewed as distinct creatures and a special creation of God even if there was material continuity.",
+   "walSrc": "Walton, The Lost World of Adam and Eve, propositions 8 and 21",
+   "others": "Evolutionary creation, represented in Lennox's discussion by Denis Alexander, accepts common descent and places Adam and Eve as historical figures chosen within an existing population.",
+   "cost": "Lennox has to show that the double fiat marks a discontinuity in mechanism, not just in importance. Walton has to persuade readers that a God-is-responsible claim with no mechanism is what the original audience heard.",
+   "not": "**Not a debate between faith and science.** Lennox is a scientist arguing from the text; Walton is a text scholar arguing the text makes no scientific claim.",
+   "related": [
+    "functional-or-material",
+    "adam-archetype-or-individual",
+    "image-of-god"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World (2021), chs. 3-4 and appendix D",
+    "Walton, The Lost World of Adam and Eve (2015), propositions 8 and 21"
+   ],
+   "post": null
+  },
+  {
+   "title": "John Walton",
+   "id": "john-walton",
+   "summary": "Wheaton Old Testament scholar. Genesis 1 is ancient cosmology about functional origins, the inauguration of the cosmos as God's temple.",
+   "plain": "Walton's big idea in one line: Genesis 1 is the story of the world being set up to work, with God moving in, not the story of the world's raw materials being made. **The house was built years ago. Tonight the family moves in.** That is what he thinks the seven days describe.",
+   "category": "voice",
+   "group": "voices",
+   "bibleRef": "Genesis 1:1-2:3",
+   "q": "What Walton holds, in his own terms, stated at full strength.",
+   "wal": "Genesis 1 is ancient cosmology and makes no claims about modern science. The ancient world defined existence by function. Bara concerns functions. The starting state is nonfunctional, not shapeless. Days one to three establish functions, days four to six install functionaries. Divine rest is in a temple and the cosmos is a temple. The seven days are literal days of the inauguration of that temple and do not concern material origins. So there is no biblical position on the age of the earth. Adam and Eve are real people in a real past, and the forming accounts are archetypal statements about every human.",
+   "walSrc": "Walton, The Lost World of Genesis One, propositions 1-18; The Lost World of Adam and Eve, propositions 1-21",
+   "cost": "Critics, including those Lennox cites, ask whether one ancient ontology can be applied across the whole Near East, whether a functional emphasis excludes material interest, and whether the temple reading puts more into Genesis 1 than an ancient reader would have found.",
+   "not": "**Not a denial that God made matter.** Walton says so repeatedly.",
+   "related": [
+    "functional-or-material",
+    "genesis-1-as-temple",
+    "john-lennox"
+   ],
+   "sources": [
+    "Walton, The Lost World of Genesis One (IVP Academic, 2009)",
+    "Walton, The Lost World of Adam and Eve (IVP Academic, 2015)",
+    "Walton, Genesis 1 as Ancient Cosmology (Eisenbrauns, 2011)"
+   ],
+   "post": null
+  },
+  {
+   "title": "John Lennox",
+   "id": "john-lennox",
+   "summary": "Oxford mathematician and philosopher of science. The days are open to several readings; the text leaves the age of the universe open; God's word marks the decisive steps.",
+   "plain": "Lennox's big idea in one line: the Bible could be read as saying the earth is young, but it does not have to be, the same way it once seemed to say the earth does not move. **The Bible says the earth is fixed on pillars.** Nobody now reads that as astronomy. He thinks the age of the earth is the same kind of question.",
+   "category": "voice",
+   "group": "voices",
+   "bibleRef": "Genesis 1:1-2:3",
+   "q": "What Lennox holds, in his own terms, stated at full strength.",
+   "len": "Genesis 1 to 11 describes real events. The Galileo controversy shows Christians can change their reading of a text without compromising its authority when the evidence is strong. Genesis 1:1 can precede day one, leaving the age of the universe open. Yom has several literal meanings in Genesis 1-2. He does not insist on one reading of the days, favouring a combination of sequence and framework, with sympathy for Gooding's creation days separated by long periods. God's speaking on each day is more important than each day's length. The double \"And God said\" on days three and six marks the origin of life and of humans. Romans 5:12 concerns human death. Humans are a special creation.",
+   "lenSrc": "Lennox, Seven Days that Divide the World, chs. 1-5 and appendices",
+   "cost": "Lennox admits he does not settle day four and has not solved animal suffering. His \"why not both\" toward Walton keeps the material reading without fully answering Walton's case that the material reading must be demonstrated.",
+   "not": "**Not a concordist in the strong sense.** He does not claim Genesis teaches modern science, only that it is consistent with it.",
+   "related": [
+    "functional-or-material",
+    "what-yom-does",
+    "john-walton"
+   ],
+   "sources": [
+    "Lennox, Seven Days that Divide the World: The Beginning According to Genesis and Science, 10th anniversary ed. (Zondervan Reflective, 2021)"
+   ],
+   "post": null
+  },
+  {
+   "title": "Young-earth creationism at its strongest",
+   "id": "young-earth-at-its-strongest",
+   "summary": "Six consecutive 24-hour days, a recent creation, a global flood, and no death before the fall. Stated by its own advocates.",
+   "plain": "The young-earth view in one line: read Genesis the way it sounds, as a week, and let science answer to the text rather than the other way round. **If someone tells you he built a deck in six days, you assume he means six days.** That is the instinct this position defends.",
+   "category": "voice",
+   "group": "voices",
+   "bibleRef": "Genesis 1:1-2:3",
+   "bibleRefOverride": "Genesis 1:1-2:3; Exodus 20:8-11",
+   "q": "The position stated by those who hold it, not by its critics.",
+   "others": "As set out in the MacArthur Study Bible: creation was recent, out of nothing, and in six consecutive 24-hour days marked by evening and morning. Day with a number in Hebrew always refers to a 24-hour period, and Exodus 20:8-11 confirms the week. Scripture does not support a creation date earlier than about 10,000 years ago. The pre-flood ages are literal years. The flood was global, covering the highest mountains. Satan, a fallen archangel, possessed the serpent.",
+   "cost": "Two young-earth authors, Paul Nelson and John Mark Reynolds, quoted by Lennox, say they defend a very natural biblical account at the cost of a very plausible scientific picture, and that over the long term this is not a tenable position. Walton grants this position its reading of yom and faults its reading of bara and asah. Lennox grants that Genesis can be read this way and argues it does not have to be. Both point to the need for alternative science, light created in transit, appearance of age, flood geology, to hold the position together.",
+   "not": "**Not anti-intellectual by definition.** Lennox praises the honesty of young-earth writers who concede the scientific difficulty openly.",
+   "related": [
+    "what-yom-does",
+    "how-old-is-the-earth",
+    "death-before-the-fall",
+    "the-flood-and-its-extent"
+   ],
+   "sources": [
+    "The MacArthur Study Bible (ESV), ed. John MacArthur (Crossway, 2010), notes on Genesis 1:1, 1:5, 3:1, 5:5, 7:19-20",
+    "Lennox, Seven Days that Divide the World (2021), ch. 3 and n. 77, quoting Paul Nelson and John Mark Reynolds, \"Young Earth Creationism,\" in Three Views on Creation and Evolution, ed. J. P. Moreland and John Mark Reynolds (Zondervan, 1999), 73",
+    "Walton, The Lost World of Genesis One (2009), proposition 12"
+   ],
+   "post": null
+  },
+  {
+   "title": "Michael Heiser",
+   "id": "michael-heiser",
+   "summary": "Reads Genesis 1 to 11 through the divine council: the plural of 1:26, the serpent as a divine rebel, the sons of God, Babel and the nations.",
+   "plain": "Heiser's big idea in one line: Genesis 1 to 11 has a heavenly household in it as well as a human one, and three rebellions, not one, set up the rest of the Bible. **A family business has two branches.** Trouble in one spills into the other. Heiser reads the early chapters of Genesis that way.",
+   "category": "voice",
+   "group": "voices",
+   "bibleRef": "Genesis 1:26-27",
+   "q": "Heiser is not one of this tool's poles, because his subject is the unseen realm, not the age of the earth or the mechanics of creation. His reading still touches five entries here.",
+   "others": "Genesis 1:26 is God addressing his council, with 1:27 recording that God alone created. The image is a status: humans are God's imagers on earth. The serpent is a divine being. Genesis 6:1-4 describes divine beings and the origin of the Nephilim, a reading 1 Enoch preserves. The flood may have been regional, which would explain giants after it. Babel is the moment God allotted the nations to the sons of God, the background to Deuteronomy 32:8-9.",
+   "cost": "The full costs of each of these readings are set out in the Divine Council Index entries.",
+   "not": "**Not a third position on the days.** Heiser's reading is compatible with more than one view of the days and does not depend on any of them.",
+   "related": [
+    "let-us-make",
+    "the-serpent",
+    "sons-of-god",
+    "babel",
+    "the-flood-and-its-extent"
+   ],
+   "sources": [
+    "Heiser, The Unseen Realm (Lexham, 2015)",
+    "Heiser, Reversing Hermon (2017)"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-11-1-9/",
+     "n": "Genesis 11:1-9",
+     "s": "Babel, the scattering, and the moment the nations are set aside.",
+     "r": "Genesis 11:1-9"
+    }
+   ]
+  }
+ ]
+}
