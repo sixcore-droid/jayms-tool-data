@@ -210,13 +210,13 @@
   {
    "type": "note",
    "class": "method",
-   "text": "The method. Most writing on Genesis 1 to 11 is advocacy: pick a camp, defend it, treat everyone else as the problem. This is a map instead. Each entry states the question, what the Hebrew does and does not support, and the two poles held by people who take the text seriously. John Lennox asks what the days correspond to in the history of the universe. John Walton argues the account is about function and not material origins at all. They are not arguing about whether Genesis is true. They are arguing about what kind of question it answers. Neither pole is graded here. Where one of them, or someone else, leaves something unexplained, the entry says so."
+   "text": "The method. Most writing on the first eleven chapters of Genesis is advocacy: pick a camp, defend it, treat everyone else as the problem. This is a map instead. Each entry states the question, what the Hebrew does and does not support, and the two poles held by people who take the text seriously. John Lennox asks what the days correspond to in the history of the universe. John Walton argues the account is about function and not material origins at all. They are not arguing about whether Genesis is true. They are arguing about what kind of question it answers. Neither pole is graded here. Where one of them, or someone else, leaves something unexplained, the entry says so."
   },
   {
    "type": "suggest",
    "kind": "genesis",
    "label": "Genesis, the Beginning (alpha)",
-   "toggleText": "Is there a question about Genesis 1 to 11 we should map? Suggest it ›",
+   "toggleText": "Is there a Genesis question we should map? Suggest it ›",
    "valuePlaceholder": "What question should we cover?"
   },
   {
