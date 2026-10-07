@@ -1,9 +1,10 @@
 /**
  * JAYMS Alpha Tool Runner
  *
- * One snippet, every alpha tool. A tool is a row in $TOOLS below plus a JSON
- * document in sixcore-droid/jayms-tool-data. No per-tool PHP, no per-tool JS,
- * no per-tool CSS. Adding a tool is one row and one file.
+ * One snippet, every alpha tool. A tool is a page with a `jayms_tool_data`
+ * custom field plus a JSON document in sixcore-droid/jayms-tool-data. No
+ * per-tool PHP, no per-tool JS, no per-tool CSS, and nothing to change here.
+ * Adding a tool is one page and one file.
  *
  * Deliberately self-contained: it does not read, extend or depend on the
  * live Tool Shell (118) or Tool Engine (119), so nothing here can affect
@@ -12,13 +13,30 @@
  */
 
 /**
- * The tool map: page id => data slug. One row here is the whole of adding a
- * tool. It is a function rather than a literal because the entry-URL layer
- * needs the same map, and a second copy of it would be a second thing to
- * forget.
+ * The tool map: page id => data slug.
+ *
+ * A tool is a page plus a JSON file. Nothing else. The page carries the
+ * name of its data file in its own `jayms_tool_data` custom field, exactly
+ * as it already carries `jayms_tool_category` for the menu and the hub.
+ * Set that field and the tool runs. Nothing in this snippet changes, ever,
+ * to add, move or retire a tool. That was the point of building it.
+ *
+ * The seven rows below are the floor, not the register. They are the tools
+ * that shipped before the field existed, kept hard-coded so that a lost or
+ * mistyped custom field can never take a live tool off the air. A page's
+ * own field wins over its row here, so a row can be corrected from the page
+ * without touching this snippet either.
+ *
+ * It is a function rather than a literal because the entry-URL layer needs
+ * the same map, and a second copy of it would be a second thing to forget.
+ *
+ * The result is cached for a day and thrown away whenever any page is
+ * saved or deleted, so the query below costs one hit per cache cycle, not
+ * one per page view.
  */
 if ( ! function_exists( 'jayms_alpha_tool_map' ) ) {
-	function jayms_alpha_tool_map() {
+
+	function jayms_alpha_tool_map_floor() {
 		return array(
 		98131 => 'divine-council-alpha',
 		98132 => 'gods-of-the-bible-alpha',
@@ -29,7 +47,80 @@ if ( ! function_exists( 'jayms_alpha_tool_map' ) ) {
 		96255 => 'word-study-alpha',
 	);
 	}
+
+	function jayms_alpha_tool_map() {
+		$cached = get_transient( 'jayms_alpha_tool_map' );
+		if ( is_array( $cached ) ) { return $cached; }
+
+		$map = jayms_alpha_tool_map_floor();
+
+		$pages = get_posts( array(
+			'post_type'        => 'page',
+			'post_status'      => 'publish',
+			'posts_per_page'   => -1,
+			'fields'           => 'ids',
+			'no_found_rows'    => true,
+			'suppress_filters' => true,
+			'meta_query'       => array( array(
+				'key'     => 'jayms_tool_data',
+				'value'   => '',
+				'compare' => '!=',
+			) ),
+		) );
+
+		foreach ( $pages as $pid ) {
+			// A data slug is a file name in sixcore-droid/jayms-tool-data, so
+			// it is letters, digits and hyphens. Anything else is a typo or an
+			// attempt at a path, and is dropped rather than fetched.
+			$slug = strtolower( trim( (string) get_post_meta( $pid, 'jayms_tool_data', true ) ) );
+			$slug = preg_replace( '/\.json$/', '', $slug );
+			if ( '' === $slug || ! preg_match( '/^[a-z0-9][a-z0-9-]*$/', $slug ) ) { continue; }
+			$map[ (int) $pid ] = $slug;
+		}
+
+		set_transient( 'jayms_alpha_tool_map', $map, DAY_IN_SECONDS );
+		return $map;
+	}
 }
+
+/**
+ * The field itself. Registered here rather than in the launcher snippet so
+ * the runner stays self-contained: this snippet alone is enough to make a
+ * page a tool. show_in_rest puts it on the REST API and in the editor's
+ * custom fields panel, which is how it gets set.
+ */
+add_action( 'init', function () {
+	register_post_meta( 'page', 'jayms_tool_data', array(
+		'type'          => 'string',
+		'single'        => true,
+		'default'       => '',
+		'show_in_rest'  => true,
+		'description'   => 'Data file in sixcore-droid/jayms-tool-data, without .json. Set this and the page becomes a tool.',
+		'auth_callback' => function () { return current_user_can( 'edit_pages' ); },
+	) );
+} );
+
+/**
+ * Any page save, trash or delete can add, change or retire a tool, so the
+ * cached map goes, the entry-URL path cache with it, and the rewrite rules
+ * are rebuilt so a new tool's entry URLs work on the next request.
+ *
+ * Gated on the page post type: without that, every media upload and every
+ * revision cleanup would flush the rewrite rules for nothing.
+ */
+function jayms_alpha_forget_tool_map( $post_id ) {
+	if ( 'page' !== get_post_type( $post_id ) ) { return; }
+	if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) { return; }
+	delete_transient( 'jayms_alpha_tool_map' );
+	if ( defined( 'JAYMS_SSR_VER' ) ) {
+		delete_transient( 'jayms_ssr_paths_' . JAYMS_SSR_VER );
+	}
+	delete_option( 'jayms_ssr_rules' );   // the entry-URL layer reflushes on its next init
+}
+foreach ( array( 'save_post', 'deleted_post', 'trashed_post', 'untrashed_post' ) as $jayms_hook ) {
+	add_action( $jayms_hook, 'jayms_alpha_forget_tool_map' );
+}
+unset( $jayms_hook );
 
 
 add_action( 'wp_footer', function () {
