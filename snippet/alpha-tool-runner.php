@@ -27,8 +27,6 @@ if ( ! function_exists( 'jayms_alpha_tool_map' ) ) {
 		98950 => 'fringe-files-alpha',
 		98951 => 'translation-differences-alpha',
 		96255 => 'word-study-alpha',
-		99108 => 'genesis-beginning-alpha',
-		99109 => 'lewis-cosmology-alpha',
 	);
 	}
 }
