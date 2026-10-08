@@ -106,7 +106,7 @@
  "footer": [
   {
    "type": "suggest",
-   "kind": "myth-checker-alpha",
+   "kind": "myth-checker",
    "label": "Is It Actually in the Bible? (beta)",
    "toggleText": "Heard one we have not covered? Suggest it ›",
    "valuePlaceholder": "What phrase should we check?"

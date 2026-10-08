@@ -25,7 +25,7 @@ jayms.progress.<tool slug>      ->   { "<entry id>": 1, ... }
 ```
 
 - `<tool slug>` is the same slug the PHP uses to pick the dataset
-  (`divine-council-alpha`), so two tools never collide.
+  (`divine-council`), so two tools never collide.
 - `<entry id>` is the stable slug from the JSON (`psalm-82`), not an array
   position. This is the part that makes a later move cheap.
 - The value is `1` and nothing else. Done or absent. No notes, no dates, no

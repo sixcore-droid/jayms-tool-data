@@ -271,7 +271,7 @@
  "footer": [
   {
    "type": "suggest",
-   "kind": "translation-differences-alpha",
+   "kind": "translation-differences",
    "label": "Why Do Bible Translations Differ? (beta)",
    "toggleText": "Hit a verse where your Bibles disagree? Suggest it ›",
    "valuePlaceholder": "Which verse should we cover?"

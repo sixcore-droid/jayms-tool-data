@@ -8,5 +8,5 @@ hand-edit the JSON here, it will be overwritten on the next build.
 
 | File | Tool | Entries |
 |---|---|---|
-| `divine-council-alpha.json` | Divine Council Index (alpha) | 33 |
-| `gods-of-the-bible-alpha.json` | The Gods of the Bible (alpha) | 107 |
+| `divine-council.json` | Divine Council Index (alpha) | 33 |
+| `gods-of-the-bible.json` | The Gods of the Bible (alpha) | 107 |

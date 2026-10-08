@@ -118883,7 +118883,7 @@
  "footer": [
   {
    "type": "suggest",
-   "kind": "fact-book-alpha",
+   "kind": "fact-book",
    "label": "Fact Book (beta)",
    "toggleText": "Can't find the name you're looking for? Suggest it ›",
    "valuePlaceholder": "What name should we add?"

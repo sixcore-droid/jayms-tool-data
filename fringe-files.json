@@ -106,7 +106,7 @@
  "footer": [
   {
    "type": "suggest",
-   "kind": "fringe-files-alpha",
+   "kind": "fringe-files",
    "label": "The Fringe Files (beta)",
    "toggleText": "Seen a claim we have not covered? Suggest it ›",
    "valuePlaceholder": "What claim should we check?"

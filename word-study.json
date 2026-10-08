@@ -217,7 +217,7 @@
  "footer": [
   {
    "type": "suggest",
-   "kind": "word-study-alpha",
+   "kind": "word-study",
    "label": "Bible Word Study (beta)",
    "toggleText": "A word you cannot find? Tell me ›",
    "valuePlaceholder": "Which word should we cover?"
