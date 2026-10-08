@@ -1,0 +1,876 @@
+{
+ "schema": 1,
+ "tool": {
+  "slug": "ane-desk",
+  "name": "The ANE Desk",
+  "status": "alpha",
+  "heroTitle": "The ANE Desk",
+  "heroSubtitle": "Old Testament passages beside the ancient Near Eastern texts they are compared with, and what Israel does with what it shares.",
+  "searchPlaceholder": "Enuma Elish, Atrahasis, Gilgamesh, Baal, assembly, tehom",
+  "backLabel": "All pairings",
+  "perPage": 200
+ },
+ "card": {
+  "labelField": "title",
+  "mainField": "summary"
+ },
+ "detail": {
+  "titleField": "title",
+  "headlineField": "summary"
+ },
+ "search": {
+  "fields": [
+   "title",
+   "summary",
+   "plain",
+   "text",
+   "textRef",
+   "shared",
+   "turn",
+   "cost",
+   "not",
+   "sources"
+  ]
+ },
+ "filters": [
+  {
+   "role": "category",
+   "field": "category",
+   "allLabel": "Show all",
+   "options": [
+    {
+     "k": "close",
+     "n": "Close parallel",
+     "c": "aramaic",
+     "short": "CLOSE"
+    },
+    {
+     "k": "motif",
+     "n": "Shared motif",
+     "c": "gold",
+     "short": "MOTIF"
+    },
+    {
+     "k": "contested",
+     "n": "Claimed parallel",
+     "c": "blue",
+     "short": "CLAIM"
+    }
+   ]
+  },
+  {
+   "field": "group",
+   "allLabel": "All threads",
+   "options": [
+    {
+     "k": "creation",
+     "n": "Creation"
+    },
+    {
+     "k": "flood",
+     "n": "The flood"
+    },
+    {
+     "k": "council",
+     "n": "The divine council"
+    }
+   ]
+  }
+ ],
+ "blocks": [
+  {
+   "type": "scripture",
+   "refField": "bibleRef",
+   "overrideField": "bibleRefOverride",
+   "versions": [
+    "net",
+    "kjv",
+    "web",
+    "nlt",
+    "esv"
+   ],
+   "default": "net",
+   "interlinearLink": true,
+   "separator": " · "
+  },
+  {
+   "type": "box",
+   "variant": "plain",
+   "title": "First, in plain English",
+   "field": "plain"
+  },
+  {
+   "type": "box",
+   "variant": "witness",
+   "title": "The ancient text",
+   "field": "text",
+   "noteField": "textRef"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "What they share",
+   "field": "shared"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "Where Israel turns it",
+   "field": "turn"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "How sure the link is",
+   "field": "cost"
+  },
+  {
+   "type": "box",
+   "variant": "not",
+   "title": "What this is not",
+   "field": "not"
+  },
+  {
+   "type": "out",
+   "title": "Read with the Divine Council Index",
+   "field": "xref"
+  },
+  {
+   "type": "out",
+   "title": "The beings in the Gods of the Bible",
+   "field": "ddd"
+  },
+  {
+   "type": "linkrow",
+   "title": "Reads with",
+   "field": "related"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Sources",
+   "field": "sources",
+   "list": "ordered"
+  }
+ ],
+ "footer": [
+  {
+   "type": "note",
+   "class": "method",
+   "text": "The method. Israel lived among peoples who told their own stories of creation, of a great flood, and of gods meeting in council. Some of those texts survive on clay, and the likeness to Genesis, the Psalms and the prophets is real. Likeness is not the same as copying. Two texts can share a picture because they come from the same world, because one knew a tradition behind the other, or because one is answering the other, and scholars who take the evidence seriously land in different places. Each entry here puts one passage beside one ancient text, quotes the ancient text as its translator gives it, says what the two share, and then says what Israel changes. The change is the point of the entry. Where a link is popular but thin, the entry says so."
+  },
+  {
+   "type": "suggest",
+   "kind": "ane-desk",
+   "label": "The ANE Desk (alpha)",
+   "toggleText": "Is there a Bible passage and an ancient text we should put side by side? Suggest it ›",
+   "valuePlaceholder": "Which passage, and which ancient text?"
+  },
+  {
+   "type": "note",
+   "text": "How to read the grades. Close parallel means the two texts share a sequence of events or actual wording, and the sources cited agree the likeness is there, whatever they make of it. Shared motif means a common idea told differently, where the difference matters more than the overlap. Claimed parallel means a link that is often asserted but that the texts themselves do not clearly bear. A grade says how strong the likeness is. It does not say who borrowed from whom, and it is given only where a named source supports it."
+  }
+ ],
+ "entries": [
+  {
+   "title": "The deep and Tiamat",
+   "id": "tehom-and-tiamat",
+   "summary": "Genesis 1:2 has darkness over the deep, tehom. Enuma Elish opens with Tiamat, the mother of the gods, mingled with Apsu in the waters. The words look related. Whether that means anything is the argument.",
+   "plain": "The real question: when two stories use nearly the same word, is the second one thinking of the first? **My neighbor named his boat Neptune.** He might have the sea god in mind, or he might just like a name that sounds like the sea. The name alone will not tell you. Does tehom in Genesis 1:2 point at Tiamat, or does it just mean deep water?",
+   "category": "contested",
+   "group": "creation",
+   "bibleRef": "Genesis 1:2",
+   "text": "And the primeval Apsu, who begat them, / And chaos, Tiamut, the mother of them both / Their waters were mingled together, / And no field was formed, no marsh was to be seen;",
+   "textRef": "Enuma Elish, Tablet I, opening lines. This edition gives tablet divisions but no line numbers. Translated by L. W. King, The Seven Tablets of Creation (London, 1902). King's text spells the name Tiamut here and Tiamat elsewhere.",
+   "shared": "Both texts begin with water before anything is ordered. In Enuma Elish the waters are two gods, Apsu and Tiamat, mingled together before there is any field or marsh. In Genesis 1:2 there is darkness over the face of the deep. King, in his 1916 Schweich Lectures, wrote that the outline of events in Genesis 1 and the Seven Tablets is the same, and that the Hebrew tehom is the equivalent of Tiamat, denoted by almost the same Semitic word. He added, following Skinner, that tehom is used without the article and so behaves like a proper name. The Jewish Study Bible reads verse 2 as chaos pictured as a dark mass of water, which it calls an active, malevolent force.",
+   "turn": "Tiamat is a mother and an enemy. She spawns monster serpents, raises Kingu over the gods, and has to be killed before heaven and earth can be made. The deep in Genesis does nothing at all. Nobody fights it and nothing is made out of its body. The NIV Cultural Backgrounds Study Bible grants that tehom is the cognate of the Babylonian word and still says it is not personified and is not a demythologized borrowing from the Babylonian texts; it is simply the state of things before creation. The Genesis tool, Genesis, the Beginning, treats the wider Enuma Elish comparison and the words of verse 2 in its entries on Enuma Elish and on formless and void.",
+   "cost": "This is the most repeated link between Genesis and Enuma Elish, and the one with the most pushback. King built on it: for him tehom and the firmament were enough to show the Babylonian source behind the Hebrew account. Walton, in Genesis 1 as Ancient Cosmology, picks the tehom and Tiamat connection as his example of overinterpretation, tying together elements that are only remotely related. The NIV Cultural Backgrounds note sits between them: the words are related, the idea is not borrowed. The Jewish Study Bible's malevolent chaos leans toward King's side without naming Tiamat. What can be shown is shared vocabulary. A borrowing from Enuma Elish itself is the claim the texts do not clearly bear. King's point about the missing article is a grammatical claim that was not checked here against a Hebrew grammar.",
+   "not": "**Not a claim that Genesis names a goddess.** Even King, who pressed the link hardest, set it inside what he called the \"severe and dignified monotheism\" of the Hebrew writer.",
+   "related": [
+    "waters-divided",
+    "when-heaven-was-not-named"
+   ],
+   "sources": [
+    "L. W. King, trans., Enuma Elish: The Seven Tablets of Creation (London, 1902), Tablet I, Sacred-Texts edition",
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916 (Project Gutenberg eBook 2030), Lecture III, with n. 2 citing Skinner, Genesis, 17",
+    "John H. Walton, Genesis 1 as Ancient Cosmology (Eisenbrauns, 2011), ch. 1, Cosmology and Comparative Studies: Methodology",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), note on Genesis 1:2",
+    "The Jewish Study Bible, 2nd ed., ed. Adele Berlin and Marc Zvi Brettler (Oxford University Press), note on Genesis 1:2"
+   ],
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yam/",
+     "n": "Yam",
+     "s": "The sea as an opponent God fights, not just water.",
+     "r": "Psalm 74:13-14"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/tannin/",
+     "n": "Tannin",
+     "s": "Sea monsters, which Genesis pointedly lists among the things God made and called good.",
+     "r": "Genesis 1:21"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/leviathan/",
+     "n": "Leviathan",
+     "s": "A sea monster God crushes in one poem and plays with in another.",
+     "r": "Job 3:8"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/rahab/",
+     "n": "Rahab",
+     "s": "A chaos monster God cuts to pieces, and also a nickname for Egypt.",
+     "r": "Job 9:13"
+    }
+   ]
+  },
+  {
+   "title": "When heaven was not named",
+   "id": "when-heaven-was-not-named",
+   "summary": "Enuma Elish opens with a world where nothing has a name yet. Genesis 2:4b opens with a world where nothing grows yet. Starting with what was not there was an ancient way to begin.",
+   "plain": "The real question: what does a story mean when it starts by listing what did not exist yet? **Before the town had a name, there was no road and no school.** That might be a description of empty land, or a way of saying the town did not really exist until someone named it and gave it a purpose. Which kind of nothing is Genesis describing at its start?",
+   "category": "motif",
+   "group": "creation",
+   "bibleRef": "Genesis 2:4-6",
+   "bibleRefOverride": "Genesis 1:1-2; 2:4-6",
+   "text": "When in the height heaven was not named, / And the earth beneath did not yet bear a name, / ... / When of the gods none had been called into being, / And none bore a name, and no destinies were ordained; / Then were created the gods in the midst of heaven,",
+   "textRef": "Enuma Elish, Tablet I, opening lines; L. W. King, The Seven Tablets of Creation (London, 1902). Walton quotes the same lines from a modern translation as Tablet I, lines 1-2 and 7-9.",
+   "shared": "Both open by saying what was not yet there. Enuma Elish: no named heaven, no named earth, no gods called into being, no destinies. Genesis 2:4b-6: no shrub of the field yet, no plant, no rain, and no man to work the ground. Walton argues that in the ancient world a thing existed when it had a name and a function, and he notes that Enuma Elish begins with heaven and earth not yet named and the gods not yet given names. Dalley notes that the opening of Atrahasis, When the gods instead of man, has a format that can be compared with the Epic of Creation. The Jewish Study Bible notes that the medieval commentator Rashi read Genesis 1:1 as a when-clause, which is how some ancient Near Eastern creation stories begin, including the one that starts at Genesis 2:4b.",
+   "turn": "In Enuma Elish the first things to come out of the nothing are gods: Lahmu and Lahamu are called into being, then Ansar and Kisar, then Anu. The world before creation is a world before the gods. Genesis has no before-God state. God is in the first clause of both accounts, and in Genesis 1 he does the naming himself: he calls the light day and the darkness night. Walton draws the contrast this way: in Genesis God does not operate within a society of gods, and the order he sets up is aimed at people.",
+   "cost": "The not-yet opening is a shared way of beginning a creation story, not a link to one text, and none of the sources read here claims Genesis took it from Enuma Elish. Walton's method fits it best: no borrowing is needed when a way of thinking is common to the whole region. Whether Genesis 1:1 is itself a when-clause is a translation question; the Genesis tool, Genesis, the Beginning, sets it out in its entry In the beginning, or when God began. The comparison here does not settle it.",
+   "not": "**Not a claim that Genesis starts with nothing at all.** Both accounts start with something present, water in one and a dry, unworked ground in the other. What is missing is order, names and work.",
+   "related": [
+    "tehom-and-tiamat",
+    "waters-divided",
+    "made-to-bear-the-load"
+   ],
+   "sources": [
+    "L. W. King, trans., Enuma Elish: The Seven Tablets of Creation (London, 1902), Tablet I",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 8, Comparative Exploration 8.4: Created Functions, Naming, Separating, Giving Roles, and Comparative Exploration 8.3: Precosmic Condition and Order",
+    "John H. Walton, Genesis 1 as Ancient Cosmology (Eisenbrauns, 2011), ch. 3, quoting Enuma Elish I 1-2, 7-9",
+    "Stephanie Dalley, Myths from Mesopotamia (Oxford), Notes to Atrahasis, n. 1",
+    "The Jewish Study Bible, 2nd ed. (Oxford University Press), note on Genesis 1:1"
+   ],
+   "post": null
+  },
+  {
+   "title": "Waters above, waters below",
+   "id": "waters-divided",
+   "summary": "Marduk splits Tiamat in two and makes half of her a covering for heaven, with a bolt and a guard to hold her waters back. Genesis 1:6-8 divides the waters with an expanse. The picture is shared. How it happens is not.",
+   "plain": "The real question: if two people describe the same sky the same way, does that mean they agree about who put it there? **The dam holds the lake back.** One person thinks of an engineer. Another thinks of a river spirit that was beaten and pinned in place. The dam looks the same either way. What does Genesis say holds the upper waters back, and how did it get there?",
+   "category": "motif",
+   "group": "creation",
+   "bibleRef": "Genesis 1:6-8",
+   "text": "He split her up like a flat fish into two halves; / One half of her he stablished as a covering for heaven. / He fixed a bolt, he stationed a watchman, / And bade them not to let her waters come forth.",
+   "textRef": "Enuma Elish, Tablet IV, closing section (line numbers not given in this edition); L. W. King, The Seven Tablets of Creation (London, 1902). Walton cites the same passage from a modern translation as Tablet IV, lines 138-44.",
+   "shared": "Both pictures have waters above and waters below with something set between them to hold the upper waters in. King called the Babylonian covering for heaven a firmament and paired it with the second act of creation in Genesis. The IVP Bible Background Commentary makes the same comparison at Genesis 1:6-8: Marduk divides Tiamat to make the waters above and the waters below. Walton adds that separating was a common way of describing creation across the region. In Egypt the air god Shu came into being as the space between the waters above and below. A Sumerian text, Praise of the Pickax, says of Enlil, \"To separate heaven from earth he hastened.\"",
+   "turn": "In Enuma Elish the sky is half a corpse, and the waters behind it have to be guarded with a bolt and a watchman. In Genesis the waters are divided by a word and nothing has to be killed or guarded. Walton puts it plainly: \"Israel had no need to divide a god\". He also says Genesis keeps the ancient cosmology of waters above and below while it drops the ancient theology. The IVP commentary reads the expanse for what it does, regulating rain and sunlight, more than for what it is made of. The Genesis tool, Genesis, the Beginning, has the Hebrew and the arguments over the expanse in its entry The firmament.",
+   "cost": "The shared picture of the cosmos is not in dispute among the sources read here. What it means is. King took it, with tehom, as a pointer to the Babylonian source of Genesis 1. Walton and the IVP commentary treat it as the common cosmology of the ancient world, which Genesis uses without needing any one text. Walton also adds a caution that cuts against easy pairing: in Genesis 1 as Ancient Cosmology he reports finding almost no Akkadian text that speaks of separating heaven and earth as distinct from the splitting of Tiamat's body.",
+   "not": "**Not a lesson in physics.** Neither text is describing what the sky is made of in the modern sense. Both are describing who is in charge of it.",
+   "related": [
+    "tehom-and-tiamat",
+    "lights-and-stations"
+   ],
+   "sources": [
+    "L. W. King, trans., Enuma Elish: The Seven Tablets of Creation (London, 1902), Tablet IV",
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916, Lecture III",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 1:6-8",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 8, Comparative Exploration 8.4: Created Functions, Naming, Separating, Giving Roles, quoting Praise of the Pickax",
+    "John H. Walton, Genesis 1 as Ancient Cosmology (Eisenbrauns, 2011), ch. 3"
+   ],
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yam/",
+     "n": "Yam",
+     "s": "The sea as an opponent God fights, not just water.",
+     "r": "Psalm 74:13-14"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/rahab/",
+     "n": "Rahab",
+     "s": "A chaos monster God cuts to pieces, and also a nickname for Egypt.",
+     "r": "Job 9:13"
+    }
+   ]
+  },
+  {
+   "title": "Stations for the gods, lights for the seasons",
+   "id": "lights-and-stations",
+   "summary": "On the fifth tablet Marduk fixes the stars, divides the year and puts the moon god in charge of the night. On day four God sets lights to mark seasons, days and years. Same job, different occupants.",
+   "plain": "The real question: what is the sky for, and who runs it? **The bell rings at noon.** It might be telling you the time, or it might be the voice of the saint the bell is named for. You hear the same sound. In Genesis 1:14-18, are the lights servants, rulers, or something else?",
+   "category": "motif",
+   "group": "creation",
+   "bibleRef": "Genesis 1:14-18",
+   "text": "He (Marduk) made the stations for the great gods; / The stars, their images, as the stars of the Zodiac, he fixed. / He ordained the year and into sections he divided it; / For the twelve months he fixed three stars. / ... / The Moon-god he caused to shine forth, the night he entrusted to him. / He appointed him, a being of the night, to determine the days;",
+   "textRef": "Enuma Elish, Tablet V, opening section; L. W. King, The Seven Tablets of Creation (London, 1902). King's text notes that nearly fifty lines are lost later in this tablet and the end is missing.",
+   "shared": "Both put the heavenly lights in place after the sky is made, and both give them the job of marking time: days, months, the year. The IVP Bible Background Commentary adds a Sumerian prologue in which An, Enlil and Enki put the moon and stars in place to regulate days, months and omens, and notes that the Hebrew word for sign has an Akkadian cognate used for omens. Walton quotes the same prologue in Ancient Near Eastern Thought and the Old Testament.",
+   "turn": "In Enuma Elish the stars are stations for the great gods and the moon is the Moon-god, entrusted with the night like an official. In Genesis the sun and moon are not named at all; they are the greater light and the lesser light. The IVP commentary says the names were avoided because, for Israel's neighbors, they were also the names of gods, and that the Hebrew word for sign has a more neutral sense than the Akkadian. Walton adds that the functions in Genesis 1 are set up for people, the sun and moon for measuring time and fixing festivals. The Genesis tool, Genesis, the Beginning, takes up the missing names in its entry Genesis 1 never says sun.",
+   "cost": "The likeness in subject is plain. How deliberate the difference is depends on the reader. The IVP commentary reads the missing names as a quiet disagreement with the neighbors. Walton reads the whole chapter as about functions and sees the lights as one more set of functions. King's 1902 text breaks off badly in this tablet, so the order of Marduk's later work cannot be read from it. Walton's Lost World of Genesis One lists further work on Tablet V from a fuller modern translation (night and day, clouds and rain, Tiamat's waters harnessed for farming), which is not in the King text quoted here.",
+   "not": "**Not a demotion of the lights' work.** In Genesis the lights still rule the day and the night. What they lose is a name and a place among the gods.",
+   "related": [
+    "waters-divided",
+    "when-heaven-was-not-named"
+   ],
+   "sources": [
+    "L. W. King, trans., Enuma Elish: The Seven Tablets of Creation (London, 1902), Tablet V",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 1:9-19 and 1:14",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 8, Comparative Exploration 8.3: Precosmic Condition and Order, and Comparative Exploration 8.5: Control Attributes and Destinies",
+    "John H. Walton, The Lost World of Genesis One (IVP Academic, 2009), proposition 2 and Day Three"
+   ],
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-host-of-heaven/",
+     "n": "The host of heaven",
+     "s": "Two things at once: God's heavenly army, and the sun, moon and stars Israel was told not to worship.",
+     "r": "1 Kings 22:19"
+    }
+   ]
+  },
+  {
+   "title": "Made to carry the load of the gods",
+   "id": "made-to-bear-the-load",
+   "summary": "In the Babylonian texts people are made last so the gods can stop working. In Genesis people are made last too, and given the earth to rule. The same slot in the story, filled with a different reason.",
+   "plain": "The real question: why were people made? **The owner hired a crew when the family got tired of the work.** Or did he build the house and then bring the family in to run it? Either way the people arrive at the end. What they are there for is the whole difference. Which one is Genesis telling?",
+   "category": "motif",
+   "group": "creation",
+   "bibleRef": "Genesis 1:26-28",
+   "bibleRefOverride": "Genesis 1:26-28; 2:15",
+   "text": "My blood will I take and bone will I fashion / I will make man, that man may / I will create man who shall inhabit the earth, / That the service of the gods may be established, and that their shrines may be built.",
+   "textRef": "Enuma Elish, Tablet VI, opening speech of Marduk to Ea; L. W. King, The Seven Tablets of Creation (London, 1902). The rest of the tablet is missing in King's text except its last few lines.",
+   "shared": "In both, humans come at the end, after the cosmos is in order, and they are made for a task. Atrahasis says the same thing more bluntly. Before people existed the lesser gods dug the canals and carried the loads, and when they rebelled the great gods decided to make a substitute: \"Let man bear the load of the gods!\" Walton collects the purpose statements from Enki and Ninmah, KAR 4, Atrahasis and Enuma Elish and comments that in Israel, too, people believed they had been created to serve God.",
+   "turn": "Walton names the difference: Israel saw humanity given a priestly role in sacred space rather than slave labor to meet the needs of deity, and \"God planted the garden to provide food for people\" rather than people feeding the gods. The IVP Bible Background Commentary says the same at Genesis 1:26-31: in the Babylonian picture the world was made for the gods and people were an afterthought; in the Bible the cosmos is organized for the people God planned. Genesis also gives every human what the ancient world usually gave the king. Walton notes that across the region it was usually the king who was the image of a god, with one Egyptian exception. The Genesis tool, Genesis, the Beginning, covers the image in its entry What the image of God is.",
+   "cost": "None of the sources read here disputes the contrast. What they differ on is whether Genesis meant it as a reply. Walton frames it as a shared way of thinking that Israel adjusts, not as Genesis arguing with Enuma Elish. Any stronger claim, that Genesis was written against this tablet, is an inference the sources do not make. One translation problem: King's 1902 rendering has Marduk say \"My blood will I take\". Walton and the IVP commentary describe the Akkadian accounts as using the blood of a slain rebel god. King's translation is old and the line is read differently now; check a current translation before quoting it as Marduk's own blood.",
+   "not": "**Not a claim that work is a curse.** In Genesis 2:15 the man is put in the garden to work it and keep it. The question is who the work is for.",
+   "related": [
+    "clay-and-a-god",
+    "when-heaven-was-not-named"
+   ],
+   "sources": [
+    "L. W. King, trans., Enuma Elish: The Seven Tablets of Creation (London, 1902), Tablet VI",
+    "Stephanie Dalley, Myths from Mesopotamia (Oxford), Atrahasis, Tablet I, columns i-iv",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 9, Comparative Exploration 9.2: Archetypal Humanity in Israel and the Ancient Near East, and Comparative Exploration 9.3: Image of God",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 1:26-31"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    }
+   ]
+  },
+  {
+   "title": "Clay and the blood of a god",
+   "id": "clay-and-a-god",
+   "summary": "Atrahasis makes the first people from clay mixed with the flesh and blood of a slaughtered god. Genesis 2:7 makes the man from dust and the breath of life. Earth plus something from above, in both.",
+   "plain": "The real question: what does it mean that people are made of earth and something more? **The potter put a little of himself into every bowl.** That could mean his fingerprints, his care, or his own blood in the glaze. The sentence is true each way, and it means something different each way. What does God put into the man in Genesis 2:7?",
+   "category": "motif",
+   "group": "creation",
+   "bibleRef": "Genesis 2:7",
+   "text": "Nintu shall mix clay / With his flesh and his blood.",
+   "textRef": "Atrahasis, Tablet I, column iv (Old Babylonian version); Stephanie Dalley, trans., Myths from Mesopotamia (Oxford).",
+   "shared": "Both make the first humans from the ground plus something that comes from the divine side. In Atrahasis a god, Ilawela, is slaughtered in the assembly, the birth goddess mixes clay with his flesh and blood, and the great gods spit on the clay. In Genesis the man is formed from dust and God breathes the breath of life into his nostrils. The IVP Bible Background Commentary pairs them directly: dust and clay are what the body returns to, and the god's blood stands for the divine part in people, a concept like God's breath. Walton reads the materials as statements about connection rather than chemistry: clay or dust ties people to the land, and the flesh and blood of a god tie them to deity.",
+   "turn": "Walton draws two differences. In Israel no physical element is provided by the deity; the breath is not a part of God, though God is the source of life. And Atrahasis makes a population at once, seven males and seven females, where Genesis makes one man and then one woman. Walton calls the single first pair a distinctive of the Genesis account. Nobody dies to make the man in Genesis. In Atrahasis the making of people requires killing a god.",
+   "cost": "The pairing is common ground in the sources read here, and none of them argues that Genesis 2 was drawn from Atrahasis. Walton's own reading, that the materials are archetypes and not a statement about what bodies are made of, is an interpretation, not something the tablets say outright. The Genesis tool, Genesis, the Beginning, takes up the questions Genesis 2 raises for Adam in its entries Two creation accounts? and Adam: archetype, individual, or both?",
+   "not": "**Not a claim that the breath of life is a piece of God.** That is exactly where Walton says Genesis and Atrahasis part.",
+   "related": [
+    "made-to-bear-the-load",
+    "be-fruitful-or-fewer"
+   ],
+   "sources": [
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet I, columns iv-v",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 2:7",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 9, Comparative Exploration 9.1: Polygenesis and Monogenesis, and Comparative Exploration 9.2: Archetypal Humanity in Israel and the Ancient Near East"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    }
+   ]
+  },
+  {
+   "title": "Noise or violence",
+   "id": "noise-or-violence",
+   "summary": "In Atrahasis the god Ellil cannot sleep for the noise of mankind and sends plague, drought and then the flood. In Genesis the Lord sees violence and corruption. Is that the same complaint in different words?",
+   "plain": "The real question: why did the flood come? **The neighbors called the police because of the noise next door.** The noise might be a party, or it might be a fight with someone getting hurt. The same complaint can cover very different things. Is the noise in Atrahasis the same thing as the violence in Genesis 6?",
+   "category": "motif",
+   "group": "flood",
+   "bibleRef": "Genesis 6:11-13",
+   "bibleRefOverride": "Genesis 6:5-7, 11-13",
+   "text": "The noise of mankind has become too much",
+   "textRef": "Atrahasis, Tablet I, column vii, Ellil speaking to the great gods; the same words return at Tablet II, columns i, iii and iv. Stephanie Dalley, trans., Myths from Mesopotamia (Oxford).",
+   "shared": "Both stories give a cause in humankind for the flood, and in both the decision comes from heaven after a long build-up. In Atrahasis the people multiply, the land grows loud, and Ellil tries plague and drought before the flood. In Gilgamesh, as Sandars translates it, Enlil tells the council \"The uproar of mankind is intolerable\". The IVP Bible Background Commentary argues the two causes are not necessarily different, since noise can be the result of violence: Abel's blood cries out from the ground, and the outcry against Sodom is great.",
+   "turn": "Genesis gives a moral cause. The Lord sees that the wickedness of humankind is great and that the earth is filled with violence. Ellil gives a personal one: \"I am losing sleep over their racket.\" The IVP commentary notes that the Mesopotamian gods sent the flood because the human world kept them from rest, so the flood brought rest to the gods, and that Noah's name means rest, a rest that comes to people. In Genesis God is grieved. In Atrahasis the god is tired.",
+   "cost": "The IVP reading of noise as the cry of the wronged is a suggestion, offered as possible, not shown from the tablet. The Atrahasis lines read here tie the noise to numbers: the country became too wide and the people too numerous, each time before the noise is mentioned. Nothing in the Dalley text names wrongdoing as the cause. So the gap between noise and violence is wider than the commentary's sentence allows, and the entry is graded as a shared motif with a real difference in what drives it.",
+   "not": "**Not a claim that Atrahasis has no moral world.** Ea's later speech in Gilgamesh, \"Lay upon the sinner his sin\", shows the Babylonian tradition could think about guilt. It just does not give guilt as the reason for the flood.",
+   "related": [
+    "word-of-the-assembly",
+    "build-a-boat",
+    "be-fruitful-or-fewer"
+   ],
+   "sources": [
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet I, column vii, and Tablet II, columns i, iii and iv",
+    "N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 5:29, 2:1-3 and 6:13, and the sidebar Ancient Near Eastern Flood Accounts"
+   ],
+   "post": null
+  },
+  {
+   "title": "Tear down your house, build a boat",
+   "id": "build-a-boat",
+   "summary": "A god warns one man, tells him to build a boat to set measurements, and to bring living seed of every kind on board. Gilgamesh XI and Genesis 6 share the order of events. They do not share the reason the man is warned.",
+   "plain": "The real question: why was this one man saved? **The boss tipped off one worker before the layoffs.** Maybe the worker was the best on the floor. Maybe the boss was breaking ranks with the board. Same tip, very different story. Why does Noah get the warning?",
+   "category": "close",
+   "group": "flood",
+   "bibleRef": "Genesis 6:13-22",
+   "text": "Reed-hut, reed-hut! Wall, wall! / O reed-hut, hear! O wall, understand! / Thou man of Shuruppak, son of Ubar-Tutu, / Pull down thy house, build a ship, / Leave thy possessions, take heed for thy life, / Abandon thy property, and save thy life. / And bring living seed of every kind into the ship. / As for the ship, which thou shalt build, / Of which the measurements shall be carefully measured, / Its breadth and length shall correspond. / In the deep shalt thou immerse it.",
+   "textRef": "Epic of Gilgamesh, Tablet XI, lines 19-31 as King numbers them, Ea's warning to Ut-napishtim; L. W. King's translation in Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916, Lecture II, section IV, printed beside the Sumerian version.",
+   "shared": "The sequence runs the same way: the decision to destroy, a warning to one man, an order to build a boat with given measurements, and living creatures brought on board. Atrahasis has the same order in its own words, \"Dismantle the house, build a boat\", and the Sumerian version King translates has its hero Ziusudu warned at a wall. King said the correspondence of the Babylonian story with Genesis \"is recognized by every one and need not detain us.\" He also noted that the Gilgamesh boat was smeared with pitch and bitumen inside and out, as the ark is pitched inside and out.",
+   "turn": "Ea warns his man behind the other gods' backs. Dalley's note explains that Ea spoke to the reed hut because he had been sworn to secrecy. In Genesis the God who sends the flood is the God who warns Noah, and Noah is warned because he is righteous. King put it this way: both Hebrew versions make the saving of Noah part of the divine intention from the beginning. The boats differ too. King reads the Gilgamesh vessel as equal in length and breadth, 120 cubits each way, while the ark is 300 by 50 by 30 cubits.",
+   "cost": "The shared sequence is not in dispute among the sources read here. What it shows is. King argued the Hebrews knew the Sumerian tradition through Babylonian channels, by oral tradition rather than by copying a document, and before the exile. The IVP Bible Background Commentary says there is no reason to doubt that the Mesopotamian accounts and Genesis refer to the same flood, with each culture seeing it through its own theology. Those are different explanations of the same likeness, a shared tradition and a shared memory, and neither is proved by the likeness itself. The shape of the Gilgamesh boat is also argued: the IVP commentary thinks a ziggurat shape more likely, King compares it to the round pitched coracle of Baghdad. Both are inferences.",
+   "not": "**Not a claim that Genesis copied Gilgamesh XI.** King, who found the likeness overwhelming, still argued for tradition passed down, not a scribe with a tablet.",
+   "related": [
+    "the-birds",
+    "sweet-savour",
+    "word-of-the-assembly"
+   ],
+   "sources": [
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916 (Project Gutenberg eBook 2030), Lecture II, introduction and sections IV and V, and Lecture III",
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet III, column i, and Notes to Atrahasis, n. 29",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), sidebar Ancient Near Eastern Flood Accounts"
+   ],
+   "post": null
+  },
+  {
+   "title": "The birds",
+   "id": "the-birds",
+   "summary": "The boat grounds on a mountain, and the hero sends out birds to see if the waters have gone down. Gilgamesh has a dove, a swallow and a raven. Genesis has a raven and a dove. The closest detail in any of these pairings.",
+   "plain": "The real question: when two stories share a small, odd detail, what does that tell you? **Two families both say Grandpa kept a goat on the roof.** That is too odd to be chance. They might share a grandpa, or one family heard it from the other. Who told whom is a separate question. What does a shared bird scene tell us about Genesis and Gilgamesh?",
+   "category": "close",
+   "group": "flood",
+   "bibleRef": "Genesis 8:6-12",
+   "bibleRefOverride": "Genesis 8:4-12",
+   "text": "When the seventh day dawned I loosed a dove and let her go.",
+   "textRef": "Epic of Gilgamesh, Tablet XI, the bird scene, which the IVP Bible Background Commentary cites as lines 146-54. N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood (a prose translation without line numbers).",
+   "shared": "In Gilgamesh the boat holds fast on the mountain of Nisir for six days. On the seventh the hero sends out a dove, which finds no resting place and comes back; then a swallow, which also comes back; then a raven, which sees the waters have gone down, eats, circles, caws and does not return. In Genesis the ark rests on the mountains of Ararat, a raven goes out and does not come back, and the dove goes out three times. King said the accounts tally even in minute details here, and that the differences in order only underline the likeness. The IVP commentary notes that neither text reads any omen from the birds.",
+   "turn": "The turn is smallest here. The bird scene is the one place where Genesis tells nearly the same story with little change. Its theology shows up in what comes just before and just after: who sent the flood and who smells the sacrifice. The mountains differ, Nisir in Gilgamesh and Ararat in Genesis, and King argued that the mountain itself was added as the story traveled, since the early Sumerian version seems to have the boat ground in Babylonia.",
+   "cost": "This is the strongest single detail tying Genesis to the Mesopotamian flood story. Two weak spots still need naming. First, the IVP commentary says Atrahasis also has a similar bird scene. The Dalley translation read here has a gap of about 58 lines in Tablet III just before the sacrifice, and no bird scene survives in it, so that claim could not be checked. Second, King's point that one Hebrew strand has the birds and the other does not rests on a source division of Genesis that the IVP commentary does not use. Neither weak spot touches the Gilgamesh likeness itself.",
+   "not": "**Not proof of which way the story traveled.** A detail this close shows a connection. It does not show whether Genesis heard the Babylonian story or both kept a common memory.",
+   "related": [
+    "build-a-boat",
+    "sweet-savour"
+   ],
+   "sources": [
+    "N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood",
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916, Lecture II, introduction and section V",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 8:4 and 8:6-12",
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet III, columns iv-v"
+   ],
+   "post": null
+  },
+  {
+   "title": "Like flies over the sacrifice",
+   "id": "sweet-savour",
+   "summary": "After the flood the hero offers a sacrifice, and heaven smells it. In Gilgamesh and Atrahasis the starving gods crowd round like flies. In Genesis the Lord smells the pleasing aroma and makes a promise.",
+   "plain": "The real question: what does a god want from a sacrifice? **The family brought a hot meal to the house after the funeral.** The people inside might be grateful for the kindness, or they might be truly hungry. The same dish means something different depending on who needs it. Does the God of Genesis 8 need Noah's offering?",
+   "category": "close",
+   "group": "flood",
+   "bibleRef": "Genesis 8:20-21",
+   "text": "When the gods smelled the sweet savour, they gathered like flies over the sacrifice.",
+   "textRef": "Epic of Gilgamesh, Tablet XI, line 162 as King cites it; N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood. Atrahasis has the same picture at Tablet III, column v (Dalley).",
+   "shared": "Both stories have the hero leave the boat and offer a sacrifice, and both say heaven smelled it. King's summary uses the same phrase for both: the gods smelt the sweet savour of Ut-napishtim's sacrifice, and in the earlier Hebrew version Yahweh smells the sweet savour of Noah's burnt offering. Atrahasis, in Dalley's translation, has the gods smell the fragrance and gather like flies over the offering.",
+   "turn": "The Mesopotamian gods are hungry. With no humans there were no offerings, and Atrahasis describes the great gods during the flood as parched and famished. The IVP Bible Background Commentary says Genesis falls far short of that picture and that its phrase pleasing aroma was kept from a world where sacrifice was food for the gods. The NIV Cultural Backgrounds Study Bible makes the same contrast: Israel's God does not need human food, while the gods in Atrahasis crowd round because the smell promises an end to their hunger. In Gilgamesh the goddess wants Enlil kept away from the offering because he brought the flood without thinking. In Genesis the Lord who smells it is the one who sent the flood, and he answers with a promise about the ground.",
+   "cost": "The wording overlap is real, sweet savour in both, and the scene is in the same place in both stories, which is why this is graded close. Whether Genesis is replying to the hungry gods on purpose is another matter. The IVP commentary and the NIV Cultural Backgrounds note describe the contrast; neither says Genesis was written to answer it. That reading would be an inference.",
+   "not": "**Not a claim that Israel's sacrifices fed God.** The phrase stayed. The idea behind it in Mesopotamia did not.",
+   "related": [
+    "the-birds",
+    "never-again",
+    "build-a-boat"
+   ],
+   "sources": [
+    "N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood",
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916, Lecture II, section V, citing Gilgamesh XI, line 162",
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet III, columns iii and v",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Genesis 8:21",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), note on Leviticus 1:9, an aroma pleasing to the Lord"
+   ],
+   "post": null
+  },
+  {
+   "title": "Never again",
+   "id": "never-again",
+   "summary": "After the sacrifice, heaven turns away from wiping out humankind. In Gilgamesh one god talks another down. In Genesis the Lord resolves it himself and makes a covenant with every living creature.",
+   "plain": "The real question: who decides there will not be another flood, and why? **After the fire, the town council voted never to burn the field again.** That could be a change of heart, or one member finally out-arguing the rest. You need to know who was in the room. Who is in the room in Genesis 8 and 9?",
+   "category": "motif",
+   "group": "flood",
+   "bibleRef": "Genesis 8:21-22",
+   "bibleRefOverride": "Genesis 8:21-22; 9:8-17",
+   "text": "Lay upon the sinner his sin, / Lay upon the transgressor his transgression,",
+   "textRef": "Epic of Gilgamesh, Tablet XI, Ea's speech to Enlil after the sacrifice (King cites the speech as Tablet XI, lines 180-194); N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood.",
+   "shared": "Both stories turn, right after the sacrifice, from total destruction to a limit on it. In Gilgamesh Ea tells Enlil to punish the guilty one, and would rather a lion, a wolf, famine or plague had wasted mankind than the flood. King says the subject matter of Ea's speech is reflected in both Hebrew versions: in one the Lord smells the offering and says he will never again destroy every living creature, in the other God makes his covenant and sets his bow in the clouds.",
+   "turn": "In Gilgamesh the god who sent the flood is angry anyone lived. Enlil asks, \"Has any of these mortals escaped?\" Another god has to argue him round, and in Atrahasis Enki says openly, \"I did it, in defiance of you!\" In Genesis no one argues with the Lord. He makes the promise in his own heart, then a covenant with Noah, his descendants and every living creature. Ut-napishtim is made immortal and taken away to live at the mouth of the rivers. Noah stays mortal and is sent to fill the earth.",
+   "cost": "The turn in the plot is shared, which is why King pairs the passages. The content of the two turns differs more than a summary shows. Ea does not promise mercy; he proposes other ways to kill fewer people. Reading his speech as the counterpart of the covenant is a pairing on subject matter, King's, and it should be held that loosely. King also found an echo of Ea's argument, that the sinner bears his own sin, in Ezekiel 18.",
+   "not": "**Not a claim that the rainbow comes from Gilgamesh.** The bow in the clouds has no counterpart in the Gilgamesh passage read here.",
+   "related": [
+    "sweet-savour",
+    "be-fruitful-or-fewer"
+   ],
+   "sources": [
+    "N. K. Sandars, trans., The Epic of Gilgamesh, ch. 5, The Story of the Flood",
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916, Lecture II, section V, and Lecture III",
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet III, column vi"
+   ],
+   "post": null
+  },
+  {
+   "title": "Be fruitful, or be fewer",
+   "id": "be-fruitful-or-fewer",
+   "summary": "Atrahasis ends its flood with rules to keep the human population down. Genesis ends its flood by repeating the blessing: be fruitful, multiply, fill the earth.",
+   "plain": "The real question: after the disaster, does heaven want more people or fewer? **After the flood the town rebuilt, and the mayor set a limit on new houses.** Another mayor might have said build as many as you can. Both are responses to the same disaster. Which response does Genesis 9 give?",
+   "category": "motif",
+   "group": "flood",
+   "bibleRef": "Genesis 9:1-7",
+   "bibleRefOverride": "Genesis 1:28; 9:1, 7",
+   "text": "Among the people the woman who gives birth yet does / Not give birth (successfully);",
+   "textRef": "Atrahasis, Tablet III, column vii, Enki's instructions to the birth goddess after the flood; Stephanie Dalley, trans., Myths from Mesopotamia (Oxford).",
+   "shared": "Both flood stories close with a ruling about human life and birth. Atrahasis sets limits: a share of the people who will not give birth successfully, a demon to snatch babies, and classes of temple women who are not to bear children. Dalley notes that at this point the gods replace primeval man, who had no natural life span, with mortal man. Ronald Hendel cites W. G. Lambert's restoration of the closing lines, in which Enki tells the birth goddess to create death for the peoples. K. van der Toorn reads it the same way: on Lambert's restoration, death itself is set in place after the flood.",
+   "turn": "Genesis goes the other way. God blesses Noah and his sons with the words of creation: be fruitful, multiply, fill the earth. The NIV Cultural Backgrounds Study Bible makes the contrast at Genesis 1:28: against the overpopulation worries of early Mesopotamian literature, God wants people to multiply without restriction. Genesis does have a limit on human life, the 120 years of Genesis 6:3, but it comes before the flood and is not a check on numbers.",
+   "cost": "The contrast is clear in the texts read here and is drawn directly by the NIV Cultural Backgrounds note. Two cautions. The Atrahasis passage is broken: the lines just before the quoted ones are restored in brackets, and 26 lines are missing after them. And the create-death line is Lambert's restoration of a broken passage, which Hendel and van der Toorn follow; the words for death are supplied in brackets, not preserved on the tablet.",
+   "not": "**Not a claim that Genesis ignores death.** Genesis 5 and 9 are full of death. The difference is that the flood does not end with heaven trying to keep the numbers down.",
+   "related": [
+    "noise-or-violence",
+    "clay-and-a-god",
+    "never-again"
+   ],
+   "sources": [
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet III, columns vi-vii, and Notes to Atrahasis, nn. 44-45",
+    "Ronald S. Hendel, \"Of Demigods and the Deluge: Toward an Interpretation of Genesis 6:1-4,\" Journal of Biblical Literature 106 (1987): 17-18, citing W. G. Lambert, \"The Theology of Death,\" in Death in Mesopotamia (Copenhagen: Akademisk forlag, 1980), 52-66",
+    "K. van der Toorn, DDD s.v. \"God (I),\" 360",
+    "John Day, From Creation to Babel: Studies in Genesis 1-11 (Bloomsbury, 2013), 203",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), note on Genesis 1:28"
+   ],
+   "post": null
+  },
+  {
+   "title": "The gods on their thrones",
+   "id": "assembly-of-el",
+   "summary": "At Ugarit the gods sit on their thrones in the assembled council, and lower their heads when Yamm's messengers come. In Psalm 82 God stands in the assembly of El and puts the gods on trial.",
+   "plain": "The real question: who are the gods in Psalm 82, and what happens to them? **The board met, and the chairman stood up to speak.** He might be thanking them, or he might be firing every one of them. The room looks the same. What does God do to the assembly in Psalm 82?",
+   "category": "close",
+   "group": "council",
+   "bibleRef": "Psalm 82",
+   "text": "They lower their heads, / On top of their knees, / On their royal thrones.",
+   "textRef": "Baal Cycle, KTU 1.2 I 23-24; Mark S. Smith, trans., The Ugaritic Baal Cycle, vol. 1 (E. J. Brill, 1994), translation of KTU 1.2 I.",
+   "shared": "Both scenes are a meeting of gods with a head god presiding. In the Baal Cycle the gods are gathered at Mount Lalu in what Smith translates as the \"Assembled Council\"; they sit to feast, \"The Holy Ones to dine\", and Baal waits on El. When Yamm's messengers arrive the gods drop their heads, and Baal rebukes them with a question. Smith calls this a type-scene and notes that biblical tradition uses it too: in Psalm 82 Yahweh puts the question to the assembly of divine beings, and in both cases the question is an accusation. The Jewish Study Bible notes that the Hebrew of Psalm 82:1 is \"the assembly of El,\" El being the head of the Ugaritic pantheon, and that Most High in verse 6 is an ancient Canaanite title applied to God.",
+   "turn": "Smith names the turn himself: unlike Baal's predicament, Yahweh's question is followed by the judgment that \"the other deities will die like mortals.\" At Ugarit the gods cower before a threat and El hands Baal over. In Psalm 82 God is the judge, the gods are the accused, and the charge is injustice: they have not defended the poor and the orphan. The Jewish Study Bible says the psalm \"forcefully rejects the idea of other gods\" by stripping them of their divinity. Walton notes that the Israelite council, like Ugarit's and unlike Mesopotamia's, is made of lesser beings, and that its members carry out decisions without holding real authority.",
+   "cost": "The close grade rests on the setting, the assembly of El, which every source read here grants. The quoted lines are the gods dropping their heads, which Smith calls a type-scene, so they show the shape of the scene, not a borrowed line. That Psalm 82 uses the divine council picture is common ground in every source read here: Smith, the Jewish Study Bible, the IVP Bible Background Commentary, the NIV Cultural Backgrounds Study Bible, Walton and Heiser. The open question is what the gods are. The Jewish Study Bible says they are divine beings, notes that some read them as human judges, and calls that less likely; it then says the gods of the nations are unmasked as not real gods. Heiser reads them as real divine beings, elohim, under Yahweh. The NIV Cultural Backgrounds note says the word gods is used both of heavenly beings and of the human rulers who act as their agents. The Divine Council Index entry on Psalm 82 sets out the readings in full.",
+   "not": "**Not a claim that Psalm 82 is a Canaanite poem.** The setting is borrowed language for a courtroom. The verdict is Israel's.",
+   "related": [
+    "seventy-sons",
+    "council-in-session",
+    "who-will-go"
+   ],
+   "sources": [
+    "Mark S. Smith, The Ugaritic Baal Cycle, Volume I: Introduction with Text, Translation and Commentary of KTU 1.1-1.2 (E. J. Brill, 1994), KTU 1.2 I, translation and commentary, n. 178",
+    "The Jewish Study Bible, 2nd ed., ed. Adele Berlin and Marc Zvi Brettler (Oxford University Press), introduction and notes on Psalm 82",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 4, Comparative Exploration 4.3: Yahweh's Council",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Psalm 82:1",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), notes on Psalm 82:1 and 82:6",
+    "Michael S. Heiser, The Unseen Realm, chs. 3-4"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-89-5-7/",
+     "n": "Psalm 89:5-7",
+     "s": "Yahweh is feared in the council of the holy ones, and nothing in the skies compares to Him.",
+     "r": "Psalm 89:5-7"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/el/",
+     "n": "El",
+     "s": "The ordinary word for god in the region, and also the name of the chief god of Israel's neighbors.",
+     "r": "Genesis 14:18-22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-elohim-of-psalm-82/",
+     "n": "The elohim of Psalm 82",
+     "s": "A psalm where God stands up in a room full of gods and sentences them to death.",
+     "r": "Psalm 82:1"
+    }
+   ]
+  },
+  {
+   "title": "Who will go?",
+   "id": "who-will-go",
+   "summary": "The council faces a problem and needs someone to go. In Enuma Elish the elder gods fail and Marduk volunteers, at a price. In 1 Kings 22 a spirit steps forward from the host of heaven and simply goes.",
+   "plain": "The real question: what does it mean that God asks his council who will go? **The manager asked the team who would take the hard client.** He might need help, or he might already know the answer and want someone to step up. The question is the same either way. Why does God ask in 1 Kings 22?",
+   "category": "motif",
+   "group": "council",
+   "bibleRef": "1 Kings 22:19-23",
+   "text": "I sent Anu, but he could not withstand her; / Nudimmud was afraid and turned back. / But Marduk hath set out, the director of the gods, your son; / To set out against Tiamat his heart hath prompted him.",
+   "textRef": "Enuma Elish, Tablet III, Ansar's message repeated to Lahmu and Lahamu; L. W. King, The Seven Tablets of Creation (London, 1902).",
+   "shared": "In both, a heavenly council faces a task, the question goes out, and one member takes it on. Smith calls the council's choosing of a champion a literary type-scene and notes that biblical tradition uses it in prophetic texts, where the prophet hears the council's proceedings (he cites 1 Kings 22 and Isaiah 6). The IVP Bible Background Commentary, at the parallel in 2 Chronicles 18, points to a Ugaritic text, the Epic of Keret, where El asks his assembly for volunteers. Walton notes that in 1 Kings 22, as in Isaiah 6, the council is looking for a messenger to send, and that this is the only place a member of the council is called a spirit.",
+   "turn": "Marduk names his price before he goes. His message to the elders reads \"Appoint an assembly, make my fate preeminent and proclaim it.\" In 1 Kings 22 the spirit asks for nothing and gets nothing. In Enuma Elish the elder gods need a champion because they are afraid; Anu could not stand against Tiamat. Nothing threatens the Lord in 1 Kings 22. The council's business is the fate of a king of Israel. The IVP commentary notes that one would expect such a council to plan war on Israel's behalf, but here the discussion is directed against Ahab. Walton's general point holds here: members of the Israelite council are sent with a mission, not given a share of power.",
+   "cost": "The type-scene is Smith's observation and the IVP commentary's Keret parallel is a second example; both are about a pattern, not a borrowing. The particular pairing with Enuma Elish Tablet III is drawn here as the clearest example of the pattern in a text read in full for this entry. Keret was not read in a primary edition for this entry. Background explains the shape of the scene. It does not explain its hardest feature, a spirit sent to deceive, and none of the sources read here claims it does.",
+   "not": "**Not a vote.** The council in 1 Kings 22 offers ideas. The Lord decides and the spirit is sent.",
+   "related": [
+    "assembly-of-el",
+    "council-in-session"
+   ],
+   "sources": [
+    "L. W. King, trans., Enuma Elish: The Seven Tablets of Creation (London, 1902), Tablets III-IV",
+    "Mark S. Smith, The Ugaritic Baal Cycle, vol. 1 (E. J. Brill, 1994), commentary on KTU 1.2 I and n. 178",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on 2 Chronicles 18:18-22",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 4, Comparative Exploration 4.3: Yahweh's Council"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-kings-22-19-23/",
+     "n": "1 Kings 22:19-23",
+     "s": "Micaiah reports seeing Yahweh enthroned with the host standing to His right and left.",
+     "r": "1 Kings 22:19-23"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-6-1-8/",
+     "n": "Isaiah 6:1-8",
+     "s": "The throne room, the seraphim, and the plural question, who will go for us.",
+     "r": "Isaiah 6:1-8"
+    }
+   ],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-lying-spirit/",
+     "n": "The lying spirit",
+     "s": "A spirit who volunteers at God's throne to deceive a king's prophets.",
+     "r": "1 Kings 22:19-23"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/seraphim/",
+     "n": "Seraphim",
+     "s": "Six-winged beings around God's throne in Isaiah's vision, described with a word that elsewhere means burning serpent.",
+     "r": "Isaiah 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-host-of-heaven/",
+     "n": "The host of heaven",
+     "s": "Two things at once: God's heavenly army, and the sun, moon and stars Israel was told not to worship.",
+     "r": "1 Kings 22:19"
+    }
+   ]
+  },
+  {
+   "title": "The sons of God present themselves",
+   "id": "council-in-session",
+   "summary": "At Ugarit the council is in session when Yamm's messengers arrive with a demand about one god. In Job the sons of God present themselves, the satan arrives among them, and the talk turns to one man.",
+   "plain": "The real question: who is in charge when a challenger walks into the council? **A man stood up at the town meeting and said the mayor's favorite was a fraud.** The mayor might lose control of the room, or he might set the terms of the test himself. The scene alone does not tell you which. Who sets the terms in Job 1?",
+   "category": "motif",
+   "group": "council",
+   "bibleRef": "Job 1:6-12",
+   "bibleRefOverride": "Job 1:6-12; 2:1-6",
+   "text": "Then Yamm's messengers arrive, / The legation of Judge River.",
+   "textRef": "Baal Cycle, KTU 1.2 I 30; Mark S. Smith, trans., The Ugaritic Baal Cycle, vol. 1 (E. J. Brill, 1994), translation of KTU 1.2 I.",
+   "shared": "Both scenes are a council meeting interrupted by an arrival with a challenge about one figure. At Ugarit the messengers come before El and the gods and demand, \"Give up Baal\". In Job the sons of God come to present themselves before the Lord, the satan comes among them, and the talk turns to Job. The IVP Bible Background Commentary says Mesopotamian and Ugaritic texts give glimpses of the gods' meetings and court, and that in Israel the sons of God station themselves before God in the same way. The NIV Cultural Backgrounds Study Bible calls Job 1:6 a scene set in the divine council. Walton lists Job 1 with 1 Kings 22 and Isaiah 6 as council scenes.",
+   "turn": "At Ugarit El gives in at once: \"Your slave is Baal\". The demand is met. In Job the Lord raises Job's name himself and sets the limits of the test, and the challenger can act only inside them. The IVP commentary notes that the satan in Job has the definite article, so the word names a role, the accuser, more than a person, and that it is not clear he is one of the sons of God. Walton reads him as sent from the council with a mission, like the spirit in 1 Kings 22.",
+   "cost": "The general council setting of Job 1 is common ground. The pairing with this particular Ugaritic scene is drawn here, not by the sources; they compare Job 1 with council scenes in general. The IVP commentary also compares the accuser with Persian and Assyrian agents who toured the empire and brought charges at court, which is an analogy from political life, not a textual parallel. Who the satan is remains open in the IVP commentary, and that question belongs to the Divine Council Index.",
+   "not": "**Not a claim that the satan of Job is a Canaanite god.** No source read here makes that link.",
+   "related": [
+    "assembly-of-el",
+    "who-will-go"
+   ],
+   "sources": [
+    "Mark S. Smith, The Ugaritic Baal Cycle, vol. 1 (E. J. Brill, 1994), KTU 1.2 I, translation",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Job 1:6",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), note on Job 1:6",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 4, Comparative Exploration 4.3: Yahweh's Council"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/job-1-6-12/",
+     "n": "Job 1:6-12",
+     "s": "The sons of God present themselves and the satan comes among them.",
+     "r": "Job 1:6-12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-kings-22-19-23/",
+     "n": "1 Kings 22:19-23",
+     "s": "Micaiah reports seeing Yahweh enthroned with the host standing to His right and left.",
+     "r": "1 Kings 22:19-23"
+    }
+   ],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-satan-of-job/",
+     "n": "The satan of Job",
+     "s": "The accuser in Job, a job title in God's court rather than a personal name.",
+     "r": "Job 1:6-12"
+    }
+   ]
+  },
+  {
+   "title": "Seventy sons",
+   "id": "seventy-sons",
+   "summary": "At Ugarit El's family of gods is called the seventy, the children of Athirat. Genesis 10 lists seventy nations, by the usual count. Deuteronomy 32:8 divides the nations by the number of the sons of God. A popular link with three joints, each weaker than the last.",
+   "plain": "The real question: does Deuteronomy 32:8 count the nations by the gods? **The company has seventy branches and seventy branch managers.** That might be a plan, one manager to a branch, or two numbers that happen to match. You would want to see the org chart before you decide. What does Deuteronomy 32:8 actually say about the number?",
+   "category": "contested",
+   "group": "council",
+   "bibleRef": "Deuteronomy 32:8-9",
+   "text": "He invited the seventy, the children of Athirat.",
+   "textRef": "Baal Cycle, KTU 1.4 VI 46, Baal's feast for the gods when his palace is finished; Mark S. Smith and Wayne T. Pitard, trans., The Ugaritic Baal Cycle, vol. 2 (Brill, 2009), translation of KTU 1.4 VI 44-46.",
+   "shared": "The Jewish Study Bible says Most High, Elyon, is the formal title of El, who presided over the divine council at Ugarit, and that the reading preserved in the Septuagint and at Qumran, according to the sons of El, makes much more sense than the Masoretic text: the chief god gives the nations to lesser gods. Smith says the gods of this rank at Ugarit were called the seventy, the children of Athirat, and that seventy is a conventional number for a large defined group. The NIV Cultural Backgrounds Study Bible ties Deuteronomy 32:8 to the seventy nations of Genesis 10 and to the seventy sons of Athirat. Heiser makes the same link and draws a theological conclusion from it: \"a theological gauntlet was thrown down\".",
+   "turn": "Deuteronomy 32:9 keeps one people back: the Lord's portion is his people, Jacob his allotted inheritance. Heiser reads the point as Yahweh alone commanding the nations and their gods. At Ugarit the seventy are El and Athirat's own children, a family, and Baal later fights them. The Jewish Study Bible notes that the translators of the NJPS added the word own in verse 9 to avoid the impression that Elyon, as head of the pantheon, assigned Israel to YHVH as one member among many, and says the Hebrew permits either reading. The Genesis tool, Genesis, the Beginning, connects this verse with Babel in its entry Babel.",
+   "cost": "The link has three joints. First, the sons of God reading: the strongest. The Jewish Study Bible and Heiser accept it, the NIV Cultural Backgrounds note calls it \"increasingly favored by scholars,\" and the NIV text itself follows the Masoretic sons of Israel. Second, Elyon as El's title: the sources read here disagree. The Jewish Study Bible calls it the formal title of El at Ugarit; the IVP Bible Background Commentary says there is \"no convincing evidence thus far of Elyon as the name of a deity\" and treats it as an epithet used of both El and Baal. Third, the seventy: Deuteronomy 32:8 gives no number. The seventy comes from counting the nations in Genesis 10. Smith says only that the seventy tradition \"perhaps survives\" in the later Jewish idea of seventy angels over seventy nations, citing the Targum on this verse. The match of seventy gods to seventy nations is a plausible and popular reading built on a count; the texts do not state it.",
+   "not": "**Not a claim that Israel worshiped Athirat's sons.** Every source here reads Deuteronomy 32:9 as setting Israel apart from the nations and their gods.",
+   "related": [
+    "assembly-of-el",
+    "word-of-the-assembly"
+   ],
+   "sources": [
+    "Mark S. Smith and Wayne T. Pitard, The Ugaritic Baal Cycle, Volume II: Introduction with Text, Translation and Commentary of KTU/CAT 1.3-1.4 (Brill, 2009), introduction on the children of Athirat, and translation of KTU 1.4 VI 38-59",
+    "The Jewish Study Bible, 2nd ed., ed. Adele Berlin and Marc Zvi Brettler (Oxford University Press), notes on Deuteronomy 32:8 and 32:9",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), NIV text note on Deuteronomy 32:8",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, IVP Bible Background Commentary: Old Testament (InterVarsity Press), on Deuteronomy 32:8",
+    "Michael S. Heiser, The Unseen Realm, ch. 14, Divine Allotment, and ch. 20, Retooling the Template"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-11-1-9/",
+     "n": "Genesis 11:1-9",
+     "s": "Babel, the scattering, and the moment the nations are set aside.",
+     "r": "Genesis 11:1-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    }
+   ],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/el-elyon/",
+     "n": "El Elyon",
+     "s": "A title meaning Most High, used in the verse where the nations get handed out to different gods.",
+     "r": "Genesis 14:18-22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-princes-of-persia-and-greece/",
+     "n": "The princes of Persia and Greece",
+     "s": "Spirit figures in Daniel who rule nations and can hold up a messenger from God for weeks.",
+     "r": "Daniel 10:13"
+    }
+   ]
+  },
+  {
+   "title": "The word of the assembly",
+   "id": "word-of-the-assembly",
+   "summary": "In the Mesopotamian flood stories the flood is voted in the assembly of the gods, and one goddess regrets her vote. In Genesis 6 the Lord sees, grieves and decides, and there is no assembly in the scene.",
+   "plain": "The real question: who decided on the flood? **The decision came down from the board.** That can mean a vote nobody wants to own, or one person deciding with everyone else watching. When something terrible is decided, it matters which. Who decides in Genesis 6?",
+   "category": "motif",
+   "group": "council",
+   "bibleRef": "Genesis 6:5-8",
+   "text": "By our hand(?) a flood . . . (. . .) will be (sent). / To destroy the seed of mankind (. . .) / Is the decision, the word of the assembly (of the gods) / The commands of Anu (and) En(lil . . .)",
+   "textRef": "The Sumerian flood story (the Nippur tablet published by Poebel), Column IV, lines 1 ff., the warning to Ziusudu; L. W. King's translation in Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916, Lecture II, section IV.",
+   "shared": "In all these stories the flood is decided in heaven against all of humankind, and one man is let in on it. Walton lists the decision to send the flood among the business of the Mesopotamian assembly: in Gilgamesh the council decides, and in Atrahasis both the flood and the earlier attempts to cut the population come out of the assembly. King notes that in Gilgamesh the goddess Ishtar had agreed to the destruction in the assembly and then reproached herself. In Atrahasis the birth goddess weeps, \"However could I, in the assembly of gods, / Have ordered such destruction\".",
+   "turn": "Genesis 6 has no vote. The Lord sees the wickedness, grieves, and decides, and the same verse that announces the end turns to Noah, who found favor. No god regrets having been outvoted, and no god has to sneak a warning past an oath. Walton describes the Israelite council in general: the Lord is the sole authority, and the plurals of Genesis 1:26, 3:22 and 11:7 suggest deliberation without any sharing of power.",
+   "cost": "This contrast rests partly on silence: Genesis 6 does not mention a council, and silence is not denial. The Jewish Study Bible reads the plurals at Genesis 1:26 and 11:7 as addresses to the divine council, so Genesis knows the council and simply does not use it here. The contrast is drawn here from the texts; Walton's general description supports it but does not discuss Genesis 6:5-8 by name.",
+   "not": "**Not a claim that the flood was arbitrary in Mesopotamia and just in Genesis.** Mesopotamian texts give the flood a cause too. The difference here is who decides, and how many.",
+   "related": [
+    "noise-or-violence",
+    "build-a-boat",
+    "assembly-of-el"
+   ],
+   "sources": [
+    "L. W. King, Legends of Babylon and Egypt in Relation to Hebrew Tradition, Schweich Lectures 1916 (Project Gutenberg eBook 2030), Lecture II, sections III and IV",
+    "Stephanie Dalley, trans., Myths from Mesopotamia (Oxford), Atrahasis, Tablet III, column iii",
+    "John H. Walton, Ancient Near Eastern Thought and the Old Testament, 2nd ed. (Baker Academic, 2018), ch. 4, Divine Assembly and Comparative Exploration 4.3: Yahweh's Council",
+    "The Jewish Study Bible, 2nd ed. (Oxford University Press), notes on Genesis 1:26-28 and 11:7"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-11-1-9/",
+     "n": "Genesis 11:1-9",
+     "s": "Babel, the scattering, and the moment the nations are set aside.",
+     "r": "Genesis 11:1-9"
+    }
+   ],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-holy-ones/",
+     "n": "The holy ones",
+     "s": "A name for the beings who make up God's court.",
+     "r": "Deuteronomy 33:2-3"
+    }
+   ]
+  }
+ ]
+}

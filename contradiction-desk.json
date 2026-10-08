@@ -1,0 +1,1276 @@
+{
+ "schema": 1,
+ "tool": {
+  "slug": "contradiction-desk",
+  "name": "The Contradiction Desk",
+  "status": "alpha",
+  "heroTitle": "The Contradiction Desk",
+  "heroSubtitle": "Claimed Bible contradictions, stated the way they circulate, each with one diagnosis and the evidence for it: the Hebrew, the Greek, the manuscripts.",
+  "searchPlaceholder": "Goliath, tempt, Ahaziah, whale, not yet, stalls",
+  "backLabel": "All claims",
+  "perPage": 200
+ },
+ "card": {
+  "labelField": "title",
+  "mainField": "summary"
+ },
+ "detail": {
+  "titleField": "title",
+  "headlineField": "summary"
+ },
+ "search": {
+  "fields": [
+   "title",
+   "summary",
+   "plain",
+   "claim",
+   "diag",
+   "kjv",
+   "kjvNote",
+   "skeptic",
+   "harm",
+   "cost",
+   "not",
+   "sources"
+  ]
+ },
+ "filters": [
+  {
+   "role": "category",
+   "field": "category",
+   "allLabel": "Show all",
+   "options": [
+    {
+     "k": "translation",
+     "n": "Translation split",
+     "c": "lavender",
+     "short": "TRANS"
+    },
+    {
+     "k": "variant",
+     "n": "Textual variant",
+     "c": "gold",
+     "short": "VAR"
+    },
+    {
+     "k": "number",
+     "n": "Copying error in a number",
+     "c": "rust",
+     "short": "NUM"
+    }
+   ]
+  },
+  {
+   "field": "group",
+   "allLabel": "Every book",
+   "options": [
+    {
+     "k": "genesis",
+     "n": "Genesis"
+    },
+    {
+     "k": "exodus",
+     "n": "Exodus"
+    },
+    {
+     "k": "1-samuel",
+     "n": "1 Samuel"
+    },
+    {
+     "k": "2-samuel",
+     "n": "2 Samuel"
+    },
+    {
+     "k": "1-kings",
+     "n": "1 Kings"
+    },
+    {
+     "k": "2-kings",
+     "n": "2 Kings"
+    },
+    {
+     "k": "2-chronicles",
+     "n": "2 Chronicles"
+    },
+    {
+     "k": "isaiah",
+     "n": "Isaiah"
+    },
+    {
+     "k": "matthew",
+     "n": "Matthew"
+    },
+    {
+     "k": "mark",
+     "n": "Mark"
+    },
+    {
+     "k": "luke",
+     "n": "Luke"
+    },
+    {
+     "k": "john",
+     "n": "John"
+    },
+    {
+     "k": "acts",
+     "n": "Acts"
+    },
+    {
+     "k": "galatians",
+     "n": "Galatians"
+    },
+    {
+     "k": "hebrews",
+     "n": "Hebrews"
+    },
+    {
+     "k": "1-john",
+     "n": "1 John"
+    }
+   ]
+  }
+ ],
+ "blocks": [
+  {
+   "type": "scripture",
+   "refField": "bibleRef",
+   "overrideField": "bibleRefOverride",
+   "versions": [
+    "net",
+    "kjv",
+    "web",
+    "nlt",
+    "esv"
+   ],
+   "default": "net",
+   "interlinearLink": true,
+   "separator": " · "
+  },
+  {
+   "type": "box",
+   "variant": "plain",
+   "title": "First, in plain English",
+   "field": "plain"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "The claim",
+   "field": "claim"
+  },
+  {
+   "type": "box",
+   "variant": "wording",
+   "title": "What is actually going on",
+   "field": "diag"
+  },
+  {
+   "type": "box",
+   "variant": "scripture",
+   "title": "King James",
+   "field": "kjv",
+   "titleSuffixField": "kjvRef",
+   "subtitleField": "kjvRole",
+   "quote": true,
+   "noteField": "kjvNote"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "The skeptic case",
+   "field": "skeptic"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "The harmonizing case",
+   "field": "harm"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "What the diagnosis does not settle",
+   "field": "cost"
+  },
+  {
+   "type": "box",
+   "variant": "not",
+   "title": "What this is not",
+   "field": "not"
+  },
+  {
+   "type": "out",
+   "title": "Read in Why Do Bible Translations Differ?",
+   "field": "tdx"
+  },
+  {
+   "type": "linkrow",
+   "title": "Reads with",
+   "field": "related"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Sources",
+   "field": "sources",
+   "list": "ordered"
+  }
+ ],
+ "footer": [
+  {
+   "type": "note",
+   "class": "method",
+   "text": "The method. Lists of Bible contradictions usually set two verses side by side and stop. Answers to them usually harmonize the two verses and stop. Neither shows the reader why the passages read differently. Every claim on this desk gets one primary diagnosis, and the evidence for it is laid out: the Hebrew or Greek word, the manuscripts and ancient translations, and which English versions read which way. The skeptic case and the harmonizing case are each stated at full strength from a source that makes them, and every entry says what its diagnosis leaves unsettled. This first build files only two kinds of cause, a translation split and a textual variant, with copying errors in numbers counted as variants and filed on their own. That is a limit of the first build, not a claim that every contradiction resolves this way. A desk that never says open would not be believable. Later builds add claims that turn on genre, claims where two passages describe different events, and claims that stay open."
+  },
+  {
+   "type": "suggest",
+   "kind": "contradiction-desk",
+   "label": "The Contradiction Desk (alpha)",
+   "toggleText": "Is there a contradiction you have seen claimed that we should put on the desk? Suggest it ›",
+   "valuePlaceholder": "Which two passages, and what is the claim?"
+  },
+  {
+   "type": "note",
+   "text": "How to read the grades. Translation split means the tension is in the English, not in the Hebrew or Greek: one original word has been rendered two ways, or an English word has changed its meaning since the King James. Textual variant means one manuscript tradition reads differently from another, and the tension depends on which reading a Bible prints. Copying error in a number means the two passages almost certainly agreed once and a figure was miscopied in transmission; the entry names the ancient witnesses that keep the other figure. A grade names the primary cause only. It is given where a named source supports it, and the box on what the diagnosis does not settle says how much it leaves standing."
+  }
+ ],
+ "entries": [
+  {
+   "title": "God tempted Abraham, and God tempts no one",
+   "id": "god-tempted-abraham",
+   "summary": "The King James says God did tempt Abraham. James says God tempts no one. One English verb is doing two different jobs.",
+   "plain": "The real question: can God test a person without tempting him, or is that a line drawn after the fact? **The coach said he was going to try the new player, and the player's mother said that coach never tries to make anyone fail.** One word, used twice. Are they talking about the same thing?",
+   "category": "translation",
+   "group": "genesis",
+   "bibleRef": "Genesis 22:1",
+   "bibleRefOverride": "Genesis 22:1; James 1:13",
+   "claim": "Genesis 22:1 in the King James says God did tempt Abraham, then tells him to offer Isaac. James 1:13 says God cannot be tempted with evil and tempts no one. One verse says God did the thing the other says he never does.",
+   "diag": "The Hebrew verb in Genesis 22:1 is nissah. The site's translation entry on the verse glosses it as test, try or prove, and Strong's definition, as carried in the site's word study data, is to test, with prove, try and tempt among the King James renderings. The CSB Study Bible says it means to prove the quality of something, not to entice to do wrong. Modern versions read tested, as the ESV Study Bible's note on the verse shows. James wrote in Greek, and the ESV Study Bible notes that his verb for tempted is the verb form of the noun he uses for trial a verse earlier; the context, it says, shows two different senses. So each language has one word that covers both testing and luring, and the English of 1611 used tempt for both. Tempt now means only the second.",
+   "kjv": "And it came to pass after these things, that God did tempt Abraham, and said unto him, Abraham: and he said, Behold, here I am.",
+   "kjvRef": "Genesis 22:1",
+   "kjvRole": "the King James says tempt",
+   "kjvNote": "The same translation has James 1:13 say God \"neither tempteth he any man\". The site's translation entry puts the clash down to English drift: tempt was an accurate word in 1611 and has since narrowed.",
+   "skeptic": "The Skeptic's Annotated Bible files Genesis 22:1 under the question \"Has God ever tempted anyone?\" against James 1:13, and adds 2 Samuel 24:1, where God moves David to number the people, and the line in the Lord's Prayer about not being led into temptation. Its comment on the prayer is that it \"wouldn't be necessary if God never tempts anyone.\" At full strength the case is about more than a verb: God arranges situations in which people can fail, and calling that a test does not change what it is.",
+   "harm": "The ESV Study Bible says testing must be clearly distinguished from tempting: God tests the commitment of people, as at Exodus 15:25 and 16:4, but tempts no one to do evil. The NIV Cultural Backgrounds Study Bible locates the difference in motive. Jewish texts, it says, distinguished God testing people in love and seeking their good from Satan testing them to make them fall. MacArthur reads James the same way: one Greek word gives trials in verses 2 to 12 and tempted in verse 13, and the circumstance either strengthens the believer or becomes a solicitation to evil, depending on how he responds.",
+   "cost": "The diagnosis explains the English. It does not answer the skeptic's wider point. Hebrew and Greek both use one word for the test and the lure, so the original still asks what God intends by a test a person might fail, and the harmonizing case answers from motive, which the verb alone does not supply. 2 Samuel 24:1, set beside 1 Chronicles 21:1, is a separate claim and is not settled here.",
+   "not": "**Not a claim that the King James mistranslated.** In its own century tempt could mean put to the test. The English moved; the Hebrew did not.",
+   "related": [
+    "god-repents",
+    "the-tree-and-the-day"
+   ],
+   "sources": [
+    "ESV Study Bible, ePub edition (Crossway), notes on Genesis 22:1 and James 1:13",
+    "CSB Study Bible, note on Genesis 22:1-2",
+    "NIV Cultural Backgrounds Study Bible, note on James 1:13",
+    "The MacArthur Study Bible (ESV), notes on Genesis 22:1 and James 1:13",
+    "Why Do Bible Translations Differ? (jayms.com tool data), entry genesis-22-1",
+    "Bible Word Study (jayms.com tool data), Strong's H5254",
+    "The Skeptic's Annotated Bible, Has God ever tempted anyone?, https://skepticsannotatedbible.com/contra/tempted_by_God.html",
+    "King James Version, Genesis 22:1 and James 1:13"
+   ],
+   "post": null,
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-22-1/",
+     "n": "Genesis 22:1",
+     "s": "God did tempt Abraham. The Hebrew verb means tested or proved, not enticed toward evil.",
+     "r": "Genesis 22:1"
+    }
+   ]
+  },
+  {
+   "title": "God repented, and God does not repent",
+   "id": "god-repents",
+   "summary": "Genesis 6:6 says it repented the Lord. Numbers 23:19 says God is not a man, that he should repent. The Hebrew verb is the same, and the English word has moved.",
+   "plain": "The real question: does God change his mind or not? **She said she was sorry she ever hired him, and she also said she never goes back on a decision.** Can both be true of one person on the same day?",
+   "category": "translation",
+   "group": "genesis",
+   "bibleRef": "Genesis 6:6",
+   "bibleRefOverride": "Genesis 6:6; Numbers 23:19; 1 Samuel 15:11, 29",
+   "claim": "Genesis 6:6 says the Lord repented that he had made man. Numbers 23:19 says God is not a man, that he should repent. 1 Samuel 15 does both in one chapter: the Lord regrets making Saul king at verses 11 and 35, and at verse 29 Samuel says the Strength of Israel will not repent.",
+   "diag": "The verb in all of these is nacham. The ESV Study Bible's note on 1 Samuel 15:29 lists three senses with passages for each: relent or change one's mind, have pity or compassion, and be sorry or have regret. The site's translation entry on Genesis 6:6 gives the same spread: be moved to pity, console oneself, grieve, change a stated course of action. Strong's, as carried in the site's word study data, starts from to sigh and runs through be sorry, pity, console and rue. Modern versions read regretted or was sorry at Genesis 6:6. The King James word repent now suggests turning away from sin, which the Hebrew verb does not say of God. That part of the tension is in the English.",
+   "kjv": "And it repented the LORD that he had made man on the earth, and it grieved him at his heart.",
+   "kjvRef": "Genesis 6:6",
+   "kjvRole": "the King James says repented",
+   "kjvNote": "The same translation has Numbers 23:19 say God is not \"the son of man, that he should repent\". Both verses have nacham. English repent narrowed after 1611; the Hebrew verb kept its range.",
+   "skeptic": "The Skeptic's Annotated Bible, under \"God does repent?\", sets Numbers 23:19, 1 Samuel 15:29, Malachi 3:6 and James 1:17 against Genesis 6:6, Exodus 32:11-14, 1 Samuel 15:11 and 35, Jeremiah 18:8, Jonah 3:10 and Amos 7:1-6, among others. Introducing Jeremiah 15:6 it says God has repented \"so many times he's getting tired of it.\" At full strength the case is that too many passages show God announcing one thing and then doing another for this to be a matter of one English word.",
+   "harm": "The ESV Study Bible says the verb at 1 Samuel 15:11 and 35 describes God's own sorrow that Saul turned out as he did, while at verse 29 it means God will not change his mind about a decision once he has made it. The CSB Study Bible says the word at 15:29 is used in a totally different sense from verse 11: the Lord regretted Saul's failures but would not change his verdict. On Numbers 23:19 the NIV Cultural Backgrounds Study Bible says change there denotes making idle or deceptive promises or failing to follow through, and sets Israel's God against Mesopotamian gods who were whimsical and could be manipulated.",
+   "cost": "The same Hebrew verb stands on both sides, so the original carries its own version of the question: God regrets, and God does not regret. The translation diagnosis removes the suggestion that God sins and repents of it. Reconciling regret with not changing course still takes the harmonizers' move, which separates a feeling from a verdict. The ESV Study Bible says its own reading of 15:11 does not even address whether God knew beforehand. Whether God changes his plans is a larger argument this entry does not settle.",
+   "not": "**Not a claim that one Hebrew word decides God's foreknowledge.** The word study narrows what these verses say. It leaves the theology of divine change where it was.",
+   "related": [
+    "god-tempted-abraham",
+    "thou-shalt-not-kill"
+   ],
+   "sources": [
+    "ESV Study Bible, notes on Genesis 6:6-7, Numbers 23:19 and 1 Samuel 15:29",
+    "CSB Study Bible, notes on Genesis 6:6 and 1 Samuel 15:29",
+    "NIV Cultural Backgrounds Study Bible, notes on Numbers 23:19 and 1 Samuel 15:29",
+    "Why Do Bible Translations Differ? (jayms.com tool data), entry genesis-6-6",
+    "Bible Word Study (jayms.com tool data), Strong's H5162",
+    "The Skeptic's Annotated Bible, God does repent?, https://skepticsannotatedbible.com/contra/repent.html",
+    "King James Version, Genesis 6:6 and Numbers 23:19"
+   ],
+   "post": null,
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-6/",
+     "n": "Genesis 6:6",
+     "s": "It repented the LORD. A verb that means comfort, grieve, relent and change course, all at once.",
+     "r": "Genesis 6:6"
+    }
+   ]
+  },
+  {
+   "title": "Thou shalt not kill, and slay every man his brother",
+   "id": "thou-shalt-not-kill",
+   "summary": "The commandment in the King James forbids killing. Twelve chapters later Moses tells the Levites to kill. The Hebrew verb in the commandment is narrower than English kill.",
+   "plain": "The real question: can a law forbid killing and command it in the same book? **The sign at the range says no shooting, and the range officer tells you to fire.** Is the sign about the same act the officer means?",
+   "category": "translation",
+   "group": "exodus",
+   "bibleRef": "Exodus 20:13",
+   "bibleRefOverride": "Exodus 20:13; Exodus 32:27",
+   "claim": "Exodus 20:13 in the King James reads Thou shalt not kill. At Exodus 32:27 Moses, speaking for the Lord, tells the Levites to go through the camp and slay brother, companion and neighbour. The same law prescribes death for a long list of offences, and God himself kills in the flood and at the Passover.",
+   "diag": "The verb in the commandment is ratsach. Strong's, as carried in the site's word study data, defines it as to kill a human being, especially to murder, and counts 47 uses. The CSB Study Bible says it is not a general word for killing and is not used for killing animals or for killing in war or by legal execution. The NIV Cultural Backgrounds Study Bible says it takes a person as both subject and object and refers to homicide. Bible Hub's parallel page shows where the versions fall: the King James, the American Standard Version, Douay-Rheims and Brenton's Septuagint read kill; the NIV, ESV, NASB, CSB, NLT and the JPS Tanakh of 1917 read murder. The English kill is wider than the Hebrew.",
+   "kjv": "Thou shalt not kill.",
+   "kjvRef": "Exodus 20:13",
+   "kjvRole": "the King James reads kill",
+   "kjvNote": "The American Standard Version of 1901 keeps kill. The JPS Tanakh of 1917 reads murder. The split runs by the choice of English word, not by the text being translated.",
+   "skeptic": "The Skeptic's Annotated Bible, under \"To kill or not to kill.\", lists Exodus 20:13 and Deuteronomy 5:17 against the laws that execute witches, blasphemers, Sabbath breakers and disobedient children, against the flood and the death of Egypt's firstborn, against Exodus 32:27, and against the order to destroy Amalek in 1 Samuel 15:2-3. After the verses that say murder it adds: \"Well, don't murder anyone, anyway.\" At full strength the case is moral, not lexical: even with murder in the commandment, the same law commands killings a modern reader would call murder.",
+   "harm": "The CSB Study Bible points to the cities of refuge, set up so that a homicide could be investigated to see whether it was accidental or premeditated (Exodus 21:12-14; Numbers 35; Deuteronomy 19; Joshua 20). The NIV Cultural Backgrounds Study Bible says biblical and other ancient law codes distinguish lawful killing, such as self-defence (Exodus 22:2), from unlawful. MacArthur stresses that the law imposed death on every manslayer who killed intentionally, which places the commandment inside a legal system rather than against all taking of life.",
+   "cost": "Narrowing kill to murder removes the verbal contradiction. It does not touch the question the skeptic is actually pressing, whether killings the law itself commands, Exodus 32 and 1 Samuel 15 among them, are just. And murder is an approximation too. The ESV footnote says the Hebrew word also covers causing human death through carelessness or negligence, and MacArthur reads it as taking life under a legal code whether the killer meant to or not.",
+   "not": "**Not a defense of every killing in the Old Testament.** The entry diagnoses one verb. The ethics of the conquest and of capital law are separate questions.",
+   "related": [
+    "god-repents",
+    "i-create-evil"
+   ],
+   "sources": [
+    "CSB Study Bible, note on Exodus 20:13",
+    "NIV Cultural Backgrounds Study Bible, note on Exodus 20:13",
+    "ESV Study Bible, footnote on Exodus 20:13",
+    "The MacArthur Study Bible (ESV), note on Exodus 20:13",
+    "Bible Word Study (jayms.com tool data), Strong's H7523",
+    "Bible Hub, Exodus 20:13 parallel versions, https://biblehub.com/exodus/20-13.htm",
+    "The Skeptic's Annotated Bible, To kill or not to kill., https://skepticsannotatedbible.com/contra/kill.html",
+    "King James Version, Exodus 20:13 and 32:27"
+   ],
+   "post": null
+  },
+  {
+   "title": "I make peace, and create evil",
+   "id": "i-create-evil",
+   "summary": "In the King James, God says he makes peace and creates evil. The Hebrew word ra covers disaster as well as wickedness, and most modern versions read calamity or disaster.",
+   "plain": "The real question: does Isaiah say God makes wickedness, or something else? **The report said the new owner brought something bad on the town.** Did he do wrong, or did he bring hard times?",
+   "category": "translation",
+   "group": "isaiah",
+   "bibleRef": "Isaiah 45:7",
+   "bibleRefOverride": "Isaiah 45:7; Psalm 5:4",
+   "claim": "Isaiah 45:7 in the King James has God say I make peace, and create evil. Psalm 5:4 says God has no pleasure in wickedness, and 1 John 4:8 says God is love. A good God does not create evil.",
+   "diag": "The Hebrew word is ra. Strong's, as carried in the site's word study data, defines it as bad or evil, natural or moral, and its list of King James renderings includes adversity, affliction, calamity, distress, harm, misery and trouble as well as evil and wicked. Bible Hub's parallel page shows the split: the King James, the JPS Tanakh of 1917 and Brenton's Septuagint read evil; the ESV and NKJV read calamity; the NIV, NASB and CSB read disaster; the NLT reads bad times; the NRSV reads woe. In the verse itself ra stands opposite peace, as darkness stands opposite light. Reading that pairing as pointing to disaster rather than wickedness is an inference drawn here, though it is the reading the modern versions take.",
+   "kjv": "I form the light, and create darkness: I make peace, and create evil: I the LORD do all these things.",
+   "kjvRef": "Isaiah 45:7",
+   "kjvRole": "the King James reads evil",
+   "kjvNote": "The older English versions on Bible Hub's page, Jewish and Christian, read evil. The newer ones mostly do not. The Hebrew word has the wider range; English evil now leans to the moral sense.",
+   "skeptic": "The Skeptic's Annotated Bible, under \"Is God the creator of evil?\", lists Isaiah 45:7 with 1 Kings 14:10, 2 Kings 6:33, Jeremiah 18:11, Job 2:10, Lamentations 3:38 and Amos 3:6, against Psalm 5:4 and 1 John 4:8. At full strength the case does not depend on the word: these passages have God bringing ruin on cities and houses, and calamity sent by God is still a harm sent by God.",
+   "harm": "The ESV Study Bible reads the verse as saying that the Lord's creative will and wise purposes stand behind everything, so his people should not lose heart when history seems to run against his promises. The CSB Study Bible says he controls the difficult things in history as well as the good ones.",
+   "cost": "The translation narrows evil to disaster. It does not remove what the verse claims, that God stands behind disaster, and the harmonizing sources do not try to remove it; they affirm it. Whether that fits with God's goodness is the problem of evil, not a translation question, and this entry does not settle it.",
+   "not": "**Not a claim that the verse is mild.** Disaster from God is a strong claim. The entry says only that the verse is not about God doing wickedness.",
+   "related": [
+    "thou-shalt-not-kill",
+    "god-tempted-abraham"
+   ],
+   "sources": [
+    "Bible Word Study (jayms.com tool data), Strong's H7451",
+    "Bible Hub, Isaiah 45:7 parallel versions, https://biblehub.com/isaiah/45-7.htm",
+    "ESV Study Bible, note on Isaiah 45:7",
+    "CSB Study Bible, note on Isaiah 45:5-7",
+    "The Skeptic's Annotated Bible, Is God the creator of evil?, https://skepticsannotatedbible.com/contra/evil.html",
+    "King James Version, Isaiah 45:7"
+   ],
+   "post": null
+  },
+  {
+   "title": "Did the men with Paul hear the voice?",
+   "id": "did-they-hear-the-voice",
+   "summary": "Acts 9:7 says the men travelling with Saul heard the voice. Acts 22:9 has Paul say they did not. The Greek verb for hear also means understand, and many versions read it that way in chapter 22.",
+   "plain": "The real question: can someone hear a voice and not hear it? **The neighbours heard the argument through the wall, and the neighbours never heard what it was about.** Is that a contradiction, or two senses of hear?",
+   "category": "translation",
+   "group": "acts",
+   "bibleRef": "Acts 9:7",
+   "bibleRefOverride": "Acts 9:7; Acts 22:9",
+   "claim": "Acts 9:7 says the men with Saul stood speechless, hearing a voice but seeing no one. In Acts 22:9 Paul tells the crowd that they saw the light but did not hear the voice of the one speaking to him. Luke wrote both accounts of the same event.",
+   "diag": "The verb is akouo in both verses. Strong's, as carried in the site's word study data, lists understand among its King James renderings as well as hear. Bible Hub's interlinear pages show a difference in grammar: in 9:7 voice is genitive, phones, after the participle akouontes; in 22:9 it is accusative, phonen, after the aorist ekousan. The ESV puts did not understand the voice in its text at 22:9 and footnotes the alternative hear with understanding. Bible Hub's parallel page shows the split: the ESV, NIV, NASB and NLT read did not understand; the King James, NKJV, CSB and NRSV read did not hear. The tension is in English hear, which cannot carry the sense of understanding that the Greek verb can.",
+   "kjv": "And they that were with me saw indeed the light, and were afraid; but they heard not the voice of him that spake to me.",
+   "kjvRef": "Acts 22:9",
+   "kjvRole": "the King James reads heard not",
+   "kjvNote": "At 9:7 the same translation reads \"hearing a voice, but seeing no man.\" The words \"and were afraid\" in 22:9 are not in every manuscript; the CSB notes that other manuscripts add them.",
+   "skeptic": "The Skeptic's Annotated Bible sets the two verses side by side under \"Did the men with Paul hear the voice?\", Yes at 9:7 and No at 22:9. At full strength: one author, one event, one verb, and in 22:9 the verb is plainly negated. Appealing to a second meaning of hear only where it is needed looks like special pleading.",
+   "harm": "The ESV Study Bible says the companions saw no vision of Jesus and did not hear the message to Saul, but could testify to a brilliant light and a sound, which shows the event was not in Saul's imagination. The CSB Study Bible on 9:7 says they heard a noise but did not recognize the words, and on 22:9 that the grammar supports the idea that they heard but did not understand. MacArthur: only Paul understood the Lord's words, and his companions heard the sound but could not make out the words, as with the voice in John 12:29. The NIV Cultural Backgrounds Study Bible adds that ancient hearers liked variation in retold stories.",
+   "cost": "The case difference is real in the Greek, but none of the sources read here shows that the genitive and accusative by themselves mark hearing a sound and hearing with sense, and the CSB, whose note cites the grammar, still translates did not hear. So the diagnosis rests on the range of the verb and on Luke's own context, with the case evidence as support at most. The third telling, in Acts 26, is not examined here.",
+   "not": "**Not a claim that the case endings settle it.** The argument is about the range of one verb in context, not a hidden rule of Greek grammar.",
+   "related": [
+    "whose-burden",
+    "born-of-god-cannot-sin"
+   ],
+   "sources": [
+    "Bible Hub, Acts 9:7 interlinear, https://biblehub.com/interlinear/acts/9-7.htm",
+    "Bible Hub, Acts 22:9 interlinear, https://biblehub.com/interlinear/acts/22-9.htm",
+    "Bible Hub, Acts 22:9 parallel versions, https://biblehub.com/acts/22-9.htm",
+    "Bible Word Study (jayms.com tool data), Strong's G191",
+    "ESV Study Bible, note on Acts 9:7 and footnote on Acts 22:9",
+    "CSB Study Bible, notes on Acts 9:7 and 22:9, textual note on 22:9",
+    "The MacArthur Study Bible (ESV), note on Acts 22:9",
+    "NIV Cultural Backgrounds Study Bible, notes on Acts 9:1-18 and 22:7-11",
+    "The Skeptic's Annotated Bible, Did the men with Paul hear the voice?, https://skepticsannotatedbible.com/contra/voice.html",
+    "King James Version, Acts 9:7 and 22:9"
+   ],
+   "post": null
+  },
+  {
+   "title": "Bear one another's burdens, and bear your own",
+   "id": "whose-burden",
+   "summary": "Galatians 6:2 says carry each other's burdens. Three verses later each one carries his own. Paul used two different Greek nouns.",
+   "plain": "The real question: are you supposed to carry other people's loads or your own? **Help your neighbour move his piano, and carry your own suitcase.** One kind of weight, or two?",
+   "category": "translation",
+   "group": "galatians",
+   "bibleRef": "Galatians 6:2",
+   "bibleRefOverride": "Galatians 6:2; Galatians 6:5",
+   "claim": "Galatians 6:2 in the King James says Bear ye one another's burdens. Galatians 6:5 says every man shall bear his own burden. Same paragraph, opposite instructions.",
+   "diag": "Bible Hub's interlinear pages give the two nouns. In 6:2 it is barē, the plural of baros; in 6:5 it is phortion. The verb, bastazo, is the same in both. Strong's, as carried in the site's word study data, defines baros as weight, used figuratively of a load, and phortion as an invoice, part of a ship's freight, used figuratively of a task or service. The CSB Study Bible says the word in verse 5 is not the same word as in verse 2 and means cargo or capacity. Bible Hub's parallel page shows most modern versions marking the difference: the ESV, NIV, NASB and CSB read load in verse 5, the NRSV loads, while the King James and the American Standard Version keep burden. One English noun stands where Paul wrote two.",
+   "kjv": "For every man shall bear his own burden.",
+   "kjvRef": "Galatians 6:5",
+   "kjvRole": "the King James uses burden twice",
+   "kjvNote": "Verse 2 in the same translation: \"Bear ye one another’s burdens, and so fulfil the law of Christ.\" Burden translates baros there and phortion here.",
+   "skeptic": "The Skeptic's Annotated Bible lists the pair under \"Should we bear each other's burdens?\", with No at 6:5 and Yes at 6:2. As it stands in the King James, it is an instruction and its reverse three verses apart.",
+   "harm": "MacArthur on 6:5 says this is no contradiction: the burdens of verse 2 are extra-heavy loads, while the load of verse 5 has no sense of difficulty and means life's routine obligations and each believer's calling. The CSB Study Bible says each person is assigned a different load by the Lord, so no one can rightly compare himself with someone else. The NIV Cultural Backgrounds Study Bible notes that Greek sayings used similar words for self-reliance, and suggests Paul's point is not to look down on others.",
+   "cost": "Two nouns remove the verbal clash. They do not settle what verse 5 means. The three study Bibles above give three different accounts of the load, and in verse 5 the verb is future, a point none of them develops. The translation diagnosis says Paul was talking about two kinds of weight. It does not say which second kind.",
+   "not": "**Not a claim that Paul contradicted himself and then recovered.** On this diagnosis the two lines were never about the same thing.",
+   "related": [
+    "did-they-hear-the-voice",
+    "born-of-god-cannot-sin"
+   ],
+   "sources": [
+    "Bible Hub, Galatians 6:2 interlinear, https://biblehub.com/interlinear/galatians/6-2.htm",
+    "Bible Hub, Galatians 6:5 interlinear, https://biblehub.com/interlinear/galatians/6-5.htm",
+    "Bible Hub, Galatians 6:5 parallel versions, https://biblehub.com/galatians/6-5.htm",
+    "Bible Word Study (jayms.com tool data), Strong's G922 and G5413",
+    "CSB Study Bible, note on Galatians 6:3-5",
+    "The MacArthur Study Bible (ESV), notes on Galatians 6:2 and 6:5",
+    "NIV Cultural Backgrounds Study Bible, notes on Galatians 6:2 and 6:5",
+    "The Skeptic's Annotated Bible, Should we bear each other's burdens?, https://skepticsannotatedbible.com/contra/burden.html",
+    "King James Version, Galatians 6:2 and 6:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "Whosoever is born of God cannot sin",
+   "id": "born-of-god-cannot-sin",
+   "summary": "1 John 1:8 says anyone who claims to have no sin deceives himself. 1 John 3:9 says whoever is born of God cannot sin. The Greek verbs are present tense, and many versions read keep on sinning.",
+   "plain": "The real question: does John say Christians never sin, or something else? **She doesn't smoke, and she had a cigarette at the wedding.** Is that a lie, or a statement about a habit?",
+   "category": "translation",
+   "group": "1-john",
+   "bibleRef": "1 John 3:9",
+   "bibleRefOverride": "1 John 3:6, 9; 1 John 1:8",
+   "claim": "1 John 3:9 in the King James says whoever is born of God doth not commit sin and cannot sin. 1 John 1:8 says that if we say we have no sin we deceive ourselves. The same short letter says both.",
+   "diag": "Bible Hub's interlinear page parses the verbs in 3:9 as present tense: poiei, does, and hamartanein, to sin, a present infinitive after cannot. The CSB's own textual notes offer Or not practice sin and Or to keep on sinning at 3:9, and Or not keep on sinning at 3:6. Bible Hub's parallel page shows the split: the ESV reads cannot keep on sinning, the NIV cannot go on sinning, the NLT can't keep on sinning; the King James, NKJV, NASB of 1995 and NRSV read cannot sin. The diagnosis is that the English cannot sin states an absolute that the Greek tense may not.",
+   "kjv": "Whosoever is born of God doth not commit sin; for his seed remaineth in him: and he cannot sin, because he is born of God.",
+   "kjvRef": "1 John 3:9",
+   "kjvRole": "the King James says cannot sin",
+   "kjvNote": "The current NASB reads he cannot sin continually; the NASB of 1995 kept he cannot sin. The CSB prints is not able to sin in its text and puts the habitual sense in its notes.",
+   "skeptic": "The Skeptic's Annotated Bible lists the passages under \"Do Christians sin?\": yes, everyone is a sinner, at 1 Kings 8:46, Ecclesiastes 7:20, Romans 3:23 and 1 John 1:8 and 10; no, Christians are sinless, at 1 John 3:6, 3:9 and 5:18 and 3 John 11. At full strength: John's wording in chapter 3 is as absolute as language gets, cannot, and he wrote it two chapters after saying the opposite.",
+   "harm": "The ESV Study Bible says genuine Christians have been so transformed that they cannot live in a pattern of continual sin, though they are never completely free from sin in this life, citing 1:8-10. MacArthur reads 3:6 as habitual, constant sinning. The CSB Study Bible says John knew Christians sin (2:1) and had in mind flagrant sin by false believers whose confession was false.",
+   "cost": "The tense argument is contested as a diagnosis. The NIV Cultural Backgrounds Study Bible says a number of scholars stress the tense to mean continuous sin, while others read John as describing what is possible or as answering false teachers' claims, and it adds that with or without the tense John may simply mean characteristic behavior. It also calls the two sides of John's letter a paradox. So the translation split explains why cannot sin sounds absolute in English. Whether the Greek present by itself means habitual is not settled by the sources here.",
+   "not": "**Not a claim that John excuses sin.** Every reading above has John insisting that the born of God do not live in it.",
+   "related": [
+    "whose-burden",
+    "did-they-hear-the-voice"
+   ],
+   "sources": [
+    "Bible Hub, 1 John 3:9 interlinear, https://biblehub.com/interlinear/1_john/3-9.htm",
+    "Bible Hub, 1 John 3:9 parallel versions, https://biblehub.com/1_john/3-9.htm",
+    "CSB Study Bible, textual notes on 1 John 3:6 and 3:9, notes on 3:6 and 3:9-10",
+    "ESV Study Bible, notes on 1 John 3:6-7 and 3:9-10",
+    "The MacArthur Study Bible (ESV), notes on 1 John 3:6 and 3:9",
+    "NIV Cultural Backgrounds Study Bible, note on 1 John 3:6",
+    "The Skeptic's Annotated Bible, Do Christians sin?, https://skepticsannotatedbible.com/contra/sin.html",
+    "King James Version, 1 John 1:8 and 3:9"
+   ],
+   "post": null
+  },
+  {
+   "title": "In the day you eat of it you will die",
+   "id": "the-tree-and-the-day",
+   "summary": "God tells Adam that in the day he eats he will surely die. Adam lives to 930. The ESV footnotes the phrase as when you eat.",
+   "plain": "The real question: did God's warning fail, or did it mean something other than a deadline? **The day you sign that loan, you lose the house.** Is that a date on the calendar, or a certainty?",
+   "category": "translation",
+   "group": "genesis",
+   "bibleRef": "Genesis 2:17",
+   "bibleRefOverride": "Genesis 2:17; Genesis 5:5",
+   "claim": "Genesis 2:17 says that in the day Adam eats from the tree he will surely die. He eats in Genesis 3, and Genesis 5:5 says he lived 930 years and then died. Either the threat failed, or the serpent was right when it said you will not surely die (Genesis 3:4).",
+   "diag": "The ESV prints in the day and footnotes Or when you eat. The ESV Study Bible says in the day implies fixed certainty rather than absolute immediacy, and points to 1 Kings 2:42 for the same use. The site's translation entry on Genesis 2:4 describes beyom with an infinitive as a standard Hebrew idiom meaning when, used about seventy times. That entry is about 2:4 and 5:1; applying it to 2:17 is an inference drawn here, though it is the reading the ESV footnote gives. The doubled verb behind surely die, mot tamut, is covered in the site's entry on 2:16-17 as an intensifier: dying you shall die. The English day sounds like a deadline. The Hebrew expression may be a when.",
+   "kjv": "But of the tree of the knowledge of good and evil, thou shalt not eat of it: for in the day that thou eatest thereof thou shalt surely die.",
+   "kjvRef": "Genesis 2:17",
+   "kjvRole": "the King James keeps in the day",
+   "kjvNote": "Genesis 5:5 in the same translation: \"And all the days that Adam lived were nine hundred and thirty years: and he died.\"",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: God said Adam would die the day he ate, Adam lived for centuries, so God's word failed or the serpent told the truth. At full strength the claim adds that the doubled verb makes the warning more emphatic, not less, so softening day cuts against the emphasis.",
+   "harm": "The ESV Study Bible reads the phrase as certainty, not immediacy, on the pattern of Solomon's warning to Shimei in 1 Kings 2:42. MacArthur says Adam and Eve died spiritually at the moment of their sin and physically later, at 5:5. The CSB Study Bible says the death God warned of was more than physical: sin would shatter Adam's relationships with his environment, his wife and God.",
+   "cost": "When softens the deadline, but the warning still promises death, so the harmonizers still need either a delayed physical death or a different kind of death on the day. The idiom does not decide which. Nor does it answer the serpent's line in 3:4, which the story leaves the reader to judge.",
+   "not": "**Not a claim that yom never means a day.** The point is the construction the word sits in, not the noun.",
+   "related": [
+    "animals-before-or-after-adam",
+    "god-tempted-abraham"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote and note on Genesis 2:17",
+    "The MacArthur Study Bible (ESV), note on Genesis 2:17",
+    "CSB Study Bible, note on Genesis 2:17",
+    "Why Do Bible Translations Differ? (jayms.com tool data), entries genesis-2-4b and genesis-2-16-17",
+    "King James Version, Genesis 2:17 and 5:5"
+   ],
+   "post": null,
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-2-16-17/",
+     "n": "Genesis 2:16-17",
+     "s": "Thou shalt surely die. Literally dying, you shall die: the verb said twice.",
+     "r": "Genesis 2:16-17"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-2-4b/",
+     "n": "Genesis 2:4b",
+     "s": "In the day that the LORD God made. An idiom meaning when, not a calendar entry.",
+     "r": "Genesis 2:4"
+    }
+   ]
+  },
+  {
+   "title": "Animals before Adam, or after?",
+   "id": "animals-before-or-after-adam",
+   "summary": "Genesis 1 has the animals made before the first humans. Genesis 2:19 in many versions reads as if God formed them after Adam. Some versions read had formed.",
+   "plain": "The real question: does Genesis 2 give a second, different order of creation? **After the guests sat down, she set out the plates she made.** Did she make the plates after they sat down, or before?",
+   "category": "translation",
+   "group": "genesis",
+   "bibleRef": "Genesis 2:19",
+   "bibleRefOverride": "Genesis 1:24-27; Genesis 2:18-19",
+   "claim": "Genesis 1 has the land animals made on the sixth day and then humankind. Genesis 2 has God say it is not good for the man to be alone, then form every beast of the field and every bird and bring them to the man. The two chapters put the animals on opposite sides of the man.",
+   "diag": "Bible Hub's parallel page for 2:19 shows the English versions dividing: the NIV, ESV, LSB and GOD'S WORD read had formed; the King James, NKJV, NASB, CSB, NRSVCE and the JPS Tanakh of 1917 read formed. The ESV prints had formed and footnotes the alternative, formed. MacArthur says 2:19 is not a new creation of animals, which were made before man on the fifth and sixth days. The sequence the skeptic reads comes from the English simple past. Whether the Hebrew verb allows the pluperfect is a judgement the ESV and NIV translators made; the sources read here do not argue the grammar.",
+   "kjv": "And out of the ground the LORD God formed every beast of the field, and every fowl of the air; and brought them unto Adam to see what he would call them: and whatsoever Adam called every living creature, that was the name thereof.",
+   "kjvRef": "Genesis 2:19",
+   "kjvRole": "the King James reads formed",
+   "kjvNote": "The King James gives the simple past, as do the NASB and CSB. The ESV and NIV give had formed. The split is between modern versions, not between old and new.",
+   "skeptic": "The Skeptic's Annotated Bible asks \"Were humans created before or after the other animals?\" and sets Genesis 1:25-27 against 2:18-19. At full strength the order in chapter 2 is part of the story's logic: God sees the man alone, forms the animals, brings them, finds no partner among them, and then makes the woman. A pluperfect makes that sequence harder to read.",
+   "harm": "MacArthur: the verse calls attention to the fact that God formed the animals out of the ground, as he did the man, and that the man, in God's image, names them as a sign of his rule. The ESV's text reads it the same way by printing had formed.",
+   "cost": "This is the weakest diagnosis in the translation group. It rests on a rendering the major versions split on. If the simple past is right, the order in Genesis 2 is a feature of the Hebrew and needs a different kind of answer, such as the two chapters doing different jobs. That would be a genre entry, which this first build does not include.",
+   "not": "**Not a claim that Genesis 1 and Genesis 2 are the same kind of account.** The entry diagnoses one verb tense in English, nothing more.",
+   "related": [
+    "the-tree-and-the-day"
+   ],
+   "sources": [
+    "Bible Hub, Genesis 2:19 parallel versions, https://biblehub.com/genesis/2-19.htm",
+    "ESV Study Bible, footnote on Genesis 2:19",
+    "The MacArthur Study Bible (ESV), note on Genesis 2:19",
+    "The Skeptic's Annotated Bible, Were humans created before or after the other animals?, https://skepticsannotatedbible.com/contra/humans.html",
+    "King James Version, Genesis 2:19"
+   ],
+   "post": null
+  },
+  {
+   "title": "A great fish, or a whale?",
+   "id": "fish-or-whale",
+   "summary": "Jonah says a great fish swallowed him. In the King James, Jesus says Jonah was in the whale's belly. Matthew's Greek word does not name a whale.",
+   "plain": "The real question: did Jesus get the animal wrong? **The fisherman said a monster took his bait.** Was it a shark, a whale, or just a very big fish?",
+   "category": "translation",
+   "group": "matthew",
+   "bibleRef": "Matthew 12:40",
+   "bibleRefOverride": "Matthew 12:40; Jonah 1:17",
+   "claim": "Jonah 1:17 says the Lord prepared a great fish to swallow Jonah. In the King James of Matthew 12:40, Jesus says Jonah was three days and three nights in the whale's belly. A fish is not a whale.",
+   "diag": "Matthew's word is ketos, here in the genitive ketous. Strong's, as carried in the site's word study data, defines it as a huge fish, as gaping for prey; it occurs once in the New Testament, and whale is its only King James rendering. Bible Hub's interlinear glosses it great fish. The CSB's textual note on the verse offers Or sea creature and points to Jonah 1:17. On the Hebrew side the ESV Study Bible says dag in Jonah is not limited to what is called fish today but is a general word for a sea beast, and MacArthur notes the Hebrew word for whale is not used. The site's Myth Checker entry on Jonah says the same. Neither language says whale. The King James chose it.",
+   "kjv": "For as Jonas was three days and three nights in the whale’s belly; so shall the Son of man be three days and three nights in the heart of the earth.",
+   "kjvRef": "Matthew 12:40",
+   "kjvRole": "the King James reads whale",
+   "kjvNote": "Jonah 1:17 in the same translation: \"Now the LORD had prepared a great fish to swallow up Jonah.\" The King James has fish in Jonah and whale in Matthew.",
+   "skeptic": "The Skeptic's Annotated Bible asks \"Was Jonah swallowed by a fish or a whale?\" and sets Jonah 1:17 against Matthew 12:40. At full strength: the King James was the Bible of the English-speaking world for three centuries, and in it the two passages disagree.",
+   "harm": "The ESV Study Bible says the animal cannot be identified further, and adds that a large whale such as a sperm whale could swallow a man whole. The CSB Study Bible says the fish was not necessarily a whale and warns that stories of sailors surviving inside whales have never been authenticated.",
+   "cost": "The diagnosis settles the word. It does not settle the event. Whether a man survived three days inside a sea creature is a miracle claim, and the translation leaves it exactly where it was. The three days and three nights in the same verse are a separate claim about counting days and are not diagnosed here.",
+   "not": "**Not a claim that the creature could not have been a whale.** The ESV Study Bible allows one. The point is that neither text names a species.",
+   "related": [
+    "ears-or-a-body"
+   ],
+   "sources": [
+    "Bible Hub, Matthew 12:40 interlinear, https://biblehub.com/interlinear/matthew/12-40.htm",
+    "Bible Word Study (jayms.com tool data), Strong's G2785",
+    "CSB Study Bible, textual note on Matthew 12:40, note on Jonah 1:17",
+    "ESV Study Bible, note on Jonah 1:17",
+    "The MacArthur Study Bible (ESV), note on Jonah 1:17",
+    "Myth Checker (jayms.com tool data), entry jonah-was-swallowed-by-a-whale",
+    "The Skeptic's Annotated Bible, Was Jonah swallowed by a fish or a whale?, https://skepticsannotatedbible.com/contra/whale.html",
+    "King James Version, Jonah 1:17 and Matthew 12:40"
+   ],
+   "post": null
+  },
+  {
+   "title": "Ears, or a body?",
+   "id": "ears-or-a-body",
+   "summary": "Psalm 40:6 says God dug open the psalmist's ears. Hebrews 10:5 quotes it as a body prepared. Hebrews is quoting the old Greek translation of the psalm, not the Hebrew.",
+   "plain": "The real question: did Hebrews misquote the psalm? **The newspaper quoted the mayor saying the city needs hands, and the radio quoted him saying it needs workers.** Did one of them get him wrong?",
+   "category": "translation",
+   "group": "hebrews",
+   "bibleRef": "Hebrews 10:5",
+   "bibleRefOverride": "Psalm 40:6-8; Hebrews 10:5-7",
+   "claim": "Psalm 40:6 says mine ears hast thou opened. Hebrews 10:5 quotes the psalm as a body hast thou prepared me and builds an argument about Christ's bodily offering on it. The New Testament changed the Old Testament's words to fit Jesus.",
+   "diag": "The ESV Study Bible says the Hebrew literally reads ears you have dug for me, and that the Septuagint translators, and the writer of Hebrews after them, understood the metaphor as the making of a body. The CSB's own note on the psalm gives the literal Hebrew as you hollow out ears for me. The site's translation entry gives the Septuagint wording, soma de katertiso moi, and says Hebrews quotes that Greek directly. The NIV Cultural Backgrounds Study Bible also says the citation is from the Greek version. The difference arose in translation, in the Septuagint, and Hebrews inherited it. It is not in the Hebrew text of the psalm.",
+   "kjv": "Sacrifice and offering thou didst not desire; mine ears hast thou opened: burnt offering and sin offering hast thou not required.",
+   "kjvRef": "Psalm 40:6",
+   "kjvRole": "the King James follows the Hebrew in the psalm",
+   "kjvNote": "In Hebrews 10:5 the same translation reads \"a body hast thou prepared me\". It translates the Hebrew in the Psalms and the Greek in Hebrews, so the gap shows inside one Bible.",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: the author of Hebrews misquoted the psalm, replacing ears with body to make it predict the incarnation. At full strength: an argument that depends on a word the original does not contain is not an argument from Scripture but from a translation of it.",
+   "harm": "MacArthur says the change is not significant: the Greek translators took the Hebrew as a figure of speech in which a part stands for the whole, and ears were chosen because they stand for obedience. The ESV Study Bible says New Testament quotations often reword or adapt the Old Testament, always compatibly with its meaning, and on the psalm itself that Hebrews uses these verses because its readers were tempted to go back to the sacrifices.",
+   "cost": "The diagnosis explains where body came from. It does not settle whether arguing from the Greek rendering is legitimate, which is the skeptic's real question. The harmonizers' answer, that part stands for whole, is a claim about the Greek translators' intent, and the sources here assert it rather than show it. Whether the Septuagint translators had a different Hebrew text in front of them is not addressed in the sources read here, so the entry claims nothing either way.",
+   "not": "**Not a claim that Hebrews invented the wording.** The Greek wording was there before Hebrews used it.",
+   "related": [
+    "fish-or-whale",
+    "seventy-or-seventy-five",
+    "bed-or-staff"
+   ],
+   "sources": [
+    "ESV Study Bible, notes on Psalm 40:6-8 and Hebrews 10:5-7",
+    "CSB Study Bible, textual note and note on Psalm 40:6",
+    "NIV Cultural Backgrounds Study Bible, note on Hebrews 10:4-5",
+    "The MacArthur Study Bible (ESV), note on Hebrews 10:5",
+    "Why Do Bible Translations Differ? (jayms.com tool data), entry psalm-40-6",
+    "King James Version, Psalm 40:6 and Hebrews 10:5"
+   ],
+   "post": null,
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-40-6/",
+     "n": "Psalm 40:6",
+     "s": "Mine ears hast thou opened. Hebrews 10:5 quotes it as a body hast thou prepared me, following the Greek, not the Hebrew.",
+     "r": "Psalm 40:6"
+    }
+   ]
+  },
+  {
+   "title": "In Isaiah the prophet, or in the prophets?",
+   "id": "in-isaiah-the-prophet",
+   "summary": "Mark opens with a quotation he credits to Isaiah, but the first line of it is from Malachi. The King James reads in the prophets, which removes the problem. The critical editions read Isaiah.",
+   "plain": "The real question: did Mark name the wrong prophet, or did someone tidy him up? **The concert program credits a medley to the composer of its longest song.** Is that a mistake, or a way of labelling a medley?",
+   "category": "variant",
+   "group": "mark",
+   "bibleRef": "Mark 1:2",
+   "bibleRefOverride": "Mark 1:2-3; Malachi 3:1; Isaiah 40:3",
+   "claim": "Mark 1:2-3 says as it is written in Isaiah the prophet and then quotes two lines. The first is Malachi 3:1, the second Isaiah 40:3. Mark credited Isaiah with Malachi's words.",
+   "diag": "The Greek editions divide. Bible Hub's page of Greek texts shows the SBL Greek New Testament, Nestle 1904, Westcott and Hort and Tischendorf reading en to Esaia to prophete, in Isaiah the prophet, and the Stephanus Textus Receptus of 1550, Scrivener's of 1894 and the Robinson-Pierpont Byzantine text reading en tois prophetais, in the prophets. The ESV footnote says some manuscripts read in the prophets; the CSB's textual note says the same. Peter Gurry, in Myths and Mistakes in New Testament Textual Criticism, lists Mark 1:2 among the Gospel variants that combine importance and difficulty. The CSB Study Bible and MacArthur both say the mixed quotation probably explains why some manuscripts read the prophets. The tension depends on which Greek text a Bible prints.",
+   "kjv": "As it is written in the prophets, Behold, I send my messenger before thy face, which shall prepare thy way before thee.",
+   "kjvRef": "Mark 1:2",
+   "kjvRole": "the King James reads in the prophets",
+   "kjvNote": "The King James follows the Textus Receptus here. A reader of the King James never meets the claim.",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: Mark misattributes Malachi to Isaiah, which shows he was working from memory or from a collection of proof texts, and scribes noticed and changed it. At full strength the variant is evidence for the skeptic, not against: it shows early copyists thought the attribution was a problem.",
+   "harm": "The ESV Study Bible says Isaiah is named because he was the more prominent prophet and more of the quoted material is his, and that Mark goes on to expound only the Isaiah line. The NIV Cultural Backgrounds Study Bible adds that ancient interpreters treated Scripture as a seamless whole and joined texts on a shared phrase, here prepare the way. The CSB Study Bible names a third source in the mix, Exodus 23:20.",
+   "cost": "This variant runs the other way from most on the desk. It does not make the tension go away. If Isaiah is original, the tension was in Mark and later copyists eased it. The diagnosis explains why King James readers never met the problem. It does not show that naming one prophet for a mixed quotation was accepted practice; the harmonizing case asserts that, and the sources read here do not give ancient examples.",
+   "not": "**Not a claim that modern versions introduced an error.** The reading Isaiah is printed in the critical editions; the reading in the prophets is the smoother one.",
+   "related": [
+    "without-a-cause",
+    "none-good-but-god"
+   ],
+   "sources": [
+    "Bible Hub, Mark 1:2 Greek texts, https://biblehub.com/texts/mark/1-2.htm",
+    "ESV Study Bible, footnote and note on Mark 1:2-3",
+    "CSB Study Bible, textual note and note on Mark 1:2-3",
+    "NIV Cultural Backgrounds Study Bible, note on Mark 1:2-3",
+    "The MacArthur Study Bible (ESV), note on Mark 1:2",
+    "Peter J. Gurry, Myths About Variants, ch. 10 in Elijah Hixson and Peter J. Gurry, eds., Myths and Mistakes in New Testament Textual Criticism (IVP Academic, 2019)",
+    "King James Version, Mark 1:2"
+   ],
+   "post": null
+  },
+  {
+   "title": "Angry without a cause",
+   "id": "without-a-cause",
+   "summary": "In the King James, Jesus condemns anger without a cause. Without those three words he condemns anger, and then is angry himself in Mark 3:5. The words are in some Greek texts and not others.",
+   "plain": "The real question: does Jesus forbid all anger, or only some kind? **The rule says no running in the hall, and the teacher runs when a child falls.** Did the teacher break the rule, or is the rule narrower than it sounds?",
+   "category": "variant",
+   "group": "matthew",
+   "bibleRef": "Matthew 5:22",
+   "bibleRefOverride": "Matthew 5:22; Mark 3:5",
+   "claim": "In most modern versions Matthew 5:22 has Jesus say that everyone who is angry with his brother is liable to judgment. Mark 3:5 says Jesus looked around at the synagogue with anger. Jesus did what he condemned.",
+   "diag": "The ESV footnote says some manuscripts insert without cause; the CSB's textual note says other manuscripts add it. Bible Hub's page of Greek texts shows the word, eike, in the Stephanus Textus Receptus, Scrivener's Textus Receptus, the Robinson-Pierpont Byzantine text and the Greek Orthodox Church text of 1904, and absent from the SBL Greek New Testament, Nestle 1904, Westcott and Hort and Tischendorf. With it, the saying targets one kind of anger. Without it, the saying reads as unqualified, and the clash with Mark 3:5 appears.",
+   "kjv": "But I say unto you, That whosoever is angry with his brother without a cause shall be in danger of the judgment:",
+   "kjvRef": "Matthew 5:22",
+   "kjvRole": "the King James reads without a cause",
+   "kjvNote": "Mark 3:5 in the same translation has Jesus look round about on them \"with anger, being grieved for the hardness of their hearts\".",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: Jesus forbade anger and was angry, so either he broke his own rule or the rule was later softened by scribes who saw the problem. At full strength the second half carries the weight: if without a cause is a later addition, someone in the copying tradition felt the saying needed a qualification.",
+   "harm": "The ESV Study Bible reads the anger in view as the kind that wants to damage or destroy the other person, the root of murder in verse 21. The NIV Cultural Backgrounds Study Bible puts it the same way: the law said do not murder, and Jesus says do not want to murder. On that reading the shorter text is already qualified by its context.",
+   "cost": "Here the variant cuts against the easy harmony. The King James reading removes the tension, but the editions read here print the shorter text, so a reader of a modern Bible has to resolve the clash from context, as the harmonizing case does. The sources read here do not argue which reading is original or why the word was added or dropped.",
+   "not": "**Not a claim that without a cause was added to protect Jesus.** None of the sources here says why it entered the text.",
+   "related": [
+    "in-isaiah-the-prophet",
+    "i-go-not-up-yet"
+   ],
+   "sources": [
+    "Bible Hub, Matthew 5:22 Greek texts, https://biblehub.com/texts/matthew/5-22.htm",
+    "ESV Study Bible, footnote and note on Matthew 5:22",
+    "CSB Study Bible, textual note on Matthew 5:22",
+    "NIV Cultural Backgrounds Study Bible, note on Matthew 5:22",
+    "King James Version, Matthew 5:22 and Mark 3:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "I go not up yet",
+   "id": "i-go-not-up-yet",
+   "summary": "Jesus tells his brothers he is not going up to the feast, and then goes. The King James has not yet, and so do many manuscripts. Others read only not.",
+   "plain": "The real question: did Jesus say one thing and do another? **I'm not going to the party, she said, and an hour later she was there.** Did she lie, change her mind, or mean not now?",
+   "category": "variant",
+   "group": "john",
+   "bibleRef": "John 7:8",
+   "bibleRefOverride": "John 7:8-10",
+   "claim": "In some versions John 7:8 has Jesus say I am not going up to this feast. Two verses later he goes up in secret. Jesus told his brothers something untrue.",
+   "diag": "The ESV footnote says some manuscripts add yet, and the CSB's textual note says the same. The ESV Study Bible says many of the oldest and best manuscripts have oupo, not yet, rather than ouk, not, but judges not more likely to be original. Bible Hub's page of Greek texts shows the SBL Greek New Testament and Tischendorf printing ouk, and Nestle 1904, Westcott and Hort, the Textus Receptus and the Byzantine text printing oupo. The site's own translation entry on the verse lists the manuscripts on each side and calls the reading without yet the harder one, since a scribe had a motive to add yet and none to remove it.",
+   "kjv": "Go ye up unto this feast: I go not up yet unto this feast; for my time is not yet full come.",
+   "kjvRef": "John 7:8",
+   "kjvRole": "the King James reads not yet",
+   "kjvNote": "John 7:10 in the same translation: \"then went he also up unto the feast, not openly, but as it were in secret.\"",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: Jesus told his brothers he would not go and then went, which is a lie or a change of mind. At full strength: if not is original, the copyists who added yet are the first witnesses to how awkward the line was.",
+   "harm": "The ESV Study Bible says the Greek present tense can mean I am not now going, and that Jesus refused to go up in the way his brothers wanted, to show himself for worldly reasons. The CSB Study Bible says Jesus used craft to combat opposition and false expectations. MacArthur ties it to my time in the same verse: Jesus would not move outside God's timetable.",
+   "cost": "The variant does not settle it. If not is original, as the ESV Study Bible thinks likely and the SBL text prints, the tension is in John, and the answer has to come from the present tense or from the time saying in verse 6 and verse 8, which is what the harmonizers supply. The diagnosis explains why many readers, the King James among them, read not yet.",
+   "not": "**Not a claim that yet was added to cover a lie.** The sources here record the addition; none of them says that was the motive.",
+   "related": [
+    "without-a-cause",
+    "in-isaiah-the-prophet"
+   ],
+   "sources": [
+    "Bible Hub, John 7:8 Greek texts, https://biblehub.com/texts/john/7-8.htm",
+    "ESV Study Bible, footnote and note on John 7:8",
+    "CSB Study Bible, textual note on John 7:8, note on 7:6-10",
+    "The MacArthur Study Bible (ESV), note on John 7:8",
+    "Why Do Bible Translations Differ? (jayms.com tool data), entry john-7-8",
+    "King James Version, John 7:8 and 7:10"
+   ],
+   "post": null,
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/john-7-8/",
+     "n": "John 7:8",
+     "s": "I go not up yet unto this feast. Some manuscripts lack the word yet.",
+     "r": "John 7:8"
+    }
+   ]
+  },
+  {
+   "title": "Joseph and his mother, or his father and his mother?",
+   "id": "his-father-and-his-mother",
+   "summary": "Luke 1 says Jesus was conceived without a human father. Luke 2:33 in most modern versions calls Joseph his father. The King James reads Joseph and his mother.",
+   "plain": "The real question: does Luke undercut his own story of the virgin birth? **The school form lists the stepdad under father.** Is the form wrong about the family, or using the word the family uses?",
+   "category": "variant",
+   "group": "luke",
+   "bibleRef": "Luke 2:33",
+   "bibleRefOverride": "Luke 1:34-35; Luke 2:33",
+   "claim": "Luke 1:34-35 has the Holy Spirit come upon Mary, who has not known a man. In most modern versions Luke 2:33 says his father and his mother marvelled. Luke calls Joseph Jesus's father a chapter after saying he was not. The claim also circulates the other way, from defenders of the King James, as evidence that modern versions weaken the virgin birth.",
+   "diag": "Bible Hub's page of Greek texts shows the SBL Greek New Testament, Nestle 1904, Westcott and Hort and Tischendorf reading ho pater autou kai he meter, his father and his mother, and the Robinson-Pierpont Byzantine text, the Greek Orthodox Church text and both Textus Receptus editions reading Ioseph kai he meter autou, Joseph and his mother. The CSB's textual note says other manuscripts read But Joseph and his mother. Which way Luke 2:33 reads depends on which text a Bible prints.",
+   "kjv": "And Joseph and his mother marvelled at those things which were spoken of him.",
+   "kjvRef": "Luke 2:33",
+   "kjvRole": "the King James reads Joseph",
+   "kjvNote": "The King James follows the Textus Receptus here.",
+   "skeptic": "The Skeptic's Annotated Bible does not cite this verse. Its question \"Was Joseph the father of Jesus?\" makes the larger case: verses that call Jesus David's seed according to the flesh need a real father, presumably Joseph, while Matthew and Luke say the Holy Ghost was the father. At full strength, Luke 2:33 in the critical text is one more place where the Gospels speak of Joseph as father.",
+   "harm": "The CSB Study Bible says Joseph was legally Jesus's father even though it was the Holy Spirit who caused Mary to conceive, and points to its notes on the genealogy and on 1:34-35.",
+   "cost": "If his father is original, as the critical editions print, Luke himself used father of Joseph and the reader must take it as legal or family fatherhood, which is the harmonizing case. The variant explains why King James readers never saw the phrase. It does not make the phrase go away, and it does not answer the skeptic's wider point about Davidic descent, which is a separate claim.",
+   "not": "**Not evidence that modern versions deny the virgin birth.** The same versions print Luke's account of the conception in chapter 1.",
+   "related": [
+    "none-good-but-god",
+    "the-missing-cainan"
+   ],
+   "sources": [
+    "Bible Hub, Luke 2:33 Greek texts, https://biblehub.com/texts/luke/2-33.htm",
+    "CSB Study Bible, textual note and note on Luke 2:33-35",
+    "The Skeptic's Annotated Bible, Was Joseph the father of Jesus?, https://skepticsannotatedbible.com/contra/jesus_dad.html",
+    "King James Version, Luke 2:33"
+   ],
+   "post": null
+  },
+  {
+   "title": "Why callest thou me good?",
+   "id": "none-good-but-god",
+   "summary": "In Mark, Jesus asks why he is called good. In the critical text of Matthew he asks why he is asked about what is good. The King James reads Matthew the way Mark reads.",
+   "plain": "The real question: did Matthew change what Jesus said? **Two reporters write up one press conference and quote the question differently.** Did one get it wrong, or did each keep what mattered to his readers?",
+   "category": "variant",
+   "group": "matthew",
+   "bibleRef": "Matthew 19:17",
+   "bibleRefOverride": "Matthew 19:16-17; Mark 10:17-18",
+   "claim": "Mark 10:18 has Jesus answer Why do you call me good? No one is good except God alone. In most modern versions Matthew 19:17 has him answer Why do you ask me about what is good? There is only one who is good. Two Gospels report one conversation with different words from Jesus. A second claim rides on the first: in Mark, Jesus seems to deny that he is good.",
+   "diag": "Bible Hub's page of Greek texts shows the SBL Greek New Testament, Nestle 1904, Westcott and Hort and Tischendorf reading Ti me erotas peri tou agathou, why do you ask me about the good, and heis estin ho agathos, one is good. The Textus Receptus editions, the Robinson-Pierpont Byzantine text and the Greek Orthodox Church text read Ti me legeis agathon, why do you call me good, and oudeis agathos ei me heis ho theos, none is good but one, God. The CSB's textual notes record both alternatives. Jeremiah Coogan, in Myths and Mistakes in New Testament Textual Criticism, lists harmonizing parallel Gospel passages among the ordinary mishaps of copying. That the King James wording of Matthew arose by assimilation to Mark is an inference drawn here from the match; none of the sources read says so of this verse.",
+   "kjv": "And he said unto him, Why callest thou me good? there is none good but one, that is, God: but if thou wilt enter into life, keep the commandments.",
+   "kjvRef": "Matthew 19:17",
+   "kjvRole": "the King James reads Matthew like Mark",
+   "kjvNote": "Mark 10:18 in the same translation: \"Why callest thou me good? there is none good but one, that is, God\". In the King James the two Gospels match word for word.",
+   "skeptic": "The Skeptic's Annotated Bible asks \"Is Jesus good?\" and sets Jesus calling himself the good shepherd (John 10:11, 14) against his question why he is called good, in Matthew 19:17, Mark 10:18 and Luke 18:19, quoted in the King James wording. At full strength: on any text of Mark, Jesus refuses the word good for himself, and Matthew's critical text looks like an edit to soften that.",
+   "harm": "The ESV Study Bible says Jesus takes the young man's perspective: no one is completely good except God, so the man should not call Jesus good teacher until he is ready to acknowledge that Jesus is God. It calls the three accounts supplementary rather than contradictory. MacArthur says Jesus did not deny his deity but affirmed it. The NIV Cultural Backgrounds Study Bible notes that teachers who deflected praise were respected.",
+   "cost": "The variant explains why King James readers see the same words in both Gospels. If the shorter text of Matthew is original, the Gospels do report the exchange differently, and the harmonizing case has to account for that, as the ESV Study Bible does by calling the accounts supplementary. The second claim, whether Jesus disowns being good, is a question of reading Mark and is untouched by the variant.",
+   "not": "**Not a claim that scribes made Matthew say something new.** If anything, the King James reading is the one that matches Mark.",
+   "related": [
+    "in-isaiah-the-prophet",
+    "his-father-and-his-mother"
+   ],
+   "sources": [
+    "Bible Hub, Matthew 19:17 Greek texts, https://biblehub.com/texts/matthew/19-17.htm",
+    "CSB Study Bible, textual notes on Matthew 19:17",
+    "ESV Study Bible, notes on Mark 10:17-27 and 10:18",
+    "The MacArthur Study Bible (ESV), notes on Matthew 19:17 and Mark 10:18",
+    "NIV Cultural Backgrounds Study Bible, note on Mark 10:18",
+    "Jeremiah Coogan, Myths About Early Translations, ch. 14 in Hixson and Gurry, eds., Myths and Mistakes in New Testament Textual Criticism (IVP Academic, 2019)",
+    "The Skeptic's Annotated Bible, Is Jesus good?, https://skepticsannotatedbible.com/contra/jesus-good.html",
+    "King James Version, Matthew 19:17 and Mark 10:18"
+   ],
+   "post": null
+  },
+  {
+   "title": "Leaning on his bed, or on his staff?",
+   "id": "bed-or-staff",
+   "summary": "Genesis 47:31 has Jacob bow at the head of his bed. Hebrews 11:21 has him worship leaning on the top of his staff. The two Hebrew words have the same consonants.",
+   "plain": "The real question: did Hebrews get Genesis wrong? **A note in pencil says meet me at the bank, and no one can tell whether it means the river or the one with the vault.** Same letters, two words: which did the writer mean?",
+   "category": "variant",
+   "group": "hebrews",
+   "bibleRef": "Hebrews 11:21",
+   "bibleRefOverride": "Genesis 47:31; Hebrews 11:21",
+   "claim": "Genesis 47:31 says Israel bowed himself upon the head of the bed. Hebrews 11:21 says Jacob worshipped leaning on the top of his staff. Hebrews changed the scene.",
+   "diag": "The ESV footnote at Genesis 47:31 reads Hebrew; Septuagint staff. The ESV Study Bible explains that the two Hebrew words have exactly the same consonants and differ in two vowels: hammittah, the bed, and hammatteh, the staff. Hebrews cites the Septuagint. MacArthur adds that Old Testament manuscripts were copied without vowels, that Hebrew manuscripts of the sixth to ninth centuries AD took the word as bed, and that the Septuagint, in the third century BC, read staff. The CSB keeps the Septuagint sense as its alternative rendering at Genesis 47:31. One consonantal text, read two ways by two traditions.",
+   "kjv": "By faith Jacob, when he was a dying, blessed both the sons of Joseph; and worshipped, leaning upon the top of his staff.",
+   "kjvRef": "Hebrews 11:21",
+   "kjvRole": "the King James follows the Greek in Hebrews",
+   "kjvNote": "Genesis 47:31 in the same translation: \"And Israel bowed himself upon the bed’s head.\"",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: Hebrews misquotes Genesis, putting a staff where Genesis has a bed. At full strength: the writer of Hebrews relied on a Greek translation instead of the Hebrew original.",
+   "harm": "MacArthur judges the Septuagint's staff the more likely reading, and adds that both could be factual. The ESV Study Bible says Genesis leaves the reason for Jacob's bowing open, in worship, in gratitude to Joseph, or from frailty.",
+   "cost": "The diagnosis shows the two readings are one written text vowelled two ways. It does not say which vowelling is right: the ESV prints bed, MacArthur favours staff, the CSB keeps staff in reserve. Hebrews also sets the moment at the blessing of Joseph's sons, which the ESV Study Bible locates in Genesis 48:8-22, while 47:31 is the burial oath a chapter earlier. Joining the two is a reading by the writer of Hebrews, not a variant.",
+   "not": "**Not a claim that the Septuagint is always the better text.** In this verse the Greek preserves one possible vowelling of the same Hebrew letters.",
+   "related": [
+    "seventy-or-seventy-five",
+    "ears-or-a-body"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote on Genesis 47:31, notes on Genesis 47:28-31 and Hebrews 11:21",
+    "CSB Study Bible, textual note on Genesis 47:31",
+    "The MacArthur Study Bible (ESV), note on Hebrews 11:21",
+    "King James Version, Genesis 47:31 and Hebrews 11:21"
+   ],
+   "post": null
+  },
+  {
+   "title": "Seventy, or seventy-five?",
+   "id": "seventy-or-seventy-five",
+   "summary": "Genesis counts seventy of Jacob's family going down to Egypt. Stephen in Acts says seventy-five. Stephen's number is in the Septuagint and in two Hebrew copies from Qumran.",
+   "plain": "The real question: did Stephen get the count wrong? **One guest list counts the couple who arrived late, and the other does not.** Which list is wrong, if either?",
+   "category": "variant",
+   "group": "acts",
+   "bibleRef": "Acts 7:14",
+   "bibleRefOverride": "Genesis 46:26-27; Acts 7:14",
+   "claim": "Genesis 46:27, Exodus 1:5 and Deuteronomy 10:22 say seventy. Stephen, in Acts 7:14, says Jacob came down with his kindred, seventy-five souls.",
+   "diag": "The CSB's textual note at Genesis 46:27 says the Septuagint reads 75 and points to Acts 7:14. The ESV Study Bible says the Septuagint raises the number of Joseph's sons from two to nine and so totals Jacob's descendants in Egypt as 75, and concludes that the Hebrew manuscript tradition the translators worked from was apparently not unanimous. The NIV Cultural Backgrounds Study Bible says two Qumran Hebrew texts also read seventy-five. Stephen, preaching to Greek speakers, used the count in the Bible they used.",
+   "kjv": "Then sent Joseph, and called his father Jacob to him, and all his kindred, threescore and fifteen souls.",
+   "kjvRef": "Acts 7:14",
+   "kjvRole": "the King James reads seventy-five",
+   "kjvNote": "Genesis 46:27 in the same translation: \"all the souls of the house of Jacob, which came into Egypt, were threescore and ten.\"",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How many were in Jacob's family when they came into Egypt?\" and lists 70 at Genesis 46:27, Exodus 1:5 and Deuteronomy 10:22 against 75 at Acts 7:14. At full strength: a speech presented as inspired Scripture gives a number the Hebrew Bible does not.",
+   "harm": "MacArthur says the 75 includes five more people born in Egypt, added in the Septuagint reading: two sons of Manasseh, two of Ephraim and a grandson of Ephraim. The ESV Study Bible on Acts 7:14 says the texts arrive at different totals by different decisions about whom to count, including Jacob and his wife and the later descendants of Ephraim and Manasseh.",
+   "cost": "The variant shows where 75 came from. It does not say which count is right, and the ESV Study Bible warns that the numbers in Genesis 46 should be treated with caution, since the chapter itself gives 66 and 70 in successive verses and 70 may be a round figure. Whether Luke presents Stephen as endorsing the Septuagint's count or simply reporting his speech is not settled by the variant.",
+   "not": "**Not a claim that Stephen invented a number.** The figure was already in Greek and Hebrew copies before him.",
+   "related": [
+    "bed-or-staff",
+    "four-hundred-thirty-years",
+    "the-missing-cainan"
+   ],
+   "sources": [
+    "CSB Study Bible, textual note on Genesis 46:27",
+    "ESV Study Bible, notes on Genesis 46:26-27 and Acts 7:14",
+    "NIV Cultural Backgrounds Study Bible, note on Acts 7:14",
+    "The MacArthur Study Bible (ESV), notes on Genesis 46:27 and Acts 7:14",
+    "The Skeptic's Annotated Bible, How many were in Jacob's family when they came into Egypt?, https://skepticsannotatedbible.com/contra/jacobs_clan.html",
+    "King James Version, Genesis 46:27 and Acts 7:14"
+   ],
+   "post": null
+  },
+  {
+   "title": "Four hundred and thirty years from when?",
+   "id": "four-hundred-thirty-years",
+   "summary": "Exodus says Israel lived in Egypt 430 years. Paul says the law came 430 years after the promise to Abraham. The Greek and Samaritan texts of Exodus count Canaan too.",
+   "plain": "The real question: are Paul and Exodus counting from the same starting point? **The plaque says the shop has been on this street for a hundred years, and the founder's diary says a hundred years since he first sold anything.** Same number, or two different clocks?",
+   "category": "variant",
+   "group": "galatians",
+   "bibleRef": "Galatians 3:17",
+   "bibleRefOverride": "Exodus 12:40; Galatians 3:17",
+   "claim": "Exodus 12:40 says the people of Israel lived in Egypt 430 years. Galatians 3:17 says the law came 430 years after God's covenant with Abraham. Abraham lived long before Israel went down to Egypt, so both figures cannot be right. MacArthur's own chronology puts the law 645 years after the first promise to Abraham.",
+   "diag": "The CSB's textual note on Exodus 12:40 says the Septuagint and the Samaritan Pentateuch add and in Canaan. The ESV Study Bible says Paul is apparently following the Septuagint of Exodus 12:40, which counts the dwelling in Egypt and in Canaan as 430 years and so runs from Abraham to the exodus. On that reading Paul's figure and the Greek Exodus agree, and the tension is with the Hebrew text.",
+   "kjv": "And this I say, that the covenant, that was confirmed before of God in Christ, the law, which was four hundred and thirty years after, cannot disannul, that it should make the promise of none effect.",
+   "kjvRef": "Galatians 3:17",
+   "kjvRole": "the King James reads 430 years after the covenant",
+   "kjvNote": "Exodus 12:40 in the same translation: \"Now the sojourning of the children of Israel, who dwelt in Egypt, was four hundred and thirty years.\"",
+   "skeptic": "The Skeptic's Annotated Bible files this differently: under \"How long was the Egyptian Captivity?\" it puts Exodus 12:40 and Galatians 3:17 together on the 430 side, against the 400 years of Genesis 15:13 and Acts 7:6. The version given here, Paul against Exodus, is stated as it circulates. At full strength: the Hebrew says 430 years in Egypt alone, Paul says 430 from Abraham, and one of them is off by centuries.",
+   "harm": "The ESV Study Bible gives a second explanation: Paul counts not from the first promise but from its last affirmation to Jacob before he went down to Egypt (Genesis 46:3-4), and so relies on the Hebrew. MacArthur takes that route and dates the last reaffirmation 430 years before the law.",
+   "cost": "The same study Bible offers both a textual and a chronological answer. Ranking the variant as the primary diagnosis is a judgement made here, because it accounts for Paul's starting point without a second step; the ESV Study Bible presents it first but does not rank the two. The 400 years of Genesis 15:13 is a separate question about round numbers.",
+   "not": "**Not a claim that Paul miscounted.** On either explanation, his figure has a source.",
+   "related": [
+    "seventy-or-seventy-five",
+    "the-missing-cainan"
+   ],
+   "sources": [
+    "CSB Study Bible, textual note and note on Exodus 12:40-41",
+    "ESV Study Bible, note on Galatians 3:17",
+    "The MacArthur Study Bible (ESV), note on Galatians 3:17",
+    "The Skeptic's Annotated Bible, How long was the Egyptian Captivity?, https://skepticsannotatedbible.com/contra/captivity.html",
+    "King James Version, Exodus 12:40 and Galatians 3:17"
+   ],
+   "post": null
+  },
+  {
+   "title": "Cainan, son of Arphaxad",
+   "id": "the-missing-cainan",
+   "summary": "Luke's genealogy puts a Cainan between Arphaxad and Shelah. Genesis does not. The Septuagint of Genesis does.",
+   "plain": "The real question: did Luke add a name, or copy one that some texts of Genesis had? **Two copies of the family tree, and one has a great-uncle the other leaves out.** Which copy is missing someone?",
+   "category": "variant",
+   "group": "luke",
+   "bibleRef": "Luke 3:36",
+   "bibleRefOverride": "Genesis 11:12-13; Luke 3:35-36",
+   "claim": "Genesis 10:24 and 11:12 say Arphaxad fathered Shelah. Luke 3:35-36 has Shelah the son of Cainan, the son of Arphaxad. Luke adds a generation Genesis does not have.",
+   "diag": "The CSB's textual notes on Genesis 10:24 and 11:12-13 say the Septuagint reads fathered Cainan, and Cainan fathered, and give the Septuagint's years for Cainan, 130 before Shelah and 330 after, each note pointing to Luke 3:35-36. The CSB Study Bible's note on 11:12 says both Luke and the Septuagint name Cainan as Arphaxad's son. Luke's list matches the Greek Genesis.",
+   "kjv": "Which was the son of Cainan, which was the son of Arphaxad, which was the son of Sem, which was the son of Noe, which was the son of Lamech,",
+   "kjvRef": "Luke 3:36",
+   "kjvRole": "the King James includes Cainan",
+   "kjvNote": "Genesis 11:12 in the same translation: \"And Arphaxad lived five and thirty years, and begat Salah\".",
+   "skeptic": "The Skeptic's Annotated Bible asks \"Who was Salah's father?\" and sets Arphaxad, at Genesis 10:24 and 11:12, against Cainan, at Luke 3:35-36, with the comment \"Salah's grandfather was Arphaxad.\" At full strength: Luke's genealogy rests on a Greek translation where it departs from the Hebrew, so its accuracy is only as good as that translation.",
+   "harm": "The CSB Study Bible accepts Cainan as Arphaxad's son because, in its words, the inspired New Testament author confirms the Septuagint's reading, and treats the Hebrew list as a stylized genealogy shaped for thematic purposes, as Matthew's is.",
+   "cost": "The variant explains where Luke's Cainan came from. It does not say which text of Genesis is older. The CSB note settles the question by Luke's authority, which is a theological argument rather than a textual one; that observation is made here, not by the CSB. The sources read here do not discuss whether every manuscript of Luke has the name.",
+   "not": "**Not a claim that Luke made up an ancestor.** The name was in the Greek Genesis before Luke used it.",
+   "related": [
+    "seventy-or-seventy-five",
+    "his-father-and-his-mother"
+   ],
+   "sources": [
+    "CSB Study Bible, textual notes on Genesis 10:24 and 11:12-13, note on Genesis 11:12",
+    "The Skeptic's Annotated Bible, Who was Salah's father?, https://skepticsannotatedbible.com/contra/salah.html",
+    "King James Version, Genesis 11:12 and Luke 3:36"
+   ],
+   "post": null
+  },
+  {
+   "title": "Who killed Goliath?",
+   "id": "who-killed-goliath",
+   "summary": "1 Samuel 17 says David killed Goliath. The Hebrew of 2 Samuel 21:19 says Elhanan did. 1 Chronicles 20:5 says Elhanan killed Goliath's brother, and the King James carries that reading into 2 Samuel.",
+   "plain": "The real question: did two men kill the same giant? **The club history says Smith scored against the great striker, and the old program says Smith scored against the great striker's brother.** Did one record lose three words, or were there two games?",
+   "category": "variant",
+   "group": "2-samuel",
+   "bibleRef": "2 Samuel 21:19",
+   "bibleRefOverride": "1 Samuel 17:49-51; 2 Samuel 21:19; 1 Chronicles 20:5",
+   "claim": "1 Samuel 17 has David kill Goliath of Gath with a sling stone and Goliath's own sword. 2 Samuel 21:19, in most modern versions, says Elhanan the Bethlehemite struck down Goliath the Gittite, whose spear shaft was like a weaver's beam. Two men are credited with the same famous kill.",
+   "diag": "The ESV footnote at 2 Samuel 21:19 says to contrast 1 Chronicles 20:5, which may preserve the original reading. The CSB's textual note says Chronicles adds the brother of. The CSB Study Bible says that in the Hebrew only a minor alteration turns one reading into the other, and calls an early miscopying by far the most likely explanation. The ESV Study Bible says Lahmi the brother of may have dropped out before Goliath, and calls this a distinct possibility given the known difficulties with the text of Samuel; on 1 Chronicles 20:5 it says 2 Samuel 21:19 has apparently suffered textual corruption. MacArthur calls it a minor scribal omission.",
+   "kjv": "And there was again a battle in Gob with the Philistines, where Elhanan the son of Jaare-oregim, a Beth-lehemite, slew the brother of Goliath the Gittite, the staff of whose spear was like a weaver’s beam.",
+   "kjvRef": "2 Samuel 21:19",
+   "kjvRole": "the King James supplies the brother of",
+   "kjvNote": "1 Chronicles 20:5 in the same translation: \"Elhanan the son of Jair slew Lahmi the brother of Goliath the Gittite\". The Skeptic's Annotated Bible says the brother of is printed in italics in the King James, the translators' mark for words they supplied. The KJV text used for this tool does not carry italics, so that detail rests on the Skeptic's Annotated Bible.",
+   "skeptic": "The Skeptic's Annotated Bible asks \"Who killed Goliath?\" and says the words the brother of were \"inserted by the KJV translators to avoid the obvious contradiction\". It cites the HarperCollins Study Bible note on 1 Samuel 17:4 as naming Elhanan, not David, as Goliath's slayer. At full strength, and the ESV Study Bible names this view before rejecting it: Elhanan's deed was later credited to David, or the name Goliath later attached to David's unnamed opponent.",
+   "harm": "The ESV Study Bible gives two further options: two different men named Goliath, or Goliath as a common noun for a giant, much as Pharaoh is a title. It adds that the name has been traced to an Anatolian name, Walwatta, and found in an early Philistine inscription. MacArthur adds that Elhanan could be another name for David. The CSB Study Bible rejects both the two-Goliaths view, because the spear is described identically, and the Elhanan-is-David view, as unsupported elsewhere.",
+   "cost": "The copying explanation assumes Chronicles kept the original. The skeptic can turn that around: the Chronicler wrote later and may have repaired the problem. The ESV Study Bible sets the skeptic's reading aside because it would deny the truthfulness of 1 Samuel 17, which is a theological ground, not a textual one; that observation is made here. The harmonizers also disagree among themselves on the fallback options.",
+   "not": "**Not a claim that the King James translators invented the solution.** Their wording follows 1 Chronicles 20:5, which is in the Hebrew Bible.",
+   "related": [
+    "david-takes-the-horsemen",
+    "seven-hundred-or-seven-thousand-chariots"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote and note on 2 Samuel 21:19, note on 1 Chronicles 20:5",
+    "CSB Study Bible, textual note and note on 2 Samuel 21:19",
+    "The MacArthur Study Bible (ESV), note on 2 Samuel 21:19",
+    "The Skeptic's Annotated Bible, Who killed Goliath?, https://skepticsannotatedbible.com/contra/goliath.html",
+    "King James Version, 2 Samuel 21:19 and 1 Chronicles 20:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "Twenty-two or forty-two?",
+   "id": "ahaziah-twenty-two-or-forty-two",
+   "summary": "2 Kings 8:26 says Ahaziah was twenty-two when he became king. The Hebrew of 2 Chronicles 22:2 says forty-two. Most modern versions print twenty-two in both places.",
+   "plain": "The real question: is one of these ages wrong, and whose mistake is it? **The newspaper says the mayor is 42, and the city website says 22.** Did someone lie, or did someone hit the wrong key?",
+   "category": "number",
+   "group": "2-kings",
+   "bibleRef": "2 Kings 8:26",
+   "bibleRefOverride": "2 Kings 8:26; 2 Chronicles 22:2",
+   "claim": "2 Kings 8:26 says Ahaziah was twenty-two years old when he began to reign. 2 Chronicles 22:2, in the King James and the Hebrew, says forty-two. One king, two ages.",
+   "diag": "The ESV prints twenty-two at 2 Chronicles 22:2 and footnotes: see 2 Kings 8:26; Hebrew forty-two; Septuagint twenty. The CSB also prints twenty-two, and its textual note says some Septuagint manuscripts and the Syriac read it, while the Masoretic Text reads 42. MacArthur calls forty-two a copyist's error easily made because a small stroke distinguishes the two Hebrew letters involved. The Skeptic's Annotated Bible itself quotes the New Oxford Annotated Bible: forty-two is an error for twenty-two. On how Hebrew letters could stand for numbers, see the Baasha entry.",
+   "kjv": "Forty and two years old was Ahaziah when he began to reign, and he reigned one year in Jerusalem. His mother’s name also was Athaliah the daughter of Omri.",
+   "kjvRef": "2 Chronicles 22:2",
+   "kjvRole": "the King James follows the Hebrew forty-two",
+   "kjvNote": "2 Kings 8:26 in the same translation: \"Two and twenty years old was Ahaziah when he began to reign\".",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How old was Ahaziah when he began to reign?\" and sets 22 at 2 Kings 8:26 against 42 at 2 Chronicles 22:2. At full strength: the Hebrew text that believers read as Scripture contains a plain numerical error, and calling it a copying error concedes the point for the text as it exists.",
+   "harm": "The sources agree on the diagnosis: the original said twenty-two and a copyist produced forty-two. MacArthur says the reading of 2 Kings 8:26 should be followed.",
+   "cost": "The copying explanation is shared here by skeptical and conservative sources alike. What it leaves is the claim's real target for many readers: whether an error in transmission tells against a doctrine of inspiration tied to the original manuscripts. That is a question about the doctrine, not about this verse. The ancient witnesses do not line up on one figure either: the ESV gives the Septuagint as twenty, the CSB cites some Septuagint manuscripts for twenty-two.",
+   "not": "**Not a claim that the Chronicler disagreed with Kings.** The diagnosis is that the two books once agreed.",
+   "related": [
+    "jehoiachin-eighteen-or-eight",
+    "baasha-after-his-death"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote on 2 Chronicles 22:2",
+    "CSB Study Bible, textual note on 2 Chronicles 22:2",
+    "The MacArthur Study Bible (ESV), note on 2 Chronicles 22:2",
+    "The Skeptic's Annotated Bible, How old was Ahaziah when he began to reign?, https://skepticsannotatedbible.com/contra/ahaziah_age.html, quoting The New Oxford Annotated Bible on 2 Chronicles 22:2",
+    "King James Version, 2 Kings 8:26 and 2 Chronicles 22:2"
+   ],
+   "post": null
+  },
+  {
+   "title": "Seven hundred chariots, or seven thousand?",
+   "id": "seven-hundred-or-seven-thousand-chariots",
+   "summary": "2 Samuel 10:18 says David killed the men of 700 chariots and 40,000 horsemen. 1 Chronicles 19:18 says 7,000 charioteers and 40,000 foot soldiers. A number and a noun disagree.",
+   "plain": "The real question: can both reports of one battle be right? **The match report says 700 fans came, and the club says 7,000.** Did someone miscount, or misprint?",
+   "category": "number",
+   "group": "2-samuel",
+   "bibleRef": "2 Samuel 10:18",
+   "bibleRefOverride": "2 Samuel 10:18; 1 Chronicles 19:18",
+   "claim": "2 Samuel 10:18 says David killed the men of seven hundred Syrian chariots and forty thousand horsemen. 1 Chronicles 19:18 says seven thousand men who fought in chariots and forty thousand footmen.",
+   "diag": "The ESV Study Bible says the difference between 700 and 7,000 is probably due not to a discrepancy in the original manuscripts but to a scribal error in the later copying of one book or the other. MacArthur judges that 2 Samuel's 700 is the copyist's error and that Chronicles' foot soldiers is more likely correct than Samuel's horsemen. The CSB prints foot soldiers in 2 Samuel 10:18, and its textual note says it follows some Septuagint manuscripts there, where the Masoretic Text reads horsemen.",
+   "kjv": "And the Syrians fled before Israel; and David slew the men of seven hundred chariots of the Syrians, and forty thousand horsemen, and smote Shobach the captain of their host, who died there.",
+   "kjvRef": "2 Samuel 10:18",
+   "kjvRole": "the King James follows the Hebrew",
+   "kjvNote": "1 Chronicles 19:18 in the same translation: \"David slew of the Syrians seven thousand men which fought in chariots, and forty thousand footmen\".",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How many men did David kill?\" and quotes the two verses side by side. At full strength: two differences in one sentence, a number and a kind of soldier, are harder to put down to a single slip.",
+   "harm": "The harmonizing case here is the copying case: the books agreed and a figure was miscopied. MacArthur takes Chronicles as the better text on both points. The ESV Study Bible does not say which book holds the original.",
+   "cost": "The explanation needs two separate changes, a number and a noun, which makes it less tidy than a single slip; that is an observation made here. The sources do not agree on which book preserves which detail: MacArthur picks Chronicles for both, the CSB corrects only the noun in Samuel from the Septuagint, and the ESV leaves it open.",
+   "not": "**Not a claim that the battle did not happen.** Both books report the same defeat of the Syrians.",
+   "related": [
+    "david-takes-the-horsemen",
+    "forty-thousand-or-four-thousand-stalls"
+   ],
+   "sources": [
+    "ESV Study Bible, note on 1 Chronicles 19:18",
+    "The MacArthur Study Bible (ESV), notes on 2 Samuel 10:18 and 1 Chronicles 19:18",
+    "CSB Study Bible, text and textual note on 2 Samuel 10:18",
+    "The Skeptic's Annotated Bible, How many men did David kill?, https://skepticsannotatedbible.com/contra/chariots.html",
+    "King James Version, 2 Samuel 10:18 and 1 Chronicles 19:18"
+   ],
+   "post": null
+  },
+  {
+   "title": "Forty thousand stalls, or four thousand?",
+   "id": "forty-thousand-or-four-thousand-stalls",
+   "summary": "1 Kings 4:26 gives Solomon forty thousand stalls for his chariot horses. 2 Chronicles 9:25 gives him four thousand. One Hebrew manuscript of Kings reads four thousand too.",
+   "plain": "The real question: how many stalls did Solomon have, and is one of the books wrong? **The listing says the barn holds 40,000 bales, and the owner says 4,000.** Is one of them exaggerating, or is there a stray zero?",
+   "category": "number",
+   "group": "1-kings",
+   "bibleRef": "1 Kings 4:26",
+   "bibleRefOverride": "1 Kings 4:26; 2 Chronicles 9:25",
+   "claim": "1 Kings 4:26 says Solomon had forty thousand stalls of horses for his chariots. 2 Chronicles 9:25 says four thousand stalls for horses and chariots. Both give twelve thousand horsemen.",
+   "diag": "The ESV prints 40,000 at 1 Kings 4:26 and footnotes: Hebrew; one Hebrew manuscript reads 4,000, pointing to 2 Chronicles 9:25 and to the Septuagint of 1 Kings 10:26. The CSB's textual note at 1 Kings 4:26 says 2 Chronicles 9:25 reads 4,000 stalls. The NIV prints four thousand in Kings, as the NIV Cultural Backgrounds Study Bible's note shows. MacArthur calls 4,000 the preferable reading.",
+   "kjv": "And Solomon had forty thousand stalls of horses for his chariots, and twelve thousand horsemen.",
+   "kjvRef": "1 Kings 4:26",
+   "kjvRole": "the King James follows the Hebrew",
+   "kjvNote": "2 Chronicles 9:25 in the same translation: \"And Solomon had four thousand stalls for horses and chariots, and twelve thousand horsemen\".",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How many stalls did Solomon have?\" and sets 40,000 against 4,000. At full strength: forty thousand is the figure in the Hebrew text of Kings, and the correction comes from one manuscript and a parallel book.",
+   "harm": "The NIV Cultural Backgrounds Study Bible grants that some read the large numbers as literary hyperbole, as in other kings' annals, but says the excavated chariot cities such as Megiddo and the large chariot forces recorded in ancient battles support the possibility that they are accurate. The CSB Study Bible notes that ancient literature often used numbers symbolically and asks readers to weigh that before taking them literally.",
+   "cost": "The copying diagnosis brings Kings down to 4,000. It does not settle whether 4,000 is itself a literal count. The IVP Bible Background Commentary on 2 Chronicles 1:14 says the Megiddo stables could have held up to 480 horses and that nearly 800 stalls can be identified across the excavated stable sites, which is far below either figure. That bears on the size of Solomon's force, not on which text is original.",
+   "not": "**Not a claim that archaeology refutes the verse.** Excavated stalls are a minimum, not a full count.",
+   "related": [
+    "seven-hundred-or-seven-thousand-chariots",
+    "two-thousand-or-three-thousand-baths"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote on 1 Kings 4:26",
+    "CSB Study Bible, textual note and note on 1 Kings 4:26",
+    "NIV Cultural Backgrounds Study Bible, note on 1 Kings 4:26",
+    "The MacArthur Study Bible (ESV), note on 2 Chronicles 9:25",
+    "John H. Walton, Victor H. Matthews and Mark W. Chavalas, The IVP Bible Background Commentary: Old Testament (InterVarsity Press), comment on 2 Chronicles 1:14",
+    "The Skeptic's Annotated Bible, How many stalls did Solomon have?, https://skepticsannotatedbible.com/contra/stalls.html",
+    "King James Version, 1 Kings 4:26 and 2 Chronicles 9:25"
+   ],
+   "post": null
+  },
+  {
+   "title": "Seven years of famine, or three?",
+   "id": "seven-years-or-three-of-famine",
+   "summary": "After David's census, the prophet Gad offers him seven years of famine in 2 Samuel and three years in 1 Chronicles. The Septuagint of Samuel reads three.",
+   "plain": "The real question: which offer did David actually hear? **The memo offers three weeks' leave, and the copy on file says seven.** Did the boss change the offer, or did someone mistype?",
+   "category": "number",
+   "group": "2-samuel",
+   "bibleRef": "2 Samuel 24:13",
+   "bibleRefOverride": "2 Samuel 24:13; 1 Chronicles 21:11-12",
+   "claim": "In 2 Samuel 24:13 Gad asks David, Shall seven years of famine come upon you? In 1 Chronicles 21:12 the choice is three years of famine. The other two punishments, three months and three days, match.",
+   "diag": "The ESV prints three years at 2 Samuel 24:13 and footnotes: compare 1 Chronicles 21:12, Septuagint; Hebrew seven. The CSB's textual note says the same: the Septuagint reads three, the Masoretic Text seven. The ESV Study Bible says the text follows the Septuagint and Chronicles, which makes good sense. MacArthur, on 1 Chronicles 21:12, calls seven most likely a copyist's error, since the pattern is three years, three months, three days.",
+   "kjv": "So Gad came to David, and told him, and said unto him, Shall seven years of famine come unto thee in thy land?",
+   "kjvRef": "2 Samuel 24:13",
+   "kjvRole": "the King James follows the Hebrew seven",
+   "kjvNote": "1 Chronicles 21:12 in the same translation begins: \"Either three years’ famine; or three months to be destroyed before thy foes\".",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How many years of famine?\" and notes that two of the three choices are the same in both books while the famine differs, seven against three. At full strength: the prophet's words are presented as the word of the Lord, and the two books quote them differently.",
+   "harm": "The ESV Study Bible offers a reading that keeps the Hebrew: if seven is original, it may be symbolic, since seven-year famines were a common theme in the ancient Near East (Genesis 41:30; 2 Kings 8:1), and Chronicles gives the literal figure. MacArthur follows the copying explanation.",
+   "cost": "The ESV Study Bible holds two answers at once: it prints the Septuagint's three, and it allows that seven may be original and symbolic. So the copying diagnosis is the leading one, not the only one. The sources read here do not say how the Septuagint came to read three, whether from a Hebrew copy or by matching Chronicles.",
+   "not": "**Not a claim about David's census itself.** Who moved David to count the people, the Lord in Samuel or Satan in Chronicles, is a separate claim.",
+   "related": [
+    "ahaziah-twenty-two-or-forty-two",
+    "jehoiachin-eighteen-or-eight"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote and note on 2 Samuel 24:13",
+    "CSB Study Bible, textual note on 2 Samuel 24:13",
+    "The MacArthur Study Bible (ESV), note on 1 Chronicles 21:12",
+    "The Skeptic's Annotated Bible, How many years of famine?, https://skepticsannotatedbible.com/contra/famine.html",
+    "King James Version, 2 Samuel 24:13 and 1 Chronicles 21:12"
+   ],
+   "post": null
+  },
+  {
+   "title": "Eighteen or eight?",
+   "id": "jehoiachin-eighteen-or-eight",
+   "summary": "2 Kings 24:8 says Jehoiachin was eighteen when he became king. Most Hebrew manuscripts of 2 Chronicles 36:9 say eight. Some Hebrew manuscripts and the Septuagint read eighteen there too.",
+   "plain": "The real question: was this king a teenager or a child? **The yearbook says he was 18 at graduation, and the newspaper says 8.** Is that a prodigy, or a dropped digit?",
+   "category": "number",
+   "group": "2-kings",
+   "bibleRef": "2 Kings 24:8",
+   "bibleRefOverride": "2 Kings 24:8; 2 Chronicles 36:9",
+   "claim": "2 Kings 24:8 says Jehoiachin was eighteen years old when he began to reign. 2 Chronicles 36:9, in the King James, says he was eight.",
+   "diag": "The ESV prints eighteen at 2 Chronicles 36:9 and footnotes: Septuagint, compare 2 Kings 24:8; most Hebrew manuscripts eight. The CSB's textual note says some Hebrew manuscripts and the Septuagint read eighteen, other Hebrew manuscripts eight. MacArthur prefers eighteen at both places. Here the better figure survives in part of the Hebrew tradition itself, not only in translation.",
+   "kjv": "Jehoiachin was eight years old when he began to reign, and he reigned three months and ten days in Jerusalem: and he did that which was evil in the sight of the LORD.",
+   "kjvRef": "2 Chronicles 36:9",
+   "kjvRole": "the King James reads eight",
+   "kjvNote": "2 Kings 24:8 in the same translation: \"Jehoiachin was eighteen years old when he began to reign, and he reigned in Jerusalem three months.\"",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How old was Jehoiachin when he began to reign?\" and quotes the two verses side by side. At full strength: most Hebrew manuscripts of Chronicles say eight, so the reading most copies carry is the wrong one.",
+   "harm": "MacArthur argues for eighteen from the full development of his wickedness, citing Ezekiel's description of him in Ezekiel 19:5-9. The copying diagnosis is the harmonizing case: the books agreed, and a figure was lost in some copies of Chronicles.",
+   "cost": "MacArthur's argument from wickedness assumes an eight-year-old king could not be judged as evil; that is an argument about character, not about the manuscripts, and the observation is made here. The two books also differ on the length of the reign, three months against three months and ten days, which is not diagnosed here.",
+   "not": "**Not a claim that most manuscripts are usually wrong.** In this verse a minority of Hebrew copies, with the Septuagint and 2 Kings, carry the figure the sources prefer.",
+   "related": [
+    "ahaziah-twenty-two-or-forty-two",
+    "seven-years-or-three-of-famine"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote on 2 Chronicles 36:9",
+    "CSB Study Bible, textual note on 2 Chronicles 36:9",
+    "The MacArthur Study Bible (ESV), notes on 2 Kings 24:8 and 2 Chronicles 36:9",
+    "The Skeptic's Annotated Bible, How old was Jehoiachin when he began to reign?, https://skepticsannotatedbible.com/contra/jehoiachin.html",
+    "King James Version, 2 Kings 24:8 and 2 Chronicles 36:9"
+   ],
+   "post": null
+  },
+  {
+   "title": "Two thousand baths, or three thousand?",
+   "id": "two-thousand-or-three-thousand-baths",
+   "summary": "1 Kings 7:26 says Solomon's bronze Sea held two thousand baths. 2 Chronicles 4:5 says three thousand. The CSB emends Chronicles to match Kings.",
+   "plain": "The real question: how much did the great basin hold, and why do the two books differ? **One brochure says the tank holds 2,000 gallons, and the other says 3,000.** A misprint, or two different ways of measuring?",
+   "category": "number",
+   "group": "1-kings",
+   "bibleRef": "1 Kings 7:26",
+   "bibleRefOverride": "1 Kings 7:23-26; 2 Chronicles 4:2-5",
+   "claim": "1 Kings 7:26 says the cast bronze Sea in front of the temple contained two thousand baths. 2 Chronicles 4:5 says it received and held three thousand.",
+   "diag": "The ESV Study Bible, on 2 Chronicles 4:2-6, notes that 1 Kings 7:26 reads two thousand and says the difference may be due to a copyist's error. The CSB converts both verses to gallons and prints the same figure, about eleven thousand gallons, at both places; its textual note on 2 Chronicles 4:5 marks the text as emended from the Hebrew 3,000 baths, with a reference to 1 Kings 7:26.",
+   "kjv": "And the thickness of it was an handbreadth, and the brim of it like the work of the brim of a cup, with flowers of lilies; and it received and held three thousand baths.",
+   "kjvRef": "2 Chronicles 4:5",
+   "kjvRole": "the King James follows the Hebrew three thousand",
+   "kjvNote": "1 Kings 7:26 in the same translation ends: \"it contained two thousand baths.\"",
+   "skeptic": "The Skeptic's Annotated Bible asks \"What was the volume of the molten sea?\" and sets 2,000 against 3,000, quoting the New Oxford Annotated Bible's note on 2 Chronicles 4:5. At full strength: these are measurements of a single bronze object the writers could have seen or read about, and they differ by half.",
+   "harm": "MacArthur does not call it a copying error. He reconciles the figures by having Chronicles count the water the basin held plus the supply needed to keep it flowing as a fountain. The NIV Cultural Backgrounds Study Bible takes each figure as written, about 12,000 gallons at 1 Kings 7:26 and about 18,000 at 2 Chronicles 4:5, without addressing the difference.",
+   "cost": "The harmonizers are split, and the ESV Study Bible says only that the difference may be a copyist's error. The copying diagnosis is the leading one in the sources read here, not a settled one. MacArthur's fountain reading has no support in the text quoted here; that is an observation made here.",
+   "not": "**Not a claim that the Chronicler was careless.** The diagnosis is that the error, if it is one, came in copying.",
+   "related": [
+    "forty-thousand-or-four-thousand-stalls",
+    "seven-years-or-three-of-famine"
+   ],
+   "sources": [
+    "ESV Study Bible, note on 2 Chronicles 4:2-6",
+    "CSB Study Bible, note on 1 Kings 7:23-26, text and textual note on 2 Chronicles 4:5",
+    "The MacArthur Study Bible (ESV), note on 2 Chronicles 4:5",
+    "NIV Cultural Backgrounds Study Bible, notes on 1 Kings 7:26 and 2 Chronicles 4:5",
+    "The Skeptic's Annotated Bible, What was the volume of the molten sea?, https://skepticsannotatedbible.com/contra/baths.html",
+    "King James Version, 1 Kings 7:26 and 2 Chronicles 4:5"
+   ],
+   "post": null
+  },
+  {
+   "title": "Seventeen hundred horsemen, or seven thousand?",
+   "id": "david-takes-the-horsemen",
+   "summary": "The Hebrew of 2 Samuel 8:4 says David took 1,700 horsemen. 1 Chronicles 18:4 says 1,000 chariots and 7,000 horsemen. The Septuagint and a Dead Sea Scroll of Samuel read with Chronicles.",
+   "plain": "The real question: what did David capture, and why do the two lists differ? **The receipt says 1,700 chairs, and the order form says 1,000 tables and 7,000 chairs.** Did the store lose part of a line?",
+   "category": "number",
+   "group": "2-samuel",
+   "bibleRef": "2 Samuel 8:4",
+   "bibleRefOverride": "2 Samuel 8:4; 1 Chronicles 18:4",
+   "claim": "2 Samuel 8:4 says David took from Hadadezer 1,700 horsemen and 20,000 foot soldiers. 1 Chronicles 18:4 says 1,000 chariots, 7,000 horsemen and 20,000 foot soldiers.",
+   "diag": "The ESV prints 1,700 horsemen at 2 Samuel 8:4, and the ESV Study Bible says the Septuagint agrees with Chronicles; one possible explanation is that someone miscopied Samuel and the Septuagint, with Chronicles, keeps the true reading. The CSB's textual note says the Septuagint and the Dead Sea Scrolls read 1,000 chariots and 7,000 horsemen. MacArthur calls 1,700 a copyist's error. This is the number entry with the widest outside support: a Greek translation and a Hebrew scroll of Samuel side with Chronicles.",
+   "kjv": "And David took from him a thousand chariots, and seven hundred horsemen, and twenty thousand footmen:",
+   "kjvRef": "2 Samuel 8:4",
+   "kjvRole": "the King James reads a thousand chariots and seven hundred horsemen",
+   "kjvNote": "The King James figures are neither the Hebrew 1,700 horsemen nor Chronicles' 7,000. Reading them as the translators' way of splitting 1,700 into chariots and horsemen is an inference drawn here. 1 Chronicles 18:4 in the same translation: \"And David took from him a thousand chariots, and seven thousand horsemen, and twenty thousand footmen\".",
+   "skeptic": "The Skeptic's Annotated Bible asks \"How many horsemen did David take?\" and, quoting the King James, sets seven hundred horsemen against seven thousand. At full strength: even the translation that tried to bring the two verses together leaves them disagreeing.",
+   "harm": "The harmonizing case is the copying case: Samuel lost part of the line, and Chronicles, the Septuagint and the Qumran text preserve it. MacArthur says the 7,000 of Chronicles is the preferable reading.",
+   "cost": "The ESV Study Bible says there is not enough information to account for the difference, so even its preferred explanation is offered as possible, not shown. The CSB note gives the Dead Sea Scrolls without naming the scroll, and no scroll is named here.",
+   "not": "**Not a claim that David's victory is in doubt.** Both books report the same campaign; the dispute is over one line of the tally.",
+   "related": [
+    "seven-hundred-or-seven-thousand-chariots",
+    "who-killed-goliath"
+   ],
+   "sources": [
+    "ESV Study Bible, note on 2 Samuel 8:4",
+    "CSB Study Bible, textual note on 2 Samuel 8:4",
+    "The MacArthur Study Bible (ESV), notes on 2 Samuel 8:4 and 1 Chronicles 18:4",
+    "The Skeptic's Annotated Bible, How many horsemen did David take?, https://skepticsannotatedbible.com/contra/horsemen.html",
+    "King James Version, 2 Samuel 8:4 and 1 Chronicles 18:4"
+   ],
+   "post": null
+  },
+  {
+   "title": "Baasha's war after Baasha's death",
+   "id": "baasha-after-his-death",
+   "summary": "2 Chronicles 16:1 has Baasha of Israel attack Judah in Asa's thirty-sixth year. By the dates in 1 Kings, Baasha died in Asa's twenty-sixth.",
+   "plain": "The real question: did a dead king start a war, or is a date wrong? **The plaque says the founder opened the new wing in 1990, and his gravestone says he died in 1980.** A typo, or a different way of counting?",
+   "category": "number",
+   "group": "2-chronicles",
+   "bibleRef": "2 Chronicles 16:1",
+   "bibleRefOverride": "2 Chronicles 16:1; 1 Kings 15:33; 1 Kings 16:8",
+   "claim": "2 Chronicles 16:1 says that in the thirty-sixth year of Asa, Baasha king of Israel came up against Judah and built Ramah. 1 Kings 16:8 says Baasha's son Elah began to reign in Asa's twenty-sixth year, so Baasha was by then dead.",
+   "diag": "The ESV Study Bible says Baasha had been dead ten years by the date given and offers a copying error as one possible explanation. Letters of the Hebrew alphabet were used as numerals, and a scribe might have confused yod, for 10, with lamedh, for 30, letters that looked more alike in early handwriting than in modern type. The original would then be Asa's sixteenth year. It says the same confusion may affect 2 Chronicles 15:19.",
+   "kjv": "In the six and thirtieth year of the reign of Asa Baasha king of Israel came up against Judah, and built Ramah, to the intent that he might let none go out or come in to Asa king of Judah.",
+   "kjvRef": "2 Chronicles 16:1",
+   "kjvRole": "the King James reads the thirty-sixth year",
+   "kjvNote": "1 Kings 16:8 in the same translation: \"In the twenty and sixth year of Asa king of Judah began Elah the son of Baasha to reign over Israel in Tirzah, two years.\"",
+   "skeptic": "The Skeptic's Annotated Bible sets 1 Kings 16:6-8, Baasha's death in Asa's twenty-sixth year, against 2 Chronicles 16:1, and remarks that if both are true, then \"Baasha fought with Judah ten years after his death!\"",
+   "harm": "MacArthur avoids any error. He reads the thirty-sixth year as counted from the division of the kingdom, not from Asa's accession, which puts the war in Asa's sixteenth year, and says that manner of reckoning was used in the royal annals the Chronicler drew on.",
+   "cost": "Two rival explanations land on the same year, Asa's sixteenth. The ESV Study Bible's copying explanation is offered as one possibility; MacArthur's change of starting point needs no error but assumes a reckoning the verse does not state. Filing this as a copying error follows the ESV Study Bible and is the less certain of the two classifications on this desk's terms.",
+   "not": "**Not a claim that Kings and Chronicles disagree about who ruled when.** Both explanations keep their regnal lists in agreement.",
+   "related": [
+    "ahaziah-twenty-two-or-forty-two",
+    "saul-one-year-old"
+   ],
+   "sources": [
+    "ESV Study Bible, note on 2 Chronicles 16:1",
+    "The MacArthur Study Bible (ESV), note on 2 Chronicles 16:1",
+    "The Skeptic's Annotated Bible, When did Baasha die?, https://skepticsannotatedbible.com/contra/baasha.html",
+    "King James Version, 2 Chronicles 16:1 and 1 Kings 16:8"
+   ],
+   "post": null
+  },
+  {
+   "title": "Saul was one year old",
+   "id": "saul-one-year-old",
+   "summary": "The Hebrew of 1 Samuel 13:1 says Saul was a year old when he became king and reigned two years. Paul says he reigned forty. The numbers in the Hebrew appear to be damaged.",
+   "plain": "The real question: how long did Saul reign, and what happened to the verse? **The old ledger says he took over the shop at age one and ran it for two years, and his son says he ran it for forty.** Is the ledger wrong, or is a number missing?",
+   "category": "number",
+   "group": "1-samuel",
+   "bibleRef": "1 Samuel 13:1",
+   "bibleRefOverride": "1 Samuel 13:1; Acts 13:21",
+   "claim": "Read literally, the Hebrew of 1 Samuel 13:1 says Saul was one year old when he became king and reigned two years over Israel. Paul, in Acts 13:21, says God gave Israel Saul for forty years.",
+   "diag": "The ESV footnote gives the Hebrew as Saul was one year old when he became king, and he reigned two years over Israel, and says some Greek manuscripts give his age as thirty. The ESV Study Bible says numbers giving Saul's age and the length of his reign may have been lost from the text very early, and that most Septuagint manuscripts lack the verse entirely. The CSB's textual notes say some Septuagint manuscripts omit the verse and that the CSB's figure for the length of the reign is an emendation of the Hebrew two years. The NIV Cultural Backgrounds Study Bible says the numerals thirty and forty in the NIV do not appear in the Hebrew, and that omitted numerals occur in other ancient Near Eastern texts, including the Sumerian King List and the Babylonian Chronicles.",
+   "kjv": "Saul reigned one year; and when he had reigned two years over Israel,",
+   "kjvRef": "1 Samuel 13:1",
+   "kjvRole": "the King James makes it a reign, not an age",
+   "kjvNote": "The King James sidesteps the age and gives no total. Acts 13:21 in the same translation: \"God gave unto them Saul the son of Cis, a man of the tribe of Benjamin, by the space of forty years.\"",
+   "skeptic": "No source read for this build states this one, so it is given as it circulates: the Hebrew says Saul was a year old and reigned two years, Paul says forty, and translators hide the problem by inserting numbers the Hebrew does not have. At full strength: modern versions print figures no Hebrew manuscript contains.",
+   "harm": "The CSB Study Bible says manuscripts differ on the length of the reign and that, comparing them with Acts 13:21 as a round number, forty-two years is most likely. MacArthur says the original numbers have not been preserved and suggests Saul was perhaps thirty-one. The ESV prints a reading that makes sense of the Hebrew as it stands, Saul lived for one year and then became king, and its study note mentions, as only a speculative possibility, a comment on Saul's immaturity. The NIV Cultural Backgrounds Study Bible suggests the year and two years may count from Saul's anointing and to his rejection.",
+   "cost": "Even granting a lost numeral, no one has the original. Translations that print thirty and forty-two are reconstructing. The NIV Cultural Backgrounds Study Bible says Saul's age at accession must remain open and estimates a reign of about twenty or twenty-two years, which does not match Paul's forty; it notes that Josephus gives twenty in one place, and on Acts 13:21 that Paul's figure fits one line of Jewish tradition. So the diagnosis explains the Hebrew. It leaves the length of the reign unsettled.",
+   "not": "**Not a claim that the Hebrew says Saul was a baby.** Every source read takes the text as damaged or idiomatic, not as a statement about an infant king.",
+   "related": [
+    "baasha-after-his-death",
+    "ahaziah-twenty-two-or-forty-two"
+   ],
+   "sources": [
+    "ESV Study Bible, footnote and note on 1 Samuel 13:1",
+    "CSB Study Bible, textual notes and note on 1 Samuel 13:1",
+    "NIV Cultural Backgrounds Study Bible, notes on 1 Samuel 13:1 and Acts 13:21",
+    "The MacArthur Study Bible (ESV), note on 1 Samuel 13:1",
+    "King James Version, 1 Samuel 13:1 and Acts 13:21"
+   ],
+   "post": null
+  }
+ ]
+}

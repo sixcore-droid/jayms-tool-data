@@ -216,6 +216,11 @@
    "field": "related"
   },
   {
+   "type": "out",
+   "title": "Beings in this passage",
+   "field": "ddd"
+  },
+  {
    "type": "box",
    "variant": "apparatus",
    "title": "Sources",
@@ -286,7 +291,15 @@
    "post": {
     "url": "https://jayms.com/what-happens-in-genesis-1-11/",
     "title": "What Happens in Genesis 1-11?"
-   }
+   },
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    }
+   ]
   },
   {
    "title": "Psalm 82",
@@ -333,7 +346,33 @@
    "post": {
     "url": "https://jayms.com/divine-council-inventory/",
     "title": "Divine Council Inventory"
-   }
+   },
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yahweh/",
+     "n": "Yahweh",
+     "s": "The personal name of Israel's God, printed as LORD in most English Bibles.",
+     "r": "Genesis 2:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/el/",
+     "n": "El",
+     "s": "The ordinary word for god in the region, and also the name of the chief god of Israel's neighbors.",
+     "r": "Genesis 14:18-22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/el-elyon/",
+     "n": "El Elyon",
+     "s": "A title meaning Most High, used in the verse where the nations get handed out to different gods.",
+     "r": "Genesis 14:18-22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-elohim-of-psalm-82/",
+     "n": "The elohim of Psalm 82",
+     "s": "A psalm where God stands up in a room full of gods and sentences them to death.",
+     "r": "Psalm 82:1"
+    }
+   ]
   },
   {
    "title": "1 Kings 22:19-23",
@@ -358,7 +397,27 @@
     "Fleming, “The Divine Council as Type Scene in the Hebrew Bible,” PhD diss., SBTS, 1989",
     "Unseen Realm ch. 3 bibliography"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yahweh-tzevaot/",
+     "n": "Yahweh Tzevaot",
+     "s": "A battle title: the God of armies, meaning heavenly ones rather than Israel's soldiers.",
+     "r": "1 Samuel 1:3"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-host-of-heaven/",
+     "n": "The host of heaven",
+     "s": "Two things at once: God's heavenly army, and the sun, moon and stars Israel was told not to worship.",
+     "r": "1 Kings 22:19"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-lying-spirit/",
+     "n": "The lying spirit",
+     "s": "A spirit who volunteers at God's throne to deceive a king's prophets.",
+     "r": "1 Kings 22:19-23"
+    }
+   ]
   },
   {
    "title": "Job 1:6-12",
@@ -396,7 +455,27 @@
    "post": {
     "url": "https://jayms.com/divine-council-inventory/",
     "title": "Divine Council Inventory"
-   }
+   },
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-satan-of-job/",
+     "n": "The satan of Job",
+     "s": "The accuser in Job, a job title in God's court rather than a personal name.",
+     "r": "Job 1:6-12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/satan-ho-satanas/",
+     "n": "Satan (ho satanas)",
+     "s": "The name the New Testament gives the chief adversary, a role that had become a name.",
+     "r": "Matthew 4:10"
+    }
+   ]
   },
   {
    "title": "Psalm 89:5-7",
@@ -420,7 +499,33 @@
     "Miller, “Cosmology and World Order in the Old Testament: The Divine Council as Cosmic-Political Symbol,” HBT 9:2 (1987): 53-78",
     "Unseen Realm ch. 4 bibliography"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yahweh-tzevaot/",
+     "n": "Yahweh Tzevaot",
+     "s": "A battle title: the God of armies, meaning heavenly ones rather than Israel's soldiers.",
+     "r": "1 Samuel 1:3"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-elohim-of-psalm-82/",
+     "n": "The elohim of Psalm 82",
+     "s": "A psalm where God stands up in a room full of gods and sentences them to death.",
+     "r": "Psalm 82:1"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-holy-ones/",
+     "n": "The holy ones",
+     "s": "A name for the beings who make up God's court.",
+     "r": "Deuteronomy 33:2-3"
+    }
+   ]
   },
   {
    "title": "Isaiah 6:1-8",
@@ -444,7 +549,21 @@
     "Min Suc Kee, JSOT 31:3 (2007): 259-273",
     "Unseen Realm ch. 31"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yahweh-tzevaot/",
+     "n": "Yahweh Tzevaot",
+     "s": "A battle title: the God of armies, meaning heavenly ones rather than Israel's soldiers.",
+     "r": "1 Samuel 1:3"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/seraphim/",
+     "n": "Seraphim",
+     "s": "Six-winged beings around God's throne in Isaiah's vision, described with a word that elsewhere means burning serpent.",
+     "r": "Isaiah 6:2"
+    }
+   ]
   },
   {
    "title": "Daniel 7:9-14",
@@ -466,9 +585,29 @@
     "Nickelsburg, 1 Enoch: A Commentary (Hermeneia; Fortress, 2001)",
     "Unseen Realm ch. 29"
    ],
+   "stQuote": "1 Enoch 48:2-3",
    "post": null,
    "related": [],
-   "stQuote": "1 Enoch 48:2-3"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/el-elyon/",
+     "n": "El Elyon",
+     "s": "A title meaning Most High, used in the verse where the nations get handed out to different gods.",
+     "r": "Genesis 14:18-22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-son-of-man/",
+     "n": "The Son of Man",
+     "s": "A human-looking figure in Daniel's vision who arrives on the clouds and is handed authority over everything.",
+     "r": "Daniel 7:13-14"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-beast-from-the-sea/",
+     "n": "The beast from the sea",
+     "s": "The empire-beast of Revelation carrying the famous number.",
+     "r": "Revelation 13:1-10"
+    }
+   ]
   },
   {
    "title": "Isaiah 24:21-23",
@@ -487,7 +626,15 @@
     "Unseen Realm ch. 20 bibliography"
    ],
    "post": null,
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-host-of-heaven/",
+     "n": "The host of heaven",
+     "s": "Two things at once: God's heavenly army, and the sun, moon and stars Israel was told not to worship.",
+     "r": "1 Kings 22:19"
+    }
+   ]
   },
   {
    "title": "Deuteronomy 32:8-9",
@@ -531,7 +678,45 @@
     "Unseen Realm 110-122 and chs. 14-15 bibliography",
     "Vault: Divine Council Worldview, 03-STUDY/Unseen Realm 101/"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/yahweh/",
+     "n": "Yahweh",
+     "s": "The personal name of Israel's God, printed as LORD in most English Bibles.",
+     "r": "Genesis 2:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/el-elyon/",
+     "n": "El Elyon",
+     "s": "A title meaning Most High, used in the verse where the nations get handed out to different gods.",
+     "r": "Genesis 14:18-22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-princes-of-persia-and-greece/",
+     "n": "The princes of Persia and Greece",
+     "s": "Spirit figures in Daniel who rule nations and can hold up a messenger from God for weeks.",
+     "r": "Daniel 10:13"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/chemosh/",
+     "n": "Chemosh",
+     "s": "The god of Moab, and the one foreign god a battle in Scripture is read as going to.",
+     "r": "Numbers 21:29"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/shedim/",
+     "n": "Shedim",
+     "s": "A Hebrew word for the beings Israel sacrificed to, translated demons in Greek.",
+     "r": "Deuteronomy 32:17"
+    }
+   ]
   },
   {
    "title": "Deuteronomy 32:43; Hebrews 1:6",
@@ -566,7 +751,21 @@
     "Justin Martyr, quoting the longer Greek form in the second century",
     "The Masoretic-priority reply, that Hebrews 1:6 cites Psalm 97:7: the counter-case, still to be pulled to a named source"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/angels/",
+     "n": "Angels",
+     "s": "A word that means messenger and describes a job, not a species of being.",
+     "r": "2 Kings 19:35"
+    }
+   ]
   },
   {
    "title": "Deuteronomy 4:19-20",
@@ -593,7 +792,15 @@
     "Lelli, “Stars,” DDD 2nd ed.",
     "Unseen Realm ch. 15"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-host-of-heaven/",
+     "n": "The host of heaven",
+     "s": "Two things at once: God's heavenly army, and the sun, moon and stars Israel was told not to worship.",
+     "r": "1 Kings 22:19"
+    }
+   ]
   },
   {
    "title": "Genesis 11:1-9",
@@ -650,7 +857,21 @@
     "Ronn Johnson, “The Old Testament Background for Paul’s Principalities and Powers,” PhD diss., Dallas Theological Seminary, 2004",
     "Unseen Realm ch. 15 bibliography"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/michael/",
+     "n": "Michael",
+     "s": "The angel assigned to Israel, and the only figure the Bible calls an archangel.",
+     "r": "Daniel 10:13,21"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-princes-of-persia-and-greece/",
+     "n": "The princes of Persia and Greece",
+     "s": "Spirit figures in Daniel who rule nations and can hold up a messenger from God for weeks.",
+     "r": "Daniel 10:13"
+    }
+   ]
   },
   {
    "title": "Acts 17:26-27",
@@ -674,7 +895,21 @@
     "Arnold, “Returning to the Domain of the Powers: Stoicheia as Evil Spirits in Galatians 4:3, 9,” NovT 38:1 (1996): 55-76",
     "Unseen Realm chs. 15, 32"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-princes-of-persia-and-greece/",
+     "n": "The princes of Persia and Greece",
+     "s": "Spirit figures in Daniel who rule nations and can hold up a messenger from God for weeks.",
+     "r": "Daniel 10:13"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-unknown-god/",
+     "n": "The unknown god",
+     "s": "An Athenian altar hedging against offending a god nobody could name, which Paul preached from.",
+     "r": "Acts 17:23"
+    }
+   ]
   },
   {
    "title": "Genesis 3:1-15",
@@ -700,7 +935,15 @@
     "url": "https://jayms.com/what-happens-in-genesis-1-11/",
     "title": "What Happens in Genesis 1-11?"
    },
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-ancient-serpent/",
+     "n": "The ancient serpent",
+     "s": "The talking serpent of Eden, which the New Testament identifies with Satan though Genesis never does.",
+     "r": "Genesis 3:1-15"
+    }
+   ]
   },
   {
    "title": "Ezekiel 28:11-19",
@@ -728,7 +971,21 @@
     "Unseen Realm ch. 11 bibliography"
    ],
    "post": null,
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/cherubim/",
+     "n": "Cherubim",
+     "s": "Winged composite creatures that guard and carry God's throne, nothing like the babies in later art.",
+     "r": "Genesis 3:24"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/satan-the-worship-leader/",
+     "n": "Satan the worship leader",
+     "s": "The belief that Satan ran music in heaven, built on one obscure verse about stone settings.",
+     "r": "Ezekiel 28:13"
+    }
+   ]
   },
   {
    "title": "Isaiah 14:12-15",
@@ -756,7 +1013,21 @@
     "Vault: worked Isaiah 14 file tagged isaiah-14, lucifer, ane-background, reception-history"
    ],
    "post": null,
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/shahar-and-shalem/",
+     "n": "Shahar and Shalem",
+     "s": "Dawn and Dusk as divine figures, one of whom is the father of the shining one in Isaiah 14.",
+     "r": "Isaiah 14:12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/lucifer/",
+     "n": "Lucifer",
+     "s": "Not a name and not Satan: a Latin word for the morning star, used of a Babylonian king.",
+     "r": "Isaiah 14:12"
+    }
+   ]
   },
   {
    "title": "Genesis 6:1-4",
@@ -811,11 +1082,55 @@
     "John H. Walton, The Genesis Debate; and the NIV Cultural Backgrounds Study Bible at Genesis 6: the dissent",
     "Unseen Realm chs. 12-13; Reversing Hermon chs. 1-3, notes 65-96"
    ],
+   "stQuote": "1 Enoch 6:1-2",
    "post": {
     "url": "https://jayms.com/book-of-the-watchers/",
     "title": "The Book of the Watchers: 1 Enoch 1-36"
    },
-   "stQuote": "1 Enoch 6:1-2"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/bene-elohim/",
+     "n": "Bene elohim",
+     "s": "Sons of God: a group of lesser divine beings who show up at God's throne.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-watchers-enochic/",
+     "n": "The Watchers (Enochic)",
+     "s": "Angels who, in 1 Enoch, come down to earth, marry women, and teach humanity things it should not know.",
+     "r": "Daniel 4:13"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/shemihazah/",
+     "n": "Shemihazah",
+     "s": "The leader who talks the other Watchers into the descent and binds them to an oath.",
+     "r": ""
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/asael/",
+     "n": "Asael",
+     "s": "The Watcher who teaches weapons and cosmetics and gets buried under rocks until judgment.",
+     "r": ""
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/nephilim/",
+     "n": "Nephilim",
+     "s": "The giants of Genesis 6, born from the sons of God and human women.",
+     "r": "Genesis 6:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/gibborim/",
+     "n": "Gibborim",
+     "s": "The mighty men of old, a word used of ordinary warriors too.",
+     "r": "Genesis 6:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-nephilim-as-extraterrestrials/",
+     "n": "The Nephilim as extraterrestrials",
+     "s": "The claim that the giants of Genesis were aliens, which rests on mistranslated Sumerian.",
+     "r": "Genesis 6:1-4"
+    }
+   ]
   },
   {
    "title": "Jude 6; 2 Peter 2:4",
@@ -845,12 +1160,26 @@
     "Johnson, “Hesiod’s Descriptions of Tartarus (Theogony 721-819),” Phoenix 53:1-2 (1999): 8-28",
     "Unseen Realm ch. 12 bibliography"
    ],
+   "stQuote": "1 Enoch 10:12",
    "post": {
     "url": "https://jayms.com/who-wrote-the-book-of-jude/",
     "title": "Who Wrote the Book of Jude?"
    },
    "related": [],
-   "stQuote": "1 Enoch 10:12"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-watchers-enochic/",
+     "n": "The Watchers (Enochic)",
+     "s": "Angels who, in 1 Enoch, come down to earth, marry women, and teach humanity things it should not know.",
+     "r": "Daniel 4:13"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-third-of-the-angels/",
+     "n": "The third of the angels",
+     "s": "The claim that a third of the angels fell with Satan, which no passage actually reports.",
+     "r": "Revelation 12:4"
+    }
+   ]
   },
   {
    "title": "Jude 14-15",
@@ -875,12 +1204,20 @@
     "Reed, Fallen Angels and the History of Judaism and Christianity (Cambridge, 2005)",
     "Reversing Hermon, appendix on the ancient debate over the inspiration of 1 Enoch"
    ],
+   "stQuote": "1 Enoch 1:9",
    "post": {
     "url": "https://jayms.com/book-of-enoch/",
     "title": "Which Book of Enoch?"
    },
    "related": [],
-   "stQuote": "1 Enoch 1:9"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-watchers-enochic/",
+     "n": "The Watchers (Enochic)",
+     "s": "Angels who, in 1 Enoch, come down to earth, marry women, and teach humanity things it should not know.",
+     "r": "Daniel 4:13"
+    }
+   ]
   },
   {
    "title": "Numbers 13:33",
@@ -915,7 +1252,27 @@
     "Walton and Walton, The Lost World of the Israelite Conquest (IVP, 2017): the dissent",
     "Unseen Realm chs. 23, 25 bibliography, moreunseenrealm.com/ch23"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/nephilim/",
+     "n": "Nephilim",
+     "s": "The giants of Genesis 6, born from the sons of God and human women.",
+     "r": "Genesis 6:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/anakim/",
+     "n": "Anakim",
+     "s": "The giant clan at Hebron whose size made the Israelite spies call themselves grasshoppers.",
+     "r": "Numbers 13:22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-nephilim-as-extraterrestrials/",
+     "n": "The Nephilim as extraterrestrials",
+     "s": "The claim that the giants of Genesis were aliens, which rests on mistranslated Sumerian.",
+     "r": "Genesis 6:1-4"
+    }
+   ]
   },
   {
    "title": "Joshua 11:21-22",
@@ -938,7 +1295,21 @@
     "Unseen Realm ch. 25 bibliography, moreunseenrealm.com/ch25"
    ],
    "post": null,
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/anakim/",
+     "n": "Anakim",
+     "s": "The giant clan at Hebron whose size made the Israelite spies call themselves grasshoppers.",
+     "r": "Numbers 13:22"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/goliath-and-the-sons-of-rapha/",
+     "n": "Goliath and the sons of Rapha",
+     "s": "The giant David killed, and the relatives of his who show up later in the same books.",
+     "r": "1 Samuel 17:4"
+    }
+   ]
   },
   {
    "title": "Leviticus 16:8-10",
@@ -971,9 +1342,23 @@
     "Unseen Realm ch. 24; Unseen Realm 176-178 on the Day of Atonement",
     "Vault: Reversing-Hermon-Reading-Guide-v2 maps 1 Enoch X:4-6 to Leviticus 16"
    ],
+   "stQuote": "1 Enoch 10:4-5",
    "post": null,
    "related": [],
-   "stQuote": "1 Enoch 10:4-5"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/asael/",
+     "n": "Asael",
+     "s": "The Watcher who teaches weapons and cosmetics and gets buried under rocks until judgment.",
+     "r": ""
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/azazel/",
+     "n": "Azazel",
+     "s": "The name on the second lot at the Day of Atonement, where the other lot says God.",
+     "r": "Leviticus 16:8"
+    }
+   ]
   },
   {
    "title": "Mark 5:1-20",
@@ -1001,9 +1386,23 @@
     "1 Enoch 15:8-12; Nickelsburg ad loc.",
     "Unseen Realm ch. 34; Reversing Hermon ch. 6"
    ],
+   "stQuote": "1 Enoch 15:8-9",
    "post": null,
    "related": [],
-   "stQuote": "1 Enoch 15:8-9"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/daimonion/",
+     "n": "Daimonion",
+     "s": "The New Testament word for demon, borrowed from a Greek word that was morally neutral.",
+     "r": "Mark 1:34"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/legion/",
+     "n": "Legion",
+     "s": "The demon who gives his name as a number, in the story that ends with the pigs.",
+     "r": "Mark 5:1-20"
+    }
+   ]
   },
   {
    "title": "1 Samuel 28:13",
@@ -1033,7 +1432,15 @@
    "post": {
     "url": "https://jayms.com/divine-council-inventory/",
     "title": "Divine Council Inventory"
-   }
+   },
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-ghost-of-samuel/",
+     "n": "The ghost of Samuel",
+     "s": "The dead prophet called up by a medium, in a scene that terrifies the medium herself.",
+     "r": "1 Samuel 28:3-25"
+    }
+   ]
   },
   {
    "title": "John 10:31-36",
@@ -1057,7 +1464,15 @@
     "Heiser, “Israel’s Divine Council, Mormonism, and Evangelicalism,” FARMS Review 19:1 (2007): 315-323",
     "Unseen Realm ch. 4"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-elohim-of-psalm-82/",
+     "n": "The elohim of Psalm 82",
+     "s": "A psalm where God stands up in a room full of gods and sentences them to death.",
+     "r": "Psalm 82:1"
+    }
+   ]
   },
   {
    "title": "Matthew 1:1-6",
@@ -1108,7 +1523,15 @@
     "url": "https://jayms.com/reversing-hermon/",
     "title": "Reversing Hermon"
    },
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/death-and-hades/",
+     "n": "Death and Hades",
+     "s": "Death and the grave, treated in Revelation as figures who ride and get thrown into fire.",
+     "r": "1 Corinthians 15:26"
+    }
+   ]
   },
   {
    "title": "Matthew 17:1-8",
@@ -1131,12 +1554,12 @@
     "Reversing Hermon ch. 6, notes 53, 161-162, 170",
     "Vault: Reversing-Hermon-Reading-Guide-v2, 1 Enoch VI–XI mapping"
    ],
+   "stQuote": "1 Enoch 6:6",
    "post": {
     "url": "https://jayms.com/reversing-hermon/",
     "title": "Reversing Hermon"
    },
-   "related": [],
-   "stQuote": "1 Enoch 6:6"
+   "related": []
   },
   {
    "title": "Luke 10:1-20",
@@ -1165,7 +1588,21 @@
     "Unseen Realm ch. 32; Reversing Hermon ch. 6",
     "Manuscript evidence for seventy against seventy-two: not yet pulled to a named source"
    ],
-   "post": null
+   "post": null,
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/satan-ho-satanas/",
+     "n": "Satan (ho satanas)",
+     "s": "The name the New Testament gives the chief adversary, a role that had become a name.",
+     "r": "Matthew 4:10"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/daimonion/",
+     "n": "Daimonion",
+     "s": "The New Testament word for demon, borrowed from a Greek word that was morally neutral.",
+     "r": "Mark 1:34"
+    }
+   ]
   },
   {
    "title": "Ephesians 6:10-12",
@@ -1188,7 +1625,27 @@
     "Unseen Realm ch. 37"
    ],
    "post": null,
-   "related": []
+   "related": [],
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-devil-diabolos/",
+     "n": "The devil (diabolos)",
+     "s": "The Greek word for slanderer, used interchangeably with Satan.",
+     "r": "Matthew 4:1-11"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/the-prince-of-the-power-of-the-air/",
+     "n": "The prince of the power of the air",
+     "s": "Paul's title for the ruling evil power, with the air meaning contested territory overhead.",
+     "r": "Ephesians 2:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/archai-exousiai-thronoi-kyriotetes/",
+     "n": "Archai, exousiai, thronoi, kyriotetes",
+     "s": "Paul's vocabulary for ranks of cosmic powers: rulers, authorities, thrones, dominions.",
+     "r": "Romans 8:38"
+    }
+   ]
   },
   {
    "title": "1 Corinthians 11:10",
@@ -1218,12 +1675,20 @@
     "Heiser’s own argument from peribolaion in Greco-Roman medical vocabulary",
     "Reversing Hermon ch. 8, notes 203-217"
    ],
+   "stQuote": "1 Enoch 8:1-2",
    "post": {
     "url": "https://jayms.com/why-head-coverings-1-corinthians-11/",
     "title": "Why Did Paul Tell Women to Cover Their Heads?"
    },
    "related": [],
-   "stQuote": "1 Enoch 8:1-2"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/angels/",
+     "n": "Angels",
+     "s": "A word that means messenger and describes a job, not a species of being.",
+     "r": "2 Kings 19:35"
+    }
+   ]
   },
   {
    "title": "1 Peter 3:18-22",
@@ -1248,13 +1713,17 @@
     "1 Enoch 12-16, Enoch’s commission to the imprisoned Watchers",
     "Reversing Hermon ch. 9, note 226"
    ],
+   "stQuote": "1 Enoch 12:4",
    "post": null,
    "related": [],
-   "stQuote": "1 Enoch 12:4"
+   "ddd": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/gods-of-the-bible/archai-exousiai-thronoi-kyriotetes/",
+     "n": "Archai, exousiai, thronoi, kyriotetes",
+     "s": "Paul's vocabulary for ranks of cosmic powers: rulers, authorities, thrones, dominions.",
+     "r": "Romans 8:38"
+    }
+   ]
   }
- ],
- "reading": {
-  "src": "https://raw.githubusercontent.com/sixcore-droid/interlinear-data/main/witness-texts.json",
-  "credit": "R.H. Charles, 1917, and the public-domain translations behind each work."
- }
+ ]
 }

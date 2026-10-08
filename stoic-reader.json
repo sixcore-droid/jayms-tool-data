@@ -1,0 +1,1146 @@
+{
+ "schema": 1,
+ "tool": {
+  "slug": "stoic-reader",
+  "name": "The Stoic Reader",
+  "status": "alpha",
+  "heroTitle": "The Stoic Reader",
+  "heroSubtitle": "Stoic texts read beside the New Testament passages that share their words or their argument, and where the New Testament turns.",
+  "searchPlaceholder": "autarkes, Epictetus, Seneca, Aratus, body, freedom, son of God",
+  "backLabel": "All pairings",
+  "perPage": 200
+ },
+ "card": {
+  "labelField": "title",
+  "mainField": "summary"
+ },
+ "detail": {
+  "titleField": "title",
+  "headlineField": "summary"
+ },
+ "search": {
+  "fields": [
+   "title",
+   "summary",
+   "plain",
+   "stoic",
+   "stoicRef",
+   "term",
+   "agree",
+   "turn",
+   "cost",
+   "not",
+   "sources"
+  ]
+ },
+ "filters": [
+  {
+   "role": "category",
+   "field": "category",
+   "allLabel": "Show all",
+   "options": [
+    {
+     "k": "word",
+     "n": "Same word",
+     "c": "aramaic",
+     "short": "WORD"
+    },
+    {
+     "k": "argument",
+     "n": "Same argument",
+     "c": "gold",
+     "short": "ARG"
+    },
+    {
+     "k": "contested",
+     "n": "Claimed parallel",
+     "c": "blue",
+     "short": "CLAIM"
+    }
+   ]
+  },
+  {
+   "field": "group",
+   "allLabel": "All threads",
+   "options": [
+    {
+     "k": "contentment",
+     "n": "Contentment"
+    },
+    {
+     "k": "freedom",
+     "n": "Freedom and slavery"
+    },
+    {
+     "k": "god",
+     "n": "Providence and God"
+    },
+    {
+     "k": "body",
+     "n": "The body and its members"
+    },
+    {
+     "k": "death",
+     "n": "Death"
+    },
+    {
+     "k": "conscience",
+     "n": "Nature and conscience"
+    },
+    {
+     "k": "citizenship",
+     "n": "Citizenship"
+    },
+    {
+     "k": "mastery",
+     "n": "Self-mastery"
+    },
+    {
+     "k": "calling",
+     "n": "The philosopher's calling"
+    },
+    {
+     "k": "contact",
+     "n": "Did they meet?"
+    }
+   ]
+  },
+  {
+   "field": "work",
+   "allLabel": "All authors",
+   "options": [
+    {
+     "k": "epictetus",
+     "n": "Epictetus"
+    },
+    {
+     "k": "marcus",
+     "n": "Marcus Aurelius"
+    },
+    {
+     "k": "seneca",
+     "n": "Seneca"
+    },
+    {
+     "k": "aratus",
+     "n": "Aratus"
+    }
+   ]
+  }
+ ],
+ "blocks": [
+  {
+   "type": "scripture",
+   "refField": "bibleRef",
+   "overrideField": "bibleRefOverride",
+   "versions": [
+    "net",
+    "kjv",
+    "web",
+    "nlt",
+    "esv"
+   ],
+   "default": "net",
+   "interlinearLink": true,
+   "separator": " · "
+  },
+  {
+   "type": "box",
+   "variant": "plain",
+   "title": "First, in plain English",
+   "field": "plain"
+  },
+  {
+   "type": "box",
+   "variant": "witness",
+   "title": "The Stoic text",
+   "field": "stoic",
+   "noteField": "stoicRef"
+  },
+  {
+   "type": "box",
+   "variant": "wording",
+   "title": "The shared term",
+   "field": "term"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "Where they agree",
+   "field": "agree"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "Where the New Testament turns",
+   "field": "turn"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "How sure the link is",
+   "field": "cost"
+  },
+  {
+   "type": "box",
+   "variant": "not",
+   "title": "What this is not",
+   "field": "not"
+  },
+  {
+   "type": "linkrow",
+   "title": "Reads with",
+   "field": "related"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Sources",
+   "field": "sources",
+   "list": "ordered"
+  }
+ ],
+ "footer": [
+  {
+   "type": "note",
+   "class": "method",
+   "text": "The method. Paul wrote in the Greek of a world where Stoic teachers were the most popular philosophers in the street, and some of his words were their words. A shared word is not proof that anyone borrowed from anyone. Two writers can use the same term because it was common coin, because both drew on a wider tradition, or because one was answering the other, and Marcus Aurelius wrote a century after Paul, so he cannot be Paul's source at all. Each entry here puts one New Testament passage beside one Stoic text, quotes the Stoic text as its translator gives it, names the shared word where there is one, says where the two agree, and then says where the New Testament turns. The turn is the point of the entry. Where a link is popular but thin, the entry says so. Where no source in hand supports a claim of influence, the entry says the pairing rests on shared vocabulary only."
+  },
+  {
+   "type": "suggest",
+   "kind": "stoic-reader",
+   "label": "The Stoic Reader (alpha)",
+   "toggleText": "Is there a Stoic text and a New Testament passage we should read together? Suggest it ›",
+   "valuePlaceholder": "Which passage, and which Stoic text?"
+  },
+  {
+   "type": "note",
+   "text": "How to read the grades. Same word means the same Greek term stands in both texts, checked in the Greek of each. Same argument means the two reason the same way without sharing the key word, or the Stoic text survives in Latin. Claimed parallel marks a link that is often made, about a person or a passage, that the texts themselves do not clearly support. No entry is graded as borrowing. Where a source in hand says one writer knew the other, the entry names it in How sure the link is; where none does, it says the link is vocabulary only."
+  }
+ ],
+ "entries": [
+  {
+   "title": "Autarkes: content, or self-sufficient?",
+   "id": "phil-4-11-autarkes",
+   "summary": "Paul says he has learned to be autarkes in whatever state he is in. Marcus Aurelius uses the same word for the man who needs nothing from outside.",
+   "plain": "The real question: when Paul says he has learned to be content, is he using the philosophers' word for needing no one, or using it for something else? **She told her mother she was managing fine on her own.** That could mean she needs nobody, or that someone is holding her up whom her mother cannot see. Which kind of fine is Paul?",
+   "category": "word",
+   "group": "contentment",
+   "work": "marcus",
+   "bibleRef": "Philippians 4:11",
+   "bibleRefOverride": "Philippians 4:11-13; 2 Corinthians 9:8; 1 Timothy 6:6",
+   "stoic": "\"Then thou wilt be neither free, nor sufficient for thy own happiness, nor without passion.\"",
+   "stoicRef": "Marcus Aurelius, Meditations 6.16, trans. George Long. The Greek behind \"sufficient for thy own happiness\" is αὐτάρκης.",
+   "term": "αὐτάρκης (autarkēs), Strong's G842, once in the New Testament, at Philippians 4:11. In Meditations 6.16 it is one of three marks of the person who has stopped prizing applause and outward goods: free, self-sufficient, untroubled. In Meditations 3.11 the noun αὐτάρκεια (autarkeia) stands in a list of virtues, and Long renders it \"contentment.\" The site's Greek lexicon gives Philippians 4:11 the philosophical sense, self-sufficient, independent, and subjectively, contented, and adds that in ordinary papyri the word simply means enough. The noun appears at 2 Corinthians 9:8 and 1 Timothy 6:6.",
+   "agree": "Both describe a person whose peace does not rise and fall with supplies. Paul knows how to be brought low and how to have plenty (4:12). Marcus says that a man who keeps prizing other things must envy and suspect whoever could take them away. The NIV Cultural Backgrounds Study Bible says Greco-Roman thinkers emphasized the value of being content and so needing nothing more than oneself.",
+   "turn": "The next verse. Paul's sufficiency has a source outside him: he can do all things through the one who strengthens him (4:13). Marcus keeps the source inside, in acting by one's own constitution, which is where 6.16 says honor lies. The same study note puts it in one line: Paul's dependence is on Christ rather than on himself. Paul keeps the philosophers' word and changes what it rests on.",
+   "cost": "The word is plainly shared and plainly philosophical; the site's lexicon and the study note agree on that. Neither says Paul took it from a Stoic text. Marcus reigned AD 161-80, about a century after Paul's time in Corinth in AD 51/2 as Wright and Bird date it, so he cannot be Paul's source, and this pairing shows the word in Stoic use, not a line of borrowing. On the sources in hand, the link is shared vocabulary from the moral language of the day.",
+   "not": "**Not a claim that Paul was a Stoic.** The word was common coin among moralists. What Paul hangs on it is the difference.",
+   "related": [
+    "2-cor-6-10-having-nothing",
+    "1-cor-7-29-as-though-not",
+    "1-cor-7-22-free-and-slave"
+   ],
+   "sources": [
+    "Marcus Aurelius, Meditations 6.16 and 3.11, Greek text ed. J. H. Leopold, Perseus Digital Library (canonical-greekLit)",
+    "Marcus Aurelius, Meditations, trans. George Long, Books 3 and 6, Internet Classics Archive, http://classics.mit.edu/Antoninus/meditations.6.six.html",
+    "SBL Greek New Testament, Philippians 4:11, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G842 and G841",
+    "NIV Cultural Backgrounds Study Bible, ed. John H. Walton and Craig S. Keener (Zondervan, 2016), notes on Philippians 4:11-13 and 1 Timothy 6:6",
+    "N. T. Wright and Michael F. Bird, The New Testament in Its World (SPCK and Zondervan Academic, 2019), illustration caption giving Marcus's reign as AD 161-80, and ch. 15 on Gallio and the date of Paul in Corinth"
+   ],
+   "post": null
+  },
+  {
+   "title": "Hold it as something not your own",
+   "id": "1-cor-7-29-as-though-not",
+   "summary": "Epictetus tells his student to hold wife, child and land as a traveller holds an inn. Paul tells the Corinthians to buy as though not possessing.",
+   "plain": "The real question: is the loose hold Paul asks for in 1 Corinthians 7 the same detachment Epictetus taught, or detachment for a different reason? **A man packs up his rented flat the week before the lease ends.** He still sleeps there and cooks there, but he holds it loosely. Is that because nothing is really his, or because he knows where he is moving?",
+   "category": "argument",
+   "group": "contentment",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 7:29-31",
+   "stoic": "\"Never say of anything, I have lost it; but, I have restored it. Has your child died? It is restored. Has your wife died? She is restored. ... While he permits you to possess it, hold it as something not your own; as do travellers at an inn.\"",
+   "stoicRef": "Epictetus, Enchiridion 11, trans. Thomas Wentworth Higginson (1890)",
+   "term": "No shared key word. The shapes match. Epictetus says to hold things ὡς ἀλλοτρίου (hōs allotriou), as belonging to another. Paul's sentence turns on ὡς μή (hōs mē), as not: those who have wives as not having, those who buy as not possessing (κατέχοντες, katechontes). Both use ὡς to set a person at a distance from what he still has.",
+   "agree": "Both teach a person to keep using what he has while refusing to let it own him. Both name marriage, grief and property in the same breath. Both treat loss as something a disciplined mind can meet without being undone.",
+   "turn": "The reason. Epictetus's reason is ownership: the giver has asked for his gift back, so nothing was lost. Paul's reason is time: the time has been shortened, and the form of this world is passing away (7:29, 31). The NIV Cultural Backgrounds Study Bible reads these verses as describing a time just before the end. Epictetus detaches because the world is a fixed order of loans. Paul detaches because the world is about to change hands.",
+   "cost": "The pairing is drawn here. The study note on 7:29-31 does not mention Stoics, and no source in hand says Paul knew this saying. The resemblance is in the structure of the advice, not in a shared word.",
+   "not": "**Not indifference.** Neither text says the wife or child does not matter. Epictetus calls her a gift; Paul in the same chapter says marriage is no sin.",
+   "related": [
+    "phil-4-11-autarkes",
+    "1-cor-15-55-death-not-terrible",
+    "1-cor-7-35-undistracted"
+   ],
+   "sources": [
+    "Epictetus, Enchiridion 11, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, The Enchiridion, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), ch. 11, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 7:29-31, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on 1 Corinthians 7:29-31"
+   ],
+   "post": null
+  },
+  {
+   "title": "Having nothing",
+   "id": "2-cor-6-10-having-nothing",
+   "summary": "Epictetus's Cynic stands before the crowd with no house, no city, no slave, and asks what he lacks. Paul describes his apostles as having nothing and possessing everything.",
+   "plain": "The real question: when Paul says he has nothing and yet possesses everything, is that the Cynic's boast or a different claim? **The man with one coat says he is the richest person in the room.** He might mean he has learned to want nothing. He might mean he has been given something the room cannot see. Which is Paul saying?",
+   "category": "word",
+   "group": "contentment",
+   "work": "epictetus",
+   "bibleRef": "2 Corinthians 6:10",
+   "bibleRefOverride": "2 Corinthians 6:4-10",
+   "stoic": "\"But how is it possible that a man destitute, naked, without house or home, squalid, unattended, an outcast, can lead a prosperous life? See; God hath sent us one, to show in practice that it is possible. Take notice of me, that I am without a country, without a house, without an estate, without a servant ... And what need I?\"",
+   "stoicRef": "Epictetus, Discourses 3.22.45-48, trans. Thomas Wentworth Higginson (1890)",
+   "term": "μηδὲν ἔχων (mēden echōn), having nothing. Epictetus's Greek at 3.22.45 asks how one can live well μηδὲν ἔχοντα (mēden echonta), having nothing. Paul's line at 2 Corinthians 6:10 is ὡς μηδὲν ἔχοντες καὶ πάντα κατέχοντες (hōs mēden echontes kai panta katechontes), as having nothing and possessing all things. The phrase is the same; the participle differs only in number.",
+   "agree": "The NIV Cultural Backgrounds Study Bible says intellectuals could respect some of Paul's claims here: Cynic philosophers gave up all possessions but considered themselves spiritually rich, and Cynic and Stoic philosophers claimed that though they owned little or nothing, the world belonged to them because they were friends of the gods. Epictetus's Cynic even says God has sent him to show it can be done.",
+   "turn": "Paul does not say he lacks nothing. He lists beatings, prisons, sleepless nights and hunger (6:4-5) and says he is sorrowful yet always rejoicing (6:10). The Cynic of 3.22.48 claims to be without sorrow and without fear. Paul's poverty also makes others rich (6:10), which is not something the Cynic offers. Epictetus's freedom is the absence of need; Paul's riches come from the one he serves.",
+   "cost": "The phrase is shared and the study note names the Cynic and Stoic background. Wright calls Epictetus Paul's near contemporary, and no source in hand says either knew the other. The likeness belongs to a common way of talking about the philosopher's poverty.",
+   "not": "**Not a vow of poverty.** Paul is describing what his ministry has cost, not prescribing a lifestyle for the Corinthians.",
+   "related": [
+    "phil-4-11-autarkes",
+    "1-cor-1-17-sent",
+    "1-cor-7-35-undistracted"
+   ],
+   "sources": [
+    "Epictetus, Discourses 3.22.45-48, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 3.22, Perseus Digital Library",
+    "SBL Greek New Testament, 2 Corinthians 6:10, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on 2 Corinthians 6:10",
+    "N. T. Wright, Paul: A Biography (HarperOne), ch. 8, Athens, calling Seneca and Epictetus Paul's near contemporaries"
+   ],
+   "post": null
+  },
+  {
+   "title": "Who is free?",
+   "id": "1-cor-7-22-free-and-slave",
+   "summary": "Epictetus opens his discourse on freedom by defining the free man. Paul tells the Corinthian slave he is the Lord's freedman and the free man that he is Christ's slave.",
+   "plain": "The real question: when both Paul and Epictetus say a slave can be free and a free man a slave, do they mean the same thing? **The night porter says he is the only free man in the hotel.** The guests own the rooms; he owns his evenings. Is freedom about what you control, or about whom you belong to?",
+   "category": "word",
+   "group": "freedom",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 7:22",
+   "bibleRefOverride": "1 Corinthians 7:21-23",
+   "stoic": "\"Of freedom. He is free who lives as he likes; who is not subject to compulsion, to restraint, or to violence; whose pursuits are unhindered, his desires successful, his aversions unincurred.\"",
+   "stoicRef": "Epictetus, Discourses 4.1.1, trans. Thomas Wentworth Higginson (1890)",
+   "term": "ἐλεύθερος (eleutheros), Strong's G1658, free. It opens Epictetus 4.1.1: ἐλεύθερός ἐστιν ὁ ζῶν ὡς βούλεται, free is the one who lives as he wishes. Paul uses it at 1 Corinthians 7:22 beside its compound ἀπελεύθερος (apeleutheros), Strong's G558, a freedman, which occurs only here in the New Testament. The site's lexicon glosses that one occurrence as a freedman of the Lord.",
+   "agree": "Both refuse to let legal status settle the question. Epictetus goes on in 4.1 to tell a man twice consul that he may be no different in slavery from one sold three times. Paul tells the slave not to be troubled by it and the free man not to boast. The NIV Cultural Backgrounds Study Bible notes that philosophers, especially Stoics, emphasized accepting one's situation while allowing change when change was possible and beneficial (7:17, 21-24).",
+   "turn": "For Epictetus the free man is the one nobody can compel. For Paul the free man is the one who has been bought (7:23) and now has a master. The study note on 7:22 explains the image: under Roman law a freed slave still belonged to his former owner's household and owed him honor. Paul's freedom is a new belonging. The study note on 7:17 says it in a sentence: where Stoics identified the God who directed their lives with Fate, Paul trusts God as a loving Father.",
+   "cost": "The word is shared and the topic is the same; the study notes name the Stoic background. Wright calls Epictetus Paul's near contemporary; no source in hand claims Paul borrowed from him. Vocabulary and theme are shared; the sources stop there.",
+   "not": "**Not a defense of slavery.** Paul tells the slave to take freedom if it can be had (7:21). The point of the pairing is what each writer thinks freedom finally is.",
+   "related": [
+    "philemon-16-a-brother",
+    "gal-3-28-slaves-are-men",
+    "phil-4-11-autarkes"
+   ],
+   "sources": [
+    "Epictetus, Discourses 4.1.1-2, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 4.1, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 7:22, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G1658 and G558",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on 1 Corinthians 7:17, 7:21 and 7:22",
+    "N. T. Wright, Paul: A Biography (HarperOne), ch. 8, Athens, calling Seneca and Epictetus Paul's near contemporaries"
+   ],
+   "post": null
+  },
+  {
+   "title": "Your brother, the slave",
+   "id": "philemon-16-a-brother",
+   "summary": "Epictetus scolds a master who cannot bear his slave: the slave is his brother, a son of Zeus. Paul sends Onesimus back no longer as a slave but as a beloved brother.",
+   "plain": "The real question: when Epictetus and Paul both call a slave a brother, are they making the same demand on the master? **The boss calls the cleaner part of the family at the Christmas party.** It may change nothing on Monday, or it may change everything. What does each writer expect the master to do?",
+   "category": "word",
+   "group": "freedom",
+   "work": "epictetus",
+   "bibleRef": "Philemon 1:16",
+   "bibleRefOverride": "Philemon 1:15-17",
+   "stoic": "\"But how is it possible to bear such things? O slavish man! will you not bear with your own brother, who has God for his Father, as being a son from the same stock, and of the same high descent?\"",
+   "stoicRef": "Epictetus, Discourses 1.13.3, trans. Thomas Wentworth Higginson (1890). The next sentence calls slaves \"the offspring of God.\"",
+   "term": "ἀδελφός (adelphos), Strong's G80, brother. Epictetus 1.13.3: ἀνάσχῃ τοῦ ἀδελφοῦ τοῦ σαυτοῦ, will you not bear with your own brother, who has Zeus as forefather. In 1.13.4 slaves are ἀδελφοὶ φύσει, brothers by nature. Philemon 16: οὐκέτι ὡς δοῦλον ἀλλὰ ὑπὲρ δοῦλον, ἀδελφὸν ἀγαπητόν, no longer as a slave but more than a slave, a beloved brother.",
+   "agree": "Both tell a master that the person he owns is his kin. Both rest it on a shared origin above the master's purchase. Epictetus answers the master who says he bought them with a charge that he is looking at the laws of dead men and not the laws of the gods (1.13.5).",
+   "turn": "The ground of the kinship. For Epictetus every slave is a brother by nature, because all descend from Zeus. For Paul, Onesimus is a brother both in the flesh and in the Lord (16), and Paul asks Philemon to receive him as he would receive Paul himself (17). The NIV Cultural Backgrounds Study Bible notes that Roman law treated slaves as both persons and property, but family obligations would not allow one to treat a full brother as property. Epictetus asks the master to be patient with a brother. Paul asks him to welcome one.",
+   "cost": "The word is shared and the argument is close. The study note on Ephesians 6:9 says Aristotle complained of a few thinkers, presumably early Stoics, who held slaves to be their masters' spiritual equals, and that so far as we know only Paul suggests in practice that masters treat slaves the same way. No source in hand says Paul knew Epictetus's discourse.",
+   "not": "**Not an abolition text in either writer.** Epictetus does not tell the master to free the slave, and Paul's request is about Onesimus, not the institution.",
+   "related": [
+    "1-cor-7-22-free-and-slave",
+    "gal-3-28-slaves-are-men"
+   ],
+   "sources": [
+    "Epictetus, Discourses 1.13.3-5, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 1.13, Perseus Digital Library",
+    "SBL Greek New Testament, Philemon 16, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on Philemon 16 and Ephesians 6:9"
+   ],
+   "post": null
+  },
+  {
+   "title": "They are slaves. No, they are men.",
+   "id": "gal-3-28-slaves-are-men",
+   "summary": "Seneca praises Lucilius for living on familiar terms with his slaves and answers every objection with the same reply. Paul says in Christ there is neither slave nor free.",
+   "plain": "The real question: does Seneca's insistence that slaves are human beings say the same thing as Paul's line that in Christ there is no slave or free? **The club lets the waiters eat at the members' table once a year.** Everyone agrees they are people. Is that the same as saying the club has no members and no waiters?",
+   "category": "argument",
+   "group": "freedom",
+   "work": "seneca",
+   "bibleRef": "Galatians 3:28",
+   "bibleRefOverride": "Galatians 3:26-28; Colossians 3:11",
+   "stoic": "\"'Servi sunt.' Immo homines. 'Servi sunt ' Immo contubernales. 'Servi sunt.' Immo humiles amici. 'Servi sunt.' Immo conservi, si cogitaveris tantundem in utrosque licere fortunae.\" In Robin Campbell's translation: \"Strictly speaking they're our fellow-slaves.\"",
+   "stoicRef": "Seneca, Moral Letters 47.1, Latin text from The Latin Library; English phrase from Robin Campbell, Letters from a Stoic (Penguin, 1969), Letter XLVII",
+   "term": "Seneca writes in Latin, so there is no shared Greek word. His last answer is conservi, fellow slaves, because fortune has as much power over master as over slave. In 47.10 he adds that the man you call your slave sprang from the same seeds, breathes the same air, lives and dies as you do. Paul's word in Galatians 3:28 is δοῦλος (doulos), slave, set against ἐλεύθερος (eleutheros), free.",
+   "agree": "Both refuse to let the line between slave and free define a person. Both appeal to a shared origin: Seneca to the same seeds, Paul to being children of God through faith (3:26). The NIV Cultural Backgrounds Study Bible, on 1 Timothy 6:2, says that Paul, like the philosopher Seneca, might depict slaves as persons free in God's sight.",
+   "turn": "Seneca's equality is a reflection a wise master makes about fortune; the household stays as it is, only kinder. Paul's is a fact about a new body: all of you are one in Christ Jesus (3:28), clothed with Christ (3:27). Seneca makes the slave a fellow slave of fortune. Paul makes the slave a fellow heir.",
+   "cost": "The comparison with Seneca on slaves is drawn by the study Bible's note on 1 Timothy 6:2, not here. It is a comparison, not a claim that Paul read Seneca. Fantham places the Letters in Seneca's retirement in the early 60s, and Wright thinks Galatians was the very first of all Christian writings, so this letter cannot be Paul's source. The point is that the two were saying related things in the same decades.",
+   "not": "**Not the same proposal.** Seneca's letter is about how to treat slaves. Galatians 3:28 is about who belongs to Abraham's family.",
+   "related": [
+    "philemon-16-a-brother",
+    "1-cor-7-22-free-and-slave"
+   ],
+   "sources": [
+    "Seneca, Epistulae Morales 47.1 and 47.10, Latin text, The Latin Library, https://www.thelatinlibrary.com/sen/seneca.ep5.shtml",
+    "Seneca, Letters from a Stoic, trans. Robin Campbell (Penguin, 1969), Letter XLVII",
+    "SBL Greek New Testament, Galatians 3:28, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on 1 Timothy 6:2",
+    "Seneca, Selected Letters, trans. Elaine Fantham (Oxford World's Classics, 2010), front matter, on the Letters written in retirement in the early 60s",
+    "N. T. Wright, Galatians (Eerdmans, 2021), on Galatians 4:1-7, calling the letter the very first of all Christian writings"
+   ],
+   "post": null
+  },
+  {
+   "title": "For we are also his offspring",
+   "id": "acts-17-28-his-offspring",
+   "summary": "In Athens, Paul quotes a Greek poet: \"For we are also his offspring.\" The line is the opening of Aratus's Phaenomena, a poem that begins with Zeus.",
+   "plain": "The real question: when Paul quotes a poem about Zeus to the Athenians, is he agreeing with the poet or using him? **A guest at a wedding toasts the couple with a line from a song the groom's family loves.** Everyone in the room hears their own song. Does the guest mean what they mean by it?",
+   "category": "word",
+   "group": "god",
+   "work": "aratus",
+   "bibleRef": "Acts 17:28",
+   "bibleRefOverride": "Acts 17:24-29",
+   "stoic": "\"From Zeus let us begin; him do we mortals never leave unnamed; full of Zeus are all the streets and all the market-places of men; full is the sea and the havens thereof; always we all have need of Zeus. For we are also his offspring; and he in his kindness unto men giveth favourable signs.\"",
+   "stoicRef": "Aratus, Phaenomena 1-6, trans. G. R. Mair (Loeb Classical Library, Heinemann, 1921)",
+   "term": "γένος (genos), Strong's G1085, offspring, kin. Aratus, line 5: τοῦ γὰρ καὶ γένος εἰμέν. Acts 17:28 in the SBL Greek New Testament: Τοῦ γὰρ καὶ γένος ἐσμέν. The only difference is the verb: Aratus has the epic form εἰμέν, Acts the ordinary ἐσμέν, both meaning we are. The site's lexicon gives Acts 17:28-29 the sense offspring. Paul's next sentence uses the word again: being then God's offspring (17:29).",
+   "agree": "Both say humans are kin to the one God who fills the world and gives life. The NIV Cultural Backgrounds Study Bible says that especially in verses 24-29 the speech has many points of contact with the dominant Stoic philosophy, and that the connections follow a long Jewish intellectual habit of selecting useful ideas from Greek philosophy. Wright calls Aratus a third-century BC Stoic whose Phaenomena was the most widely read poem in Paul's world after Homer.",
+   "turn": "Paul, in Luke's account, draws the opposite conclusion from the line. If we are God's offspring, we ought not to think the divine is like gold, silver or stone shaped by human skill (17:29). Wright notes that the Stoics had never suggested human-made idols were a bad idea. Then Paul goes where no Stoic went: God has set a day of judgment and has given proof by raising a man from the dead (17:31). Wright says quoting Aratus is as close as Paul comes to something that, out of context, might be mistaken for Stoicism, and that what follows shows this would be a serious error.",
+   "cost": "This is a quotation, not an echo, and the speech itself says some of your own poets have said it. The NIV study note says Aratus is the likeliest author of the line and that the Stoic Cleanthes wrote similarly; it adds that Paul, from Tarsus in Cilicia, undoubtedly knew of the Cilician poet. Wright and Bird call Aratus the Cilician Stoic philosopher. The words of Acts 17:28 are Luke's report of a speech, so what can be said is that Luke has Paul quote Aratus.",
+   "not": "**Not an endorsement of Zeus.** The speech takes the poet's line and uses it to argue against temples made with hands, and the NIV study note says the meeting place of the Areopagus was surrounded by temples.",
+   "related": [
+    "acts-17-25-god-needs-nothing",
+    "rom-11-36-from-in-to",
+    "rom-8-14-sons-of-god"
+   ],
+   "sources": [
+    "Aratus, Phaenomena 1-18, Greek text ed. G. R. Mair (Heinemann and Putnam, 1921), Perseus Digital Library (canonical-greekLit)",
+    "Aratus, Phaenomena, trans. G. R. Mair, Callimachus, Hymns and Epigrams; Lycophron; Aratus (Loeb Classical Library 129, Heinemann, 1921), Theoi Classical Texts Library, https://www.theoi.com/Text/AratusPhaenomena.html",
+    "SBL Greek New Testament, Acts 17:28-29, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G1085",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on Acts 17:22-31 and 17:28",
+    "N. T. Wright, Paul: A Biography (HarperOne), ch. 8, Athens",
+    "Wright and Bird, The New Testament in Its World (2019), ch. 15, note 10"
+   ],
+   "post": null
+  },
+  {
+   "title": "God needs nothing from us",
+   "id": "acts-17-25-god-needs-nothing",
+   "summary": "Seneca would forbid lamps on the Sabbath and offerings to Jupiter, because God seeks no servants. Paul tells the Athenians God is not served by human hands as though he needed anything.",
+   "plain": "The real question: when Seneca and Paul both say God needs nothing from worshippers, do they mean the same God, and the same thing by worship? **The grandmother tells the children she does not need presents.** She may mean she has everything already, or that she wants something presents cannot give. Which is each writer saying about God?",
+   "category": "argument",
+   "group": "god",
+   "work": "seneca",
+   "bibleRef": "Acts 17:25",
+   "bibleRefOverride": "Acts 17:24-25",
+   "stoic": "\"Let us forbid lamps to be lighted on the Sabbath, since the gods do not need light, neither do men take pleasure in soot. ... Let us forbid bringing towels and flesh-scrapers to Jupiter, and proffering mirrors to Juno; for God seeks no servants. Of course not; he himself does service to mankind, everywhere and to all he is at hand to help.\"",
+   "stoicRef": "Seneca, Moral Epistles 95, on the worship of the gods, trans. Richard M. Gummere (Loeb Classical Library, 1917-25), vol. III",
+   "term": "Seneca's Latin is not in hand for this letter, so no Latin term is given here. Acts 17:25 has οὐδὲ ὑπὸ χειρῶν ἀνθρωπίνων θεραπεύεται προσδεόμενός τινος, nor is he served by human hands as though he needed anything. The verb θεραπεύω (therapeuō) is the ordinary word for serving or tending; Gummere's \"servants\" stands in Seneca's sentence at the same point in the thought.",
+   "agree": "Both say worship that supplies God's needs misunderstands him, and both say he is the one who gives: Seneca's God does service to mankind, Paul's gives everyone life and breath and all things (17:25). The NIV Cultural Backgrounds Study Bible says that God needs nothing was a basic premise of Stoic philosophers and was commonly affirmed in Hellenistic Jewish works, and points to Psalm 50:9-13.",
+   "turn": "Seneca's next step is that a man will make no progress until he has a right idea of God, and that whoever imitates the gods worships them enough: be a good man. Paul's next step is that God made all nations from one man, set their times and boundaries so they would seek him, and now commands repentance before a coming judgment (17:26-31). Seneca ends with imitation. Paul ends with a summons.",
+   "cost": "The study note says the idea was a Stoic premise and a Jewish one. It does not say Paul knew Seneca's letter, which Fantham places in Seneca's retirement in the early 60s. The note's pointer to Psalm 50 means the conviction was open to Paul from Scripture as well as from the schools; that is an inference from the note, not its claim. Seneca's own example of bad worship is the Jewish Sabbath lamp.",
+   "not": "**Not a rejection of worship.** Seneca keeps worship, redefined as believing in the gods and imitating them. Paul keeps it, redirected to the God who raised Jesus.",
+   "related": [
+    "acts-17-28-his-offspring",
+    "rom-11-36-from-in-to",
+    "1-cor-3-16-god-within"
+   ],
+   "sources": [
+    "Seneca, Moral Epistles, trans. Richard M. Gummere (Loeb Classical Library, Harvard University Press, 1917-25), vol. III, Letter XCV, https://www.stoics.com/seneca_epistles_book_3.html",
+    "Seneca, Selected Letters, trans. Elaine Fantham (Oxford World's Classics, 2010), Letter 95, note on lamps on the Sabbath, and front matter",
+    "SBL Greek New Testament, Acts 17:24-25, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on Acts 17:24 and 17:25"
+   ],
+   "post": null
+  },
+  {
+   "title": "From thee, in thee, to thee",
+   "id": "rom-11-36-from-in-to",
+   "summary": "Marcus addresses Nature: from you are all things, in you all things, to you all things. Paul ends Romans 11 with all things from God, through God and to God.",
+   "plain": "The real question: when Marcus and Paul use nearly the same little words about where all things come from and go to, are they saying the same thing about God? **Two people both say the house is everything to them.** One means the house is all there is. The other means the man who built it is. Which is each writer saying?",
+   "category": "word",
+   "group": "god",
+   "work": "marcus",
+   "bibleRef": "Romans 11:36",
+   "bibleRefOverride": "Romans 11:33-36; 1 Corinthians 8:6",
+   "stoic": "\"Everything harmonizes with me, which is harmonious to thee, O Universe. Nothing for me is too early nor too late, which is in due time for thee. Everything is fruit to me which thy seasons bring, O Nature: from thee are all things, in thee are all things, to thee all things return.\"",
+   "stoicRef": "Marcus Aurelius, Meditations 4.23, trans. George Long. The Internet Classics Archive text is unnumbered; 4.23 is the numbering of the Greek text.",
+   "term": "The formula of prepositions with πάντα (panta), all things. Marcus 4.23: ἐκ σοῦ πάντα, ἐν σοὶ πάντα, εἰς σὲ πάντα, from you all things, in you all things, to you all things. Romans 11:36: ἐξ αὐτοῦ καὶ δι’ αὐτοῦ καὶ εἰς αὐτὸν τὰ πάντα, from him and through him and to him are all things. The first and last prepositions match exactly. The middle one differs: Marcus has ἐν, in; Paul has διά, through.",
+   "agree": "Both close a meditation on the order of things with a doxology of origin and goal. The NIV Cultural Backgrounds Study Bible says philosophers distinguished levels of causation with terms such as from, through and for, and that all the levels apply in 11:36.",
+   "turn": "Marcus is speaking to Nature and to the universe, and the formula is the reason he can call nothing too early or too late. Paul is speaking of the God whose judgments are unsearchable (11:33), and he follows the formula with to him be the glory forever. The middle preposition carries the difference. In Marcus all things are in Nature, because Nature is the whole. In Paul all things are through God, who stands distinct from what he made.",
+   "cost": "The prepositions are a shared philosophical way of talking about causes, as the study note says. Marcus reigned AD 161-80, long after Romans, so he is a witness to the formula, not its source for Paul. No source in hand says Paul took the formula from a Stoic text; the link is the vocabulary of causation.",
+   "not": "**Not pantheism in Paul.** The middle word is the guard: through him, not in him.",
+   "related": [
+    "acts-17-28-his-offspring",
+    "acts-17-25-god-needs-nothing",
+    "1-cor-12-27-member-not-part"
+   ],
+   "sources": [
+    "Marcus Aurelius, Meditations 4.23, Greek text ed. J. H. Leopold, Perseus Digital Library (canonical-greekLit)",
+    "Marcus Aurelius, Meditations, trans. George Long, Book Four, Internet Classics Archive, http://classics.mit.edu/Antoninus/meditations.4.four.html",
+    "SBL Greek New Testament, Romans 11:36, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Romans 11:36"
+   ],
+   "post": null
+  },
+  {
+   "title": "Why not a son of God?",
+   "id": "rom-8-14-sons-of-god",
+   "summary": "Epictetus asks why a man who understands his kinship with God should not call himself a citizen of the world, and a son of God. Paul says those led by the Spirit of God are sons of God.",
+   "plain": "The real question: when Epictetus and Paul both call people sons of God, is it the same sonship? **Two people both say they are a son of the family firm.** One was born into it; the other was adopted. Does it matter how you became the son?",
+   "category": "word",
+   "group": "god",
+   "work": "epictetus",
+   "bibleRef": "Romans 8:14",
+   "bibleRefOverride": "Romans 8:14-17; Galatians 4:4-7",
+   "stoic": "\"why may not such a one call himself a citizen of the universe! Why not a son of God? And why shall he fear any thing that happens among men?\"",
+   "stoicRef": "Epictetus, Discourses 1.9.6, trans. Thomas Wentworth Higginson (1890)",
+   "term": "υἱὸς θεοῦ (huios theou), son of God. Epictetus 1.9.6: διὰ τί μὴ υἱὸν τοῦ θεοῦ; why not a son of God? Romans 8:14: οὗτοι υἱοί εἰσιν θεοῦ, these are sons of God. The noun is υἱός (huios), Strong's G5207.",
+   "agree": "Both draw courage from the sonship. Epictetus's next sentence asks why such a man should fear anything among men, since God is his maker, father and guardian. Paul says the Spirit received is not a spirit of slavery leading back into fear (8:15).",
+   "turn": "For Epictetus every rational being is God's son by nature: the seeds of being have come down from God to all rational natures, so he should never call himself Athenian or Corinthian (1.9.1-5). For Paul sonship is given: it is the Spirit's leading, a Spirit of adoption by whom we cry Abba, Father (8:15), and it makes the sons heirs with Christ, if they suffer with him (8:17). Epictetus argues from what every man already is. Paul argues from what God has done.",
+   "cost": "The phrase is shared and the courage it yields is similar. No source in hand says Paul knew this discourse; Wright calls Epictetus Paul's near contemporary. The link is the phrase and a common way of reasoning about kinship with God.",
+   "not": "**Not a claim that Epictetus believed in the Christian Son of God.** The phrase in 1.9 belongs to every person who reasons, which is the opposite of Paul's claim about one Son.",
+   "related": [
+    "acts-17-28-his-offspring",
+    "phil-3-20-citizenship",
+    "2-cor-4-10-carrying-about"
+   ],
+   "sources": [
+    "Epictetus, Discourses 1.9.1-7, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 1.9, Perseus Digital Library",
+    "SBL Greek New Testament, Romans 8:14, via MorphGNT",
+    "Site word study data, word-study-alpha.json, G5207",
+    "N. T. Wright, Paul: A Biography (HarperOne), ch. 8, Athens, calling Seneca and Epictetus Paul's near contemporaries"
+   ],
+   "post": null
+  },
+  {
+   "title": "You carry a God about with you",
+   "id": "2-cor-4-10-carrying-about",
+   "summary": "Epictetus tells a careless student he carries a god about inside him. Paul says the apostles carry about in the body the dying of Jesus.",
+   "plain": "The real question: Epictetus and Paul both say a person carries something divine around in his body. Is it the same thing? **The courier says he is carrying something precious.** It might be a jewel or a death notice. What is each writer saying the body carries?",
+   "category": "word",
+   "group": "god",
+   "work": "epictetus",
+   "bibleRef": "2 Corinthians 4:10",
+   "bibleRefOverride": "2 Corinthians 4:7-11",
+   "stoic": "\"do not you know that it is the Divine you feed, the Divine you exercise? You carry a God about with you, poor wretch, and know nothing of it. Do you suppose I mean some god without you of gold or silver? It is within yourself that you carry him.\"",
+   "stoicRef": "Epictetus, Discourses 2.8.12-13, trans. Thomas Wentworth Higginson (1890)",
+   "term": "περιφέρω (peripherō), Strong's G4064, to carry about. Epictetus 2.8.12: θεὸν περιφέρεις, τάλας, καὶ ἀγνοεῖς, you carry a god about, wretch, and do not know it. 2 Corinthians 4:10: πάντοτε τὴν νέκρωσιν τοῦ Ἰησοῦ ἐν τῷ σώματι περιφέροντες, always carrying about in the body the dying of Jesus. The site's lexicon gives three New Testament uses: Mark 6:55, 2 Corinthians 4:10 and, in a figurative passive, Ephesians 4:14.",
+   "agree": "Both say the ordinary body is the bearer of something holy, and both use the same verb for it. Epictetus says you are a fragment of God and have part of him in yourself (2.8.11). Paul says the treasure is in clay jars (4:7).",
+   "turn": "What is carried. Epictetus's god is the reason within, and the charge is that you defile it by unclean thoughts and deeds (2.8.13). Paul's burden is the dying of Jesus, the beatings and pressures of 4:8-9, carried so that the life of Jesus may be shown in his body (4:10). For Epictetus the body carries God's dignity. For Paul it carries Jesus' death and waits for his life.",
+   "cost": "The verb is shared. The NIV Cultural Backgrounds Study Bible has no note on Stoics at this verse, and no source in hand says Paul knew this saying. On the sources in hand, the pairing rests on shared vocabulary only.",
+   "not": "**Not a claim that the self is divine in Paul.** Paul's treasure is in the jar, not made of it.",
+   "related": [
+    "1-cor-3-16-god-within",
+    "rom-8-14-sons-of-god",
+    "1-cor-15-55-death-not-terrible"
+   ],
+   "sources": [
+    "Epictetus, Discourses 2.8.10-14, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 2.8, Perseus Digital Library",
+    "SBL Greek New Testament, 2 Corinthians 4:10, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G4064",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on 2 Corinthians 4"
+   ],
+   "post": null
+  },
+  {
+   "title": "God is near you, with you, within you",
+   "id": "1-cor-3-16-god-within",
+   "summary": "Seneca tells Lucilius there is no need to lift hands to heaven: a holy spirit sits within us. Paul asks the Corinthians whether they do not know that God's Spirit dwells in them.",
+   "plain": "The real question: Seneca and Paul both say a holy spirit lives inside people. Is it the same spirit? **The coach tells the team the win is already inside them.** He might mean their own talent, or the new player who has just joined. Which does each writer mean?",
+   "category": "argument",
+   "group": "god",
+   "work": "seneca",
+   "bibleRef": "1 Corinthians 3:16",
+   "bibleRefOverride": "1 Corinthians 3:16-17; 6:19",
+   "stoic": "\"prope est a te deus, tecum est, intus est. Ita dico, Lucili: sacer intra nos spiritus sedet, malorum bonorumque nostrorum observator et custos.\" In Robin Campbell's translation: \"God is near you, is with you, is inside you.\"",
+   "stoicRef": "Seneca, Moral Letters 41.1-2, Latin text from The Latin Library; English phrase from Robin Campbell, Letters from a Stoic (Penguin, 1969), Letter XLI",
+   "term": "Seneca writes Latin: sacer spiritus, a holy spirit, sits within us as observer and guardian of our bad and good. Paul's Greek is τὸ πνεῦμα τοῦ θεοῦ οἰκεῖ ἐν ὑμῖν, the Spirit of God dwells in you, and ναὸς θεοῦ ἐστε, you are God's temple (3:16). Latin spiritus and Greek πνεῦμα (pneuma) cover the same ground of breath and spirit, but they are not the same word, so the entry is filed as argument.",
+   "agree": "Both turn away from temple ritual: Seneca says there is no need to beg the temple keeper for a closer place at the statue's ear. Both say the divine is not far but inside. Seneca adds that no man is good without God.",
+   "turn": "Seneca's spirit is in every good man, and he says plainly that which god dwells there is uncertain (41.2). It treats us as we treat it. Paul's Spirit is God's own, given to a community, and the you in 3:16 is plural: the church at Corinth together is the temple. The NIV Cultural Backgrounds Study Bible, at 6:19, says some Jewish writers depicted God's people as a spiritual temple, an image Paul applies there to individual believers as well.",
+   "cost": "No source in hand says Paul knew Letter 41, and Fantham places the Letters in Seneca's retirement in the early 60s, late in Paul's life. The likeness is an argument both make; the vocabulary is in two languages.",
+   "not": "**Not the Holy Spirit in Seneca.** Seneca's spirit is the divine reason in the good man; he does not claim to know which god it is.",
+   "related": [
+    "2-cor-4-10-carrying-about",
+    "acts-17-25-god-needs-nothing",
+    "1-cor-12-27-member-not-part"
+   ],
+   "sources": [
+    "Seneca, Epistulae Morales 41.1-2, Latin text, The Latin Library, https://www.thelatinlibrary.com/sen/seneca.ep4.shtml",
+    "Seneca, Letters from a Stoic, trans. Robin Campbell (Penguin, 1969), Letter XLI",
+    "SBL Greek New Testament, 1 Corinthians 3:16, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on 1 Corinthians 6:19",
+    "Seneca, Selected Letters, trans. Elaine Fantham (Oxford World's Classics, 2010), front matter"
+   ],
+   "post": null
+  },
+  {
+   "title": "The strict father",
+   "id": "heb-12-7-the-strict-father",
+   "summary": "Seneca says God loves good men like a strict father and toughens them by hardship. The writer of Hebrews says God disciplines those he loves, as a father his sons.",
+   "plain": "The real question: when Seneca and the writer of Hebrews both say suffering is a father's training, do they mean the same father? **The sergeant says he is hardest on the recruits he rates highest.** That can mean he wants them tough, or that he wants them home safe. Which is each writer's God after?",
+   "category": "argument",
+   "group": "god",
+   "work": "seneca",
+   "bibleRef": "Hebrews 12:7",
+   "bibleRefOverride": "Hebrews 12:5-11",
+   "stoic": "\"Patrium deus habet aduersus bonos uiros animum et illos fortiter amat.\" In John Davie's translation of 1.5, God is \"no gentle trainer in virtue, rears with severity, as strict fathers do.\"",
+   "stoicRef": "Seneca, On Providence 2.6 (Latin, The Latin Library) and 1.5 (English, trans. John Davie, Oxford World's Classics, 2007)",
+   "term": "Seneca writes Latin, so the shared ground is the father, not a word. His sentence in 4.7 runs: Hos itaque deus quos probat, quos amat, indurat recognoscit exercet, those whom God approves and loves he hardens, examines and trains. Hebrews 12:6-7 uses παιδεύω (paideuō), to discipline or train a child, and υἱός (huios), son: whom the Lord loves he disciplines, and what son is there whom a father does not discipline?",
+   "agree": "Both read hardship as evidence of love rather than neglect, and both reach for the image of a father who trains his sons more severely than a soft parent would. Davie's Seneca calls the good man God's pupil, imitator and true offspring.",
+   "turn": "Hebrews draws the image from Proverbs 3:11-12, which it quotes, and the NIV Cultural Backgrounds Study Bible says the idea there is widespread in Jewish wisdom, citing Deuteronomy 8:5 and Psalm 94:12. The goal differs too. Seneca's discipline produces the man of whom Davie's translation says \"no misfortune makes him yield.\" In Hebrews it is so that we may share God's holiness (12:10), and the passage sits under the example of Jesus, who endured the cross (12:2). Seneca's good man is hardened. The son in Hebrews is made holy.",
+   "cost": "The study notes on Hebrews 12 trace the idea to Proverbs and Jewish tradition and do not mention Seneca. The pairing is drawn here, and the likeness is an argument shared across two traditions, not a borrowing anyone in hand claims.",
+   "not": "**Not a claim that suffering is always discipline.** Hebrews applies it to a persecuted community enduring hardship, not to every pain.",
+   "related": [
+    "rom-8-14-sons-of-god",
+    "1-cor-9-25-the-athlete"
+   ],
+   "sources": [
+    "Seneca, De Providentia 1.5, 2.6, 4.7, Latin text, The Latin Library, https://www.thelatinlibrary.com/sen/sen.prov.shtml",
+    "Seneca, Dialogues and Essays, trans. John Davie, intro. Tobias Reinhardt (Oxford World's Classics, 2007), On Providence, ch. 1 and the passage on the man hardened by suffering",
+    "SBL Greek New Testament, Hebrews 12:6-7, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on Hebrews 12:7 and 12:10"
+   ],
+   "post": null
+  },
+  {
+   "title": "A member, not a part",
+   "id": "1-cor-12-27-member-not-part",
+   "summary": "Marcus tells himself to say he is a melos, a limb, of the body of rational beings, not merely a meros, a part. Paul tells the Corinthians they are Christ's body and members of it.",
+   "plain": "The real question: when Marcus and Paul both call people members of a body, is it the same body? **The new hire says she is part of the team; a year later she says she is one of them.** Same office, different word, different feeling. Which body is each writer talking about?",
+   "category": "word",
+   "group": "body",
+   "work": "marcus",
+   "bibleRef": "1 Corinthians 12:27",
+   "bibleRefOverride": "1 Corinthians 12:12-27; Romans 12:4-5",
+   "stoic": "\"Just as it is with the members in those bodies which are united in one, so it is with rational beings which exist separate, for they have been constituted for one co-operation. And the perception of this will be more apparent to thee, if thou often sayest to thyself that I am a member (melos) of the system of rational beings. But if (using the letter r) thou sayest that thou art a part (meros) thou dost not yet love men from thy heart.\"",
+   "stoicRef": "Marcus Aurelius, Meditations 7.13, trans. George Long",
+   "term": "μέλος (melos), Strong's G3196, a limb or member, and μέρος (meros), Strong's G3313, a part or share. Marcus 7.13 turns on the one letter between them: μέλος εἰμὶ τοῦ ἐκ τῶν λογικῶν συστήματος, I am a member of the system made of rational beings. Paul uses both words in one phrase at 1 Corinthians 12:27: σῶμα Χριστοῦ καὶ μέλη ἐκ μέρους, Christ's body, and members individually.",
+   "agree": "Both say a person belongs to a whole the way a limb belongs to a body, and both say this should change how you feel about others: for Marcus, you then love men from the heart; for Paul, if one member suffers, all suffer together (12:26). The NIV Cultural Backgrounds Study Bible says earlier Greek and Roman thinkers had compared the state and even the universe to a body of interdependent members.",
+   "turn": "Whose body. Marcus's body is the system of all rational beings, everyone who reasons. Paul's is the body of Christ (12:27), entered by being baptized by one Spirit, whether Jews or Greeks, slave or free (12:13). The study note adds that ancient writers often used the analogy to support hierarchy, while Paul values the diverse functions and gives more honor to the parts that lack it (12:24).",
+   "cost": "The word is shared and the image was common, as the study note says. Marcus reigned AD 161-80, long after Paul, so he witnesses the image rather than supplying it. No source in hand says Paul took the image from a Stoic text.",
+   "not": "**Not a theory of humanity in Paul.** Paul's body is the church, not the human race.",
+   "related": [
+    "1-cor-12-15-hand-and-foot",
+    "rom-12-5-one-great-body",
+    "rom-12-10-family-affection"
+   ],
+   "sources": [
+    "Marcus Aurelius, Meditations 7.13, Greek text ed. J. H. Leopold, Perseus Digital Library (canonical-greekLit)",
+    "Marcus Aurelius, Meditations, trans. George Long, Book Seven, Internet Classics Archive, http://classics.mit.edu/Antoninus/meditations.7.seven.html",
+    "SBL Greek New Testament, 1 Corinthians 12:12 and 12:27, via MorphGNT",
+    "Site word study data, word-study-alpha.json, G3196 and G3313",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on 1 Corinthians 12:12 and 12:24"
+   ],
+   "post": null
+  },
+  {
+   "title": "If the foot could reason",
+   "id": "1-cor-12-15-hand-and-foot",
+   "summary": "Epictetus says a citizen of the world should act like a hand or foot that could reason and always chose for the whole. Paul has the foot speak: because I am not a hand, I am not of the body.",
+   "plain": "The real question: Epictetus and Paul both make the foot talk. Are they making it say the same thing? **The left-back complains he never gets to score.** One coach tells him to think of the team. Another tells him the team is nothing without him. Which is each writer saying to the foot?",
+   "category": "word",
+   "group": "body",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 12:15",
+   "bibleRefOverride": "1 Corinthians 12:14-21",
+   "stoic": "\"What then does the character of a citizen imply? To hold no private interest; to deliberate of nothing as a separate individual, but rather like the hand or the foot, which, if they had reason, and comprehended the constitution of nature, would never pursue, or desire, but with a reference to the whole.\"",
+   "stoicRef": "Epictetus, Discourses 2.10.4, trans. Thomas Wentworth Higginson (1890)",
+   "term": "πούς (pous), foot, and χείρ (cheir), hand. Epictetus 2.10.4: εἰ ἡ χεὶρ ἢ ὁ ποὺς λογισμὸν εἶχον, if the hand or the foot had reason. 1 Corinthians 12:15: ἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, if the foot should say, because I am not a hand. Ordinary words, but the same two limbs in the same figure.",
+   "agree": "Both use a thinking limb to teach that the part exists for the whole. The NIV Cultural Backgrounds Study Bible says personifying impersonal objects so that they could speak was a device orators used to hold attention.",
+   "turn": "Epictetus's foot, if it could think, would give up its own interest entirely, and the next sentences say a wise man would even co-operate with his own sickness and death because the whole is superior to the part (2.10.5). Paul's foot is told it belongs, whatever it feels (12:15), and the body is told it cannot do without it (12:21). Epictetus sacrifices the part to the whole. Paul defends the part inside the whole, and says God arranged each member as he chose (12:18).",
+   "cost": "The image and its two limbs are shared, and the study notes on 12:12 and 12:15-16 place it among ancient rhetorical and political commonplaces. No source in hand says Paul knew this discourse.",
+   "not": "**Not two versions of the same lesson.** Epictetus teaches the part to want nothing for itself. Paul teaches the body to honor the part.",
+   "related": [
+    "1-cor-12-27-member-not-part",
+    "rom-12-5-one-great-body",
+    "phil-3-20-citizenship"
+   ],
+   "sources": [
+    "Epictetus, Discourses 2.10.3-5, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 2.10, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 12:15-16, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on 1 Corinthians 12:12, 12:15-16 and 12:21"
+   ],
+   "post": null
+  },
+  {
+   "title": "Members of one great body",
+   "id": "rom-12-5-one-great-body",
+   "summary": "Seneca gives Lucilius one rule for human duty: everything you see is one, and we are parts of one great body. Paul tells the Romans that the many are one body in Christ.",
+   "plain": "The real question: when Seneca and Paul both say we are members of one body, are they describing the same body? **Everyone on the street says the neighborhood is one big family.** That might mean all humans are related, or that this street has a particular bond. Which body does each writer mean?",
+   "category": "argument",
+   "group": "body",
+   "work": "seneca",
+   "bibleRef": "Romans 12:5",
+   "bibleRefOverride": "Romans 12:4-5",
+   "stoic": "\"all that you behold, that which comprises both god and man, is one ... we are the parts of one great body. Nature produced us related to one another, since she created us from the same source and to the same end. She engendered in us mutual affection, and made us prone to friendships.\"",
+   "stoicRef": "Seneca, Moral Epistles 95, on duties to men, trans. Richard M. Gummere (Loeb Classical Library, 1917-25), vol. III. The ellipsis marks Gummere's dash, left out here.",
+   "term": "Seneca writes Latin, so the entry is filed as argument. Elaine Fantham's translation of the same sentence reads \"we are members of a great body.\" Romans 12:4-5 uses μέλος (melos), member, three times: many members in one body, one body in Christ, and individually members of one another.",
+   "agree": "Both make the body the ground of duty to others. Seneca goes on to say our relations are like a stone arch that would fall if the stones did not support each other. The NIV Cultural Backgrounds Study Bible, on Romans 12:4-5, says earlier Greek and Roman thinkers had compared the state and even the universe to a body of interdependent members.",
+   "turn": "Seneca's body includes god and man and everything you see; it is the universe. Paul's is one body in Christ (12:5), and its members have different gifts according to the grace given (12:6). The study note adds that writers often used the image to support hierarchy, while Paul uses it to value diverse functions. Seneca's body is nature. Paul's is a congregation.",
+   "cost": "The comparison of community to a body is attested as a commonplace by the study note. Fantham places the Letters in Seneca's retirement in the early 60s, and no source in hand says Paul knew this one. A shared argument, in two languages.",
+   "not": "**Not a claim that Paul's church is the cosmos.** Seneca's body has no edges. Paul's has a head and a baptism.",
+   "related": [
+    "1-cor-12-27-member-not-part",
+    "1-cor-12-15-hand-and-foot",
+    "rom-12-10-family-affection"
+   ],
+   "sources": [
+    "Seneca, Moral Epistles, trans. Richard M. Gummere (Loeb Classical Library, Harvard University Press, 1917-25), vol. III, Letter XCV, https://www.stoics.com/seneca_epistles_book_3.html",
+    "Seneca, Selected Letters, trans. Elaine Fantham (Oxford World's Classics, 2010), Letter 95 and front matter",
+    "SBL Greek New Testament, Romans 12:4-5, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Romans 12:4-5"
+   ],
+   "post": null
+  },
+  {
+   "title": "Family affection",
+   "id": "rom-12-10-family-affection",
+   "summary": "Paul tells the Romans to be philostorgoi, devoted with family affection, to one another. The word was a Stoic virtue, and Marcus praises his teacher Sextus for having it while free of passion.",
+   "plain": "The real question: when Paul asks the church for family affection, is he naming a Stoic virtue or a different kind of love? **He says his friends from the army are closer than his brothers.** That might mean his brothers failed him, or that the army made a family where there was none. What does Paul mean by family affection among strangers?",
+   "category": "word",
+   "group": "body",
+   "work": "marcus",
+   "bibleRef": "Romans 12:10",
+   "bibleRefOverride": "Romans 12:9-13",
+   "stoic": "\"and he never showed anger or any other passion, but was entirely free from passion, and also most affectionate.\"",
+   "stoicRef": "Marcus Aurelius, Meditations 1.9, on Sextus, trans. George Long",
+   "term": "φιλόστοργος (philostorgos), Strong's G5387, tenderly loving, used only at Romans 12:10 in the New Testament: τῇ φιλαδελφίᾳ εἰς ἀλλήλους φιλόστοργοι, in brotherly love, devoted to one another. Marcus 1.9 has the superlative φιλοστοργότατον beside ἀπαθέστατον, most affectionate and most free of passion. He lists φιλόστοργον among the qualities to keep at 6.30, and at 1.11 he says the patricians are ἀστοργότεροι, short of this affection. The site's lexicon defines the word from στοργή, family affection.",
+   "agree": "Robertson calls philostorgia, natural affection, central to Stoic ethics, says the Stoics believed it should extend to everyone as all rational beings are brothers and sisters, and notes that Paul joins philostorgoi with philadelphia in Romans 12:10. Both writers take a word for the love inside a family and ask for it outside the family.",
+   "turn": "Marcus's ideal holds affection and freedom from passion together in one man; affection is a virtue of the sage. Paul sets the word inside a run of commands for a church: let love be genuine, rejoice in hope, share with the saints in need, practice hospitality (12:9-13). The family in Romans is not all rational beings but those who are members of one another in Christ (12:5).",
+   "cost": "Robertson, a modern Stoic scholar, is the source here for the Stoic weight of the word and for the link to Romans 12:10. He compares; he does not claim Paul borrowed it. Robertson says Marcus and Fronto used philostorgia of the patricians in 1.11; the Greek of 1.11 actually has the negative form ἀστοργότεροι.",
+   "not": "**Not sentiment.** Neither writer means warm feelings alone. Marcus pairs the word with self-command; Paul pairs it with honoring one another above oneself.",
+   "related": [
+    "rom-12-5-one-great-body",
+    "1-cor-12-27-member-not-part",
+    "philemon-16-a-brother"
+   ],
+   "sources": [
+    "Marcus Aurelius, Meditations 1.9, 1.11, 6.30, Greek text ed. J. H. Leopold, Perseus Digital Library (canonical-greekLit)",
+    "Marcus Aurelius, Meditations, trans. George Long, Book One, Internet Classics Archive, http://classics.mit.edu/Antoninus/meditations.1.one.html",
+    "Donald J. Robertson, Marcus Aurelius: The Stoic Emperor (Yale University Press, 2024), ch. 1, The Mother of Caesar, with notes 7 and 8",
+    "SBL Greek New Testament, Romans 12:10, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G5387"
+   ],
+   "post": null
+  },
+  {
+   "title": "Death is nothing terrible",
+   "id": "1-cor-15-55-death-not-terrible",
+   "summary": "Epictetus says death is nothing terrible; the terror is our opinion of it. Paul calls death the last enemy and taunts it: where is your sting?",
+   "plain": "The real question: Epictetus and Paul both refuse to be afraid of death. Is it the same refusal? **Two men walk past a chained dog without flinching.** One has decided dogs are harmless. The other knows the dog is chained. Which kind of fearlessness is each writer offering?",
+   "category": "argument",
+   "group": "death",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 15:55",
+   "bibleRefOverride": "1 Corinthians 15:26, 54-57; Hebrews 2:14-15",
+   "stoic": "\"Men are disturbed not by things, but by the views which they take of things. Thus death is nothing terrible, else it would have appeared so to Socrates. But the terror consists in our notion of death, that it is terrible.\"",
+   "stoicRef": "Epictetus, Enchiridion 5, trans. Thomas Wentworth Higginson (1890)",
+   "term": "θάνατος (thanatos), death, stands in both, but the key word is in the verdict. Epictetus: ὁ θάνατος οὐδὲν δεινόν, death is nothing dreadful. Paul: ἔσχατος ἐχθρὸς καταργεῖται ὁ θάνατος, the last enemy to be destroyed is death (15:26), and ποῦ σου θάνατε τὸ κέντρον, where, O death, is your sting (15:55). The shared word is the ordinary one; the judgments on it are opposite, so the entry is filed as argument.",
+   "agree": "Both say the fear of death need not rule a person. The NIV Cultural Backgrounds Study Bible, on Hebrews 2:15, says most ancient thinkers explained that fear of death accomplished nothing, some such as Epicureans arguing that death was annihilation and others such as Stoics arguing that cooperating with Fate was the most reasonable course.",
+   "turn": "Epictetus removes the terror by revaluing death: it was never bad. Paul keeps death bad, an enemy, and removes the terror by its defeat: the sting of death is sin, and God gives the victory through Jesus Christ (15:56-57). The same note says Jesus overcame enslavement to the fear of death not by assuaging anxiety but by truly overcoming death. The study note on Philippians 1:20-23 adds that Paul knows death remains an evil.",
+   "cost": "The pairing is drawn here, with the study notes supplying the Stoic background. No source in hand says Paul knew this saying, or Epictetus Paul's letter. The texts share the subject and the refusal of fear, not the reasoning.",
+   "not": "**Not a disagreement about courage.** Both men are brave about death. They disagree about whether death is the enemy.",
+   "related": [
+    "phil-1-23-ready-to-depart",
+    "1-cor-7-29-as-though-not",
+    "2-cor-4-10-carrying-about"
+   ],
+   "sources": [
+    "Epictetus, Enchiridion 5, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, The Enchiridion, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), ch. 5, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 15:26 and 15:55-56; Hebrews 2:14-15, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on Hebrews 2:15 and Philippians 1:20-23"
+   ],
+   "post": null
+  },
+  {
+   "title": "Ready to depart, or mere obstinacy?",
+   "id": "phil-1-23-ready-to-depart",
+   "summary": "Marcus praises the soul ready to leave the body when reason says so, \"not from mere obstinacy, as with the Christians.\" The line is often read as Marcus sneering at martyrs he persecuted.",
+   "plain": "The real question: what can Marcus's one remark about Christians actually tell us? **A manager writes in his diary that the new staff are stubborn.** It might be a complaint about one meeting, or a policy he enforced. How much can one diary line carry?",
+   "category": "contested",
+   "group": "death",
+   "work": "marcus",
+   "bibleRef": "Philippians 1:23",
+   "bibleRefOverride": "Philippians 1:20-24",
+   "stoic": "\"What a soul that is which is ready, if at any moment it must be separated from the body, and ready either to be extinguished or dispersed or continue to exist; but so that this readiness comes from a man's own judgement, not from mere obstinacy, as with the Christians, but considerately and with dignity and in a way to persuade another, without tragic show.\"",
+   "stoicRef": "Marcus Aurelius, Meditations 11.3, trans. George Long. The Internet Classics Archive page prints \"beseparated\" as one word; the space is restored here.",
+   "term": "Marcus's Greek: ἀπολυθῆναι τοῦ σώματος, to be released from the body, and μὴ κατὰ ψιλὴν παράταξιν ὡς οἱ Χριστιανοί, not out of bare opposition like the Christians. Paul's word at Philippians 1:23 is ἀναλῦσαι (analysai), to depart, and he says his desire is to depart and be with Christ. Both speak of leaving the body; the verbs differ.",
+   "agree": "Both describe a man calmly weighing whether to go or stay. The NIV Cultural Backgrounds Study Bible, on Philippians 1:20-23, says ancient speakers sometimes contemplated their options before their audiences, and philosophers taught that one should use reason to decide whether death was best welcomed or rejected.",
+   "turn": "Paul's readiness to die is not the outcome of a judgment about dispersal or survival. It is a desire to be with Christ, which he calls far better, held against the need of the church that he remain (1:23-24). That is the kind of readiness Marcus distrusts, because it does not come from his sort of reasoning.",
+   "cost": "Two claims ride on this line, and the sources in hand weaken both. The first is that Marcus is describing martyrs he himself condemned. Robertson says only that possibly he had Justin's martyrdom in mind. The second is that Marcus was a persecutor. Robertson reports the classicist C. R. Haines's judgment that Marcus has been condemned as a persecutor of the Christians on purely circumstantial and quite insufficient grounds, and notes that Tertullian called him a protector of Christians. George Long, in a note to Epictetus 4.7, uses this line to support his reading of Epictetus's Galileans as Christians. What the text supports is that Marcus knew of Christians facing death and thought their readiness unreasoned.",
+   "not": "**Not evidence that Marcus read Paul.** The remark is about the behavior of Christians, not their writings.",
+   "related": [
+    "1-cor-15-55-death-not-terrible",
+    "acts-2-7-the-galileans"
+   ],
+   "sources": [
+    "Marcus Aurelius, Meditations 11.3, Greek text ed. J. H. Leopold, Perseus Digital Library (canonical-greekLit)",
+    "Marcus Aurelius, Meditations, trans. George Long, Book Eleven, Internet Classics Archive, http://classics.mit.edu/Antoninus/meditations.11.eleven.html",
+    "Donald J. Robertson, Marcus Aurelius: The Stoic Emperor (Yale University Press, 2024), ch. 12, The Antonine Plague, with notes 8, 10 and 14",
+    "George Long, trans., Arrian's Discourses of Epictetus (George Bell and Sons, 1887), note to 4.7, Perseus Digital Library",
+    "SBL Greek New Testament, Philippians 1:21-23, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Philippians 1:20-23"
+   ],
+   "post": null
+  },
+  {
+   "title": "Written on the heart",
+   "id": "rom-2-15-written-on-hearts",
+   "summary": "Epictetus says no one is born knowing a right-angled triangle, but everyone comes into the world with a notion of good and evil. Paul says Gentiles who do by nature what the law requires show its work written on their hearts.",
+   "plain": "The real question: Epictetus and Paul both say people are born knowing right from wrong. Do they mean the same knowing? **Nobody taught the toddler that hitting his sister was unfair, but he knows it.** Is that knowledge a gift, a leftover, or a witness against him?",
+   "category": "argument",
+   "group": "conscience",
+   "work": "epictetus",
+   "bibleRef": "Romans 2:15",
+   "bibleRefOverride": "Romans 2:14-16",
+   "stoic": "\"For we came into the world without any natural idea of a right-angled triangle; of a diesis, or a semitone, in music; but we learn each of these things by some artistic instruction. ... But who ever came into the world without an innate idea of good and evil, fair and base, becoming and unbecoming, happiness and misery, proper and improper; what ought to be done, and what not to be done?\"",
+   "stoicRef": "Epictetus, Discourses 2.11.2-3, trans. Thomas Wentworth Higginson (1890)",
+   "term": "φύσει (physei), by nature. Epictetus 2.11.2 uses it of what we do not have by nature: οὐδεμίαν φύσει ἔννοιαν, no natural notion of a triangle. For good and evil he uses ἔμφυτον ἔννοιαν, an innate notion (2.11.3). Paul uses φύσει at 2:14, Gentiles do by nature what the law requires, and adds συνείδησις (syneidēsis), conscience, at 2:15. The site's lexicon marks the ethical sense of συνείδησις as Stoic and late. The entry is filed as argument because Epictetus's own word for the moral knowledge is ἔμφυτος, not φύσει.",
+   "agree": "Both say moral knowledge is not taught like geometry but found in everyone. The NIV Cultural Backgrounds Study Bible, on 2:15, says ancient thinkers often spoke of a universal natural law giving people innate knowledge of what is right, and often connected it with conscience; many Diaspora Jewish thinkers said the same.",
+   "turn": "What the knowledge is for. Epictetus says it is where philosophy begins: the beginning of philosophy is a consciousness of our own weakness, and the work is to apply the notions rightly (2.11.1, 4). Paul says it is evidence in a trial: their thoughts accuse or excuse them on the day God judges by Christ Jesus (2:15-16). The study note says the point was to make Gentiles responsible, and that for Paul the law on the heart could be obeyed only when written as part of the new covenant (Jeremiah 31).",
+   "cost": "The idea is common to Stoics and Diaspora Jews, as the study note says, and the word for conscience carries Stoic use, as the site's lexicon says. No source in hand says Paul drew on Epictetus. The pairing shares an argument, not a borrowed text.",
+   "not": "**Not a claim that Paul thought conscience saves.** In Romans 2 it is a witness at judgment, not a way out of it.",
+   "related": [
+    "1-cor-11-14-nature-teaches",
+    "rom-2-29-a-jew-inwardly",
+    "rom-7-19-what-i-would"
+   ],
+   "sources": [
+    "Epictetus, Discourses 2.11.1-4, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 2.11, Perseus Digital Library",
+    "SBL Greek New Testament, Romans 2:14-15, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G4893 and G5449",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Romans 2:15"
+   ],
+   "post": null
+  },
+  {
+   "title": "Does nature teach you?",
+   "id": "1-cor-11-14-nature-teaches",
+   "summary": "Epictetus argues that nature gave men beards to mark them from women, and that the marks must be kept. Paul asks whether nature itself does not teach that long hair dishonors a man.",
+   "plain": "The real question: when Paul appeals to nature about hair, is he making a Stoic argument, and what did nature mean to him? **Everyone knows men don't wear that.** That sentence can mean it is against biology or against this year's fashion. Which kind of nature is Paul invoking?",
+   "category": "word",
+   "group": "conscience",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 11:14",
+   "bibleRefOverride": "1 Corinthians 11:13-16",
+   "stoic": "\"What is more useless than the hairs upon one's chin? And yet has she not made use even of these, in the most becoming manner possible? Has she not by these distinguished the sexes? ... Therefore we ought to preserve the characteristics made by the Creator; we ought not to reject them, nor confound, as much as in us lies, the distinct sexes.\"",
+   "stoicRef": "Epictetus, Discourses 1.16.10-14, trans. Thomas Wentworth Higginson (1890). The \"she\" is nature.",
+   "term": "φύσις (physis), Strong's G5449, nature. Epictetus 1.16.11: κέκραγεν ἡμῶν ἑκάστου ἡ φύσις, ἀνήρ εἰμι, the nature of each of us cries out, I am a man. 1 Corinthians 11:14: οὐδὲ ἡ φύσις αὐτὴ διδάσκει ὑμᾶς, does not nature itself teach you. The site's lexicon gives 11:14 the sense nature as the regular order or law of nature.",
+   "agree": "Both reason from what nature shows on the body to how men and women should present themselves, and both say the distinction should be kept. The NIV Cultural Backgrounds Study Bible says many people, and notably the Stoics, made arguments from nature, and that philosophers sometimes argued that nature gave men beards to distinguish them from women, so that a shaved man was against nature.",
+   "turn": "The same study note complicates the appeal. Clean-shaven faces were the preferred style among honorable men in that region at the time; Greek heroes and biblical Nazirites wore long hair; and arguments from nature were of various kinds, sometimes, as possibly here, from culture. Paul ends not with nature but with custom: we have no such practice, nor do the churches of God (11:16). Epictetus treats the beard as God's own sign. Paul uses nature as one argument among several and rests the case on the practice of the churches.",
+   "cost": "The word is shared and the study note names the Stoic beard argument as the kind of reasoning Paul uses. It does not say Paul knew Epictetus. Vocabulary and a common style of argument are shared; nothing in hand goes further.",
+   "not": "**Not a ruling on modern hairstyles.** Both writers are reasoning inside their own culture's signs of male and female, and the study note says Paul's appeal may be to culture.",
+   "related": [
+    "rom-2-15-written-on-hearts",
+    "rom-2-29-a-jew-inwardly"
+   ],
+   "sources": [
+    "Epictetus, Discourses 1.16.9-14, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 1.16, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 11:14, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G5449",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on 1 Corinthians 11:14"
+   ],
+   "post": null
+  },
+  {
+   "title": "A Jew in name only",
+   "id": "rom-2-29-a-jew-inwardly",
+   "summary": "Epictetus mocks a student who calls himself a Stoic but does not live it: he is like someone who acts the Jew but has not become one. Paul says a Jew is not one outwardly but inwardly.",
+   "plain": "The real question: Epictetus and Paul both say the name Jew can be worn by someone who is not one. Are they making the same point? **He wears the club jersey, but he has never been to a match.** What makes someone really a member: the jersey, the matches, or something else?",
+   "category": "word",
+   "group": "conscience",
+   "work": "epictetus",
+   "bibleRef": "Romans 2:29",
+   "bibleRefOverride": "Romans 2:17-29",
+   "stoic": "\"Why then do you call yourself a Stoic? Why do you act like a Jew, when you are a Greek? ... And when we see any one wavering, we are wont to say, This is not a Jew, but only acts like one. ... Thus we, falsifying our profession, may be Jews in name, but are in reality something else.\"",
+   "stoicRef": "Epictetus, Discourses 2.9.19-21, trans. Thomas Wentworth Higginson (1890)",
+   "term": "Ἰουδαῖος (Ioudaios), Jew. Epictetus 2.9.20: οὐκ ἔστιν Ἰουδαῖος, ἀλλʼ ὑποκρίνεται, he is not a Jew but is acting. Romans 2:28-29: οὐ γὰρ ὁ ἐν τῷ φανερῷ Ἰουδαῖός ἐστιν ... ἀλλʼ ὁ ἐν τῷ κρυπτῷ Ἰουδαῖος, for he is not a Jew who is one outwardly, but he who is one inwardly. Epictetus says the real Jew is the one who has taken on the condition of τοῦ βεβαμμένου, one who has been dipped; Higginson renders it baptized, and Long renders it imbued.",
+   "agree": "Both use Jew as the example of a name that should match a life. Both attack the man who claims an identity he does not live: Epictetus the Stoic who only talks, Paul the one who boasts in the law and breaks it (2:23).",
+   "turn": "Epictetus's real Jew is the one who has actually gone through the rite and taken on the way of life; the point is consistency. Paul's real Jew is marked by circumcision of the heart, by the Spirit, not the letter, whose praise is from God and not from people (2:29). The NIV Cultural Backgrounds Study Bible says Scripture already urged the circumcision of the heart and promised God would one day do it (Deuteronomy 30:6). Epictetus asks for a life that matches the rite. Paul says the rite itself must be done by God, inwardly.",
+   "cost": "This comparison was made in print by George Long, who in a note to Epictetus 2.9 quotes Romans 2:28 and says Paul's remarks in 2:17-29 may be compared with what Epictetus says of the man called a philosopher who does not practice what he professes. Long also says it is possible that by Jews Epictetus means Christians, since some writers confused the two. That second suggestion is Long's guess, and the text gives no further sign of it.",
+   "not": "**Not a sneer at Jews in Paul.** Paul is writing as a Jew to say what being one finally means.",
+   "related": [
+    "rom-2-15-written-on-hearts",
+    "acts-2-7-the-galileans",
+    "rom-7-19-what-i-would"
+   ],
+   "sources": [
+    "Epictetus, Discourses 2.9.19-21, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 2.9, Perseus Digital Library",
+    "George Long, trans., Arrian's Discourses of Epictetus (George Bell and Sons, 1887), 2.9 with note, Perseus Digital Library",
+    "SBL Greek New Testament, Romans 2:28-29, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Romans 2:29"
+   ],
+   "post": null
+  },
+  {
+   "title": "Citizen of the universe, citizens of heaven",
+   "id": "phil-3-20-citizenship",
+   "summary": "Epictetus tells his student he is a citizen of the universe and a part of it. Paul tells the Philippians their citizenship is in heaven.",
+   "plain": "The real question: Epictetus and Paul both tell people their real citizenship is somewhere other than their city. Is it the same somewhere? **She has lived in Ohio for thirty years but still calls herself Irish.** Is that because she belongs to the whole world, or to one place she has not yet gone back to?",
+   "category": "argument",
+   "group": "citizenship",
+   "work": "epictetus",
+   "bibleRef": "Philippians 3:20",
+   "bibleRefOverride": "Philippians 3:20-21; Philippians 1:27",
+   "stoic": "\"Besides, you are a citizen of the universe, and a part of it; not a subordinate, but a principal part. You are capable of comprehending the Divine economy, and of considering the connections of things.\"",
+   "stoicRef": "Epictetus, Discourses 2.10.3, trans. Thomas Wentworth Higginson (1890)",
+   "term": "Different words from the same root. Epictetus 2.10.3: πολίτης εἶ τοῦ κόσμου, you are a citizen (πολίτης, politēs) of the world. Philippians 3:20: ἡμῶν γὰρ τὸ πολίτευμα ἐν οὐρανοῖς ὑπάρχει, for our πολίτευμα (politeuma) is in heaven. Politeuma, Strong's G4175, occurs only here in the New Testament; the site's lexicon gives citizenship, or community, commonwealth. Paul uses the verb πολιτεύομαι (politeuomai) at 1:27, live as citizens worthy of the gospel.",
+   "agree": "Both loosen the hold of the local city by naming a larger citizenship. The NIV Cultural Backgrounds Study Bible, on 3:20, says philosophers sometimes declared themselves citizens of the world rather than of any mere city-state.",
+   "turn": "Epictetus's city is the cosmos already: you are in it now as a reasoning part. Paul's is in heaven, and from it we await a Savior, the Lord Jesus Christ, who will transform our lowly bodies (3:20-21). The study note says the Philippians knew what it was to be citizens of a place they had never visited, since Philippi was a Roman colony whose citizens were citizens of Rome. Epictetus's citizen looks around. Paul's looks for someone coming.",
+   "cost": "The study note names the philosophers' world citizenship as part of the background. The Greek words differ, and no source in hand says either writer knew the other. A shared argument about belonging.",
+   "not": "**Not escape from the world.** Paul's citizens wait for a Savior who will come here and change their bodies, not for a way out of the body.",
+   "related": [
+    "rom-8-14-sons-of-god",
+    "1-cor-12-15-hand-and-foot"
+   ],
+   "sources": [
+    "Epictetus, Discourses 2.10.3-5, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 2.10, Perseus Digital Library",
+    "SBL Greek New Testament, Philippians 3:20, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G4175",
+    "Site word study data, word-study-alpha.json, G4176",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Philippians 3:20"
+   ],
+   "post": null
+  },
+  {
+   "title": "What I would, I do not",
+   "id": "rom-7-19-what-i-would",
+   "summary": "Epictetus says every wrongdoer does what he does not want and fails to do what he does. Paul says the good he wants he does not do.",
+   "plain": "The real question: Epictetus and Paul describe the same split in a person in almost the same words. Do they think it can be fixed the same way? **He promised himself he would not open the biscuits, and the packet is empty.** Did he just not understand his own good, or is something in him stronger than his understanding?",
+   "category": "word",
+   "group": "mastery",
+   "work": "epictetus",
+   "bibleRef": "Romans 7:19",
+   "bibleRefOverride": "Romans 7:15-24",
+   "stoic": "\"Every error implies a contradiction; for since he who errs does not wish to err, but to be in the right, it is evident that he acts contrary to his wish. ... He, then, is gifted in speech, and excels at once in exhortation and conviction, who can disclose to each man the contradiction by which he errs, and prove clearly to him that what he would he doth not, and what he would not, that he doth. For, if that be shown, he will depart from it of his own accord.\"",
+   "stoicRef": "Epictetus, Discourses 2.26.1-5, trans. Thomas Wentworth Higginson (1890)",
+   "term": "θέλω (thelō), to want, with ποιέω (poieō), to do. Epictetus 2.26.4: πῶς ὃ θέλει οὐ ποιεῖ καὶ ὃ μὴ θέλει ποιεῖ, how what he wants he does not do, and what he does not want he does. Romans 7:19: οὐ γὰρ ὃ θέλω ποιῶ ἀγαθόν, ἀλλὰ ὃ οὐ θέλω κακὸν τοῦτο πράσσω, for the good I want I do not do, but the evil I do not want, that I practice. Same verbs, same relative clauses. Higginson's English for Epictetus reads like the King James wording of Romans 7, which is a choice of the translator.",
+   "agree": "Both describe a person divided against himself, wanting one thing and doing another. Wright, on Romans 2, says Seneca and other philosophers reflected in a puzzled way on how one might know the right thing and fail to do it.",
+   "turn": "The cure. Epictetus says show the man his contradiction and he will leave it of his own accord (2.26.5); the problem is ignorance, and argument fixes it. Paul says knowing the good law made things worse: sin dwells in him (7:20), and he cries out, wretched man, who will deliver me from this body of death? (7:24). The NIV Cultural Backgrounds Study Bible says many philosophers, especially Stoics, believed reason could help one overcome the passions, while Paul's picture sounds more like ancient portrayals of Medea, whose passions conquered her reason; for Paul, merely knowing what was right only solidified defeat.",
+   "cost": "The wording is about as close as two Greek texts can be without quoting. The study note sets Paul against the Stoic view rather than beside it. No source in hand says either writer knew the other; Wright calls them near contemporaries. This is filed as same word on the Greek, with the warning that the shared words carry opposite diagnoses.",
+   "not": "**Not agreement.** The same sentence leads Epictetus to confidence in argument and Paul to a cry for rescue.",
+   "related": [
+    "rom-2-15-written-on-hearts",
+    "1-cor-9-25-the-athlete",
+    "rom-2-29-a-jew-inwardly"
+   ],
+   "sources": [
+    "Epictetus, Discourses 2.26.1-5, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 2.26, Perseus Digital Library",
+    "SBL Greek New Testament, Romans 7:15 and 7:19, via MorphGNT",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on Romans 7:15-21",
+    "N. T. Wright, Paul for Everyone: Romans Part One, Chapters 1-8 (SPCK and Westminster John Knox, 2004), on Romans 2:1-11",
+    "N. T. Wright, Paul: A Biography (HarperOne), ch. 8, Athens, calling Seneca and Epictetus Paul's near contemporaries"
+   ],
+   "post": null
+  },
+  {
+   "title": "The athlete's training",
+   "id": "1-cor-9-25-the-athlete",
+   "summary": "Epictetus tells the man who wants to win at Olympia to count the cost of the diet, the training and the beatings first. Paul says every athlete exercises self-control in all things for a wreath that perishes.",
+   "plain": "The real question: Epictetus and Paul both use the Olympic athlete to teach discipline. Are they training for the same prize? **Two runners get up at five every morning.** One is chasing a medal; the other is chasing a promise somebody made her. Does it change the training?",
+   "category": "argument",
+   "group": "mastery",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 9:25",
+   "bibleRefOverride": "1 Corinthians 9:24-27",
+   "stoic": "\"I would conquer at the Olympic Games. But consider what precedes and follows, and then, if it be for your advantage, engage in the affair. You must conform to rules, submit to a diet, refrain from dainties; exercise your body, whether you choose it or not, at a stated hour, in heat and cold.\"",
+   "stoicRef": "Epictetus, Discourses 3.15.2-3, trans. Thomas Wentworth Higginson (1890). The same advice appears in Enchiridion 29.",
+   "term": "No shared key word. Epictetus lists the athlete's duties with εὐτακτεῖν (to keep good order), ἀναγκοφαγεῖν (to eat by rule) and γυμνάζεσθαι (to exercise). Paul's word is ἐγκρατεύομαι (enkrateuomai), Strong's G1467: πᾶς δὲ ὁ ἀγωνιζόμενος πάντα ἐγκρατεύεται, every competitor exercises self-control in all things. The site's lexicon gives two New Testament uses, 1 Corinthians 7:9 and 9:25.",
+   "agree": "Both make the athlete's regime the model for a disciplined life, and both are blunt about the cost. Epictetus's next sentence has the athlete thrown into a ditch, his arm dislocated, his ankle turned, and still losing. The NIV Cultural Backgrounds Study Bible says athletes in the Greek games competed for their cities under strict rules of training. Epictetus elsewhere says God, like a trainer, has matched you with a rough young opponent so that you may be an Olympic victor (1.24.1-2).",
+   "turn": "The prize. Epictetus's athlete must first ask whether the contest is to his advantage, and the lesson is to count the cost before you start. Paul's athlete runs for an imperishable wreath against their perishable one (9:25), and his fear is not losing the race but being disqualified after preaching to others (9:27). The study note says the victor's garland would decompose over time. Epictetus trains to be a philosopher. Paul trains so as not to lose what he has preached.",
+   "cost": "Athletic imagery was common in the moral writing of the time; the NIV note on Philippians 1:30 says ancient thinkers often used such images for their own labors for truth. The pairing is drawn here, and no source in hand says Paul knew Epictetus's version.",
+   "not": "**Not a call to sport.** Both writers use the games as a picture of the inner life.",
+   "related": [
+    "rom-7-19-what-i-would",
+    "heb-12-7-the-strict-father",
+    "1-cor-7-35-undistracted"
+   ],
+   "sources": [
+    "Epictetus, Discourses 3.15.1-5 and 1.24.1-2, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 3.15 and 1.24, Perseus Digital Library",
+    "Epictetus, Enchiridion 29, Greek text ed. Schenkl, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 9:25, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G1467",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), notes on 1 Corinthians 9:24, Galatians 5:7 and Philippians 1:30"
+   ],
+   "post": null
+  },
+  {
+   "title": "Without distraction",
+   "id": "1-cor-7-35-undistracted",
+   "summary": "Epictetus says that in present conditions the Cynic should stay unmarried, undistracted and wholly given to the service of God. Paul says the unmarried can attend to the Lord without distraction.",
+   "plain": "The real question: Epictetus and Paul both say a man on God's errand may do better unmarried, and both use the same word for why. Are they giving the same reason? **The surgeon on call all weekend tells her sister she can't come to the wedding.** Is that because weddings are a distraction, or because of what this particular weekend is?",
+   "category": "word",
+   "group": "calling",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 7:35",
+   "bibleRefOverride": "1 Corinthians 7:32-35",
+   "stoic": "\"But as the state of things now is, like that of an army prepared for battle, is it not necessary that a Cynic should be without distraction; entirely attentive to the service of God; at liberty to walk among mankind; not tied down to common duties, nor entangled in relations.\"",
+   "stoicRef": "Epictetus, Discourses 3.22.69, trans. Thomas Wentworth Higginson (1890)",
+   "term": "ἀπερίσπαστος (aperispastos), undistracted. Epictetus 3.22.69: ἀπερίσπαστον εἶναι δεῖ τὸν Κυνικόν, ὅλον πρὸς τῇ διακονίᾳ τοῦ θεοῦ, the Cynic must be undistracted, wholly given to the service (διακονία, diakonia) of God. 1 Corinthians 7:35 has the adverb ἀπερισπάστως (aperispastōs), Strong's G563, once in the New Testament: for undistracted devotion to the Lord. Epictetus adds in 3.22.72 the noun τὸν περισπασμόν, the distraction, of a household. The related verb περισπάω (perispaō) describes Martha at Luke 10:40.",
+   "agree": "Both say that marriage is good and not forbidden, and that for a man in a particular service in a particular time it divides his attention. Epictetus allows that in a city of the wise the Cynic would marry (3.22.68). Paul says the one who marries does well (7:38). The NIV Cultural Backgrounds Study Bible, on 7:32-34, says Cynic sages feared marriage would distract them from the freedom of a life with no possessions and no responsibilities.",
+   "turn": "The emergency differs. Epictetus's is the human condition now, like an army drawn up for battle, and the Cynic is the messenger, scout and herald who must be free to go among everyone. Paul's is the shortened time (7:29) and the anxiety to please the Lord (7:32). The study note adds that Paul also acknowledges some will be more distracted without marriage (7:9) and later notes that most apostles were married (9:5). Epictetus's undistracted man serves the god by being free of ties. Paul's serves the Lord and is told not to bind others with his choice (7:35).",
+   "cost": "The word is rare and shared, the subject is the same, and the study note names the Cynic background. No source in hand says Paul read Epictetus. The study note shows both drawing on a known Cynic debate about marriage.",
+   "not": "**Not a ban on marriage.** Both writers say plainly that marriage is allowed and good.",
+   "related": [
+    "1-cor-1-17-sent",
+    "1-cor-7-29-as-though-not",
+    "2-cor-6-10-having-nothing"
+   ],
+   "sources": [
+    "Epictetus, Discourses 3.22.67-72, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 3.22, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 7:35, via MorphGNT",
+    "Site Greek lexicon (Abbott-Smith), word-study-lexicon.json, G563",
+    "Site word study data, word-study-alpha.json, G4049",
+    "NIV Cultural Backgrounds Study Bible (Zondervan, 2016), note on 1 Corinthians 7:32-34"
+   ],
+   "post": null
+  },
+  {
+   "title": "Sent",
+   "id": "1-cor-1-17-sent",
+   "summary": "Epictetus says the true Cynic must know he has been sent from Zeus as a messenger to show men where good and evil lie. Paul says Christ sent him to preach the gospel, not with clever words.",
+   "plain": "The real question: Epictetus's Cynic and Paul both say God sent them. Is it the same kind of sending? **The man at the door says the company sent him.** He might be selling the company's ideas or delivering its package. What is each messenger carrying?",
+   "category": "word",
+   "group": "calling",
+   "work": "epictetus",
+   "bibleRef": "1 Corinthians 1:17",
+   "bibleRefOverride": "1 Corinthians 1:17-25",
+   "stoic": "\"And even this preparation is by no means sufficient for a true Cynic. But it must further be known that he is a messenger sent from Zeus to men, concerning good and evil; to show them that they are mistaken, and seek the essence of good and evil where it is not, but do not observe it where it is.\"",
+   "stoicRef": "Epictetus, Discourses 3.22.23, trans. Thomas Wentworth Higginson (1890)",
+   "term": "ἀποστέλλω (apostellō), Strong's G649, to send on a mission. Epictetus 3.22.23: ἄγγελος ἀπὸ τοῦ Διὸς ἀπέσταλται, he has been sent as a messenger (ἄγγελος, angelos) from Zeus. At 3.22.46 the Cynic says God has sent (ἀπέσταλκεν) him to show by deed that a man with nothing can live well, and at 4.8.31 Epictetus imagines a man saying he has been sent by God as an example. 1 Corinthians 1:17: οὐ γὰρ ἀπέστειλέν με Χριστὸς βαπτίζειν ἀλλὰ εὐαγγελίζεσθαι, Christ did not send me to baptize but to preach the gospel.",
+   "agree": "Both men claim a divine commission to go among people and tell them they are looking for good in the wrong place. Both expect to be poor, mocked and misunderstood. Wright says one might almost think Paul had been a childhood friend of someone like Epictetus, a thinker determined to get philosophy out of the classroom and into the street.",
+   "turn": "The message. The Cynic shows by his own self-command where good lies: in the will, within reach. Paul is sent to preach not with eloquent wisdom, so that the cross of Christ is not emptied of its power (1:17), and the cross is foolishness to Greeks (1:23). Epictetus's messenger is himself the proof. Paul's message points away from the messenger to a crucified Messiah.",
+   "cost": "The verb is shared, and the Cynic as sent from God is a striking parallel to the apostle, a word built on the same verb. Wright's line is a comparison of manner, not a claim of contact. No source in hand says Paul knew this discourse.",
+   "not": "**Not a claim that apostles were Cynics.** Paul refuses the one thing the Cynic relies on, the wisdom of his own argument.",
+   "related": [
+    "1-cor-7-35-undistracted",
+    "2-cor-6-10-having-nothing",
+    "eph-4-1-worthy-of-the-calling"
+   ],
+   "sources": [
+    "Epictetus, Discourses 3.22.23-25, 3.22.46 and 4.8.31, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 3.22, Perseus Digital Library",
+    "SBL Greek New Testament, 1 Corinthians 1:17, via MorphGNT",
+    "Site word study data, word-study-alpha.json, G649",
+    "N. T. Wright, Paul: A Biography (HarperOne), Introduction"
+   ],
+   "post": null
+  },
+  {
+   "title": "Worthy of the calling",
+   "id": "eph-4-1-worthy-of-the-calling",
+   "summary": "Epictetus tells his student he is a witness summoned by God and asks whether he will shame the calling. Ephesians urges its readers to walk worthy of the calling to which they were called.",
+   "plain": "The real question: Epictetus and Ephesians both talk about being worthy of a calling from God, in nearly the same words. Is it the same call? **The new recruit is told to live up to the uniform.** That can mean do the job well, or remember who gave you the uniform. Which does each writer mean?",
+   "category": "word",
+   "group": "calling",
+   "work": "epictetus",
+   "bibleRef": "Ephesians 4:1",
+   "bibleRefOverride": "Ephesians 4:1-3",
+   "stoic": "\"In what character do you now appear? As a witness summoned by God. ... Is this the evidence you are to give? And will you bring disgrace upon his summons, who hath conferred such an honor upon you, and thought you worthy of being produced as a witness in such a cause?\"",
+   "stoicRef": "Epictetus, Discourses 1.29.46-49, trans. Thomas Wentworth Higginson (1890)",
+   "term": "κλῆσις (klēsis), calling, with ἄξιος (axios), worthy, and καλέω (kaleō), to call. Epictetus 1.29.46: ὡς μάρτυς ὑπὸ τοῦ θεοῦ κεκλημένος, as a witness called by God; 1.29.49: καταισχύνειν τὴν κλῆσιν ἣν κέκληκεν, to shame the calling with which he has called you, and ἄξιον ἡγήσατο, he thought you worthy. Ephesians 4:1: ἀξίως περιπατῆσαι τῆς κλήσεως ἧς ἐκλήθητε, to walk worthily of the calling with which you were called. The same three words, in the same relation.",
+   "agree": "Both treat a person's conduct as an answer to a summons from God, and both say the honor of being called puts the person under obligation. In Epictetus the witness must not complain that no one cares for him and everyone speaks ill of him (1.29.48).",
+   "turn": "What the calling asks for. Epictetus's witness testifies that nothing outside the will is good or evil, by bearing hardship without complaint. In Ephesians the writer is a prisoner in the Lord (4:1), and walking worthily means humility, gentleness, patience, bearing with one another in love, and keeping the unity of the Spirit (4:2-3). Epictetus's witness proves his doctrine alone. The calling in Ephesians is lived in a body with others.",
+   "cost": "The shared phrase is close enough to be striking. No source in hand comments on it, and none says the writer of Ephesians knew Epictetus. The pairing is drawn here and rests on shared vocabulary only.",
+   "not": "**Not a claim about who wrote Ephesians.** The letter is quoted here as the letter, and nothing in this entry depends on its author.",
+   "related": [
+    "1-cor-1-17-sent",
+    "1-cor-7-35-undistracted"
+   ],
+   "sources": [
+    "Epictetus, Discourses 1.29.44-49, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 1.29, Perseus Digital Library",
+    "SBL Greek New Testament, Ephesians 4:1, via MorphGNT"
+   ],
+   "post": null
+  },
+  {
+   "title": "The Galileans",
+   "id": "acts-2-7-the-galileans",
+   "summary": "Epictetus mentions in passing that the Galileans face tyrants and swords without fear from mere habit. George Long thought he probably meant the Christians.",
+   "plain": "The real question: is Epictetus's one word about Galileans a glimpse of the early Christians, or of someone else? **A traveller's diary mentions the stubborn people from the north.** It might be the hill tribe you have read about, or another group altogether. How much can one word settle?",
+   "category": "contested",
+   "group": "contact",
+   "work": "epictetus",
+   "bibleRef": "Acts 2:7",
+   "bibleRefOverride": "Acts 1:11; Acts 2:7",
+   "stoic": "\"And is it possible that any one should be thus disposed towards these things from madness, and the Galileans from mere habit; yet that no one should be able to learn, from reason and demonstration, that God made all things in the world.\"",
+   "stoicRef": "Epictetus, Discourses 4.7.6, trans. Thomas Wentworth Higginson (1890)",
+   "term": "Γαλιλαῖος (Galilaios), Galilean. Epictetus 4.7.6: ὑπὸ ἔθους οἱ Γαλιλαῖοι, the Galileans from habit. The New Testament uses the word of Jesus' followers: the angels at the ascension say Ἄνδρες Γαλιλαῖοι, men of Galilee (Acts 1:11), and the Pentecost crowd asks whether all these who are speaking are not Γαλιλαῖοι (Acts 2:7).",
+   "agree": "Epictetus's point is that some people fear no tyrant or sword, by madness or habit, and he wants his students to reach the same fearlessness by reason. Acts describes these Galileans, filled with the Spirit, speaking to a crowd that is amazed at them (2:4-7).",
+   "turn": "If Epictetus means Christians, his complaint is that their courage is unreasoned, a habit rather than a conclusion. Acts presents the same boldness as the gift of the Spirit (2:4) and the result of having seen the risen Jesus (2:32). The disagreement is over where courage comes from.",
+   "cost": "The identification rests on one word. George Long's note on 4.7 says it is probable that Epictetus means the Christians, whose obstinacy Marcus Aurelius also mentions (11.3), and that Epictetus knew little about them. In a note to 2.9 Long calls the Galileans of 4.7 Epictetus's name for the Jews. So even Long's own notes waver. Long was writing in the nineteenth century; no modern source in hand settles it. The text supports only that Epictetus knew of a group called Galileans who faced danger without fear.",
+   "not": "**Not evidence that Epictetus read any New Testament book.** At most it shows he had heard of the group's conduct.",
+   "related": [
+    "phil-1-23-ready-to-depart",
+    "acts-18-12-gallio-and-seneca",
+    "rom-2-29-a-jew-inwardly"
+   ],
+   "sources": [
+    "Epictetus, Discourses 4.7.5-6, Greek text ed. Heinrich Schenkl (Teubner, 1916), Perseus Digital Library (canonical-greekLit)",
+    "Epictetus, Discourses, trans. Thomas Wentworth Higginson (Thomas Nelson and Sons, 1890), 4.7, Perseus Digital Library",
+    "George Long, trans., Arrian's Discourses of Epictetus (George Bell and Sons, 1887), notes to 2.9 and 4.7, Perseus Digital Library",
+    "SBL Greek New Testament, Acts 1:11 and 2:7, via MorphGNT"
+   ],
+   "post": null
+  },
+  {
+   "title": "Gallio, Seneca's brother",
+   "id": "acts-18-12-gallio-and-seneca",
+   "summary": "The proconsul who threw the case against Paul out of court in Corinth was Gallio, Seneca's older brother. A later set of letters claims Paul and Seneca wrote to each other.",
+   "plain": "The real question: since Paul once stood before Seneca's brother, did Paul and Seneca know each other? **Your colleague once met the brother of a famous author at a conference.** It is a real connection. Does it mean your colleague and the author were pen friends?",
+   "category": "contested",
+   "group": "contact",
+   "work": "seneca",
+   "bibleRef": "Acts 18:12",
+   "bibleRefOverride": "Acts 18:12-17",
+   "stoic": "\"Illud mihi in ore erat domini mei Gallionis, qui cum in Achaia febrem habere coepisset, protinus navem escendit clamitans non corporis esse sed loci morbum.\" In Robin Campbell's translation, Seneca recalls \"my mentor Gallio when he started sickening for a fever in Achaea.\"",
+   "stoicRef": "Seneca, Moral Letters 104.1, Latin text from The Latin Library (the page prints \"inore\"; the space is restored here); English phrase from Robin Campbell, Letters from a Stoic (Penguin, 1969), Letter CIV",
+   "term": "Gallio is the shared name. Acts 18:12: Γαλλίωνος δὲ ἀνθυπάτου ὄντος τῆς Ἀχαΐας, when Gallio was proconsul of Achaia. Seneca's Latin speaks of domini mei Gallionis in Achaia; dominus is a respectful title, which Campbell renders mentor.",
+   "agree": "The two texts agree on the man and the province. The introductions to several Seneca translations identify Gallio as Seneca's elder brother Novatus, who took the name Gallio by adoption and as proconsul of Achaea appears in Acts 18. Wright and Bird say Seneca's letter 104.1 mentions Gallio falling ill in Achaia, which may have cut his term short, and use the inscription from Delphi to place Paul in Corinth in AD 51/2.",
+   "turn": "In Acts Gallio refuses to judge the case: it is a matter of words and names and their own law (18:15). He gives the Jesus-followers nothing and takes nothing from them. Wright's Galatians commentary reads his judgment as treating the dispute as inner-Jewish. The meeting is real; it is between Paul and Gallio, and Seneca is not in the room.",
+   "cost": "The claim that Paul and Seneca were friends or correspondents rests on the Letters of Paul and Seneca. Wright and Bird list those letters with other pseudepigraphal writings, and report Brevard Childs's view that they are obviously far removed from Paul's words and world. The brother is history; the friendship is not supported by any source in hand.",
+   "not": "**Not proof that Seneca ever heard of Paul.** No source in hand shows that he did.",
+   "related": [
+    "acts-2-7-the-galileans",
+    "phil-1-23-ready-to-depart",
+    "gal-3-28-slaves-are-men"
+   ],
+   "sources": [
+    "Seneca, Epistulae Morales 104.1, Latin text, The Latin Library, https://www.thelatinlibrary.com/sen/seneca.ep17-18.shtml",
+    "Seneca, Letters from a Stoic, trans. Robin Campbell (Penguin, 1969), introduction and Letter CIV",
+    "Seneca, Moral and Political Essays (Cambridge, 1995), introduction to On Anger",
+    "Seneca, Dialogues and Essays, trans. John Davie (Oxford World's Classics, 2007), introduction",
+    "SBL Greek New Testament, Acts 18:12, via MorphGNT",
+    "Wright and Bird, The New Testament in Its World (2019), ch. 15, Gallio as proconsul of Corinth, and ch. 23, on the Letters of Paul and Seneca",
+    "N. T. Wright, Galatians (Eerdmans, 2021), The Situation in Galatia"
+   ],
+   "post": null
+  }
+ ]
+}

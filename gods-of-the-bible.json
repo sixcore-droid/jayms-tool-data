@@ -29,7 +29,8 @@
    "secondTemple",
    "invented",
    "strong",
-   "sources"
+   "sources",
+   "refs"
   ]
  },
  "filters": [
@@ -191,6 +192,21 @@
    "field": "refs"
   },
   {
+   "type": "linkrow",
+   "title": "Related beings",
+   "field": "related"
+  },
+  {
+   "type": "out",
+   "title": "In the Divine Council Index",
+   "field": "xref"
+  },
+  {
+   "type": "out",
+   "title": "Read in Why Do Bible Translations Differ?",
+   "field": "tdx"
+  },
+  {
    "type": "box",
    "variant": "apparatus",
    "title": "Sources",
@@ -202,18 +218,18 @@
   {
    "type": "note",
    "class": "method",
-   "text": "The method. Every occurrence count here comes from the interlinear index rather than a commentary, so a number can be checked against the text itself. Everything written is cited to the Dictionary of Deities and Demons in the Bible, to Heiser, Walton, or to Smith's Baal Cycle commentary, and where a reading is disputed the entry says so instead of picking a side quietly."
+   "text": "The method. Every occurrence count here comes from the interlinear index rather than a commentary, so a number can be checked against the text itself. Every card names its own sources. Most rest on the Dictionary of Deities and Demons in the Bible, Heiser, Walton, or Smith's Baal Cycle commentary, and others, such as Nickelsburg on 1 Enoch, Keil and Delitzsch, Bede, Yassif's edition of Ben Sira and the LSB preface, are named on the cards that use them. And where a reading is disputed the entry says so instead of picking a side quietly."
   },
   {
    "type": "suggest",
    "kind": "ddd-alpha",
-   "label": "The Gods of the Bible (alpha)",
+   "label": "The Gods of the Bible (beta)",
    "toggleText": "Can't find the being you're looking for? Suggest it ›",
    "valuePlaceholder": "Which god or being should we cover?"
   },
   {
    "type": "note",
-   "text": "How to read the grades. Explicit means the text names it as a being. Implied means the grammar or the parallel requires one. Contested means serious readers disagree about whether there is a being here at all."
+   "text": "How to read the grades. Explicit means the text names it as a being. Implied means the grammar or the parallel requires one. Contested means serious readers disagree about whether there is a being here at all. Not a being means the card is about a popular claim, a misreading or a later story, filed so it can be checked against the text. A real name can sit there when the card is about a misreading of it, as Jehovah is a misreading of Yahweh."
   }
  ],
  "entries": [
@@ -239,12 +255,31 @@
     "Judges 5:4-5",
     "Habakkuk 3:3"
    ],
+   "related": [
+    "el",
+    "el-elyon",
+    "yahweh-tzevaot",
+    "jehovah"
+   ],
    "sources": [
     "DDD s.v. \"Yahweh,\" 910-919",
     "LSB preface on the divine name"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ]
   },
   {
    "title": "El",
@@ -265,12 +300,33 @@
     "Numbers 24:4",
     "Psalm 82:1"
    ],
+   "related": [
+    "yahweh",
+    "el-elyon",
+    "el-shaddai",
+    "bene-elohim"
+   ],
    "sources": [
     "DDD s.v. \"El,\" 274-279",
     "Gibson, *Canaanite Myths and Legends*"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/elohim/",
+     "n": "elohim",
+     "s": "God, gods, divine beings. A category word, and plural in form even when it means one.",
+     "r": "Psalm 82:1"
+    }
+   ]
   },
   {
    "title": "El Elyon",
@@ -294,6 +350,12 @@
     "Deuteronomy 4:19-20",
     "Daniel 7:18,22,27"
    ],
+   "related": [
+    "yahweh",
+    "el",
+    "bene-elohim",
+    "the-elohim-of-psalm-82"
+   ],
    "sources": [
     "Heiser, \"Deuteronomy 32:8 and the Sons of God,\" *Bibliotheca Sacra* 158",
     "DDD s.v. \"Elyon,\" 293-298",
@@ -301,7 +363,34 @@
     "Heiser, *Unseen Realm*, ch. 14-15"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-7-9-14/",
+     "n": "Daniel 7:9-14",
+     "s": "Thrones are set in place, plural, the court sits, and one like a son of man comes on the clouds.",
+     "r": "Daniel 7:9-14"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-14-18a/",
+     "n": "Genesis 14:18a",
+     "s": "Melchizedek, priest of the most high God. A title shared with Canaanite religion, which Abraham treats as naming his own God.",
+     "r": "Genesis 14:18"
+    }
+   ]
   },
   {
    "title": "El Shaddai",
@@ -325,12 +414,24 @@
     "Genesis 49:25",
     "Ezekiel 10:5"
    ],
+   "related": [
+    "yahweh",
+    "el",
+    "shedim"
+   ],
    "sources": [
     "DDD s.v. \"Shadday,\" 749-752",
-    "Walton, *Ancient Near Eastern Thought and the Old Testament*, ch. 6 (\"State and Family Religion\")"
+    "Walton, *Ancient Near Eastern Thought and the Old Testament*, 2nd ed. (Baker Academic, 2018), ch. 6, Comparative Exploration 6.2: Abraham's Religion"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-17-1/",
+     "n": "Genesis 17:1",
+     "s": "I am the Almighty God. El Shaddai, a title whose root meaning is genuinely uncertain.",
+     "r": "Genesis 17:1"
+    }
+   ]
   },
   {
    "title": "Yahweh Tzevaot",
@@ -352,12 +453,44 @@
     "Isaiah 37:16",
     "Psalm 89:6-9"
    ],
+   "related": [
+    "the-host-of-heaven",
+    "the-commander-of-yahwehs-army",
+    "yahweh"
+   ],
    "sources": [
     "DDD s.v. \"Yahweh Zebaoth,\" 920-921 (the 284 and 121 figures open the article)",
     "DDD s.v. \"Archon,\" 82-84 (the 267 figure)"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-6-1-8/",
+     "n": "Isaiah 6:1-8",
+     "s": "The throne room, the seraphim, and the plural question, who will go for us.",
+     "r": "Isaiah 6:1-8"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-89-5-7/",
+     "n": "Psalm 89:5-7",
+     "s": "Yahweh is feared in the council of the holy ones, and nothing in the skies compares to Him.",
+     "r": "Psalm 89:5-7"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-kings-22-19-23/",
+     "n": "1 Kings 22:19-23",
+     "s": "Micaiah reports seeing Yahweh enthroned with the host standing to His right and left.",
+     "r": "1 Kings 22:19-23"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/tsava/",
+     "n": "tsava",
+     "s": "Army, host. The plural in the title LORD of Hosts.",
+     "r": "1 Samuel 1:3"
+    }
+   ]
   },
   {
    "title": "The Angel of Yahweh",
@@ -383,6 +516,11 @@
     "Zechariah 3:1-6",
     "Judges 2:1"
    ],
+   "related": [
+    "the-commander-of-yahwehs-army",
+    "angels",
+    "yahweh"
+   ],
    "sources": [
     "Heiser, *Angels*, 64-65, 111-112",
     "Speliopoulos & Mangum, \"Angel of Yahweh,\" *Lexham Bible Dictionary*",
@@ -392,7 +530,20 @@
     "Davidson, \"Angel,\" *A Dictionary of the Bible* (Hastings), 1:94"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-16-7-13/",
+     "n": "Genesis 16:7-13",
+     "s": "The angel of the LORD found Hagar. She then says the LORD spoke to her, and names him accordingly.",
+     "r": "Genesis 16:7-13"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-48-16/",
+     "n": "Genesis 48:16",
+     "s": "The Angel which redeemed me from all evil. The first use of go'el, redeemer, in the Bible, applied to an angel.",
+     "r": "Genesis 48:16"
+    }
+   ]
   },
   {
    "title": "The Commander of Yahweh's Army",
@@ -411,13 +562,17 @@
     "Numbers 22:23",
     "1 Chronicles 21:16"
    ],
+   "related": [
+    "the-angel-of-yahweh",
+    "yahweh-tzevaot",
+    "michael"
+   ],
    "sources": [
     "DDD s.v. \"Host of Heaven,\" 428-429",
     "Heiser, *Angels*, 64-65, 111-112",
     "Heiser, *Unseen Realm*, ch. 18"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The Son of Man",
@@ -429,19 +584,33 @@
    "testament": "Both",
    "bibleRef": "Daniel 7:13-14",
    "note": "A figure who rides the clouds, which every other time in the Hebrew Bible is something only Yahweh does, and who receives dominion from the Ancient of Days. Jesus claims it at his trial and the claim produces the blasphemy charge. DDD takes Daniel 7:13-14 as the earliest text for the non-generic sense: an ordinary Semitic idiom for a human being becomes a heavenly figure in the Jewish texts, and then Jesus in the New Testament. Walton flags the Mesopotamian Anzu myth as possible background for the beast imagery of Daniel 7 in general, a narrower and more cautious claim than an explanation of the Son of Man himself.",
+   "dissent": "Individual or symbol. DDD reads Daniel 7:13 as the first step from an ordinary idiom for a human being to a heavenly figure. The Jewish Study Bible reads the author as most likely meaning a heavenly judge, perhaps Michael, and records that later Jewish tradition (Ibn Ezra, Rashi) dropped the messianic reading and took the figure as a picture of Israel. The Gospels read it of Jesus. All three readings are working from the same two verses.",
    "refs": [
     "Daniel 7:13-14",
     "Mark 14:62",
     "Matthew 26:64"
    ],
+   "related": [
+    "the-beast-from-the-sea",
+    "the-holy-ones",
+    "el-elyon"
+   ],
    "sources": [
     "DDD s.v. \"Son of Man,\" 800-803",
+    "*The Jewish Study Bible*, note on Daniel 7:13-14",
     "Heiser, *Unseen Realm*, ch. 29",
     "Collins and Collins, *Daniel* (Hermeneia)",
-    "Walton, \"The Anzu Myth as Relevant Background for Daniel 7?\" in *The Book of Daniel: Composition and Reception* (2001) ---"
+    "Walton, \"The Anzu Myth as Relevant Background for Daniel 7?\" in *The Book of Daniel: Composition and Reception* (2001)"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-7-9-14/",
+     "n": "Daniel 7:9-14",
+     "s": "Thrones are set in place, plural, the court sits, and one like a son of man comes on the clouds.",
+     "r": "Daniel 7:9-14"
+    }
+   ]
   },
   {
    "title": "Bene elohim",
@@ -456,6 +625,7 @@
    "note": "Sons of God. Plural, created, subordinate, and present at the throne. The phrase doesn't mean \"angels\" in the later systematic sense, and it doesn't mean human worshippers. DDD's Parker treats it as an idiom for \"divine beings\" on the model of *bene ha-adam*, \"human beings.\" Hebrew grammar leaves it open whether the second noun in the phrase is singular or plural, and when the LXX flattens both *elohim* and *elim* to *theou*, that is one resolution of the ambiguity rather than the only one an ancient reader had. Yahweh's first-person plurals read the same way: in Genesis 1:26 (\"let us make\") and 3:22 (\"like one of us\") a human is compared to one of a group of divine beings among whom Yahweh is first. Isaiah 6:8's \"who will go for us\" belongs to the same pattern, now inside an explicit council scene. Parker also reads Deuteronomy 32:8 with Elyon as a high god distinct from Yahweh, which DDD's own Elyon article disputes; see the El Elyon dissent.",
    "ane": "The Ugaritic *'dt 'ilm*, \"assembly of El\" or \"assembly of the gods,\" is the closest parallel to the council language of Psalm 82:1, and it is the same phrase rather than a similar idea. Ugaritic *bn il* (\"sons of El\") and *bn ilm* (\"sons of the gods\") name the same group and are swapped freely in the Ugaritic texts, the direct linguistic parallel to the Hebrew wavering between *bene elohim* and *bene elim*. Both traditions used the phrase to mean \"the gods\" without stopping to ask whether the second noun was technically singular or plural.",
    "secondTemple": "1 Enoch 6-11 reads Genesis 6 this way, and so does Jubilees 5. Daniel 3:25 gives the Aramaic singular of the same phrase, *bar-elahin*, \"a son of the gods,\" for the fourth figure in the furnace, and Nebuchadnezzar's own explanation in 3:28 calls him Yahweh's messenger, so the older divine-plural language is already being absorbed into the newer and more monotheistic word \"angel.\"",
+   "stQuote": "1 Enoch 6:1-2",
    "dissent": "The Sethite reading of Genesis 6 has a long pedigree and a weak textual base.",
    "refs": [
     "Genesis 6:2,4",
@@ -470,6 +640,12 @@
     "Isaiah 6:8",
     "Daniel 3:25,28"
    ],
+   "related": [
+    "the-elohim-of-psalm-82",
+    "the-holy-ones",
+    "the-morning-stars",
+    "nephilim"
+   ],
    "sources": [
     "S. B. Parker, DDD s.v. \"Sons of (the) God(s),\" 794-799",
     "Heiser, \"Divine Council,\" in *Dictionary of the Old Testament: Wisdom, Poetry & Writings* (IVP Academic, 2008), 113",
@@ -477,8 +653,58 @@
     "Ellen White, *Yahweh's Council*"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 6:1-2"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/job-1-6-12/",
+     "n": "Job 1:6-12",
+     "s": "The sons of God present themselves and the satan comes among them.",
+     "r": "Job 1:6-12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-89-5-7/",
+     "n": "Psalm 89:5-7",
+     "s": "Yahweh is feared in the council of the holy ones, and nothing in the skies compares to Him.",
+     "r": "Psalm 89:5-7"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-43-hebrews-1-6/",
+     "n": "Deuteronomy 32:43; Hebrews 1:6",
+     "s": "The end of the Song of Moses, where the Masoretic text is one line and every other witness is longer.",
+     "r": "Deuteronomy 32:43; Hebrews 1:6"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-1-26-27/",
+     "n": "Genesis 1:26-27",
+     "s": "Let us make man in our image, and then a singular verb does the making.",
+     "r": "Genesis 1:26-27"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-2/",
+     "n": "Genesis 6:2",
+     "s": "The sons of God saw the daughters of men. The oldest reading takes sons of God as divine beings, not a human family line.",
+     "r": "Genesis 6:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-29-1/",
+     "n": "Psalm 29:1",
+     "s": "Ascribe unto the LORD, O ye mighty. Literally, sons of the elim, gods, the divine council again.",
+     "r": "Psalm 29:1"
+    }
+   ]
   },
   {
    "title": "The elohim of Psalm 82",
@@ -500,6 +726,11 @@
     "Psalm 89:6-9",
     "Job 15:15"
    ],
+   "related": [
+    "bene-elohim",
+    "el-elyon",
+    "the-holy-ones"
+   ],
    "sources": [
     "Heiser, *Unseen Realm*, ch. 4",
     "S. B. Parker, DDD s.v. \"Sons of (the) God(s),\" 794-799 §III on Psalm 82",
@@ -507,7 +738,40 @@
     "Heiser, *Angels*, 10"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-82/",
+     "n": "Psalm 82",
+     "s": "God stands in the divine assembly and passes sentence on the elohim He put in charge.",
+     "r": "Psalm 82"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/john-10-31-36/",
+     "n": "John 10:31-36",
+     "s": "Jesus answers a charge of blasphemy by quoting Psalm 82.",
+     "r": "John 10:31-36"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-89-5-7/",
+     "n": "Psalm 89:5-7",
+     "s": "Yahweh is feared in the council of the holy ones, and nothing in the skies compares to Him.",
+     "r": "Psalm 89:5-7"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-82-1/",
+     "n": "Psalm 82:1",
+     "s": "God standeth in the congregation of the mighty; he judgeth among the gods. One Hebrew word, both times.",
+     "r": "Psalm 82:1"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/elohim/",
+     "n": "elohim",
+     "s": "God, gods, divine beings. A category word, and plural in form even when it means one.",
+     "r": "Psalm 82:1"
+    }
+   ]
   },
   {
    "title": "The host of heaven",
@@ -537,18 +801,51 @@
     "Luke 2:13",
     "Acts 7:42"
    ],
+   "related": [
+    "yahweh-tzevaot",
+    "the-morning-stars",
+    "the-queen-of-heaven",
+    "sikkuth-and-kiyyun-rephan"
+   ],
    "sources": [
     "H. Niehr, DDD s.v. \"Host of Heaven,\" 428-429",
     "Heiser, *Unseen Realm*, ch. 15"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-kings-22-19-23/",
+     "n": "1 Kings 22:19-23",
+     "s": "Micaiah reports seeing Yahweh enthroned with the host standing to His right and left.",
+     "r": "1 Kings 22:19-23"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-4-19-20/",
+     "n": "Deuteronomy 4:19-20",
+     "s": "Israel must not worship the host of heaven, which Yahweh allotted to all the other peoples.",
+     "r": "Deuteronomy 4:19-20"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-24-21-23/",
+     "n": "Isaiah 24:21-23",
+     "s": "Yahweh punishes the host of heaven above and the kings of earth below, then reigns before His elders.",
+     "r": "Isaiah 24:21-23"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/tsava/",
+     "n": "tsava",
+     "s": "Army, host. The plural in the title LORD of Hosts.",
+     "r": "1 Samuel 1:3"
+    }
+   ]
   },
   {
    "title": "Seraphim",
    "id": "seraphim",
    "summary": "Six-winged beings around God's throne in Isaiah's vision, described with a word that elsewhere means burning serpent.",
-   "plain": "**The word means burning ones, and five of its seven appearances are snakes.** The serpents in the wilderness are seraphim. So are the six-winged figures around the throne in Isaiah's vision. What sits behind the image is an Egyptian winged cobra rather than anything with a harp.",
+   "plain": "**The word means burning ones, and five of its seven appearances are snakes.** The serpents in the wilderness are seraphim. So are the six-winged figures around the throne in Isaiah's vision. The image many scholars trace behind them is the Egyptian winged cobra, not anything with a harp.",
    "category": "explicit",
    "group": "council",
    "testament": "OT",
@@ -563,13 +860,25 @@
     "Isaiah 14:29",
     "Isaiah 30:6"
    ],
+   "related": [
+    "cherubim",
+    "ophanim",
+    "the-ancient-serpent"
+   ],
    "sources": [
     "T. N. D. Mettinger, \"Seraphim,\" DDD, 743",
     "Stocker & Barry, \"Seraphim,\" *Lexham Bible Dictionary*",
     "Heiser, *Unseen Realm*, ch. 31"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-6-1-8/",
+     "n": "Isaiah 6:1-8",
+     "s": "The throne room, the seraphim, and the plural question, who will go for us.",
+     "r": "Isaiah 6:1-8"
+    }
+   ]
   },
   {
    "title": "Cherubim",
@@ -599,13 +908,24 @@
     "2 Samuel 6:2",
     "Isaiah 37:16"
    ],
+   "related": [
+    "seraphim",
+    "ophanim"
+   ],
    "sources": [
     "T. N. D. Mettinger, \"Cherubim,\" DDD, 190-191",
     "Walton, *Zondervan Illustrated Bible Backgrounds Commentary: 1 & 2 Kings...*, 192",
-    "Walton, *Ancient Near Eastern Thought and the Old Testament*"
+    "Walton, *Ancient Near Eastern Thought and the Old Testament*, 2nd ed. (Baker Academic, 2018)"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ezekiel-28-11-19/",
+     "n": "Ezekiel 28:11-19",
+     "s": "A guardian cherub in Eden, on the holy mountain, cast out for pride.",
+     "r": "Ezekiel 28:11-19"
+    }
+   ]
   },
   {
    "title": "Ophanim",
@@ -619,18 +939,22 @@
    "strong": "H212 (אוֹפָן), 35 occ (a common noun for \"wheel\"; 25 of the 35 are in Ezekiel, and the rest are ordinary chariot and potter's wheels)",
    "note": "Wheels full of eyes that move with the living creatures and have the spirit of the creatures in them. Whether they are beings or throne machinery is unclear in Ezekiel and only gets settled in later tradition.",
    "secondTemple": "1 Enoch 71:7 lists ophanim with cherubim and seraphim as a class of being (\"the sleepless ones who guard the throne of his glory\"), a later development and not Ezekiel's own framing.",
+   "stQuote": "1 Enoch 71:7",
+   "dissent": "Beings or machinery. Ezekiel gives the wheels the spirit of the living creatures and never settles which they are. 1 Enoch 71:7 lists them with cherubim and seraphim as a class of being, and that is a later step, not Ezekiel's own. DDD has no article on them, so the scholarly case on either side is thinner here than for most cards.",
    "refs": [
     "Ezekiel 1:15-21",
     "Ezekiel 3:13",
     "Ezekiel 10:6-19"
    ],
+   "related": [
+    "cherubim",
+    "seraphim"
+   ],
    "sources": [
     "Cooper, *Ezekiel*, NAC, 17:68",
     "Faithlife Study Bible on Ezekiel 1. DDD has no article for ophanim, only a bare cross-reference to \"Angels\" (648), and the wheels are under-theorized in the academic literature as well."
    ],
-   "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 71:7"
+   "post": null
   },
   {
    "title": "The Watchers of Daniel 4",
@@ -645,10 +969,15 @@
    "strong": "H5894 (עִיר, Aramaic), 3 occ",
    "note": "Three occurrences, all in one chapter, all in Aramaic, always paired with \"holy one,\" and always issuing a decree against a king. This is the only canonical use of the term and it is neutral; the Watchers here have not fallen. The Aramaic *'ir* likely comes from the verb \"to be awake,\" a watcher being one who stays awake, which suits an angelic sentinel, and the \"holy\" in verse 13 marks this one as God's own rather than a rebel. DDD's Collins traces two paths for the word after Daniel. Alongside the fallen Watchers of 1 Enoch, it keeps its neutral sense in other Second Temple texts, for instance the four archangels \"who watch\" or \"who sleep not\" at 1 Enoch 20:1 and the \"Watchers and holy ones\" of 3 Enoch 28, both drawing on Daniel 4 directly rather than on the fallen-angel tradition. The nearest biblical precedent for the idea, though not the word, is Psalm 121:4, \"he who keeps Israel will neither slumber nor sleep.\"",
    "secondTemple": "1 Enoch 6-16 uses the same title for the beings who descend on Hermon, and the negative sense comes from there. Collins finds two strands inside that Enochic material. One names the leader Shemihazah and puts the sin in illicit marriage with human women; the other names him Asael or Azazel and puts the sin in illicit teaching (astrology, metallurgy, cosmetics, spells). 1 Enoch as it stands combines both. The Damascus Document (CD 2:18) speaks of \"the fall of the Watchers of heaven,\" and the Genesis Apocryphon (1QapGen 2:1,16) ties the Watchers to the Nephilim and \"the sons of heaven\" around the birth of Noah. Heiser's *Reversing Hermon* argues that this Watcher tradition, more than Genesis 3 alone, is the New Testament's default explanation for how thoroughly corrupt humanity became, and that undoing what happened on Hermon frames the mission of Jesus across several NT texts.",
+   "stQuote": "1 Enoch 12:4",
    "refs": [
     "Daniel 4:13,17,23",
     "CD 2:18",
     "1QapGen 2:1,16"
+   ],
+   "related": [
+    "the-watchers-enochic",
+    "the-holy-ones"
    ],
    "sources": [
     "J. J. Collins, DDD s.v. \"Watcher,\" 893-894",
@@ -656,9 +985,7 @@
     "Tanner, *Daniel*, EEC, 285-286",
     "Heiser, *Reversing Hermon*, esp. ch. 1-2"
    ],
-   "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 12:4"
+   "post": null
   },
   {
    "title": "The morning stars",
@@ -669,19 +996,22 @@
    "group": "council",
    "testament": "OT",
    "bibleRef": "Job 38:7",
-   "note": "Set in parallel with \"all the sons of God,\" and Hebrew poetry puts equivalents in the B-line, so the morning stars are a class of being and not lights. They shout at the founding of the earth, so they predate it. Lelli's entry on Stars reads the joy of the stars there alongside Job 15:15's \"God puts no trust in his holy ones\" and Job 25:5, where even the moon and stars are unclean in God's eyes. All three assume a divine entourage that is subordinate to Yahweh and corruptible before him, with the stars as its visible members.",
+   "note": "Set in parallel with \"all the sons of God,\" and Hebrew poetry puts equivalents in the B-line, which makes it likely the morning stars are a class of being and not lights. Parallelism makes that likely; it does not require it, which is why the grade is implied. They shout at the founding of the earth, so they predate it. Lelli's entry on Stars reads the joy of the stars there alongside Job 15:15's \"God puts no trust in his holy ones\" and Job 25:5, where even the moon and stars are unclean in God's eyes. All three assume a divine entourage that is subordinate to Yahweh and corruptible before him, with the stars as its visible members.",
    "secondTemple": "11QTargum of Job renders Job 38:7 as \"when the morning stars shone together and all the angels of God shouted together,\" replacing the parallel *bene elohim* clause with \"angels\" outright. It is the earliest datable Jewish reading of the verse, and it already takes the morning stars as divine beings while quietly closing off any polytheistic reading of the older Hebrew.",
    "refs": [
     "Job 38:7",
     "Job 15:15",
     "Job 25:5"
    ],
-   "sources": [
-    "F. Lelli, DDD s.v. \"Stars,\" 810-814 (DDD has no \"Morning Star\" headword",
-    "Job 38:7 is handled here)"
+   "related": [
+    "bene-elohim",
+    "the-host-of-heaven",
+    "shahar-and-shalem"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "F. Lelli, DDD s.v. \"Stars,\" 810-814 (DDD has no \"Morning Star\" headword; Job 38:7 is handled here)"
+   ],
+   "post": null
   },
   {
    "title": "Michael",
@@ -692,19 +1022,38 @@
    "group": "council",
    "testament": "Both",
    "frame": "divine council (Heiser)",
-   "strong": "H4317, G3413; the entities record carries 15 refs (13 Hebrew, 2 Greek), most of them human namesakes, refs (the being): Daniel 10:13,21; Daniel 12:1; Jude 9; Revelation 12:7",
+   "bibleRef": "Daniel 10:13,21",
+   "strong": "H4317 (מִיכָאֵל), G3413 (Μιχαήλ). Most occurrences of the Hebrew name are human namesakes; the five verses listed below are the being.",
    "note": "Called one of the chief princes and \"your prince,\" Israel's assigned *sar*, the counterpart to the princes of Persia and Greece. The geopolitics of Daniel 10 are cosmic before they are military. DDD's Mach warns that Michael grew so prominent in Second Temple Judaism that later writers pulled almost any unnamed biblical angel into his orbit, so traditions originally about Michael need separating from generic angel traditions attached to him afterward. His usual Second Temple title, *archistrategos*, \"chief commander,\" most likely translates \"commander of the LORD's army\" from Joshua 5:14, though that verse never names him.",
    "secondTemple": "The oldest surviving list of archangels puts Michael first among four (1 Enoch 9-10, with Gabriel, Raphael, and Uriel or Sariel), and the group grows to seven in 1 Enoch 20. In 3 Baruch 11-15 he is the sole mediator between God and the guardian angels of individual nations, receiving their prayers. Jude 9's dispute with the devil over Moses' body draws on the lost Assumption of Moses, and the Life of Adam and Eve (Vita 13-14) supplies the earliest surviving version of Michael as Satan's direct opponent, tied there to a refusal to worship Adam.",
+   "stQuote": "1 Enoch 9:1",
    "dissent": "Jude 9 depends on a lost work, probably the Assumption of Moses, and some readers treat that as disqualifying.",
    "invented": "The Jehovah's Witness identification of Michael with the pre-incarnate Christ rests on \"the voice of the archangel\" in 1 Thessalonians 4:16, which is a comparison and not an equation.",
+   "refs": [
+    "Daniel 10:13,21",
+    "Daniel 12:1",
+    "Jude 9",
+    "Revelation 12:7"
+   ],
+   "related": [
+    "gabriel",
+    "archangel",
+    "the-princes-of-persia-and-greece",
+    "the-dragon"
+   ],
    "sources": [
     "M. Mach, DDD s.v. \"Michael,\" 569-571",
-    "Heiser, *Unseen Realm*, ch. 15, note-to-build: existing record is `kind: person` and uncurated",
-    "split the being from the human Michaels"
+    "Heiser, *Unseen Realm*, ch. 15"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 9:1"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-10-13-20-21/",
+     "n": "Daniel 10:13, 20-21",
+     "s": "A prince of Persia resists for twenty-one days, a prince of Greece is coming, and Michael fights for Israel.",
+     "r": "Daniel 10:13, 20-21"
+    }
+   ]
   },
   {
    "title": "Gabriel",
@@ -718,19 +1067,22 @@
    "strong": "H1403, G1043, 4 occ",
    "note": "Named four times, twice to Daniel and twice in Luke's opening chapter, and he interprets and announces. Scripture never calls him an archangel. DDD's Collins prefers \"God is my hero\" or \"my warrior\" to the more common \"man of God\" for the name, arguing from Eblaite personal names, and Daniel's \"the man Gabriel\" (8:15; 9:21) is likely a play on the *gever*, \"man,\" inside the name. Gabriel and Michael are the only two angels named in the Hebrew Bible; Raphael is the third named angel in the wider canon, in Tobit.",
    "secondTemple": "1 Enoch 9-10 gives him a standing role among the four who intercede. He appears in the oldest four-archangel list (1 Enoch 9:1, with Michael, Raphael, and Sariel) and in the seven of 1 Enoch 20 (with Uriel, Raphael, Raguel, Michael, Sariel, and Remiel). In 2 Enoch 24:1 he sits at God's left hand, and Aramaic incantation bowls from Babylonia sometimes invoke his name ahead of Michael's. The Targumim later credit him with leading Joseph to his brothers (on Genesis 37:15), helping Michael bury Moses (on Deuteronomy 34:6), and destroying Sennacherib's army (on 2 Chronicles 32:21).",
+   "stQuote": "1 Enoch 10:9",
    "refs": [
     "Daniel 8:16",
     "Daniel 9:21",
     "Luke 1:19",
     "Luke 1:26"
    ],
-   "sources": [
-    "J. J. Collins, DDD s.v. \"Gabriel,\" 338, note-to-build: already `curated: true` in entities.json",
-    "merge, do not overwrite"
+   "related": [
+    "michael",
+    "raphael",
+    "uriel-sariel-phanuel"
    ],
-   "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 10:9"
+   "sources": [
+    "J. J. Collins, DDD s.v. \"Gabriel,\" 338"
+   ],
+   "post": null
   },
   {
    "title": "The princes of Persia and Greece",
@@ -749,13 +1101,37 @@
     "Deuteronomy 32:8-9",
     "Acts 17:26-27"
    ],
+   "related": [
+    "michael",
+    "el-elyon",
+    "the-elohim-of-psalm-82"
+   ],
    "sources": [
     "Clifford, \"History and Myth in Daniel 10-12,\" BASOR",
     "Ronn Johnson, \"The Old Testament Background for Paul's Principalities and Powers,\" PhD diss., DTS, 2004",
     "Heiser, *Unseen Realm*, 119-121, 157"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-10-13-20-21/",
+     "n": "Daniel 10:13, 20-21",
+     "s": "A prince of Persia resists for twenty-one days, a prince of Greece is coming, and Michael fights for Israel.",
+     "r": "Daniel 10:13, 20-21"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/acts-17-26-27/",
+     "n": "Acts 17:26-27",
+     "s": "Paul tells the Areopagus that God fixed the times and the boundaries of the nations.",
+     "r": "Acts 17:26-27"
+    }
+   ]
   },
   {
    "title": "The satan of Job",
@@ -779,15 +1155,34 @@
     "Numbers 22:22,32",
     "2 Samuel 24:1"
    ],
+   "related": [
+    "satan-ho-satanas",
+    "the-devil-diabolos",
+    "bene-elohim"
+   ],
    "sources": [
     "C. Breytenbach and P. L. Day, \"Satan,\" DDD, 726-731",
     "Heiser, *Unseen Realm*, ch. 8, 128-131",
     "Heiser, *Demons*, 78-79",
-    "Heiser, \"Weird But Important: BC 1003 Census, Who Authorized It, God or Satan?\" *Bible Study Magazine*, July-August 2010, 34, note-to-build: entities.json has only the NT G4567 record",
-    "this is a new OT record"
+    "Heiser, \"Weird But Important: BC 1003 Census, Who Authorized It, God or Satan?\" *Bible Study Magazine*, July-August 2010, 34"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/job-1-6-12/",
+     "n": "Job 1:6-12",
+     "s": "The sons of God present themselves and the satan comes among them.",
+     "r": "Job 1:6-12"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-26-20-22/",
+     "n": "Genesis 26:20-22",
+     "s": "He called the name of the well Sitnah. The same root behind the word Satan.",
+     "r": "Genesis 26:20-22"
+    }
+   ]
   },
   {
    "title": "The lying spirit",
@@ -806,12 +1201,23 @@
     "2 Chronicles 18:18-22",
     "2 Kings 19:7"
    ],
+   "related": [
+    "the-host-of-heaven",
+    "the-satan-of-job"
+   ],
    "sources": [
     "Heiser, *Unseen Realm*, on the council at work",
     "P. K. McCarter, DDD s.v. \"Evil Spirit of God,\" 319 (DDD's \"Spirit\" headword is only a cross-reference to Holy Spirit)"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-kings-22-19-23/",
+     "n": "1 Kings 22:19-23",
+     "s": "Micaiah reports seeing Yahweh enthroned with the host standing to His right and left.",
+     "r": "1 Kings 22:19-23"
+    }
+   ]
   },
   {
    "title": "The destroyer",
@@ -835,11 +1241,15 @@
     "Revelation 9:11",
     "Hebrews 11:28"
    ],
+   "related": [
+    "abaddon-apollyon",
+    "the-angel-of-yahweh",
+    "resheph"
+   ],
    "sources": [
     "DDD s.v. \"Destroyer,\" 240"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Angels",
@@ -858,11 +1268,49 @@
     "Isaiah 37:36",
     "2 Chronicles 32:21"
    ],
+   "related": [
+    "archangel",
+    "the-angel-of-yahweh",
+    "daimonion"
+   ],
    "sources": [
     "S. A. Meier, \"Angel I,\" DDD, 45-49"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-43-hebrews-1-6/",
+     "n": "Deuteronomy 32:43; Hebrews 1:6",
+     "s": "The end of the Song of Moses, where the Masoretic text is one line and every other witness is longer.",
+     "r": "Deuteronomy 32:43; Hebrews 1:6"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-corinthians-11-10/",
+     "n": "1 Corinthians 11:10",
+     "s": "A woman ought to have authority on her head, because of the angels.",
+     "r": "1 Corinthians 11:10"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-8-5/",
+     "n": "Psalm 8:5",
+     "s": "A little lower than the angels. The Hebrew says elohim.",
+     "r": "Psalm 8:5"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-104-4/",
+     "n": "Psalm 104:4",
+     "s": "Who maketh his angels spirits. Ruach, the same word for wind, breath, and spirit, used twice in one sentence about natural forces.",
+     "r": "Psalm 104:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/john-5-3-4/",
+     "n": "John 5:3-4",
+     "s": "The angel troubling the water. A whole verse that is not in the oldest manuscripts.",
+     "r": "John 5:3-4"
+    }
+   ]
   },
   {
    "title": "Archangel",
@@ -880,13 +1328,17 @@
     "1 Thessalonians 4:16",
     "Jude 9"
    ],
+   "related": [
+    "michael",
+    "gabriel",
+    "angels"
+   ],
    "sources": [
     "J. W. van Henten, DDD s.v. \"Archangel,\" 80-81",
     "M. Mach, DDD s.v. \"Michael,\" 569-571",
     "J. J. Collins, DDD s.v. \"Gabriel,\" 338"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The holy ones",
@@ -911,12 +1363,24 @@
     "Proverbs 9:10",
     "Proverbs 30:3"
    ],
+   "related": [
+    "bene-elohim",
+    "the-watchers-of-daniel-4",
+    "the-elohim-of-psalm-82"
+   ],
    "sources": [
     "F. van Koppen & K. van der Toorn, DDD s.v. \"Holy One,\" 415-417",
     "Heiser, *Unseen Realm*, ch. 4"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/psalm-89-5-7/",
+     "n": "Psalm 89:5-7",
+     "s": "Yahweh is feared in the council of the holy ones, and nothing in the skies compares to Him.",
+     "r": "Psalm 89:5-7"
+    }
+   ]
   },
   {
    "title": "Raphael",
@@ -928,18 +1392,23 @@
    "testament": "second-temple",
    "note": "Named as one of the seven who stand before the glory of the Lord. He is in the Catholic and Orthodox canons through Tobit and in 1 Enoch, and absent from the Protestant Old Testament. DDD's Mach derives the name from the root *RP'*, \"to heal\" (*rapha*, \"physician\"), so that Raphael reads \"God healed,\" and leaves one question open: whether the name has anything to do with the Rephaim, which DDD says has not yet been studied. In Tobit he works as a physician and demon-binder more than a messenger. He prescribes the fish-gall remedy for Tobit's blindness, uses the fish's other parts to drive off and bind the demon Asmodaeus (Tobit 6:1-9; 8:3), and says outright that he never ate or drank with Tobias's family, since the shared meal was only an appearance (Tobit 12:19).",
    "secondTemple": "1 Enoch 9-10 and 20; also 40:9 (\"set over all disease and every wound of the children of the people\") and 54:6, where his task is healing the earth of the Watchers' damage, including the binding of Azazel.",
+   "stQuote": "1 Enoch 10:4",
+   "dissent": "Two disputes. The first is canon: Tobit is Scripture for Catholic and Orthodox readers and outside the Protestant Old Testament, so whether Raphael is a biblical angel depends on whose Bible is open. The second is the name: DDD derives it from the root for healing and leaves open whether it has any tie to the Rephaim, which it says has not been studied.",
    "refs": [
     "Tobit 3:16-17",
     "Tobit 6:1-9",
     "Tobit 8:3",
     "Tobit 12:11-15,19"
    ],
+   "related": [
+    "gabriel",
+    "uriel-sariel-phanuel",
+    "asael"
+   ],
    "sources": [
     "M. Mach, DDD s.v. \"Raphael,\" 688"
    ],
-   "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 10:4"
+   "post": null
   },
   {
    "title": "Uriel, Sariel, Phanuel",
@@ -951,14 +1420,26 @@
    "testament": "second-temple",
    "note": "Named archangels in 1 Enoch's lists, each with an assigned domain. They are in Enoch's lists and nowhere in the Bible. DDD's Mach notes that the name Uriel is itself disputed between a Hebrew root (light) and an Aramaic one (fire), and that the three names behave as interchangeable slots more than fixed individuals across the manuscripts: Phanuel replaces Uriel as the fourth archangel in the Similitudes of Enoch (1 Enoch 37-71), and elsewhere Uriel and Sariel swap outright. Uriel's own portfolio is astronomical. He guides the heavenly luminaries (1 Enoch 72:1; 79:6; 82:7) and explains why the stars' actual courses drift from the ideal Enochic calendar, tying the drift to human sin. He also shows Enoch the place prepared for the punishment of the fallen stars and Watchers (1 Enoch 18:14-19:2; 21:5-6,9), and in the Life of Adam and Eve he buries Adam together with Michael.",
    "secondTemple": "1 Enoch 9:1; 20:1-8; 40:9; 72-82 (Uriel as astronomical revealer); 4 Ezra (2 Esdras) 4:1; 10:28, where Uriel is Ezra's revealing angel throughout.",
-   "refs": [],
+   "stQuote": "1 Enoch 20:1-2",
+   "dissent": "Whether these are three angels or one post with three names. DDD's Mach reads the names as interchangeable slots across the Enoch manuscripts, since Phanuel takes Uriel's place in the Similitudes and Uriel and Sariel swap elsewhere. The name Uriel is itself disputed between a Hebrew root meaning light and an Aramaic one meaning fire.",
+   "refs": [
+    "1 Enoch 9:1",
+    "1 Enoch 20:1-8",
+    "1 Enoch 40:9",
+    "1 Enoch 72-82",
+    "2 Esdras 4:1",
+    "2 Esdras 10:28"
+   ],
+   "related": [
+    "raphael",
+    "michael",
+    "the-watchers-enochic"
+   ],
    "sources": [
     "Nickelsburg, *1 Enoch: A Commentary* (Hermeneia)",
-    "M. Mach, DDD s.v. \"Uriel,\" 885-886 ---"
+    "M. Mach, DDD s.v. \"Uriel,\" 885-886"
    ],
-   "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 20:1-2"
+   "post": null
   },
   {
    "title": "Baal",
@@ -984,16 +1465,42 @@
     "2 Kings 10:18-28",
     "2 Kings 11:18"
    ],
+   "related": [
+    "hadad-rimmon",
+    "baal-zebub-beelzebul",
+    "yam",
+    "mot",
+    "asherah"
+   ],
    "sources": [
     "W. Herrmann, DDD s.v. \"Baal,\" 132-138",
     "Brueggemann, \"Baal, Critical Issues,\" *Lexham Bible Dictionary*",
     "Curtis, \"Canaanite Gods and Religion,\" DOT:Historical Books, 136",
     "IVP Bible Background Commentary: OT",
     "Gibson, *Canaanite Myths and Legends*",
-    "Parker, *Ugaritic Narrative Poetry*, note-to-build: currently `kind: person`, uncurated, with a study-bible dictNote"
+    "Parker, *Ugaritic Narrative Poetry*"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-48-2/",
+     "n": "Psalm 48:2",
+     "s": "Mount Zion, on the sides of the north. Yarkete tsaphon, likely naming Mount Zaphon, the Canaanite storm-god Baal's own mythological mountain.",
+     "r": "Psalm 48:2"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-68-4/",
+     "n": "Psalm 68:4",
+     "s": "Extol him that rideth upon the heavens. The title matches rider of the clouds, Baal's own standing epithet in Ugaritic.",
+     "r": "Psalm 68:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-29/",
+     "n": "Psalm 29",
+     "s": "The voice of the LORD, seven times. A storm-theophany pattern closely paralleling Ugaritic hymns to the storm-god Baal.",
+     "r": "Psalm 29:1-11"
+    }
+   ]
   },
   {
    "title": "Baal-zebub / Beelzebul",
@@ -1014,13 +1521,15 @@
     "Mark 3:22",
     "Luke 11:15-19"
    ],
+   "related": [
+    "beelzebul",
+    "baal"
+   ],
    "sources": [
     "W. Herrmann, DDD s.v. \"Baal Zebub,\" 154-155",
-    "Kelley, \"Hadad,\" *Lexham Bible Dictionary*, note-to-build: `Beelzebub` exists as `kind: person`",
-    "the Hebrew form is missing entirely"
+    "Kelley, \"Hadad,\" *Lexham Bible Dictionary*"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Baal-peor",
@@ -1041,12 +1550,16 @@
     "Numbers 31:16",
     "Joshua 22:17"
    ],
+   "related": [
+    "baal",
+    "rephaim",
+    "baal-berith"
+   ],
    "sources": [
     "DDD s.v. \"Baal of Peor,\" 147",
     "Spronk, *Beatific Afterlife in Ancient Israel and in the Ancient Near East*"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Baal-berith",
@@ -1063,11 +1576,14 @@
     "Judges 8:33",
     "Judges 9:4,46"
    ],
+   "related": [
+    "baal",
+    "baal-peor"
+   ],
    "sources": [
     "DDD s.v. \"Baal-Berith,\" 141-143"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Hadad / Rimmon",
@@ -1077,16 +1593,24 @@
    "category": "explicit",
    "group": "national-god",
    "testament": "OT",
-   "strong": "H7417 (רִמּוֹן), 16 occ, mostly the place name, refs (the god): 2 Kings 5:18; Zechariah 12:11",
+   "bibleRef": "2 Kings 5:18",
+   "strong": "H7417 (רִמּוֹן), 16 occ, mostly the place name",
    "note": "The Aramean storm god, Baal's Syrian counterpart, named when Naaman asks to be excused for bowing in his master's temple. Zechariah's Hadad-rimmon keeps the double name.",
    "ane": "Hadad is the proper name behind the title Baal across the Levant, one storm god going by local names under the \"Baal\" title: Hadad in Syria, Melqart in Tyre, and on one scholarly line Chemosh in Moab and Milkom in Ammon. This file's own Chemosh and Milcom entries treat those two as separate gods and not as local Baal titles, and the tension between the sources stays on the page. DDD's Hadad article derives the name from a word for \"thunderer\" and follows him from Old Akkadian Adad through Ebla, Mari, and Ugarit, where he is called son of Dagan and fights Yam for a palace on Mount Sapanu in the same myth told of Baal, into the first-millennium Aramean pantheon, where he heads the pantheon at Damascus and is credited by name in the Tel Dan and Zakkur inscriptions with making and unmaking kings. DDD proposes a subsidiary deity, Hadad-milki, attested as a name element at Gozan, as the god behind the Adrammelech of 2 Kings 17:31.",
+   "refs": [
+    "2 Kings 5:18",
+    "Zechariah 12:11"
+   ],
+   "related": [
+    "baal",
+    "adrammelech-and-anammelech"
+   ],
    "sources": [
     "DDD s.v. \"Hadad,\" 378-381",
     "Kelley, \"Hadad,\" *Lexham Bible Dictionary*",
     "D. I. Block, \"God,\" DOT:Historical Books, 341"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Asherah",
@@ -1111,15 +1635,19 @@
     "2 Kings 21:7",
     "2 Kings 23:4-7"
    ],
+   "related": [
+    "baal",
+    "ashtoreth-astarte",
+    "the-queen-of-heaven"
+   ],
    "sources": [
     "Lindenberger, *Ancient Aramaic and Hebrew Letters*, 133-134",
     "Walls, \"The Gods of Israel in Comparative ANE Context,\" 266-267",
     "Walton, *Zondervan Illustrated Bible Backgrounds Commentary: 1 & 2 Kings...*, 161",
     "DDD s.v. \"Asherah,\" 99-104",
-    "Heiser, *The Unseen Realm*, note-to-build: missing from entities.json"
+    "Heiser, *The Unseen Realm*"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Ashtoreth / Astarte",
@@ -1141,13 +1669,17 @@
     "1 Kings 11:5,33",
     "2 Kings 23:13"
    ],
+   "related": [
+    "asherah",
+    "the-queen-of-heaven",
+    "anat"
+   ],
    "sources": [
     "T. C. Mitchell, \"Ashtaroth, Ashtoreth,\" New Bible Dictionary, 93",
     "Joel Burnett, \"Ashtoreth,\" Eerdmans Dictionary of the Bible, 114-115",
-    "DDD s.v. \"Astarte,\" 109-113, note-to-build: currently `kind: person`"
+    "DDD s.v. \"Astarte,\" 109-113"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The Queen of Heaven",
@@ -1165,12 +1697,16 @@
     "Jeremiah 7:18",
     "Jeremiah 44:17-19,25"
    ],
+   "related": [
+    "ashtoreth-astarte",
+    "easter-from-ishtar",
+    "the-host-of-heaven"
+   ],
    "sources": [
     "Susan Ackerman, \"Queen of Heaven,\" Eerdmans Dictionary of the Bible, 1104",
     "DDD s.v. \"Queen of Heaven,\" 678-679"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Anat",
@@ -1190,13 +1726,16 @@
     "Joshua 19:38",
     "Judges 1:33 (Beth-anath in Naphtali)"
    ],
+   "related": [
+    "baal",
+    "ashtoreth-astarte"
+   ],
    "sources": [
     "Peggy L. Day, \"Anat,\" Eerdmans Dictionary of the Bible, 59",
     "Samuel Hildebrandt, \"Anat,\" Lexham Bible Dictionary",
     "DDD s.v. \"Anat,\" 36-43"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Chemosh",
@@ -1218,14 +1757,25 @@
     "Jeremiah 48:7,13,46",
     "2 Kings 3:27"
    ],
+   "related": [
+    "molech",
+    "milcom"
+   ],
    "sources": [
     "DDD s.v. \"Chemosh,\" 186-189",
     "H.-P. Müller, \"Chemosh,\" DDD, 186-189",
     "Satterthwaite & McConville, *Exploring the Old Testament: The Histories*, 159",
-    "Mesha Stele, note-to-build: currently `kind: person`"
+    "Mesha Stele"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ]
   },
   {
    "title": "Molech",
@@ -1250,14 +1800,18 @@
     "Jeremiah 7:32",
     "Jeremiah 19:6"
    ],
+   "related": [
+    "milcom",
+    "adrammelech-and-anammelech",
+    "chemosh"
+   ],
    "sources": [
     "Brian B. Schmidt, \"Molech,\" Eerdmans Dictionary of the Bible, 912",
     "Paul E. Robertson, \"Molech,\" Holman Illustrated Bible Dictionary, 1148",
     "DDD s.v. \"Molech,\" 581-584",
-    "Heiser, *The Unseen Realm*, citing G. C. Heider, \"Molech,\" DDD 2nd ed., 581-584, note-to-build: currently `kind: person`"
+    "Heiser, *The Unseen Realm*, citing G. C. Heider, \"Molech,\" DDD 2nd ed., 581-584"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Milcom",
@@ -1276,18 +1830,21 @@
     "Jeremiah 49:1,3",
     "Zephaniah 1:5"
    ],
+   "related": [
+    "molech",
+    "chemosh"
+   ],
    "sources": [
     "William Henry Bennett, \"Molech, Moloch,\" *A Dictionary of the Bible* (Hastings), 3:415",
-    "DDD s.v. \"Milcom,\" 575-576, note-to-build: missing from entities.json"
+    "DDD s.v. \"Milcom,\" 575-576"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Dagon",
    "id": "dagon",
    "summary": "The god of the Philistines, whose statue falls and breaks in front of Israel's ark.",
-   "plain": "The Philistine god whose statue falls on its face in front of Israel's captured ark, twice, losing its head and hands on the threshold the second time. **It reads like slapstick and is not.** It is a legal picture: the beaten vassal face down in front of his overlord.",
+   "plain": "The Philistine god whose statue falls on its face in front of Israel's captured ark, twice, losing its head and hands on the threshold the second time. **It reads like slapstick.** It can also be read as a legal picture: the beaten vassal face down in front of his overlord.",
    "category": "explicit",
    "group": "national-god",
    "testament": "OT",
@@ -1295,17 +1852,20 @@
    "strong": "H1712, 13 occ",
    "note": "The god of the Philistines, whose statue falls twice before the ark and loses its head and hands on the threshold. The narrative is a legal scene, the vassal prostrate before his suzerain, and slapstick is the wrong reading. Dagan (Dagon is the Philistine and Hebrew form) is one of the oldest attested Semitic gods, named in third-millennium texts from Ebla and Mari a thousand years before the Philistines existed as a people, so the Philistines adopted a god already ancient in the region they settled instead of bringing him from their Aegean background.",
    "ane": "At Ugarit, Dagan is a minor presence in the myths and a major one in the cult. He is called father of Baal (*bn dgn*) even though Baal is also called El's son, a tension the sources never resolve, and one of Ugarit's two main temples was his, the other being Baal's. Ugaritic texts twice call him \"Dagan of Tuttul,\" preserving his older cult center on the Euphrates.",
-   "invented": "The fish-god etymology comes from Jerome and medieval commentators reading *dag*, \"fish.\" DDD is more cautious than the earlier draft's claim that grain is more probable: it treats the fish and grain etymologies alike as unproven, since neither has solid support in the Hebrew Bible or in Mesopotamian and West Semitic sources, and it recommends resting on what is actually known, a major Amorite deity of the Mari region, instead of any etymology.",
+   "invented": "The fish-god etymology comes from Jerome and medieval commentators reading *dag*, \"fish.\" DDD is more cautious than the common claim that grain is more probable: it treats the fish and grain etymologies alike as unproven, since neither has solid support in the Hebrew Bible or in Mesopotamian and West Semitic sources, and it recommends resting on what is actually known, a major Amorite deity of the Mari region, instead of any etymology.",
    "refs": [
     "Judges 16:23",
     "1 Samuel 5:2-7",
     "1 Chronicles 10:10"
    ],
-   "sources": [
-    "DDD s.v. \"Dagon,\" 216, note-to-build: currently `kind: person`"
+   "related": [
+    "dagon-the-fish-god",
+    "baal"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "DDD s.v. \"Dagon,\" 216"
+   ],
+   "post": null
   },
   {
    "title": "Nisroch",
@@ -1322,11 +1882,14 @@
     "2 Kings 19:37",
     "Isaiah 37:38"
    ],
+   "related": [
+    "adrammelech-and-anammelech",
+    "nergal"
+   ],
    "sources": [
     "DDD s.v. \"Nisroch,\" 630-631"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Nergal",
@@ -1343,13 +1906,16 @@
    "refs": [
     "2 Kings 17:30"
    ],
+   "related": [
+    "ashima-nibhaz-tartak-succoth-benoth",
+    "resheph"
+   ],
    "sources": [
     "Mark Anthony Phelps, \"Nergal,\" Eerdmans Dictionary of the Bible, 959",
     "Holman Illustrated Bible Dictionary, \"Nergal,\" 1186",
-    "DDD s.v. \"Nergal,\" 621-622, note-to-build: currently `kind: person`"
+    "DDD s.v. \"Nergal,\" 621-622"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Nebo",
@@ -1359,17 +1925,22 @@
    "category": "explicit",
    "group": "national-god",
    "testament": "OT",
-   "strong": "H5015, 13 occ, mostly the mountain and the town, refs (the god): Isaiah 46:1",
+   "bibleRef": "Isaiah 46:1",
+   "strong": "H5015, 13 occ, mostly the mountain and the town",
    "note": "Nabu, the Babylonian god of scribes and son of Marduk, who appears as a deity exactly once, carted off on pack animals with Bel in Isaiah's parody of a divine procession. The images of Bel and Nebo were paraded through Babylon at the New Year festival, and Isaiah turns the spectacle over: the gods bow and stoop, too heavy for worn-out animals that stagger into captivity. Hauling a defeated nation's gods out of its city was a stock Mesopotamian way of mocking that nation's helplessness, and Isaiah uses it against Babylon, since a god that has to be carried can't carry anyone.",
    "ane": "As scribe of the gods, Nabu wrote the tablet of destinies that recorded the fate of every person, which DDD compares to the divine record books of Exodus 32:32-33 and Psalm 69:28 and later to the book of life in Revelation 3:5 and 20:12,15. The god who kept the record of who lives and who dies goes out of the city as cargo.",
+   "refs": [
+    "Isaiah 46:1"
+   ],
+   "related": [
+    "bel-marduk"
+   ],
    "sources": [
     "NIV Bible Speaks Today: Notes, 968",
     "ESV Study Bible, 1325",
-    "DDD s.v. \"Nabû,\" 607-609, note-to-build: the entities record is `kind: place`",
-    "the deity sense needs its own record"
+    "DDD s.v. \"Nabû,\" 607-609"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Bel / Marduk",
@@ -1388,14 +1959,17 @@
     "Jeremiah 50:2",
     "Jeremiah 51:44"
    ],
+   "related": [
+    "nebo",
+    "tammuz"
+   ],
    "sources": [
     "John D. Currid, *Ancient Egypt and the Old Testament*, 39",
     "K. A. Mathews, *Genesis 1-11:26*, NAC, 1a:93",
     "DDD s.v. \"Bel,\" 165-168 s.v. \"Marduk\"",
-    "Dalley, *Myths from Mesopotamia*, note-to-build: both currently `kind: person`"
+    "Dalley, *Myths from Mesopotamia*"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Tammuz",
@@ -1412,12 +1986,15 @@
    "refs": [
     "Ezekiel 8:14"
    ],
+   "related": [
+    "bel-marduk",
+    "the-queen-of-heaven"
+   ],
    "sources": [
     "H. Porter, \"Tammuz,\" *International Standard Bible Encyclopaedia* (1915), 2908",
-    "DDD s.v. \"Tammuz,\" 828-833, note-to-build: currently `kind: person`"
+    "DDD s.v. \"Tammuz,\" 828-833"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Adrammelech and Anammelech",
@@ -1433,11 +2010,15 @@
    "refs": [
     "2 Kings 17:31"
    ],
-   "sources": [
-    "DDD s.v. \"Adrammelech,\" 10, note-to-build: both currently `kind: person`"
+   "related": [
+    "molech",
+    "ashima-nibhaz-tartak-succoth-benoth",
+    "hadad-rimmon"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "DDD s.v. \"Adrammelech,\" 10"
+   ],
+   "post": null
   },
   {
    "title": "Ashima, Nibhaz, Tartak, Succoth-benoth",
@@ -1453,14 +2034,17 @@
    "refs": [
     "2 Kings 17:30-31"
    ],
+   "related": [
+    "adrammelech-and-anammelech",
+    "nergal"
+   ],
    "sources": [
     "DDD s.v. \"Ashima,\" 105",
     "DDD s.v. \"Nibhaz,\" 623",
     "DDD s.v. \"Tartak,\" 837",
-    "DDD s.v. \"Sukkoth-Benoth,\" 821, note-to-build: all four currently `kind: person` (the last stored as \"Succothbenoth\")"
+    "DDD s.v. \"Sukkoth-Benoth,\" 821"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Sikkuth and Kiyyun / Rephan",
@@ -1477,12 +2061,15 @@
     "Amos 5:26",
     "Acts 7:43"
    ],
+   "related": [
+    "the-host-of-heaven",
+    "molech"
+   ],
    "sources": [
     "DDD s.v. \"Sakkuth,\" 722",
     "DDD s.v. \"Kaiwan,\" 478"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Gad and Meni",
@@ -1499,12 +2086,14 @@
    "refs": [
     "Isaiah 65:11"
    ],
+   "related": [
+    "the-host-of-heaven"
+   ],
    "sources": [
     "DDD s.v. \"Gad,\" 339-340",
     "DDD s.v. \"Meni,\" 567"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Zeus",
@@ -1523,11 +2112,15 @@
     "2 Maccabees 6:2",
     "1 Maccabees 1:54"
    ],
-   "sources": [
-    "DDD s.v. \"Zeus,\" 934-939, note-to-build: missing from entities.json"
+   "related": [
+    "hermes",
+    "the-unknown-god",
+    "artemis-of-the-ephesians"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "DDD s.v. \"Zeus,\" 934-939"
+   ],
+   "post": null
   },
   {
    "title": "Hermes",
@@ -1543,11 +2136,13 @@
    "refs": [
     "Acts 14:12"
    ],
+   "related": [
+    "zeus"
+   ],
    "sources": [
     "DDD s.v. \"Hermes,\" 405-410"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Artemis of the Ephesians",
@@ -1564,11 +2159,14 @@
    "refs": [
     "Acts 19:24-35"
    ],
-   "sources": [
-    "DDD s.v. \"Artemis,\" 91-96, note-to-build: entities.json has `Diana` (the Vulgate and KJV name) as `kind: person` but not Artemis"
+   "related": [
+    "zeus",
+    "the-python-spirit"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "DDD s.v. \"Artemis,\" 91-96"
+   ],
+   "post": null
   },
   {
    "title": "The Dioscuri",
@@ -1585,11 +2183,14 @@
     "Acts 28:11",
     "2 Maccabees 11:21"
    ],
+   "related": [
+    "zeus",
+    "hermes"
+   ],
    "sources": [
     "DDD s.v. \"Dioskouroi,\" 258"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The unknown god",
@@ -1604,11 +2205,22 @@
    "refs": [
     "Acts 17:23"
    ],
+   "related": [
+    "zeus",
+    "artemis-of-the-ephesians"
+   ],
    "sources": [
     "DDD s.v. \"Unknown God,\" 882-884"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/acts-17-26-27/",
+     "n": "Acts 17:26-27",
+     "s": "Paul tells the Areopagus that God fixed the times and the boundaries of the nations.",
+     "r": "Acts 17:26-27"
+    }
+   ]
   },
   {
    "title": "The python spirit",
@@ -1620,16 +2232,19 @@
    "testament": "NT",
    "bibleRef": "Acts 16:16-18",
    "strong": "G4436 (πύθων), 1 occ",
-   "note": "The Greek says a spirit, a python, the term for the Delphic oracle. Luke doesn't call the girl a fraud; he has Paul cast out the thing that made her accurate. DDD traces how the word got there. Python was the dragon Apollo killed to take over the sanctuary at Delphi, and the name drifted through the oracular priestess who spoke there, the Pythia, into a general label for any prophesying spirit or medium by the first century AD. The Vulgate uses the same word to translate the \"medium or necromancer\" of Leviticus 20:27 (*pythonicus spiritus*), which shows the term had become fully generic and gives This record a second biblical anchor beyond Acts.",
+   "note": "The Greek says a spirit, a python, the term for the Delphic oracle. Luke doesn't call the girl a fraud; he has Paul cast out the thing that made her accurate. DDD traces how the word got there. Python was the dragon Apollo killed to take over the sanctuary at Delphi, and the name drifted through the oracular priestess who spoke there, the Pythia, into a general label for any prophesying spirit or medium by the first century AD. The Vulgate uses the same word to translate the \"medium or necromancer\" of Leviticus 20:27 (*pythonicus spiritus*), which shows the term had become fully generic and gives the term a second biblical anchor beyond Acts.",
    "refs": [
     "Acts 16:16-18",
     "Leviticus 20:27 (Vulgate)"
    ],
-   "sources": [
-    "DDD s.v. \"Python,\" 669-671 ---"
+   "related": [
+    "daimonion",
+    "artemis-of-the-ephesians"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "DDD s.v. \"Python,\" 669-671"
+   ],
+   "post": null
   },
   {
    "title": "Mot",
@@ -1642,12 +2257,18 @@
    "bibleRef": "Job 18:13",
    "note": "Death with an open throat that is never full, a covenant made with Death, Death climbing in through the windows. The argument is over whether these are personification or a live memory of the god.",
    "ane": "Mot is Baal's last adversary at Ugarit and swallows him. His voracious appetite matches the biblical language about Sheol closely enough that mythological influence is plausible, though disputed, and Mot likely received no cult in Israel or Judah. DDD's entry on the \"firstborn of Death\" of Job 18:13 confirms this from the Ugaritic side: Mot carries the epithets \"son of El\" and \"Beloved of El,\" yet he is absent from every Ugaritic pantheon list, sacrificial list, and offering list, and no sanctuary of his has turned up at Ugarit. Job 18:13's *bekor mawet* draws on the same figure, and DDD lays out three readings. The phrase may be an idiom for a deadly disease; it may name an actual offspring demon of Mot, on the model of the Mesopotamian Namtar, Ereshkigal's vizier; or it may be an attributive genitive, \"Firstborn Death,\" a title for Mot himself as El's firstborn, which N. Wyatt argues from \"Beloved of El\" being a legitimation formula and not a term of affection. Isaiah 28:15's covenant with Death is almost universally read as something other than the Ugaritic god, either a foreign nation or a pun on the Egyptian goddess Mut, guarantor of treaties, and since it goes beyond simple personification without clear Ugaritic precedent for a death-covenant, it may be a Hebrew innovation instead of borrowed myth.",
+   "dissent": "Personification or a memory of the god. DDD calls mythological influence on the Sheol language plausible and disputed, and notes Mot likely had no cult in Israel or Judah, and that at Ugarit he is missing from every offering list. Job 18:13's firstborn of Death gets three readings in DDD: an idiom for a deadly disease, a demon born of Mot, or a title for Mot himself. Isaiah 28:15's covenant with Death is usually read as a foreign nation or a pun on the Egyptian goddess Mut, and may be a Hebrew coinage, not borrowed myth.",
    "refs": [
     "Job 18:13",
     "Isaiah 28:15,18",
     "Jeremiah 9:21",
     "Hosea 13:14",
     "Habakkuk 2:5"
+   ],
+   "related": [
+    "death-and-hades",
+    "baal",
+    "rephaim"
    ],
    "sources": [
     "H. G. M. Williamson, ICC *Isaiah 1-27*, 373-374",
@@ -1656,19 +2277,42 @@
     "T. J. Lewis, \"First-Born of Death,\" DDD, 332-334"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/mavet/",
+     "n": "mavet",
+     "s": "Death. Also personified, and paired with Sheol in the poetry.",
+     "r": "Deuteronomy 30:19"
+    }
+   ]
   },
   {
    "title": "Yam",
    "id": "yam",
    "summary": "The sea as an opponent God fights, not just water.",
-   "plain": "The sea. **God rebukes it, splits it, and tramples its waves**, which is not how anyone talks about water. Hebrew poetry keeps leaving open whether the sea here is scenery or an opponent.",
+   "plain": "The sea. **God rebukes it, splits it, and tramples its waves**, which is how you would talk about an opponent, or how a poet might talk about water. Hebrew poetry keeps leaving open whether the sea here is scenery or an opponent.",
    "category": "contested",
    "group": "west-semitic-power",
    "testament": "OT",
-   "strong": "H3220 (יָם), 396 occ, nearly all the ordinary sea, refs (the power): Job 7:12; Job 26:12; Psalm 74:13; Psalm 89:9-10; Habakkuk 3:8; 1 Kings 7:23-26",
+   "bibleRef": "Psalm 74:13-14",
+   "strong": "H3220 (יָם), 396 occ, nearly all the ordinary sea",
    "note": "God rebukes the sea, splits the sea, tramples the waves, and the Hebrew poetry keeps leaving open whether the sea is scenery or an opponent.",
    "ane": "Yam is Baal's first rival in the Ugaritic cycle. He falls to two named weapons that Kothar forges and speaks incantations over: Yagrush, \"Driver,\" which fails to fell him, and then Ayyamarri, which strikes him between the eyes and drops him (KTU 1.2 IV). His Ugaritic title is *zbl ym tpt nhr*, \"Prince Sea, Judge River,\" so the sea and the river flood are one power under two names. An eighteenth-century BC letter from Mari, quoting Nur-Sin of Aleppo to King Zimri-Lim, has the storm god say \"the weapons with which I had battled against Sea I gave to you,\" the earliest literary witness to the Baal and Yam combat, centuries older than the Ugaritic tablets. In Israel's cultic poetry the sea is a personified combatant alongside Tannin, Leviathan, and Rahab: Yahweh rebukes it, smashes its heads, dries up its waters or sets their limits. Psalm 74 pictures a battle before creation that splits the personified *yam*, matching Ugaritic Yam, and in the same breath the sea serves as backdrop and as an opponent with real agency. The temple furniture keeps the image. Solomon's molten sea (1 Kings 7:23-26; 2 Chronicles 4:2-10), a bronze basin about fifteen feet across standing on twelve bronze bulls, put the cosmic Sea, tamed and domesticated, inside Yahweh's house.",
+   "dissent": "Scenery or opponent. Stolz's DDD article has the sea serving as backdrop and as an opponent with real agency in the same psalms, and the Ugaritic Yam supplies the opponent. Against a personal reading, nearly all of the word's 396 occurrences are the ordinary sea, and a poet can rebuke water without believing anyone is listening.",
+   "refs": [
+    "Job 7:12",
+    "Job 26:12",
+    "Psalm 74:13",
+    "Psalm 89:9-10",
+    "Habakkuk 3:8",
+    "1 Kings 7:23-26"
+   ],
+   "related": [
+    "leviathan",
+    "rahab",
+    "tannin",
+    "baal"
+   ],
    "sources": [
     "F. Stolz, \"Sea,\" DDD, 737-741 (the bronze sea and Yam's title *zbl ym tpt nhr* come later in the same long article)",
     "Dempsey Rosales Acosta, \"Lord of Hosts,\" *Lexham Bible Dictionary*",
@@ -1676,7 +2320,14 @@
     "M. S. Smith, *The Ugaritic Baal Cycle*, Vol. I, on KTU 1.1-1.2"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-74-14/",
+     "n": "Psalm 74:14",
+     "s": "Thou brakest the heads of leviathan in pieces. The multi-headed sea-dragon of the same chaos-combat imagery already met in Genesis.",
+     "r": "Psalm 74:14"
+    }
+   ]
   },
   {
    "title": "Leviathan",
@@ -1698,14 +2349,33 @@
     "Psalm 104:26",
     "Isaiah 27:1"
    ],
+   "related": [
+    "tannin",
+    "rahab",
+    "yam",
+    "the-dragon"
+   ],
    "sources": [
     "Matthews/Chavalas/Walton, *IVP Bible Background Commentary: OT*",
     "Heiser, *The Bible Unfiltered*, 122",
     "C. Uehlinger, \"Leviathan,\" DDD, 511-514 (Amos 9:3 at 514)",
-    "J. W. van Henten, \"Dragon,\" DDD, 265-266 (the LXX's *drakon* for the *nachash* of Amos 9:3), note-to-build: missing from entities.json"
+    "J. W. van Henten, \"Dragon,\" DDD, 265-266 (the LXX's *drakon* for the *nachash* of Amos 9:3)"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-74-14/",
+     "n": "Psalm 74:14",
+     "s": "Thou brakest the heads of leviathan in pieces. The multi-headed sea-dragon of the same chaos-combat imagery already met in Genesis.",
+     "r": "Psalm 74:14"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-1-21/",
+     "n": "Genesis 1:21",
+     "s": "God created great whales. The Hebrew word, tannin, elsewhere names the mythological sea-monster Leviathan.",
+     "r": "Genesis 1:21"
+    }
+   ]
   },
   {
    "title": "Behemoth",
@@ -1719,17 +2389,20 @@
    "strong": "H930, 1 occ",
    "note": "A plural form used as a singular, which is part of why the identification is hard. Hippopotamus, elephant, and mythic bull have all been proposed, and each one strains some part of the description.",
    "ane": "Marvin Pope's proposed Ugaritic ancestor is \"El's calf Atik,\" also called Arshu, paired in the Baal Cycle with a seven-headed sea dragon and defeated by Anat in the same boast: \"I smote Ar[shu] beloved of El, I put an end to El's calf Atik\" (KTU 1.3 iii:43-44), right after she claims the dragon. The pairing follows Job 40-41's own order, an ox-like land beast beside a sea monster. Egypt had a ritual answer that suits the hippopotamus reading, a festival where a hippo was killed ceremonially as a stand-in for pharaoh's enemies, on top of the animal's usual role in Egyptian myth as a hostile power against the throne. Later Jewish tradition (1 Enoch 60:7-9) makes the pair explicit and geographic, Behemoth male and in the desert east of Eden, Leviathan female and in the abyss, both fattened for the righteous at the end-time banquet (also 2 Baruch 29:4; 4 Ezra 6:49-52).",
+   "dissent": "The identification. Hippopotamus, elephant and a mythic bull have all been argued. Pope's Ugaritic candidate, El's calf Atik, comes paired with a sea dragon in the same order as Job 40-41. The hippopotamus has an Egyptian ritual in its favor and the description of the genitals against it, and Driver's crocodile needs an emended text. The word works as a proper name nowhere else in the Old Testament.",
    "invented": "The sauropod reading, which needs the tail like a cedar to be a neck and ignores the rest of the passage. The hippopotamus reading has its own problem, since the text stresses Behemoth's visible genitals and a hippo's are internal and mostly underwater. Grammatically *behemoth* is the intensive feminine plural of \"beast,\" yet every verb and pronoun for it in Job 40 is masculine singular, a plural-form name for a singular, mythic super-ox, and nowhere else in the Old Testament does the word work as a proper name. G. R. Driver's rival crocodile reading has to emend the Masoretic Text to get there, swapping which word eats which (\"he eats cattle like grass\" for \"he eats grass like cattle\").",
    "refs": [
     "Job 40:15-24"
+   ],
+   "related": [
+    "leviathan"
    ],
    "sources": [
     "B. F. Batto, \"Behemoth,\" DDD, 165",
     "Duane A. Garrett, *Job*, EEC, 533-534, 541",
     "Matthews/Chavalas/Walton, *IVP Bible Background Commentary: OT*, on Job 40:15-24"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Rahab",
@@ -1751,17 +2424,26 @@
     "Isaiah 51:9",
     "Psalm 40:5"
    ],
+   "related": [
+    "leviathan",
+    "tannin",
+    "yam"
+   ],
    "sources": [
     "Holman Illustrated Bible Dictionary, \"Rahab,\" 1362",
     "M. J. Evans, \"Rahab,\" New Dictionary of Biblical Theology, 715",
     "K. Spronk, \"Rahab,\" DDD, 684-685",
-    "Matthews/Chavalas/Walton, *IVP Bible Background Commentary: OT*, on Psalm 87:4 and 89:10 (confirms the name is still unattested outside the Bible), note-to-build: H7294 already exists in entities.json as `kind: person` with the chaos-monster refs (Job 9:13",
-    "26:12",
-    "Psalm 87:4",
-    "89:11). Reclassify that record. Rahab of Jericho (H7343) and the New Testament record (G4460) stay as persons."
+    "Matthews/Chavalas/Walton, *IVP Bible Background Commentary: OT*, on Psalm 87:4 and 89:10 (confirms the name is still unattested outside the Bible)"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-89-10/",
+     "n": "Psalm 89:10",
+     "s": "Thou hast broken Rahab in pieces. A different word entirely from Rahab the woman of Jericho.",
+     "r": "Psalm 89:10"
+    }
+   ]
   },
   {
    "title": "Tannin",
@@ -1785,18 +2467,30 @@
     "Jeremiah 51:34",
     "Psalm 148:7"
    ],
+   "related": [
+    "leviathan",
+    "rahab",
+    "the-dragon"
+   ],
    "sources": [
     "John H. Walton and J. Harvey Walton, *Demons and Spirits in Biblical Theology*, 100-101",
     "G. C. Heider, \"Tannin,\" DDD, 834-836"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-1-21/",
+     "n": "Genesis 1:21",
+     "s": "God created great whales. The Hebrew word, tannin, elsewhere names the mythological sea-monster Leviathan.",
+     "r": "Genesis 1:21"
+    }
+   ]
   },
   {
    "title": "Resheph",
    "id": "resheph",
    "summary": "A plague god reduced in the Bible to a word for disease, who still walks at God's feet in one poem.",
-   "plain": "A plague god among Israel's neighbors, flattened in most English Bibles into a common noun: plague, flame, burning coal. **In Habakkuk 3 he walks at God's feet**, and a burning coal does not walk anywhere.",
+   "plain": "A plague god among Israel's neighbors, flattened in most English Bibles into a common noun: plague, flame, burning coal. **In Habakkuk 3 he walks at God's feet.** Some readers hear a named attendant there, and others hear a poet giving plague legs.",
    "category": "contested",
    "group": "west-semitic-power",
    "testament": "OT",
@@ -1804,31 +2498,36 @@
    "strong": "H7565 (רֶשֶׁף), 7 occ in 6 verses",
    "note": "Usually translated plague, flame, or burning coal. In Habakkuk 3:5 he walks at Yahweh's feet beside Deber, which is hard to read as an abstract noun.",
    "ane": "Resheph is a well-attested plague and war god across the Levant and into Egypt. An Ugaritic pantheon list identifies him with Nergal, and the Keret poem casts him as a plague god striking the king's household (KTU 1.14 i:18-19). He appears in the Amarna letters too (EA 35). Mot had no offspring at all, according to DDD's \"First-Born of Death\" article, but Resheph was thought to have children, the premise behind Job 5:7's \"sons of Resheph\" flying up like sparks. In Habakkuk 3:5 he becomes a henchman in Yahweh's retinue, possibly one of two warrior gods, with Deber, flanking Yahweh, matching the Ugaritic Resheph and Deber as gods of war and destruction. Biblical usage keeps the name subordinate throughout. It is demythologized and attached to plague and disaster without acting as an independent agent, so death and disease stay under Yahweh's sole authority, the same demotion Deber and Qeteb get below.",
+   "dissent": "Name or noun. Most English versions translate the word as plague, flame or burning coal, which treats it as a common noun. Habakkuk 3:5 has him walking at Yahweh's feet beside Deber, which the sources here read as a demoted god in Yahweh's retinue. Both readings agree he has no independent power in the Bible; they disagree about whether a figure is meant at all.",
    "refs": [
     "Deuteronomy 32:24",
     "Job 5:7",
     "Psalm 78:48",
     "Habakkuk 3:5"
    ],
+   "related": [
+    "deber-and-qeteb",
+    "the-destroyer"
+   ],
    "sources": [
     "Justin L. Kelley, \"Resheph,\" *Lexham Bible Dictionary*",
     "Heiser, *Demons*, 33-34",
     "P. Xella, \"Resheph,\" DDD, 701-703"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Deber and Qeteb",
    "id": "deber-and-qeteb",
    "summary": "Pestilence and Destruction, named in a psalm in a way that sounds like a list of beings.",
-   "plain": "Pestilence and Destruction. Psalm 91 lists four threats in a shape that reads more like a roll call of named powers than a list of hazards, **and Habakkuk marches Deber along in front of God like an attendant.** The Ugaritic texts pair the same two as gods.",
+   "plain": "Pestilence and Destruction. Psalm 91 lists four threats, and readers split on whether that is a roll call of named powers or a list of hazards. **Habakkuk marches Deber along in front of God like an attendant.** The Ugaritic texts pair the same two as gods.",
    "category": "contested",
    "group": "west-semitic-power",
    "testament": "OT",
    "bibleRef": "Deuteronomy 32:24",
    "strong": "H1698, 49 occ; H6986, 4 occ",
    "note": "Pestilence and Destruction. Psalm 91 lists four threats in a shape that reads like a catalogue of named powers, and Habakkuk marches Deber in front of Yahweh as an attendant beside Resheph, matching the Ugaritic pairing of the two as gods of war and destruction, though the Hebrew Bible consistently strips them of independent agency. DDD's Qeteb entry reads Psalm 91:5-6 as one unit: the terror of the night, the arrow that flies by day, Deber stalking in the darkness, and Qeteb laying waste at noon. Deber is apparently Resheph's nocturnal double and the arrow his daytime weapon, so the four may reduce to two gods working night and day shifts. Qeteb turns up a fourth time at Isaiah 28:2, where \"a tempest of Qeteb\" drives a hailstorm against Ephraim, another case of Yahweh's judgment arriving under a demoted Canaanite destroyer's name. The Septuagint translates Qeteb differently in each of its four occurrences, a sign that its translators no longer treated the word as a fixed divine name.",
+   "dissent": "Named powers or hazards. DDD reads Psalm 91:5-6 as one unit in which the four threats may reduce to two gods on night and day shifts. The other reading takes the four as ordinary dangers listed in poetry. The Septuagint renders Qeteb differently in each of its four occurrences, which suggests its translators no longer treated it as a fixed name.",
    "refs": [
     "Deuteronomy 32:24",
     "Psalm 91:5-6",
@@ -1836,19 +2535,30 @@
     "Habakkuk 3:5",
     "Isaiah 28:2"
    ],
+   "related": [
+    "resheph",
+    "shedim"
+   ],
    "sources": [
     "Justin L. Kelley, \"Resheph,\" *Lexham Bible Dictionary*",
     "G. Del Olmo Lete, \"Deber,\" DDD, 231",
     "N. Wyatt, \"Qeteb,\" DDD, 673"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/psalm-91-6/",
+     "n": "Psalm 91:6",
+     "s": "The destruction that wasteth at noonday. Some ancient versions personify qeteb as a demon; the Hebrew itself, and the King James, keep it impersonal.",
+     "r": "Psalm 91:6"
+    }
+   ]
   },
   {
    "title": "Shahar and Shalem",
    "id": "shahar-and-shalem",
    "summary": "Dawn and Dusk as divine figures, one of whom is the father of the shining one in Isaiah 14.",
-   "plain": "Dawn and Dusk, treated as figures rather than times of day. **Isaiah 14 calls its falling star the son of Shahar**, and that phrase only carries weight if Shahar is somebody. The Ugaritic texts make the pair divine twins.",
+   "plain": "Dawn and Dusk, treated as figures rather than times of day. **Isaiah 14 calls its falling star the son of Shahar**, and the question is whether Shahar there is somebody or just the dawn. The Ugaritic texts make the pair divine twins.",
    "category": "contested",
    "group": "west-semitic-power",
    "testament": "OT",
@@ -1856,6 +2566,7 @@
    "strong": "H7837 (שַׁחַר), 23 occ",
    "note": "Dawn and Dusk. *Helel ben-shahar* in Isaiah 14:12 is the son of Shahar, and that only means something if Shahar is a figure. The Ugaritic texts make them a divine pair, fathered by Ilu (El) on two women he meets by the shore in KTU 1.23 (\"The Gracious and Beautiful Gods,\" lines 49-54), nursed by \"the Lady\" (Anat or Athirat), and sharing Mot's insatiable appetite, \"one lip to the earth, one lip to the heavens.\" With Shahar named in Isaiah 14:12, a cult of Shalem is plausible, though the direct evidence is thin. DDD's own Shahar entry reads most of dawn's other biblical appearances as poetry and not theology: in Job 38:12 dawn is God's creature taking its post and no rival; in Psalm 139:9 the \"wings of the dawn\" mark the world's eastern edge inside a cosmological psalm without implying a goddess; and Song of Songs 6:10, the bride \"fair as the dawn,\" is the one place DDD grants that a goddess would fit the imagery better than a god, if any of these passages is doing double duty.",
    "ane": "In the Ugaritic god list KTU 1.123:11, Shahru and Shalimu appear among the paired divine couples, and in KTU 1.107 and 1.100 they join the sun goddess in collecting, or failing to dispose of, snake venom, an odd but consistent job that gives them a role in poison alongside dawn and dusk. Mark Smith's Baal Cycle commentary notes that El's fathering of the pair in KTU 1.23:48-54 is one of the few solid signs that El's family had any astral character at all, and ties the pair to Venus as morning and evening star, the identification behind their epithet \"the gracious gods\" (*'ilm n'mm*, KTU 1.23:60,67).",
+   "dissent": "How much is theology and how much is poetry. Isaiah 14:12's son of Shahar is the strongest case for a figure. DDD's own Shahar entry reads dawn's other appearances, Job 38:12 and Psalm 139:9, as poetry, and grants only that Song of Songs 6:10 would fit a goddess. The evidence for a cult of Shalem in Israel is thin.",
    "refs": [
     "Isaiah 14:12",
     "Psalm 110:3",
@@ -1864,14 +2575,25 @@
     "Psalm 139:9",
     "Song of Songs 6:10"
    ],
+   "related": [
+    "lucifer",
+    "the-morning-stars"
+   ],
    "sources": [
     "W. G. E. Watson, \"Helel,\" DDD, 392-393",
     "H. B. Huffmon, \"Shalem,\" DDD, 755-756",
     "S. B. Parker, \"Shahar,\" DDD, 754",
-    "M. S. Smith, *The Ugaritic Baal Cycle*, Vol. II, on Athtar and the family of El ---"
+    "M. S. Smith, *The Ugaritic Baal Cycle*, Vol. II, on Athtar and the family of El"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-14-12-15/",
+     "n": "Isaiah 14:12-15",
+     "s": "Helel ben-shachar, shining one, son of the dawn, falls from heaven.",
+     "r": "Isaiah 14:12-15"
+    }
+   ]
   },
   {
    "title": "The Watchers (Enochic)",
@@ -1885,20 +2607,53 @@
    "note": "The canonical term is neutral, Aramaic, and appears only in Daniel 4. The fallen sense comes from 1 Enoch, where two hundred of them descend on Hermon under an oath and name the mountain for the curse they bound on it (1 Enoch 6:6). Nickelsburg's translation shows the account weaves two sources together, a Shemihazah strand about marriage and monstrous offspring and an Asael strand about forbidden teaching, following Collins's analysis as Heiser quotes it at length. The offspring chain runs three generations in 1 Enoch 7:2: the Watchers father giants, the giants father Nephilim, and the Nephilim father Elioud, a term with no biblical counterpart.",
    "ane": "The Mesopotamian apkallu, seven divine sages created in the primeval Abyss and sent by Ea (Enki) to civilize humanity before the Flood, are the template the Watcher story inverts. Cuneiform tradition names four post-Flood apkallu as \"of human descent,\" the fourth only \"two-thirds apkallu,\" the same hybrid status 1 Enoch gives the Watchers' giant sons. A ritual text from Assur (KAR 298) calls protective apkallu figurines *massare*, \"watchers,\" the same idea as the Aramaic *'yryn*, \"wakeful ones,\" that 1 Enoch and Daniel use, so the word \"Watcher\" carries the Mesopotamian guardian-sage concept into Jewish demonology as a deliberate, polemical inversion.",
    "secondTemple": "1 Enoch 6-16; Jubilees 4-5; 4QEn-a from Qumran, on which the Hermon geography depends because the Ethiopic is corrupt at 1 Enoch 6:6; 4Q530 (the Book of Giants) mentions \"gardeners\" tending trees, an image tied to the Watchers before their fall.",
+   "stQuote": "1 Enoch 6:6",
    "dissent": "How much of Enoch's expansion Jude and 2 Peter actually endorse is argued.",
    "refs": [
     "Daniel 4:13,17,23",
     "Genesis 6:1-4 (the referent, not the term)"
    ],
+   "related": [
+    "shemihazah",
+    "asael",
+    "nephilim",
+    "the-watchers-of-daniel-4"
+   ],
    "sources": [
     "Heiser, *Reversing Hermon*, chs. 2-3",
     "Nickelsburg, *1 Enoch* (Hermeneia)",
     "Annus, \"On the Origin of Watchers,\" *JSP* 19.4 (2010): 277-320",
-    "DDD s.v. \"Watcher,\" 893-894, note-to-build: missing from entities.json"
+    "DDD s.v. \"Watcher,\" 893-894"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 6:6"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/jude-6-2-peter-2-4/",
+     "n": "Jude 6; 2 Peter 2:4",
+     "s": "Angels who abandoned their proper dwelling, held in chains until judgment.",
+     "r": "Jude 6; 2 Peter 2:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/jude-14-15/",
+     "n": "Jude 14-15",
+     "s": "Jude quotes Enoch, the seventh from Adam, by name.",
+     "r": "Jude 14-15"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-2/",
+     "n": "Genesis 6:2",
+     "s": "The sons of God saw the daughters of men. The oldest reading takes sons of God as divine beings, not a human family line.",
+     "r": "Genesis 6:2"
+    }
+   ]
   },
   {
    "title": "Shemihazah",
@@ -1910,14 +2665,32 @@
    "testament": "second-temple",
    "note": "The leader who proposes the descent and binds the others to a mutual oath so none can back out. He isn't named in the Bible. 1 Enoch 6:7-8 gives a roster of twenty chiefs of ten under him (Arteqoph, Remashel, Kokabel, and the rest), and 1 Enoch 8:3 credits him personally with teaching spells and root-cutting, separate from Asael's teaching of crafts. Targum Pseudo-Jonathan later names him as \"Shamhazai\" at Genesis 6, pairing him with Azael as the two fallen angels that Targum is willing to name, where Targum Onqelos avoids the fallen-angel reading altogether.",
    "secondTemple": "1 Enoch 6:3-8; 1 Enoch 8:3; 1 Enoch 10:11.",
+   "stQuote": "1 Enoch 6:3-4",
+   "dissent": "Whether Genesis 6 should be read through him at all. 1 Enoch builds the descent around his oath, and Targum Pseudo-Jonathan names him at Genesis 6. Targum Onqelos avoids the fallen-angel reading of Genesis 6 altogether. The Bible itself never names him, so the card reports what 1 Enoch says, not what Genesis says.",
+   "refs": [
+    "1 Enoch 6:3-8",
+    "1 Enoch 8:3",
+    "1 Enoch 10:11"
+   ],
+   "related": [
+    "asael",
+    "the-watchers-enochic",
+    "nephilim"
+   ],
    "sources": [
     "Nickelsburg, *1 Enoch* (Hermeneia)",
     "Collins, quoted in Heiser, *Reversing Hermon*, ch. 2",
     "DDD s.v. \"Nephilim,\" 618-619 (the naming in Targum Pseudo-Jonathan)"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 6:3-4"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    }
+   ]
   },
   {
    "title": "Asael",
@@ -1929,20 +2702,45 @@
    "testament": "second-temple",
    "note": "The Watcher who teaches metalwork, weapons, and cosmetics, and is bound hand and foot and thrown into darkness at Dudael. He is often connected to the Azazel of Leviticus 16. In 1 Enoch 10:4-6 the Lord sends Raphael to bind him, cast him into a desert pit at Dudael, and cover him with jagged rocks so he can't see light until the judgment, which is where 1 Enoch moves Azazel from a ritual term for unholy ground to the leader of evil supernatural forces. The link to Leviticus 16 is firmer than a guess. DDD's Azazel article treats 1 Enoch 8:1 (metalworking) and 9:6 (revealing heavenly secrets and enticing to injustice) as the same demonizing path, and Targum Pseudo-Jonathan at Genesis 6 names the two lead fallen angels \"Shamhazai and Azael,\" using the consonants of Leviticus's Azazel.",
    "secondTemple": "1 Enoch 8:1; 9:6; 10:4-8.",
+   "stQuote": "1 Enoch 8:1",
+   "dissent": "The tie to Azazel. DDD's Azazel article and the Targum's spelling of the name with Azazel's consonants are the case for it. The case against is Leviticus 16 itself, which can be read with Azazel as a ritual term for unholy ground, not a being, and on that reading 1 Enoch is reinterpreting the rite, not explaining it.",
+   "refs": [
+    "1 Enoch 8:1",
+    "1 Enoch 9:6",
+    "1 Enoch 10:4-8",
+    "Leviticus 16:8-10"
+   ],
+   "related": [
+    "azazel",
+    "shemihazah",
+    "raphael"
+   ],
    "sources": [
     "Hanson, \"Rebellion in Heaven, Azazel and Euhemeristic Heroes in 1 Enoch 6-11,\" JBL 96 (1977): 195-233",
     "DDD s.v. \"Azazel,\" 128-131 (section IV, demonization)",
     "DDD s.v. \"Nephilim,\" 618-619"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 8:1"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/leviticus-16-8-10/",
+     "n": "Leviticus 16:8-10",
+     "s": "One goat for Yahweh, one goat for Azazel, sent into the wilderness.",
+     "r": "Leviticus 16:8-10"
+    }
+   ]
   },
   {
    "title": "Azazel",
    "id": "azazel",
    "summary": "The name on the second lot at the Day of Atonement, where the other lot says God.",
-   "plain": "On the Day of Atonement two lots are cast over two goats. **One lot says for Yahweh. The other says for Azazel.** That parallel is what makes it hard to read Azazel as a place name, because the other side of the pair is not a place.",
+   "plain": "On the Day of Atonement two lots are cast over two goats. **One lot says for Yahweh. The other says for Azazel.** If the first lot names a person, the second one seems to as well. Readers who take Azazel as a place or a ritual term answer that the pairing is looser than it looks.",
    "category": "contested",
    "group": "watcher",
    "testament": "OT",
@@ -1950,9 +2748,15 @@
    "strong": "H5799 (עֲזָאזֵל), 4 occ in 3 verses (Leviticus 16:10 uses the name twice)",
    "note": "Every occurrence falls in the Day of Atonement ritual. The lots are cast \"for Yahweh\" and \"for Azazel,\" and the parallel makes the place reading hard to hold, since the other lot is no place.",
    "secondTemple": "Azazel's demonization intensifies under dualistic influence in 1 Enoch (8:1; 9:6; 10:4-8; 13:1) and the Apocalypse of Abraham, where he appears as an unclean bird, \"lord of the heathens\" (22:6), and as the serpent who tempts Eve in paradise (23:5,9); the Messiah judges him with his company (1 Enoch 55:4).",
+   "stQuote": "1 Enoch 9:6",
    "dissent": "Place name, abstract noun (\"complete removal\"), and personal name all have defenders, and the older English versions chose the abstraction and gave us \"scapegoat.\" The Masoretic Text keeps *aza'zel* as a single word, and the parallel structure of the two lots is itself an argument for the personal name: Yahweh is a proper name, and Hebrew parallelism suggests its counterpart is one too. On that reading the ritual doesn't offer anything to Azazel. It sends the sin-goat into territory under his jurisdiction, outside land held holy for Yahweh. The LXX's *apopompe*, \"sending away,\" is the likely root of \"scapegoat\" through *'ez* plus *'zl*, \"the goat that goes away.\" William Tyndale coined the English word \"scapegoat\" in his 1530 Pentateuch, building the compound to capture the ritual's function instead of transliterating Azazel or leaving it untranslated, and Symmachus, Aquila, the Vulgate, and later Luther all read the term as the goat's action rather than a being's name. DDD sorts the scholarship into three models: a nomadic desert-demon reading (the goat is sent to Azazel in the wilderness); an Egyptian derivation (Görg's *'d3-dr*, \"the expelled culprit,\" tied to Seth); and a background in South Anatolian and North Syrian elimination rites with Hittite and Hurrian parallels from Kizzuwatna, which DDD's contributor judges the most plausible both conceptually and philologically. On that reconstruction, the desert-demon reading isn't original to Leviticus 16 but grew up as the chapter's tradition formed, once postexilic monotheism needed to interpret an inherited ritual term.",
    "refs": [
     "Leviticus 16:8,10,26"
+   ],
+   "related": [
+    "asael",
+    "seirim",
+    "the-watchers-enochic"
    ],
    "sources": [
     "DDD s.v. \"Azazel,\" 128-131",
@@ -1963,11 +2767,17 @@
     "Hanson, JBL 96 (1977): 195-233 (as cited in DDD)",
     "Ryken et al., *Dictionary of Biblical Imagery*, 763",
     "M'Clintock and Strong, \"Scape-Goat,\" Cyclopaedia of Biblical, Theological, and Ecclesiastical Literature, 9:397",
-    "Schultz, TWOT #1593, 658, note-to-build: missing from entities.json"
+    "Schultz, TWOT #1593, 658"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 9:6"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/leviticus-16-8-10/",
+     "n": "Leviticus 16:8-10",
+     "s": "One goat for Yahweh, one goat for Azazel, sent into the wilderness.",
+     "r": "Leviticus 16:8-10"
+    }
+   ]
   },
   {
    "title": "Nephilim",
@@ -1982,6 +2792,7 @@
    "note": "Two verses in the whole Hebrew Bible, with a third, disputed, at Ezekiel 32:27. Genesis 6:4 says they were on the earth in those days \"and also afterward,\" the clause the report in Numbers 13 depends on. 1 Enoch 7:2 spells out the lineage, Watchers to giants to Nephilim to Elioud, a three-generation chain with no biblical parallel.",
    "ane": "Anne Draffkorn Kilmer proposed identifying the Nephilim with the Mesopotamian apkallu, the antediluvian culture heroes who, according to Berossus, brought the arts of civilization to humankind; both traditions make the generation after the catastrophe hybrid and diminished.",
    "secondTemple": "1 Enoch 7 and Jubilees 7 both give the offspring reading, the oldest interpretation on record. Targum Pseudo-Jonathan names the fallen angels of Genesis 6 as \"Shamhazai and Azael,\" where Targum Onqelos uses *gbry'*, \"mighty ones,\" to avoid the fallen-angel reading. 4QEnGiants 3:8 calls the offspring \"the Nephilim of the earth\" (*npyly 'r'*), stressing their earthbound activity despite their heavenly origin.",
+   "stQuote": "1 Enoch 7:2",
    "dissent": "Whether *nephilim* comes from *naphal*, \"to fall,\" or is a loanword is unresolved. A third proposal from *pala'*, \"extraordinary,\" has little support, and the term's precise meaning likely vanished with the pre-Israelite dialects that disappeared after the conquest. Heiser argues from spelling. The Hebrew has two forms, *nephilim* and *nephiylim* (Numbers 13:33), and the *y* in the second marks a long vowel that rules out *naphal*, which would give *nephulim*. He proposes an Aramaic loanword, *naphiyla*, \"giant,\" picked up in the exile, which pluralizes in Hebrew to exactly the *nephiylim* spelling of Numbers 13:33 and explains why the Septuagint translators consistently rendered the word \"giants.\"",
    "invented": "Ancient-astronaut readings, and the Sethite reading that needs the word to mean nothing more than \"fallen men.\"",
    "refs": [
@@ -1989,15 +2800,41 @@
     "Numbers 13:33",
     "Ezekiel 32:27 (contested: *gibborim nophelim*, \"the fallen warriors,\" may keep the mythic sense without naming the group)"
    ],
+   "related": [
+    "gibborim",
+    "bene-elohim",
+    "anakim",
+    "the-nephilim-as-extraterrestrials"
+   ],
    "sources": [
     "Peterson, \"Nephilim,\" *Lexham Bible Dictionary*",
     "DDD s.v. \"Nephilim,\" 618-619",
     "Heiser, *Unseen Realm*, chs. 12-13",
-    "Heiser, *Reversing Hermon*, ch. 1, note-to-build: missing from entities.json"
+    "Heiser, *Reversing Hermon*, ch. 1"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 7:2"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/numbers-13-33/",
+     "n": "Numbers 13:33",
+     "s": "The spies report the Nephilim, the sons of Anak, and call themselves grasshoppers.",
+     "r": "Numbers 13:33"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-4/",
+     "n": "Genesis 6:4",
+     "s": "There were giants in the earth. The Hebrew word, Nephilim, does not itself mean giant.",
+     "r": "Genesis 6:4"
+    }
+   ]
   },
   {
    "title": "Gibborim",
@@ -2015,13 +2852,32 @@
     "Genesis 10:8-9",
     "Ezekiel 32:27"
    ],
+   "related": [
+    "nephilim",
+    "goliath-and-the-sons-of-rapha"
+   ],
    "sources": [
     "DDD s.v. \"Gibborim,\" 345",
     "DDD s.v. \"Giants,\" 343-344 (the LXX *gigantes* equivalences)",
     "Kraeling, JNES 6 (1947): 193-208"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-4/",
+     "n": "Genesis 6:4",
+     "s": "There were giants in the earth. The Hebrew word, Nephilim, does not itself mean giant.",
+     "r": "Genesis 6:4"
+    }
+   ]
   },
   {
    "title": "Rephaim",
@@ -2052,13 +2908,26 @@
     "Proverbs 9:18",
     "Proverbs 21:16"
    ],
+   "related": [
+    "anakim",
+    "og-of-bashan",
+    "emim-zamzummim-zuzim",
+    "mot"
+   ],
    "sources": [
     "H. Rouillard, DDD s.v. \"Rephaim,\" 692-699",
     "Heiser, *Demons*, 10-11",
-    "Heiser, *Reversing Hermon*, 91-92, ch. 6 (\"Old Testament Bashan: Giants and the Underworld\"), note-to-build: missing from entities.json"
+    "Heiser, *Reversing Hermon*, 91-92, ch. 6 (\"Old Testament Bashan: Giants and the Underworld\")"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/sheol/",
+     "n": "sheol",
+     "s": "The realm of the dead. Not hell, and not nothing.",
+     "r": "Genesis 37:35"
+    }
+   ]
   },
   {
    "title": "Anakim",
@@ -2079,14 +2948,32 @@
     "Joshua 11:21-22",
     "Joshua 15:13-14"
    ],
+   "related": [
+    "nephilim",
+    "rephaim",
+    "goliath-and-the-sons-of-rapha"
+   ],
    "sources": [
     "DDD s.v. \"Rephaim,\" 692-699 (the Anakim are discussed under this entry, with no separate article)",
     "DDD s.v. \"Giants,\" 343-344",
     "Heiser, *Unseen Realm*, ch. 24-25",
-    "Walton, *IVP Bible Background Commentary*, 1 Samuel 27:2-3, note-to-build: currently `kind: person`"
+    "Walton, *IVP Bible Background Commentary*, 1 Samuel 27:2-3"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/numbers-13-33/",
+     "n": "Numbers 13:33",
+     "s": "The spies report the Nephilim, the sons of Anak, and call themselves grasshoppers.",
+     "r": "Numbers 13:33"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/joshua-11-21-22/",
+     "n": "Joshua 11:21-22",
+     "s": "Joshua cuts off the Anakim from the hill country, and none are left except in Gaza, Gath and Ashdod.",
+     "r": "Joshua 11:21-22"
+    }
+   ]
   },
   {
    "title": "Emim, Zamzummim, Zuzim",
@@ -2104,14 +2991,17 @@
     "Genesis 14:5",
     "Deuteronomy 2:10-11,20-21"
    ],
+   "related": [
+    "rephaim",
+    "anakim"
+   ],
    "sources": [
     "DDD's \"Emim\" entry is only a cross-reference to \"Rephaim\" (299)",
     "DDD s.v. \"Zamzummim,\" 927",
     "DDD s.v. \"Rephaim,\" 692-699 (Emim and Zuzim in Genesis 14:5)",
-    "Heiser, \"Rephaim,\" *Lexham Bible Dictionary*, note-to-build: only Zamzummim exists, as `kind: person`"
+    "Heiser, \"Rephaim,\" *Lexham Bible Dictionary*"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Og of Bashan",
@@ -2133,15 +3023,17 @@
     "Psalm 135:11",
     "Psalm 136:20"
    ],
+   "related": [
+    "rephaim",
+    "anakim"
+   ],
    "sources": [
     "G. del Olmo Lete, DDD s.v. \"Bashan,\" 161-162",
     "Heiser, *Reversing Hermon*, ch. 6 and n.31 (the Etemenanki and Esagila bed parallel)",
     "Heiser, *Unseen Realm*, 198-199",
-    "Walton, *IVP Bible Background Commentary*, Deuteronomy 3:11, note-to-build: currently `kind: person`",
-    "keep as person and add a being cross-reference"
+    "Walton, *IVP Bible Background Commentary*, Deuteronomy 3:11"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Goliath and the sons of Rapha",
@@ -2160,6 +3052,11 @@
     "2 Samuel 21:15-22",
     "1 Chronicles 20:4-8"
    ],
+   "related": [
+    "anakim",
+    "rephaim",
+    "gibborim"
+   ],
    "sources": [
     "DDD s.v. \"Rapha,\" 687",
     "J. Daniel Hays, \"Reconsidering the Height of Goliath,\" *JETS* 48/4 (2005): 701-714",
@@ -2168,10 +3065,58 @@
     "Heiser, \"Clash of the Manuscripts: Goliath & the Hebrew Text of the Old Testament,\" *Bible Study Magazine*, May-June 2009, 33",
     "Tov, *Textual Criticism of the Hebrew Bible*",
     "Heiser, *Reversing Hermon*, ch. 5 and n.31",
-    "Walton, *IVP Bible Background Commentary*, 1 Samuel 27:2-3 ---"
+    "Walton, *IVP Bible Background Commentary*, 1 Samuel 27:2-3"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/joshua-11-21-22/",
+     "n": "Joshua 11:21-22",
+     "s": "Joshua cuts off the Anakim from the hill country, and none are left except in Gaza, Gath and Ashdod.",
+     "r": "Joshua 11:21-22"
+    }
+   ]
+  },
+  {
+   "title": "The ghost of Samuel",
+   "id": "the-ghost-of-samuel",
+   "summary": "The dead prophet called up by a medium, in a scene that terrifies the medium herself.",
+   "plain": "A medium calls up the dead prophet, **and the thing that frightens her is what actually comes up.** The narrator calls him Samuel, and the message he gives turns out to be accurate. Some later readers argued that a demon was impersonating him. The narrator never says so, and that is the point they have to get around.",
+   "category": "contested",
+   "group": "rephaim",
+   "testament": "OT",
+   "bibleRef": "1 Samuel 28:3-25",
+   "note": "The text says Samuel, the medium is terrified by what actually comes up, and the message delivered is accurate. The narrator never says a demon impersonated him; that reading came later. The medium describes what she sees as *'elohim*, literally \"a god,\" coming up out of the earth (1 Samuel 28:13), and DDD treats the episode as a plain case of Israelite necromancy in which even the effectiveness of the conjuring is left intact by the editor (DDD s.v. \"Dead,\" 223). The ritual follows the standard ancient Near Eastern pattern for raising the dead through a pit, and nothing in the text says the woman was possessed or spoke in a trance. She conjures the spirit and reports what she sees and hears, which is not a medium in the modern channeling sense (Walton, IVP Bible Background Commentary: OT, on 1 Samuel 28:7-11). Saul recognizes Samuel by his prophet's robe (1 Samuel 28:14).",
+   "dissent": "Samuel or an impersonator. The narrator says Samuel, the medium sees an elohim coming up, and the message comes true. Tertullian argued the opposite: that a demon represented the soul of Samuel, since no demon could drag a prophet's soul out of its rest. DDD treats the scene as plain Israelite necromancy that the editor leaves working.",
+   "refs": [
+    "1 Samuel 28:3-25"
+   ],
+   "related": [
+    "rephaim",
+    "mot"
+   ],
+   "sources": [
+    "DDD s.v. \"Dead,\" 223",
+    "Walton, IVP Bible Background Commentary: OT, on 1 Samuel 28:3-14",
+    "Tertullian, *A Treatise on the Soul (De Anima)*, ANF 3"
+   ],
+   "post": null,
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-samuel-28-13/",
+     "n": "1 Samuel 28:13",
+     "s": "The medium at Endor sees an elohim coming up out of the earth, and it is Samuel.",
+     "r": "1 Samuel 28:13"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/sheol/",
+     "n": "sheol",
+     "s": "The realm of the dead. Not hell, and not nothing.",
+     "r": "Genesis 37:35"
+    }
+   ]
   },
   {
    "title": "Satan (ho satanas)",
@@ -2202,14 +3147,41 @@
     "Zechariah 3:1-5",
     "1 Chronicles 21:1"
    ],
+   "related": [
+    "the-satan-of-job",
+    "the-devil-diabolos",
+    "the-dragon",
+    "beelzebul"
+   ],
    "sources": [
     "J. W. van Henten, \"Dragon,\" DDD, 265-266",
     "G. K. Beale and Sean M. McDonough, \"Revelation,\" Commentary on the NT Use of the OT, 1125",
     "C. Breytenbach and P. L. Day, DDD s.v. \"Satan,\" 726-731",
-    "Heiser, *Unseen Realm*, chs. 8, 32, note-to-build: currently `kind: person`, uncurated"
+    "Heiser, *Unseen Realm*, chs. 8, 32"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/job-1-6-12/",
+     "n": "Job 1:6-12",
+     "s": "The sons of God present themselves and the satan comes among them.",
+     "r": "Job 1:6-12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/luke-10-1-20/",
+     "n": "Luke 10:1-20",
+     "s": "Seventy sent out, and Satan falling like lightning when they return.",
+     "r": "Luke 10:1-20"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-26-20-22/",
+     "n": "Genesis 26:20-22",
+     "s": "He called the name of the well Sitnah. The same root behind the word Satan.",
+     "r": "Genesis 26:20-22"
+    }
+   ]
   },
   {
    "title": "The devil (diabolos)",
@@ -2232,11 +3204,30 @@
     "Hebrews 2:14",
     "1 Chronicles 21:1"
    ],
+   "related": [
+    "satan-ho-satanas",
+    "the-satan-of-job"
+   ],
    "sources": [
     "G. J. Riley, DDD s.v. \"Devil,\" 244-248"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/john-6-70/",
+     "n": "John 6:70",
+     "s": "One of you is a devil. The Greek noun is slanderer, and it has no article here.",
+     "r": "John 6:70"
+    }
+   ]
   },
   {
    "title": "Beelzebul",
@@ -2256,12 +3247,15 @@
     "Luke 11:15-19",
     "2 Kings 1:2-3,6,16"
    ],
-   "sources": [
-    "W. Herrmann, DDD s.v. \"Baal Zebub,\" 154-155",
-    "see also \"Beelzebul\""
+   "related": [
+    "baal-zebub-beelzebul",
+    "satan-ho-satanas",
+    "daimonion"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "W. Herrmann, DDD s.v. \"Baal Zebub,\" 154-155; see also \"Beelzebul\""
+   ],
+   "post": null
   },
   {
    "title": "Belial / Beliar",
@@ -2289,16 +3283,18 @@
     "1 Kings 21:10,13",
     "Nahum 1:15"
    ],
+   "related": [
+    "satan-ho-satanas",
+    "the-man-of-lawlessness"
+   ],
    "sources": [
     "John M'Clintock and James Strong, \"Belial,\" Cyclopaedia of Biblical, Theological, and Ecclesiastical Literature, 1:732",
     "Gabriele Boccaccini, \"Belial,\" Eerdmans Dictionary of the Bible, 163",
     "Torleif Elgvin, \"Belial, Beliar, Devil, Satan,\" Dictionary of NT Background, 156",
     "Heiser, *Demons*, 100",
-    "S. D. Sperling, DDD s.v. \"Belial,\" 169-170, note-to-build: currently `kind: person`",
-    "the Hebrew idiom needs its own record"
+    "S. D. Sperling, DDD s.v. \"Belial,\" 169-170"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Daimonion",
@@ -2312,6 +3308,7 @@
    "strong": "G1140 (δαιμόνιον), 63 occ; G1142 (δαίμων), 1 occ",
    "note": "In classical Greek a *daimon* is a morally neutral intermediate being, and the New Testament uses the word only negatively. Paul says what is sacrificed to idols is sacrificed to demons: the idol is nothing, and the thing behind it is not. DDD (G. J. Riley) traces the negative turn to the same Persian dualism that reshaped Satan and the devil. Once the gods of the nations were demoted, the Septuagint rendered those old, neutral pagan gods as *daimonia* outright, for Deuteronomy's *shedim* (LXX Deuteronomy 32:17), for Israel's neighbors' national gods in general (LXX Psalm 95:5, \"all the gods of the nations are demons\"), and for the god of fortune, Gad, at Isaiah 65:11 (\"preparing a table for the demon\"). Revelation keeps the equation. Idol worship is demon worship (Revelation 9:20), and fallen Babylon becomes \"a dwelling place of demons\" (Revelation 18:2), an image lifted from Isaiah's oracle of desert ruin against the literal Babylon.",
    "secondTemple": "In the literature the New Testament writers actually read, the most common account of where demons came from is genealogy, not abstract dualism. A group of angels came down, married human women, and fathered a race of violent giants; the Flood killed the giants' bodies but not their spirits, and those disembodied spirits, \"neither angelic nor human,\" became demons, trapped in the air and looking for human hosts. Justin Martyr cites the tradition explicitly (2 Apology 5, quoting Genesis 6:1-4). Paul's \"power of the air\" for the ruling demonic authority (Ephesians 2:2) reflects this cosmology.",
+   "stQuote": "1 Enoch 15:11",
    "refs": [
     "Mark 1:34",
     "Luke 8:26-33",
@@ -2323,12 +3320,30 @@
     "Revelation 9:20",
     "Revelation 18:2"
    ],
+   "related": [
+    "shedim",
+    "seirim",
+    "legion",
+    "the-python-spirit"
+   ],
    "sources": [
     "G. J. Riley, DDD s.v. \"Demon,\" 235-239"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 15:11"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/mark-5-1-20/",
+     "n": "Mark 5:1-20",
+     "s": "Legion, in Gentile territory east of the lake, begging not to be sent to the abyss.",
+     "r": "Mark 5:1-20"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/luke-10-1-20/",
+     "n": "Luke 10:1-20",
+     "s": "Seventy sent out, and Satan falling like lightning when they return.",
+     "r": "Luke 10:1-20"
+    }
+   ]
   },
   {
    "title": "Shedim",
@@ -2347,33 +3362,57 @@
     "Deuteronomy 32:17",
     "Psalm 106:37"
    ],
+   "related": [
+    "daimonion",
+    "seirim",
+    "deber-and-qeteb"
+   ],
    "sources": [
-    "DDD has no Shedim headword",
-    "the LXX's *daimonia* for *shedim* is handled under \"Demon,\" 235-239 (see Daimonion above)",
+    "DDD has no Shedim headword; the LXX's *daimonia* for *shedim* is handled under \"Demon,\" 235-239 (see Daimonion above)",
     "Ludwig Koehler et al., *The Hebrew and Aramaic Lexicon of the Old Testament*, 1417",
     "Keener & Walton, NIV Cultural Backgrounds Study Bible, 352",
     "Heiser, *Unseen Realm*, 33, 81, 621",
-    "Heiser, *Demons*, note-to-build: missing from entities.json"
+    "Heiser, *Demons*"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/deuteronomy-32-8-9/",
+     "n": "Deuteronomy 32:8-9",
+     "s": "The Most High divided the nations, and the number He divided them by is where the whole argument turns.",
+     "r": "Deuteronomy 32:8-9"
+    }
+   ]
   },
   {
    "title": "Se'irim",
    "id": "seirim",
    "summary": "Goat demons, banned as objects of sacrifice and pictured haunting ruins.",
-   "plain": "Goat demons. **Leviticus forbids sacrificing to them, and nobody writes a law like that about livestock.** Isaiah has them in ruined cities calling to each other, which is the other half of the picture.",
+   "plain": "Goat demons. **Leviticus forbids sacrificing to them, which is an odd law to write about livestock.** Isaiah has them in ruined cities calling to each other, which is the other half of the picture.",
    "category": "contested",
    "group": "demon",
    "testament": "OT",
-   "strong": "H8163 (שָׂעִיר), 59 occ, nearly all ordinary goats, refs (the beings): Leviticus 17:7; 2 Chronicles 11:15; Isaiah 13:21; Isaiah 34:14",
-   "note": "Goat demons. Leviticus 17:7 forbids sacrificing to them, and nobody legislates that way about an animal. Isaiah puts them in ruined cities beside Lilith, dancing and calling to one another, while elsewhere they are plainly objects of worship. They were possibly pictured as mixed goat and demon beings standing for a wrecked, inhospitable world, and the Leviticus ban looks like real polemic, likely postexilic, against an actual cult. DDD (B. Janowski) notes that the LXX and later Jewish sources read the *se'irim* straightforwardly as demons: the Septuagint renders them *daimonia*, and Sifre on Leviticus 17:7 glosses the word as *shedim*. The Leviticus 17:7 ban sits one chapter after the Day of Atonement's scapegoat, where a live goat is sent out to Azazel in the wilderness (Leviticus 16:8-28), and Heiser reads the desert, more than the animal, as what both texts turn on, since the wilderness was understood as the place such beings lived.",
+   "bibleRef": "Leviticus 17:7",
+   "strong": "H8163 (שָׂעִיר), 59 occ, nearly all ordinary goats",
+   "note": "Goat demons. Leviticus 17:7 forbids sacrificing to them, an odd law to write about an animal. Isaiah puts them in ruined cities beside Lilith, dancing and calling to one another, while elsewhere they are plainly objects of worship. They were possibly pictured as mixed goat and demon beings standing for a wrecked, inhospitable world, and the Leviticus ban looks like real polemic, likely postexilic, against an actual cult. DDD (B. Janowski) notes that the LXX and later Jewish sources read the *se'irim* straightforwardly as demons: the Septuagint renders them *daimonia*, and Sifre on Leviticus 17:7 glosses the word as *shedim*. The Leviticus 17:7 ban sits one chapter after the Day of Atonement's scapegoat, where a live goat is sent out to Azazel in the wilderness (Leviticus 16:8-28), and Heiser reads the desert, more than the animal, as what both texts turn on, since the wilderness was understood as the place such beings lived.",
+   "dissent": "Goats or demons. Most current English versions give wild goats at Isaiah 13:21 (NIV, ESV, CSB, NLT, NET), and the word is an ordinary goat in nearly all of its 59 uses. The demon reading rests on Leviticus 17:7's sacrifice ban, the Septuagint's daimonia and Sifre's shedim. The KJV and JPS 1917 split the difference with satyrs.",
+   "refs": [
+    "Leviticus 17:7",
+    "2 Chronicles 11:15",
+    "Isaiah 13:21",
+    "Isaiah 34:14"
+   ],
+   "related": [
+    "azazel",
+    "shedim",
+    "lilith"
+   ],
    "sources": [
     "B. Janowski, \"Satyrs,\" DDD, 732",
-    "Heiser, *Unseen Realm*, 176-178 (on Azazel and the wilderness), note-to-build: missing from entities.json"
+    "Bible Hub, Isaiah 13:21 parallel versions",
+    "Heiser, *Unseen Realm*, 176-178 (on Azazel and the wilderness)"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Lilith",
@@ -2387,20 +3426,24 @@
    "strong": "H3917 (לִילִית), 1 occ",
    "note": "One occurrence, in a list of desert creatures living in Edom's ruins. English versions render it night creature, screech owl, or night monster, and the Vulgate keeps *lamia*. The Talmudic Lilith material is specific and separate from the Ben Sira legend below. Eruvin 100b and Niddah 24b describe her as a demon with long hair and wings, Shabbat 151b warns a man not to sleep alone in a house in case Lilith finds him, and Bava Batra 73a makes her the daughter of Ahriman, the Zoroastrian opponent of Ohrmazd, the same Persian dualism that reshaped Satan and the devil in this period. None of these passages give her an origin as Adam's equal; that detail belongs to Ben Sira alone.",
    "ane": "A Mesopotamian night demon attested well before Isaiah, with roots in the third millennium BC and in the Sumerian *lil*, \"wind\" or \"spirit.\" The Babylonian Lilitu was a female spirit unable to bear children who poisoned infants from her breasts, associated with storm winds and with escaping houses through windows, and amulets and records show real popular fear of the *lilu*, a class of malevolent demons believed to attack infants and mothers in childbirth. DDD (M. Hutter) traces the figure to the Sumerian epic \"Gilgamesh, Enkidu and the Netherworld.\" Inanna plants a tree meaning to make a throne and a bed from it, but a snake nests in its roots, the Anzu bird settles in its crown, and the demon *ki-sikil-lil-la* makes her home in the trunk, so Gilgamesh has to cut the tree down to clear all three out. From the Middle Babylonian period on, Lilitu was merged with Lamashtu, the child-killing demon, and the ancient versions translate Isaiah 34:14 accordingly: the LXX has *onokentauros*, a donkey-centaur (echoing amulets that show Lamashtu standing on a donkey), Aquila transliterates \"Lilith,\" and Symmachus and Jerome's Vulgate both give *lamia*, which Jerome's commentary glosses as an Erinys, a Greek fury.",
+   "dissent": "Animal or demon. English versions give night creature, screech owl or night monster, which keeps the verse inside a list of wild animals. The demon reading leans on the Mesopotamian Lilitu, which DDD's Hutter traces back to the Sumerian Gilgamesh material, and on Aquila keeping the name and Symmachus and the Vulgate giving lamia. One occurrence cannot settle it.",
    "invented": "Everything about Adam's first wife. That story comes from the Alphabet of Ben Sira, a medieval work that Eli Yassif, who produced its critical edition, places among the Jews of Abbasid Iraq in the ninth and tenth centuries. It was revised repeatedly, survives in more than a hundred manuscripts, and reached print only much later, at Constantinople and then Venice in 1544, and it isn't in Isaiah, the Talmud's Lilith passages, or any ancient Jewish source in that form. In it Lilith is created from the earth alongside Adam as his equal, refuses sexual subservience, speaks the divine Name, and flies off to the Sea of Reeds; when angels come to bring her back she says she would rather be a demon, and God makes Eve instead. It is a medieval recasting of the old Mesopotamian night demon as a figure of primordial rebellion.",
    "refs": [
     "Isaiah 34:14"
+   ],
+   "related": [
+    "seirim",
+    "lilith-adams-first-wife",
+    "shedim"
    ],
    "sources": [
     "Christian M. M. Brady, \"Lilith,\" Eerdmans Dictionary of the Bible, 810",
     "M. Hutter, DDD s.v. \"Lilith,\" 520-521",
     "Eli Yassif, \"Alphabet of Ben Sira,\" *Encyclopedia of the Bible and Its Reception* 1 (Berlin: de Gruyter, 2009), cols. 876-878",
-    "Eli Yassif, *Sippurei Ben Sira bi-Yemei ha-Beinayim* (critical edition",
-    "Jerusalem: Magnes, 1984)",
-    "David Stern and Mark Jay Mirsky, eds., *Rabbinic Fantasies* (Yale Judaica Series, 1998), for an English translation of the Lilith passage, note-to-build: missing from entities.json"
+    "Eli Yassif, *Sippurei Ben Sira bi-Yemei ha-Beinayim* (critical edition; Jerusalem: Magnes, 1984)",
+    "David Stern and Mark Jay Mirsky, eds., *Rabbinic Fantasies* (Yale Judaica Series, 1998), for an English translation of the Lilith passage"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The dragon",
@@ -2423,23 +3466,29 @@
     "Ezekiel 29:3",
     "Ezekiel 32:2"
    ],
+   "related": [
+    "the-ancient-serpent",
+    "satan-ho-satanas",
+    "leviathan",
+    "the-third-of-the-angels"
+   ],
    "sources": [
     "J. W. van Henten, \"Dragon,\" DDD, 265-266"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The ancient serpent",
    "id": "the-ancient-serpent",
    "summary": "The talking serpent of Eden, which the New Testament identifies with Satan though Genesis never does.",
-   "plain": "**Genesis never calls the serpent Satan.** That connection is made in the New Testament and read back. What keeps Genesis 3 from being a story about a talking animal is the Hebrew word itself, which plays across serpent, shining one and diviner at the same time.",
+   "plain": "**Genesis never calls the serpent Satan.** That connection is made in the New Testament and read back. Heiser reads the Hebrew word as playing across serpent, shining one and diviner at the same time, which would make this more than a talking animal. Readers who take it as a snake that talks have the plain noun on their side.",
    "category": "contested",
    "group": "demon",
    "testament": "Both",
    "bibleRef": "Genesis 3:1-15",
    "strong": "G3789 (ὄφις), 14 occ",
-   "note": "Genesis 3 never names the serpent as Satan; the New Testament makes that identification, and the *nachash* wordplay (serpent, shining one, diviner) is what keeps the Genesis text from being a talking-animal story. Revelation 12:9 gives the figure two functions, slanderer and deceiver, which the Greek titles devil and Satan simply name, and both go back to what the serpent does in Genesis 3. DDD (R. S. Hendel) reads the Eden serpent as a trickster who blurs the lines between animal, human, and divine. He is classed as an animal (Genesis 3:1) yet has human speech, and unlike the humans he deceives he already knows what God confirms afterward, that eating the fruit won't kill them but will open their eyes (Genesis 3:22). DDD also flags that Genesis 3:20 calls the woman \"mother of all living\" right after the serpent scene, a formula that elsewhere in the ancient Near East is a goddess epithet, possibly a deliberate echo of the serpent's known association with a nude goddess in Canaanite iconography, probably Asherah. Even elsewhere in the New Testament the identification of serpent with Satan isn't automatic: John 3:14-15 uses the bronze serpent of Numbers 21 as a positive picture of Christ lifted up, the opposite value from Revelation's use of the same animal.",
+   "note": "Genesis 3 never names the serpent as Satan; the New Testament makes that identification, and Heiser reads the *nachash* wordplay (serpent, shining one, diviner) as what keeps the Genesis text from being a talking-animal story. Revelation 12:9 gives the figure two functions, slanderer and deceiver, which the Greek titles devil and Satan simply name, and both go back to what the serpent does in Genesis 3. DDD (R. S. Hendel) reads the Eden serpent as a trickster who blurs the lines between animal, human, and divine. He is classed as an animal (Genesis 3:1) yet has human speech, and unlike the humans he deceives he already knows what God confirms afterward, that eating the fruit won't kill them but will open their eyes (Genesis 3:22). DDD also flags that Genesis 3:20 calls the woman \"mother of all living\" right after the serpent scene, a formula that elsewhere in the ancient Near East is a goddess epithet, possibly a deliberate echo of the serpent's known association with a nude goddess in Canaanite iconography, probably Asherah. Even elsewhere in the New Testament the identification of serpent with Satan isn't automatic: John 3:14-15 uses the bronze serpent of Numbers 21 as a positive picture of Christ lifted up, the opposite value from Revelation's use of the same animal.",
+   "dissent": "What kind of serpent. Heiser reads the nachash as a divine being, with the word playing on serpent, shining one and diviner. Hendel's DDD article reads a trickster who blurs animal, human and divine without making him Satan. A plain reading has a snake that talks, classed with the animals in Genesis 3:1. The identification with Satan is the New Testament's, and John 3:14-15 uses a serpent as a picture of Christ.",
    "refs": [
     "Genesis 3:1-15",
     "2 Corinthians 11:3",
@@ -2449,13 +3498,39 @@
     "Genesis 3:20",
     "John 3:14-15"
    ],
+   "related": [
+    "the-dragon",
+    "satan-ho-satanas",
+    "seraphim"
+   ],
    "sources": [
     "G. K. Beale and Sean M. McDonough, \"Revelation,\" Commentary on the NT Use of the OT, 1125",
     "Heiser, *Unseen Realm*, ch. 10",
     "R. S. Hendel, DDD s.v. \"Serpent,\" 744-747"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-3-1-15/",
+     "n": "Genesis 3:1-15",
+     "s": "The nachash in the garden, and the sentence passed on it.",
+     "r": "Genesis 3:1-15"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-2-25-3-1/",
+     "n": "Genesis 2:25-3:1",
+     "s": "Naked, and not ashamed. Then: the serpent was more crafty. Two words that are near-twins in Hebrew.",
+     "r": "Genesis 2:25-3:1"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-3-15a/",
+     "n": "Genesis 3:15a",
+     "s": "He shall bruise thy head. The Hebrew pronoun is unambiguously masculine, singular, he.",
+     "r": "Genesis 3:15"
+    }
+   ]
   },
   {
    "title": "The beast from the sea",
@@ -2475,13 +3550,25 @@
     "Job 40:15-24",
     "Daniel 7:12"
    ],
+   "related": [
+    "the-beast-from-the-earth-the-false-prophet",
+    "the-dragon",
+    "the-son-of-man"
+   ],
    "sources": [
     "Heiser Revelation material",
     "B. F. Batto, DDD s.v. \"Behemoth,\" 165",
     "G. K. Beale, *The Book of Revelation*, 684-685"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/daniel-7-9-14/",
+     "n": "Daniel 7:9-14",
+     "s": "Thrones are set in place, plural, the court sits, and one like a son of man comes on the clouds.",
+     "r": "Daniel 7:9-14"
+    }
+   ]
   },
   {
    "title": "The beast from the earth / the false prophet",
@@ -2500,12 +3587,15 @@
     "Revelation 20:10",
     "Revelation 14:8"
    ],
+   "related": [
+    "the-beast-from-the-sea",
+    "the-dragon"
+   ],
    "sources": [
     "G. K. Beale, *The Book of Revelation*",
     "B. F. Batto, DDD s.v. \"Behemoth,\" 165"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The man of lawlessness",
@@ -2517,17 +3607,21 @@
    "testament": "NT",
    "bibleRef": "2 Thessalonians 2:3-12",
    "note": "Paul says his readers know what restrains him and doesn't say what it is, and nobody since has been able to say for certain. DDD (L. J. Lietaert Peerbolte) keeps one point straight: the word \"antichrist\" occurs only in the Johannine letters (1 John 2:18,22; 4:3; 2 John 7), never in 2 Thessalonians or Revelation, and the developed tradition of a single Antichrist familiar from later Christian writing isn't attested in full before Irenaeus, around AD 180. Paul's man of lawlessness is better described as a future anti-God figure than as the Antichrist of the later technical sense. John's letters use the word for the spirit of the writer's present opponents, already active and plural (\"many antichrists have come,\" 1 John 2:18), not for one end-time individual, and 2 Thessalonians uses the Lawless One's still-future coming to argue that the end hasn't arrived, the opposite point from the one John and Revelation make with their villains. DDD also flags the Qumran pairing of Melchizedek and Melchiresha (4Q280-282; 4QAmram) as the nearest structural parallel outside the New Testament to a christ and antichrist typology.",
+   "dissent": "Who he is and what holds him back. Paul names neither, and nobody since has settled the restrainer. DDD separates Paul's figure from the later Antichrist tradition, which is not attested in full before Irenaeus, and from John's antichrists, who are already present and plural. Reading the three as one figure is a later synthesis.",
    "refs": [
     "2 Thessalonians 2:3-12",
     "1 John 2:18,22",
     "1 John 4:3",
     "2 John 7"
    ],
+   "related": [
+    "belial-beliar",
+    "the-beast-from-the-sea"
+   ],
    "sources": [
     "L. J. Lietaert Peerbolte, DDD s.v. \"Antichrist,\" 62"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The ruler of this world",
@@ -2546,13 +3640,17 @@
     "1 John 5:19",
     "Luke 4:6"
    ],
+   "related": [
+    "the-god-of-this-age",
+    "the-prince-of-the-power-of-the-air",
+    "satan-ho-satanas"
+   ],
    "sources": [
     "Heiser, *Unseen Realm*, ch. 32",
     "G. J. Riley, DDD s.v. \"Devil,\" 244-248",
     "DDD s.v. \"Aion,\" 14 (on the Ignatian parallels)"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The prince of the power of the air",
@@ -2567,13 +3665,25 @@
    "refs": [
     "Ephesians 2:2"
    ],
+   "related": [
+    "the-ruler-of-this-world",
+    "the-god-of-this-age",
+    "archai-exousiai-thronoi-kyriotetes"
+   ],
    "sources": [
     "Arnold, *Powers of Darkness*",
     "DDD s.v. \"Aion,\" 14",
     "G. J. Riley, DDD s.v. \"Devil,\" 244-248"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    }
+   ]
   },
   {
    "title": "The god of this age",
@@ -2588,20 +3698,23 @@
    "refs": [
     "2 Corinthians 4:4"
    ],
+   "related": [
+    "the-ruler-of-this-world",
+    "the-prince-of-the-power-of-the-air"
+   ],
    "sources": [
     "Comfort, *Encountering the Manuscripts*, 229-230",
     "Brown, Twist, and Widder, *2 Corinthians*, Logos Research Commentaries",
     "DDD s.v. \"Archon,\" 82-84",
     "G. J. Riley, DDD s.v. \"Devil,\" 244-248"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Archai, exousiai, thronoi, kyriotetes",
    "id": "archai-exousiai-thronoi-kyriotetes",
    "summary": "Paul's vocabulary for ranks of cosmic powers: rulers, authorities, thrones, dominions.",
-   "plain": "Rulers, authorities, thrones, dominions: Paul's vocabulary for ranks of cosmic powers. **Colossians has Christ creating them in one chapter and disarming them in the next**, which tells you they are real beings that went wrong rather than metaphors for human institutions.",
+   "plain": "Rulers, authorities, thrones, dominions: Paul's vocabulary for ranks of cosmic powers. **Colossians has Christ creating them in one chapter and disarming them in the next**, which most readers take to mean real beings that went wrong. Others read the same words as Paul's name for human institutions and the forces behind them, and that argument is laid out below.",
    "category": "explicit",
    "group": "demon",
    "testament": "NT",
@@ -2620,6 +3733,11 @@
     "1 Peter 3:22",
     "Colossians 2:10"
    ],
+   "related": [
+    "stoicheia",
+    "the-prince-of-the-power-of-the-air",
+    "the-princes-of-persia-and-greece"
+   ],
    "sources": [
     "John Anthony Dunne, \"Principalities and Powers,\" *Lexham Bible Dictionary*",
     "Heiser, \"Principalities and Powers,\" Dictionary of Paul and His Letters, 860",
@@ -2630,7 +3748,20 @@
     "M. de Jonge, DDD s.v. \"Thrones,\" 864-865"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ephesians-6-10-12/",
+     "n": "Ephesians 6:10-12",
+     "s": "The struggle is not against flesh and blood but against rulers, authorities, and cosmic powers.",
+     "r": "Ephesians 6:10-12"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/1-peter-3-18-22/",
+     "n": "1 Peter 3:18-22",
+     "s": "Christ proclaims to the spirits in prison, the ones disobedient in the days of Noah.",
+     "r": "1 Peter 3:18-22"
+    }
+   ]
   },
   {
    "title": "Stoicheia",
@@ -2643,35 +3774,44 @@
    "bibleRef": "Galatians 4:3",
    "strong": "G4747 (στοιχεῖα), 7 occ",
    "note": "Elements, basic principles, elemental spirits. In Hebrews it plainly means rudiments, and in Galatians it stands in parallel with beings that by nature are not gods, so the word does different jobs in the same canon. Colossians 2's two occurrences (2:8,20) sit among statements about spiritual beings, which is the strongest case for Arnold's hostile-powers reading, and the angels tied to the Law in Galatians 3:19-20 are the argument for carrying it into Galatians 4. DDD (L. J. Alderink) sets out the word's technical sense in Greek philosophy before Paul: Empedocles, Plato, and Aristotle used *stoicheia* for the four physical elements (earth, water, air, fire), the basic constituents of every object, and the Stoics built a cosmology on them in which the soul itself passes through the elements at death. On Galatians 4:3,9 DDD prefers the philosophical sense, since nothing in Paul's wording requires angels or demons, and it still lets the elements act as powers, the way Empedocles wrote of their power and Philo called them forces. On Colossians 2:8,20 it leaves the question open. Hebrews 5:12 it never reaches, and there the sense is plainly elementary teaching.",
+   "dissent": "Elements or spirits. Arnold reads the stoicheia of Galatians 4 as evil spirits, on the strength of Colossians 2 and the angels of Galatians 3:19. DDD's Alderink prefers the philosophical sense, the four elements, for Galatians, while still letting the elements act as powers, and leaves Colossians open. Hebrews 5:12 is plainly elementary teaching on any reading.",
    "refs": [
     "Galatians 4:3,9",
     "Colossians 2:8,20",
     "Hebrews 5:12",
     "2 Peter 3:10,12"
    ],
+   "related": [
+    "archai-exousiai-thronoi-kyriotetes",
+    "the-elohim-of-psalm-82"
+   ],
    "sources": [
     "John Anthony Dunne, \"Principalities and Powers,\" *Lexham Bible Dictionary*",
     "Arnold, \"Returning to the Domain of the Powers: Stoicheia as Evil Spirits in Galatians 4:3, 9,\" *Novum Testamentum* 38:1 (1996): 55-76",
     "L. J. Alderink, DDD s.v. \"Stoicheia,\" 815-817"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Legion",
    "id": "legion",
    "summary": "The demon who gives his name as a number, in the story that ends with the pigs.",
-   "plain": "Asked for his name, the demon answers with a number. **The scene happens across the lake in the Decapolis**, the territory the Enochic tradition ties to the spirits of the dead giants, so the geography is carrying part of the argument. Then come the pigs.",
+   "plain": "Asked for his name, the demon answers with a number. **The scene happens across the lake in the Decapolis.** Heiser ties that territory to the Enochic tradition about the spirits of the dead giants and reads the geography as part of the argument; that link is his reading, not something Mark says. Then come the pigs.",
    "category": "explicit",
    "group": "demon",
    "testament": "NT",
    "bibleRef": "Mark 5:1-20",
    "note": "A name given as a number, in the Decapolis, across the lake, in the region the Enochic tradition ties to the territory of the giants' spirits. The pigs and the drowning are the scene; the geography carries the argument.",
    "secondTemple": "1 Enoch 15:8-12 explains demons as the disembodied spirits of the dead giants, the framework Mark's audience would have had. At death the giants' spirits come out of their bodies to plague humankind, and they are set apart from heavenly spirits whose proper home is heaven. The geography sharpens it. Bashan's ancient boundaries match the area where Jesus performs this exorcism, and Second Temple Jews understood the demons there as Watcher-spirits released at the death of the ancient Nephilim and Rephaim; the Dead Sea Scrolls call them \"bastard spirits,\" the hybrid offspring of Genesis 6:1-4. In Jubilees 10, Mastema, leader of the evil spirits, bargains to keep a tenth of the demons active on earth under his command (\"if none of them is left for me I shall not be able to exercise the authority of my will among humankind\"), God grants it, and the other nine-tenths go to the place of judgment, a different Second Temple accounting of the problem Legion embodies. This Enoch and Jubilees reading of Genesis 6:1-4 became the standard lens carried into the New Testament period, and a recent ICC commentary on 1 Peter traces the same Watcher framework through the \"spirits in prison\" of 1 Peter 3:19-20, reading them against this Second Temple material instead of as an isolated image.",
+   "stQuote": "1 Enoch 15:8-9",
    "dissent": "DDD's Legion article (H. D. Betz) doesn't use the giants'-spirits framework at all and reads the name through anti-Roman polemic. A legion was the largest unit of the Roman army, and the story has Legion's cohorts drowned along with two thousand pigs, an image DDD calls an obvious, deliberate insult to the occupation. DDD also traces a later Jewish magical tradition in the Testament of Solomon (11:1-6), where the demon reveals that his true name isn't Legion but \"the Lion-Shaped Demon, an Arab by descent,\" with Legion describing his function, \"the name for all demons which are under me.\" The Gospel text supports the demonological reading without ruling out the political one DDD favors.",
    "refs": [
     "Mark 5:1-20",
     "Luke 8:26-39"
+   ],
+   "related": [
+    "daimonion",
+    "rephaim"
    ],
    "sources": [
     "Heiser, *Demons*, 138-139",
@@ -2679,14 +3819,19 @@
     "Emily J. Thomassen, \"Jesus' Journey into Gentile Territories,\" Lexham Geographic Commentary on the Gospels, 253",
     "Oxford Dictionary of the Christian Church, 477",
     "David Horrell and Travis B. Williams, *A Critical and Exegetical Commentary on 1 Peter 3-5*, ICC, 2:219-220",
-    "Archie T. Wright, *The Origin of Evil Spirits: The Reception of Genesis 6:1-4 in Early Jewish Literature* (WUNT 198, Mohr Siebeck, 2013) [Wright's book isn't in the Logos library or the vault",
-    "the reception-history argument here is sourced to other scholarship covering the same ground]",
+    "Archie T. Wright, *The Origin of Evil Spirits: The Reception of Genesis 6:1-4 in Early Jewish Literature* (WUNT 198, Mohr Siebeck, 2013), not checked directly; the reception-history argument rests on the other sources listed",
     "Stuckenbruck, \"Giant Mythology and Demonology\"",
-    "H. D. Betz, DDD s.v. \"Legion,\" 507-508, note-to-build: missing from entities.json"
+    "H. D. Betz, DDD s.v. \"Legion,\" 507-508"
    ],
    "post": null,
-   "related": [],
-   "stQuote": "1 Enoch 15:8-9"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/mark-5-1-20/",
+     "n": "Mark 5:1-20",
+     "s": "Legion, in Gentile territory east of the lake, begging not to be sent to the abyss.",
+     "r": "Mark 5:1-20"
+    }
+   ]
   },
   {
    "title": "Abaddon / Apollyon",
@@ -2708,33 +3853,70 @@
     "Proverbs 27:20",
     "Job 31:12"
    ],
+   "related": [
+    "death-and-hades",
+    "the-destroyer"
+   ],
    "sources": [
-    "M. Hutter, DDD s.v. \"Abaddon,\" 1, note-to-build: both currently `kind: person`"
+    "M. Hutter, DDD s.v. \"Abaddon,\" 1"
    ],
    "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/sheol/",
+     "n": "sheol",
+     "s": "The realm of the dead. Not hell, and not nothing.",
+     "r": "Genesis 37:35"
+    }
+   ]
   },
   {
    "title": "Death and Hades",
    "id": "death-and-hades",
    "summary": "Death and the grave, treated in Revelation as figures who ride and get thrown into fire.",
-   "plain": "Death and the grave get handed a horse to ride, and later get thrown into the lake of fire. **That is an odd fate for an abstraction.** Paul calls death the last enemy to be destroyed, which reads the same way.",
+   "plain": "Death and the grave get handed a horse to ride, and later get thrown into the lake of fire. **Is that a person being punished, or a picture of death coming to an end?** Paul calls death the last enemy to be destroyed, which can be read either way.",
    "category": "contested",
    "group": "demon",
    "testament": "NT",
    "bibleRef": "1 Corinthians 15:26",
-   "note": "Given a horse to ride and then thrown into the lake of fire, a strange fate for an abstraction. Paul calls death the last enemy to be destroyed. DDD (J. N. Bremmer) is frank about how little of the Greek god survives in the Bible's usage. Hades in Greek myth is a specific and nearly cultless deity (only Elis worshipped him in a temple), best known for abducting Persephone, and none of that mythology carries over. In the Septuagint *Hades* occurs 111 times, almost always as the standard translation of Sheol, and DDD explains the personified Death that rides a horse or is thrown into the lake of fire (1 Corinthians 15:55 in some manuscripts; Revelation 6:8; 20:13-14) as a continuation of the Old Testament's own personification of Death, Mot, more than any trace of the Greek god.",
+   "note": "Given a horse to ride and then thrown into the lake of fire. Paul calls death the last enemy to be destroyed. DDD (J. N. Bremmer) is frank about how little of the Greek god survives in the Bible's usage. Hades in Greek myth is a specific and nearly cultless deity (only Elis worshipped him in a temple), best known for abducting Persephone, and none of that mythology carries over. In the Septuagint *Hades* occurs 111 times, almost always as the standard translation of Sheol, and DDD explains the personified Death that rides a horse or is thrown into the lake of fire (1 Corinthians 15:55 in some manuscripts; Revelation 6:8; 20:13-14) as a continuation of the Old Testament's own personification of Death, Mot, more than any trace of the Greek god.",
+   "dissent": "Figure or figure of speech. DDD's Bremmer explains the riding and burning Death of Revelation as the Old Testament's own personification of Death continued, with almost nothing of the Greek god Hades carried over. Reading Death and Hades as beings takes the same scenes more literally. Paul's last enemy is open to both.",
    "refs": [
     "1 Corinthians 15:26,55",
     "Revelation 1:18",
     "Revelation 6:8",
     "Revelation 20:13-14"
    ],
+   "related": [
+    "mot",
+    "abaddon-apollyon"
+   ],
    "sources": [
     "J. N. Bremmer, DDD s.v. \"Hades,\" 382"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/matthew-16-13-20/",
+     "n": "Matthew 16:13-20",
+     "s": "Caesarea Philippi, the gates of Hades, and the confession.",
+     "r": "Matthew 16:13-20"
+    }
+   ],
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/mavet/",
+     "n": "mavet",
+     "s": "Death. Also personified, and paired with Sheol in the poetry.",
+     "r": "Deuteronomy 30:19"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/sheol/",
+     "n": "sheol",
+     "s": "The realm of the dead. Not hell, and not nothing.",
+     "r": "Genesis 37:35"
+    }
+   ]
   },
   {
    "title": "The four angels of the Euphrates",
@@ -2752,12 +3934,15 @@
     "Isaiah 11:15",
     "2 Esdras 13:39-47"
    ],
+   "related": [
+    "the-watchers-enochic",
+    "abaddon-apollyon"
+   ],
    "sources": [
     "Nickelsburg on the binding tradition",
-    "K. van der Toorn, DDD s.v. \"Euphrates,\" 314-315 ---"
+    "K. van der Toorn, DDD s.v. \"Euphrates,\" 314-315"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Lucifer",
@@ -2765,6 +3950,7 @@
    "summary": "Not a name and not Satan: a Latin word for the morning star, used of a Babylonian king.",
    "plain": "**Lucifer is not a name and never was.** It is an ordinary Latin word for the morning star, used by the Vulgate to translate a Hebrew phrase meaning shining one, son of Dawn. The passage is addressed to a Babylonian king. Capitalizing the Latin common noun into somebody's name is where the whole thing starts.",
    "category": "not-a-being",
+   "group": "demon",
    "testament": "OT",
    "frame": "divine council (Heiser)",
    "bibleRef": "Isaiah 14:12",
@@ -2775,6 +3961,11 @@
     "Isaiah 14:12,13",
     "Job 38:7"
    ],
+   "related": [
+    "shahar-and-shalem",
+    "satan-ho-satanas",
+    "the-third-of-the-angels"
+   ],
    "sources": [
     "John H. Walton and J. Harvey Walton, *Demons and Spirits in Biblical Theology*, 218-219",
     "Walton, *Old Testament Theology for Christians*, 201-202",
@@ -2782,10 +3973,17 @@
     "Page, \"The Astral Revolt,\" PhD diss., Harvard, 1990",
     "Heiser, *Unseen Realm*, ch. 11",
     "Walton, IVP Bible Background Commentary: OT, on Isaiah 14:12-13 and Ezekiel 28:16-17",
-    "W. G. E. Watson, DDD s.v. \"Helel,\" 392-393, note-to-build: missing from entities.json"
+    "W. G. E. Watson, DDD s.v. \"Helel,\" 392-393"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/isaiah-14-12-15/",
+     "n": "Isaiah 14:12-15",
+     "s": "Helel ben-shachar, shining one, son of the dawn, falls from heaven.",
+     "r": "Isaiah 14:12-15"
+    }
+   ]
   },
   {
    "title": "Satan the worship leader",
@@ -2793,6 +3991,7 @@
    "summary": "The belief that Satan ran music in heaven, built on one obscure verse about stone settings.",
    "plain": "The belief that Satan ran the music in heaven **rests on one obscure verse about settings for stones**, which the King James rendered with tabrets and pipes. Even reading those as instruments, an instrument is not a job title.",
    "category": "not-a-being",
+   "group": "demon",
    "testament": "OT",
    "bibleRef": "Ezekiel 28:13",
    "note": "The KJV's \"tabrets\" and \"pipes,\" read as a musical office in heaven. The Hebrew is obscure and concerns settings for stones; the instrument reading is one option among several, and it carries no job description with it. One older critical reading separates \"and gold\" from the preceding list of stones and renders the line as the workmanship of settings and grooves for gems, with no music at all, so the meaning of the text is uncertain and not settled in the instruments' favor. The list of precious stones (v. 13) parallels the twelve stones of the high priest's breastplate (Exodus 28:17-20; 39:10-13), not an inventory of instruments. DDD and Walton both identify the figure beneath the oracle as Melqart, patron god of Tyre. The prince of Tyre claims equality with him (Ezekiel 28:2), and the precious stones (v. 12), the fire he walks among (v. 14), and the fire that consumes him (v. 18) echo Melqart's cult, including Nonnos of Panopolis's description of the god's star-studded robe and the Phoenician tradition of Melqart burned and buried in Tyre (DDD s.v. \"Melqart,\" 563-564; Walton, IVP Bible Background Commentary: OT, on Ezekiel 28:2,12-14). Reading this as Satan's biography has no textual warrant beyond surface imagery. Satan is never called a cherub or paired with one anywhere in Scripture, and \"Satan\" doesn't exist as a personal name for a chief of demons until roughly the second century BC, centuries after Ezekiel. Calvin rejected the same Satan reading of Isaiah 14 outright (Walton, IVP Bible Background Commentary: OT, on Ezekiel 28:16-17).",
@@ -2802,6 +4001,11 @@
     "Exodus 28:17-20",
     "Exodus 39:10-13"
    ],
+   "related": [
+    "cherubim",
+    "satan-ho-satanas",
+    "lucifer"
+   ],
    "sources": [
     "A. B. Davidson, *The Book of the Prophet Ezekiel*, Cambridge Bible for Schools and Colleges, 206",
     "DDD s.v. \"Melqart,\" 563-564",
@@ -2809,7 +4013,14 @@
     "Heiser, *Unseen Realm*, ch. 11"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/ezekiel-28-11-19/",
+     "n": "Ezekiel 28:11-19",
+     "s": "A guardian cherub in Eden, on the holy mountain, cast out for pride.",
+     "r": "Ezekiel 28:11-19"
+    }
+   ]
   },
   {
    "title": "Mammon",
@@ -2817,6 +4028,7 @@
    "summary": "An Aramaic word for money that Jesus personified, later mistaken for a demon.",
    "plain": "An Aramaic word for money. **Jesus personifies it as a rival master you cannot serve alongside God**, which is a way of talking, not a demon. Nobody in the ancient world worshipped a god called Mammon.",
    "category": "not-a-being",
+   "group": "demon",
    "testament": "NT",
    "bibleRef": "Matthew 6:24",
    "strong": "G3126 (μαμωνᾶς), 4 occ",
@@ -2825,25 +4037,37 @@
     "Matthew 6:24",
     "Luke 16:9,11,13"
    ],
-   "sources": [
-    "DDD s.v. \"Mammon,\" 542, note-to-build: missing from entities.json"
+   "related": [
+    "daimonion"
    ],
-   "post": null,
-   "related": []
+   "sources": [
+    "DDD s.v. \"Mammon,\" 542"
+   ],
+   "post": null
   },
   {
    "title": "Jehovah",
    "id": "jehovah",
    "summary": "Not a name anyone in the Bible used, but a misreading of God's name produced centuries later.",
-   "plain": "**Nobody in the Bible ever said this name.** It is God's four Hebrew consonants read with the vowels of a completely different word, a reminder to say Lord instead. Sixteenth-century Christian scholars mistook the reading aid for the word itself.",
+   "plain": "**Nobody in the Bible ever said this name.** It is God's four Hebrew consonants read with the vowels of a completely different word, a reminder to say Lord instead. Sixteenth-century Christian scholars mistook the reading aid for the word itself. The name underneath is real, and it has its own card, Yahweh.",
    "category": "not-a-being",
+   "group": "yahweh",
    "testament": "OT",
-   "note": "No one in Scripture used this name. It is the consonants of YHWH read with the vowels of *adonai*, a reading aid for a name not to be pronounced, taken for a word by sixteenth-century Christian Hebraists. DDD calls it exactly that, the Masoretic form: the consonants of one word carrying the vowels of another. The scholarly \"Yahweh\" is itself a reconstruction, resting on early Greek transliterations of the name in Clement of Alexandria (*Stromata* 5.6.34.5) and Epiphanius of Salamis (*Adv. Haer.* 1.3.40.5), and not on any form written or vocalized that way in the Hebrew text.",
+   "bibleRef": "Exodus 6:3",
+   "note": "No one in Scripture used this name. It is the consonants of YHWH read with the vowels of *adonai*, a reading aid for a name not to be pronounced, taken for a word by sixteenth-century Christian Hebraists. DDD calls it exactly that, the Masoretic form: the consonants of one word carrying the vowels of another. The scholarly \"Yahweh\" is itself a reconstruction, resting on early Greek transliterations of the name in Clement of Alexandria (*Stromata* 5.6.34.5) and Epiphanius of Salamis (*Adv. Haer.* 1.3.40.5), and not on any form written or vocalized that way in the Hebrew text. The King James Version prints the form JEHOVAH in four verses, Exodus 6:3, Psalm 83:18, Isaiah 12:2 and Isaiah 26:4, and prints LORD everywhere else.",
+   "refs": [
+    "Exodus 6:3",
+    "Psalm 83:18",
+    "Isaiah 12:2",
+    "Isaiah 26:4"
+   ],
+   "related": [
+    "yahweh"
+   ],
    "sources": [
     "DDD s.v. \"Yahweh,\" 910-919"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The third of the angels",
@@ -2851,6 +4075,7 @@
    "summary": "The claim that a third of the angels fell with Satan, which no passage actually reports.",
    "plain": "**No passage in Scripture reports a prehistoric angelic rebellion, and none gives a headcount.** The one third comes from a dragon's tail sweeping stars in a vision of the end, and the arithmetic gets carried backward to an event the Bible never narrates.",
    "category": "not-a-being",
+   "group": "demon",
    "testament": "NT",
    "bibleRef": "Revelation 12:4",
    "note": "The one-third comes from the dragon's tail sweeping the stars in a vision of the end, and no passage anywhere in Scripture narrates a prehistoric angelic rebellion with a casualty count. Stars stand for angelic beings elsewhere in Scripture (Judges 5:20; Daniel 8:10; 12:3; Revelation 1:20), so the swept stars of Revelation 12:4 belong to the same symbolic idiom and aren't a literal headcount. Origen already admitted the church had no settled teaching on how the demons originated, and he traced one competing view, that the devil \"induced many of the angels to fall away with him\" after his own apostasy, back to this verse (*De Principiis* pref. 6; compare Tatian, *Oratio ad Graecos* 20). DDD takes this as evidence that the tradition reasoned backward from Revelation 12:4 and wasn't reporting a remembered event (DDD s.v. \"Demon,\" 235-239).",
@@ -2861,12 +4086,24 @@
     "Daniel 12:3",
     "Revelation 1:20"
    ],
+   "related": [
+    "the-dragon",
+    "lucifer",
+    "the-watchers-enochic"
+   ],
    "sources": [
     "Heiser, *Unseen Realm*, on the fall traditions",
     "DDD s.v. \"Demon,\" 235-239"
    ],
    "post": null,
-   "related": []
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/jude-6-2-peter-2-4/",
+     "n": "Jude 6; 2 Peter 2:4",
+     "s": "Angels who abandoned their proper dwelling, held in chains until judgment.",
+     "r": "Jude 6; 2 Peter 2:4"
+    }
+   ]
   },
   {
    "title": "Lilith, Adam's first wife",
@@ -2874,16 +4111,20 @@
    "summary": "A medieval story, not a biblical one.",
    "plain": "**The story is medieval, not biblical.** It comes from the Alphabet of Ben Sira, written in Iraq somewhere around the ninth or tenth century. The argument now attached to it, about two different creation accounts, is more recent still.",
    "category": "not-a-being",
+   "group": "demon",
+   "testament": "OT",
    "bibleRef": "Isaiah 34:14",
    "note": "See the Lilith entry. The story is medieval, from the Alphabet of Ben Sira (ninth or tenth century, Abbasid Iraq, per Yassif), and the two-creation-accounts argument now attached to it is a modern addition. The Talmud already knows Lilith as a night demon centuries before that legend (Eruvin 100b; Niddah 24b; Shabbat 151b), and Bava Batra 73a makes her the daughter of Ahriman, the Zoroastrian adversary. Isaiah 34:14 is her only biblical mention, and even that is disputed in translation: the LXX renders her *onokentauros*, \"donkey-centaur,\" Aquila transliterates the name, and Symmachus and Jerome's Vulgate both give *lamia* (DDD s.v. \"Lilith,\" 520-521).",
    "refs": [
     "Isaiah 34:14"
    ],
+   "related": [
+    "lilith"
+   ],
    "sources": [
     "M. Hutter, DDD s.v. \"Lilith,\" 520-521"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "The Nephilim as extraterrestrials",
@@ -2891,6 +4132,8 @@
    "summary": "The claim that the giants of Genesis were aliens, which rests on mistranslated Sumerian.",
    "plain": "**Assyriologists reject this reading of the Sumerian texts on language grounds, not religious ones.** The words do not say what the claim needs them to say. The biblical material says less than the fringe version and more than the tidied-up version, and both halves of that are worth keeping.",
    "category": "not-a-being",
+   "group": "watcher",
+   "testament": "OT",
    "frame": "divine council (Heiser)",
    "bibleRef": "Genesis 6:1-4",
    "note": "Assyriologists reject Sitchin's reading of the Sumerian texts on lexical grounds, not theological ones. The biblical material says less than the fringe claims and more than the flattened reading allows, and the entry says both. Genesis 6:1-4 claims that the sons of God, read as divine beings in line with the heavenly council elsewhere in the Hebrew Bible (Psalms 29:1; 82:6; 89:6; Job 1-2; 1 Kings 22:19-22; Isaiah 6:1-8), married human women and produced the Nephilim, whom the LXX and Vulgate both render \"giants\" (*gigantes*); the Nephilim of Numbers 13:33, after the Flood, lose the semi-divine overtones and read as an ordinary, if exaggerated, ancient people of great size (DDD s.v. \"Nephilim,\" 618-619). Heiser frames Genesis 6:1-4 as a deliberate polemic against the Mesopotamian apkallu tradition of antediluvian divine sages, turning that story over point by point to warn Israel off it, and not a garbled memory of alien visitors (*Reversing Hermon*, ch. 1, 3). None of this is extraterrestrial contact, and none of it is merely folklore.",
@@ -2898,9 +4141,13 @@
     "Genesis 6:1-4",
     "Numbers 13:33"
    ],
+   "related": [
+    "nephilim",
+    "bene-elohim",
+    "the-watchers-enochic"
+   ],
    "sources": [
-    "Michael S. Heiser, \"The Myth of a Sumerian 12th Planet: 'Nibiru' According to the Cuneiform Sources\" (self-published paper, sitchiniswrong.com, written early 2003 while he was a PhD candidate at Wisconsin-Madison",
-    "not peer-reviewed)",
+    "Michael S. Heiser, \"The Myth of a Sumerian 12th Planet: 'Nibiru' According to the Cuneiform Sources\" (self-published paper, sitchiniswrong.com, written early 2003 while he was a PhD candidate at Wisconsin-Madison; not peer-reviewed)",
     "Heiser, \"The Myth of a 12th Planet in Sumero-Mesopotamian Astronomy: A Study of Cylinder Seal VA 243\" (self-published paper, sitchiniswrong.com)",
     "*Chicago Assyrian Dictionary* N/2, 145-147, s.v. *neberu* (the lexical evidence Heiser's paper rests on, as he cites it)",
     "B. Landsberger and J. V. Kinnier Wilson, \"The Fifth Tablet of Enuma Elish,\" *JNES* 20 (1961): 172ff.",
@@ -2909,26 +4156,34 @@
     "Dalley, *Myths from Mesopotamia*"
    ],
    "post": null,
-   "related": []
-  },
-  {
-   "title": "The ghost of Samuel",
-   "id": "the-ghost-of-samuel",
-   "summary": "The dead prophet called up by a medium, in a scene that terrifies the medium herself.",
-   "plain": "A medium calls up the dead prophet, **and the thing that frightens her is what actually comes up.** The narrator calls him Samuel, and the message he gives turns out to be accurate. The idea that a demon was impersonating him is a later attempt to tidy the scene.",
-   "category": "contested",
-   "testament": "OT",
-   "bibleRef": "1 Samuel 28:3-25",
-   "note": "The text says Samuel, the medium is terrified by what actually comes up, and the message delivered is accurate. The demonic-impersonation reading is a later harmonization and not what the narrator reports. The medium describes what she sees as *'elohim*, literally \"a god,\" coming up out of the earth (1 Samuel 28:13), and DDD treats the episode as a plain case of Israelite necromancy in which even the effectiveness of the conjuring is left intact by the editor (DDD s.v. \"Dead,\" 223). The ritual follows the standard ancient Near Eastern pattern for raising the dead through a pit, and nothing in the text says the woman was possessed or spoke in a trance. She conjures the spirit and reports what she sees and hears, which is not a medium in the modern channeling sense (Walton, IVP Bible Background Commentary: OT, on 1 Samuel 28:7-11). Saul recognizes Samuel by his prophet's robe (1 Samuel 28:14).",
-   "refs": [
-    "1 Samuel 28:3-25"
+   "xref": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/genesis-6-1-4/",
+     "n": "Genesis 6:1-4",
+     "s": "The sons of God take wives, and the Nephilim are in the earth.",
+     "r": "Genesis 6:1-4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/divine-council-index/numbers-13-33/",
+     "n": "Numbers 13:33",
+     "s": "The spies report the Nephilim, the sons of Anak, and call themselves grasshoppers.",
+     "r": "Numbers 13:33"
+    }
    ],
-   "sources": [
-    "DDD s.v. \"Dead,\" 223",
-    "Walton, IVP Bible Background Commentary: OT, on 1 Samuel 28:3-14"
-   ],
-   "post": null,
-   "related": []
+   "tdx": [
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-4/",
+     "n": "Genesis 6:4",
+     "s": "There were giants in the earth. The Hebrew word, Nephilim, does not itself mean giant.",
+     "r": "Genesis 6:4"
+    },
+    {
+     "u": "https://jayms.com/bible-study-tools-2/bible-translation-differences/genesis-6-2/",
+     "n": "Genesis 6:2",
+     "s": "The sons of God saw the daughters of men. The oldest reading takes sons of God as divine beings, not a human family line.",
+     "r": "Genesis 6:2"
+    }
+   ]
   },
   {
    "title": "Dagon the fish god",
@@ -2936,6 +4191,8 @@
    "summary": "The belief that the Philistine god was part fish, which comes from medieval wordplay.",
    "plain": "**The fish tail comes from a medieval pun, not from anything ancient.** A Hebrew word that sounds like the god's name means fish, a commentator ran with it, and the mermaid pictures followed. What the name actually means is still unresolved.",
    "category": "not-a-being",
+   "group": "national-god",
+   "testament": "OT",
    "bibleRef": "1 Samuel 5:1-7",
    "note": "See the Dagon entry. The fish etymology and the mermaid iconography both descend from medieval commentary on a Hebrew pun, and the etymology of Dagan or Dagon is unresolved, not settled toward \"fish.\" DDD calls the fish, grain, and storm etymologies all equally dubious and treats the fish reading as a secondary folk etymology. The fish tradition goes back to a specific textual crux. At 1 Samuel 5:4 the Masoretic Text's obscure *raq dagon nish'ar 'alayw*, \"only Dagon was left on him,\" was emended by Wellhausen to *dago*, \"his fish part,\" a reading anticipated by Jerome (who glosses the name *dag 'on*, \"fish of sorrow\") and later Jewish tradition, and BHS has now dropped the emendation. Dagan was a major Mesopotamian and West Semitic god well before the Philistines adopted him, attested from the third millennium BC at Ebla and Mari and identified at Ugarit as the father of Baal; the Philistines are the ones who shift the vowel from Dagan to Dagon.",
    "refs": [
@@ -2943,11 +4200,13 @@
     "Judges 16:23",
     "1 Chronicles 10:10"
    ],
+   "related": [
+    "dagon"
+   ],
    "sources": [
     "DDD s.v. \"Dagon,\" 216"
    ],
-   "post": null,
-   "related": []
+   "post": null
   },
   {
    "title": "Easter from Ishtar",
@@ -2955,25 +4214,23 @@
    "summary": "The claim that Easter is named after a Babylonian goddess, which fails as word history.",
    "plain": "**This is a claim about word history, and word history is where it fails.** The English name comes from an old spring month. Almost every other language calls the feast some form of Pascha, which is Passover. The Ishtar chain traces back to one nineteenth-century book.",
    "category": "not-a-being",
+   "group": "national-god",
+   "testament": "OT",
    "bibleRef": "Jeremiah 7:18",
    "note": "A claim about etymology, not about a being, and it fails as etymology. The English word descends from a spring month name, and most languages call the feast some form of *Pascha*. The chain runs through Hislop's *The Two Babylons*, and it fails a second way as well: DDD confirms that Ishtar is never named as a deity anywhere in the Bible, and the only proposed biblical traces are the name Esther (a disputed derivation) and a possible allusion in the title Queen of Heaven (Jeremiah 7:18; 44:17-19,25) (DDD s.v. \"Ishtar,\" 452-455). Heiser, Walton, and DDD's Dagan, Astarte, and Ishtar articles never connect Easter to Ishtar at all, and nothing in the local library supports the popular chain.",
    "refs": [
     "Jeremiah 7:18",
     "Jeremiah 44:17-19,25"
    ],
+   "related": [
+    "the-queen-of-heaven",
+    "ashtoreth-astarte"
+   ],
    "sources": [
     "Bede, *De temporum ratione*, on the month name",
-    "DDD s.v. \"Ishtar,\" 452-455 ---"
+    "DDD s.v. \"Ishtar,\" 452-455"
    ],
-   "post": null,
-   "related": []
+   "post": null
   }
- ],
- "reading": {
-  "src": "https://raw.githubusercontent.com/sixcore-droid/interlinear-data/main/witness-texts.json",
-  "credit": "R.H. Charles, 1917, and the public-domain translations behind each work."
- },
- "wordStudy": {
-  "url": "https://jayms.com/bible-study-tools-2/bible-word-study-tool/#id={n}"
- }
+ ]
 }

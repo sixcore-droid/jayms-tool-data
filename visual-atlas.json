@@ -1,0 +1,847 @@
+{
+ "schema": 1,
+ "tool": {
+  "slug": "visual-atlas",
+  "name": "The Visual Atlas",
+  "status": "alpha",
+  "heroTitle": "The Visual Atlas",
+  "heroSubtitle": "Places, art and manuscripts across time. First era: the apostolic and early church, from Pentecost to the early fourth century.",
+  "searchPlaceholder": "Antioch, Polycarp, Caesarea, Blandina, Hexapla",
+  "backLabel": "All places",
+  "perPage": 200
+ },
+ "card": {
+  "labelField": "title",
+  "mainField": "summary"
+ },
+ "detail": {
+  "titleField": "title",
+  "headlineField": "summary"
+ },
+ "search": {
+  "fields": [
+   "title",
+   "summary",
+   "plain",
+   "era",
+   "acts",
+   "fathers",
+   "mss",
+   "cost",
+   "not",
+   "sources"
+  ]
+ },
+ "filters": [
+  {
+   "role": "category",
+   "field": "category",
+   "allLabel": "Show all",
+   "options": [
+    {
+     "k": "acts",
+     "n": "Named in Acts",
+     "c": "aramaic",
+     "short": "ACTS"
+    },
+    {
+     "k": "fathers",
+     "n": "Named by the fathers",
+     "c": "gold",
+     "short": "FATH"
+    }
+   ]
+  },
+  {
+   "field": "group",
+   "allLabel": "All regions",
+   "options": [
+    {
+     "k": "judea",
+     "n": "Judea and Syria"
+    },
+    {
+     "k": "asia",
+     "n": "Asia"
+    },
+    {
+     "k": "macedonia",
+     "n": "Macedonia and Greece"
+    },
+    {
+     "k": "italy",
+     "n": "Italy"
+    },
+    {
+     "k": "egypt",
+     "n": "Egypt"
+    },
+    {
+     "k": "africa",
+     "n": "Africa"
+    },
+    {
+     "k": "gaul",
+     "n": "Gaul"
+    }
+   ]
+  }
+ ],
+ "blocks": [
+  {
+   "type": "map",
+   "variant": "witness",
+   "title": "Where it is",
+   "field": "geo",
+   "zoom": 7
+  },
+  {
+   "type": "box",
+   "variant": "plain",
+   "title": "First, in plain English",
+   "field": "plain"
+  },
+  {
+   "type": "box",
+   "variant": "explain",
+   "title": "In this era",
+   "field": "era"
+  },
+  {
+   "type": "box",
+   "variant": "witness",
+   "title": "In Acts",
+   "field": "acts"
+  },
+  {
+   "type": "box",
+   "variant": "witness",
+   "title": "In the fathers",
+   "field": "fathers"
+  },
+  {
+   "type": "photo",
+   "variant": "apparatus",
+   "title": "Art from the period",
+   "field": "photo"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Manuscripts",
+   "field": "mss"
+  },
+  {
+   "type": "box",
+   "variant": "open",
+   "title": "What is uncertain",
+   "field": "cost"
+  },
+  {
+   "type": "box",
+   "variant": "not",
+   "title": "What this is not",
+   "field": "not"
+  },
+  {
+   "type": "refs",
+   "variant": "apparatus",
+   "title": "Passages",
+   "field": "refs"
+  },
+  {
+   "type": "linkrow",
+   "title": "Reads with",
+   "field": "related"
+  },
+  {
+   "type": "box",
+   "variant": "apparatus",
+   "title": "Sources",
+   "field": "sources",
+   "list": "ordered"
+  }
+ ],
+ "footer": [
+  {
+   "type": "note",
+   "class": "method",
+   "text": "The method. Bible atlases stop where the New Testament stops, and maps of church history rarely carry the art and the manuscripts. This atlas starts from the place. Each entry fixes the spot from the Pleiades gazetteer of ancient places, then sets down what happened there in one era, with the source for each event: Acts, Josephus, Eusebius and the other fathers. Art goes in only when a museum record marks it public domain, and only one piece per place. Manuscripts go in only where a source in hand ties them to the place. Where the fathers report a tradition, it is called a tradition, and where a later list hands out bishoprics and martyrdoms with no earlier witness, it is called legend. For now there is one era, the apostolic and early church, from Pentecost to the early fourth century. Later eras will be added place by place."
+  },
+  {
+   "type": "suggest",
+   "kind": "visual-atlas",
+   "label": "The Visual Atlas (alpha)",
+   "toggleText": "Is there a place from this era we should map? Suggest it ›",
+   "valuePlaceholder": "What place should we add?"
+  },
+  {
+   "type": "note",
+   "text": "How to read the grades. Named in Acts means Acts tells some of the church's story in that place. Named by the fathers means Acts does not narrate a church there and its story comes from the fathers; a letter in the New Testament may still name the town or its believers, and the entry says so. The grade says where the record of the church in that place begins. It does not rank the place or the sources."
+  }
+ ],
+ "entries": [
+  {
+   "title": "Jerusalem",
+   "id": "jerusalem",
+   "summary": "Acts begins here. Before this era ends the temple has burned, the city has a Roman name, and its church is led by gentiles.",
+   "plain": "The real question: which parts of the Jerusalem church's story are on record, and which are reports passed down? **A family says they left town just before the flood because someone had a warning.** Maybe the warning came first. Maybe it was told afterward to explain a move they made for other reasons. How much of Jerusalem's story is like that?",
+   "category": "acts",
+   "group": "judea",
+   "pleiades": "https://pleiades.stoa.org/places/687928",
+   "era": "Acts sets the gift of the Spirit at Pentecost in Jerusalem, with devout Jews from every nation living in the city (Acts 2). After Stephen's death the church is scattered through Judea and Samaria, all except the apostles (Acts 8:1). Herod kills James the brother of John (Acts 12:1-2). The apostles and elders meet in the city over the gentile question (Acts 15). Josephus says Ananus, in the gap after Festus died and before Albinus arrived, brought James the brother of Jesus before a sanhedrin and had him stoned (Antiquities 20.9.1). Eusebius says the church left before the war for Pella in Perea (Church History 3.5.3). Josephus dates the burning of the temple to the second year of Vespasian (Wars 6.4.8). Eusebius says that under Hadrian the city was resettled, renamed Aelia, and its first bishop from the gentiles was Marcus (Church History 4.6.4).",
+   "acts": "Jerusalem is where the witness starts, then Judea, Samaria and the ends of the earth (Acts 1:8). Pentecost (Acts 2). The scattering after Stephen (Acts 8:1). Saul comes back from Damascus and the disciples are afraid of him (Acts 9:26). James the brother of John is killed by Herod (Acts 12:1-2). The council over circumcision (Acts 15:1-29). Paul goes in to James with all the elders present (Acts 21:18).",
+   "fathers": "Eusebius says the episcopal seat at Jerusalem was entrusted to James the brother of the Lord by the apostles (Church History 2.23.1). He gives two accounts of James's death, one from Clement and one from Hegesippus (2.23.3-18). After James, Symeon son of Clopas was chosen (3.11) and later suffered martyrdom, on the witness of Hegesippus (3.32). The church's flight to Pella is his (3.5.3), and so is the change of name to Aelia (4.6.4). Bishop Alexander founded a library at Aelia that Eusebius used for his history (6.20.1).",
+   "mss": "No biblical manuscript in the sources read here is tied to Jerusalem in this era. What Eusebius does tie to the city is a collection: letters of learned churchmen kept until his day in the library at Aelia that bishop Alexander founded, which he says he drew on (Church History 6.20.1). No surviving manuscript is identified with that library in these sources.",
+   "cost": "The two deaths of James do not match. Josephus has a trial before Ananus's sanhedrin and a stoning. Hegesippus, as Eusebius quotes him, has James thrown down from the temple, stoned, and finished with a fuller's club, then buried by the temple, with Vespasian's siege following at once (Church History 2.23.16-18). Eusebius prints both without settling them. The flight to Pella comes only from Eusebius, who says it followed a revelation; Acts ends before the war. The list of the twelve printed among the dubious and spurious pieces attributed to Hippolytus has Simon the Zealot as bishop of Jerusalem after James, dying at 120, and Matthias buried there. That is legend.",
+   "not": "**Not a history of the temple.** The entry follows the church in the city, and the temple appears only where its fall touches that story.",
+   "refs": [
+    "Acts 1:8",
+    "Acts 2:1-41",
+    "Acts 8:1",
+    "Acts 9:26-30",
+    "Acts 12:1-19",
+    "Acts 15:1-29",
+    "Acts 21:17-26"
+   ],
+   "related": [
+    "caesarea-maritima",
+    "antioch",
+    "damascus"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Flavius Josephus, Antiquities of the Jews, trans. William Whiston (Project Gutenberg ed.), 20.9.1",
+    "Josephus, The Wars of the Jews, trans. Whiston (Project Gutenberg ed.), 6.4.8",
+    "Eusebius, Church History, trans. Arthur Cushman McGiffert, Nicene and Post-Nicene Fathers, Second Series, vol. 1 (Christian Literature Publishing Co., 1890), 2.23, 3.5, 3.11, 3.32, 4.6, 6.20",
+    "Pseudo-Hippolytus, On the Twelve Apostles, Ante-Nicene Fathers vol. 5, Appendix to the Works of Hippolytus Containing Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 687928, Ierusalem/Hierosolyma/Col. Aelia Capitolina, representative point from places.csv in the Pleiades datasets release",
+    "Art Institute of Chicago, object 142682, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 31.77719,
+    "lon": 35.234978
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/48cfad05-dc67-dfb1-6d8a-695b55334444/full/843,/0/default.jpg",
+    "description": "Bronze coin issued by King Agrippa of Judaea, dated 40 to 44, with a parasol on the front and three shafts of grain on the back. Eusebius heads his chapter on the death at Caesarea Agrippa, who was also called Herod, joining Acts 12 to Josephus. The museum record does not name the mint.",
+    "credit": "Art Institute of Chicago, Coin Depicting a Parasol, 1920.2754, gift of William F. Dunham",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/142682",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Antioch on the Orontes",
+   "id": "antioch",
+   "summary": "The city where the disciples were first called Christians and where Paul's journeys started. Its second bishop, Ignatius, was sent from here to die in Rome.",
+   "plain": "The real question: how much of Antioch's early church do we actually see, and how much do we see only through a list of names? **A company history lists every manager since the shop opened.** The first two names may come from people who were there. They may come from someone tidying up the past fifty years later. What kind of list is Antioch's?",
+   "category": "acts",
+   "group": "judea",
+   "bibleRef": "Acts 11:19-26",
+   "pleiades": "https://pleiades.stoa.org/places/658381",
+   "era": "Believers scattered after Stephen reach Antioch, and some of them preach to Greeks there; after a year of teaching by Barnabas and Saul the disciples are first called Christians in Antioch (Acts 11:19-26). The church sends Barnabas and Saul out (Acts 13:1-3) and receives the Jerusalem letter (Acts 15:22-35). Eusebius names Evodius as first bishop and Ignatius as second (Church History 3.22), and has Ignatius sent from Syria to Rome (3.36.3). He names Theophilus as sixth from the apostles and lists his books (4.20, 4.24). In the third century Paul of Samosata holds the see and is opposed by a gathering of bishops at Antioch (7.27-30). Josephus records accusations against the Jews who remained at Antioch after the war (Wars 7.3.2).",
+   "acts": "Scattered believers preach first to Jews only, then some from Cyprus and Cyrene speak to Greeks (Acts 11:19-20). The name Christian appears here first (Acts 11:26). Prophets and teachers are listed, including Barnabas, Simeon called Niger, Lucius of Cyrene, Manaen and Saul (Acts 13:1). Paul and Barnabas sail back to Antioch, where they had been commended to God's grace (Acts 14:26). The Jerusalem letter is delivered to the gentile believers in Antioch (Acts 15:22-23, 30).",
+   "fathers": "Eusebius says that after Cornelius, a multitude of Greeks at Antioch believed (Church History 2.3.3). Luke, he says, was of Antiochian parentage (3.4.7). Evodius was first bishop and Ignatius second (3.22). Ignatius wrote to churches while being taken to Rome and commended the flock at Antioch to Polycarp (3.36.10). Theophilus wrote three books to Autolycus and works against heresies (4.24). Paul of Samosata received the see after Demetrianus died, and his views of Christ brought bishops together against him (7.27).",
+   "mss": "No manuscript in the sources read here is tied to Antioch in this era.",
+   "cost": "Eusebius says report has it that Ignatius was sent from Syria to Rome and became food for wild beasts (Church History 3.36.3). The letters Eusebius lists place him on the road; the manner of his death he gives as report. Eusebius calls Ignatius second in succession to Peter at Antioch (3.36.2); Acts never places Peter in Antioch, and the early bishop list rests on Eusebius. The panel above comes from Daphne, near Antioch, not from the city itself.",
+   "not": "**Not the Antioch of Acts 13:14.** That is Antioch in Pisidia, a different city in Asia Minor. This entry is the Syrian capital on the Orontes.",
+   "refs": [
+    "Acts 11:19-30",
+    "Acts 13:1-3",
+    "Acts 14:26-28",
+    "Acts 15:22-35"
+   ],
+   "related": [
+    "jerusalem",
+    "smyrna",
+    "rome"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 2.3, 3.4, 3.22, 3.36, 4.20, 4.24, 7.27-30",
+    "Josephus, The Wars of the Jews, trans. Whiston (Project Gutenberg ed.), 7.3.2",
+    "Pleiades gazetteer, place 658381, Antiochia/Theoupolis, places.csv",
+    "Art Institute of Chicago, object 23276, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 36.222551,
+    "lon": 36.183214
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/f59db4d0-7cba-e122-9f1d-5185afc6f6e9/full/843,/0/default.jpg",
+    "description": "Floor mosaic of fish and shellfish, dated 200 to 230, from a house at Daphne near Antioch, excavated by a Princeton team in 1936 according to the museum's provenance record.",
+    "credit": "Art Institute of Chicago, Mosaic Floor Panel Depicting Marine Life, 1937.48, gift of Henry J. Patten",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/23276",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Damascus",
+   "id": "damascus",
+   "summary": "The road where Saul was stopped and the city he escaped in a basket. Josephus and Eusebius each add one more scene, and neither is about a church.",
+   "plain": "The real question: why does Damascus matter to the story when so little is known about the church there? **Everyone in the family knows the street where Grandpa proposed.** Nobody remembers who lived on it. Is Damascus a place in the record, or a turning point that happened near a place?",
+   "category": "acts",
+   "group": "judea",
+   "bibleRef": "Acts 9:1-25",
+   "pleiades": "https://pleiades.stoa.org/places/678106",
+   "era": "Saul asks for letters to the synagogues of Damascus to bring followers of the Way back bound, and is stopped by a light near the city (Acts 9:1-9). A disciple named Ananias lays hands on him; Saul preaches in the synagogues; the disciples let him down the wall in a basket at night (Acts 9:10-25). Paul retells the event twice (Acts 22:6-11; 26:12-18). Josephus says that when the war began, the people of Damascus killed the Jews they had shut up in the place of public exercise, ten thousand in one hour, and hid it from their own wives, most of whom were devoted to the Jewish religion (Wars 2.20.2). Eusebius records that in the last persecution, while forged Acts of Pilate were being posted with the emperor's approval, a military commander at Damascus forced women in the market place to sign statements against Christians (Church History 9.5.1-2).",
+   "acts": "The letters to the synagogues and the light on the road (Acts 9:2-3). Ananias, a disciple at Damascus (Acts 9:10). Saul with the disciples in Damascus, preaching in the synagogues (Acts 9:19-20). The escape by night over the wall (Acts 9:25). Paul's retellings (Acts 22:6; 26:12).",
+   "fathers": "Eusebius gives Damascus one scene, from the persecution of his own day: a commander the Romans call Dux seized women in the market place at Damascus and forced written statements from them (Church History 9.5.2). The fathers read here name no bishop of Damascus in this era.",
+   "mss": "No manuscript in the sources read here is tied to Damascus in this era.",
+   "cost": "The list of the seventy printed among the dubious and spurious pieces attributed to Hippolytus calls Ananias, who baptized Paul, bishop of Damascus. Acts calls him a disciple and says nothing of an office. That is legend. Josephus's figure of ten thousand killed in an hour is his figure; no other source read here checks it.",
+   "not": "**Not the conversion debate.** Whether Acts 9, 22 and 26 tell the same event in different ways is a question about Acts, not about the place.",
+   "refs": [
+    "Acts 9:1-25",
+    "Acts 22:6-11",
+    "Acts 26:12-18"
+   ],
+   "related": [
+    "jerusalem",
+    "antioch"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Josephus, The Wars of the Jews, trans. Whiston (Project Gutenberg ed.), 2.20.2",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 9.5.2",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix to the Works of Hippolytus Containing Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 678106, Damascus, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 33.511612,
+    "lon": 36.309102
+   }
+  },
+  {
+   "title": "Caesarea Maritima",
+   "id": "caesarea-maritima",
+   "summary": "Herod's harbour city. Cornelius heard Peter here, Paul sat two years in custody here, and Origen later taught here and left a library behind.",
+   "plain": "The real question: why does one Roman port turn up at so many turning points, from the first gentile convert to the library that kept Origen's books? **The same airport shows up in a dozen family stories.** It is not that anything happened because of the airport. It is where people came and went. Is Caesarea a cause in the story, or just the door?",
+   "category": "acts",
+   "group": "judea",
+   "pleiades": "https://pleiades.stoa.org/places/678401",
+   "era": "Josephus says Herod rebuilt a decayed seaside town called Strato's Tower in white stone, and that its name was changed to Caesarea by Herod (Wars 1.21.5; 1.7.7). Philip the evangelist preaches up to Caesarea and later lives there with four daughters who prophesy (Acts 8:40; 21:8-9). Cornelius, a centurion of the Italian band, receives Peter, and the Spirit falls on gentiles (Acts 10). Herod goes down to Caesarea and dies there (Acts 12:19-23); Josephus tells the same death, in a garment of silver at games for Caesar (Antiquities 19.8.2), and Eusebius sets the two accounts side by side (Church History 2.10). Paul is sent to the governor at Caesarea, held two years under Felix, and appeals to Caesar before Festus (Acts 23:23-33; 24:27; 25:11-12). Origen moves here from Alexandria, teaches and is ordained presbyter (Church History 6.19.16, 6.23.4, 6.26, 6.30). Martyrs die here under Valerian and again in the great persecution (7.12; 7.15; Martyrs of Palestine).",
+   "acts": "Philip reaches Caesarea (Acts 8:40). Cornelius in Caesarea (Acts 10:1) and the Spirit on the gentiles (Acts 10:44-45). Herod's death (Acts 12:19-23). Paul at Philip's house (Acts 21:8-9). Paul brought to the governor under guard (Acts 23:23, 33). Two years in custody until Festus succeeds Felix (Acts 24:27). The appeal to Caesar (Acts 25:11-12).",
+   "fathers": "Eusebius makes Cornelius of Caesarea the first gentile to believe (Church History 2.3.3). He sets Acts 12 beside Josephus on Agrippa's death (2.10). Theophilus presides at Caesarea around the Easter dispute (5.22; 5.23.2). Origen comes to Caesarea, preaches before ordination, and is later ordained there (6.19.16-17; 6.23.4); he removes there from Alexandria and pupils come to him from other countries (6.26; 6.30). Three men die by beasts under Valerian (7.12) and Marinus is beheaded (7.15). Pamphilus, presbyter and in Eusebius's words the great glory of the parish of Caesarea, is martyred (8.13.6), and Eusebius says he catalogued the library Pamphilus collected (6.32.3).",
+   "mss": "Caesarea is the clearest manuscript place in this era. Andrew Blaski writes that Origen's Hexapla, the Hebrew text and several Greek versions set in parallel columns, was preserved in the library of Caesarea for centuries before its likely destruction (Myths and Mistakes, ch. 12). Timothy Mitchell cites Jerome on Euzoius, a later bishop of Caesarea, who tried to restore on parchment the damaged library of Origen and Pamphilus (Myths and Mistakes, ch. 2, citing Jerome, Lives of Illustrious Men). Gregory Lanier describes minuscule 1739, copied by a scribe named Ephraim in the 950s, whose exemplar was built from two or more manuscripts dating at least to the 400s that most likely originated in the library at Caesarea and in part reflect Origen's text or commentary (Myths and Mistakes, ch. 6).",
+   "cost": "Eusebius's own catalogue of Pamphilus's library is not extant in the sources read here; he points to it in a life of Pamphilus (Church History 6.32.3). The Hexapla is described as lost, not as surviving. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Apollos bishop of Caesarea; nothing in Acts supports it, and it is legend. Pleiades also lists other Caesareas, including Caesarea Philippi and Caesarea in Cappadocia, and Eusebius uses the name for both of those as well; this entry is the coastal city.",
+   "not": "**Not Caesarea Philippi.** The town at the foot of Mount Hermon, called Paneas, is a different place (Church History 7.17).",
+   "refs": [
+    "Acts 8:40",
+    "Acts 10:1-48",
+    "Acts 12:19-23",
+    "Acts 21:8-14",
+    "Acts 23:23-35",
+    "Acts 24:27",
+    "Acts 25:1-12"
+   ],
+   "related": [
+    "jerusalem",
+    "alexandria",
+    "rome"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Josephus, The Wars of the Jews, trans. Whiston (Project Gutenberg ed.), 1.7.7 and 1.21.5",
+    "Josephus, Antiquities of the Jews, trans. Whiston (Project Gutenberg ed.), 19.8.2",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 2.3, 2.10, 5.22-23, 6.19, 6.23, 6.26, 6.30, 6.32, 7.12, 7.15, 7.17, 8.13",
+    "Eusebius, The Martyrs of Palestine, NPNF2 vol. 1",
+    "Elijah Hixson and Peter J. Gurry, eds., Myths and Mistakes in New Testament Textual Criticism (IVP Academic, 2019), ch. 2 (Timothy N. Mitchell), ch. 6 (Gregory R. Lanier), ch. 12 (Andrew Blaski)",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 678401, Stratonos Pyrgos/Caesarea, places.csv",
+    "Art Institute of Chicago, object 10352, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 32.501839,
+    "lon": 34.892447
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/d7502ca5-bea3-0319-7ce2-f30ab1ab5997/full/843,/0/default.jpg",
+    "description": "Bronze coin struck in 54 under the procurator Antonius Felix, in the reign of Claudius, with shields and spears on one side and a palm tree on the other. Acts 24 names a governor Felix who held Paul at Caesarea for two years; taking him as this procurator is an identification drawn here. The museum record gives the place as Roman Palestine, not a city.",
+    "credit": "Art Institute of Chicago, Coin Depicting Shields and Spears, 1923.1407, gift of Mrs. William Nelson Pelouze",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/10352",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Ephesus",
+   "id": "ephesus",
+   "summary": "Paul taught here for two years and the city rioted for Artemis. The fathers put John here into Trajan's reign, and they disagree about which John lies in which tomb.",
+   "plain": "The real question: when later writers say John lived and died at Ephesus, how do we know which John they mean? **Two men in town have the same name, and both have a plot in the cemetery.** The stone says only the name. Which one is the famous one, and how would you tell?",
+   "category": "acts",
+   "group": "asia",
+   "bibleRef": "Acts 19:1-41",
+   "pleiades": "https://pleiades.stoa.org/places/599612",
+   "era": "Paul reasons in the synagogue at Ephesus and leaves Priscilla and Aquila there (Acts 18:19). Apollos, born at Alexandria, arrives (Acts 18:24). Paul stays two years teaching in the school of Tyrannus, so that all Asia hears (Acts 19:9-10), and the silversmiths' riot ends with the crowd shouting for Diana of the Ephesians for two hours (Acts 19:23-41). He later calls the Ephesian elders to Miletus (Acts 20:17-38). Irenaeus says the church at Ephesus was founded by Paul and that John remained there until Trajan's time (Against Heresies 3.3.4), and that John published his Gospel at Ephesus (3.1.1). Justin held his dialogue with Trypho in the city (Church History 4.18.6). Polycrates, bishop of Ephesus, writes to Victor of Rome that John sleeps at Ephesus (Church History 5.24.2-3).",
+   "acts": "Paul in the synagogue (Acts 18:19). Apollos from Alexandria (Acts 18:24). Disciples of John's baptism (Acts 19:1-7). The school of Tyrannus (Acts 19:9). Two years, until all Asia heard (Acts 19:10). Demetrius and the riot (Acts 19:24-41). The elders called to Miletus (Acts 20:17).",
+   "fathers": "Eusebius says that by tradition Asia fell to John, who lived there and died at Ephesus (Church History 3.1.1), and that Timothy is recorded as first bishop of Ephesus (3.4.6). He quotes Irenaeus and Clement on John at Ephesus (3.23.4-6). Ignatius, at Smyrna, writes to the church of Ephesus and names its pastor Onesimus (3.36.5). Polycrates names Philip's daughter and John as buried at Ephesus (3.31.3; 5.24.2-3).",
+   "mss": "No manuscript in the sources read here is tied to Ephesus in this era.",
+   "cost": "Eusebius says, from Papias, that two tombs at Ephesus were each called John's, and that the second John, the presbyter, may be the one who saw the Revelation (Church History 3.39.6). Dionysius of Alexandria makes the same point about two monuments (7.25.16). John's return from Patmos to Ephesus is, in Eusebius's own words, an ancient Christian tradition (3.20.11). The list of the twelve among the dubious and spurious pieces attributed to Hippolytus says John's remains were sought at Ephesus and not found, and the list of the seventy makes Phygellus and Caius bishops of Ephesus. That is legend.",
+   "not": "**Not proof of who wrote the Gospel of John.** The entry records what the fathers say about John at Ephesus. The authorship question needs its own treatment.",
+   "refs": [
+    "Acts 18:19-28",
+    "Acts 19:1-41",
+    "Acts 20:17-38",
+    "Revelation 2:1-7"
+   ],
+   "related": [
+    "smyrna",
+    "hierapolis",
+    "pergamum"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Irenaeus, Against Heresies, ANF vol. 1, 3.1.1 and 3.3.4",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 3.1, 3.4, 3.20, 3.23, 3.31, 3.36, 3.39, 4.18, 5.24, 7.25",
+    "Pseudo-Hippolytus, On the Twelve Apostles and On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 599612, Ephesus/Arsinoe(ia), places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 37.940164,
+    "lon": 27.342403
+   }
+  },
+  {
+   "title": "Smyrna",
+   "id": "smyrna",
+   "summary": "Not in Acts. Revelation writes to its church, Ignatius wrote letters from it, and its bishop Polycarp died in its stadium.",
+   "plain": "The real question: what do we know about Smyrna's church from people who were there, and what only from later lists? **Your grandmother says she met the mayor when she was a girl.** That is one kind of memory. A plaque put up a century later listing the town's first council is another. Which kind is each source on Smyrna?",
+   "category": "fathers",
+   "group": "asia",
+   "pleiades": "https://pleiades.stoa.org/places/550893",
+   "era": "Revelation addresses a letter to the church in Smyrna, warning of tribulation and prison (Revelation 2:8-11). Ignatius, on his way to Rome, writes from Smyrna to Ephesus, Magnesia and other churches, where Polycarp is bishop (Church History 3.36.5; Ignatius, To the Magnesians 15). Irenaeus says Polycarp was appointed bishop of Smyrna by apostles in Asia, and that he saw him in his own youth (Against Heresies 3.3.4). The church of Smyrna's letter tells Polycarp's death in the stadium before Gentiles and Jews of the city (Church History 4.15; Martyrdom of Polycarp 16, 19).",
+   "acts": "Smyrna is not named in Acts. Its church appears in the New Testament in Revelation 1:11 and 2:8-11.",
+   "fathers": "Eusebius calls Polycarp a disciple of the apostles who was entrusted with the church of Smyrna by those who had seen the Lord (Church History 3.36.1). He reprints most of the Smyrnaean letter on Polycarp's martyrdom, with other martyrs of the same city (4.15). The Martyrdom calls Polycarp bishop of the Catholic Church in Smyrna and counts him the twelfth martyred there, counting those from Philadelphia (Martyrdom of Polycarp 16, 19). Polycrates lists Polycarp and Thraseas as sleeping in Smyrna (5.24.4). Polycarp also went to Rome in the time of Anicetus (5.24.16).",
+   "mss": "No manuscript in the sources read here is tied to Smyrna in this era. The Martyrdom of Polycarp is itself a letter from the church of Smyrna, but no copy of it is tied to the city in these sources.",
+   "cost": "The Smyrnaean letter and Irenaeus are close witnesses: one from the church, one from a man who says he saw Polycarp. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Apelles bishop of Smyrna, which no earlier source read here supports. That is legend. Pleiades identifies the ancient city with modern Izmir, so the map point marks a city still lived in, not an excavated site.",
+   "not": "**Not one of the churches Paul founded.** Acts does not record a visit to Smyrna, and the entry does not assume one.",
+   "refs": [
+    "Revelation 1:11",
+    "Revelation 2:8-11"
+   ],
+   "related": [
+    "ephesus",
+    "pergamum",
+    "lyon"
+   ],
+   "sources": [
+    "Revelation, checked in the King James Version",
+    "Ignatius, Epistle to the Magnesians, ANF vol. 1, ch. 15",
+    "The Martyrdom of Polycarp, ANF vol. 1, ch. 16 and 19",
+    "Irenaeus, Against Heresies, ANF vol. 1, 3.3.4",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 3.36, 4.14-15, 5.24",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 550893, Smyrna/Eurydikeia, places.csv",
+    "Art Institute of Chicago, object 142880, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 38.417196,
+    "lon": 27.141387
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/44e2d38c-de57-85e9-407c-3e3f4946a770/full/843,/0/default.jpg",
+    "description": "Bronze coin of Smyrna, dated 175 to 200, showing a draped bust of the Amazon Smyrna with a double axe over her shoulder, inscribed with the city's name.",
+    "credit": "Art Institute of Chicago, Coin Depicting the Amazon Smyrna, gift of William F. Dunham",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/142880",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Pergamum",
+   "id": "pergamum",
+   "summary": "Revelation calls it the place where Satan's seat is. Eusebius records three martyrs there, and a Pergamene Christian dies in the arena at Lyon.",
+   "plain": "The real question: what does it mean that the record of Pergamum's church is a handful of names and a hard phrase? **A town's whole entry in an old newspaper is three names and one line about trouble there.** That could be because little happened, or because little was written down. Which is it for Pergamum?",
+   "category": "fathers",
+   "group": "asia",
+   "pleiades": "https://pleiades.stoa.org/places/550812",
+   "era": "Revelation writes to the church in Pergamos, where Satan's seat is, and names Antipas a faithful martyr killed there (Revelation 2:12-13). Eusebius records that Carpus, Papylus and a woman named Agathonice suffered martyrdom at Pergamus (Church History 4.15.48). In the Lyon persecution, the letter from Gaul names Attalus, a native of Pergamos, among those sent to the beasts (5.1.17, 5.1.37).",
+   "acts": "Pergamum is not named in Acts. Its church appears in the New Testament in Revelation 1:11 and 2:12-17.",
+   "fathers": "Eusebius knows records of the martyrdoms of Carpus, Papylus and Agathonice at Pergamus, a city of Asia (Church History 4.15.48). The churches of Vienne and Lyon describe Attalus of Pergamos as a pillar and foundation where he came from (5.1.17).",
+   "mss": "No manuscript in the sources read here is tied to Pergamum in this era.",
+   "cost": "What Satan's seat means in Revelation 2:13 is not settled by any source read here, and this entry does not pick a reading. Eusebius mentions the Pergamene martyrs right after Polycarp's martyrdom, but that placing is his arrangement, not a date. No public domain object from this era tied to Pergamum turned up in the museum search; the Art Institute's Pergamon coins are from before the era, so none is shown.",
+   "not": "**Not a catalogue of Pergamum's monuments.** The entry follows the church, and the city's temples appear only through Revelation's phrase.",
+   "refs": [
+    "Revelation 1:11",
+    "Revelation 2:12-17"
+   ],
+   "related": [
+    "smyrna",
+    "ephesus",
+    "lyon"
+   ],
+   "sources": [
+    "Revelation, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 4.15.48, 5.1",
+    "Pleiades gazetteer, place 550812, Pergamum, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 39.1325,
+    "lon": 27.184167
+   }
+  },
+  {
+   "title": "Hierapolis",
+   "id": "hierapolis",
+   "summary": "A town Paul mentions once in Colossians. In the fathers it is Papias's see and the grave of a Philip, and they are not sure which Philip.",
+   "plain": "The real question: when two people with the same name get folded into one, how do you pull them apart again? **The hometown paper says the Olympic swimmer once lived on Elm Street.** It was actually his cousin with the same name. Nobody lied. Which Philip is buried at Hierapolis?",
+   "category": "fathers",
+   "group": "asia",
+   "pleiades": "https://pleiades.stoa.org/places/638860",
+   "era": "Paul says Epaphras has great zeal for the believers in Laodicea and Hierapolis (Colossians 4:13). Papias is bishop of Hierapolis in Ignatius's time (Church History 3.36.2), and Eusebius quotes him at length (3.39). Polycrates says Philip, one of the twelve apostles, sleeps in Hierapolis with two of his daughters (3.31.3; 5.24.2). Apolinarius, bishop of Hierapolis, writes an apology to the emperor and against the Phrygian prophets (4.26.1; 5.16.1; 5.19.2).",
+   "acts": "Hierapolis is not named in Acts. It appears in the New Testament once, at Colossians 4:13.",
+   "fathers": "Eusebius names Papias bishop of the parish of Hierapolis (Church History 3.36.2), and says Papias heard a wonderful tale from the daughters of Philip, who lived there (3.39.9). Polycrates places Philip and two daughters in Hierapolis and another daughter at Ephesus (3.31.3). Proclus says four prophetesses, Philip's daughters, were at Hierapolis with their tomb and their father's (3.31.4). Apolinarius of Hierapolis is named as a writer and a strong opponent of the new prophecy (4.26.1; 5.16.1).",
+   "mss": "No manuscript in the sources read here is tied to Hierapolis in this era.",
+   "cost": "Polycrates calls the Philip of Hierapolis one of the twelve apostles. Acts places Philip the evangelist, one of the seven, at Caesarea with four virgin daughters who prophesy (Acts 21:8-9), and Eusebius quotes that passage right after Proclus (Church History 3.31.5). The daughters suggest one family; the titles suggest two men. Eusebius does not resolve it. The list of the twelve among the dubious and spurious pieces attributed to Hippolytus has Philip crucified head downward at Hierapolis under Domitian. That is legend. Pleiades lists more than one ancient Hierapolis; the identification with the city at modern Pamukkale is drawn here from Colossians pairing it with Laodicea, and is an inference.",
+   "not": "**Not Hierapolis/Bambyke.** Pleiades records that one as a settlement of Commagene, along with other places of the name. This entry is the Phrygian city named with Laodicea.",
+   "refs": [
+    "Colossians 4:13",
+    "Acts 21:8-9"
+   ],
+   "related": [
+    "ephesus",
+    "caesarea-maritima",
+    "smyrna"
+   ],
+   "sources": [
+    "Colossians and Acts, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 3.31, 3.36, 3.39, 4.26, 5.16, 5.19, 5.24",
+    "Pseudo-Hippolytus, On the Twelve Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 638860, Hierapolis/Pamukkale, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 37.926925,
+    "lon": 29.127859
+   }
+  },
+  {
+   "title": "Philippi",
+   "id": "philippi",
+   "summary": "A Roman colony and Paul's first stop in Macedonia. Lydia, the jailer and the stocks are Acts; Polycarp's letter to the same church is the fathers.",
+   "plain": "The real question: what does it tell us that the next letter to Philippi after Paul's comes from Smyrna, from Polycarp? **A family gets a letter from an old friend's student, years after the friend has died.** The student writes as if he knows them. Does that show the friendship carried on, or only that he heard about them?",
+   "category": "acts",
+   "group": "macedonia",
+   "bibleRef": "Acts 16:11-40",
+   "pleiades": "https://pleiades.stoa.org/places/501482",
+   "era": "Paul crosses to Macedonia after a vision of a man asking for help (Acts 16:9). Philippi is the chief city of that part of Macedonia and a colony (Acts 16:12). Lydia, a seller of purple from Thyatira, believes; Paul and Silas are beaten, put in the inner prison with their feet in the stocks, and released (Acts 16:14-40). Paul sails from Philippi after the days of unleavened bread (Acts 20:6). Polycarp and his presbyters write to the church of God sojourning at Philippi (Polycarp, Epistle to the Philippians, salutation), a letter Irenaeus calls very powerful (Against Heresies 3.3.4; Church History 4.14.8).",
+   "acts": "The vision of the Macedonian (Acts 16:9). Philippi, a colony (Acts 16:12). Lydia (Acts 16:14). The beating, prison and stocks (Acts 16:23-24). Departure after the days of unleavened bread (Acts 20:6).",
+   "fathers": "Polycarp's letter to the Philippians survives (ANF vol. 1). Eusebius says it mentions Ignatius and his companions (Church History 3.36.13) and uses testimonies from the First Epistle of Peter (4.14.9). Irenaeus commends it to anyone who wants to learn Polycarp's faith (Against Heresies 3.3.4).",
+   "mss": "No manuscript in the sources read here is tied to Philippi in this era.",
+   "cost": "Eusebius's text, as translated, calls it the epistle ascribed to Polycarp (Church History 3.36.13); a later correction in the same volume says to read his extant Epistle instead. Reading that as a translator's wording rather than doubt about the letter is an inference drawn here. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Hermas bishop of Philippi. That is legend.",
+   "not": "**Not Caesarea Philippi.** The name is shared; the place is in Macedonia, not under Mount Hermon.",
+   "refs": [
+    "Acts 16:9-40",
+    "Acts 20:6"
+   ],
+   "related": [
+    "thessalonica",
+    "smyrna",
+    "corinth"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Polycarp, Epistle to the Philippians, ANF vol. 1",
+    "Irenaeus, Against Heresies, ANF vol. 1, 3.3.4",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 3.36.13, 4.14.8-9, with the translator's note on 3.36.13",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 501482, Krenides/Philippi/Col. Augusta Iulia Philippensis, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 41.012651,
+    "lon": 24.284637
+   }
+  },
+  {
+   "title": "Thessalonica",
+   "id": "thessalonica",
+   "summary": "Paul reasoned in its synagogue on three sabbath days and left by night. After Acts the record goes almost silent, apart from an imperial letter and a legend.",
+   "plain": "The real question: what should we make of a church that has two letters from Paul and almost nothing after? **A busy shop on the corner has photos from its opening week and then nothing for a hundred years.** It may have thrived quietly. It may have closed. What does silence in the record mean for Thessalonica?",
+   "category": "acts",
+   "group": "macedonia",
+   "bibleRef": "Acts 17:1-9",
+   "pleiades": "https://pleiades.stoa.org/places/491741",
+   "era": "Paul and Silas come to Thessalonica, where there is a synagogue, and Paul reasons there on three sabbath days (Acts 17:1-2). A crowd assaults the house of Jason, and the brethren send Paul and Silas away by night to Berea (Acts 17:5-10). Aristarchus and Secundus of Thessalonica travel with Paul (Acts 20:4), and Aristarchus sails with him toward Rome (Acts 27:2). Melito of Sardis, in an apology quoted by Eusebius, says that Antoninus wrote to the cities, among them the Thessalonians, forbidding new measures against Christians (Church History 4.26.10).",
+   "acts": "The synagogue (Acts 17:1). The uproar and Jason's house (Acts 17:5-6). The night departure to Berea (Acts 17:10). Aristarchus and Secundus (Acts 20:4). Aristarchus on the ship (Acts 27:2).",
+   "fathers": "The one notice in Eusebius is Melito's claim that the emperor wrote to the Thessalonians, among other Greek cities, telling them not to move against Christians (Church History 4.26.10). The fathers read here name no bishop of Thessalonica in this era.",
+   "mss": "No manuscript in the sources read here is tied to Thessalonica in this era.",
+   "cost": "Melito's statement is a Christian apologist's report of an imperial letter, preserved by Eusebius; the letter itself is not in the sources read here. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Silvanus bishop of Thessalonica. That is legend.",
+   "not": "**Not a judgment on the church.** A thin record here is a fact about what survived, not about what the church was.",
+   "refs": [
+    "Acts 17:1-10",
+    "Acts 20:4",
+    "Acts 27:2"
+   ],
+   "related": [
+    "philippi",
+    "athens",
+    "corinth"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 4.26.10",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 491741, Thessalonica, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 40.628342,
+    "lon": 22.952885
+   }
+  },
+  {
+   "title": "Corinth",
+   "id": "corinth",
+   "summary": "Paul stayed a year and six months here. Later the church of Rome wrote to settle a quarrel in the church, and Corinth's bishop Dionysius kept the letter in use.",
+   "plain": "The real question: when a later bishop says two apostles founded his church, is he passing on memory or honouring his town? **The parish says two famous preachers both started it.** The records show one name for sure. Is the second name memory, or pride?",
+   "category": "acts",
+   "group": "macedonia",
+   "bibleRef": "Acts 18:1-18",
+   "pleiades": "https://pleiades.stoa.org/places/570182",
+   "era": "Paul comes from Athens to Corinth and finds Aquila and Priscilla, lately come from Italy because Claudius had ordered all Jews out of Rome (Acts 18:1-2). He stays a year and six months (Acts 18:11). Clement writes in the name of the church of Rome to the church of Corinth when a sedition arose there (Church History 3.16; Irenaeus quoted at 5.6.3). Hegesippus stays many days with the Corinthians on his way to Rome (4.22.2). Dionysius, bishop of Corinth, writes letters to many churches and says Clement's letter is read in his church (4.23.1, 4.23.11). Bacchylus is bishop of Corinth at the time of the Easter dispute (5.22).",
+   "acts": "Paul arrives from Athens (Acts 18:1). Aquila and Priscilla, and Claudius's order (Acts 18:2). A year and six months (Acts 18:11). The hearing before Gallio follows in the same chapter (Acts 18:12-17).",
+   "fathers": "Eusebius says Clement's letter was written for Rome to Corinth over a sedition, and that Hegesippus is a trustworthy witness that the sedition happened (Church History 3.16). Hegesippus says the church of Corinth continued in the true faith until Primus was bishop (4.22.2). Dionysius of Corinth writes to Lacedaemonians, Athenians, Nicomedians and Romans (4.23), and to the Romans he says Peter and Paul both planted and taught in Corinth (2.25.8).",
+   "mss": "No manuscript in the sources read here is tied to Corinth in this era.",
+   "cost": "Dionysius says Peter and Paul both planted the church at Corinth and taught there (Church History 2.25.8). Acts names only Paul at Corinth, and no other source read here places Peter there. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Silas bishop of Corinth. That is legend. No public domain object from this era tied to Corinth turned up in the museum search.",
+   "not": "**Not a reading of 1 and 2 Corinthians.** The letters are evidence for the church, and they need their own treatment; this entry stays with the place and what is said about it.",
+   "refs": [
+    "Acts 18:1-18"
+   ],
+   "related": [
+    "rome",
+    "athens",
+    "philippi"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 2.25.8, 3.16, 4.22-23, 5.6.3, 5.22",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 570182, Corinthus/Korinthos, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 37.905642,
+    "lon": 22.878614
+   }
+  },
+  {
+   "title": "Athens",
+   "id": "athens",
+   "summary": "Paul spoke on the Areopagus and a few believed, Dionysius among them. A later bishop of Corinth made Dionysius the first bishop of Athens.",
+   "plain": "The real question: how does a name in one verse of Acts become the founder of a church? **A man in the crowd at a famous speech is later remembered as the first member of the club the speaker started.** Maybe he was. Maybe his name was the only one anyone had. What does Acts give us about Dionysius, and what came later?",
+   "category": "acts",
+   "group": "macedonia",
+   "bibleRef": "Acts 17:15-34",
+   "pleiades": "https://pleiades.stoa.org/places/579885",
+   "era": "Those conducting Paul bring him to Athens (Acts 17:15). He speaks in the midst of Mars' hill (Acts 17:22), and some believe, among them Dionysius the Areopagite and a woman named Damaris (Acts 17:34). Dionysius of Corinth writes to the Athenians, rebuking them for having almost fallen away since the martyrdom of their ruler Publius, says Quadratus was made their bishop after it, and says Dionysius the Areopagite was the first bishop of the church at Athens (Church History 4.23.2-3; 3.4.11). Antoninus writes to the Athenians among other cities, by Melito's report (4.26.10). Origen finishes his work on Ezekiel while in Athens (6.32.2).",
+   "acts": "Paul brought to Athens (Acts 17:15). The speech on Mars' hill (Acts 17:22). Dionysius the Areopagite and Damaris (Acts 17:34). Paul leaves for Corinth (Acts 18:1).",
+   "fathers": "Eusebius twice repeats Dionysius of Corinth's statement that the Areopagite was first bishop of Athens (Church History 3.4.11; 4.23.3). The same letter speaks of the martyrdom of Publius, their ruler, and of Quadratus, appointed bishop after him, through whose zeal their faith revived (4.23.2-3).",
+   "mss": "No manuscript in the sources read here is tied to Athens in this era.",
+   "cost": "The Areopagite as first bishop rests on Dionysius of Corinth as Eusebius reports him; Acts says only that he believed. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Narcissus bishop of Athens instead. That is legend, and it shows how these lists did not agree with each other. Pleiades marks its point for Athens as rough. No public domain object from this era tied to Athens turned up in the museum search.",
+   "not": "**Not the later writings under the Areopagite's name.** This entry is about the man Acts names, and it does not treat any later book attributed to him.",
+   "refs": [
+    "Acts 17:15-34",
+    "Acts 18:1"
+   ],
+   "related": [
+    "corinth",
+    "thessalonica",
+    "caesarea-maritima"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 3.4.11, 4.23.2-3, 4.26.10, 6.32.2",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 579885, Athenae, places.csv"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 37.971637,
+    "lon": 23.723914
+   }
+  },
+  {
+   "title": "Rome",
+   "id": "rome",
+   "summary": "Acts ends here with Paul under guard in his own rented house. Everything after, including how Peter and Paul died, comes from the fathers.",
+   "plain": "The real question: where does Acts stop and tradition take over in the story of Peter and Paul at Rome? **A biography ends with the man moving to a new city, still working.** Everything about his death comes from people who wrote later. Some had seen his grave. How much weight do their accounts carry?",
+   "category": "acts",
+   "group": "italy",
+   "bibleRef": "Acts 28:14-31",
+   "pleiades": "https://pleiades.stoa.org/places/423025",
+   "era": "Visitors from Rome are at Pentecost (Acts 2:10). Claudius orders all Jews out of Rome (Acts 18:2). Paul plans to see Rome and is told he must bear witness there (Acts 19:21; 23:11). Brethren meet him on the road; he lives two whole years in his own hired house, preaching without hindrance (Acts 28:14-31). Tertullian, quoted by Eusebius, says Nero was the first to persecute this teaching (Church History 2.25.4). Eusebius says it is recorded that Paul was beheaded in Rome and Peter crucified under Nero (2.25.5). Clement writes from Rome to Corinth (3.16). Ignatius is sent to Rome (3.36.3). Polycarp visits Anicetus at Rome and they keep communion despite their difference over Easter (5.24.16).",
+   "acts": "Strangers of Rome at Pentecost (Acts 2:10). The expulsion under Claudius (Acts 18:2). Paul purposes to see Rome (Acts 19:21). The Lord's word that he will witness at Rome (Acts 23:11). The brethren at Appii forum and the Three Taverns (Acts 28:15). Paul allowed to live by himself with a soldier (Acts 28:16). Two years in his hired house (Acts 28:30-31).",
+   "fathers": "Eusebius quotes Caius, a churchman of Zephyrinus's time, who says he can show the trophies of the apostles at the Vatican and on the Ostian way (Church History 2.25.6-7). Dionysius of Corinth says Peter and Paul taught together in Italy and suffered martyrdom at the same time (2.25.8). Irenaeus calls the Roman church founded and organized by Peter and Paul (Against Heresies 3.3.2), and Eusebius names Linus as its first bishop after them (Church History 3.2). Eusebius, citing Origen, says Peter asked to be crucified head downward (3.1.2).",
+   "mss": "No biblical manuscript in the sources read here is tied to Rome in this era. Timothy Mitchell, drawing on Galen, writes that papyrus bookrolls did not survive well in the humid environment of Rome (Myths and Mistakes, ch. 2). Whether that explains the silence for Christian books there is an inference, not his claim.",
+   "cost": "Acts does not record the death of Paul or place Peter in Rome. The deaths come from Eusebius, Caius, Dionysius of Corinth and Origen as Eusebius quotes them. Caius points to trophies, monuments at the two sites, not to an account of the deaths. Peter's crucifixion head downward is Origen's report through Eusebius, and the list of the twelve among the dubious and spurious pieces attributed to Hippolytus repeats it; that list's detail is legend. Pleiades marks its point for Rome as rough, a single dot for a large city.",
+   "not": "**Not a ruling on the papacy.** The entry records what the fathers said about Peter and Paul at Rome. What later churches built on it is another subject.",
+   "refs": [
+    "Acts 2:10",
+    "Acts 18:2",
+    "Acts 19:21",
+    "Acts 23:11",
+    "Acts 28:14-31"
+   ],
+   "related": [
+    "corinth",
+    "antioch",
+    "lyon"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Irenaeus, Against Heresies, ANF vol. 1, 3.3.2",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 2.25, 3.1-2, 3.16, 3.36, 5.24",
+    "Hixson and Gurry, eds., Myths and Mistakes in New Testament Textual Criticism (IVP Academic, 2019), ch. 2 (Timothy N. Mitchell)",
+    "Pseudo-Hippolytus, On the Twelve Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 423025, Roma, places.csv",
+    "Art Institute of Chicago, object 4430, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 41.889977,
+    "lon": 12.491258
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/1128a1f4-85c3-e056-75e0-69564806b3ce/full/843,/0/default.jpg",
+    "description": "Gold aureus of Nero, minted in Rome between December 66 and December 67, inscribed with his name and SALVS on the reverse. Nero is the emperor Tertullian and Eusebius name as the first persecutor.",
+    "credit": "Art Institute of Chicago, Aureus (Coin) Portraying Emperor Nero, 1922.4254, gift of William F. Dunham",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/4430",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Alexandria",
+   "id": "alexandria",
+   "summary": "Acts names Alexandrians, an Alexandrian preacher and Alexandrian grain ships, but no church. The fathers give it Mark, a famous school, and Origen.",
+   "plain": "The real question: what do we know about how the church in Alexandria began, when the first account starts with the words they say? **The founder of the town's oldest bakery, everyone says, was a famous chef.** No one remembers who first said so. What would it take to know who started Alexandria's church?",
+   "category": "fathers",
+   "group": "egypt",
+   "pleiades": "https://pleiades.stoa.org/places/727070",
+   "era": "Alexandrians are among those who dispute with Stephen (Acts 6:9). Apollos, born at Alexandria, comes to Ephesus (Acts 18:24). Paul sails to Italy on ships of Alexandria (Acts 27:6; 28:11). Eusebius says they say Mark was first sent to Egypt and founded churches in Alexandria (Church History 2.16.1). He reads Philo's account of ascetics as a description of the first Christians there (2.17). Pantaenus heads the school of the faithful in Alexandria (5.10), Origen takes charge of the catechetical school at eighteen (6.3.3), and later leaves it to Heraclas when he moves to Caesarea (6.26).",
+   "acts": "The synagogue of the Alexandrians (Acts 6:9). Apollos (Acts 18:24). The ship of Alexandria at Myra (Acts 27:6). The second ship of Alexandria, with the sign of Castor and Pollux (Acts 28:11).",
+   "fathers": "Mark first proclaimed the gospel in Egypt and established churches in Alexandria, by what Eusebius says is said (Church History 2.16.1). A school of sacred learning existed there from ancient times, and Pantaenus, trained as a Stoic, was its head (5.10.1-4). Origen took the catechetical school at eighteen (6.3.3), then handed it on (6.26). Dionysius, Origen's pupil, followed in the school (6.29.5).",
+   "mss": "Two different claims belong here. First, Zachary Cole notes that scholars have long seen manuscripts such as 01, 03 and P75 as an accurate stream flowing from Alexandria, and quotes Metzger and Ehrman on controlled copying in that city, while adding that scholars now tend to avoid speaking of text-types (Myths and Mistakes, ch. 7). Second, Timothy Mitchell describes the trash mounds of Oxyrhynchus in Egypt, where thousands of papyrus fragments were recovered, and notes that many New Testament manuscripts found in the sands of Egypt had been thrown away there (Myths and Mistakes, ch. 2). Pleiades places Oxyrhynchus in Upper Egypt. It is not Alexandria, and this entry does not move its papyri here.",
+   "cost": "Eusebius opens the Mark story with \"they say\" (Church History 2.16.1), which is a report, not a record. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Mark bishop of Alexandria and says he died a martyr. That is legend. Eusebius's reading of Philo's ascetics as Christians is his own interpretation of a Jewish writer, and Philo's text was not checked here. Cole reports the Alexandrian label as an older way of speaking that scholars now tend to avoid; it is not offered here as proof of where any manuscript was copied.",
+   "not": "**Not the history of the Septuagint.** The Greek Old Testament's Alexandrian origin story, which Eusebius quotes from Irenaeus (Church History 5.8.11), belongs to an earlier era.",
+   "refs": [
+    "Acts 6:9",
+    "Acts 18:24-28",
+    "Acts 27:6",
+    "Acts 28:11"
+   ],
+   "related": [
+    "caesarea-maritima",
+    "carthage",
+    "ephesus"
+   ],
+   "sources": [
+    "Acts, checked in the King James Version",
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 2.16-17, 5.8, 5.10, 6.3, 6.26, 6.29",
+    "Hixson and Gurry, eds., Myths and Mistakes in New Testament Textual Criticism (IVP Academic, 2019), ch. 2 (Timothy N. Mitchell) and ch. 7 (Zachary J. Cole)",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 727070, Alexandria, and place 736983, Oxyrhynchus/Pemje, places.csv",
+    "Art Institute of Chicago, object 139869, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 31.201435,
+    "lon": 29.909773
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/527820cd-e010-5796-9a30-a28ca3955b0a/full/843,/0/default.jpg",
+    "description": "Billon tetradrachm of Hadrian, dated 131, minted in Alexandria.",
+    "credit": "Art Institute of Chicago, Tetradrachm (Coin) Portraying Emperor Hadrian, gift of Robert L. Grover",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/139869",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Carthage",
+   "id": "carthage",
+   "summary": "No source read here brings an apostle to Carthage. Its church steps into the record fully formed, with Tertullian under Severus and Cyprian as bishop and martyr in the third century.",
+   "plain": "The real question: what does it mean when a big church appears in the record with no story of how it began? **You meet a large family at a reunion and nobody can tell you who first moved to town.** They are clearly there and clearly rooted. Where did Carthage's church come from?",
+   "category": "fathers",
+   "group": "africa",
+   "pleiades": "https://pleiades.stoa.org/places/314921",
+   "era": "Eusebius names Cyprian, pastor of the parish of Carthage, as first to insist that converts from heresy be baptized (Church History 7.3). The Seventh Council of Carthage meets under Cyprian with eighty-seven bishops from Africa, Numidia and Mauritania, dated A.D. 258 in the edition (ANF vol. 5). Cyprian writes that he withdrew from messengers sent to take him to Utica so that he might suffer at Carthage, among his own people (Epistle 82). His Life and Passion says rumour of his trial ran through all Carthage and that he was the first bishop there to suffer martyrdom (ch. 15, 19). Early in the fourth century Constantine writes to Caecilianus, bishop of Carthage, granting money to the churches of Africa (Church History 10.5.18; 10.6.1).",
+   "acts": "Carthage is not named in Acts or anywhere in the New Testament.",
+   "fathers": "Jerome makes Tertullian the presbyter a native of the city and dates him to the reigns of Severus and Caracalla (Lives of Illustrious Men 53). Cyprian is the first bishop the sources read here tie firmly to Carthage: his letters, the council, and the Life and Passion (ANF vol. 5). Eusebius records his stand on rebaptism (Church History 7.3) and Constantine's letters to Caecilianus (10.5-6).",
+   "mss": "No manuscript in the sources read here is tied to Carthage in this era.",
+   "cost": "Eusebius calls Tertullian a Roman, well versed in Roman law and distinguished in Rome (Church History 2.2.4; 2.25.4). Jerome says he \"was from the city of Carthage in the province of Africa\" (Lives of Illustrious Men 53). The two need not conflict, since a provincial could be called a Roman for his law and his standing, but that reconciliation is drawn here, not by either source. The Passion of Perpetua and Felicitas (ANF vol. 3) names the procurator Hilarianus and the birthday of Geta Caesar but, in the passages read here, not the city. The usual placement of her martyrdom at Carthage rests on sources not read for this entry, so this entry does not make it, though it is the best-known Carthaginian text of the period if that placement holds. The list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Epaenetus bishop of Carthage. That is legend.",
+   "not": "**Not Punic Carthage.** The older city on the same site belongs to another era; this entry is the Roman city and its church.",
+   "related": [
+    "alexandria",
+    "rome",
+    "lyon"
+   ],
+   "sources": [
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 2.2.4, 2.25.4, 7.3, 10.5.18, 10.6.1",
+    "Jerome, Lives of Illustrious Men, ch. 53, NPNF2 vol. 3 (1892)",
+    "Cyprian, Epistle 82, ANF vol. 5",
+    "The Life and Passion of Cyprian, Bishop and Martyr, ANF vol. 5, ch. 15 and 19",
+    "The Seventh Council of Carthage under Cyprian, ANF vol. 5",
+    "The Passion of the Holy Martyrs Perpetua and Felicitas, trans. R. E. Wallis, ANF vol. 3",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 314921, Carthago, places.csv",
+    "Art Institute of Chicago, object 141273, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 36.853056,
+    "lon": 10.323056
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/18f9dfe1-e4e2-1d3d-e58b-303cbca0fb2e/full/843,/0/default.jpg",
+    "description": "Glass head pendants, probably Carthaginian, dated by the museum only to the Roman period, 30 BCE to 395 CE. The date range covers this era but is wider than it.",
+    "credit": "Art Institute of Chicago, Head Pendants",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/141273",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  },
+  {
+   "title": "Lyon",
+   "id": "lyon",
+   "summary": "The churches of Lyon and Vienne wrote to Asia and Phrygia about the persecution that killed their bishop Pothinus and the slave Blandina. Irenaeus, who had heard Polycarp, became bishop after.",
+   "plain": "The real question: why do the martyrs of Lyon send their story east, to Asia and Phrygia? **A family that moved across the country writes home first, before telling the neighbours.** That tells you where they think home is. What does Lyon's letter tell us about where its church came from?",
+   "category": "fathers",
+   "group": "gaul",
+   "pleiades": "https://pleiades.stoa.org/places/167717",
+   "era": "Eusebius dates the persecution to the seventeenth year of the Emperor Antoninus Verus (Church History 5, introduction). He says Lyons and Vienne are the chief cities of Gaul, both on the Rhone (5.1.1). The letter he quotes, from the servants of Christ at Vienne and Lyons to the brethren in Asia and Phrygia (5.1.3), tells of Pothinus, bishop of Lyons, more than ninety years old, dragged to the judgment seat (5.1.29); of Sanctus the deacon from Vienne, Maturus, Attalus a native of Pergamos, and Blandina, sent to the beasts (5.1.17, 5.1.37); and of Blandina hung on a stake (5.1.41). Irenaeus succeeds Pothinus and is described as a hearer of Polycarp in his youth (5.5.8). He later writes for the parishes in Gaul in the Easter dispute (5.23.2).",
+   "acts": "Lyon is not named in Acts or anywhere in the New Testament.",
+   "fathers": "The letter of the churches of Vienne and Lyons is preserved in Eusebius (Church History 5.1-3). Irenaeus, bishop after Pothinus, wrote Against Heresies, where he says he saw Polycarp in his early youth (Against Heresies 3.3.4; Church History 5.5.8).",
+   "mss": "No manuscript in the sources read here is tied to Lyon in this era.",
+   "cost": "The link from Lyon to Asia is in the sources: Attalus from Pergamum, Irenaeus who heard Polycarp. Saying the church was planted from Asia goes one step past them; that is an inference drawn here, not a claim the sources make. Eusebius says Paul testifies that Crescens was sent to Gaul (Church History 3.4.9); the list of the seventy among the dubious and spurious pieces attributed to Hippolytus makes Crescens bishop of Carchedon in Gaul. Neither ties him to Lyon, and the second is legend.",
+   "not": "**Not the only Lugdunum.** Pleiades also records Lugdunum Batavorum in the Netherlands and Lugdunum Convenarum in the Pyrenees. This entry is Roman Lyon on the Rhone.",
+   "related": [
+    "smyrna",
+    "pergamum",
+    "rome"
+   ],
+   "sources": [
+    "Eusebius, Church History, trans. McGiffert, NPNF2 vol. 1 (1890), 3.4.9, 5 introduction, 5.1, 5.5.8, 5.23.2",
+    "Irenaeus, Against Heresies, ANF vol. 1, 3.3.4",
+    "Pseudo-Hippolytus, On the Seventy Apostles, ANF vol. 5, Appendix of Dubious and Spurious Pieces",
+    "Pleiades gazetteer, place 167717, Col. Lugdunum, places.csv",
+    "Art Institute of Chicago, object 141698, API record"
+   ],
+   "post": null,
+   "geo": {
+    "lat": 45.758866,
+    "lon": 4.819482
+   },
+   "photo": {
+    "imageUrl": "https://www.artic.edu/iiif/2/536e83d1-23eb-da53-936e-40d4efd79cf8/full/843,/0/default.jpg",
+    "description": "Bronze dupondius of Vespasian, dated 77 to 78, minted at Lugdunum, with Fortuna on the reverse.",
+    "credit": "Art Institute of Chicago, Dupondius (Coin) Portraying Emperor Vespasian, gift of William F. Dunham",
+    "creditUrl": "https://api.artic.edu/api/v1/artworks/141698",
+    "license": "Public domain (is_public_domain true in the Art Institute of Chicago API)"
+   }
+  }
+ ]
+}
