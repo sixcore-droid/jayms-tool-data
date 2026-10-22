@@ -10,3 +10,4 @@ hand-edit the JSON here, it will be overwritten on the next build.
 |---|---|---|
 | `divine-council.json` | Divine Council Index (alpha) | 33 |
 | `gods-of-the-bible.json` | The Gods of the Bible (alpha) | 107 |
+| `echoes.json` | Echoes: how the New Testament reuses the Old (alpha) | 362 |
