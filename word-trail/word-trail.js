@@ -27,6 +27,13 @@
   function shardOf(s) { return s.charAt(0) + Math.floor(parseInt(s.slice(1), 10) / 100); }
   function word(s) { return data("words/" + shardOf(s) + ".json").then(function (d) { return d[s] || null; }); }
   function uniq(a) { var o = [], last = -1; for (var i = 0; i < a.length; i++) if (a[i] !== last) { o.push(a[i]); last = a[i]; } return o; }
+  // the first unbroken run of verse ids, as one reference: an echo may cite two passages, and the reader shows the first
+  function runRef(ids) {
+    var a = ids[0], z = a; for (var j = 1; j < ids.length && ids[j] === z + 1; j++) z = ids[j];
+    var r0 = refOf(a); if (z === a) return r0;
+    var r1 = refOf(z), c0 = r0.split(" ").pop().split(":")[0], c1 = r1.split(" ").pop().split(":");
+    return r0 + "-" + (c1[0] === c0 ? c1[1] : c1.join(":"));
+  }
   function lang(s) { return s && s.charAt(0) === "H" ? "he" : "grc"; }
 
   // ---------- state ----------
@@ -306,8 +313,8 @@
       var hit = L.links.filter(function (l) { return l[5].indexOf(i) >= 0 && (!CUR.heb || l[4].some(function (o) { return CUR.entry.v.indexOf(o) >= 0; })); })[0]
              || L.links.filter(function (l) { return l[5].indexOf(i) >= 0; })[0];
       if (!hit) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">Behind it</div><div class="a-btext">No graded Old Testament link for this verse yet. Graded links come from Echoes of Revelation, which covers Revelation only so far.</div>'; return; }
-      var otref = refOf(hit[4][0]) + (hit[4].length > 1 ? "-" + refOf(hit[4][hit[4].length - 1]).split(":").pop() : "");
-      verseBox(v2, "Behind it · " + otref + " · " + hit[2] + " echo", refOf(hit[4][0]) + (hit[4].length > 1 ? "-" + refOf(hit[4][hit[4].length - 1]).split(" ").pop() : ""));
+      var otref = runRef(hit[4]);
+      verseBox(v2, "Behind it · " + otref + " · " + hit[2] + " echo", otref);
       var a = el("div", "wt-links", '<a class="a-lnk" href="' + ECHO + encodeURIComponent(hit[0]) + '/">' + esc(hit[1]) + " ›</a>");
       v2.appendChild(a);
     });
@@ -366,8 +373,7 @@
         lc.innerHTML = '<div class="wt-pair"><div class="a-box v-scripture" id="wt-lo"></div><div class="a-box v-scripture" id="wt-ln"></div></div>' +
           '<div class="wt-links" style="margin:10px 0 13px"><span class="a-badge c-' + sel[2] + '" style="--cc:var(--wt-c)">' + esc(sel[2]) + " echo</span>" +
           '<span class="a-tag">' + esc(String(sel[3] || "").replace(/-/g, " ")) + '</span><a class="a-lnk" href="' + ECHO + encodeURIComponent(sel[0]) + '/">Open the full entry ›</a></div>';
-        var o0 = refOf(sel[4][0]), o1 = refOf(sel[4][sel[4].length - 1]);
-        var oref = sel[4].length > 1 ? (bookName(sel[4][0]) === bookName(sel[4][sel[4].length - 1]) ? o0 + "-" + o1.split(" ").pop() : o0) : o0;
+        var oref = runRef(sel[4]);
         verseBox(lc.querySelector("#wt-lo"), "Old Testament · " + oref + " · NET", oref);
         verseBox(lc.querySelector("#wt-ln"), "Revelation · " + refOf(sel[5][0]) + " · NET", refOf(sel[5][0]));
       }
