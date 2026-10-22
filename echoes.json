@@ -2,9 +2,9 @@
  "schema": 1,
  "tool": {
   "slug": "echoes",
-  "name": "Echoes",
-  "status": "beta",
-  "heroTitle": "Echoes: How the New Testament Reuses the Old",
+  "name": "Echoes of Revelation",
+  "status": "alpha",
+  "heroTitle": "Echoes of Revelation",
   "heroSubtitle": "Revelation never quotes the Old Testament outright, yet no New Testament book refers to it more. See both texts side by side, why they don't match, and what John does with them.",
   "searchPlaceholder": "Revelation 1:7, Daniel 7, lampstands, first and last…",
   "backLabel": "All echoes",
@@ -268,7 +268,7 @@
   {
    "type": "suggest",
    "kind": "echoes",
-   "label": "Echoes (beta)",
+   "label": "Echoes of Revelation (alpha)",
    "toggleText": "Know an echo we should add? Suggest it ›",
    "valuePlaceholder": "Which verse, and which Old Testament text does it echo?"
   }
