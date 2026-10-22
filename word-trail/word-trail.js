@@ -1,4 +1,4 @@
-/* WORD TRAIL — follow one word from the Hebrew, through the Greek Old Testament, into the New Testament.
+/* WORD TRAIL: follow one word from the Hebrew, through the Greek Old Testament, into the New Testament.
    Self-contained: no snippet, no library. Mounts on #jayms-word-trail. Data lives in jayms-tool-data,
    branch word-trail, folder word-trail/. Routing is the hash only (#w=H776&g=G1093&view=uses&v=123),
    never pushState: back to a pushState entry reloads the document on this site. */
@@ -449,7 +449,7 @@
         '<div class="wt-legend"><span class="c-a"><i></i>Dates A: ' + esc(K.datesA.name) + '</span><span class="c-b"><i></i>Dates B: ' + esc(K.datesB.name || "no source yet") + '</span><span class="c-ms"><i></i>A surviving copy</span><span class="c-tr"><i></i>Translation or print</span></div></div>' +
         '<div id="wt-item"></div>' +
         '<div class="a-box v-explain"><div class="a-blabel">How to read this</div><div class="a-btext">The gap between a book\'s bar and its first copy is the distance between the writing and the oldest copy anyone holds. ' +
-        "Copied and found are different dates: the Leningrad Codex was copied in 1008 and reached St Petersburg in the 1800s; the Dead Sea Scrolls were copied before Jesus and found in 1947. " +
+        "Copied and found are different dates: the Leningrad Codex was copied in 1008 and reached St Petersburg in the 1800s; the Dead Sea Scrolls were copied between the third century BC and the first century AD and first found in 1947. " +
         esc(K.datesA.note) + " " + esc(K.datesB.note) + "</div></div>";
       MAIN.innerHTML = h;
       wireLayers(MAIN, viewWritten);
@@ -513,7 +513,7 @@
         '<div class="wt-sec">The world · ' + esc(Wd.world.source) + "</div>" + lanes + fam + "</div></div></div>" +
         '<div class="wt-pair">' +
           '<div class="a-box v-explain' + (selSpan ? "" : " wt-empty") + '"><div class="a-blabel">Meanwhile, in the world</div><div class="a-btext" id="wt-mean"></div></div>' +
-          '<div class="a-box v-open"><div class="a-blabel">Hinges</div><div class="a-btext" style="font-size:15px">One choice moves every date that hangs on it. Pick one and watch the bars shift.</div>' +
+          '<div class="a-box v-open"><div class="a-blabel">Hinges</div><div class="a-btext" style="font-size:15px">One choice moves every date that hangs on it. Pick one and the bars move with it.</div>' +
           Wd.hinges.map(function (hg) {
             return '<div class="wt-sec" style="margin-top:12px">' + esc(hg.n) + '</div><div class="wt-pick">' + hg.opts.map(function (o) {
               return '<button class="a-chip' + (S.hinge[hg.k] === o.k ? " on" : "") + '" data-hinge="' + hg.k + ":" + o.k + '">' + esc(o.n) + "</button>";
@@ -548,7 +548,7 @@
     document.getElementById("wt-foot").innerHTML =
       '<p class="a-note method">The method. The Hebrew Old Testament and the Greek New Testament are counted word by word from the Macula Hebrew and Greek texts. ' +
       "The Greek Old Testament column comes from Swete's Greek text, lined up verse by verse with the Hebrew; a word-alignment model then learns which Greek word answers which Hebrew word. " +
-      "Those counts are statistical, the same way Hidden Manna's are: they say how often, not that every instance is right. Swete's transcription carries some scanning errors, and it has no Ecclesiastes.</p>" +
+      "Those counts are statistical: they say how often, not that every instance is right. Swete's transcription carries some scanning errors, and it has no Ecclesiastes.</p>" +
       '<p class="a-note">Sources. Hebrew and Greek: Macula Hebrew (WLC) and Macula Greek (SBLGNT), Clear Bible, CC BY 4.0, via jayms interlinear-data. Greek Old Testament: H. B. Swete, The Old Testament in Greek, First1KGreek transcription, lemmatized by QuantForge (Morpheus), CC BY-SA 4.0. ' +
       "Verse numbers: STEPBible TVTMS, CC BY 4.0. Lexicon: Strong's (Open Scriptures, CC BY-SA). Dead Sea Scrolls by verse: ETCBC/dss, Abegg's data, CC BY-NC 4.0. People: Theographic Bible Metadata, CC BY-SA 4.0. World: Cliopatria, Seshat Global History Databank, CC BY 4.0. Verse text: the NET Bible, labs.bible.org. " +
       "The Greek Old Testament counts and the people layer are shared under CC BY-SA 4.0, as their sources require.</p>";
