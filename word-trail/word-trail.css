@@ -329,3 +329,4 @@
 .jayms-word-trail p,.jayms-word-trail li{font-family:"Archivo",system-ui,-apple-system,Arial,sans-serif !important}
 .jayms-word-trail .wt-wsl{flex:0 0 auto;font-size:13px;white-space:nowrap}
 .jayms-word-trail .wt-gr .wt-wsl{color:var(--blue)}
+.jayms-word-trail .wt-pyr .ct.on{fill:var(--ink-bright);font-weight:700}
