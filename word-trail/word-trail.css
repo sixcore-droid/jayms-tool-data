@@ -314,3 +314,18 @@
   .jayms-word-trail .wt-panel{padding:13px 13px}
   .jayms-word-trail .wt-tl{--wt-lab:104px}
 }
+
+/* ---- cards carry their language color, the same gold and blue as the word bars above them ---- */
+.jayms-word-trail .wt-he .wt-rg{color:var(--gold)}
+.jayms-word-trail .wt-gr .wt-rg{color:var(--blue)}
+.jayms-word-trail .wt-he .wt-rend:hover,.jayms-word-trail .wt-he .wt-rend.on{border-color:var(--gold)}
+.jayms-word-trail .wt-gr .wt-rend:hover,.jayms-word-trail .wt-gr .wt-rend.on{border-color:var(--blue)}
+.jayms-word-trail .wt-he .wt-rend.on .wt-ra{color:var(--gold)}
+.jayms-word-trail .wt-gr .wt-rend.on .wt-ra{color:var(--blue)}
+.jayms-word-trail .wt-gr .wt-n{color:var(--blue)}
+.jayms-word-trail .wt-rx{font-size:11.5px;line-height:1.35;color:var(--muted)}
+/* every line of text in the tool uses the tool's own face, not the page's paragraph serif */
+/* the site sets "body, p, li" with !important, so it is answered in kind, with the face the site already uses for tool text */
+.jayms-word-trail p,.jayms-word-trail li{font-family:"Archivo",system-ui,-apple-system,Arial,sans-serif !important}
+.jayms-word-trail .wt-wsl{flex:0 0 auto;font-size:13px;white-space:nowrap}
+.jayms-word-trail .wt-gr .wt-wsl{color:var(--blue)}

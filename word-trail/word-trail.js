@@ -101,7 +101,47 @@
   // Strong's spells long vowels with a helper letter (ruwach, chiyl); a reader types ruach, so both are folded
   function fold(s) { return plain(s).replace(/[^a-z ]/g, "").replace(/uw/g, "u").replace(/iy/g, "i").replace(/ow/g, "o").replace(/(.)\1/g, "$1"); }
   function ensureSearch() { if (!SEARCH) SEARCH = data("search.json"); return SEARCH; }
+
+  // Word Study is the one source of truth for each word: its name, gloss, meaning and counts are read live from the
+  // same file the Word Study tool reads, so an edit there shows here on the next load. The built search list covers
+  // the first seconds; once Word Study arrives its rows replace the word rows (Fact Book rows stay).
+  var WSURL = "https://raw.githubusercontent.com/sixcore-droid/jayms-tool-data/main/word-study.json", WSX = null, WSP = null;
+  function ensureWS() {
+    if (!WSP) WSP = fetch(WSURL, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
+      var x = {};
+      (j.entries || []).forEach(function (e) { x[e.strong] = e; });
+      WSX = x;
+      ensureSearch().then(function (rows) {
+        var keep = rows.filter(function (r) { return r[8]; }), have = {};
+        rows.forEach(function (r) { if (!r[8]) have[r[0]] = 1; });
+        var live = (j.entries || []).filter(function (e) { return have[e.strong]; }).map(function (e) {
+          return [e.strong, e.lemma || "", e.title || "", e.gloss || "", (((e.summary || "").slice(0, 60)) + " · " + ((e.kjv || "").slice(0, 70))).replace(/^[ ·]+|[ ·]+$/g, ""),
+            e.count || 0, e.xlit || "", /^key/.test(e.band || "") ? 1 : 0];
+        });
+        SEARCH = Promise.resolve(live.concat(keep).sort(function (a, b) { return (b[7] - a[7]) || ((b[5] || 0) - (a[5] || 0)); }));
+        if (Q.value.trim()) runSearch();
+      });
+      if (CUR) { wsFix(CUR.w, CUR.entry); wsFix(CUR.g, CUR.gEntry); renderSide(); }
+      return x;
+    }).catch(function () { WSP = null; });
+    return WSP;
+  }
+  // lay Word Study's values over a built word entry
+  function wsFix(id, en) {
+    var w = WSX && id && WSX[id];
+    if (!w || !en) return en;
+    en.l = w.lemma || en.l; en.x = w.xlit || en.x; en.t = w.title || en.t; en.g = w.gloss || en.g; en.d = w.def || w.summary || en.d;
+    en.ws = { n: w.count, v: w.verses, b: w.nbooks };
+    return en;
+  }
+  // the word's own page in Word Study, by the address format Word Study publishes (wordStudy.url, #id={n})
+  function wsLink(id, en) {
+    var w = WSX && WSX[id], n = w ? w.id : String(id).toLowerCase();
+    return '<a class="a-lnk wt-wsl" href="' + WORDSTUDY + "#id=" + encodeURIComponent(n) + '">Open ' + esc((en && (en.t || en.x)) || id) + " in Word Study ›</a>";
+  }
+  function wsCount(id) { var w = WSX && WSX[id]; return w ? w.count : null; }
   Q.addEventListener("focus", ensureSearch);
+  ensureWS();
   var qTimer = null;
   Q.addEventListener("input", function () { clearTimeout(qTimer); qTimer = setTimeout(runSearch, 140); });
   Q.addEventListener("keydown", function (e) {
@@ -158,6 +198,7 @@
       if (heb && !S.g) { var first = rend.filter(function (x) { return x[1]; })[0]; S.g = first ? first[1] : null; }
       if (!heb) S.g = S.w;
       return (S.g && S.g !== S.w ? word(S.g) : Promise.resolve(heb ? null : e)).then(function (ge) {
+        wsFix(S.w, e); wsFix(S.g, ge);
         CUR = { w: S.w, heb: heb, entry: e, rend: rend, inv: inv, g: S.g, gEntry: ge, missing: bridge.missing || [], fn: (bridge.fn || []).indexOf(S.w) >= 0,
           from: heb && S.from ? S.from : null, sibs: heb && S.from ? (bridge.g[S.from] || []) : [] };
         return CUR;
@@ -175,7 +216,7 @@
     return '<div class="wt-wb wt-gbar"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="grc">' + esc(g.l) + '</span><span class="wt-gloss">' + esc(g.t || g.x) + (g.g ? " · " + esc(g.g) : "") + "</span></div>" +
       '<div class="wt-code">' + esc(c.g) + (g.t ? " · " + esc(g.x) : "") + (g.p ? " · " + esc(g.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(g.d) + "</p>" +
-      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(nt.length) + "</span> uses in <span class=\"wt-n\">" + fmt(ntv.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(ntv) + "</span> New Testament books.</p></div>";
+      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(g.ws ? g.ws.n : nt.length) + "</span> uses in <span class=\"wt-n\">" + fmt(g.ws ? g.ws.v : ntv.length) + "</span> verses across <span class=\"wt-n\">" + (g.ws ? g.ws.b : bookCount(ntv)) + "</span> New Testament books.</p>" + wsLink(c.g, g) + "</div>";
   }
   function renderSide() {
     var c = CUR, e = c.entry;
@@ -186,7 +227,7 @@
       '<div class="wt-wb"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.t || e.x) + (e.g ? " · " + esc(e.g) : "") + "</span></div>" +
       '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
-      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div></div>";
+      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.ws ? e.ws.n : e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(e.ws ? e.ws.v : vs.length) + "</span> verses across <span class=\"wt-n\">" + (e.ws ? e.ws.b : bookCount(vs)) + "</span> books.</p>" + wsLink(c.w, e) + "</div></div>";
     // every Fact Book entry this word carries, all of them in the one box; the one picked in search leads
     var fbs = (e.fb || []).slice(), lead = fbs.filter(function (f) { return f[0] === S.fb; })[0];
     if (lead) fbs = [lead].concat(fbs.filter(function (f) { return f !== lead; }));
@@ -204,10 +245,11 @@
       list.forEach(function (r) {
         var on = r[0] === cur;
         o += '<button class="wt-rend' + (on ? " on" : "") + '" data-h="' + r[0] + '"><span class="wt-rg" lang="he">' + esc(r[2] || r[0]) + "</span>" +
-          '<span class="wt-rtop"><span class="wt-rt">' + fmt(r[1]) + " times · " + esc(r[3] || "") + " · " + r[0] + '</span><span class="wt-ra">' + (on ? "Showing" : "Open") + "</span></span>" +
+          '<span class="wt-rtop"><span class="wt-rt">' + (wsCount(r[0]) != null ? fmt(wsCount(r[0])) + " uses · " : "") + esc(r[3] || "") + " · " + r[0] + '</span><span class="wt-ra">' + (on ? "Showing" : "Open") + "</span></span>" +
+          '<span class="wt-rx">Greek Old Testament: ' + fmt(r[1]) + "× as " + esc(gid) + "</span>" +
           '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[1] / t2)) + '%"></span></span></button>';
       });
-      return o + '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew; the others stay here.</div></div>';
+      return o + '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with ' + esc(gid) + '. Uses come from Word Study; the Greek Old Testament line is how many times that Greek text puts ' + esc(gid) + ' for each one. Pick one to start from the Hebrew; the others stay here.</div></div>';
     }
     var gh = "";
     if (c.heb) {
@@ -221,11 +263,12 @@
         var on = r[1] && r[1] === c.g;
         gh += '<button class="wt-rend' + (on ? " on" : "") + '" data-g="' + (r[1] || "") + '"' + (r[1] ? "" : " disabled") + ">" +
           '<span class="wt-rg" lang="grc">' + esc(r[0]) + "</span>" +
-          '<span class="wt-rtop"><span class="wt-rt">' + fmt(r[2]) + " times · " + (r[1] ? r[1] : "not in the New Testament") + '</span><span class="wt-ra">' + (on ? "Following" : (r[1] ? "Follow" : "")) + "</span></span>" +
+          '<span class="wt-rtop"><span class="wt-rt">' + (r[1] ? (wsCount(r[1]) != null ? fmt(wsCount(r[1])) + " New Testament uses · " : "") + r[1] : "not in the New Testament") + '</span><span class="wt-ra">' + (on ? "Following" : (r[1] ? "Follow" : "")) + "</span></span>" +
+          '<span class="wt-rx">Greek Old Testament: ' + fmt(r[2]) + "× for " + esc(e.t || e.x) + "</span>" +
           '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[2] / tot)) + '%"></span></span></button>';
       });
       gh += '</div><div class="a-bnote">' + (c.fn ? "This is a grammar word. Its counts mostly follow sentence structure, not translation choice, so read them loosely. " : "") +
-        'The counts are how often the Greek Old Testament gives each Greek word for this Hebrew word.' +
+        'Uses come from Word Study. The Greek Old Testament line is how many times that Greek text puts each Greek word for ' + esc(e.t || e.x) + '.' +
         (c.missing.length ? " Not counted: " + esc(c.missing.join(", ")) + ", which the open Greek text used here does not have." : "") + "</div></div>";
     } else {
       // Hebrew always sits above Greek: the Hebrew words behind this Greek word come first
