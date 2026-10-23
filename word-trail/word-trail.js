@@ -38,7 +38,7 @@
   function lang(s) { return s && s.charAt(0) === "H" ? "he" : "grc"; }
 
   // ---------- state ----------
-  var S = { w: "H776", g: null, view: "uses", v: null, book: null, fb: null, layers: {}, names: true, order: "canon",
+  var S = { w: "H776", g: null, view: "uses", v: null, book: null, fb: null, from: null, layers: {}, names: true, order: "canon",
             scope: "word", grade: { clear: 1, probable: 1, possible: 1 }, link: null,
             hinge: { exodus: "early", egypt: "430" }, person: null, onlyWord: false, item: null };
   var DEFAULT_LAYERS = { heb: 1, nt: 1, a: 1, b: 1, ms: 1, find: 1, tr: 1, uses: 1, people: 1, events: 1, famous: 1,
@@ -53,10 +53,11 @@
       if (k === "view" && /^(uses|lands|written|happened)$/.test(v)) S.view = v;
       if (k === "v" && /^\d+$/.test(v)) S.v = parseInt(v, 10);
       if (k === "fb" && /^[a-z0-9-]+$/.test(v)) S.fb = v;
+      if (k === "from" && /^G\d+$/.test(v)) S.from = v;
     });
   }
   function writeHash() {
-    var h = "#w=" + S.w + (S.g ? "&g=" + S.g : "") + "&view=" + S.view + (S.v != null ? "&v=" + S.v : "") + (S.fb ? "&fb=" + S.fb : "");
+    var h = "#w=" + S.w + (S.g ? "&g=" + S.g : "") + "&view=" + S.view + (S.v != null ? "&v=" + S.v : "") + (S.fb ? "&fb=" + S.fb : "") + (S.from ? "&from=" + S.from : "");
     if (location.hash !== h) location.replace(h);
   }
 
@@ -137,7 +138,7 @@
       SUGG.hidden = false;
     }).catch(function () { SUGG.innerHTML = '<span class="a-empty">The word list did not load.</span>'; SUGG.hidden = false; });
   }
-  function go(id, fb) { S.fb = fb || null; S.w = id; S.g = null; S.v = null; S.book = null; S.link = null; S.item = null; writeHash(); render(); }
+  function go(id, fb, from) { S.from = from || null; S.fb = fb || null; S.w = id; S.g = null; S.v = null; S.book = null; S.link = null; S.item = null; writeHash(); render(); }
 
   // ---------- the word card ----------
   var CUR = null;   // { w, entry, rend, inv, g, gEntry }
@@ -147,10 +148,13 @@
       if (!BOOKS) { BOOKS = books.books; NV = books.verses; NTS = BOOKS[39].s; }
       var heb = S.w.charAt(0) === "H";
       var rend = heb ? (bridge.h[S.w] || []) : [], inv = heb ? [] : (bridge.g[S.w] || []);
+      // came here from a Greek word: keep following it, and keep its other Hebrew words on screen
+      if (heb && S.from) S.g = S.from;
       if (heb && !S.g) { var first = rend.filter(function (x) { return x[1]; })[0]; S.g = first ? first[1] : null; }
       if (!heb) S.g = S.w;
       return (S.g && S.g !== S.w ? word(S.g) : Promise.resolve(heb ? null : e)).then(function (ge) {
-        CUR = { w: S.w, heb: heb, entry: e, rend: rend, inv: inv, g: S.g, gEntry: ge, missing: bridge.missing || [], fn: (bridge.fn || []).indexOf(S.w) >= 0 };
+        CUR = { w: S.w, heb: heb, entry: e, rend: rend, inv: inv, g: S.g, gEntry: ge, missing: bridge.missing || [], fn: (bridge.fn || []).indexOf(S.w) >= 0,
+          from: heb && S.from ? S.from : null, sibs: heb && S.from ? (bridge.g[S.from] || []) : [] };
         return CUR;
       });
     });
@@ -190,8 +194,19 @@
     } else {
       h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">Fact Book</div><div class="a-btext">This word has no Fact Book entry.</div></div>';
     }
+    function hebrewBehind(list, cur, gid) {
+      var t2 = list.reduce(function (a, r) { return a + r[1]; }, 0), o = '<div class="a-box v-wording wt-strip wt-he"><div class="a-blabel">The Hebrew behind ' + esc(gid) + '</div><div class="wt-rrow">';
+      list.forEach(function (r) {
+        var on = r[0] === cur;
+        o += '<button class="wt-rend' + (on ? " on" : "") + '" data-h="' + r[0] + '"><span class="wt-rg" lang="he">' + esc(r[2] || r[0]) + "</span>" +
+          '<span class="wt-rtop"><span class="wt-rt">' + fmt(r[1]) + " times · " + esc(r[3] || "") + " · " + r[0] + '</span><span class="wt-ra">' + (on ? "Showing" : "Open") + "</span></span>" +
+          '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[1] / t2)) + '%"></span></span></button>';
+      });
+      return o + '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew; the others stay here.</div></div>';
+    }
     var gh = "";
     if (c.heb) {
+      if (c.from && c.sibs.length) gh += hebrewBehind(c.sibs, c.w, c.gEntry ? c.gEntry.l : c.from);
       gh += wh;
       gh += '<div class="a-box v-wording wt-strip wt-gr"><div class="a-blabel">The Greek word</div>' + greekBar(c) +
         '<div class="wt-sub">How the Greek Old Testament renders ' + esc(e.t || e.x) + '. Pick one to follow it into the New Testament.</div><div class="wt-rrow">';
@@ -209,24 +224,17 @@
         (c.missing.length ? " Not counted: " + esc(c.missing.join(", ")) + ", which the open Greek text used here does not have." : "") + "</div></div>";
     } else {
       // Hebrew always sits above Greek: the Hebrew words behind this Greek word come first
-      gh += '<div class="a-box v-wording wt-strip wt-he"><div class="a-blabel">The Hebrew behind it</div><div class="wt-rrow">';
-      if (!c.inv.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament does not use this word for any Hebrew word often enough to count.</div>';
-      var t2 = c.inv.reduce(function (a, r) { return a + r[1]; }, 0);
-      c.inv.forEach(function (r) {
-        gh += '<button class="wt-rend" data-h="' + r[0] + '"><span class="wt-rg" lang="he">' + esc(r[2] || r[0]) + "</span>" +
-          '<span class="wt-rtop"><span class="wt-rt">' + fmt(r[1]) + " times · " + esc(r[3] || "") + " · " + r[0] + '</span><span class="wt-ra">Open</span></span>' +
-          '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[1] / t2)) + '%"></span></span></button>';
-      });
-      gh += '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew.</div></div>';
+      if (c.inv.length) gh += hebrewBehind(c.inv, null, e.l);
+      else gh += '<div class="a-box v-wording wt-strip wt-he wt-empty"><div class="a-blabel">The Hebrew behind it</div><div class="a-btext">The Greek Old Testament does not use this word for any Hebrew word often enough to count.</div></div>';
       gh += wh;
     }
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h; GREEK.innerHTML = gh;
     [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-g]"), function (b) {
-      b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.v = null; S.book = null; writeHash(); render(); });
+      b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.from = null; S.v = null; S.book = null; writeHash(); render(); });
     });
     [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-h]"), function (b) {
-      b.addEventListener("click", function () { go(b.getAttribute("data-h")); });
+      b.addEventListener("click", function () { go(b.getAttribute("data-h"), null, CUR.heb ? CUR.from : CUR.w); });
     });
   }
 
