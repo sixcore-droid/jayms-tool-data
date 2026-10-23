@@ -411,3 +411,7 @@
   .jayms-book-echoes .be-bk{flex:0 0 auto}
   .jayms-book-echoes .be-grp{display:none}
 }
+/* the link to the sister page sits at the right end of the tab row */
+.jayms-word-trail .wt-other{margin-left:auto;align-self:center;font-size:13px;color:var(--gold);text-decoration:none;padding:8px 4px;white-space:nowrap}
+.jayms-word-trail .wt-other:hover{color:var(--ink-bright);text-decoration:underline}
+@media (max-width:760px){.jayms-word-trail .wt-other{margin-left:12px}}

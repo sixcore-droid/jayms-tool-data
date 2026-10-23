@@ -6,6 +6,18 @@ through the Greek Old Testament, into the New Testament, and set it on two clock
 This folder lives on its own branch, `word-trail`, so nothing on `main` (and no live tool)
 changes while it is being built. Nothing here is a snippet.
 
+## Pages
+
+One script and one stylesheet run three draft pages under Bible Study Tools:
+
+| Page | Mount | What it shows |
+|---|---|---|
+| 99259 Word Trail | `#jayms-word-trail` with `data-views="uses,lands"` | Every use, Where it lands |
+| 99433 Word Timelines | `#jayms-word-trail` with `data-views="written,happened"` | When it was written, When it happened |
+| 99432 Book Echoes | `#jayms-book-echoes` | One book and every book it ties into, no word involved |
+
+`data-other-url` and `data-other-label` on a Word Trail mount add a link to the sister page that carries the word across.
+
 ## Files
 
 | File | What it holds | Source and licence |

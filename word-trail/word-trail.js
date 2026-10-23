@@ -51,7 +51,7 @@
       var p = kv.split("="), k = p[0], v = decodeURIComponent(p[1] || "");
       if (k === "w" && /^[HG]\d+$/.test(v)) S.w = v;
       if (k === "g" && /^G\d+$/.test(v)) S.g = v;
-      if (k === "view" && /^(uses|lands|written|happened)$/.test(v)) S.view = v;
+      if (k === "view" && VIEWS.indexOf(v) >= 0) S.view = v;
       if (k === "v" && /^\d+$/.test(v)) S.v = parseInt(v, 10);
       if (k === "fb" && /^[a-z0-9-]+$/.test(v)) S.fb = v;
       if (k === "from" && /^G\d+$/.test(v)) S.from = v;
@@ -75,6 +75,14 @@
   function bookName(i) { return BOOKS[bookOf(i)].n; }
 
   // ---------- layout ----------
+  // which views this page shows. Word Trail carries Every use and Where it lands; Word Timelines carries the two
+  // clocks. data-views on the mount names them; data-other-url and data-other-label link to the sister page,
+  // carrying the word across.
+  var VIEWN = { uses: "Every use", lands: "Where it lands", written: "When it was written", happened: "When it happened" };
+  var VIEWS = String(MOUNT.getAttribute("data-views") || "uses,lands,written,happened").split(/\s*,\s*/).filter(function (v) { return VIEWN[v]; });
+  if (!VIEWS.length) VIEWS = ["uses"];
+  S.view = VIEWS[0];
+  var OTHER = MOUNT.getAttribute("data-other-url") || "", OTHERL = MOUNT.getAttribute("data-other-label") || "";
   MOUNT.innerHTML =
     '<nav class="wt-trail" id="wt-trail" aria-label="Words looked at in this session"></nav>' +
     '<div class="wt-find">' +
@@ -84,10 +92,8 @@
     '</div>' +
     '<div class="wt-sugg" id="wt-sugg" hidden></div>' +
     '<div class="wt-tabs" role="tablist">' +
-      '<button class="wt-tab" role="tab" data-view="uses">Every use</button>' +
-      '<button class="wt-tab" role="tab" data-view="lands">Where it lands</button>' +
-      '<button class="wt-tab" role="tab" data-view="written">When it was written</button>' +
-      '<button class="wt-tab" role="tab" data-view="happened">When it happened</button>' +
+      VIEWS.map(function (v) { return '<button class="wt-tab" role="tab" data-view="' + v + '">' + VIEWN[v] + "</button>"; }).join("") +
+      (OTHER ? '<a class="wt-other" id="wt-other" href="' + esc(OTHER) + '">' + esc(OTHERL) + " ›</a>" : "") +
     '</div>' +
     '<div id="wt-greek"></div>' +
     '<div class="wt-desk"><aside class="wt-side" id="wt-side"></aside><div class="wt-main" id="wt-main"></div></div>' +
@@ -803,6 +809,8 @@
   }
   function render() {
     MOUNT.classList.toggle("wt-wide", S.view === "uses");
+    var oa = document.getElementById("wt-other");
+    if (oa) oa.href = OTHER + "#w=" + S.w + (S.g ? "&g=" + S.g : "") + (S.from ? "&from=" + S.from : "");
     [].forEach.call(MOUNT.querySelectorAll(".wt-tab"), function (b) { var on = b.getAttribute("data-view") === S.view; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     MAIN.innerHTML = '<div class="wt-loading">Loading…</div>';
     load().then(function () {
