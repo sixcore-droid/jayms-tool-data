@@ -206,6 +206,7 @@
 .jayms-word-trail .wt-pyr .gn{fill:var(--blue)}
 .jayms-word-trail .wt-pyr .apg{fill:var(--ink-bright);font-family:inherit;font-size:14px;font-style:italic}
 .jayms-word-trail .wt-pyr .vn{fill:var(--ink-soft);font-family:inherit;font-size:9px}
+.jayms-word-trail .wt-pyr .vlead{stroke:var(--line);stroke-width:.6}
 .jayms-word-trail .wt-pyr .vn.on{fill:var(--rust);font-weight:700;font-size:10px}
 .jayms-word-trail .wt-pyr .gl{fill:var(--ink-bright);font-size:22px}
 .jayms-word-trail .wt-pyr .lbl{fill:var(--ink-soft);font-family:inherit;font-size:10px;letter-spacing:.12em}

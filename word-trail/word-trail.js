@@ -311,15 +311,21 @@
       ntb.forEach(function (b, i) { var x = spread(ntb, (c.heb ? mid + 18 : L + 8), R - 8, i); nodes.push({ b: b, x: x, y: tierY((x - L) / (R - L)), from: c.heb ? [gx, gy] : [apx, apy], t: "nt" }); });
       var sel = nodes.filter(function (n) { return n.b === S.book; })[0];
       var vs = sel ? byBook[sel.b] : [];
-      var fan = "", dots = "", selLine = "", step = Math.max(1, Math.ceil(vs.length / 90));
+      // verse numbers sit flat and, when the verses are tight, staggered over up to three lines with a thin
+      // lead down from each dot, so no number lands on its neighbour
+      var gapU = vs.length > 1 ? (R - L) / (vs.length - 1) : 999, LW = 30;
+      var rows = Math.min(3, Math.max(1, Math.ceil(LW / gapU))), step = Math.max(1, Math.ceil(LW / (gapU * rows)));
+      var fan = "", dots = "", selLine = "", lead = "", nLab = 0;
       vs.forEach(function (i, k) {
         var x = spread(vs, L, R, k);
         fan += "M" + sel.x.toFixed(1) + " " + sel.y.toFixed(1) + "L" + x.toFixed(1) + " " + base;
         if (i === S.v) selLine = "M" + sel.x.toFixed(1) + " " + sel.y.toFixed(1) + "L" + x.toFixed(1) + " " + base;
         if (vs.length <= 220) dots += '<circle class="vd' + (i === S.v ? " on" : "") + '" cx="' + x.toFixed(1) + '" cy="' + base + '" r="' + (i === S.v ? 5 : 2.6) + '"></circle>';
         if (k % step === 0 || i === S.v) {
-          var cv = refOf(i).split(" ").pop();
-          dots += '<text class="vn' + (i === S.v ? " on" : "") + '" x="' + x.toFixed(1) + '" y="' + (base + 10) + '" transform="rotate(60 ' + x.toFixed(1) + " " + (base + 10) + ')">' + cv + "</text>";
+          var cv = refOf(i).split(" ").pop(), row = (i === S.v ? 0 : nLab % rows), ly = base + 18 + row * 15;
+          if (i !== S.v) nLab++;
+          if (row > 0) lead += "M" + x.toFixed(1) + " " + (base + 5) + "L" + x.toFixed(1) + " " + (ly - 9);
+          dots += '<text class="vn' + (i === S.v ? " on" : "") + '" x="' + x.toFixed(1) + '" y="' + ly + '" text-anchor="middle">' + cv + "</text>";
         }
       });
       var links = nodes.map(function (n) {
@@ -347,13 +353,13 @@
           layerBtn("nt", "c-nt", "Hide New Testament books", "Show New Testament books", !c.g) +
           '<button class="wt-lay on" data-order="1">' + (S.order === "canon" ? "Order by date written" : "Order by canon") + "</button>" +
         "</div>" +
-        '<div class="wt-arcwrap"><svg class="wt-pyr" viewBox="0 0 ' + W + " " + (base + 72) + '" role="img" aria-label="The word at the top, a line to each book that uses it, and the chosen book\'s verses along the bottom">' +
-          '<path class="fan t-' + (sel ? sel.t : "heb") + '" d="' + fan + '"></path>' + (selLine ? '<path class="sel" d="' + selLine + '"></path>' : "") +
+        '<div class="wt-arcwrap"><svg class="wt-pyr" viewBox="0 0 ' + W + " " + (base + 40 + rows * 15) + '" role="img" aria-label="The word at the top, a line to each book that uses it, and the chosen book\'s verses along the bottom">' +
+          '<path class="fan t-' + (sel ? sel.t : "heb") + '" d="' + fan + '"></path><path class="vlead" d="' + lead + '"></path>' + (selLine ? '<path class="sel" d="' + selLine + '"></path>' : "") +
           links + greek + nodeSvg + dots +
           '<circle class="apex' + (c.heb ? "" : " gr") + '" cx="' + apx + '" cy="' + apy + '" r="9"></circle>' +
           '<text class="apl' + (c.heb ? "" : " gr") + '" x="' + apx + '" y="' + (apy - 30) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
           '<text class="apg" x="' + (apx + 18) + '" y="' + (apy + 5) + '">' + esc(e.x) + (e.g ? " · " + esc(e.g) : "") + "</text>" +
-          '<text class="lbl" x="' + L + '" y="' + (base + 62) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + (vs.length === 1 ? " verse" : " verses")).toUpperCase() : "") + "</text>" +
+          '<text class="lbl" x="' + L + '" y="' + (base + 30 + rows * 15) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + (vs.length === 1 ? " verse" : " verses")).toUpperCase() : "") + "</text>" +
           '<rect class="basehit" x="0" y="' + (base - 16) + '" width="' + W + '" height="60"></rect>' +
         "</svg></div>" +
         '<div class="wt-legend">' + (c.heb ? '<span class="c-heb"><i></i>Old Testament books</span><span class="c-grk"><i></i>Greek Old Testament word</span>' : "") +
