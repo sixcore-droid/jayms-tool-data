@@ -62,20 +62,29 @@
 .jayms-word-trail .wt-code{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .jayms-word-trail .wt-def{font-size:15px;line-height:1.55;color:var(--ink-soft);margin:8px 0 0}
 
-/* a rendering: one row per Greek word, a bar for its share */
-.jayms-word-trail .wt-rend{display:flex;align-items:center;gap:12px;width:100%;min-height:46px;
-  padding:8px 12px;margin:0 0 7px;background:transparent;border:1px solid var(--line);border-radius:7px;
+/* the Greek Old Testament renderings: a landscape strip above the views,
+   one card per Greek word, side by side, wrapping on a phone */
+.jayms-word-trail .wt-strip{margin:0 0 16px}
+.jayms-word-trail .wt-rrow{display:flex;flex-wrap:wrap;gap:8px}
+.jayms-word-trail .wt-rend{flex:1 1 190px;max-width:280px;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:6px;
+  min-height:46px;padding:10px 12px;background:transparent;border:1px solid var(--line);border-radius:7px;
   cursor:pointer;font-family:inherit;color:var(--ink);text-align:left}
 .jayms-word-trail .wt-rend:hover{border-color:var(--gold)}
 .jayms-word-trail .wt-rend.on{border-color:var(--gold);background:var(--paper-deeper)}
 .jayms-word-trail .wt-rend:disabled{opacity:.45;cursor:default}
-.jayms-word-trail .wt-rg{flex:0 1 auto;min-width:2.2em;font-size:21px;line-height:1.1}
-.jayms-word-trail .wt-rb{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:5px}
-.jayms-word-trail .wt-rt{font-size:13.5px;line-height:1.35;color:var(--ink-soft)}
+.jayms-word-trail .wt-rtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;min-width:0}
+.jayms-word-trail .wt-rg{font-size:22px;line-height:1.15;color:var(--ink-bright);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jayms-word-trail .wt-rt{font-size:12.5px;line-height:1.35;color:var(--ink-soft)}
 .jayms-word-trail .wt-bar{display:block;height:4px;border-radius:2px;background:var(--line)}
 .jayms-word-trail .wt-bar > span{display:block;height:4px;border-radius:2px;background:var(--lavender)}
-.jayms-word-trail .wt-ra{flex:0 0 auto;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.jayms-word-trail .wt-ra{flex:0 0 auto;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .jayms-word-trail .wt-rend.on .wt-ra{color:var(--gold)}
+.jayms-word-trail .wt-strip .a-bnote{margin-top:12px}
+/* on a phone the strip stays one row and scrolls sideways */
+@media (max-width:640px){
+  .jayms-word-trail .wt-rrow{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+  .jayms-word-trail .wt-rend{flex:0 0 190px}
+}
 
 /* small numbers in running text */
 .jayms-word-trail .wt-n{color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}

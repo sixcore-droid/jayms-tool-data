@@ -82,9 +82,10 @@
       '<button class="wt-tab" role="tab" data-view="written">When it was written</button>' +
       '<button class="wt-tab" role="tab" data-view="happened">When it happened</button>' +
     '</div>' +
+    '<div id="wt-greek"></div>' +
     '<div class="wt-desk"><aside class="wt-side" id="wt-side"></aside><div class="wt-main" id="wt-main"></div></div>' +
     '<div class="a-foot" id="wt-foot"></div>';
-  var SIDE = document.getElementById("wt-side"), MAIN = document.getElementById("wt-main");
+  var SIDE = document.getElementById("wt-side"), MAIN = document.getElementById("wt-main"), GREEK = document.getElementById("wt-greek");
   var Q = document.getElementById("wt-q"), SUGG = document.getElementById("wt-sugg");
   [].forEach.call(MOUNT.querySelectorAll(".wt-tab"), function (b) {
     b.addEventListener("click", function () { S.view = b.getAttribute("data-view"); S.item = null; writeHash(); render(); });
@@ -150,7 +151,7 @@
 
   function renderSide() {
     var c = CUR, e = c.entry;
-    if (!e) { SIDE.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Not found</div><div class="a-btext">No word has the number ' + esc(c.w) + ".</div></div>"; return; }
+    if (!e) { GREEK.innerHTML = ""; SIDE.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Not found</div><div class="a-btext">No word has the number ' + esc(c.w) + ".</div></div>"; return; }
     var vs = uniq(e.v), h = "";
     h += '<div class="a-box v-witness"><div class="a-blabel">' + (c.heb ? "The Hebrew word" : "The Greek word") + "</div>" +
       '<div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.x) + "</span></div>" +
@@ -158,41 +159,42 @@
       '<p class="wt-def">' + esc(e.d) + "</p>" +
       '<p class="wt-def"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div>";
     h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
+    var gh = "";
     if (c.heb) {
-      h += '<div class="a-box v-wording"><div class="a-blabel">In the Greek Old Testament</div>';
-      if (!c.rend.length) h += '<div class="a-btext wt-empty">The Greek Old Testament gives no settled rendering for this word.</div>';
+      gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">In the Greek Old Testament</div><div class="wt-rrow">';
+      if (!c.rend.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament gives no settled rendering for this word.</div>';
       var tot = c.rend.reduce(function (a, r) { return a + r[2]; }, 0);
       c.rend.forEach(function (r) {
         var on = r[1] && r[1] === c.g;
-        h += '<button class="wt-rend' + (on ? " on" : "") + '" data-g="' + (r[1] || "") + '"' + (r[1] ? "" : " disabled") + ">" +
+        gh += '<button class="wt-rend' + (on ? " on" : "") + '" data-g="' + (r[1] || "") + '"' + (r[1] ? "" : " disabled") + ">" +
           '<span class="wt-rg" lang="grc">' + esc(r[0]) + "</span>" +
-          '<span class="wt-rb"><span class="wt-rt">' + (r[1] ? r[1] + " · " : "not in the New Testament · ") + fmt(r[2]) + " times</span>" +
-          '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[2] / tot)) + '%"></span></span></span>' +
-          '<span class="wt-ra">' + (on ? "Following" : (r[1] ? "Follow" : "")) + "</span></button>";
+          '<span class="wt-rtop"><span class="wt-rt">' + fmt(r[2]) + " times · " + (r[1] ? r[1] : "not in the New Testament") + '</span><span class="wt-ra">' + (on ? "Following" : (r[1] ? "Follow" : "")) + "</span></span>" +
+          '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[2] / tot)) + '%"></span></span></button>';
       });
-      h += '<div class="a-bnote">' + (c.fn ? "This is a grammar word. Its counts mostly follow sentence structure, not translation choice, so read them loosely. " : "") +
+      gh += '</div><div class="a-bnote">' + (c.fn ? "This is a grammar word. Its counts mostly follow sentence structure, not translation choice, so read them loosely. " : "") +
         'How often the Greek Old Testament gives each Greek word for this Hebrew word. Pick one to follow it into the New Testament.' +
         (c.missing.length ? " Not counted: " + esc(c.missing.join(", ")) + ", which the open Greek text used here does not have." : "") + "</div></div>";
     } else {
-      h += '<div class="a-box v-wording"><div class="a-blabel">Behind it in the Hebrew</div>';
-      if (!c.inv.length) h += '<div class="a-btext wt-empty">The Greek Old Testament does not use this word for any Hebrew word often enough to count.</div>';
+      gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">Behind it in the Hebrew</div><div class="wt-rrow">';
+      if (!c.inv.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament does not use this word for any Hebrew word often enough to count.</div>';
       var t2 = c.inv.reduce(function (a, r) { return a + r[1]; }, 0);
       c.inv.forEach(function (r) {
-        h += '<button class="wt-rend" data-h="' + r[0] + '"><span class="wt-rg" lang="he">' + esc(r[2] || r[0]) + '</span><span class="wt-rb"><span class="wt-rt">' + esc(r[3] || "") + " · " + r[0] + " · " + fmt(r[1]) + " times</span>" +
-          '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[1] / t2)) + '%"></span></span></span><span class="wt-ra">Open</span></button>';
+        gh += '<button class="wt-rend" data-h="' + r[0] + '"><span class="wt-rg" lang="he">' + esc(r[2] || r[0]) + "</span>" +
+          '<span class="wt-rtop"><span class="wt-rt">' + fmt(r[1]) + " times · " + esc(r[3] || "") + " · " + r[0] + '</span><span class="wt-ra">Open</span></span>' +
+          '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[1] / t2)) + '%"></span></span></button>';
       });
-      h += '<div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew.</div></div>';
+      gh += '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew.</div></div>';
     }
     var nt = ntUses(c.gEntry), ntv = uniq(nt);
     h += '<div class="a-box v-witness' + (nt.length ? "" : " wt-empty") + '"><div class="a-blabel">Into the New Testament</div><div class="a-btext">' +
       (c.gEntry ? '<span lang="grc">' + esc(c.gEntry.l) + "</span> stands <span class=\"wt-n\">" + fmt(nt.length) + "</span> times in <span class=\"wt-n\">" + fmt(ntv.length) +
         "</span> verses across <span class=\"wt-n\">" + bookCount(ntv) + "</span> New Testament books." : "No Greek word to follow.") + "</div></div>";
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
-    SIDE.innerHTML = h;
-    [].forEach.call(SIDE.querySelectorAll(".wt-rend[data-g]"), function (b) {
+    SIDE.innerHTML = h; GREEK.innerHTML = gh;
+    [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-g]"), function (b) {
       b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.v = null; S.book = null; writeHash(); render(); });
     });
-    [].forEach.call(SIDE.querySelectorAll(".wt-rend[data-h]"), function (b) {
+    [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-h]"), function (b) {
       b.addEventListener("click", function () { go(b.getAttribute("data-h")); });
     });
   }
