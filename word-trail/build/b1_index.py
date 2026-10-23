@@ -56,10 +56,19 @@ for bi, c, v, s in tok: occ[s].append(vid[(bi, c, v)])
 lex = json.load(open(IL/'lexicon.json'))
 # Word Study is the site's own word list: its display name (adonay) and gloss (Lord) are what Word Trail shows and searches
 WS = {e['strong']: e for e in json.load(open(W/'jayms-tool-data/word-study.json'))['entries']}
+# the Fact Book: every person, place, group and term, keyed by the numbers it carries. Its summary is the
+# "First, in plain English" section of the entry, James's own prose, so Word Trail shows it as written.
+FB = collections.defaultdict(list)
+for fe in json.load(open(W/'jayms-tool-data/fact-book.json'))['entries']:
+    nm = fe['title'].split(' (')[0]; ds = fe['title'][len(nm):].strip(' ()')
+    nref = len(fe['refs']) if isinstance(fe.get('refs'), list) else str(fe.get('refs') or '').count("',") + 1
+    for k in re.findall(r'[HG]\d+', fe.get('strong') or ''):
+        FB[k].append([fe['id'], nm, ds, fe.get('summary') or '', fe.get('kind') or fe.get('category') or '', nref])
+for k in FB: FB[k].sort(key=lambda r: -r[5])
 shards = collections.defaultdict(dict)
 for s, ids in occ.items():
     e = (lex.get(s) or {}).get('strong') or {}
-    shards[s[0] + str(int(s[1:]) // 100)][s] = {"l": e.get("lemma",""), "x": e.get("xlit",""), "d": e.get("def",""), "p": e.get("pron",""), "t": WS.get(s, {}).get('title', ''), "g": WS.get(s, {}).get('gloss') or (gloss[s].most_common(1)[0][0] if gloss[s] else ""), "v": sorted(ids)}
+    shards[s[0] + str(int(s[1:]) // 100)][s] = {"l": e.get("lemma",""), "x": e.get("xlit",""), "d": e.get("def",""), "p": e.get("pron",""), "t": WS.get(s, {}).get('title', ''), "g": WS.get(s, {}).get('gloss') or (gloss[s].most_common(1)[0][0] if gloss[s] else ""), "fb": FB.get(s, []), "v": sorted(ids)}
 (OUT/'words').mkdir(parents=True, exist_ok=True)
 for k, v in shards.items():
     json.dump(v, open(OUT/f'words/{k}.json', 'w'), ensure_ascii=False, separators=(',', ':'))

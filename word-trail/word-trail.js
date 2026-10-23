@@ -12,6 +12,7 @@
   var ECHO = "https://jayms.com/bible-study-tools-2/echoes-of-revelation/";
   var WORDSTUDY = "https://jayms.com/bible-study-tools-2/bible-word-study-tool/";
   var TDX = "https://jayms.com/bible-study-tools-2/bible-translation-differences/";
+  var FACTBOOK = "https://jayms.com/bible-study-tools-2/bible-entity-explorer/";
   var NETAPI = "https://labs.bible.org/api/?type=json&formatting=plain&passage=";
   var SVGNS = "http://www.w3.org/2000/svg";
 
@@ -37,7 +38,7 @@
   function lang(s) { return s && s.charAt(0) === "H" ? "he" : "grc"; }
 
   // ---------- state ----------
-  var S = { w: "H776", g: null, view: "uses", v: null, book: null, layers: {}, names: true, order: "canon",
+  var S = { w: "H776", g: null, view: "uses", v: null, book: null, fb: null, layers: {}, names: true, order: "canon",
             scope: "word", grade: { clear: 1, probable: 1, possible: 1 }, link: null,
             hinge: { exodus: "early", egypt: "430" }, person: null, onlyWord: false, item: null };
   var DEFAULT_LAYERS = { heb: 1, nt: 1, a: 1, b: 1, ms: 1, find: 1, tr: 1, uses: 1, people: 1, events: 1, famous: 1,
@@ -51,10 +52,11 @@
       if (k === "g" && /^G\d+$/.test(v)) S.g = v;
       if (k === "view" && /^(uses|lands|written|happened)$/.test(v)) S.view = v;
       if (k === "v" && /^\d+$/.test(v)) S.v = parseInt(v, 10);
+      if (k === "fb" && /^[a-z0-9-]+$/.test(v)) S.fb = v;
     });
   }
   function writeHash() {
-    var h = "#w=" + S.w + (S.g ? "&g=" + S.g : "") + "&view=" + S.view + (S.v != null ? "&v=" + S.v : "");
+    var h = "#w=" + S.w + (S.g ? "&g=" + S.g : "") + "&view=" + S.view + (S.v != null ? "&v=" + S.v : "") + (S.fb ? "&fb=" + S.fb : "");
     if (location.hash !== h) location.replace(h);
   }
 
@@ -120,20 +122,22 @@
           else if (pq.length > 1 && (r.f.indexOf(pq) === 0 || r.x.indexOf(pq) === 0)) tiers[1].push(r);
           else if (p.length > 2 && (r.gl.indexOf(" " + p) >= 0 || r.sm.indexOf(" " + p) >= 0)) tiers[2].push(r);
         }
-        out = tiers[0].concat(tiers[1], tiers[2]);
+        var byCount = function (a, b) { return (b[5] || 0) - (a[5] || 0); };
+        out = tiers[0].sort(byCount).concat(tiers[1].sort(byCount), tiers[2]);
       }
       SUGG.innerHTML = out.length ? "" : '<span class="a-empty" style="padding:4px 0">No word matches that.</span>';
       out.slice(0, 16).forEach(function (r) {
         var b = el("button", "a-chip", '<span lang="' + (r[0][0] === "H" ? "he" : "grc") + '">' + esc(r[1]) + "</span> " + esc(r[2]) + (r[3] ? " · " + esc(r[3]) : "") +
           ' <span class="a-n">' + r[0] + " · " + fmt(r[5]) + "</span>");
         b.title = r[4];
-        b.addEventListener("click", function () { go(r[0]); SUGG.hidden = true; Q.value = ""; Q.blur(); });
+        if (r[8]) b.innerHTML = '<span class="a-n">Fact Book</span> ' + esc(r[2]) + (r[3] ? " · " + esc(r[3]) : "") + ' <span class="a-n">' + r[0] + "</span>";
+        b.addEventListener("click", function () { go(r[0], r[8]); SUGG.hidden = true; Q.value = ""; Q.blur(); });
         SUGG.appendChild(b);
       });
       SUGG.hidden = false;
     }).catch(function () { SUGG.innerHTML = '<span class="a-empty">The word list did not load.</span>'; SUGG.hidden = false; });
   }
-  function go(id) { S.w = id; S.g = null; S.v = null; S.book = null; S.link = null; S.item = null; writeHash(); render(); }
+  function go(id, fb) { S.fb = fb || null; S.w = id; S.g = null; S.v = null; S.book = null; S.link = null; S.item = null; writeHash(); render(); }
 
   // ---------- the word card ----------
   var CUR = null;   // { w, entry, rend, inv, g, gEntry }
@@ -174,7 +178,16 @@
       '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
       '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div></div>";
-    h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
+    var fbs = e.fb || [], fb = fbs.filter(function (f) { return f[0] === S.fb; })[0] || fbs[0];
+    if (fb) {
+      h += '<div class="a-box v-plain"><div class="a-blabel">First, in plain English · from the Fact Book</div>' +
+        '<div class="a-btext"><b>' + esc(fb[1]) + "</b>" + (fb[2] ? ' <span class="wt-fbd">' + esc(fb[2]) + "</span>" : "") + "<br>" + esc(fb[3]) + "</div>" +
+        (fbs.length > 1 ? '<div class="wt-fbpick">' + fbs.slice(0, 12).map(function (f) { return '<button class="a-chip' + (f === fb ? " on" : "") + '" data-fb="' + esc(f[0]) + '">' + esc(f[1] + (f[2] ? ", " + f[2] : "")) + "</button>"; }).join("") +
+          (fbs.length > 12 ? '<span class="a-n">and ' + (fbs.length - 12) + " more</span>" : "") + "</div>" : "") +
+        '<div class="wt-links"><a class="a-lnk" href="' + FACTBOOK + encodeURIComponent(fb[0]) + '/">Open ' + esc(fb[1]) + " in the Fact Book ›</a></div></div>";
+    } else {
+      h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
+    }
     var gh = wh;
     if (c.heb) {
       gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">The Greek word</div>' + greekBar(c) +
@@ -204,6 +217,9 @@
     }
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h; GREEK.innerHTML = gh;
+    [].forEach.call(SIDE.querySelectorAll("[data-fb]"), function (b) {
+      b.addEventListener("click", function () { S.fb = b.getAttribute("data-fb"); writeHash(); renderSide(); });
+    });
     [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-g]"), function (b) {
       b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.v = null; S.book = null; writeHash(); render(); });
     });
