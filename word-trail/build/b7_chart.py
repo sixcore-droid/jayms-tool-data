@@ -6,7 +6,7 @@ Sources
     dated on Floyd Nolen Jones, The Chronology of the Old Testament.
   JAYMS.COM, The Old Testament Timeline: turning points, on James's own dates (world.json events).
   Cliopatria (Seshat Global History Databank), CC BY 4.0: the nations around Israel (world.json lanes).
-  Wikipedia, cited per item: famous moments (world.json famous).
+  Famous moments (world.json famous): standard dates, not yet checked in Logos. No Wikipedia links: b8_nowiki.py strips them.
 Output chart.json: {streams:[{k,n,c,items:[{n,a,b,t,ref,src}]}], range:[a,b], eras:[...], notes}
 """
 import csv, json, re
@@ -103,7 +103,7 @@ stream('apostles', 'The apostles and Paul', 'blue', crow('apostles'), "This site
 stream('canon', 'The New Testament written and gathered', 'gold', crow('canon'), "This site's Apostle Paul and New Testament Canon timelines", CDAT.CA)
 bible = [{'n': t['n'], 'a': t['y'][0], 'b': t['y'][1], 't': 'seg' if t['y'][1] > t['y'][0] else 'pt', 'd': t['note'], 'url': t['src']} for t in CK['translations']]
 bible += [{'n': w['n'] + ' copied', 'a': w['copy'][0], 'b': w['copy'][1], 't': 'seg' if w['copy'][1] > w['copy'][0] else 'pt', 'd': 'Copied ' + ('%d' % w['copy'][0]) + ('' if w['copy'][1] == w['copy'][0] else ' to %d' % w['copy'][1]) + '; found ' + str(w['found']) + '. ' + w['has'], 'url': w['src']} for w in CK['witness']]
-stream('bible', 'The Bible copied and translated', 'olive', bible, 'Wikipedia, the page for each manuscript and translation', '')
+stream('bible', 'The Bible copied and translated', 'olive', bible, 'Standard dates, not yet checked in Logos', '')
 stream('fathers', 'The church fathers', 'lavender', crow('fathers'), "This site's Ante-Nicene Age and Gnostic Crisis timelines", CDAT.AN)
 stream('church', 'The church divides', 'rust', crow('church'), "This site's Crusades timeline and the Denominational Map", CDAT.CR)
 
@@ -121,13 +121,23 @@ for lane in W['world']['lanes']:
     items = [{'n': b['n'], 'a': b['a'], 'b': b['b'], 't': 'nation'} for b in lane['bands']]
     stream(lane['k'], lane['n'], COL.get(lane['k'], 'ink-soft'), items, W['world']['source'], W['world']['src'])
 fam = [{'n': f['n'], 'a': f['y'], 'b': f['y'], 't': 'flag', 'd': f['d'], 'url': f['src']} for f in W['famous']]
-stream('famous', 'Famous moments elsewhere', 'ink-soft', fam, 'Wikipedia, cited per moment', '')
+stream('famous', 'Famous moments elsewhere', 'ink-soft', fam, 'Standard dates, not yet checked in Logos', '')
 
 ERAS = [['Full view', -4004, 2026], ['Creation to the Flood', -4004, -2300], ['The patriarchs', -2400, -1650], ['Egypt and the Exodus', -1760, -1400],
         ['The judges', -1460, -1050], ['The kingdom', -1110, -930], ['Two kingdoms', -990, -570], ['Exile and return', -620, -400],
         ['Persia and Greece', -560, -140], ['Rome and Christ', -200, 100], ['The apostles', 0, 105], ['The church fathers', 90, 340],
         ['Councils and canon', 300, 480], ['The Middle Ages', 450, 1500], ['The Reformation', 1450, 1750], ['The modern church', 1700, 2026]]
-json.dump({'streams': S, 'range': [-4004, 2026], 'eras': ERAS,
+SOURCES = [
+  ['Israel, the kings, the judges, the prophets, Jesus: Theographic Bible Metadata, CC BY-SA 4.0.', 'https://github.com/robertrouse/theographic-bible-metadata'],
+  ["Turning points: this site's Old Testament Timeline.", 'https://jayms.com/bible-study-tools-2/the-old-testament-timeline/'],
+  ["The apostles and Paul: this site's Twelve Apostles and Apostle Paul timelines.", 'https://jayms.com/bible-study-tools-2/the-apostle-paul-timeline-and-letters/'],
+  ["The New Testament gathered: this site's New Testament Canon timeline.", 'https://jayms.com/bible-study-tools-2/how-we-got-the-new-testament-canon-timeline/'],
+  ["The church fathers: this site's Ante-Nicene Age and Gnostic Crisis timelines.", 'https://jayms.com/bible-study-tools-2/the-ante-nicene-age-timeline/'],
+  ["The church divides: this site's Crusades timeline and the Denominational Map in the study notes.", 'https://jayms.com/bible-study-tools-2/the-crusades-full-timeline/'],
+  ['The nations: Cliopatria, Seshat Global History Databank, CC BY 4.0.', 'https://github.com/Seshat-Global-History-Databank/cliopatria'],
+  ['Famous moments, translations and manuscripts: standard dates, not yet checked in Logos.', ''],
+  ["The layout follows Adams' Synchronological Chart of Universal History (1871).", 'https://www.adamschart.org/']]
+json.dump({'streams': S, 'range': [-4004, 2026], 'eras': ERAS, 'sources': SOURCES,
            'note': "Israel's streams follow Floyd Nolen Jones's chronology, as Theographic carries it. The turning points follow this site's Old Testament Timeline, which dates the Exodus to 1446 BC, so before the kings the two can sit decades apart. The nations come from Cliopatria, on historians' dates. After the Gospels the apostles, the fathers, the canon and the divided church come from this site's own timelines, dated as each page dates them."},
           open(OUT / 'chart.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 print([(s['k'], len(s['items'])) for s in S])

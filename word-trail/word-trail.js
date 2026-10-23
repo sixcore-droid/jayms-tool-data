@@ -644,69 +644,17 @@
   }
   function trackPx() { return Math.max(560, (MAIN.clientWidth || 900) - 36 - 150 - (S.view === "written" ? 96 : 0)); }
 
-  // ---------- view 3: when it was written ----------
-  function viewWritten() {
-    var c = CUR;
-    data("clock.json").then(function (K) {
-      DATES = K.datesA.books;
-      var ax = clockAxis(-2200, 2060, [1300, 66]), L = S.layers, per = {}, scrollHits = {}, dssv = K.dss.verses;
-      if (c.heb && c.entry) uniq(c.entry.v).forEach(function (i) { var b = bookOf(i); per[b] = (per[b] || 0) + 1; if (dssv[i]) scrollHits[b] = (scrollHits[b] || 0) + 1; });
-      var max = 1; for (var b in per) max = Math.max(max, per[b]);
-      var rows = "";
-      for (b = 0; b < 39; b++) {
-        var n = BOOKS[b].n, A = K.datesA.books[n], Bd = K.datesB.books[n], has = K.dss.perBook[n];
-        rows += '<div class="wt-row"><div class="wt-rl" title="' + esc(n) + '">' + esc(n) + "</div><div class=\"wt-rt2\">" +
-          (L.a && A ? bar(ax, A[0], A[1], "a c-a") : "") + (L.b && Bd ? bar(ax, Bd[0], Bd[1], "b c-b") : "") +
-          (L.ms && has ? '<span class="wt-tick c-ms" style="left:' + ax.p(-250) + '%" title="Dead Sea Scrolls"></span><span class="wt-tick c-ms" style="left:' + ax.p(68) + '%" title="Dead Sea Scrolls"></span>' + bar(ax, -250, 68, "b c-ms") : "") +
-          (L.ms ? '<span class="wt-tick c-ms" style="left:' + ax.p(1008) + '%" title="Leningrad Codex"></span>' : "") +
-          '</div><div class="wt-ru' + (L.uses ? "" : " wt-empty") + '">' + (c.heb && per[b] ? '<span class="wt-ubar c-uses" style="width:' + Math.max(3, Math.round(44 * per[b] / max)) + 'px"></span>' + per[b] : "") +
-          "</div></div>";
-      }
-      var wit = K.witness.map(function (w) { return { y: (w.copy[0] + w.copy[1]) / 2, n: w.n, k: "w:" + w.k }; });
-      var fnd = K.witness.map(function (w) { return { y: w.found, n: w.n.replace(/ \(.*\)/, ""), k: "f:" + w.k }; });
-      var trs = K.translations.map(function (t, j) { return { y: t.y[0], n: t.n, k: "t:" + j }; });
-      var h = '<div class="wt-panel"><p class="wt-stat">When each Old Testament book was written, the copies we actually hold, when they came to light, and every translation and print edition down to today.' +
-        (c.heb ? " The pale bar on the right of each row is how many verses in that book use <span lang=\"he\">" + esc(c.entry.l) + "</span>." : "") + "</p>" +
-        '<div class="wt-ctl">' + layerBtn("a", "c-a", "Hide dates A", "Show dates A") + layerBtn("b", "c-b", "Hide dates B", "Show dates B", !K.datesB.name) +
-        layerBtn("ms", "c-ms", "Hide manuscripts", "Show manuscripts") + layerBtn("find", "c-find", "Hide find dates", "Show find dates") +
-        layerBtn("tr", "c-tr", "Hide translations and print", "Show translations and print") + (c.heb ? layerBtn("uses", "c-uses", "Hide uses of this word", "Show uses of this word") : "") + "</div>" +
-        '<div class="wt-clock"><div class="wt-tl has-u">' + ticks(ax, [-2000, -1500, -1000, -500, 1, 500, 1000, 1300, 1500, 1750, 2000]) +
-        '<div class="wt-sec wt-secu"><span>The books</span>' + (c.heb ? '<span class="wt-uh">Verses with the word</span>' : "") + "</div>" + rows +
-        '<div class="wt-sec">The copies, and after them</div>' +
-        laneHTML(ax, "Key witnesses", "when copied", "c-ms", wit, "ms", trackPx()) + laneHTML(ax, "Found", "came to light", "c-find round", fnd, "find", trackPx()) +
-        laneHTML(ax, "Translations", "and print", "c-tr diamond", trs, "tr", trackPx()) +
-        "</div></div>" +
-        '<div class="wt-legend"><span class="c-a"><i></i>Dates A: ' + esc(K.datesA.name) + '</span><span class="c-b"><i></i>Dates B: ' + esc(K.datesB.name || "no source yet") + '</span><span class="c-ms"><i></i>A surviving copy</span><span class="c-tr"><i></i>Translation or print</span></div></div>' +
-        '<div id="wt-item"></div>' +
-        '<div class="a-box v-explain"><div class="a-blabel">How to read this</div><div class="a-btext">The gap between a book\'s bar and its first copy is the distance between the writing and the oldest copy anyone holds. ' +
-        "Copied and found are different dates: the Leningrad Codex was copied in 1008 and reached St Petersburg in the 1800s; the Dead Sea Scrolls were copied between the third century BC and the first century AD and first found in 1947. " +
-        esc(K.datesA.note) + " " + esc(K.datesB.note) + "</div></div>";
-      MAIN.innerHTML = h;
-      wireLayers(MAIN, viewWritten);
-      [].forEach.call(MAIN.querySelectorAll("[data-item]"), function (m) { m.addEventListener("click", function () { S.item = m.getAttribute("data-item"); viewWritten(); }); });
-      var box = MAIN.querySelector("#wt-item");
-      if (S.item) {
-        var p = S.item.split(":"), it;
-        if (p[0] === "t") { it = K.translations[+p[1]];
-          box.innerHTML = '<div class="a-box v-wording"><div class="a-blabel">Translation or print · ' + esc(span(it.y[0], it.y[1])) + '</div><div class="a-btext"><b>' + esc(it.n) + "</b>. " + esc(it.note) + '.</div></div>' + srcNote(it.src) + "</div>";
-        } else { it = K.witness.filter(function (w) { return w.k === p[1]; })[0];
-          var mine = "";
-          if (it.k === "dss" && c.heb) { var tot = 0; for (var bb in scrollHits) tot += scrollHits[bb]; mine = " <b>" + fmt(tot) + "</b> of the verses that use this word survive in at least one scroll."; }
-          box.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Manuscript</div><div class="a-btext"><b>' + esc(it.n) + "</b>. Copied " + esc(span(it.copy[0], it.copy[1])) +
-            "; found or first known " + esc(yr(it.found)) + (it.foundNote ? " (" + esc(it.foundNote) + ")" : "") + ". " + esc(it.place) + ". Held: " + esc(it.held) + ". " + esc(it.has) + "." + mine +
-            '</div>' + srcNote(it.src) + "</div>";
-        }
-      }
-    });
-  }
-
   // ---------- view 4: when it happened ----------
   // A synchronological chart, after Adams' Chart of History: time runs left to right, each people is a stream,
   // and Israel runs as one stream until it splits in two. No word is involved, so the word search and the word
   // boxes are hidden on this view. Drag to pan, zoom with the buttons or ctrl and the wheel, jump by era.
-  var CH = { ppy: 0, x0: null, sel: null, q: "", off: { china: 1, india: 1, africa: 1, americas: 1 } };
-  function viewHappened() {
-    data("chart.json").then(function (K) {
+  // the same chart draws both clocks: When it was written (written.json) and When it happened (chart.json)
+  var CHH = { ppy: 0, x0: null, sel: null, q: "", off: { china: 1, india: 1, africa: 1, americas: 1 } };
+  var CHW = { ppy: 0, x0: null, sel: null, q: "", off: {} };
+  function viewHappened() { chartView("chart.json", CHH, viewHappened); }
+  function viewWritten() { chartView("written.json", CHW, viewWritten); }
+  function chartView(FILE, CH, self) {
+    data(FILE).then(function (K) {
       var A = K.range[0], Z = K.range[1];
       var wrapW = CH.wrap || Math.max(320, (MAIN.clientWidth || 900) - 200);
       if (!CH.ppy || CH.fit) CH.ppy = wrapW / (Z - A);
@@ -785,7 +733,7 @@
       }).join("");
       MAIN.innerHTML = '<div class="wt-panel hp">' +
         '<div class="hp-bar"><div class="wt-ctl hp-eras">' + eras + "</div></div>" +
-        '<div class="hp-bar"><input class="a-search hp-q" id="hp-q" type="search" placeholder="Find a person, a king, an event or a nation" value="' + esc(CH.q) + '">' +
+        '<div class="hp-bar"><input class="a-search hp-q" id="hp-q" type="search" placeholder="' + esc(K.find || "Find a person, a king, an event or a nation") + '" value="' + esc(CH.q) + '">' +
           '<span class="hp-found">' + (q ? fmt(found.length) + (found.length === 1 ? " match" : " matches") : "") + "</span>" +
           '<button class="wt-lay" data-zoom="-1" aria-label="Zoom out">−</button><button class="wt-lay" data-zoom="1" aria-label="Zoom in">+</button>' + toggles + "</div>" +
         '<div class="hp-chart"><div class="hp-side" style="height:' + H + 'px">' + side + '</div><div class="hp-scroll" id="hp-scroll"><svg class="hp-svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '">' +
@@ -793,11 +741,7 @@
         '<p class="a-note hp-hint">Drag the chart to move through time. Zoom with the buttons, or hold ctrl and scroll. Pick anything to read about it.</p></div>' +
         '<div id="hp-card"></div>' +
         '<div class="a-box v-apparatus"><div class="a-blabel">Sources</div><div class="a-btext" style="font-size:15px">' + esc(K.note) + "</div><ol>" +
-          '<li>Israel, the kings, the judges, the prophets, the New Testament: Theographic Bible Metadata, CC BY-SA 4.0. <a href="https://github.com/robertrouse/theographic-bible-metadata">github.com/robertrouse/theographic-bible-metadata</a></li>' +
-          '<li>Turning points: JAYMS.COM, The Old Testament Timeline. <a href="https://jayms.com/bible-study-tools-2/the-old-testament-timeline/">jayms.com/bible-study-tools-2/the-old-testament-timeline</a></li>' +
-          '<li>The nations: Cliopatria, Seshat Global History Databank, CC BY 4.0. <a href="https://github.com/Seshat-Global-History-Databank/cliopatria">github.com/Seshat-Global-History-Databank/cliopatria</a></li>' +
-          "<li>Famous moments, translations and manuscripts: the standard dates, not yet checked in Logos.</li>" +
-          '<li>The layout follows Adams\' Synchronological Chart of Universal History (1871). <a href="https://www.adamschart.org/">adamschart.org</a></li></ol></div>';
+          (K.sources || []).map(function (x) { return "<li>" + esc(x[0]) + (x[1] ? ' <a href="' + esc(x[1]) + '">' + esc(x[1].replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")) + "</a>" : "") + "</li>"; }).join("") + "</ol></div>";
       var sc = MAIN.querySelector("#hp-scroll");
       // a long band keeps its name in view while the chart scrolls, the way the names ride along Adams' streams
       var rides = [].slice.call(sc.querySelectorAll("text.in[data-a]")).map(function (t) { return { t: t, a: +t.getAttribute("data-a"), z: +t.getAttribute("data-z"), w: t.getComputedTextLength ? t.getComputedTextLength() : 60 }; });
@@ -805,16 +749,16 @@
       sc.addEventListener("scroll", ride, { passive: true });
       // when the reader has moved most of a screen from where the chart was laid out, lay it out again there
       var relay = null;
-      sc.addEventListener("scroll", function () { clearTimeout(relay); relay = setTimeout(function () { if (drag) return; var c2 = A + (sc.scrollLeft + sc.clientWidth / 2 - 20) / ppy; if (Math.abs(c2 - CH.drawn) > span * 0.7) { CH.x0 = c2; viewHappened(); } }, 260); }, { passive: true });
+      sc.addEventListener("scroll", function () { clearTimeout(relay); relay = setTimeout(function () { if (drag) return; var c2 = A + (sc.scrollLeft + sc.clientWidth / 2 - 20) / ppy; if (Math.abs(c2 - CH.drawn) > span * 0.7) { CH.x0 = c2; self(); } }, 260); }, { passive: true });
       // first draw: measure the real width of the scroll area, and fit the whole span to it once
-      if (!CH.measured) { CH.measured = 1; var real = sc.clientWidth - 40; if (real > 200 && Math.abs(real - wrapW) > 4) { CH.wrap = real; CH.ppy = real / (Z - A); viewHappened(); return; } }
+      if (!CH.measured) { CH.measured = 1; var real = sc.clientWidth - 40; if (real > 200 && Math.abs(real - wrapW) > 4) { CH.wrap = real; CH.ppy = real / (Z - A); self(); return; } }
       if (CH.x0 != null) sc.scrollLeft = X(CH.x0) - sc.clientWidth / 2;
       ride();
       function center() { return A + (sc.scrollLeft + sc.clientWidth / 2 - 20) / ppy; }
-      function zoomTo(f, yc) { CH.x0 = yc == null ? center() : yc; CH.ppy = Math.max(wrapW / (Z - A), Math.min(30, CH.ppy * f)); viewHappened(); }
+      function zoomTo(f, yc) { CH.x0 = yc == null ? center() : yc; CH.ppy = Math.max(wrapW / (Z - A), Math.min(30, CH.ppy * f)); self(); }
       [].forEach.call(MAIN.querySelectorAll("[data-zoom]"), function (b) { b.addEventListener("click", function () { zoomTo(+b.getAttribute("data-zoom") > 0 ? 1.8 : 1 / 1.8); }); });
-      [].forEach.call(MAIN.querySelectorAll("[data-era]"), function (b) { b.addEventListener("click", function () { var e = K.eras[+b.getAttribute("data-era")]; CH.ppy = wrapW / (e[2] - e[1]); CH.x0 = (e[1] + e[2]) / 2; viewHappened(); }); });
-      [].forEach.call(MAIN.querySelectorAll("[data-off]"), function (b) { b.addEventListener("click", function () { var k = b.getAttribute("data-off"); CH.off[k] = CH.off[k] ? 0 : 1; CH.x0 = center(); viewHappened(); }); });
+      [].forEach.call(MAIN.querySelectorAll("[data-era]"), function (b) { b.addEventListener("click", function () { var e = K.eras[+b.getAttribute("data-era")]; CH.ppy = wrapW / (e[2] - e[1]); CH.x0 = (e[1] + e[2]) / 2; self(); }); });
+      [].forEach.call(MAIN.querySelectorAll("[data-off]"), function (b) { b.addEventListener("click", function () { var k = b.getAttribute("data-off"); CH.off[k] = CH.off[k] ? 0 : 1; CH.x0 = center(); self(); }); });
       sc.addEventListener("wheel", function (ev) { if (!ev.ctrlKey) return; ev.preventDefault(); var r = sc.getBoundingClientRect(); var yc = A + (sc.scrollLeft + ev.clientX - r.left - 20) / ppy; zoomTo(ev.deltaY < 0 ? 1.25 : 0.8, yc); }, { passive: false });
       // drag to pan; a drag that moves does not count as a pick
       var drag = null, moved = false;
@@ -822,11 +766,11 @@
       window.addEventListener("pointermove", function (ev) { if (!drag) return; var dx = ev.clientX - drag.x; if (Math.abs(dx) > 4) moved = true; sc.scrollLeft = drag.s - dx; });
       window.addEventListener("pointerup", function () { drag = null; });
       var qi = MAIN.querySelector("#hp-q"), qt = null;
-      qi.addEventListener("input", function () { clearTimeout(qt); qt = setTimeout(function () { CH.q = qi.value; CH.x0 = center(); var pos = qi.selectionStart; viewHappened(); var n = MAIN.querySelector("#hp-q"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (x) {} }, 250); });
+      qi.addEventListener("input", function () { clearTimeout(qt); qt = setTimeout(function () { CH.q = qi.value; CH.x0 = center(); var pos = qi.selectionStart; self(); var n = MAIN.querySelector("#hp-q"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (x) {} }, 250); });
       qi.addEventListener("keydown", function (ev) { if (ev.key === "Enter" && found.length) { pick(found[0].o.id); } });
       function pick(id) {
         CH.sel = id; var p = id.split(":"), st = K.streams.filter(function (s2) { return s2.k === p[0]; })[0], it = st.items[+p[1]];
-        CH.x0 = (it.a + it.b) / 2; if (CH.ppy < 1.2) CH.ppy = 1.2; viewHappened();
+        CH.x0 = (it.a + it.b) / 2; if (CH.ppy < 1.2) CH.ppy = 1.2; self();
       }
       [].forEach.call(MAIN.querySelectorAll(".hp-it"), function (g) {
         g.addEventListener("click", function () { if (moved) return; pick(g.getAttribute("data-id")); });
@@ -837,10 +781,10 @@
         if (it) {
           // what else was going on: everything in the other streams that overlaps it
           var lo = it.a, hi = Math.max(it.b, it.a), meanwhile = [];
-          K.streams.forEach(function (s2) { if (s2 === st) return; s2.items.forEach(function (o) { if (o.t !== "pt" && o.a <= hi && o.b >= lo) meanwhile.push([s2.n, o.n + ", " + sp2(o.a, o.b)]); }); });
+          K.streams.forEach(function (s2) { s2.items.forEach(function (o) { if (o !== it && o.t !== "pt" && o.a <= hi && o.b >= lo) meanwhile.push([s2.n, o.n + ", " + sp2(o.a, o.b)]); }); });
           var card = MAIN.querySelector("#hp-card");
           card.innerHTML = '<div class="wt-pair"><div class="a-box v-witness"><div class="a-blabel">' + esc(st.n) + "</div><div class=\"a-btext\"><b>" + esc(it.n) + "</b><br>" + esc(it.d || sp2(it.a, it.b)) +
-            (it.b - it.a >= 1 ? " · " + fmt(Math.round(it.b - it.a)) + " years" : "") + (it.ref ? "<br>" + esc(it.ref) : "") + "</div>" +
+            (it.b - it.a >= 1 ? " · " + fmt(Math.round(it.b - it.a)) + " years" : "") + (it.ref ? "<br>" + esc(it.ref) : "") + (it.more ? '<br><span class="hp-more">' + esc(it.more) + "</span>" : "") + "</div>" +
             (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">' + (/jayms\.com\/bible-study-tools/.test(it.url) ? "Open it on the timeline ›" : "Read the post ›") + "</a>" : "") +
             '<div class="a-bnote">Dates: ' + esc(it.note ? it.note.replace(/^vault: /, "") + ", in the study notes" : st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
             '<div class="a-box v-explain"><div class="a-blabel">Meanwhile</div><ul class="wt-meanwhile">' + (meanwhile.length ? meanwhile.slice(0, 16).map(function (m) { return "<li><span><small>" + esc(m[0]) + ":</small> " + esc(m[1]) + "</span></li>"; }).join("") : "<li>Nothing else on the chart overlaps it.</li>") + "</ul></div></div>";
@@ -888,12 +832,12 @@
   }
   function render() {
     MOUNT.classList.toggle("wt-wide", S.view === "uses");
-    MOUNT.classList.toggle("wt-noword", S.view === "happened");
+    MOUNT.classList.toggle("wt-noword", S.view === "happened" || S.view === "written");
     var oa = document.getElementById("wt-other");
     if (oa) oa.href = OTHER + "#w=" + S.w + (S.g ? "&g=" + S.g : "") + (S.from ? "&from=" + S.from : "");
     [].forEach.call(MOUNT.querySelectorAll(".wt-tab"), function (b) { var on = b.getAttribute("data-view") === S.view; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     MAIN.innerHTML = '<div class="wt-loading">Loading…</div>';
-    if (S.view === "happened") { viewHappened(); return; }   // no word on this view
+    if (S.view === "happened" || S.view === "written") { ({ happened: viewHappened, written: viewWritten })[S.view](); return; }   // no word on the clocks
     load().then(function () {
       renderSide(); addTrail(CUR);
       ({ uses: viewUses, lands: viewLands, written: viewWritten, happened: viewHappened })[S.view]();
