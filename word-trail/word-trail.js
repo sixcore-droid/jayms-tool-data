@@ -110,16 +110,21 @@
       var m = q.match(/^([hg])\s*0*(\d+)$/i), out = [];
       if (m) { var id = m[1].toUpperCase() + m[2]; out = rows.filter(function (r) { return r[0] === id; }); }
       else {
-        var p = plain(q), pq = fold(q);
-        for (var i = 0; i < rows.length && out.length < 12; i++) {
+        // the same fields Word Study searches: its written-out name, the gloss, the lemma, the transliteration, the meaning.
+        // Exact name or gloss first, then the start of a name, then a word inside the gloss or meaning.
+        var p = plain(q), pq = fold(q), tiers = [[], [], []];
+        for (var i = 0; i < rows.length; i++) {
           var r = rows[i];
-          if (r.f == null) r.f = fold(r[2]);
-          if (plain(r[1]) === p || (pq && r.f.indexOf(pq) === 0) || (pq.length > 2 && (" " + plain(r[4])).indexOf(" " + p) >= 0)) out.push(r);
+          if (r.f == null) { r.f = fold(r[2]); r.x = fold(r[6]); r.gl = " " + plain(r[3]) + " "; r.sm = " " + plain(r[4]).replace(/[^a-z ]/g, " ") + " "; r.lp = plain(r[1]); }
+          if (r.f === pq || r.gl.trim() === p || r.lp === p) tiers[0].push(r);
+          else if (pq.length > 1 && (r.f.indexOf(pq) === 0 || r.x.indexOf(pq) === 0)) tiers[1].push(r);
+          else if (p.length > 2 && (r.gl.indexOf(" " + p) >= 0 || r.sm.indexOf(" " + p) >= 0)) tiers[2].push(r);
         }
+        out = tiers[0].concat(tiers[1], tiers[2]);
       }
       SUGG.innerHTML = out.length ? "" : '<span class="a-empty" style="padding:4px 0">No word matches that.</span>';
-      out.slice(0, 12).forEach(function (r) {
-        var b = el("button", "a-chip", '<span lang="' + (r[0][0] === "H" ? "he" : "grc") + '">' + esc(r[1]) + "</span> " + esc(r[2]) +
+      out.slice(0, 16).forEach(function (r) {
+        var b = el("button", "a-chip", '<span lang="' + (r[0][0] === "H" ? "he" : "grc") + '">' + esc(r[1]) + "</span> " + esc(r[2]) + (r[3] ? " · " + esc(r[3]) : "") +
           ' <span class="a-n">' + r[0] + " · " + fmt(r[5]) + "</span>");
         b.title = r[4];
         b.addEventListener("click", function () { go(r[0]); SUGG.hidden = true; Q.value = ""; Q.blur(); });
@@ -155,8 +160,8 @@
     var vs = uniq(e.v), h = "";
     // the word itself, landscape, at the head of the strip above the Greek box
     var wh = '<div class="a-box v-witness wt-strip wt-wordbar"><div class="a-blabel">' + (c.heb ? "The Hebrew word" : "The Greek word") + "</div>" +
-      '<div class="wt-wb"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.x) + (e.g ? " · " + esc(e.g) : "") + "</span></div>" +
-      '<div class="wt-code">' + esc(c.w) + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
+      '<div class="wt-wb"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.t || e.x) + (e.g ? " · " + esc(e.g) : "") + "</span></div>" +
+      '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
       '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div></div>";
     h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';

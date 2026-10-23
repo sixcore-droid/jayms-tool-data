@@ -99,7 +99,7 @@ for h, ctr in render.items():
     # a rendering is kept when the Greek word is a real answer to this Hebrew word in its own right
     # (the reverse model gives this Hebrew word at least a tenth of it), or it carries 5% of the total
     items = [(g, n) for g, n in ctr.most_common(30) if (func(top) or not func(g))
-             and (g == top or n >= max(3, ctr[top] * 0.004)) and r[g][h] >= 0.02 and (r[g][h] >= 0.10 or n / total >= 0.05 or g == top)]
+             and (g == top or n >= max(3, ctr[top] * 0.004)) and (g == top and n >= 3 or r[g][h] >= 0.02 and (r[g][h] >= 0.10 or n / total >= 0.05))]
     for g, n in items:
         # an OCR slip in Swete parses as a near-spelling (κύριος read as Τύριος): fold it into the word it was
         twin = next((row for row in rows if lev(strip(row[0]), strip(g)) <= 1 and n < row[2] * 0.1), None)
