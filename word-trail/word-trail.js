@@ -36,6 +36,8 @@
     var r1 = refOf(z), c0 = r0.split(" ").pop().split(":")[0], c1 = r1.split(" ").pop().split(":");
     return r0 + "-" + (c1[0] === c0 ? c1[1] : c1.join(":"));
   }
+  // a source line links only to this site's own pages; anything else is named as not yet checked
+  function srcNote(u) { return u && /^https:\/\/jayms\.com\//.test(u) ? '<div class="a-bnote">More: <a href="' + esc(u) + '">' + esc(u.replace(/^https:\/\/jayms\.com/, "jayms.com")) + "</a></div>" : '<div class="a-bnote">Standard date, not yet checked in Logos.</div>'; }
   function lang(s) { return s && s.charAt(0) === "H" ? "he" : "grc"; }
 
   // ---------- state ----------
@@ -686,13 +688,13 @@
       if (S.item) {
         var p = S.item.split(":"), it;
         if (p[0] === "t") { it = K.translations[+p[1]];
-          box.innerHTML = '<div class="a-box v-wording"><div class="a-blabel">Translation or print · ' + esc(span(it.y[0], it.y[1])) + '</div><div class="a-btext"><b>' + esc(it.n) + "</b>. " + esc(it.note) + '.</div><div class="a-bnote">Source: <a href="' + esc(it.src) + '">' + esc(it.src.replace(/^https:\/\//, "")) + "</a></div></div>";
+          box.innerHTML = '<div class="a-box v-wording"><div class="a-blabel">Translation or print · ' + esc(span(it.y[0], it.y[1])) + '</div><div class="a-btext"><b>' + esc(it.n) + "</b>. " + esc(it.note) + '.</div></div>' + srcNote(it.src) + "</div>";
         } else { it = K.witness.filter(function (w) { return w.k === p[1]; })[0];
           var mine = "";
           if (it.k === "dss" && c.heb) { var tot = 0; for (var bb in scrollHits) tot += scrollHits[bb]; mine = " <b>" + fmt(tot) + "</b> of the verses that use this word survive in at least one scroll."; }
           box.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Manuscript</div><div class="a-btext"><b>' + esc(it.n) + "</b>. Copied " + esc(span(it.copy[0], it.copy[1])) +
             "; found or first known " + esc(yr(it.found)) + (it.foundNote ? " (" + esc(it.foundNote) + ")" : "") + ". " + esc(it.place) + ". Held: " + esc(it.held) + ". " + esc(it.has) + "." + mine +
-            '</div><div class="a-bnote">Source: <a href="' + esc(it.src) + '">' + esc(it.src.replace(/^https:\/\//, "")) + "</a></div></div>";
+            '</div>' + srcNote(it.src) + "</div>";
         }
       }
     });
@@ -790,11 +792,11 @@
           grid + out + split + rul + "</svg></div></div>" +
         '<p class="a-note hp-hint">Drag the chart to move through time. Zoom with the buttons, or hold ctrl and scroll. Pick anything to read about it.</p></div>' +
         '<div id="hp-card"></div>' +
-        '<div class="a-box v-apparatus"><div class="a-blabel">Whose dates these are</div><div class="a-btext" style="font-size:15px">' + esc(K.note) + "</div><ol>" +
+        '<div class="a-box v-apparatus"><div class="a-blabel">Sources</div><div class="a-btext" style="font-size:15px">' + esc(K.note) + "</div><ol>" +
           '<li>Israel, the kings, the judges, the prophets, the New Testament: Theographic Bible Metadata, CC BY-SA 4.0. <a href="https://github.com/robertrouse/theographic-bible-metadata">github.com/robertrouse/theographic-bible-metadata</a></li>' +
           '<li>Turning points: JAYMS.COM, The Old Testament Timeline. <a href="https://jayms.com/bible-study-tools-2/the-old-testament-timeline/">jayms.com/bible-study-tools-2/the-old-testament-timeline</a></li>' +
           '<li>The nations: Cliopatria, Seshat Global History Databank, CC BY 4.0. <a href="https://github.com/Seshat-Global-History-Databank/cliopatria">github.com/Seshat-Global-History-Databank/cliopatria</a></li>' +
-          "<li>Famous moments: Wikipedia, the page for each moment, linked on its card.</li>" +
+          "<li>Famous moments, translations and manuscripts: the standard dates, not yet checked in Logos.</li>" +
           '<li>The layout follows Adams\' Synchronological Chart of Universal History (1871). <a href="https://www.adamschart.org/">adamschart.org</a></li></ol></div>';
       var sc = MAIN.querySelector("#hp-scroll");
       // a long band keeps its name in view while the chart scrolls, the way the names ride along Adams' streams
@@ -839,7 +841,7 @@
           var card = MAIN.querySelector("#hp-card");
           card.innerHTML = '<div class="wt-pair"><div class="a-box v-witness"><div class="a-blabel">' + esc(st.n) + "</div><div class=\"a-btext\"><b>" + esc(it.n) + "</b><br>" + esc(it.d || sp2(it.a, it.b)) +
             (it.b - it.a >= 1 ? " · " + fmt(Math.round(it.b - it.a)) + " years" : "") + (it.ref ? "<br>" + esc(it.ref) : "") + "</div>" +
-            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">' + (/jayms\.com/.test(it.url) ? "Open it on the timeline ›" : "Read about it ›") + "</a>" : "") +
+            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">' + (/jayms\.com\/bible-study-tools/.test(it.url) ? "Open it on the timeline ›" : "Read the post ›") + "</a>" : "") +
             '<div class="a-bnote">Dates: ' + esc(it.note ? it.note.replace(/^vault: /, "") + ", in the study notes" : st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
             '<div class="a-box v-explain"><div class="a-blabel">Meanwhile</div><ul class="wt-meanwhile">' + (meanwhile.length ? meanwhile.slice(0, 16).map(function (m) { return "<li><span><small>" + esc(m[0]) + ":</small> " + esc(m[1]) + "</span></li>"; }).join("") : "<li>Nothing else on the chart overlaps it.</li>") + "</ul></div></div>";
           if (it.ref) net(it.ref).then(function (t) { var v = card.querySelector("#hp-v"); if (v) v.textContent = t ? t + " (" + it.ref + ", NET)" : ""; });
