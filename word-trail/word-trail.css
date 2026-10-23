@@ -50,8 +50,9 @@
 
 /* ---- the two-column desk: word card on the left, the view on the right -- */
 .jayms-word-trail .wt-desk{display:flex;flex-wrap:wrap;gap:var(--wt-gap);align-items:flex-start}
-.jayms-word-trail .wt-side{flex:1 1 300px;max-width:380px;min-width:0}
-.jayms-word-trail .wt-main{flex:999 1 560px;min-width:0}
+.jayms-word-trail .wt-side{flex:1 1 100%;max-width:none;min-width:0;display:flex;flex-direction:column;gap:13px}
+.jayms-word-trail .wt-side > .a-box{margin:0}
+.jayms-word-trail .wt-main{flex:1 1 100%;min-width:0;order:-1}
 @media (max-width:900px){.jayms-word-trail .wt-side{max-width:none}}
 
 /* the word itself, at the head of the card */
@@ -157,15 +158,14 @@
 .jayms-word-trail .wt-legend span{display:inline-flex;align-items:center;gap:7px}
 .jayms-word-trail .wt-legend i{display:inline-block;width:16px;height:3px;background:var(--wt-c)}
 .jayms-word-trail .wt-pair{display:flex;flex-wrap:wrap;gap:13px;margin:0 0 13px}
-.jayms-word-trail .wt-pair > .a-box{flex:1 1 280px;min-width:0;margin:0}
+.jayms-word-trail .wt-pair > .a-box{flex:1 1 100%;min-width:0;margin:0}
 .jayms-word-trail .wt-hl{color:var(--gold);font-weight:600}
 
 /* ---- view 1, the stepped pyramid: word, books, verses -------------------
    Full-strength tokens, no washed-out opacity: Old Testament --blue,
    the Greek Old Testament --lavender, New Testament --gold, selected --rust. */
 .jayms-word-trail.wt-wide .wt-main{flex:1 1 100%;order:-1}
-.jayms-word-trail.wt-wide .wt-side{flex:1 1 100%;max-width:none;display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;align-items:start}
+.jayms-word-trail.wt-wide .wt-side{flex:1 1 100%;max-width:none}
 .jayms-word-trail.wt-wide .wt-side > .a-box{margin:0}
 .jayms-word-trail.wt-wide .wt-side > .wt-links{grid-column:1/-1;margin:0}
 .jayms-word-trail .wt-pyr{display:block;width:100%;height:auto}

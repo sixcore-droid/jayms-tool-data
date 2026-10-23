@@ -343,7 +343,7 @@
           '<circle class="apex" cx="' + apx + '" cy="' + apy + '" r="9"></circle>' +
           '<text class="apl" x="' + apx + '" y="' + (apy - 30) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
           '<text class="apg" x="' + (apx + 18) + '" y="' + (apy + 5) + '">' + esc(e.x) + (e.g ? " · " + esc(e.g) : "") + "</text>" +
-          '<text class="lbl" x="' + L + '" y="' + (base + 62) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + " verses").toUpperCase() : "") + "</text>" +
+          '<text class="lbl" x="' + L + '" y="' + (base + 62) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + (vs.length === 1 ? " verse" : " verses")).toUpperCase() : "") + "</text>" +
           '<rect class="basehit" x="0" y="' + (base - 16) + '" width="' + W + '" height="60"></rect>' +
         "</svg></div>" +
         '<div class="wt-legend">' + (c.heb ? '<span class="c-heb"><i></i>Old Testament books</span><span class="c-grk"><i></i>Greek Old Testament word</span>' : "") +
@@ -377,13 +377,13 @@
     var ref = refOf(i);
     verseBox(box.querySelector("#wt-v1"), (S.v != null ? "Selected · " : "First in " + bookName(i) + " · ") + ref + " · NET", ref);
     var v2 = box.querySelector("#wt-v2");
-    if (i < NTS) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">Behind it</div><div class="a-btext">Pick a New Testament book and one of its verses to see it beside the Old Testament text behind it.</div>'; return; }
+    if (i < NTS) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">The Old Testament passage it echoes</div><div class="a-btext">This box is for New Testament verses. Pick a New Testament verse and, when it echoes an Old Testament passage, that passage shows here beside it.</div>'; return; }
     data("links.json").then(function (L) {
       var hit = L.links.filter(function (l) { return l[5].indexOf(i) >= 0 && (!CUR.heb || l[4].some(function (o) { return CUR.entry.v.indexOf(o) >= 0; })); })[0]
              || L.links.filter(function (l) { return l[5].indexOf(i) >= 0; })[0];
-      if (!hit) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">Behind it</div><div class="a-btext">No graded Old Testament link for this verse yet. Graded links come from Echoes of Revelation, which covers Revelation only so far.</div>'; return; }
+      if (!hit) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">The Old Testament passage it echoes</div><div class="a-btext">None is linked for this verse yet. The links come from Echoes of Revelation, so only verses in Revelation have one so far.</div>'; return; }
       var otref = runRef(hit[4]);
-      verseBox(v2, "Behind it · " + otref + " · " + hit[2] + " echo", otref);
+      verseBox(v2, "The Old Testament passage it echoes · " + otref + " · " + hit[2] + " echo", otref);
       var a = el("div", "wt-links", '<a class="a-lnk" href="' + ECHO + encodeURIComponent(hit[0]) + '/">' + esc(hit[1]) + " ›</a>");
       v2.appendChild(a);
     });
