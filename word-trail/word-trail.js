@@ -173,7 +173,7 @@
     if (!e) { GREEK.innerHTML = ""; SIDE.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Not found</div><div class="a-btext">No word has the number ' + esc(c.w) + ".</div></div>"; return; }
     var vs = uniq(e.v), h = "";
     // the word itself, landscape, at the head of the strip above the Greek box
-    var wh = '<div class="a-box v-witness wt-strip wt-wordbar"><div class="a-blabel">' + (c.heb ? "The Hebrew word" : "The Greek word") + "</div>" +
+    var wh = '<div class="a-box v-witness wt-strip wt-wordbar ' + (c.heb ? "wt-he" : "wt-gr") + '"><div class="a-blabel">' + (c.heb ? "The Hebrew word" : "The Greek word") + "</div>" +
       '<div class="wt-wb"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.t || e.x) + (e.g ? " · " + esc(e.g) : "") + "</span></div>" +
       '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
@@ -188,9 +188,10 @@
     } else {
       h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
     }
-    var gh = wh;
+    var gh = "";
     if (c.heb) {
-      gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">The Greek word</div>' + greekBar(c) +
+      gh += wh;
+      gh += '<div class="a-box v-wording wt-strip wt-gr"><div class="a-blabel">The Greek word</div>' + greekBar(c) +
         '<div class="wt-sub">How the Greek Old Testament renders ' + esc(e.t || e.x) + '. Pick one to follow it into the New Testament.</div><div class="wt-rrow">';
       if (!c.rend.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament gives no settled rendering for this word.</div>';
       var tot = c.rend.reduce(function (a, r) { return a + r[2]; }, 0);
@@ -205,7 +206,8 @@
         'The counts are how often the Greek Old Testament gives each Greek word for this Hebrew word.' +
         (c.missing.length ? " Not counted: " + esc(c.missing.join(", ")) + ", which the open Greek text used here does not have." : "") + "</div></div>";
     } else {
-      gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">Behind it in the Hebrew</div><div class="wt-rrow">';
+      // Hebrew always sits above Greek: the Hebrew words behind this Greek word come first
+      gh += '<div class="a-box v-wording wt-strip wt-he"><div class="a-blabel">The Hebrew behind it</div><div class="wt-rrow">';
       if (!c.inv.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament does not use this word for any Hebrew word often enough to count.</div>';
       var t2 = c.inv.reduce(function (a, r) { return a + r[1]; }, 0);
       c.inv.forEach(function (r) {
@@ -214,6 +216,7 @@
           '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[1] / t2)) + '%"></span></span></button>';
       });
       gh += '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew.</div></div>';
+      gh += wh;
     }
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h; GREEK.innerHTML = gh;
@@ -340,8 +343,8 @@
         '<div class="wt-arcwrap"><svg class="wt-pyr" viewBox="0 0 ' + W + " " + (base + 72) + '" role="img" aria-label="The word at the top, a line to each book that uses it, and the chosen book\'s verses along the bottom">' +
           '<path class="fan t-' + (sel ? sel.t : "heb") + '" d="' + fan + '"></path>' + (selLine ? '<path class="sel" d="' + selLine + '"></path>' : "") +
           links + greek + nodeSvg + dots +
-          '<circle class="apex" cx="' + apx + '" cy="' + apy + '" r="9"></circle>' +
-          '<text class="apl" x="' + apx + '" y="' + (apy - 30) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
+          '<circle class="apex' + (c.heb ? "" : " gr") + '" cx="' + apx + '" cy="' + apy + '" r="9"></circle>' +
+          '<text class="apl' + (c.heb ? "" : " gr") + '" x="' + apx + '" y="' + (apy - 30) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
           '<text class="apg" x="' + (apx + 18) + '" y="' + (apy + 5) + '">' + esc(e.x) + (e.g ? " · " + esc(e.g) : "") + "</text>" +
           '<text class="lbl" x="' + L + '" y="' + (base + 62) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + (vs.length === 1 ? " verse" : " verses")).toUpperCase() : "") + "</text>" +
           '<rect class="basehit" x="0" y="' + (base - 16) + '" width="' + W + '" height="60"></rect>' +
