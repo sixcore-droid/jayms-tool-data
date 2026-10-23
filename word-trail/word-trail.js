@@ -153,13 +153,14 @@
     var c = CUR, e = c.entry;
     if (!e) { GREEK.innerHTML = ""; SIDE.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Not found</div><div class="a-btext">No word has the number ' + esc(c.w) + ".</div></div>"; return; }
     var vs = uniq(e.v), h = "";
-    h += '<div class="a-box v-witness"><div class="a-blabel">' + (c.heb ? "The Hebrew word" : "The Greek word") + "</div>" +
-      '<div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.x) + "</span></div>" +
-      '<div class="wt-code">' + esc(c.w) + (e.p ? " · " + esc(e.p) : "") + "</div>" +
-      '<p class="wt-def">' + esc(e.d) + "</p>" +
-      '<p class="wt-def"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div>";
+    // the word itself, landscape, at the head of the strip above the Greek box
+    var wh = '<div class="a-box v-witness wt-strip wt-wordbar"><div class="a-blabel">' + (c.heb ? "The Hebrew word" : "The Greek word") + "</div>" +
+      '<div class="wt-wb"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.x) + (e.g ? " · " + esc(e.g) : "") + "</span></div>" +
+      '<div class="wt-code">' + esc(c.w) + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
+      '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
+      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div></div>";
     h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
-    var gh = "";
+    var gh = wh;
     if (c.heb) {
       gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">In the Greek Old Testament</div><div class="wt-rrow">';
       if (!c.rend.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament gives no settled rendering for this word.</div>';
