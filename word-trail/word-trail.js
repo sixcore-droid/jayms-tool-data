@@ -845,26 +845,27 @@
   try { var saved = JSON.parse(sessionStorage.getItem("jayms.bookechoes") || "null"); if (saved && saved.b != null) { E.b = saved.b; E.t = saved.t; } } catch (e) {}
   function save() { try { sessionStorage.setItem("jayms.bookechoes", JSON.stringify({ b: E.b, t: E.t })); } catch (e) {} }
 
-  MOUNT.innerHTML = '<div class="be-head"><label class="be-pick"><span class="be-lab">Book</span><select id="be-book" class="a-search"></select></label><div class="wt-ctl" id="be-ctl"></div></div>' +
-    '<p class="wt-stat" id="be-stat"></p><div class="be-wrap"><div class="be-circle" id="be-circle"></div><div class="be-side" id="be-side"></div></div>' +
+  MOUNT.innerHTML = '<div class="be-head"><div class="wt-ctl" id="be-ctl"></div></div>' +
+    '<p class="wt-stat" id="be-stat"></p><div class="be-wrap"><div class="be-left"><div class="wt-sec">Book</div><div class="be-books" id="be-books"></div></div><div class="be-circle" id="be-circle"></div><div class="be-side" id="be-side"></div></div>' +
     '<div id="be-pair"></div><div class="wt-list" id="be-list"></div>' +
     '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the links come from</div><div class="a-btext">' +
     "<b>Shared wording</b> is the UBS Parallel Passages Database: passages whose words match word by word, quotations among them. Strong means at least 40 percent of the words in one of the two verses match. " +
     "<b>Graded echoes</b> are the entries of Echoes of Revelation, graded clear (strong), probable (medium) or possible (light) there. " +
     "<b>Cross references</b> are OpenBible.info's, where readers vote on each one: 50 votes or more is strong, 15 to 49 medium, 5 to 14 light. " +
     "Each ribbon runs from the book you picked to another book, as wide as the number of links between them. Links inside one book are left out.</div></div>";
-  var SEL = MOUNT.querySelector("#be-book"), CIRC = MOUNT.querySelector("#be-circle"), SIDE = MOUNT.querySelector("#be-side"),
+  var SEL = MOUNT.querySelector("#be-books"), CIRC = MOUNT.querySelector("#be-circle"), SIDE = MOUNT.querySelector("#be-side"),
       STAT = MOUNT.querySelector("#be-stat"), LIST = MOUNT.querySelector("#be-list"), PAIR = MOUNT.querySelector("#be-pair"), CTL = MOUNT.querySelector("#be-ctl");
 
   data("books.json").then(function (bk) {
     BOOKS = bk.books;
-    var og = "", last = null;
+    // every book down the left, in canon order under its group, the same look as the Most links list
+    var h = "", last = null;
     BOOKS.forEach(function (b, k) {
-      var g = grp(k); if (g !== last) { og += (last ? "</optgroup>" : "") + '<optgroup label="' + esc(GRPN[g]) + '">'; last = g; }
-      og += '<option value="' + k + '">' + esc(b.n) + "</option>";
+      var g = grp(k); if (g !== last) { h += '<div class="be-grp">' + esc(GRPN[g]) + "</div>"; last = g; }
+      h += '<button class="a-chip be-top be-bk g-' + g + '" data-b="' + k + '"><i></i>' + esc(b.n) + "</button>";
     });
-    SEL.innerHTML = og + "</optgroup>";
-    SEL.addEventListener("change", function () { pickBook(+SEL.value); });
+    SEL.innerHTML = h;
+    [].forEach.call(SEL.querySelectorAll(".be-bk"), function (b) { b.addEventListener("click", function () { pickBook(+b.getAttribute("data-b")); }); });
     draw();
   });
   function pickBook(b) { E.b = b; E.t = null; E.pair = null; E.more = 0; save(); draw(); }
@@ -888,7 +889,9 @@
   }
 
   function draw() {
-    SEL.value = String(E.b);
+    [].forEach.call(SEL.querySelectorAll(".be-bk"), function (b) { var on = +b.getAttribute("data-b") === E.b; b.classList.toggle("on", on); if (on) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
+      // keep the picked book in view inside the list, without moving the page
+      if (on && (b.offsetTop < SEL.scrollTop || b.offsetTop > SEL.scrollTop + SEL.clientHeight - b.offsetHeight)) SEL.scrollTop = b.offsetTop - SEL.clientHeight / 2; });
     CTL.innerHTML = ["q", "e", "x"].map(function (k) { return '<button class="wt-lay' + (E.src[k] ? " on" : "") + '" data-src="' + k + '">' + (E.src[k] ? "Hide " : "Show ") + SRCP[k] + "</button>"; }).join("") +
       [3, 2, 1].map(function (k) { return '<button class="wt-lay' + (E.st[k] ? " on" : "") + '" data-st="' + k + '"><span class="wt-gline s' + k + '"></span>' + (E.st[k] ? "Hide " : "Show ") + STR[k].toLowerCase() + "</button>"; }).join("");
     [].forEach.call(CTL.querySelectorAll("[data-src]"), function (b) { b.onclick = function () { var k = b.getAttribute("data-src"); E.src[k] = E.src[k] ? 0 : 1; E.more = 0; draw(); }; });
@@ -926,7 +929,7 @@
         g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } });
       });
       STAT.innerHTML = "<b>" + esc(BOOKS[E.b].n) + "</b> is tied to <b>" + targets.length + "</b> other books in <b>" + fmt(list.length) + "</b> links with these filters. " +
-        "Pick a ribbon or a book to list its links. Pick a book a second time, or double-click it, to start from that book.";
+        "Pick a book on the left to start from it. Pick a ribbon, or a book on the circle or in Most links, to list the links between the two.";
       var top = targets.slice().sort(function (a, b) { return by[b].length - by[a].length; });
       SIDE.innerHTML = '<div class="wt-sec">Most links</div><div class="be-tops">' + top.map(function (t) {
         return '<button class="a-chip be-top g-' + grp(t) + (E.t === t ? " on" : "") + '" data-t="' + t + '"><i></i>' + esc(BOOKS[t].n) + ' <span class="a-n">' + fmt(by[t].length) + "</span></button>";
