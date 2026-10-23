@@ -1,0 +1,120 @@
+"""Word Timelines: the "When it happened" chart, laid out as a synchronological chart in the manner of
+Adams' Chart of History: time runs left to right, each people is a stream, and Israel splits into two.
+
+Sources
+  Theographic Bible Metadata, CC BY-SA 4.0 (Events.csv): lifetimes, reigns, judges, prophets, the New Testament,
+    dated on Floyd Nolen Jones, The Chronology of the Old Testament.
+  JAYMS.COM, The Old Testament Timeline: turning points, on James's own dates (world.json events).
+  Cliopatria (Seshat Global History Databank), CC BY 4.0: the nations around Israel (world.json lanes).
+  Wikipedia, cited per item: famous moments (world.json famous).
+Output chart.json: {streams:[{k,n,c,items:[{n,a,b,t,ref,src}]}], range:[a,b], eras:[...], notes}
+"""
+import csv, json, re
+from pathlib import Path
+OUT = Path('/home/claude/wt/out/word-trail')
+W = json.load(open(OUT / 'world.json'))
+EV = list(csv.DictReader(open('/home/claude/wt/theo/CSV/Events.csv', encoding='utf-8-sig')))
+
+def year(s):
+    s = s.strip()
+    m = re.match(r'^(-?)0*(\d+)', s)
+    return (-1 if m.group(1) else 1) * int(m.group(2)) if m else None
+def dur(s):
+    y = 0.0
+    for n, u in re.findall(r'(\d+)([YMWD])', s or ''):
+        y += int(n) * {'Y': 1, 'M': 1 / 12, 'W': 7 / 365, 'D': 1 / 365}[u]
+    return y
+def ref(v):
+    # Theographic verse ids look like 2Kgs.13.13; keep the first, as a readable reference
+    v = (v or '').split(',')[0].strip()
+    m = re.match(r'(\w+)\.(\d+)\.(\d+)', v)
+    if not m: return ''
+    OSIS = {'Gen':'Genesis','Exod':'Exodus','Lev':'Leviticus','Num':'Numbers','Deut':'Deuteronomy','Josh':'Joshua','Judg':'Judges','Ruth':'Ruth','1Sam':'1 Samuel','2Sam':'2 Samuel','1Kgs':'1 Kings','2Kgs':'2 Kings','1Chr':'1 Chronicles','2Chr':'2 Chronicles','Ezra':'Ezra','Neh':'Nehemiah','Esth':'Esther','Job':'Job','Ps':'Psalms','Prov':'Proverbs','Eccl':'Ecclesiastes','Song':'Song of Solomon','Isa':'Isaiah','Jer':'Jeremiah','Lam':'Lamentations','Ezek':'Ezekiel','Dan':'Daniel','Hos':'Hosea','Joel':'Joel','Amos':'Amos','Obad':'Obadiah','Jonah':'Jonah','Mic':'Micah','Nah':'Nahum','Hab':'Habakkuk','Zeph':'Zephaniah','Hag':'Haggai','Zech':'Zechariah','Mal':'Malachi','Matt':'Matthew','Mark':'Mark','Luke':'Luke','John':'John','Acts':'Acts','Rom':'Romans','1Cor':'1 Corinthians','2Cor':'2 Corinthians','Gal':'Galatians','Eph':'Ephesians','Phil':'Philippians','Col':'Colossians','1Thess':'1 Thessalonians','2Thess':'2 Thessalonians','1Tim':'1 Timothy','2Tim':'2 Timothy','Titus':'Titus','Phlm':'Philemon','Heb':'Hebrews','Jas':'James','1Pet':'1 Peter','2Pet':'2 Peter','1John':'1 John','2John':'2 John','3John':'3 John','Jude':'Jude','Rev':'Revelation'}
+    return (OSIS.get(m.group(1), m.group(1)) + ' ' + m.group(2) + ':' + m.group(3))
+
+THEO = 'Theographic Bible Metadata (Floyd Nolen Jones chronology)'
+TSRC = 'https://github.com/robertrouse/theographic-bible-metadata'
+rows = []
+for e in EV:
+    t = e['title']; a = year(e['startDate'])
+    if a is None: continue
+    d = dur(e['duration']); b = a + max(d, 0)
+    rows.append(dict(n=t, a=a, b=round(b, 2), d=d, part=e['partOf'], ref=ref(e['verses'])))
+
+def it(r, t):
+    o = {'n': r['n'], 'a': r['a'], 'b': r['b'], 't': t}
+    if r['ref']: o['ref'] = r['ref']
+    return o
+S = []
+def stream(k, n, c, items, note, src):
+    S.append({'k': k, 'n': n, 'c': c, 'items': sorted(items, key=lambda x: (x['a'], -x['b'])), 'src': note, 'url': src})
+
+life = [it(dict(r, n=r['n'].replace('Lifetime of ', '')), 'life') for r in rows if r['n'].startswith('Lifetime of ')]
+stream('line', 'The line from Adam', 'gold', life, THEO, TSRC)
+
+def isr(r):
+    n = r['n']
+    if n.startswith(('Lifetime of', 'Reign of', 'Prophecies of')): return False
+    if r['part'] in ('Southern Kingdom (Judah)', 'Northern Kingdom (Israel)'): return False
+    return r['a'] < 0 and r['d'] >= 1 and n not in ('Southern Kingdom (Judah)', 'Northern Kingdom (Israel)', 'United Kingdom', 'The Great Flood')
+period = []
+for r in rows:
+    if isr(r):
+        kind = 'bad' if re.match(r'(Subjugation|Oppression|Usurpation|Philistine)', r['n']) else 'seg'
+        period.append(it(r, kind))
+for r in rows:
+    if r['n'] in ('Reign of Saul', 'Reign of David', 'Reign of Solomon'): period.append(it(r, 'reign'))
+stream('israel', 'Israel, one people', 'gold', period, THEO, TSRC)
+
+reignN = {r['n'] for r in rows if r['part'] == 'Northern Kingdom (Israel)'}
+north = [it(dict(r, n=r['n'].replace('Reign of ', '')), 'reign') for r in rows if r['n'].startswith('Reign of') and r['part'] == 'Northern Kingdom (Israel)']
+south = [it(dict(r, n=r['n'].replace('Reign of ', '')), 'reign') for r in rows if r['n'].startswith('Reign of') and r['part'] == 'Southern Kingdom (Judah)']
+# Theographic files a few reigns without partOf; place them by the kingdom lists in 1 and 2 Kings
+NORTHK = {'Jeroboam I','Nadab','Baasha','Elah','Zimri','Tibni','Omri','Ahab','Ahaziah','Joram','Jehu','Jehoahaz','Jehoash','Jeroboam II','Zachariah','Shallum','Menahem','Pekahiah','Pekah','Hoshea'}
+have = {x['n'] for x in north + south}
+for r in rows:
+    if r['n'].startswith('Reign of') and r['n'] not in ('Reign of Saul', 'Reign of David', 'Reign of Solomon'):
+        nm = r['n'].replace('Reign of ', '')
+        if nm in have: continue
+        (north if nm in NORTHK else south).append(it(dict(r, n=nm), 'reign')); have.add(nm)
+for r in rows:
+    # the kings' deaths sit at the end of each reign already, so only the other moments are marked
+    if r['part'] == 'Northern Kingdom (Israel)' and not r['n'].startswith(('Reign of', 'Death of')) and r['d'] < 1: north.append(it(r, 'pt'))
+    if r['part'] == 'Southern Kingdom (Judah)' and not r['n'].startswith(('Reign of', 'Death of')) and r['d'] < 1: south.append(it(r, 'pt'))
+stream('north', 'Israel, the northern kingdom', 'olive', north, THEO, TSRC)
+stream('south', 'Judah, the southern kingdom', 'gold', south, THEO, TSRC)
+
+proph = [it(dict(r, n=r['n'].replace('Prophecies of ', '')), 'life') for r in rows if r['n'].startswith('Prophecies of')]
+stream('prophets', 'The prophets', 'lavender', proph, THEO, TSRC)
+
+# the New Testament has some two hundred day-dated events; the chart keeps the spans and the turning points
+NTKEY = {'Birth of Jesus', 'Birth of John the Baptist', 'Baptism of Jesus', 'Crucifixion and Burial', 'Resurrection and Ascension',
+         'Peter preaches at Pentecost', 'Jerusalem Council', "Paul's Journey to Rome", 'Paul arrives at Rome', "Paul's First Roman imprisonment"}
+nt = [it(r, 'seg' if r['d'] >= 1 else 'pt') for r in rows if r['a'] >= -5 and (r['d'] >= 1 or r['n'] in NTKEY or 'Conversion of Saul' in r['n'] or r['n'].startswith('Saul'))]
+for p in W['people']['rows']:
+    if p['n'] == 'Jesus': nt.append({'n': 'Jesus', 'a': p['a'], 'b': p['b'], 't': 'life'})
+stream('nt', 'Jesus and the church', 'blue', nt, THEO, TSRC)
+
+# points that belong to no stream above: births, deaths, battles before the kingdom split
+pts = [it(r, 'pt') for r in rows if r['d'] < 1 and r['a'] < -5 and not r['part'].startswith(('Southern', 'Northern')) and r['n'] != 'The Great Flood']
+pts.append({'n': 'The Great Flood', 'a': -2347, 'b': -2346, 't': 'pt', 'ref': 'Genesis 7:11'})
+stream('events', 'Events in Scripture', 'ink-soft', pts, THEO, TSRC)
+
+tp = [{'n': e['n'], 'a': e['a'], 'b': e['b'], 't': 'flag', 'ref': e.get('ref', '')} for e in W['events']['rows']]
+stream('turning', 'Turning points, on this site\'s dates', 'rust', tp, W['events']['source'], W['events']['src'])
+
+COL = {'egypt': 'rust', 'meso': 'blue', 'anatolia': 'olive', 'persia': 'lavender', 'greece': 'aramaic', 'rome': 'rust',
+       'china': 'gold', 'india': 'olive', 'africa': 'aramaic', 'americas': 'lavender'}
+for lane in W['world']['lanes']:
+    items = [{'n': b['n'], 'a': b['a'], 'b': b['b'], 't': 'nation'} for b in lane['bands']]
+    stream(lane['k'], lane['n'], COL.get(lane['k'], 'ink-soft'), items, W['world']['source'], W['world']['src'])
+fam = [{'n': f['n'], 'a': f['y'], 'b': f['y'], 't': 'flag', 'd': f['d'], 'url': f['src']} for f in W['famous']]
+stream('famous', 'Famous moments elsewhere', 'ink-soft', fam, 'Wikipedia, cited per moment', '')
+
+ERAS = [['Full view', -4004, 100], ['Creation to the Flood', -4004, -2300], ['The patriarchs', -2400, -1650], ['Egypt and the Exodus', -1760, -1400],
+        ['The judges', -1460, -1050], ['The kingdom', -1110, -930], ['Two kingdoms', -990, -570], ['Exile and return', -620, -400],
+        ['Persia and Greece', -560, -140], ['Rome and Christ', -200, 100]]
+json.dump({'streams': S, 'range': [-4004, 100], 'eras': ERAS,
+           'note': "Israel's streams follow Floyd Nolen Jones's chronology, as Theographic carries it. The turning points follow this site's Old Testament Timeline, which dates the Exodus to 1446 BC, so before the kings the two can sit decades apart. The nations come from Cliopatria, on historians' dates."},
+          open(OUT / 'chart.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+print([(s['k'], len(s['items'])) for s in S])

@@ -699,75 +699,142 @@
   }
 
   // ---------- view 4: when it happened ----------
+  // A synchronological chart, after Adams' Chart of History: time runs left to right, each people is a stream,
+  // and Israel runs as one stream until it splits in two. No word is involved, so the word search and the word
+  // boxes are hidden on this view. Drag to pan, zoom with the buttons or ctrl and the wheel, jump by era.
+  var CH = { ppy: 0, x0: null, sel: null, q: "", off: { china: 1, india: 1, africa: 1, americas: 1 } };
   function viewHappened() {
-    var c = CUR;
-    data("world.json").then(function (Wd) {
-      var ax = clockAxis(-2200, 100), L = S.layers, ex = S.hinge.exodus === "late" ? 196 : 0, eg = S.hinge.egypt === "215" ? 215 : 0;
-      // a hinge moves what hangs on it: the late Exodus moves the Exodus generation, the short stay in Egypt moves the patriarchs
-      function delta(y) { return y <= -1876 ? ex + eg : (y <= -1406 ? ex : 0); }
-      function shift(y, from) { return y + delta(from == null ? y : from); }
-      var wv = {}; if (c.entry) c.entry.v.forEach(function (i) { wv[i] = 1; });
-      var people = Wd.people.rows.filter(function (p) { return p.a >= -2300 && (!S.onlyWord || p.v.some(function (i) { return wv[i]; })); });
-      var rows = people.map(function (p, j) {
-        var key = "p:" + p.n, on = S.item === key;
-        return '<div class="wt-row' + (L.people ? "" : " off") + '"><div class="wt-rl" title="' + esc(p.n) + '">' + esc(p.n) + '</div><div class="wt-rt2">' +
-          '<button class="wt-hit" data-item="' + esc(key) + '" aria-label="' + esc(p.n) + '" style="left:0;right:0"></button>' +
-          bar(ax, shift(p.a), shift(p.b, p.a), "mid c-people") + (on ? '<span class="wt-bar2 mid c-sel" style="left:' + ax.p(shift(p.a)) + "%;width:" + Math.max(.4, ax.p(shift(p.b, p.a)) - ax.p(shift(p.a))) + '%"></span>' : "") + "</div></div>";
-      }).join("");
-      var evs = Wd.events.rows.map(function (e, j) { return { y: shift(e.a), n: e.n, k: "e:" + j, w: e.v.some(function (i) { return wv[i]; }) }; });
-      var evRows = laneHTML(ax, "Events", "JAYMS OT Timeline", "c-events diamond", evs, "events", trackPx());
-      var lanes = Wd.world.lanes.map(function (ln) {
-        return '<div class="wt-row tall' + (L[ln.k] ? "" : " off") + '"><div class="wt-rl">' + esc(ln.n) + '</div><div class="wt-rt2" style="height:30px">' +
-          ln.bands.map(function (b) { var l = ax.p(b.a), w = Math.max(.4, ax.p(b.b) - l); return '<span class="wt-band c-world" style="left:' + l + "%;width:" + w + '%" title="' + esc(b.n + ", " + span(b.a, b.b)) + '">' + esc(b.n) + "</span>"; }).join("") + "</div></div>";
-      }).join("");
-      var fam = laneHTML(ax, "Famous moments", "the world knows", "c-famous round", Wd.famous.map(function (f, j) { return { y: f.y, n: f.n, k: "m:" + j }; }), "famous", trackPx());
-      // what is selected, and its year span
-      var selSpan = null, selName = "", selNote = "", selSrc = "";
-      if (S.item) {
-        var p = S.item.split(":");
-        if (p[0] === "p") { var pp = Wd.people.rows.filter(function (x) { return x.n === S.item.slice(2); })[0]; if (pp) { selSpan = [shift(pp.a), shift(pp.b, pp.a)]; selName = pp.n; selNote = "Lived " + span(selSpan[0], selSpan[1]) + " by " + Wd.people.source.split(";")[1].replace(/^ Old Testament dates from /, "") + "."; selSrc = Wd.people.src; } }
-        if (p[0] === "e") { var ee = Wd.events.rows[+p[1]]; selSpan = [shift(ee.a), shift(ee.b, ee.a)]; selName = ee.n; selNote = span(selSpan[0], selSpan[1]) + ". " + ee.ref + "."; selSrc = Wd.events.src; }
-        if (p[0] === "m") { var ff = Wd.famous[+p[1]]; selSpan = [ff.y, ff.y]; selName = ff.n; selNote = ff.d + "."; selSrc = ff.src; }
+    data("chart.json").then(function (K) {
+      var A = K.range[0], Z = K.range[1];
+      var wrapW = CH.wrap || Math.max(320, (MAIN.clientWidth || 900) - 200);
+      if (!CH.ppy || CH.fit) CH.ppy = wrapW / (Z - A);
+      var ppy = CH.ppy, W = Math.ceil((Z - A) * ppy) + 40;
+      function X(y) { return 20 + (y - A) * ppy; }
+      function yl(y) { y = Math.round(y); return y < 0 ? fmt(-y) + " BC" : (y === 0 ? "1 BC" : "AD " + y); }
+      function sp2(a, b) { return Math.round(a) === Math.round(b) ? yl(a) : yl(a) + " to " + yl(b); }
+      // pack each stream's items into rows, by the room each needs at this zoom, its label included when it fits
+      var LH = 18, PAD = 6, y = 34, out = "", labs = "", rows = [], q = CH.q.trim().toLowerCase(), found = [];
+      K.streams.forEach(function (st, si) {
+        if (CH.off[st.k]) return;
+        var RMAX = /^(events|turning|famous)$/.test(st.k) ? 4 : 6;
+        var ends = [], items = st.items.map(function (it, ii) {
+          var x0 = X(it.a), x1 = Math.max(X(it.b), x0 + (it.t === "pt" || it.t === "flag" ? 0 : 2)), lw = it.n.length * 6.4 + 10;
+          var inside = it.t !== "pt" && it.t !== "flag" && x1 - x0 > lw, need = inside ? x1 : Math.max(x1, x0 + (it.t === "pt" || it.t === "flag" ? 8 : 4) + lw);
+          // a stream keeps a few rows at most; when no row has room for the label, the item goes in the row
+          // that frees up first and its label waits for a closer zoom (it still shows on hover and when picked)
+          var isPt = it.t === "pt" || it.t === "flag", r = 0, label = true;
+          while (r < RMAX && ends[r] != null && ends[r] > x0 - 3) r++;
+          if (r >= RMAX) {
+            label = false;
+            if (isPt) { r = 0; for (var k2 = 1; k2 < RMAX; k2++) if (ends[k2] < ends[r]) r = k2; need = Math.max(ends[r], x0 + 4); }
+            else if (x1 - x0 < 8) { r = 0; for (var k3 = 1; k3 < RMAX; k3++) if (ends[k3] < ends[r]) r = k3; need = Math.max(ends[r], x1 + 2); }   // a sliver at this zoom may share
+            else { r = 0; need = x1 + 2; while (ends[r] != null && ends[r] > x0 - 1) r++; }   // a real bar never overlaps: it takes a new row
+          }
+          ends[r] = need;
+          return { it: it, x0: x0, x1: x1, r: r, inside: inside, label: label || inside, id: st.k + ":" + ii };
+        });
+        var nr = Math.max(1, ends.length), h = nr * LH + PAD * 2, top = y;
+        out += '<rect class="hp-band c-' + st.c + '" x="0" y="' + top + '" width="' + W + '" height="' + h + '"></rect>';
+        items.forEach(function (o) {
+          var it = o.it, yy = top + PAD + o.r * LH, on = CH.sel === o.id, hit = q && it.n.toLowerCase().indexOf(q) >= 0;
+          if (hit) found.push({ o: o, st: st });
+          var cls = "hp-it c-" + st.c + " t-" + it.t + (on ? " on" : "") + (hit ? " hit" : "");
+          var g = '<g class="' + cls + '" data-id="' + o.id + '" tabindex="0" role="button" aria-label="' + esc(it.n + ", " + sp2(it.a, it.b)) + '">';
+          if (it.t === "pt" || it.t === "flag") {
+            g += '<circle cx="' + o.x0.toFixed(1) + '" cy="' + (yy + LH / 2) + '" r="' + (it.t === "flag" ? 4.5 : 3.2) + '"></circle>' +
+              (o.label || on || hit ? '<text x="' + (o.x0 + 8).toFixed(1) + '" y="' + (yy + LH / 2 + 4) + '">' + esc(it.n) + "</text>" : "");
+          } else {
+            g += '<rect x="' + o.x0.toFixed(1) + '" y="' + (yy + 2) + '" width="' + (o.x1 - o.x0).toFixed(1) + '" height="' + (LH - 4) + '" rx="2"></rect>' +
+              (o.label || on || hit ? '<text class="' + (o.inside ? "in" : "out") + '"' + (o.inside ? ' data-a="' + o.x0.toFixed(1) + '" data-z="' + o.x1.toFixed(1) + '"' : "") + ' x="' + ((o.inside ? o.x0 + 5 : o.x1 + 5)).toFixed(1) + '" y="' + (yy + LH / 2 + 4) + '">' + esc(it.n) + "</text>" : "");
+          }
+          out += g + "<title>" + esc(it.n + ", " + sp2(it.a, it.b)) + "</title></g>";
+        });
+        rows.push({ st: st, top: top, h: h });
+        y += h + 3;
+      });
+      var H = y + 30;
+      // the split: one stream for Israel until 974 BC, then two
+      var rIs = rows.filter(function (r) { return r.st.k === "israel"; })[0], rN = rows.filter(function (r) { return r.st.k === "north"; })[0], rS = rows.filter(function (r) { return r.st.k === "south"; })[0];
+      var split = "";
+      if (rIs && rN && rS) {
+        var xs = X(-975), mid = rIs.top + rIs.h / 2;
+        split = '<path class="hp-split" d="M' + (xs - 30).toFixed(1) + " " + mid + "C" + xs.toFixed(1) + " " + mid + " " + (xs - 20).toFixed(1) + " " + (rN.top + rN.h / 2) + " " + (xs + 6).toFixed(1) + " " + (rN.top + rN.h / 2) +
+          "M" + (xs - 30).toFixed(1) + " " + mid + "C" + xs.toFixed(1) + " " + mid + " " + (xs - 20).toFixed(1) + " " + (rS.top + rS.h / 2) + " " + (xs + 6).toFixed(1) + " " + (rS.top + rS.h / 2) + '"></path>';
       }
-      var cursor = selSpan ? '<span class="wt-cursor" style="left:calc(var(--wt-lab) + (100% - var(--wt-lab)) * ' + (ax.p((selSpan[0] + selSpan[1]) / 2) / 100) + ')"></span>' : "";
-      var lay = '<div class="wt-ctl">' + layerBtn("people", "c-people", "Hide people", "Show people") + layerBtn("events", "c-events", "Hide events", "Show events") +
-        layerBtn("famous", "c-famous", "Hide famous moments", "Show famous moments") +
-        Wd.world.lanes.map(function (ln) { return layerBtn(ln.k, "c-world", "Hide " + ln.n, "Show " + ln.n); }).join("") +
-        '<button class="wt-lay on" data-only="1">' + (S.onlyWord ? "Show every person" : "Show only people where this word stands") + "</button></div>";
-      var h = '<div class="wt-panel"><p class="wt-stat">When the people lived and the events happened, with the world around them. Each lane names its own source; where the sources disagree, the hinges below say what moves.</p>' + lay +
-        '<div class="wt-clock"><div class="wt-tl" style="position:relative">' + cursor + ticks(ax, [-2000, -1750, -1500, -1250, -1000, -750, -500, -250, 1]) +
-        '<div class="wt-sec">People · ' + esc(Wd.people.source.split(";")[0]) + "</div>" + (rows || '<div class="wt-row wt-empty"><div class="wt-rl">No one</div><div class="wt-rt2">No dated person is named in a verse with this word.</div></div>') +
-        '<div class="wt-sec">Events</div>' + evRows +
-        '<div class="wt-sec">The world · ' + esc(Wd.world.source) + "</div>" + lanes + fam + "</div></div></div>" +
-        '<div class="wt-pair">' +
-          '<div class="a-box v-explain' + (selSpan ? "" : " wt-empty") + '"><div class="a-blabel">Meanwhile, in the world</div><div class="a-btext" id="wt-mean"></div></div>' +
-          '<div class="a-box v-open"><div class="a-blabel">Hinges</div><div class="a-btext" style="font-size:15px">One choice moves every date that hangs on it. Pick one and the bars move with it.</div>' +
-          Wd.hinges.map(function (hg) {
-            return '<div class="wt-sec" style="margin-top:12px">' + esc(hg.n) + '</div><div class="wt-pick">' + hg.opts.map(function (o) {
-              return '<button class="a-chip' + (S.hinge[hg.k] === o.k ? " on" : "") + '" data-hinge="' + hg.k + ":" + o.k + '">' + esc(o.n) + "</button>";
-            }).join("") + '</div><div class="a-bnote" style="margin-top:4px">' + esc(hg.opts.filter(function (o) { return o.k === S.hinge[hg.k]; })[0].note) + "</div>";
-          }).join("") + "</div></div>" +
-        '<div class="a-box v-open"><div class="a-blabel">No date</div><div class="a-btext" style="font-size:15px">Not datable from the text. Listed, not placed on the line.</div><div class="wt-shelf" style="margin-top:9px">' +
-          Wd.nodate.map(function (n) { return '<span class="a-tag">' + esc(n.n) + " · " + esc(n.ref) + "</span>"; }).join("") + "</div></div>" +
-        '<div class="a-box v-apparatus"><div class="a-blabel">Sources for this clock</div><ol>' +
-          "<li>People: " + esc(Wd.people.source) + '. <a href="' + Wd.people.src + '">' + esc(Wd.people.src.replace(/^https:\/\//, "")) + "</a></li>" +
-          "<li>Events: " + esc(Wd.events.source) + '. <a href="' + Wd.events.src + '">' + esc(Wd.events.src.replace(/^https:\/\//, "")) + "</a></li>" +
-          "<li>The world: " + esc(Wd.world.source) + '. <a href="' + Wd.world.src + '">' + esc(Wd.world.src.replace(/^https:\/\//, "")) + "</a></li>" +
-          Wd.famous.map(function (f) { return "<li>" + esc(f.n) + ", " + esc(f.d) + '. <a href="' + f.src + '">' + esc(f.src.replace(/^https:\/\//, "")) + "</a></li>"; }).join("") +
-        "</ol></div>";
-      MAIN.innerHTML = h;
-      wireLayers(MAIN, viewHappened);
-      MAIN.querySelector("[data-only]").addEventListener("click", function () { S.onlyWord = !S.onlyWord; viewHappened(); });
-      [].forEach.call(MAIN.querySelectorAll("[data-item]"), function (m) { m.addEventListener("click", function () { S.item = m.getAttribute("data-item"); viewHappened(); }); });
-      [].forEach.call(MAIN.querySelectorAll("[data-hinge]"), function (b) { b.addEventListener("click", function () { var q = b.getAttribute("data-hinge").split(":"); S.hinge[q[0]] = q[1]; viewHappened(); }); });
-      var mean = MAIN.querySelector("#wt-mean");
-      if (!selSpan) { mean.textContent = "Pick a person, an event or a moment to see what overlaps it in the layers that are on."; return; }
-      var lo = selSpan[0] - 40, hi = selSpan[1] + 40, items = [];
-      Wd.world.lanes.forEach(function (ln) { if (!L[ln.k]) return; ln.bands.forEach(function (b) { if (b.a <= hi && b.b >= lo) items.push([ln.n, b.n + ", " + span(b.a, b.b)]); }); });
-      if (L.famous) Wd.famous.forEach(function (f) { if (f.y >= lo && f.y <= hi) items.push(["Famous", f.n + ", " + f.d]); });
-      if (L.people) Wd.people.rows.forEach(function (q) { var a = shift(q.a), b = shift(q.b, q.a); if (q.n !== selName && a <= selSpan[1] && b >= selSpan[0]) items.push(["Alive then", q.n]); });
-      mean.innerHTML = "<b>" + esc(selName) + "</b>. " + esc(selNote) + ' <a href="' + esc(selSrc) + '">Source</a>' +
-        '<ul class="wt-meanwhile" style="margin-top:10px">' + (items.length ? items.slice(0, 14).map(function (x) { return '<li><span class="wt-dot c-world"></span><span><small>' + esc(x[0]) + ":</small> " + esc(x[1]) + "</span></li>"; }).join("") : "<li>Nothing in the layers that are on overlaps it.</li>") + "</ul>";
+      // the year grid: a line every century, or every 10 or 50 years when zoomed in
+      // the grid step is the smallest that leaves room for its year label: at least 64px apart
+      var stepY = [10, 25, 50, 100, 250, 500, 1000].filter(function (st2) { return st2 * ppy >= 64; })[0] || 1000, grid = "", rul = "";
+      for (var yr0 = Math.ceil(A / stepY) * stepY; yr0 <= Z; yr0 += stepY) {
+        var gx = X(yr0), big = yr0 % (stepY >= 250 ? 1000 : stepY * 5) === 0;
+        grid += '<line class="hp-grid' + (big ? " big" : "") + '" x1="' + gx.toFixed(1) + '" y1="24" x2="' + gx.toFixed(1) + '" y2="' + (H - 20) + '"></line>';
+        var t = yr0 === 0 ? "AD 1" : yl(yr0);
+        rul += '<text class="hp-yr" x="' + gx.toFixed(1) + '" y="16" text-anchor="middle">' + t + '</text><text class="hp-yr" x="' + gx.toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + t + "</text>";
+      }
+      var side = rows.map(function (r) { return '<div class="hp-lab c-' + r.st.c + '" style="top:' + r.top + "px;height:" + r.h + 'px"><span>' + esc(r.st.n) + "</span></div>"; }).join("");
+      var eras = K.eras.map(function (e, k) { return '<button class="wt-lay hp-era" data-era="' + k + '">' + (k ? k + " · " : "") + esc(e[0]) + "</button>"; }).join("");
+      var toggles = ["china", "india", "africa", "americas"].map(function (k) {
+        var st = K.streams.filter(function (s2) { return s2.k === k; })[0]; return st ? '<button class="wt-lay' + (CH.off[k] ? "" : " on") + '" data-off="' + k + '">' + (CH.off[k] ? "Show " : "Hide ") + esc(st.n) + "</button>" : "";
+      }).join("");
+      MAIN.innerHTML = '<div class="wt-panel hp">' +
+        '<div class="hp-bar"><div class="wt-ctl hp-eras">' + eras + "</div></div>" +
+        '<div class="hp-bar"><input class="a-search hp-q" id="hp-q" type="search" placeholder="Find a person, a king, an event or a nation" value="' + esc(CH.q) + '">' +
+          '<span class="hp-found">' + (q ? fmt(found.length) + (found.length === 1 ? " match" : " matches") : "") + "</span>" +
+          '<button class="wt-lay" data-zoom="-1" aria-label="Zoom out">−</button><button class="wt-lay" data-zoom="1" aria-label="Zoom in">+</button>' + toggles + "</div>" +
+        '<div class="hp-chart"><div class="hp-side" style="height:' + H + 'px">' + side + '</div><div class="hp-scroll" id="hp-scroll"><svg class="hp-svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '">' +
+          grid + out + split + rul + "</svg></div></div>" +
+        '<p class="a-note hp-hint">Drag the chart to move through time. Zoom with the buttons, or hold ctrl and scroll. Pick anything to read about it.</p></div>' +
+        '<div id="hp-card"></div>' +
+        '<div class="a-box v-apparatus"><div class="a-blabel">Whose dates these are</div><div class="a-btext" style="font-size:15px">' + esc(K.note) + "</div><ol>" +
+          '<li>Israel, the kings, the judges, the prophets, the New Testament: Theographic Bible Metadata, CC BY-SA 4.0. <a href="https://github.com/robertrouse/theographic-bible-metadata">github.com/robertrouse/theographic-bible-metadata</a></li>' +
+          '<li>Turning points: JAYMS.COM, The Old Testament Timeline. <a href="https://jayms.com/bible-study-tools-2/the-old-testament-timeline/">jayms.com/bible-study-tools-2/the-old-testament-timeline</a></li>' +
+          '<li>The nations: Cliopatria, Seshat Global History Databank, CC BY 4.0. <a href="https://github.com/Seshat-Global-History-Databank/cliopatria">github.com/Seshat-Global-History-Databank/cliopatria</a></li>' +
+          "<li>Famous moments: Wikipedia, the page for each moment, linked on its card.</li>" +
+          '<li>The layout follows Adams\' Synchronological Chart of Universal History (1871). <a href="https://www.adamschart.org/">adamschart.org</a></li></ol></div>';
+      var sc = MAIN.querySelector("#hp-scroll");
+      // a long band keeps its name in view while the chart scrolls, the way the names ride along Adams' streams
+      var rides = [].slice.call(sc.querySelectorAll("text.in[data-a]")).map(function (t) { return { t: t, a: +t.getAttribute("data-a"), z: +t.getAttribute("data-z"), w: t.getComputedTextLength ? t.getComputedTextLength() : 60 }; });
+      function ride() { var L0 = sc.scrollLeft + 6; rides.forEach(function (r) { var x = Math.min(Math.max(r.a + 5, L0), r.z - r.w - 5); if (x < r.a + 5) x = r.a + 5; r.t.setAttribute("x", x.toFixed(1)); }); }
+      sc.addEventListener("scroll", ride, { passive: true });
+      // first draw: measure the real width of the scroll area, and fit the whole span to it once
+      if (!CH.measured) { CH.measured = 1; var real = sc.clientWidth - 40; if (real > 200 && Math.abs(real - wrapW) > 4) { CH.wrap = real; CH.ppy = real / (Z - A); viewHappened(); return; } }
+      if (CH.x0 != null) sc.scrollLeft = X(CH.x0) - sc.clientWidth / 2;
+      ride();
+      function center() { return A + (sc.scrollLeft + sc.clientWidth / 2 - 20) / ppy; }
+      function zoomTo(f, yc) { CH.x0 = yc == null ? center() : yc; CH.ppy = Math.max(wrapW / (Z - A), Math.min(30, CH.ppy * f)); viewHappened(); }
+      [].forEach.call(MAIN.querySelectorAll("[data-zoom]"), function (b) { b.addEventListener("click", function () { zoomTo(+b.getAttribute("data-zoom") > 0 ? 1.8 : 1 / 1.8); }); });
+      [].forEach.call(MAIN.querySelectorAll("[data-era]"), function (b) { b.addEventListener("click", function () { var e = K.eras[+b.getAttribute("data-era")]; CH.ppy = wrapW / (e[2] - e[1]); CH.x0 = (e[1] + e[2]) / 2; viewHappened(); }); });
+      [].forEach.call(MAIN.querySelectorAll("[data-off]"), function (b) { b.addEventListener("click", function () { var k = b.getAttribute("data-off"); CH.off[k] = CH.off[k] ? 0 : 1; CH.x0 = center(); viewHappened(); }); });
+      sc.addEventListener("wheel", function (ev) { if (!ev.ctrlKey) return; ev.preventDefault(); var r = sc.getBoundingClientRect(); var yc = A + (sc.scrollLeft + ev.clientX - r.left - 20) / ppy; zoomTo(ev.deltaY < 0 ? 1.25 : 0.8, yc); }, { passive: false });
+      // drag to pan; a drag that moves does not count as a pick
+      var drag = null, moved = false;
+      sc.addEventListener("pointerdown", function (ev) { if (ev.pointerType === "touch") return; drag = { x: ev.clientX, s: sc.scrollLeft }; moved = false; });
+      window.addEventListener("pointermove", function (ev) { if (!drag) return; var dx = ev.clientX - drag.x; if (Math.abs(dx) > 4) moved = true; sc.scrollLeft = drag.s - dx; });
+      window.addEventListener("pointerup", function () { drag = null; });
+      var qi = MAIN.querySelector("#hp-q"), qt = null;
+      qi.addEventListener("input", function () { clearTimeout(qt); qt = setTimeout(function () { CH.q = qi.value; CH.x0 = center(); var pos = qi.selectionStart; viewHappened(); var n = MAIN.querySelector("#hp-q"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (x) {} }, 250); });
+      qi.addEventListener("keydown", function (ev) { if (ev.key === "Enter" && found.length) { pick(found[0].o.id); } });
+      function pick(id) {
+        CH.sel = id; var p = id.split(":"), st = K.streams.filter(function (s2) { return s2.k === p[0]; })[0], it = st.items[+p[1]];
+        CH.x0 = (it.a + it.b) / 2; if (CH.ppy < 1.2) CH.ppy = 1.2; viewHappened();
+      }
+      [].forEach.call(MAIN.querySelectorAll(".hp-it"), function (g) {
+        g.addEventListener("click", function () { if (moved) return; pick(g.getAttribute("data-id")); });
+        g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); pick(g.getAttribute("data-id")); } });
+      });
+      if (CH.sel) {
+        var p = CH.sel.split(":"), st = K.streams.filter(function (s2) { return s2.k === p[0]; })[0], it = st && st.items[+p[1]];
+        if (it) {
+          // what else was going on: everything in the other streams that overlaps it
+          var lo = it.a, hi = Math.max(it.b, it.a), meanwhile = [];
+          K.streams.forEach(function (s2) { if (s2 === st) return; s2.items.forEach(function (o) { if (o.t !== "pt" && o.a <= hi && o.b >= lo) meanwhile.push([s2.n, o.n + ", " + sp2(o.a, o.b)]); }); });
+          var card = MAIN.querySelector("#hp-card");
+          card.innerHTML = '<div class="wt-pair"><div class="a-box v-witness"><div class="a-blabel">' + esc(st.n) + "</div><div class=\"a-btext\"><b>" + esc(it.n) + "</b><br>" + esc(it.d || sp2(it.a, it.b)) +
+            (it.b - it.a >= 1 ? " · " + fmt(Math.round(it.b - it.a)) + " years" : "") + (it.ref ? "<br>" + esc(it.ref) : "") + "</div>" +
+            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">Read about it ›</a>' : "") + '<div class="a-bnote">Dates: ' + esc(st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
+            '<div class="a-box v-explain"><div class="a-blabel">Meanwhile</div><ul class="wt-meanwhile">' + (meanwhile.length ? meanwhile.slice(0, 16).map(function (m) { return "<li><span><small>" + esc(m[0]) + ":</small> " + esc(m[1]) + "</span></li>"; }).join("") : "<li>Nothing else on the chart overlaps it.</li>") + "</ul></div></div>";
+          if (it.ref) net(it.ref).then(function (t) { var v = card.querySelector("#hp-v"); if (v) v.textContent = t ? t + " (" + it.ref + ", NET)" : ""; });
+        }
+      }
     });
   }
 
@@ -809,10 +876,12 @@
   }
   function render() {
     MOUNT.classList.toggle("wt-wide", S.view === "uses");
+    MOUNT.classList.toggle("wt-noword", S.view === "happened");
     var oa = document.getElementById("wt-other");
     if (oa) oa.href = OTHER + "#w=" + S.w + (S.g ? "&g=" + S.g : "") + (S.from ? "&from=" + S.from : "");
     [].forEach.call(MOUNT.querySelectorAll(".wt-tab"), function (b) { var on = b.getAttribute("data-view") === S.view; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     MAIN.innerHTML = '<div class="wt-loading">Loading…</div>';
+    if (S.view === "happened") { viewHappened(); return; }   // no word on this view
     load().then(function () {
       renderSide(); addTrail(CUR);
       ({ uses: viewUses, lands: viewLands, written: viewWritten, happened: viewHappened })[S.view]();
