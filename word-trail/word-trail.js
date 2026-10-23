@@ -713,11 +713,17 @@
       function yl(y) { y = Math.round(y); return y < 0 ? fmt(-y) + " BC" : (y === 0 ? "1 BC" : "AD " + y); }
       function sp2(a, b) { return Math.round(a) === Math.round(b) ? yl(a) : yl(a) + " to " + yl(b); }
       // pack each stream's items into rows, by the room each needs at this zoom, its label included when it fits
+      var span = (wrapW + 40) / ppy, cx0 = CH.x0 != null ? CH.x0 : A + span / 2, VA = cx0 - span * 1.6, VZ = cx0 + span * 1.6;
+      CH.drawn = cx0;
       var LH = 18, PAD = 6, y = 34, out = "", labs = "", rows = [], q = CH.q.trim().toLowerCase(), found = [];
+      // search runs over the whole chart, not only the years on screen
+      if (q) K.streams.forEach(function (st) { if (CH.off[st.k]) return; st.items.forEach(function (it, ii) { if (it.n.toLowerCase().indexOf(q) >= 0) found.push({ o: { id: st.k + ":" + ii }, st: st }); }); });
       K.streams.forEach(function (st, si) {
         if (CH.off[st.k]) return;
         var RMAX = /^(events|turning|famous)$/.test(st.k) ? 4 : 6;
-        var ends = [], items = st.items.map(function (it, ii) {
+        // only what is near the screen is laid out, so a stream with nothing in these years shrinks to one thin row
+        var ends = [], items = st.items.map(function (it, ii) { return [it, ii]; }).filter(function (p2) { return p2[0].b >= VA && p2[0].a <= VZ; }).map(function (p2) {
+          var it = p2[0], ii = p2[1];
           var x0 = X(it.a), x1 = Math.max(X(it.b), x0 + (it.t === "pt" || it.t === "flag" ? 0 : 2)), lw = it.n.length * 6.4 + 10;
           var inside = it.t !== "pt" && it.t !== "flag" && x1 - x0 > lw, need = inside ? x1 : Math.max(x1, x0 + (it.t === "pt" || it.t === "flag" ? 8 : 4) + lw);
           // a stream keeps a few rows at most; when no row has room for the label, the item goes in the row
@@ -733,11 +739,11 @@
           ends[r] = need;
           return { it: it, x0: x0, x1: x1, r: r, inside: inside, label: label || inside, id: st.k + ":" + ii };
         });
-        var nr = Math.max(1, ends.length), h = nr * LH + PAD * 2, top = y;
-        out += '<rect class="hp-band c-' + st.c + '" x="0" y="' + top + '" width="' + W + '" height="' + h + '"></rect>';
+        var nr = Math.max(1, ends.length), h = (items.length ? nr * LH + PAD * 2 : 14), top = y;
+        out += '<rect class="hp-band' + (rows.length % 2 ? " odd" : "") + ' c-' + st.c + '" x="0" y="' + top + '" width="' + W + '" height="' + h + '"></rect>';
         items.forEach(function (o) {
           var it = o.it, yy = top + PAD + o.r * LH, on = CH.sel === o.id, hit = q && it.n.toLowerCase().indexOf(q) >= 0;
-          if (hit) found.push({ o: o, st: st });
+
           var cls = "hp-it c-" + st.c + " t-" + it.t + (on ? " on" : "") + (hit ? " hit" : "");
           var g = '<g class="' + cls + '" data-id="' + o.id + '" tabindex="0" role="button" aria-label="' + esc(it.n + ", " + sp2(it.a, it.b)) + '">';
           if (it.t === "pt" || it.t === "flag") {
@@ -770,7 +776,7 @@
         var t = yr0 === 0 ? "AD 1" : yl(yr0);
         rul += '<text class="hp-yr" x="' + gx.toFixed(1) + '" y="16" text-anchor="middle">' + t + '</text><text class="hp-yr" x="' + gx.toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + t + "</text>";
       }
-      var side = rows.map(function (r) { return '<div class="hp-lab c-' + r.st.c + '" style="top:' + r.top + "px;height:" + r.h + 'px"><span>' + esc(r.st.n) + "</span></div>"; }).join("");
+      var side = rows.map(function (r, i) { return '<div class="hp-lab' + (i % 2 ? " odd" : "") + (r.h < 20 ? " thin" : "") + ' c-' + r.st.c + '" style="top:' + r.top + "px;height:" + r.h + 'px"><span>' + esc(r.st.n) + "</span></div>"; }).join("");
       var eras = K.eras.map(function (e, k) { return '<button class="wt-lay hp-era" data-era="' + k + '">' + (k ? k + " · " : "") + esc(e[0]) + "</button>"; }).join("");
       var toggles = ["china", "india", "africa", "americas"].map(function (k) {
         var st = K.streams.filter(function (s2) { return s2.k === k; })[0]; return st ? '<button class="wt-lay' + (CH.off[k] ? "" : " on") + '" data-off="' + k + '">' + (CH.off[k] ? "Show " : "Hide ") + esc(st.n) + "</button>" : "";
@@ -795,6 +801,9 @@
       var rides = [].slice.call(sc.querySelectorAll("text.in[data-a]")).map(function (t) { return { t: t, a: +t.getAttribute("data-a"), z: +t.getAttribute("data-z"), w: t.getComputedTextLength ? t.getComputedTextLength() : 60 }; });
       function ride() { var L0 = sc.scrollLeft + 6; rides.forEach(function (r) { var x = Math.min(Math.max(r.a + 5, L0), r.z - r.w - 5); if (x < r.a + 5) x = r.a + 5; r.t.setAttribute("x", x.toFixed(1)); }); }
       sc.addEventListener("scroll", ride, { passive: true });
+      // when the reader has moved most of a screen from where the chart was laid out, lay it out again there
+      var relay = null;
+      sc.addEventListener("scroll", function () { clearTimeout(relay); relay = setTimeout(function () { if (drag) return; var c2 = A + (sc.scrollLeft + sc.clientWidth / 2 - 20) / ppy; if (Math.abs(c2 - CH.drawn) > span * 0.7) { CH.x0 = c2; viewHappened(); } }, 260); }, { passive: true });
       // first draw: measure the real width of the scroll area, and fit the whole span to it once
       if (!CH.measured) { CH.measured = 1; var real = sc.clientWidth - 40; if (real > 200 && Math.abs(real - wrapW) > 4) { CH.wrap = real; CH.ppy = real / (Z - A); viewHappened(); return; } }
       if (CH.x0 != null) sc.scrollLeft = X(CH.x0) - sc.clientWidth / 2;
@@ -830,7 +839,8 @@
           var card = MAIN.querySelector("#hp-card");
           card.innerHTML = '<div class="wt-pair"><div class="a-box v-witness"><div class="a-blabel">' + esc(st.n) + "</div><div class=\"a-btext\"><b>" + esc(it.n) + "</b><br>" + esc(it.d || sp2(it.a, it.b)) +
             (it.b - it.a >= 1 ? " · " + fmt(Math.round(it.b - it.a)) + " years" : "") + (it.ref ? "<br>" + esc(it.ref) : "") + "</div>" +
-            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">Read about it ›</a>' : "") + '<div class="a-bnote">Dates: ' + esc(st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
+            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">' + (/jayms\.com/.test(it.url) ? "Open it on the timeline ›" : "Read about it ›") + "</a>" : "") +
+            '<div class="a-bnote">Dates: ' + esc(it.note ? it.note.replace(/^vault: /, "") + ", in the study notes" : st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
             '<div class="a-box v-explain"><div class="a-blabel">Meanwhile</div><ul class="wt-meanwhile">' + (meanwhile.length ? meanwhile.slice(0, 16).map(function (m) { return "<li><span><small>" + esc(m[0]) + ":</small> " + esc(m[1]) + "</span></li>"; }).join("") : "<li>Nothing else on the chart overlaps it.</li>") + "</ul></div></div>";
           if (it.ref) net(it.ref).then(function (t) { var v = card.querySelector("#hp-v"); if (v) v.textContent = t ? t + " (" + it.ref + ", NET)" : ""; });
         }

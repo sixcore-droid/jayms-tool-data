@@ -432,32 +432,33 @@
 .jayms-word-trail .hp-found{font-size:13px;color:var(--muted);min-width:70px}
 .jayms-word-trail .hp-chart{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
 .jayms-word-trail .hp-side{position:relative;flex:0 0 150px;border-right:1px solid var(--line);background:var(--paper-deep)}
-.jayms-word-trail .hp-lab{position:absolute;left:0;right:0;display:flex;align-items:center;padding:0 10px;border-left:3px solid var(--c);
-  font-size:12px;line-height:1.25;color:var(--ink-soft);overflow:hidden}
+.jayms-word-trail .hp-lab{position:absolute;left:0;right:0;display:flex;align-items:center;padding:0 10px;border-left:4px solid var(--c);
+  font-size:12px;line-height:1.25;color:var(--ink);overflow:hidden}
 .jayms-word-trail .hp-scroll{flex:1 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;cursor:grab;user-select:none}
 .jayms-word-trail .hp-scroll:active{cursor:grabbing}
 .jayms-word-trail .hp-svg{display:block}
-.jayms-word-trail .hp-band{fill:var(--c);fill-opacity:.07}
-.jayms-word-trail .hp-grid{stroke:var(--line);stroke-width:1}
-.jayms-word-trail .hp-grid.big{stroke:var(--border-bright)}
-.jayms-word-trail .hp-yr{fill:var(--muted);font-family:inherit;font-size:10.5px}
+.jayms-word-trail .hp-band{fill:transparent}
+.jayms-word-trail .hp-band.odd{fill:var(--paper-deep)}
+.jayms-word-trail .hp-grid{stroke:var(--line);stroke-width:1;stroke-opacity:.7}
+.jayms-word-trail .hp-grid.big{stroke:var(--border-bright);stroke-opacity:1}
+.jayms-word-trail .hp-yr{fill:var(--ink-soft);font-family:inherit;font-size:10.5px}
 .jayms-word-trail .hp-it{cursor:pointer;outline:none}
-.jayms-word-trail .hp-it rect{fill:var(--c);fill-opacity:.62}
-.jayms-word-trail .hp-it.t-bad rect{fill:var(--rust);fill-opacity:.5}
-.jayms-word-trail .hp-it.t-nation rect{fill-opacity:.42}
-.jayms-word-trail .hp-it.t-life rect{fill-opacity:.38}
-.jayms-word-trail .hp-it circle{fill:var(--c);stroke:var(--paper);stroke-width:1}
+/* the bars print in the full site colors, like the inks of a printed chart, with dark type on them */
+.jayms-word-trail .hp-it rect{fill:var(--c)}
+.jayms-word-trail .hp-it.t-bad rect{fill:var(--rust)}
+.jayms-word-trail .hp-it circle{fill:var(--c);stroke:var(--paper);stroke-width:1.5}
 .jayms-word-trail .hp-it text{font-family:inherit;font-size:11px;fill:var(--ink-soft);pointer-events:none}
-.jayms-word-trail .hp-it text.in{fill:var(--ink-bright)}
-.jayms-word-trail .hp-it:hover rect,.jayms-word-trail .hp-it:focus rect{fill-opacity:.9}
+.jayms-word-trail .hp-it text.in{fill:var(--paper);font-weight:600}
+.jayms-word-trail .hp-it:hover rect,.jayms-word-trail .hp-it:focus rect{fill:var(--ink-bright)}
 .jayms-word-trail .hp-it:hover text,.jayms-word-trail .hp-it:focus text{fill:var(--ink-bright)}
-.jayms-word-trail .hp-it.hit rect,.jayms-word-trail .hp-it.hit circle{stroke:var(--ink-bright);stroke-width:1.5}
+.jayms-word-trail .hp-it:hover text.in,.jayms-word-trail .hp-it:focus text.in{fill:var(--paper)}
+.jayms-word-trail .hp-it.hit rect,.jayms-word-trail .hp-it.hit circle{stroke:var(--ink-bright);stroke-width:2}
 .jayms-word-trail .hp-it.hit text{fill:var(--ink-bright);font-weight:700}
-.jayms-word-trail .hp-it.on rect{fill:var(--ink-bright);fill-opacity:1}
+.jayms-word-trail .hp-it.on rect{fill:var(--ink-bright)}
 .jayms-word-trail .hp-it.on text.in{fill:var(--paper)}
-.jayms-word-trail .hp-it.on circle{fill:var(--ink-bright);r:6}
+.jayms-word-trail .hp-it.on circle{fill:var(--ink-bright)}
 .jayms-word-trail .hp-it.on text{fill:var(--ink-bright);font-weight:700}
-.jayms-word-trail .hp-split{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-opacity:.8}
+.jayms-word-trail .hp-split{fill:none;stroke:var(--gold);stroke-width:3}
 .jayms-word-trail .hp-hint{margin:8px 0 0}
 @media (max-width:760px){
   .jayms-word-trail .hp-side{flex-basis:92px}
@@ -465,3 +466,5 @@
   .jayms-word-trail .hp-eras{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
   .jayms-word-trail .hp-era{flex:0 0 auto}
 }
+.jayms-word-trail .hp-lab.odd{background:var(--paper-deeper)}
+.jayms-word-trail .hp-lab.thin{font-size:10.5px;color:var(--muted)}.jayms-word-trail .hp-lab.thin span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
