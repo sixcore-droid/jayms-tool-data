@@ -178,15 +178,17 @@
       '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
       '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(vs.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(vs) + "</span> books.</p></div></div>";
-    var fbs = e.fb || [], fb = fbs.filter(function (f) { return f[0] === S.fb; })[0] || fbs[0];
-    if (fb) {
-      h += '<div class="a-box v-plain"><div class="a-blabel">First, in plain English · from the Fact Book</div>' +
-        '<div class="a-btext"><b>' + esc(fb[1]) + "</b>" + (fb[2] ? ' <span class="wt-fbd">' + esc(fb[2]) + "</span>" : "") + "<br>" + esc(fb[3]) + "</div>" +
-        (fbs.length > 1 ? '<div class="wt-fbpick">' + fbs.slice(0, 12).map(function (f) { return '<button class="a-chip' + (f === fb ? " on" : "") + '" data-fb="' + esc(f[0]) + '">' + esc(f[1] + (f[2] ? ", " + f[2] : "")) + "</button>"; }).join("") +
-          (fbs.length > 12 ? '<span class="a-n">and ' + (fbs.length - 12) + " more</span>" : "") + "</div>" : "") +
-        '<div class="wt-links"><a class="a-lnk" href="' + FACTBOOK + encodeURIComponent(fb[0]) + '/">Open ' + esc(fb[1]) + " in the Fact Book ›</a></div></div>";
+    // every Fact Book entry this word carries, all of them in the one box; the one picked in search leads
+    var fbs = (e.fb || []).slice(), lead = fbs.filter(function (f) { return f[0] === S.fb; })[0];
+    if (lead) fbs = [lead].concat(fbs.filter(function (f) { return f !== lead; }));
+    if (fbs.length) {
+      h += '<div class="a-box v-plain"><div class="a-blabel">Fact Book' + (fbs.length > 1 ? " · " + fbs.length + " entries" : "") + "</div>" +
+        fbs.map(function (f) {
+          return '<div class="wt-fbe' + (f === lead ? " on" : "") + '"><div class="a-btext"><b>' + esc(f[1]) + "</b>" + (f[2] ? ' <span class="wt-fbd">' + esc(f[2]) + "</span>" : "") + "<br>" + esc(f[3]) + "</div>" +
+            '<a class="a-lnk" href="' + FACTBOOK + encodeURIComponent(f[0]) + '/">Open ' + esc(f[1]) + " in the Fact Book ›</a></div>";
+        }).join("") + "</div>";
     } else {
-      h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
+      h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">Fact Book</div><div class="a-btext">This word has no Fact Book entry.</div></div>';
     }
     var gh = "";
     if (c.heb) {
@@ -220,9 +222,6 @@
     }
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h; GREEK.innerHTML = gh;
-    [].forEach.call(SIDE.querySelectorAll("[data-fb]"), function (b) {
-      b.addEventListener("click", function () { S.fb = b.getAttribute("data-fb"); writeHash(); renderSide(); });
-    });
     [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-g]"), function (b) {
       b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.v = null; S.book = null; writeHash(); render(); });
     });

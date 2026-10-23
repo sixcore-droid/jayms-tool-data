@@ -82,8 +82,8 @@
 .jayms-word-trail .wt-wb-n{flex:0 1 220px;margin:0}
 .jayms-word-trail .wt-gbar{padding:0 0 14px;margin:0 0 14px;border-bottom:1px solid var(--line)}
 .jayms-word-trail .wt-fbd{font-size:.85em;color:var(--ink-soft);font-style:italic}
-.jayms-word-trail .wt-fbpick{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
-.jayms-word-trail .wt-fbpick .a-chip{border-color:var(--line);font-size:13px;padding:5px 11px}
+.jayms-word-trail .wt-fbe{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:0 0 14px;margin:0 0 14px;border-bottom:1px solid var(--line)}
+.jayms-word-trail .wt-fbe:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
 .jayms-word-trail .wt-sub{font-size:13px;line-height:1.5;color:var(--ink-soft);margin:0 0 10px}
 .jayms-word-trail .wt-rrow{display:flex;flex-wrap:wrap;gap:8px}
 .jayms-word-trail .wt-rend{flex:1 1 190px;max-width:280px;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:6px;
