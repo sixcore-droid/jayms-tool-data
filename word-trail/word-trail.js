@@ -13,6 +13,7 @@
   var WORDSTUDY = "https://jayms.com/bible-study-tools-2/bible-word-study-tool/";
   var TDX = "https://jayms.com/bible-study-tools-2/bible-translation-differences/";
   var FACTBOOK = "https://jayms.com/bible-study-tools-2/bible-entity-explorer/";
+  var GODS = "https://jayms.com/bible-study-tools-2/gods-of-the-bible/";
   var NETAPI = "https://labs.bible.org/api/?type=json&formatting=plain&passage=";
   var SVGNS = "http://www.w3.org/2000/svg";
 
@@ -128,6 +129,28 @@
     }).catch(function () { WSP = null; });
     return WSP;
   }
+  // the Fact Book and The Gods of the Bible, read live from the files those tools read, keyed by every Strong's
+  // number an entry carries. A word shows a box for each tool it is in, and no box for a tool it is not in.
+  var RAW = "https://raw.githubusercontent.com/sixcore-droid/jayms-tool-data/main/", FBX = null, GODX = null;
+  function nums(s) { var o = {}; (String(s || "").match(/[HG]\d+/g) || []).forEach(function (n) { o[n] = 1; }); return Object.keys(o); }
+  function nrefs(e) { return Array.isArray(e.refs) ? e.refs.length : (String(e.refs || "").split("',").length); }
+  function liveIndex(file, row, done) {
+    fetch(RAW + file, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
+      var x = {};
+      (j.entries || []).forEach(function (e) { var r = row(e); nums(e.strong).forEach(function (n) { (x[n] = x[n] || []).push(r); }); });
+      Object.keys(x).forEach(function (n) { x[n].sort(function (a, b) { return b[5] - a[5]; }); });
+      done(x);
+      if (CUR) renderSide();
+    }).catch(function () {});
+  }
+  liveIndex("fact-book.json", function (e) {
+    var nm = String(e.title || "").split(" (")[0];
+    return [e.id, nm, String(e.title || "").slice(nm.length).replace(/^[ (]+|[ )]+$/g, ""), e.summary || "", e.kind || e.category || "", nrefs(e)];
+  }, function (x) { FBX = x; });
+  liveIndex("gods-of-the-bible.json", function (e) {
+    return [e.id, e.title || "", "", e.summary || "", e.category || "", nrefs(e)];
+  }, function (x) { GODX = x; });
+
   // lay Word Study's values over a built word entry
   function wsFix(id, en) {
     var w = WSX && id && WSX[id];
@@ -230,18 +253,20 @@
       '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
       '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.ws ? e.ws.n : e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(e.ws ? e.ws.v : vs.length) + "</span> verses across <span class=\"wt-n\">" + (e.ws ? e.ws.b : bookCount(vs)) + "</span> books.</p>" + wsLink(c.w, e) + "</div></div>";
-    // every Fact Book entry this word carries, all of them in the one box; the one picked in search leads
-    var fbs = (e.fb || []).slice(), lead = fbs.filter(function (f) { return f[0] === S.fb; })[0];
-    if (lead) fbs = [lead].concat(fbs.filter(function (f) { return f !== lead; }));
-    if (fbs.length) {
-      h += '<div class="a-box v-plain"><div class="a-blabel">Fact Book' + (fbs.length > 1 ? " · " + fbs.length + " entries" : "") + "</div>" +
+    // every Fact Book entry and every Gods of the Bible entry this word carries, one box per tool, all entries in
+    // the box; the one picked in search leads. A tool the word is not in gets no box.
+    function refBox(label, tool, base, list, leadId) {
+      if (!list || !list.length) return "";
+      var lead = list.filter(function (f) { return f[0] === leadId; })[0], fbs = list.slice();
+      if (lead) fbs = [lead].concat(fbs.filter(function (f) { return f !== lead; }));
+      return '<div class="a-box v-plain"><div class="a-blabel">' + label + (fbs.length > 1 ? " · " + fbs.length + " entries" : "") + "</div>" +
         fbs.map(function (f) {
-          return '<div class="wt-fbe' + (f === lead ? " on" : "") + '"><div class="a-btext"><b>' + esc(f[1]) + "</b>" + (f[2] ? ' <span class="wt-fbd">' + esc(f[2]) + "</span>" : "") + "<br>" + esc(f[3]) + "</div>" +
-            '<a class="a-lnk" href="' + FACTBOOK + encodeURIComponent(f[0]) + '/">Open ' + esc(f[1]) + " in the Fact Book ›</a></div>";
+          return '<div class="wt-fbe' + (f === lead ? " on" : "") + '"><div class="a-btext"><b>' + esc(f[1]) + "</b>" + (f[2] ? ' <span class="wt-fbd">' + esc(f[2]) + "</span>" : "") + (f[3] ? "<br>" + esc(f[3]) : "") + "</div>" +
+            '<a class="a-lnk" href="' + base + encodeURIComponent(f[0]) + '/">Open ' + esc(f[1]) + " in " + tool + " ›</a></div>";
         }).join("") + "</div>";
-    } else {
-      h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">Fact Book</div><div class="a-btext">This word has no Fact Book entry.</div></div>';
     }
+    h += refBox("Fact Book", "the Fact Book", FACTBOOK, FBX ? FBX[c.w] : e.fb, S.fb);
+    h += refBox("The Gods of the Bible", "The Gods of the Bible", GODS, GODX ? GODX[c.w] : null, null);
     function hebrewBehind(list, cur, gid) {
       var t2 = list.reduce(function (a, r) { return a + r[1]; }, 0), o = '<div class="a-box v-wording wt-strip wt-he"><div class="a-blabel">The Hebrew behind ' + esc(gid) + '</div><div class="wt-rrow">';
       list.forEach(function (r) {
