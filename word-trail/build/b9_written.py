@@ -82,22 +82,52 @@ rab = [{'n': 'Mishnah', 'a': 200, 'b': 200, 'd': 'c. 200'}, {'n': 'Tosefta', 'a'
 for r in rab: r['t'] = 'seg' if r['b'] > r['a'] else 'pt'
 stream('rabbinic', 'Mishnah, Talmud and Midrash', 'olive', rab, SS)
 
+# the other gospels, acts and letters, as the Lost Books drafts sort them: honest but not Scripture, forged in an
+# apostle's name, and forged with a different Christ. Dates as the drafts give them.
+LB = "Study notes: What Do the Lost Gospels Actually Say? (draft)"
+def lb(n, a, b, d, more): return {'n': n, 'a': a, 'b': b, 't': 'seg' if b > a else 'pt', 'd': d, 'more': more}
+honest = [lb('1 Clement', 95, 95, 'c. AD 95', 'Rome writes to Corinth about elders thrown out. No author named; the earliest outside notice of the deaths of Peter and Paul.'),
+          lb('The Didache', 70, 100, 'Possibly late 1st century', 'A church manual: baptism, fasting, travelling prophets. Anonymous; only its title claims too much.'),
+          lb('Letters of Ignatius', 110, 110, 'c. AD 110', 'Seven genuine letters on the road to Rome; a longer recension and extra letters are later forgeries.')]
+stream('honest', 'Early writings, honest but not Scripture', 'aramaic', honest, LB)
+forged = [lb('Epistle of Barnabas', 70, 132, 'Between AD 70 and 132', 'Anonymous; the name was attached later. Teaches that Israel never had the covenant.'),
+          lb('Acts of Paul and Thecla', 100, 199, '2nd century', 'Its author, a presbyter in Asia, was found out and deposed (Tertullian). Celibacy as the condition of seeing God.'),
+          lb('Acts of Peter', 170, 199, 'Late 2nd century', 'Source of the upside-down crucifixion and the Quo Vadis scene; also a talking dog and a revived smoked fish.'),
+          lb('Acts of Andrew', 200, 299, '3rd century', 'Source of the crucifixion at Patras; the diagonal cross comes much later.'),
+          lb('Gospel of Nicodemus (Acts of Pilate)', 300, 399, '4th century at the earliest', 'Written into the slot of a pagan Acts of Pilate that Maximinus Daia had schoolchildren memorize around 311. Pilate ends as a confessor.'),
+          lb('Paul and Seneca letters', 300, 399, '4th century', "Fourteen empty letters in poor Latin. Jerome's notice around 393 carried them through the Middle Ages."),
+          lb("Gospel of Jesus's Wife", 2012, 2016, 'Announced 2012; exposed as a forgery 2016', "Copied from a 2002 online PDF, typo and all, onto old blank papyrus; the owner identified in 2016.")]
+stream('forged', "Forged in an apostle's name", 'gold', forged, LB)
+other = [lb('Gospel of Thomas', 50, 150, 'Mid-1st to mid-2nd century, argued', '114 sayings: no cross, no resurrection; salvation by self-recognition. Saying 114 is the one rarely quoted.'),
+         lb('Protevangelium of James', 150, 150, 'c. AD 150', "Mary's birth and perpetual virginity; the author does not know the road to Bethlehem. Condemned by Innocent I in 405."),
+         lb('Gospel of Peter', 140, 160, 'Mid-2nd century', 'A walking cross and a Christ who feels no pain: docetism, caught by Serapion of Antioch around 200.'),
+         lb('Infancy Gospel of Thomas', 100, 199, '2nd century', 'A boy Jesus who kills a child in temper.'),
+         lb('Gospel of Mary', 100, 199, '2nd century', "The soul escaping a material world: a creation that was a mistake."),
+         lb('Gospel of Judas', 100, 180, '2nd century; Irenaeus knew it c. 180', 'The God of Israel as the villain and the cross as a jailbreak.'),
+         lb('Epistle to the Laodiceans', 170, 200, 'Named as forged in the Muratorian list (c. 170 to 200)', "Stitched from Philippians to serve Marcion's two gods."),
+         lb('Acts of John', 150, 299, '2nd to 3rd century', 'A Christ with no footprints, elsewhere during his own crucifixion. Nicaea II (787) ordered it burned.'),
+         lb('Acts of Thomas', 200, 299, '3rd century', 'Christ appears in Thomas\'s likeness on a wedding night to talk the couple out of their marriage.'),
+         lb('Gospel of Philip', 200, 299, '3rd century', 'Valentinian; the famous Mary Magdalene line sits on a hole in the page.')]
+stream('other', 'Forged, with a different Christ', 'rust', other, LB)
+
 tr = [{'n': t['n'], 'a': t['y'][0], 'b': t['y'][1], 't': 'seg' if t['y'][1] > t['y'][0] else 'pt', 'd': t['note'], 'url': t.get('src', '')} for t in K['translations']]
 stream('trans', 'Translations', 'lavender', [x for x in tr if x['a'] < 1450], 'Standard dates, not yet checked in Logos')
 stream('print', 'Print and modern editions', 'rust', [x for x in tr if x['a'] >= 1450], 'Standard dates, not yet checked in Logos')
-ORDER = ['period', 'ot', 'second', 'nt', 'canon', 'rabbinic', 'copies', 'found', 'trans', 'print']
+ORDER = ['period', 'ot', 'second', 'nt', 'honest', 'forged', 'other', 'canon', 'rabbinic', 'copies', 'found', 'trans', 'print']
 S.sort(key=lambda x: ORDER.index(x['k']))
 ERAS = [['Full view', -2200, 2026], ['Torah to the kings', -1600, -900], ['Prophets and exile', -800, -400], ['The Second Temple', -560, 80],
-        ['The New Testament', 40, 110], ['Mishnah, Talmud, Midrash', 150, 820], ['Gathered and copied', 90, 1100], ['Print to today', 1370, 2026]]
+        ['The New Testament', 40, 110], ['The other gospels', 40, 420], ['Mishnah, Talmud, Midrash', 150, 820], ['Gathered and copied', 90, 1100], ['Print to today', 1370, 2026]]
 undated = ['Matthew', 'Mark', 'Luke', 'John', 'Acts', 'Hebrews', 'James', 'Jude']
 NOTE = ("Each Old Testament book carries how close its oldest copy here comes to its writing; pick a book to see it. "
         "The New Testament books are dated only where this site's own timelines date them, so the four Gospels share one span and "
         "Acts, Hebrews, James and Jude are not on the chart yet. Old Testament dates are the Bible Knowledge Commentary's. "
         "Of the Second Temple writings, only those this site or the study notes date are placed; Tobit, Judith, Wisdom, Sirach, Baruch, "
-        "1 and 2 Maccabees, the Psalms of Solomon, the Testaments of the Twelve Patriarchs and the halakhic midrashim wait for a Logos date.")
+        "1 and 2 Maccabees, the Psalms of Solomon, the Testaments of the Twelve Patriarchs and the halakhic midrashim wait for a Logos date. "
+        "The other gospels, acts and letters are sorted and dated as the Lost Books drafts sort them; the Shepherd of Hermas has no date there yet.")
 SOURCES = [['Old Testament written: Bible Knowledge Commentary dates, as shown in Logos.', ''],
            ["New Testament written and gathered: this site's Apostle Paul, Twelve Apostles and New Testament Canon timelines.", 'https://jayms.com/bible-study-tools-2/how-we-got-the-new-testament-canon-timeline/'],
            ["Second Temple writings: this site's Which Book of Enoch? post, the Lost Books draft and the Second Temple Judaism study note.", 'https://jayms.com/book-of-enoch/'],
+           ['The other gospels, acts and letters: the Lost Books drafts in the study notes (Ehrman and Plese, Elliott, Metzger, Bruce, Kruger, DeConick, Vuong, Bernhard, Askeland, Sabar).', ''],
            ['Mishnah, Talmud and Midrash: Strack and Stemberger, Introduction to the Talmud and Midrash, 2nd English ed. (Fortress, 1996), as the study notes record it.', ''],
            ['Which verses survive in the Dead Sea Scrolls: ETCBC/dss, Martin Abegg\'s data, CC BY-NC 4.0.', 'https://github.com/ETCBC/dss'],
            ['Manuscripts, find dates, translations and print: standard dates, not yet checked in Logos.', '']]
