@@ -53,17 +53,52 @@ cop = [{'n': w['n'], 'a': w['copy'][0], 'b': w['copy'][1], 't': 'seg' if w['copy
 stream('copies', 'The copies we hold', 'olive', cop, 'Standard dates, not yet checked in Logos')
 fnd = [{'n': w['n'] + ' found', 'a': w['found'], 'b': w['found'], 't': 'flag', 'd': 'Came to light ' + yl(w['found']) + ('. ' + w['foundNote'] if w.get('foundNote') else ''), 'more': w['place'] + '.'} for w in K['witness']]
 stream('found', 'When the copies came to light', 'ink-soft', fnd, 'Standard dates, not yet checked in Logos')
+# Second Temple and rabbinic writings, dated only as this site and the study notes date them
+ENP = 'https://jayms.com/book-of-enoch/'
+SS = 'Strack-Stemberger, Introduction to the Talmud and Midrash (1996), via the study notes'
+per = [{'n': 'Persian period', 'a': -539, 'b': -332, 't': 'seg', 'd': '539 to 332 BC', 'more': "Cyrus's decree; the temple rebuilt (finished 516 BC); Ezra and Nehemiah."},
+       {'n': 'Hellenistic period', 'a': -332, 'b': -167, 't': 'seg', 'd': '332 to 167 BC', 'more': 'Alexander and after; the Torah put into Greek.'},
+       {'n': 'Maccabean and Hasmonean period', 'a': -167, 'b': -63, 't': 'seg', 'd': '167 to 63 BC', 'more': 'Antiochus IV desecrates the temple (167 BC); the revolt; Pharisees, Sadducees and Essenes take shape.'},
+       {'n': 'Roman period', 'a': -63, 'b': 70, 't': 'seg', 'd': '63 BC to AD 70', 'more': 'Pompey takes Jerusalem; Herod rebuilds the temple; Rome destroys it in AD 70.'}]
+stream('period', 'The Second Temple period', 'ink-soft', per, 'Study notes: Second Temple Judaism')
+st = [{'n': '1 Enoch', 'a': -300, 'b': -1, 't': 'seg', 'd': 'Assembled in stages across the last three centuries BC', 'url': ENP,
+       'more': 'Five books in one: the Watchers, the Parables, the Astronomical Book, the Dream Visions, the Epistle. Aramaic fragments at Qumran show it growing; Jude 14-15 quotes it. The date of the Parables is disputed.'},
+      {'n': 'Jubilees', 'a': -300, 'b': -1, 't': 'seg', 'd': 'The last centuries BC, as this site places it', 'url': ENP,
+       'more': 'Genesis and early Exodus retold as revelation to Moses, cut into 49-year jubilees, on a solar calendar. Several copies at Qumran; canonical in the Ethiopian Orthodox Church.'},
+      {'n': '2 Enoch', 'a': 1, 'b': 100, 't': 'seg', 'd': '1st century AD or later; scholars disagree', 'url': ENP,
+       'more': 'Slavonic Enoch, a journey through the heavens. How much is Jewish and how much was reworked by Christians is argued.'},
+      {'n': '4 Ezra and 2 Baruch', 'a': 70, 'b': 70, 't': 'pt', 'd': 'Written after AD 70', 'more': "Both wrestle with the temple's destruction."},
+      {'n': '3 Enoch', 'a': 400, 'b': 600, 't': 'seg', 'd': '5th or 6th century AD', 'url': ENP,
+       'more': 'Hebrew Enoch, Sefer Hekhalot: Enoch made into the angel Metatron. Jewish mystical literature, centuries after 1 Enoch.'}]
+stream('second', 'Second Temple writings', 'aramaic', st, "This site's Which Book of Enoch? post and the study notes")
+rab = [{'n': 'Mishnah', 'a': 200, 'b': 200, 'd': 'c. 200'}, {'n': 'Tosefta', 'a': 250, 'b': 250, 'd': 'c. 250'},
+       {'n': 'Palestinian Talmud', 'a': 400, 'b': 400, 'd': 'c. 400'}, {'n': 'Genesis Rabbah', 'a': 400, 'b': 450, 'd': '5th century, probably the first half'},
+       {'n': 'Lamentations Rabbah', 'a': 400, 'b': 450, 'd': '5th century, probably the first half'}, {'n': 'Leviticus Rabbah', 'a': 400, 'b': 500, 'd': 'Redaction c. 400 to 500'},
+       {'n': 'Pesiqta de Rab Kahana', 'a': 400, 'b': 500, 'd': '5th century, about the time of Leviticus Rabbah'}, {'n': 'Ruth Rabbah', 'a': 500, 'b': 500, 'd': 'c. 500, Palestine; no rabbi cited after the 4th century'},
+       {'n': 'Babylonian Talmud', 'a': 500, 'b': 600, 'd': 'c. 500 to 600'}, {'n': 'Song of Songs Rabbah', 'a': 550, 'b': 550, 'd': 'Mid-6th century (Herr)'},
+       {'n': 'Deuteronomy Rabbah', 'a': 450, 'b': 800, 'd': 'c. 450 to 800; a precise date is very difficult'},
+       {'n': 'Pesiqta Rabbati', 'a': 500, 'b': 700, 'd': 'Composite; the current preference is the 6th to 7th century',
+        'more': 'Its Yelamdenu material, which includes chapter 44, existed by about 400 at the latest (Bohl).'}]
+for r in rab: r['t'] = 'seg' if r['b'] > r['a'] else 'pt'
+stream('rabbinic', 'Mishnah, Talmud and Midrash', 'olive', rab, SS)
+
 tr = [{'n': t['n'], 'a': t['y'][0], 'b': t['y'][1], 't': 'seg' if t['y'][1] > t['y'][0] else 'pt', 'd': t['note'], 'url': t.get('src', '')} for t in K['translations']]
 stream('trans', 'Translations', 'lavender', [x for x in tr if x['a'] < 1450], 'Standard dates, not yet checked in Logos')
 stream('print', 'Print and modern editions', 'rust', [x for x in tr if x['a'] >= 1450], 'Standard dates, not yet checked in Logos')
-ERAS = [['Full view', -2200, 2026], ['Torah to the kings', -1600, -900], ['Prophets and exile', -800, -400], ['Between the testaments', -460, 10],
-        ['The New Testament', 40, 110], ['Gathered and copied', 90, 1100], ['Print to today', 1370, 2026]]
+ORDER = ['period', 'ot', 'second', 'nt', 'canon', 'rabbinic', 'copies', 'found', 'trans', 'print']
+S.sort(key=lambda x: ORDER.index(x['k']))
+ERAS = [['Full view', -2200, 2026], ['Torah to the kings', -1600, -900], ['Prophets and exile', -800, -400], ['The Second Temple', -560, 80],
+        ['The New Testament', 40, 110], ['Mishnah, Talmud, Midrash', 150, 820], ['Gathered and copied', 90, 1100], ['Print to today', 1370, 2026]]
 undated = ['Matthew', 'Mark', 'Luke', 'John', 'Acts', 'Hebrews', 'James', 'Jude']
 NOTE = ("Each Old Testament book carries how close its oldest copy here comes to its writing; pick a book to see it. "
         "The New Testament books are dated only where this site's own timelines date them, so the four Gospels share one span and "
-        "Acts, Hebrews, James and Jude are not on the chart yet. Old Testament dates are the Bible Knowledge Commentary's.")
+        "Acts, Hebrews, James and Jude are not on the chart yet. Old Testament dates are the Bible Knowledge Commentary's. "
+        "Of the Second Temple writings, only those this site or the study notes date are placed; Tobit, Judith, Wisdom, Sirach, Baruch, "
+        "1 and 2 Maccabees, the Psalms of Solomon, the Testaments of the Twelve Patriarchs and the halakhic midrashim wait for a Logos date.")
 SOURCES = [['Old Testament written: Bible Knowledge Commentary dates, as shown in Logos.', ''],
            ["New Testament written and gathered: this site's Apostle Paul, Twelve Apostles and New Testament Canon timelines.", 'https://jayms.com/bible-study-tools-2/how-we-got-the-new-testament-canon-timeline/'],
+           ["Second Temple writings: this site's Which Book of Enoch? post, the Lost Books draft and the Second Temple Judaism study note.", 'https://jayms.com/book-of-enoch/'],
+           ['Mishnah, Talmud and Midrash: Strack and Stemberger, Introduction to the Talmud and Midrash, 2nd English ed. (Fortress, 1996), as the study notes record it.', ''],
            ['Which verses survive in the Dead Sea Scrolls: ETCBC/dss, Martin Abegg\'s data, CC BY-NC 4.0.', 'https://github.com/ETCBC/dss'],
            ['Manuscripts, find dates, translations and print: standard dates, not yet checked in Logos.', '']]
 json.dump({'streams': S, 'range': [-2200, 2026], 'eras': ERAS, 'note': NOTE, 'sources': SOURCES, 'find': 'Find a book, a manuscript or a translation'}, open(OUT / 'written.json', 'w'), ensure_ascii=False, separators=(',', ':'))
