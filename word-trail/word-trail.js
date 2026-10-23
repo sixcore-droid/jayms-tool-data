@@ -37,7 +37,7 @@
   function lang(s) { return s && s.charAt(0) === "H" ? "he" : "grc"; }
 
   // ---------- state ----------
-  var S = { w: "H776", g: null, view: "uses", v: null, layers: {}, names: true, order: "canon",
+  var S = { w: "H776", g: null, view: "uses", v: null, book: null, layers: {}, names: true, order: "canon",
             scope: "word", grade: { clear: 1, probable: 1, possible: 1 }, link: null,
             hinge: { exodus: "early", egypt: "430" }, person: null, onlyWord: false, item: null };
   var DEFAULT_LAYERS = { heb: 1, nt: 1, a: 1, b: 1, ms: 1, find: 1, tr: 1, uses: 1, people: 1, events: 1, famous: 1,
@@ -127,7 +127,7 @@
       SUGG.hidden = false;
     }).catch(function () { SUGG.innerHTML = '<span class="a-empty">The word list did not load.</span>'; SUGG.hidden = false; });
   }
-  function go(id) { S.w = id; S.g = null; S.v = null; S.link = null; S.item = null; writeHash(); render(); }
+  function go(id) { S.w = id; S.g = null; S.v = null; S.book = null; S.link = null; S.item = null; writeHash(); render(); }
 
   // ---------- the word card ----------
   var CUR = null;   // { w, entry, rend, inv, g, gEntry }
@@ -190,7 +190,7 @@
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h;
     [].forEach.call(SIDE.querySelectorAll(".wt-rend[data-g]"), function (b) {
-      b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.v = null; writeHash(); render(); });
+      b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.v = null; S.book = null; writeHash(); render(); });
     });
     [].forEach.call(SIDE.querySelectorAll(".wt-rend[data-h]"), function (b) {
       b.addEventListener("click", function () { go(b.getAttribute("data-h")); });
@@ -237,78 +237,110 @@
       x: function (i) { var bk = bookOf(i), off = i - BOOKS[bk].s; return bk < 39 ? (start[bk] + off + .5) / NTS * ow : ow + G + (start[bk] + off + .5) / (NV - NTS) * nw; },
       bx: function (bk) { var len = BOOKS[bk].c.reduce(function (s, n) { return s + n; }, 0); return bk < 39 ? [start[bk] / NTS * ow, len / NTS * ow] : [ow + G + start[bk] / (NV - NTS) * nw, len / (NV - NTS) * nw]; } };
   }
+  function bookOrder(list) {
+    if (S.order !== "date" || !DATES) return list;
+    return list.slice().sort(function (a, b) {
+      var A = DATES[BOOKS[a].n], B = DATES[BOOKS[b].n];
+      return (A ? (A[0] + A[1]) / 2 : 1e9) - (B ? (B[0] + B[1]) / 2 : 1e9) || a - b;
+    });
+  }
+  // the stepped pyramid: the word at the top, the books that use it, then one book's verses at the base
   function viewUses() {
     var c = CUR, e = c.entry; if (!e) { MAIN.innerHTML = ""; return; }
     var need = S.order === "date" && !DATES ? data("clock.json").then(function (k) { DATES = k.datesA.books; }) : Promise.resolve();
     need.then(function () {
-      var heb = c.heb ? uniq(e.v) : [], nt = uniq(ntUses(c.gEntry)), ax = axisX(S.order), H = 430, B = H - 6;
-      var all = heb.concat(nt), center = all.length ? all[0] : 0;
-      if (!c.heb) { heb = []; }
-      var x0 = ax.x(center), k = (H - 30) / 500;
-      function arc(x) { var rx = Math.abs(x - x0) / 2; return "M" + x0.toFixed(1) + " " + B + "A" + rx.toFixed(1) + " " + Math.max(2, rx * k).toFixed(1) + " 0 0 " + (x >= x0 ? 1 : 0) + " " + x.toFixed(1) + " " + B; }
-      var dH = S.layers.heb ? heb.map(function (i) { return arc(ax.x(i)); }).join("") : "";
-      var dN = S.layers.nt ? nt.map(function (i) { return arc(ax.x(i)); }).join("") : "";
-      var sel = S.v != null && all.indexOf(S.v) >= 0 ? S.v : null;
+      var W = 1000, apx = 500, apy = 62, gy = 170, ty = 330, base = 590;
+      var heb = c.heb ? uniq(e.v) : [], nt = uniq(ntUses(c.gEntry));
+      var byBook = {}; heb.concat(nt).forEach(function (i) { var b = bookOf(i); (byBook[b] = byBook[b] || []).push(i); });
+      var ot = bookOrder(Object.keys(byBook).map(Number).filter(function (b) { return b < 39; }).sort(function (a, b) { return a - b; }));
+      var ntb = Object.keys(byBook).map(Number).filter(function (b) { return b >= 39; }).sort(function (a, b) { return a - b; });
+      if (!S.layers.heb) ot = []; if (!S.layers.nt) ntb = [];
+      var max = 1; ot.concat(ntb).forEach(function (b) { max = Math.max(max, byBook[b].length); });
+      if (S.book == null || !byBook[S.book] || (S.book < 39 ? ot : ntb).indexOf(S.book) < 0) {
+        var pool = ot.length ? ot : ntb; S.book = pool.slice().sort(function (a, b) { return byBook[b].length - byBook[a].length; })[0];
+        if (S.v != null && byBook[bookOf(S.v)]) S.book = bookOf(S.v);
+      }
+      // where the tiers sit: Old Testament books on the left, the Greek word and its New Testament books on the right
+      var split = c.heb ? (ntb.length ? 0.68 : 1) : 0, L = 26, R = W - 26, mid = L + (R - L) * split;
+      var gx = c.heb ? (mid + 18 + R) / 2 : apx;
+      function spread(list, a, z, i) { return list.length === 1 ? (a + z) / 2 : a + (z - a) * i / (list.length - 1); }
+      function tierY() { return ty; }
+      var nodes = [];
+      ot.forEach(function (b, i) { var x = spread(ot, L + 8, mid - 18, i); nodes.push({ b: b, x: x, y: tierY((x - L) / (R - L)), from: [apx, apy], t: "heb" }); });
+      ntb.forEach(function (b, i) { var x = spread(ntb, (c.heb ? mid + 18 : L + 8), R - 8, i); nodes.push({ b: b, x: x, y: tierY((x - L) / (R - L)), from: c.heb ? [gx, gy] : [apx, apy], t: "nt" }); });
+      var sel = nodes.filter(function (n) { return n.b === S.book; })[0];
+      var vs = sel ? byBook[sel.b] : [];
+      var fan = "", dots = "", selLine = "";
+      vs.forEach(function (i, k) {
+        var x = spread(vs, L, R, k);
+        fan += "M" + sel.x.toFixed(1) + " " + sel.y.toFixed(1) + "L" + x.toFixed(1) + " " + base;
+        if (i === S.v) selLine = "M" + sel.x.toFixed(1) + " " + sel.y.toFixed(1) + "L" + x.toFixed(1) + " " + base;
+        if (vs.length <= 220) dots += '<circle class="vd' + (i === S.v ? " on" : "") + '" cx="' + x.toFixed(1) + '" cy="' + base + '" r="' + (i === S.v ? 5 : 2.6) + '"></circle>';
+      });
+      var links = nodes.map(function (n) {
+        var w = (1 + 9 * byBook[n.b].length / max).toFixed(2), on = n.b === S.book;
+        return '<path class="lk t-' + n.t + (on ? " on" : "") + '" stroke-width="' + w + '" d="M' + n.from[0].toFixed(1) + " " + n.from[1] + "Q" + n.from[0].toFixed(1) + " " + ((n.from[1] + n.y) / 2).toFixed(1) + " " + n.x.toFixed(1) + " " + n.y.toFixed(1) + '"></path>';
+      }).join("");
+      var nodeSvg = nodes.map(function (n) {
+        var r = (3.5 + 9 * Math.sqrt(byBook[n.b].length / max)), on = n.b === S.book;
+        return '<g class="bn t-' + n.t + (on ? " on" : "") + '" data-book="' + n.b + '" tabindex="0" role="button" aria-label="' + esc(BOOKS[n.b].n + ", " + byBook[n.b].length + " verses") + '">' +
+          '<circle cx="' + n.x.toFixed(1) + '" cy="' + n.y.toFixed(1) + '" r="' + (r + 6).toFixed(1) + '" class="hit"></circle>' +
+          '<circle cx="' + n.x.toFixed(1) + '" cy="' + n.y.toFixed(1) + '" r="' + r.toFixed(1) + '" class="dot"></circle>' +
+          '<text class="ab" x="' + n.x.toFixed(1) + '" y="' + (n.y - r - 5).toFixed(1) + '" transform="rotate(-55 ' + n.x.toFixed(1) + " " + (n.y - r - 5).toFixed(1) + ')">' + esc(BOOKS[n.b].a) + "</text>" +
+          '<text class="ct" x="' + n.x.toFixed(1) + '" y="' + (n.y + r + 13).toFixed(1) + '" text-anchor="middle">' + byBook[n.b].length + "</text></g>";
+      }).join("");
+      var greek = c.heb && c.gEntry && ntb.length ? '<path class="lk t-grk" stroke-width="4" d="M' + apx + " " + apy + "Q" + apx + " " + gy + " " + gx.toFixed(1) + " " + gy + '"></path>' +
+        '<circle class="gn" cx="' + gx.toFixed(1) + '" cy="' + gy + '" r="9"></circle><text class="gl" x="' + gx.toFixed(1) + '" y="' + (gy - 18) + '" text-anchor="middle" lang="grc">' + esc(c.gEntry.l) + "</text>" +
+        '<text class="lbl" x="' + gx.toFixed(1) + '" y="' + (gy + 26) + '" text-anchor="middle">GREEK OLD TESTAMENT</text>' : "";
       var h = '<div class="wt-panel">' +
-        '<p class="wt-stat">' + (c.heb ? "<b>" + fmt(e.v.length) + "</b> Hebrew uses in <b>" + fmt(heb.length) + "</b> verses" : "") +
-        (c.g ? (c.heb ? ", and " : "") + "<b>" + fmt(nt.length) + "</b> New Testament verses with <span lang=\"grc\">" + esc(c.gEntry ? c.gEntry.l : "") + "</span>" : "") +
-        ". Every arc starts at the first use, <b>" + esc(refOf(center)) + "</b>.</p>" +
+        '<p class="wt-stat">' + (c.heb ? "<b>" + fmt(heb.length) + "</b> Old Testament verses in <b>" + Object.keys(byBook).filter(function (b) { return b < 39; }).length + "</b> books" : "") +
+        (c.gEntry && nt.length ? (c.heb ? ", and " : "") + "<b>" + fmt(nt.length) + "</b> New Testament verses with <span lang=\"grc\">" + esc(c.gEntry.l) + "</span>" : "") +
+        ". Each line from the top is as thick as its book's count. Pick a book and its verses fan out along the bottom; pick a verse to read it.</p>" +
         '<div class="wt-ctl">' +
-          (c.heb ? layerBtn("heb", "c-heb", "Hide Hebrew uses", "Show Hebrew uses") : "") +
-          layerBtn("nt", "c-nt", "Hide New Testament uses", "Show New Testament uses", !c.g) +
-          '<button class="wt-lay on" data-names="1">' + (S.names ? "Hide book names" : "Show book names") + "</button>" +
+          (c.heb ? layerBtn("heb", "c-heb", "Hide Old Testament books", "Show Old Testament books") : "") +
+          layerBtn("nt", "c-nt", "Hide New Testament books", "Show New Testament books", !c.g) +
           '<button class="wt-lay on" data-order="1">' + (S.order === "canon" ? "Order by date written" : "Order by canon") + "</button>" +
         "</div>" +
-        '<div class="wt-arcwrap"><svg class="wt-arcs" viewBox="0 0 1000 ' + (H + (S.names ? 64 : 14)) + '" role="img" aria-label="Arc chart of every use of the word">' +
-          '<path class="heb" fill="none" stroke-width="1" d="' + dH + '"></path>' +
-          '<path class="nt" fill="none" stroke-width="1" d="' + dN + '"></path>' +
-          (sel != null ? '<path class="sel" fill="none" d="' + arc(ax.x(sel)) + '"></path><circle class="ctr" cx="' + ax.x(sel).toFixed(1) + '" cy="' + B + '" r="4"></circle>' : "") +
-          '<line class="bridge" x1="' + (ax.ow + ax.G / 2) + '" y1="24" x2="' + (ax.ow + ax.G / 2) + '" y2="' + B + '"></line>' +
-          '<text class="lbl" x="' + (ax.ow + ax.G / 2) + '" y="16" text-anchor="middle">GREEK OLD TESTAMENT</text>' +
-          '<circle class="ctr" cx="' + x0.toFixed(1) + '" cy="' + B + '" r="6"></circle>' +
-          '<path class="hover" id="wt-hov" fill="none" d=""></path>' +
-          '<g class="wt-axis" transform="translate(0,' + (B + 2) + ')">' + axisSvg(ax) + "</g>" +
-          '<rect id="wt-hitbox" x="0" y="0" width="1000" height="' + (H + 14) + '" fill="transparent"></rect>' +
+        '<div class="wt-arcwrap"><svg class="wt-pyr" viewBox="0 0 ' + W + " " + (base + 34) + '" role="img" aria-label="The word at the top, a line to each book that uses it, and the chosen book\'s verses along the bottom">' +
+          '<path class="fan t-' + (sel ? sel.t : "heb") + '" d="' + fan + '"></path>' + (selLine ? '<path class="sel" d="' + selLine + '"></path>' : "") +
+          links + greek + nodeSvg + dots +
+          '<circle class="apex" cx="' + apx + '" cy="' + apy + '" r="9"></circle>' +
+          '<text class="apl" x="' + apx + '" y="' + (apy - 20) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
+          '<text class="lbl" x="' + L + '" y="' + (base + 26) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + " verses").toUpperCase() : "") + "</text>" +
+          '<rect class="basehit" x="0" y="' + (base - 16) + '" width="' + W + '" height="34"></rect>' +
         "</svg></div>" +
-        '<div class="wt-legend">' + (c.heb ? '<span class="c-heb"><i></i>Hebrew uses</span>' : "") + '<span class="c-nt"><i></i>New Testament uses through the Greek</span><span class="c-sel"><i></i>Selected</span>' +
-        '<span id="wt-hovref"></span></div></div>' +
-        '<div class="wt-pair" id="wt-verses"></div>' +
-        '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">How to read this</div><div class="a-btext">Each arc is one verse. Tap the chart and the nearest verse opens below. ' +
-        "The dashed line is where the Greek Old Testament stands between the two testaments: the gold arcs are the New Testament verses that use the Greek word the Greek Old Testament chose.</div></div>";
+        '<div class="wt-legend">' + (c.heb ? '<span class="c-heb"><i></i>Old Testament books</span><span class="c-grk"><i></i>Greek Old Testament word</span>' : "") +
+        '<span class="c-nt"><i></i>New Testament books</span><span class="c-sel"><i></i>Selected verse</span><span id="wt-hovref"></span></div></div>' +
+        '<div class="wt-pair" id="wt-verses"></div>';
       MAIN.innerHTML = h;
       wireLayers(MAIN, viewUses);
-      MAIN.querySelector("[data-names]").addEventListener("click", function () { S.names = !S.names; viewUses(); });
       MAIN.querySelector("[data-order]").addEventListener("click", function () { S.order = S.order === "canon" ? "date" : "canon"; viewUses(); });
-      var svg = MAIN.querySelector("svg"), hov = MAIN.querySelector("#wt-hov"), hr = MAIN.querySelector("#wt-hovref");
-      var shown = (S.layers.heb ? heb : []).concat(S.layers.nt ? nt : []).map(function (i) { return [ax.x(i), i]; }).sort(function (a, b) { return a[0] - b[0]; });
+      [].forEach.call(MAIN.querySelectorAll("g.bn"), function (g) {
+        function pick() { S.book = +g.getAttribute("data-book"); S.v = null; writeHash(); viewUses(); }
+        g.addEventListener("click", pick);
+        g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); pick(); } });
+      });
+      var svg = MAIN.querySelector("svg"), hr = MAIN.querySelector("#wt-hovref"), hit = MAIN.querySelector(".basehit");
+      var wrap = MAIN.querySelector(".wt-arcwrap");
+      if (wrap.scrollWidth > wrap.clientWidth && sel) wrap.scrollLeft = Math.max(0, sel.x / W * wrap.scrollWidth - wrap.clientWidth / 2);
       function nearest(evt) {
         var pt = svg.createSVGPoint(); pt.x = evt.clientX; pt.y = evt.clientY;
-        var p = pt.matrixTransform(svg.getScreenCTM().inverse()), best = null, bd = 1e9;
-        for (var j = 0; j < shown.length; j++) { var d = Math.abs(shown[j][0] - p.x); if (d < bd) { bd = d; best = shown[j][1]; } }
-        return bd < 12 ? best : null;
+        var p = pt.matrixTransform(svg.getScreenCTM().inverse());
+        if (!vs.length) return null; var k = Math.round((p.x - L) / (R - L) * (vs.length - 1)); return vs[Math.max(0, Math.min(vs.length - 1, k))];
       }
-      svg.addEventListener("mousemove", function (evt) { var i = nearest(evt); hov.setAttribute("d", i == null ? "" : arc(ax.x(i))); hr.textContent = i == null ? "" : refOf(i); });
-      svg.addEventListener("mouseleave", function () { hov.setAttribute("d", ""); hr.textContent = ""; });
-      svg.addEventListener("click", function (evt) { var i = nearest(evt); if (i == null) return; S.v = i; writeHash(); viewUses(); });
-      showVerses(sel != null ? sel : center);
+      hit.addEventListener("mousemove", function (evt) { var i = nearest(evt); hr.textContent = i == null ? "" : refOf(i); });
+      hit.addEventListener("mouseleave", function () { hr.textContent = ""; });
+      hit.addEventListener("click", function (evt) { var i = nearest(evt); if (i == null) return; S.v = i; writeHash(); viewUses(); });
+      showVerses(S.v != null && byBook[bookOf(S.v)] ? S.v : vs[0]);
     });
-  }
-  function axisSvg(ax) {
-    var s = "";
-    for (var b = 0; b < BOOKS.length; b++) {
-      var r = ax.bx(b), cls = (b < 39 ? "ot" : "nt") + (b % 2);
-      s += '<rect class="' + cls + '" x="' + r[0].toFixed(2) + '" y="0" width="' + Math.max(.6, r[1] - .4).toFixed(2) + '" height="6"></rect>';
-      if (S.names) s += '<text class="' + (b < 39 ? "" : "nt") + '" transform="translate(' + (r[0] + r[1] / 2).toFixed(1) + ',12) rotate(55)">' + esc(BOOKS[b].a) + "</text>";
-    }
-    return s;
   }
   function showVerses(i) {
     var box = MAIN.querySelector("#wt-verses"); if (!box) return;
     box.innerHTML = '<div class="a-box v-scripture" id="wt-v1"></div><div class="a-box v-scripture" id="wt-v2"></div>';
     var ref = refOf(i);
-    verseBox(box.querySelector("#wt-v1"), (S.v != null ? "Selected · " : "First use · ") + ref + " · NET", ref);
+    verseBox(box.querySelector("#wt-v1"), (S.v != null ? "Selected · " : "First in " + bookName(i) + " · ") + ref + " · NET", ref);
     var v2 = box.querySelector("#wt-v2");
-    if (i < NTS) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">Behind it</div><div class="a-btext">Pick a gold arc to see a New Testament verse beside the Old Testament text behind it.</div>'; return; }
+    if (i < NTS) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">Behind it</div><div class="a-btext">Pick a New Testament book and one of its verses to see it beside the Old Testament text behind it.</div>'; return; }
     data("links.json").then(function (L) {
       var hit = L.links.filter(function (l) { return l[5].indexOf(i) >= 0 && (!CUR.heb || l[4].some(function (o) { return CUR.entry.v.indexOf(o) >= 0; })); })[0]
              || L.links.filter(function (l) { return l[5].indexOf(i) >= 0; })[0];
@@ -556,6 +588,7 @@
 
   // ---------- render ----------
   function render() {
+    MOUNT.classList.toggle("wt-wide", S.view === "uses");
     [].forEach.call(MOUNT.querySelectorAll(".wt-tab"), function (b) { var on = b.getAttribute("data-view") === S.view; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     MAIN.innerHTML = '<div class="wt-loading">Loading…</div>';
     load().then(function () {

@@ -99,7 +99,7 @@
 .jayms-word-trail .wt-lay:not(.on) .wt-dot{opacity:.35}
 
 /* the colour each mark carries */
-.jayms-word-trail .c-heb{--wt-c:var(--aramaic)}
+.jayms-word-trail .c-heb{--wt-c:var(--blue)}
 .jayms-word-trail .c-grk{--wt-c:var(--lavender)}
 .jayms-word-trail .c-nt{--wt-c:var(--gold)}
 .jayms-word-trail .c-sel{--wt-c:var(--rust)}
@@ -139,6 +139,46 @@
 .jayms-word-trail .wt-pair{display:flex;flex-wrap:wrap;gap:13px;margin:0 0 13px}
 .jayms-word-trail .wt-pair > .a-box{flex:1 1 280px;min-width:0;margin:0}
 .jayms-word-trail .wt-hl{color:var(--gold);font-weight:600}
+
+/* ---- view 1, the stepped pyramid: word, books, verses -------------------
+   Full-strength tokens, no washed-out opacity: Old Testament --blue,
+   the Greek Old Testament --lavender, New Testament --gold, selected --rust. */
+.jayms-word-trail.wt-wide .wt-main{flex:1 1 100%;order:-1}
+.jayms-word-trail.wt-wide .wt-side{flex:1 1 100%;max-width:none;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px;align-items:start}
+.jayms-word-trail.wt-wide .wt-side > .a-box{margin:0}
+.jayms-word-trail.wt-wide .wt-side > .wt-links{grid-column:1/-1;margin:0}
+.jayms-word-trail .wt-pyr{display:block;width:100%;height:auto}
+/* on a phone the pyramid keeps a readable size and scrolls sideways inside its panel */
+@media (max-width:760px){
+  .jayms-word-trail.wt-wide .wt-arcwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .jayms-word-trail .wt-pyr{width:900px;max-width:none}
+}
+.jayms-word-trail .wt-pyr path{fill:none}
+.jayms-word-trail .wt-pyr .t-heb{--wt-c:var(--blue)}
+.jayms-word-trail .wt-pyr .t-nt{--wt-c:var(--gold)}
+.jayms-word-trail .wt-pyr .t-grk{--wt-c:var(--lavender)}
+.jayms-word-trail .wt-pyr .lk{stroke:var(--wt-c);stroke-linecap:round;stroke-opacity:.85}
+.jayms-word-trail .wt-pyr .lk.on{stroke:var(--ink-bright);stroke-opacity:1}
+.jayms-word-trail .wt-pyr .fan{stroke:var(--wt-c);stroke-width:.9;stroke-opacity:.7}
+.jayms-word-trail .wt-pyr .sel{stroke:var(--rust);stroke-width:2.6}
+.jayms-word-trail .wt-pyr .bn{cursor:pointer;outline:none}
+.jayms-word-trail .wt-pyr .bn .hit{fill:transparent}
+.jayms-word-trail .wt-pyr .bn .dot{fill:var(--paper-deeper);stroke:var(--wt-c);stroke-width:2}
+.jayms-word-trail .wt-pyr .bn:hover .dot,.jayms-word-trail .wt-pyr .bn:focus .dot{fill:var(--wt-c)}
+.jayms-word-trail .wt-pyr .bn.on .dot{fill:var(--ink-bright);stroke:var(--ink-bright)}
+.jayms-word-trail .wt-pyr .ab{fill:var(--ink);font-family:inherit;font-size:10px;letter-spacing:.04em}
+.jayms-word-trail .wt-pyr .bn.on .ab{fill:var(--ink-bright);font-weight:700}
+.jayms-word-trail .wt-pyr .ct{fill:var(--ink-soft);font-family:inherit;font-size:9px}
+.jayms-word-trail .wt-pyr .vd{fill:var(--ink-bright)}
+.jayms-word-trail .wt-pyr .vd.on{fill:var(--rust)}
+.jayms-word-trail .wt-pyr .apex{fill:var(--gold)}
+.jayms-word-trail .wt-pyr .apl{fill:var(--gold);font-size:30px}
+.jayms-word-trail .wt-pyr .gn{fill:var(--lavender)}
+.jayms-word-trail .wt-pyr .gl{fill:var(--ink-bright);font-size:22px}
+.jayms-word-trail .wt-pyr .lbl{fill:var(--ink-soft);font-family:inherit;font-size:10px;letter-spacing:.12em}
+.jayms-word-trail .wt-pyr .basehit{fill:transparent;cursor:pointer}
+.jayms-word-trail .c-grk i{background:var(--lavender)}
 
 /* ---- view 2: where it lands --------------------------------------------- */
 .jayms-word-trail .wt-flow{display:flex;gap:0;width:100%}
