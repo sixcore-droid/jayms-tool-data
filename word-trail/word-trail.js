@@ -208,7 +208,7 @@
       SUGG.hidden = false;
     }).catch(function () { SUGG.innerHTML = '<span class="a-empty">The word list did not load.</span>'; SUGG.hidden = false; });
   }
-  function go(id, fb, from) { S.from = from || null; S.fb = fb || null; S.w = id; S.g = null; S.v = null; S.book = null; S.ch = null; S.link = null; S.item = null; writeHash(); render(); }
+  function go(id, fb, from) { S.from = from || null; S.fb = fb || null; S.w = id; S.g = null; S.v = null; S.book = null; S.ch = null; S.ntb = null; S.link = null; S.item = null; writeHash(); render(); }
 
   // ---------- the word card ----------
   var CUR = null;   // { w, entry, rend, inv, g, gEntry }
@@ -496,73 +496,108 @@
     verseBox(box.querySelector("#wt-v1"), (S.v != null ? "Selected · " : "First in " + bookName(i) + " · ") + ref + " · NET", ref);
     var v2 = box.querySelector("#wt-v2");
     if (i < NTS) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">The Old Testament passage it echoes</div><div class="a-btext">This box is for New Testament verses. Pick a New Testament verse and, when it echoes an Old Testament passage, that passage shows here beside it.</div>'; return; }
-    data("links.json").then(function (L) {
-      var hit = L.links.filter(function (l) { return l[5].indexOf(i) >= 0 && (!CUR.heb || l[4].some(function (o) { return CUR.entry.v.indexOf(o) >= 0; })); })[0]
-             || L.links.filter(function (l) { return l[5].indexOf(i) >= 0; })[0];
-      if (!hit) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">The Old Testament passage it echoes</div><div class="a-btext">None is linked for this verse yet. The links come from Echoes of Revelation, so only verses in Revelation have one so far.</div>'; return; }
-      var otref = runRef(hit[4]);
-      verseBox(v2, "The Old Testament passage it echoes · " + otref + " · " + hit[2] + " echo", otref);
-      var a = el("div", "wt-links", '<a class="a-lnk" href="' + ECHO + encodeURIComponent(hit[0]) + '/">' + esc(hit[1]) + " ›</a>");
-      v2.appendChild(a);
+    inter(bookOf(i)).then(function (rows) {
+      var mine = rows.filter(function (r) { return r[0] <= i && i <= r[1] && r[2] < NTS; });
+      var hv = {}; if (CUR.heb && CUR.entry) CUR.entry.v.forEach(function (x) { hv[x] = 1; });
+      mine.sort(function (a, b) { return (hitsAny(b[2], b[3], hv) ? 1 : 0) - (hitsAny(a[2], a[3], hv) ? 1 : 0) || b[5] - a[5] || (b[4] === "q" ? 1 : 0) - (a[4] === "q" ? 1 : 0); });
+      var hit = mine[0];
+      if (!hit) { v2.className = "a-box v-explain wt-empty"; v2.innerHTML = '<div class="a-blabel">The Old Testament passage it echoes</div><div class="a-btext">No shared wording, graded echo or cross reference ties this verse to the Old Testament.</div>'; return; }
+      var otref = rng(hit[2], hit[3]);
+      verseBox(v2, "The Old Testament passage it echoes · " + otref + " · " + SRC[hit[4]].toLowerCase() + ", " + pairNote(hit), otref);
+      if (hit[4] === "e") v2.appendChild(el("div", "wt-links", '<a class="a-lnk" href="' + ECHO + encodeURIComponent(hit[6]) + '/">Open the Echoes of Revelation entry ›</a>'));
     });
   }
 
   // ---------- view 2: where it lands ----------
+  // Three sources, each named on screen: shared wording (UBS Parallel Passages), graded echoes (Echoes of
+  // Revelation) and reader-voted cross references (OpenBible.info). Lines take the color of the Old Testament
+  // group they start in, and their stroke says how strong the link is.
+  var SRC = { q: "Shared wording", e: "Graded echo", x: "Cross reference" };
+  var STR = { 3: "Strong", 2: "Medium", 1: "Light" };
+  var SRCP = { q: "shared wording", e: "graded echoes", x: "cross references" };
+  function grp(b) {
+    return b < 5 ? "law" : b < 17 ? "hist" : b < 22 ? "wis" : b < 39 ? "pro" : b < 44 ? "gos" : b < 57 ? "paul" : "gen";
+  }
+  var GRPN = { law: "Law", hist: "History", wis: "Wisdom and poetry", pro: "Prophets", gos: "Gospels and Acts", paul: "Paul's letters", gen: "Hebrews, the general letters, Revelation" };
+  function inter(b) { return data("intertext/b" + b + ".json"); }
+  function rng(a, z) { return a === z ? refOf(a) : (function () { var r0 = refOf(a), r1 = refOf(z), c0 = r0.split(" ").pop().split(":")[0], c1 = r1.split(" ").pop().split(":"); return r0 + "-" + (c1[0] === c0 ? c1[1] : c1.join(":")); })(); }
+  function pairNote(r) {
+    return r[4] === "e" ? r[5] === 3 ? "graded clear" : r[5] === 2 ? "graded probable" : "graded possible"
+      : r[4] === "x" ? fmt(r[6]) + " reader votes" : r[6] + "% of the words match";
+  }
+  function hitsAny(a, z, set) { for (var i = a; i <= z; i++) if (set[i]) return true; return false; }
   function viewLands() {
     var c = CUR;
-    data("links.json").then(function (L) {
-      var hv = {}, gv = {};
-      if (c.heb && c.entry) c.entry.v.forEach(function (i) { hv[i] = 1; });
-      if (c.gEntry) c.gEntry.v.forEach(function (i) { if (i >= NTS) gv[i] = 1; });
-      var word = L.links.filter(function (l) { return l[4].some(function (i) { return hv[i]; }) || l[5].some(function (i) { return gv[i]; }); });
-      var list = (S.scope === "word" ? word : L.links).filter(function (l) { return S.grade[l[2]]; });
-      var REV = 65, revCh = BOOKS[REV].c.length, H = 39 * 18 + 20, W = 640;
-      function yO(b) { return 14 + b * 18; }
-      function yR(ch) { return 14 + (ch - 0.5) * (H - 28) / revCh; }
-      function chOf(i) { var b = BOOKS[REV], r = i - b.s, cc = 0; while (cc < b.c.length && r >= b.c[cc]) { r -= b.c[cc]; cc++; } return cc + 1; }
-      var used = {}; list.forEach(function (l) { used[bookOf(l[4][0])] = 1; });
-      var paths = { clear: "", probable: "", possible: "" }, hits = "";
-      list.forEach(function (l, n) {
-        var y1 = yO(bookOf(l[4][0])), y2 = yR(chOf(l[5][0])), d = "M120 " + y1 + "C" + (W / 2) + " " + y1 + " " + (W / 2) + " " + y2 + " " + (W - 70) + " " + y2;
-        paths[l[2]] = (paths[l[2]] || "") + d;
-        hits += '<path class="hit" data-i="' + n + '" fill="none" d="' + d + '"></path>';
+    if (!S.src) S.src = { q: 1, e: 1, x: 1 };
+    if (!S.st) S.st = { 3: 1, 2: 1, 1: 0 };
+    var hv = {}, gv = {}, perBook = {};
+    if (c.heb && c.entry) c.entry.v.forEach(function (i) { hv[i] = 1; });
+    if (c.gEntry) c.gEntry.v.forEach(function (i) { if (i >= NTS) { gv[i] = 1; var b = bookOf(i); perBook[b] = (perBook[b] || 0) + 1; } });
+    if (S.ntb == null || S.ntb < 39) {
+      var best = Object.keys(perBook).map(Number).sort(function (a, b) { return perBook[b] - perBook[a]; })[0];
+      S.ntb = best != null ? best : 65;
+    }
+    var NB = S.ntb;
+    inter(NB).then(function (rows) {
+      var ot = rows.filter(function (r) { return r[2] < NTS; });
+      var word = ot.filter(function (r) { return hitsAny(r[2], r[3], hv) || hitsAny(r[0], r[1], gv); });
+      var list = (S.scope === "word" ? word : ot).filter(function (r) { return S.src[r[4]] && S.st[r[5]]; });
+      list.sort(function (a, b) { return b[5] - a[5] || (a[4] === "q" ? -1 : 0) - (b[4] === "q" ? -1 : 0) || a[0] - b[0]; });
+      var nCh = BOOKS[NB].c.length, H = Math.max(39 * 18 + 20, nCh * 14 + 28), W = 640;
+      function yO(b) { return 14 + b * (H - 28) / 38; }
+      function yN(ch) { return 14 + (ch - 0.5) * (H - 28) / nCh; }
+      var used = {}; list.forEach(function (r) { used[bookOf(r[2])] = 1; });
+      var CAP = 1500, paths = {}, hits = "";
+      list.slice(0, CAP).forEach(function (r, n) {
+        var y1 = yO(bookOf(r[2])), y2 = yN(chOf(r[0])), d = "M120 " + y1.toFixed(1) + "C" + (W / 2) + " " + y1.toFixed(1) + " " + (W / 2) + " " + y2.toFixed(1) + " " + (W - 70) + " " + y2.toFixed(1);
+        var k = "g-" + grp(bookOf(r[2])) + " s" + r[5]; paths[k] = (paths[k] || "") + d;
+        if (n < 400) hits += '<path class="hit" data-i="' + n + '" fill="none" d="' + d + '"></path>';
       });
-      var sel = S.link != null ? list.filter(function (l) { return l[0] === S.link; })[0] : null;
+      var sel = S.link != null ? list.filter(function (r) { return r.join() === S.link; })[0] : null;
       var labs = "";
-      for (var b = 0; b < 39; b++) labs += '<text x="112" y="' + (yO(b) + 4) + '" text-anchor="end" class="' + (used[b] ? "" : "dim") + '">' + esc(BOOKS[b].n) + "</text>";
-      for (var ch = 1; ch <= revCh; ch++) labs += '<text class="nt" x="' + (W - 62) + '" y="' + (yR(ch) + 4) + '">Rev ' + ch + "</text>";
-      var h = '<div class="wt-panel"><p class="wt-stat">' +
-        (S.scope === "word" ? "<b>" + fmt(word.length) + "</b> graded links carry this word" : "<b>" + fmt(L.links.length) + "</b> graded links in all") +
-        ". Old Testament on the left, Revelation chapter by chapter on the right. The line says how sure the link is.</p>" +
-        '<div class="wt-ctl"><button class="wt-lay on" data-scope="1">' + (S.scope === "word" ? "Show every graded link" : "Show only links with this word") + "</button>" +
-        ["clear", "probable", "possible"].map(function (g) {
-          return '<button class="wt-lay c-' + g + (S.grade[g] ? " on" : "") + '" data-grade="' + g + '"><span class="wt-gline d-' + g + '"></span>' +
-            (S.grade[g] ? "Hide " : "Show ") + g + " echoes</button>";
-        }).join("") + "</div>" +
-        '<div class="wt-flow"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Links from Old Testament books to Revelation, styled by grade">' +
-        '<path class="l-possible" fill="none" d="' + paths.possible + '"></path><path class="l-probable" fill="none" d="' + paths.probable + '"></path><path class="l-clear" fill="none" d="' + paths.clear + '"></path>' +
-        (sel ? '<path class="l-sel" fill="none" d="M120 ' + yO(bookOf(sel[4][0])) + "C" + (W / 2) + " " + yO(bookOf(sel[4][0])) + " " + (W / 2) + " " + yR(chOf(sel[5][0])) + " " + (W - 70) + " " + yR(chOf(sel[5][0])) + '"></path>' : "") +
-        hits + labs + "</svg></div></div>" +
+      for (var b = 0; b < 39; b++) labs += '<text x="112" y="' + (yO(b) + 4).toFixed(1) + '" text-anchor="end" class="g-' + grp(b) + (used[b] ? "" : " dim") + '">' + esc(BOOKS[b].n) + "</text>";
+      var chStep = nCh > 40 ? 5 : nCh > 20 ? 2 : 1;
+      for (var ch = 1; ch <= nCh; ch++) if (ch === 1 || ch % chStep === 0 || ch === nCh) labs += '<text class="nt" x="' + (W - 62) + '" y="' + (yN(ch) + 4).toFixed(1) + '">' + esc(BOOKS[NB].a) + " " + ch + "</text>";
+      var layers = Object.keys(paths).sort(function (a, b) { return a.slice(-1) - b.slice(-1); }).map(function (k) { return '<path class="ln ' + k + '" d="' + paths[k] + '"></path>'; }).join("");
+      var chips = "";
+      for (b = 39; b < BOOKS.length; b++) chips += '<button class="a-chip wt-ntb' + (b === NB ? " on" : "") + (perBook[b] ? "" : " none") + '" data-ntb="' + b + '">' + esc(BOOKS[b].a) + (perBook[b] ? ' <span class="a-n">' + perBook[b] + "</span>" : "") + "</button>";
+      var h = '<div class="wt-panel">' +
+        '<div class="wt-sec">Pick a New Testament book' + (c.gEntry ? ' <span class="wt-secn">the number is how many of its verses use <span lang="grc">' + esc(c.gEntry.l) + "</span></span>" : "") + '</div><div class="wt-ntrow">' + chips + "</div>" +
+        '<p class="wt-stat">' + (S.scope === "word" ? "<b>" + fmt(word.length) + "</b> links between the Old Testament and " + esc(BOOKS[NB].n) + " carry this word" : "<b>" + fmt(ot.length) + "</b> links between the Old Testament and " + esc(BOOKS[NB].n) + " in all") +
+        (list.length !== (S.scope === "word" ? word.length : ot.length) ? ", <b>" + fmt(list.length) + "</b> shown with these filters" : "") + ". Old Testament on the left, " + esc(BOOKS[NB].n) + " chapter by chapter on the right." +
+        (list.length > CAP ? " The strongest " + fmt(CAP) + " are drawn." : "") + "</p>" +
+        '<div class="wt-ctl"><button class="wt-lay on" data-scope="1">' + (S.scope === "word" ? "Show every link" : "Show only links with this word") + "</button></div>" +
+        '<div class="wt-ctl">' + ["q", "e", "x"].map(function (k) { return '<button class="wt-lay' + (S.src[k] ? " on" : "") + '" data-src="' + k + '">' + (S.src[k] ? "Hide " : "Show ") + SRCP[k] + "</button>"; }).join("") +
+        [3, 2, 1].map(function (k) { return '<button class="wt-lay' + (S.st[k] ? " on" : "") + '" data-st="' + k + '"><span class="wt-gline s' + k + '"></span>' + (S.st[k] ? "Hide " : "Show ") + STR[k].toLowerCase() + "</button>"; }).join("") + "</div>" +
+        '<div class="wt-flow"><svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Links from Old Testament books to ' + esc(BOOKS[NB].n) + ', colored by Old Testament group">' +
+        layers + (sel ? '<path class="l-sel" fill="none" d="M120 ' + yO(bookOf(sel[2])).toFixed(1) + "C" + (W / 2) + " " + yO(bookOf(sel[2])).toFixed(1) + " " + (W / 2) + " " + yN(chOf(sel[0])).toFixed(1) + " " + (W - 70) + " " + yN(chOf(sel[0])).toFixed(1) + '"></path>' : "") +
+        hits + labs + "</svg></div>" +
+        '<div class="wt-legend">' + ["law", "hist", "wis", "pro"].map(function (g) { return '<span class="g-' + g + '"><i></i>' + GRPN[g] + "</span>"; }).join("") + "</div></div>" +
         '<div id="wt-linkcard"></div>' +
-        '<div class="wt-list">' + (list.length ? list.slice(0, 200).map(function (l) {
-          return '<button class="wt-li c-' + l[2] + (sel && sel[0] === l[0] ? " on" : "") + '" data-link="' + esc(l[0]) + '"><span>' + esc(l[1]) + '</span><span class="a-tag">' + esc(l[2]) + "</span></button>";
-        }).join("") : '<div class="wt-li wt-empty"><span>No graded link carries this word yet. Echoes of Revelation is the only graded set so far.</span></div>') + "</div>" +
-        '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the grades come from</div><div class="a-btext">Every line is an entry in Echoes of Revelation, graded clear, probable or possible there, with its sources named in the entry. ' +
-        "A link carries this word when its Old Testament verses use the Hebrew word, or its Revelation verse uses the Greek word being followed. Other New Testament books join as their graded links are built.</div></div>";
+        '<div class="wt-list">' + (list.length ? list.slice(0, 200).map(function (r) {
+          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (sel && sel.join() === r.join() ? " on" : "") + '" data-link="' + r.join() + '"><span>' + esc(rng(r[0], r[1]) + " ← " + rng(r[2], r[3])) + '</span><span class="a-tag">' + esc(SRC[r[4]]) + " · " + STR[r[5]].toLowerCase() + "</span></button>";
+        }).join("") + (list.length > 200 ? '<div class="wt-li wt-empty"><span>The first 200 of ' + fmt(list.length) + ' are listed, strongest first.</span></div>' : "") : '<div class="wt-li wt-empty"><span>No link with these filters. Try showing light links, or every link.</span></div>') + "</div>" +
+        '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the links come from</div><div class="a-btext">' +
+        "<b>Shared wording</b> is the UBS Parallel Passages Database: passages whose words match, word by word, which is where the New Testament quotes the Old. Strong means at least 40 percent of the words in one of the two verses match. " +
+        "<b>Graded echoes</b> are the entries of Echoes of Revelation, graded clear (strong), probable (medium) or possible (light) there, with their sources named. " +
+        "<b>Cross references</b> are OpenBible.info's, where readers vote on each one: 50 votes or more is strong, 15 to 49 medium, 5 to 14 light. " +
+        "A link carries this word when its Old Testament verses use the Hebrew word or its New Testament verse uses the Greek word being followed.</div></div>";
       MAIN.innerHTML = h;
-      MAIN.querySelector("[data-scope]").addEventListener("click", function () { S.scope = S.scope === "word" ? "all" : "word"; viewLands(); });
-      [].forEach.call(MAIN.querySelectorAll("[data-grade]"), function (b) { b.addEventListener("click", function () { var g = b.getAttribute("data-grade"); S.grade[g] = S.grade[g] ? 0 : 1; viewLands(); }); });
+      MAIN.querySelector("[data-scope]").addEventListener("click", function () { S.scope = S.scope === "word" ? "all" : "word"; S.link = null; viewLands(); });
+      [].forEach.call(MAIN.querySelectorAll("[data-src]"), function (b) { b.addEventListener("click", function () { var k = b.getAttribute("data-src"); S.src[k] = S.src[k] ? 0 : 1; viewLands(); }); });
+      [].forEach.call(MAIN.querySelectorAll("[data-st]"), function (b) { b.addEventListener("click", function () { var k = b.getAttribute("data-st"); S.st[k] = S.st[k] ? 0 : 1; viewLands(); }); });
+      [].forEach.call(MAIN.querySelectorAll("[data-ntb]"), function (b) { b.addEventListener("click", function () { S.ntb = +b.getAttribute("data-ntb"); S.link = null; viewLands(); }); });
       function pick(id) { S.link = id; viewLands(); }
       [].forEach.call(MAIN.querySelectorAll("[data-link]"), function (b) { b.addEventListener("click", function () { pick(b.getAttribute("data-link")); }); });
-      [].forEach.call(MAIN.querySelectorAll("path.hit"), function (p) { p.addEventListener("click", function () { pick(list[+p.getAttribute("data-i")][0]); }); });
+      [].forEach.call(MAIN.querySelectorAll("path.hit"), function (p) { p.addEventListener("click", function () { pick(list[+p.getAttribute("data-i")].join()); }); });
       if (sel) {
-        var lc = MAIN.querySelector("#wt-linkcard");
+        var lc = MAIN.querySelector("#wt-linkcard"), oref = rng(sel[2], sel[3]), nref = rng(sel[0], sel[1]);
         lc.innerHTML = '<div class="wt-pair"><div class="a-box v-scripture" id="wt-lo"></div><div class="a-box v-scripture" id="wt-ln"></div></div>' +
-          '<div class="wt-links" style="margin:10px 0 13px"><span class="a-badge c-' + sel[2] + '" style="--cc:var(--wt-c)">' + esc(sel[2]) + " echo</span>" +
-          '<span class="a-tag">' + esc(String(sel[3] || "").replace(/-/g, " ")) + '</span><a class="a-lnk" href="' + ECHO + encodeURIComponent(sel[0]) + '/">Open the full entry ›</a></div>';
-        var oref = runRef(sel[4]);
+          '<div class="wt-links" style="margin:10px 0 13px"><span class="a-tag">' + esc(SRC[sel[4]] + " · " + STR[sel[5]].toLowerCase()) + '</span><span class="a-tag">' + esc(pairNote(sel)) + "</span>" +
+          (sel[4] === "e" ? '<a class="a-lnk" href="' + ECHO + encodeURIComponent(sel[6]) + '/">Open the full entry ›</a>' : "") + "</div>";
         verseBox(lc.querySelector("#wt-lo"), "Old Testament · " + oref + " · NET", oref);
-        verseBox(lc.querySelector("#wt-ln"), "Revelation · " + refOf(sel[5][0]) + " · NET", refOf(sel[5][0]));
+        verseBox(lc.querySelector("#wt-ln"), BOOKS[NB].n + " · " + nref + " · NET", nref);
+        lc.scrollIntoView({ block: "nearest" });
       }
     });
   }
@@ -780,4 +815,148 @@
   }
   window.addEventListener("hashchange", function () { var w = S.w, g = S.g, v = S.view, vv = S.v; readHash(); if (w !== S.w || g !== S.g || v !== S.view || vv !== S.v) render(); });
   readHash(); renderFoot(); render();
+})();
+
+/* BOOK ECHOES: one book, and every place in the rest of the Bible it is tied to. No word involved.
+   Mounts on #jayms-book-echoes. Same data folder as Word Trail (intertext/b0.json ... b65.json, books.json).
+   Keeps its own state and never touches the hash, so it cannot disturb Word Trail on the same page. */
+(function () {
+  "use strict";
+  var MOUNT = document.getElementById("jayms-book-echoes");
+  if (!MOUNT || MOUNT.getAttribute("data-be-ready")) return;
+  MOUNT.setAttribute("data-be-ready", "1");
+  var BASE = MOUNT.getAttribute("data-base") || "https://raw.githubusercontent.com/sixcore-droid/jayms-tool-data/word-trail/word-trail/";
+  var ECHO = "https://jayms.com/bible-study-tools-2/echoes-of-revelation/";
+  var NETAPI = "https://labs.bible.org/api/?type=json&formatting=plain&passage=";
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function fmt(n) { return Number(n).toLocaleString("en-US"); }
+  var C = {};
+  function data(n) { if (!C[n]) C[n] = fetch(BASE + n).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); return C[n]; }
+  var BOOKS = null;
+  function bookOf(i) { var lo = 0, hi = BOOKS.length - 1; while (lo < hi) { var m = (lo + hi + 1) >> 1; if (BOOKS[m].s <= i) lo = m; else hi = m - 1; } return lo; }
+  function refOf(i) { var b = BOOKS[bookOf(i)], r = i - b.s, c = 0; while (c < b.c.length && r >= b.c[c]) { r -= b.c[c]; c++; } return b.n + " " + (c + 1) + ":" + (r + 1); }
+  function rng(a, z) { if (a === z) return refOf(a); var r0 = refOf(a), r1 = refOf(z), c0 = r0.split(" ").pop().split(":")[0], c1 = r1.split(" ").pop().split(":"); return r0 + "-" + (c1[0] === c0 ? c1[1] : c1.join(":")); }
+  function grp(b) { return b < 5 ? "law" : b < 17 ? "hist" : b < 22 ? "wis" : b < 39 ? "pro" : b < 44 ? "gos" : b < 57 ? "paul" : "gen"; }
+  var GRPN = { law: "Law", hist: "History", wis: "Wisdom and poetry", pro: "Prophets", gos: "Gospels and Acts", paul: "Paul's letters", gen: "Hebrews to Revelation" };
+  var SRC = { q: "Shared wording", e: "Graded echo", x: "Cross reference" }, SRCP = { q: "shared wording", e: "graded echoes", x: "cross references" };
+  var STR = { 3: "Strong", 2: "Medium", 1: "Light" };
+  function note(r) { return r[4] === "e" ? (r[5] === 3 ? "graded clear" : r[5] === 2 ? "graded probable" : "graded possible") : r[4] === "x" ? fmt(r[6]) + " reader votes" : r[6] + "% of the words match"; }
+  var E = { b: 0, t: null, pair: null, src: { q: 1, e: 1, x: 1 }, st: { 3: 1, 2: 1, 1: 0 }, more: 0 };
+  try { var saved = JSON.parse(sessionStorage.getItem("jayms.bookechoes") || "null"); if (saved && saved.b != null) { E.b = saved.b; E.t = saved.t; } } catch (e) {}
+  function save() { try { sessionStorage.setItem("jayms.bookechoes", JSON.stringify({ b: E.b, t: E.t })); } catch (e) {} }
+
+  MOUNT.innerHTML = '<div class="be-head"><label class="be-pick"><span class="be-lab">Book</span><select id="be-book" class="a-search"></select></label><div class="wt-ctl" id="be-ctl"></div></div>' +
+    '<p class="wt-stat" id="be-stat"></p><div class="be-wrap"><div class="be-circle" id="be-circle"></div><div class="be-side" id="be-side"></div></div>' +
+    '<div id="be-pair"></div><div class="wt-list" id="be-list"></div>' +
+    '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the links come from</div><div class="a-btext">' +
+    "<b>Shared wording</b> is the UBS Parallel Passages Database: passages whose words match word by word, quotations among them. Strong means at least 40 percent of the words in one of the two verses match. " +
+    "<b>Graded echoes</b> are the entries of Echoes of Revelation, graded clear (strong), probable (medium) or possible (light) there. " +
+    "<b>Cross references</b> are OpenBible.info's, where readers vote on each one: 50 votes or more is strong, 15 to 49 medium, 5 to 14 light. " +
+    "Each ribbon runs from the book you picked to another book, as wide as the number of links between them. Links inside one book are left out.</div></div>";
+  var SEL = MOUNT.querySelector("#be-book"), CIRC = MOUNT.querySelector("#be-circle"), SIDE = MOUNT.querySelector("#be-side"),
+      STAT = MOUNT.querySelector("#be-stat"), LIST = MOUNT.querySelector("#be-list"), PAIR = MOUNT.querySelector("#be-pair"), CTL = MOUNT.querySelector("#be-ctl");
+
+  data("books.json").then(function (bk) {
+    BOOKS = bk.books;
+    var og = "", last = null;
+    BOOKS.forEach(function (b, k) {
+      var g = grp(k); if (g !== last) { og += (last ? "</optgroup>" : "") + '<optgroup label="' + esc(GRPN[g]) + '">'; last = g; }
+      og += '<option value="' + k + '">' + esc(b.n) + "</option>";
+    });
+    SEL.innerHTML = og + "</optgroup>";
+    SEL.addEventListener("change", function () { pickBook(+SEL.value); });
+    draw();
+  });
+  function pickBook(b) { E.b = b; E.t = null; E.pair = null; E.more = 0; save(); draw(); }
+
+  // arcs: each book gets a share of the circle by its size (verses to the 0.6 power, so short books stay visible)
+  var CX = 500, CY = 500, R = 390, GAP = 0.004 * Math.PI * 2;
+  function layout() {
+    var w = BOOKS.map(function (b) { return Math.pow(b.c.reduce(function (s, n) { return s + n; }, 0), 0.6); }), tot = w.reduce(function (s, x) { return s + x; }, 0);
+    var free = Math.PI * 2 - GAP * BOOKS.length, a = -Math.PI / 2 + GAP / 2, out = [];
+    w.forEach(function (x) { var d = free * x / tot; out.push([a, a + d]); a += d + GAP; });
+    return out;
+  }
+  function pt(a, r) { return (CX + r * Math.cos(a)).toFixed(1) + " " + (CY + r * Math.sin(a)).toFixed(1); }
+  function arcPath(a0, a1, r0, r1) {
+    var lg = a1 - a0 > Math.PI ? 1 : 0;
+    return "M" + pt(a0, r1) + "A" + r1 + " " + r1 + " 0 " + lg + " 1 " + pt(a1, r1) + "L" + pt(a1, r0) + "A" + r0 + " " + r0 + " 0 " + lg + " 0 " + pt(a0, r0) + "Z";
+  }
+  function ribbon(s0, s1, t0, t1) {
+    var c = CX + " " + CY;
+    return "M" + pt(s0, R) + "A" + R + " " + R + " 0 0 1 " + pt(s1, R) + "Q" + c + " " + pt(t0, R) + "A" + R + " " + R + " 0 0 1 " + pt(t1, R) + "Q" + c + " " + pt(s0, R) + "Z";
+  }
+
+  function draw() {
+    SEL.value = String(E.b);
+    CTL.innerHTML = ["q", "e", "x"].map(function (k) { return '<button class="wt-lay' + (E.src[k] ? " on" : "") + '" data-src="' + k + '">' + (E.src[k] ? "Hide " : "Show ") + SRCP[k] + "</button>"; }).join("") +
+      [3, 2, 1].map(function (k) { return '<button class="wt-lay' + (E.st[k] ? " on" : "") + '" data-st="' + k + '"><span class="wt-gline s' + k + '"></span>' + (E.st[k] ? "Hide " : "Show ") + STR[k].toLowerCase() + "</button>"; }).join("");
+    [].forEach.call(CTL.querySelectorAll("[data-src]"), function (b) { b.onclick = function () { var k = b.getAttribute("data-src"); E.src[k] = E.src[k] ? 0 : 1; E.more = 0; draw(); }; });
+    [].forEach.call(CTL.querySelectorAll("[data-st]"), function (b) { b.onclick = function () { var k = b.getAttribute("data-st"); E.st[k] = E.st[k] ? 0 : 1; E.more = 0; draw(); }; });
+    CIRC.innerHTML = '<div class="a-loading">Loading ' + esc(BOOKS[E.b].n) + "…</div>";
+    data("intertext/b" + E.b + ".json").then(function (rows) {
+      var list = rows.filter(function (r) { return E.src[r[4]] && E.st[r[5]]; });
+      var by = {}; list.forEach(function (r) { var t = bookOf(r[2]); (by[t] = by[t] || []).push(r); });
+      var targets = Object.keys(by).map(Number).sort(function (a, b) { return a - b; });
+      if (E.t != null && !by[E.t]) E.t = null;
+      var A = layout(), src = A[E.b], span = src[1] - src[0], n = list.length || 1, svg = "";
+      // ribbons first, so the arcs and labels sit on top; the source arc is shared out in circle order, starting
+      // after the source book, so neighbouring ribbons do not cross
+      var order = targets.slice().sort(function (a, b) { return ((a - E.b + 66) % 66) - ((b - E.b + 66) % 66); });
+      var cur = src[1], maxN = 0; order.forEach(function (t) { maxN = Math.max(maxN, by[t].length); });
+      order.slice().reverse().forEach(function () {});
+      order.forEach(function (t) {
+        var d = span * by[t].length / n, s1 = cur, s0 = cur - d; cur = s0;
+        var ta = A[t], tw = Math.max(0.004, Math.min((ta[1] - ta[0]) * 0.9, (ta[1] - ta[0]) * Math.sqrt(by[t].length / maxN))), tm = (ta[0] + ta[1]) / 2;
+        svg += '<path class="be-rib g-' + grp(t) + (E.t === t ? " on" : "") + (E.t != null && E.t !== t ? " dim" : "") + '" data-t="' + t + '" d="' + ribbon(s0, s1, tm - tw / 2, tm + tw / 2) + '"><title>' + esc(BOOKS[E.b].n + " and " + BOOKS[t].n + ": " + fmt(by[t].length) + " links") + "</title></path>";
+      });
+      BOOKS.forEach(function (b, k) {
+        var a = A[k], has = !!by[k] || k === E.b, mid = (a[0] + a[1]) / 2, deg = mid * 180 / Math.PI, flip = Math.cos(mid) < 0;
+        svg += '<g class="be-arc g-' + grp(k) + (k === E.b ? " src" : "") + (E.t === k ? " on" : "") + (has ? "" : " none") + '" data-b="' + k + '" tabindex="0" role="button" aria-label="' + esc(b.n + (by[k] ? ", " + by[k].length + " links" : "")) + '">' +
+          '<path class="hit" d="' + arcPath(a[0] - GAP / 2, a[1] + GAP / 2, R - 4, R + 46) + '"></path>' +
+          '<path class="seg" d="' + arcPath(a[0], a[1], R + 2, R + (k === E.b ? 20 : 14)) + '"></path>' +
+          '<text x="' + pt(mid, R + 26).split(" ")[0] + '" y="' + pt(mid, R + 26).split(" ")[1] + '" transform="rotate(' + (flip ? deg + 180 : deg).toFixed(1) + " " + pt(mid, R + 26) + ')" text-anchor="' + (flip ? "end" : "start") + '" dominant-baseline="middle">' + esc(b.a) + "</text></g>";
+      });
+      CIRC.innerHTML = '<svg class="be-svg" viewBox="0 0 1000 1000" role="img" aria-label="' + esc(BOOKS[E.b].n) + ' and every book it is tied to">' + svg + "</svg>";
+      [].forEach.call(CIRC.querySelectorAll(".be-rib"), function (p) { p.addEventListener("click", function () { E.t = +p.getAttribute("data-t"); E.pair = null; E.more = 0; save(); draw(); }); });
+      [].forEach.call(CIRC.querySelectorAll(".be-arc"), function (g) {
+        function go() { var k = +g.getAttribute("data-b"); if (k === E.b) return; if (by[k] && E.t !== k) { E.t = k; E.pair = null; E.more = 0; save(); draw(); } else pickBook(k); }
+        g.addEventListener("click", go);
+        g.addEventListener("dblclick", function () { pickBook(+g.getAttribute("data-b")); });
+        g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } });
+      });
+      STAT.innerHTML = "<b>" + esc(BOOKS[E.b].n) + "</b> is tied to <b>" + targets.length + "</b> other books in <b>" + fmt(list.length) + "</b> links with these filters. " +
+        "Pick a ribbon or a book to list its links. Pick a book a second time, or double-click it, to start from that book.";
+      var top = targets.slice().sort(function (a, b) { return by[b].length - by[a].length; });
+      SIDE.innerHTML = '<div class="wt-sec">Most links</div><div class="be-tops">' + top.map(function (t) {
+        return '<button class="a-chip be-top g-' + grp(t) + (E.t === t ? " on" : "") + '" data-t="' + t + '"><i></i>' + esc(BOOKS[t].n) + ' <span class="a-n">' + fmt(by[t].length) + "</span></button>";
+      }).join("") + "</div>" + '<div class="wt-legend be-legend">' + Object.keys(GRPN).map(function (g) { return '<span class="g-' + g + '"><i></i>' + GRPN[g] + "</span>"; }).join("") + "</div>";
+      [].forEach.call(SIDE.querySelectorAll(".be-top"), function (b) { b.addEventListener("click", function () { var t = +b.getAttribute("data-t"); E.t = E.t === t ? null : t; E.pair = null; E.more = 0; save(); draw(); }); });
+      // the list: one other book's links, or the strongest links from this book to all of them
+      var rowsT = (E.t != null ? by[E.t] : list).slice().sort(function (a, b) { return b[5] - a[5] || (a[4] === "q" ? -1 : 0) - (b[4] === "q" ? -1 : 0) || a[0] - b[0]; });
+      var lim = 150 + E.more * 300;
+      LIST.innerHTML = '<div class="wt-li wt-head"><span>' + (E.t != null ? esc(BOOKS[E.b].n + " and " + BOOKS[E.t].n) + " · " + fmt(rowsT.length) + " links, strongest first" : "The strongest links from " + esc(BOOKS[E.b].n) + ", all books") + "</span></div>" +
+        rowsT.slice(0, lim).map(function (r, k) {
+          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (E.pair === r.join() ? " on" : "") + '" data-k="' + k + '"><span>' + esc(rng(r[0], r[1]) + "  ·  " + rng(r[2], r[3])) + '</span><span class="a-tag">' + esc(SRC[r[4]] + " · " + STR[r[5]].toLowerCase()) + "</span></button>";
+        }).join("") + (rowsT.length > lim ? '<button class="wt-li be-more"><span>Show more (' + fmt(rowsT.length - lim) + " left)</span></button>" : "");
+      [].forEach.call(LIST.querySelectorAll("[data-k]"), function (b) { b.addEventListener("click", function () { var r = rowsT[+b.getAttribute("data-k")]; E.pair = r.join(); showPair(r); [].forEach.call(LIST.querySelectorAll(".wt-li.on"), function (x) { x.classList.remove("on"); }); b.classList.add("on"); }); });
+      var mb = LIST.querySelector(".be-more"); if (mb) mb.addEventListener("click", function () { E.more++; draw(); });
+      var sp = E.pair && rowsT.filter(function (r) { return r.join() === E.pair; })[0]; if (sp) showPair(sp); else PAIR.innerHTML = "";
+    });
+  }
+  function net(ref, box) {
+    box.querySelector(".a-btext").innerHTML = '<span class="a-loading">Loading the NET text…</span>';
+    fetch(NETAPI + encodeURIComponent(ref)).then(function (r) { return r.json(); }).then(function (j) {
+      box.querySelector(".a-btext").textContent = (j || []).map(function (v) { return String(v.text).trim(); }).join(" ") || "The NET text did not load.";
+    }).catch(function () { box.querySelector(".a-btext").textContent = "The NET text did not load. " + ref + "."; });
+  }
+  function showPair(r) {
+    var a = rng(r[0], r[1]), b = rng(r[2], r[3]);
+    PAIR.innerHTML = '<div class="wt-pair"><div class="a-box v-scripture" id="be-a"><div class="a-blabel">' + esc(a) + ' · NET</div><div class="a-btext"></div></div>' +
+      '<div class="a-box v-scripture" id="be-b"><div class="a-blabel">' + esc(b) + ' · NET</div><div class="a-btext"></div></div></div>' +
+      '<div class="wt-links" style="margin:10px 0 13px"><span class="a-tag">' + esc(SRC[r[4]] + " · " + STR[r[5]].toLowerCase()) + '</span><span class="a-tag">' + esc(note(r)) + "</span>" +
+      (r[4] === "e" ? '<a class="a-lnk" href="' + ECHO + encodeURIComponent(r[6]) + '/">Open the Echoes of Revelation entry ›</a>' : "") + "</div>";
+    net(a, PAIR.querySelector("#be-a")); net(b, PAIR.querySelector("#be-b"));
+    PAIR.scrollIntoView({ block: "nearest" });
+  }
 })();

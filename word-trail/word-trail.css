@@ -330,3 +330,71 @@
 .jayms-word-trail .wt-wsl{flex:0 0 auto;font-size:13px;white-space:nowrap}
 .jayms-word-trail .wt-gr .wt-wsl{color:var(--blue)}
 .jayms-word-trail .wt-pyr .ct.on{fill:var(--ink-bright);font-weight:700}
+
+/* ---- where it lands: every New Testament book, three sources ----
+   A line takes the color of the Old Testament group it starts in. The stroke says how strong the link is:
+   solid strong, dashed medium, dotted light. The same seven group colors run the Book Echoes circle. */
+.jayms-word-trail .g-law,.jayms-book-echoes .g-law{--wt-c:var(--rust)}
+.jayms-word-trail .g-hist,.jayms-book-echoes .g-hist{--wt-c:var(--olive)}
+.jayms-word-trail .g-wis,.jayms-book-echoes .g-wis{--wt-c:var(--gold)}
+.jayms-word-trail .g-pro,.jayms-book-echoes .g-pro{--wt-c:var(--blue)}
+.jayms-word-trail .g-gos,.jayms-book-echoes .g-gos{--wt-c:var(--aramaic)}
+.jayms-word-trail .g-paul,.jayms-book-echoes .g-paul{--wt-c:var(--lavender)}
+.jayms-word-trail .g-gen,.jayms-book-echoes .g-gen{--wt-c:var(--ink-soft)}
+.jayms-word-trail .wt-flow .ln{fill:none;stroke:var(--wt-c);stroke-linecap:round}
+.jayms-word-trail .wt-flow .ln.s3{stroke-width:2;stroke-opacity:.95}
+.jayms-word-trail .wt-flow .ln.s2{stroke-width:1.3;stroke-opacity:.8;stroke-dasharray:6 4}
+.jayms-word-trail .wt-flow .ln.s1{stroke-width:1;stroke-opacity:.75;stroke-dasharray:1 4}
+.jayms-word-trail .wt-flow .l-sel{stroke:var(--ink-bright);stroke-width:3.2}
+.jayms-word-trail .wt-flow text[class^="g-"],.jayms-word-trail .wt-flow text[class*=" g-"]{fill:var(--wt-c)}
+.jayms-word-trail .wt-flow text.dim{fill:var(--muted);opacity:.45}
+.jayms-word-trail .wt-flow text.nt{fill:var(--blue)}
+.jayms-word-trail .wt-gline.s3,.jayms-word-trail .wt-gline.s2,.jayms-word-trail .wt-gline.s1{border-top:2px solid var(--ink-soft)}
+.jayms-word-trail .wt-gline.s2{border-top-style:dashed !important}
+.jayms-word-trail .wt-gline.s1{border-top-style:dotted !important}
+.jayms-word-trail .wt-ntrow{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}
+.jayms-word-trail .wt-ntb{cursor:pointer}
+.jayms-word-trail .wt-ntb.none{opacity:.55}
+.jayms-word-trail .wt-ntb.on{border-color:var(--blue);color:var(--ink-bright);opacity:1}
+.jayms-word-trail .wt-secn{text-transform:none;letter-spacing:0;font-size:12px;margin-left:8px;color:var(--muted)}
+@media (max-width:760px){.jayms-word-trail .wt-ntrow{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.jayms-word-trail .wt-ntb{flex:0 0 auto}}
+.jayms-word-trail .wt-ntb.on{background:var(--paper-deeper);border-color:var(--blue);color:var(--ink-bright)}
+
+/* ---- Book Echoes: its own section. The mount carries .jayms-word-trail too, so it shares the controls,
+   lists and verse boxes above; only the circle is its own. ---- */
+.jayms-book-echoes .be-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:0 0 6px}
+.jayms-book-echoes .be-pick{display:flex;align-items:center;gap:10px}
+.jayms-book-echoes .be-lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.jayms-book-echoes .be-pick select{width:auto;min-width:220px;padding:9px 12px;font-size:15px}
+.jayms-book-echoes .be-head .wt-ctl{margin:0}
+.jayms-book-echoes .be-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start;margin:8px 0 14px}
+.jayms-book-echoes .be-circle{min-width:0}
+.jayms-book-echoes .be-svg{display:block;width:100%;height:auto;max-width:860px;margin:0 auto}
+.jayms-book-echoes .be-rib{fill:var(--wt-c);fill-opacity:.62;stroke:var(--paper);stroke-width:.4;cursor:pointer;transition:fill-opacity .15s}
+.jayms-book-echoes .be-rib:hover{fill-opacity:.9}
+.jayms-book-echoes .be-rib.dim{fill-opacity:.16}
+.jayms-book-echoes .be-rib.on{fill-opacity:.95}
+.jayms-book-echoes .be-arc{cursor:pointer;outline:none}
+.jayms-book-echoes .be-arc .hit{fill:transparent}
+.jayms-book-echoes .be-arc .seg{fill:var(--wt-c)}
+.jayms-book-echoes .be-arc.none .seg{fill:var(--line)}
+.jayms-book-echoes .be-arc.src .seg{fill:var(--ink-bright)}
+.jayms-book-echoes .be-arc text{fill:var(--ink-soft);font-family:inherit;font-size:13px}
+.jayms-book-echoes .be-arc.none text{fill:var(--muted);opacity:.55}
+.jayms-book-echoes .be-arc.src text,.jayms-book-echoes .be-arc.on text{fill:var(--ink-bright);font-weight:700}
+.jayms-book-echoes .be-arc:hover text,.jayms-book-echoes .be-arc:focus text{fill:var(--ink-bright)}
+.jayms-book-echoes .be-tops{display:flex;flex-direction:column;gap:5px;max-height:560px;overflow-y:auto;padding-right:4px}
+.jayms-book-echoes .be-top{display:flex;align-items:center;gap:8px;justify-content:flex-start;text-align:left;cursor:pointer}
+.jayms-book-echoes .be-top i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--wt-c);flex:0 0 auto}
+.jayms-book-echoes .be-top .a-n{margin-left:auto}
+.jayms-book-echoes .be-top.on{border-color:var(--wt-c);background:var(--paper-deeper);color:var(--ink-bright)}
+.jayms-book-echoes .be-legend{margin-top:14px}
+.jayms-book-echoes .wt-head{background:var(--paper-deeper);cursor:default;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.jayms-book-echoes .be-more{justify-content:center;color:var(--gold)}
+@media (max-width:900px){
+  .jayms-book-echoes .be-wrap{grid-template-columns:1fr}
+  .jayms-book-echoes .be-tops{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;max-height:none}
+  .jayms-book-echoes .be-top{flex:0 0 auto}
+  .jayms-book-echoes .be-arc text{font-size:17px}
+}
+.jayms-book-echoes .be-wrap > *{min-width:0}

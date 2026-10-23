@@ -17,6 +17,7 @@ changes while it is being built. Nothing here is a snippet.
 | `links.json` | The 362 graded links of Echoes of Revelation, as verse ids | JAYMS.COM, Echoes of Revelation |
 | `clock.json` | When each book was written (dates A), the surviving copies, find dates, translations and print, Dead Sea Scrolls by verse | Bible Knowledge Commentary dates as Logos's timeline shows them; Wikipedia pages cited per item; ETCBC/dss (Abegg), CC BY-NC 4.0 |
 | `world.json` | People, events, the world's polities, famous moments, hinges | Theographic Bible Metadata, **CC BY-SA 4.0** (people); JAYMS.COM Old Testament Timeline (events); Cliopatria / Seshat, CC BY 4.0 (world); Wikipedia pages cited per moment |
+| `intertext/b0.json` ... `b65.json` | One file per book: every link with one end in that book, as [this start, this end, other start, other end, source, strength, extra]. Sources: q shared wording, e graded echo, x cross reference | UBS Parallel Passages Database, (c) 2023 United Bible Societies, **CC BY-SA 4.0** (github.com/ubsicap/ubs-open-license), Old Testament references moved from Hebrew to English numbering; JAYMS.COM Echoes of Revelation; OpenBible.info cross references, **CC BY** (via scrollmapper/bible_databases), 5 votes or more |
 | `word-trail.css` | The whole stylesheet, every rule scoped to `.jayms-word-trail`, tokens from global styles 90171 only | |
 | `word-trail.js` | The whole tool, no library | |
 | `build/` | The scripts that made the data. `b2_lxx.py` imports `lxx_map.py` from the study workstation (`work/study-workstation/scripts/`) | |
@@ -25,7 +26,8 @@ changes while it is being built. Nothing here is a snippet.
 
 - The Greek Old Testament counts are statistical (a word-alignment model over verse pairs). Swete's
   transcription has scanning errors and no Ecclesiastes.
-- Graded links exist for Revelation only, because Echoes of Revelation is the only graded set so far.
+- Graded links exist for Revelation only, because Echoes of Revelation is the only graded set so far. Shared wording and cross references cover every book.
+- Cross-reference strength is reader votes on OpenBible.info, not a scholar's grade. The page says which source each line comes from.
 - Dates B has no source yet; its layer stays greyed.
 - interlinear-data gives the one-letter Hebrew prefixes (and, the, to, in, like) the numbers of other
   words (H2050, H1886, H3807, H871, H3509). The build filters them; the source files are untouched.
