@@ -154,6 +154,16 @@
   function ntUses(ge) { return ge ? ge.v.filter(function (i) { return i >= NTS; }) : []; }
   function bookCount(ids) { var o = {}; ids.forEach(function (i) { o[bookOf(i)] = 1; }); return Object.keys(o).length; }
 
+  // the followed Greek word, laid out the way the Hebrew word is: the word, what it means, how often in the New Testament
+  function greekBar(c) {
+    var g = c.gEntry;
+    if (!g) return '<div class="wt-wb wt-empty"><p class="wt-def wt-wb-def">No Greek word to follow.</p></div>';
+    var nt = ntUses(g), ntv = uniq(nt);
+    return '<div class="wt-wb wt-gbar"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="grc">' + esc(g.l) + '</span><span class="wt-gloss">' + esc(g.t || g.x) + (g.g ? " · " + esc(g.g) : "") + "</span></div>" +
+      '<div class="wt-code">' + esc(c.g) + (g.t ? " · " + esc(g.x) : "") + (g.p ? " · " + esc(g.p) : "") + "</div></div>" +
+      '<p class="wt-def wt-wb-def">' + esc(g.d) + "</p>" +
+      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(nt.length) + "</span> uses in <span class=\"wt-n\">" + fmt(ntv.length) + "</span> verses across <span class=\"wt-n\">" + bookCount(ntv) + "</span> New Testament books.</p></div>";
+  }
   function renderSide() {
     var c = CUR, e = c.entry;
     if (!e) { GREEK.innerHTML = ""; SIDE.innerHTML = '<div class="a-box v-witness"><div class="a-blabel">Not found</div><div class="a-btext">No word has the number ' + esc(c.w) + ".</div></div>"; return; }
@@ -167,7 +177,8 @@
     h += '<div class="a-box v-plain wt-empty"><div class="a-blabel">First, in plain English</div><div class="a-btext">Not written yet for this word.</div></div>';
     var gh = wh;
     if (c.heb) {
-      gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">In the Greek Old Testament</div><div class="wt-rrow">';
+      gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">The Greek word</div>' + greekBar(c) +
+        '<div class="wt-sub">How the Greek Old Testament renders ' + esc(e.t || e.x) + '. Pick one to follow it into the New Testament.</div><div class="wt-rrow">';
       if (!c.rend.length) gh += '<div class="a-btext wt-empty">The Greek Old Testament gives no settled rendering for this word.</div>';
       var tot = c.rend.reduce(function (a, r) { return a + r[2]; }, 0);
       c.rend.forEach(function (r) {
@@ -178,7 +189,7 @@
           '<span class="wt-bar"><span style="width:' + Math.max(2, Math.round(100 * r[2] / tot)) + '%"></span></span></button>';
       });
       gh += '</div><div class="a-bnote">' + (c.fn ? "This is a grammar word. Its counts mostly follow sentence structure, not translation choice, so read them loosely. " : "") +
-        'How often the Greek Old Testament gives each Greek word for this Hebrew word. Pick one to follow it into the New Testament.' +
+        'The counts are how often the Greek Old Testament gives each Greek word for this Hebrew word.' +
         (c.missing.length ? " Not counted: " + esc(c.missing.join(", ")) + ", which the open Greek text used here does not have." : "") + "</div></div>";
     } else {
       gh += '<div class="a-box v-wording wt-strip"><div class="a-blabel">Behind it in the Hebrew</div><div class="wt-rrow">';
@@ -191,10 +202,6 @@
       });
       gh += '</div><div class="a-bnote">The Hebrew words the Greek Old Testament translates with this Greek word. Pick one to start from the Hebrew.</div></div>';
     }
-    var nt = ntUses(c.gEntry), ntv = uniq(nt);
-    h += '<div class="a-box v-witness' + (nt.length ? "" : " wt-empty") + '"><div class="a-blabel">Into the New Testament</div><div class="a-btext">' +
-      (c.gEntry ? '<span lang="grc">' + esc(c.gEntry.l) + "</span> stands <span class=\"wt-n\">" + fmt(nt.length) + "</span> times in <span class=\"wt-n\">" + fmt(ntv.length) +
-        "</span> verses across <span class=\"wt-n\">" + bookCount(ntv) + "</span> New Testament books." : "No Greek word to follow.") + "</div></div>";
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h; GREEK.innerHTML = gh;
     [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-g]"), function (b) {
