@@ -406,3 +406,8 @@
 .jayms-book-echoes .be-grp:first-child{margin-top:0}
 .jayms-book-echoes .be-bk.on{border-color:var(--ink-bright);background:var(--paper-deeper);color:var(--ink-bright)}
 @media (min-width:901px) and (max-width:1180px){.jayms-book-echoes .be-wrap{grid-template-columns:190px minmax(0,1fr) 220px}}
+@media (max-width:900px){
+  .jayms-book-echoes .be-books{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;max-height:none;padding-bottom:4px}
+  .jayms-book-echoes .be-bk{flex:0 0 auto}
+  .jayms-book-echoes .be-grp{display:none}
+}

@@ -929,7 +929,7 @@
         g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } });
       });
       STAT.innerHTML = "<b>" + esc(BOOKS[E.b].n) + "</b> is tied to <b>" + targets.length + "</b> other books in <b>" + fmt(list.length) + "</b> links with these filters. " +
-        "Pick a book on the left to start from it. Pick a ribbon, or a book on the circle or in Most links, to list the links between the two.";
+        "Pick a book in the Book list to start from it. Pick a ribbon, or a book on the circle or in Most links, to list the links between the two.";
       var top = targets.slice().sort(function (a, b) { return by[b].length - by[a].length; });
       SIDE.innerHTML = '<div class="wt-sec">Most links</div><div class="be-tops">' + top.map(function (t) {
         return '<button class="a-chip be-top g-' + grp(t) + (E.t === t ? " on" : "") + '" data-t="' + t + '"><i></i>' + esc(BOOKS[t].n) + ' <span class="a-n">' + fmt(by[t].length) + "</span></button>";
