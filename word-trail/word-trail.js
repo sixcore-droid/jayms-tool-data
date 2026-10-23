@@ -73,6 +73,7 @@
 
   // ---------- layout ----------
   MOUNT.innerHTML =
+    '<nav class="wt-trail" id="wt-trail" aria-label="Words looked at in this session"></nav>' +
     '<div class="wt-find">' +
       '<label for="wt-q" class="screen-reader-text" style="position:absolute;left:-9999px">Find a word</label>' +
       '<input id="wt-q" class="a-search" type="search" autocomplete="off" spellcheck="false" placeholder="A Hebrew or Greek word, a transliteration, an English meaning, or a Strong\'s number (H776, G1093)">' +
@@ -128,11 +129,15 @@
       }
       SUGG.innerHTML = out.length ? "" : '<span class="a-empty" style="padding:4px 0">No word matches that.</span>';
       out.slice(0, 16).forEach(function (r) {
-        var b = el("button", "a-chip", '<span lang="' + (r[0][0] === "H" ? "he" : "grc") + '">' + esc(r[1]) + "</span> " + esc(r[2]) + (r[3] ? " · " + esc(r[3]) : "") +
+        var b = el("button", "a-chip wt-sg " + (r[0][0] === "H" ? "wt-he" : "wt-gr") + (r[0] === S.w && (r[8] || null) === (r[8] ? S.fb : null) ? " on" : ""), '<span class="wt-sgl" lang="' + (r[0][0] === "H" ? "he" : "grc") + '">' + esc(r[1]) + "</span> " + esc(r[2]) + (r[3] ? " · " + esc(r[3]) : "") +
           ' <span class="a-n">' + r[0] + " · " + fmt(r[5]) + "</span>");
         b.title = r[4];
         if (r[8]) b.innerHTML = '<span class="a-n">Fact Book</span> ' + esc(r[2]) + (r[3] ? " · " + esc(r[3]) : "") + ' <span class="a-n">' + r[0] + "</span>";
-        b.addEventListener("click", function () { go(r[0], r[8]); SUGG.hidden = true; Q.value = ""; Q.blur(); });
+        // the list stays up after a pick, so the next word is one click away; it changes only on a new search
+        b.addEventListener("click", function () {
+          [].forEach.call(SUGG.querySelectorAll(".wt-sg"), function (x) { x.classList.remove("on"); }); b.classList.add("on");
+          go(r[0], r[8]);
+        });
         SUGG.appendChild(b);
       });
       SUGG.hidden = false;
@@ -640,12 +645,36 @@
   }
 
   // ---------- render ----------
+  // ---------- the trail: every word looked at in this visit, oldest first ----------
+  var TRAIL = [];
+  try { TRAIL = JSON.parse(sessionStorage.getItem("jayms.wordtrail.trail") || "[]") || []; } catch (x) { TRAIL = []; }
+  function addTrail(c) {
+    if (!c.entry) return;
+    var item = { w: c.w, l: c.entry.l, n: c.entry.t || c.entry.x, fb: S.fb || null, from: c.from || null };
+    TRAIL = TRAIL.filter(function (t) { return !(t.w === item.w && (t.fb || null) === item.fb); });
+    TRAIL.push(item); if (TRAIL.length > 24) TRAIL = TRAIL.slice(-24);
+    try { sessionStorage.setItem("jayms.wordtrail.trail", JSON.stringify(TRAIL)); } catch (x) {}
+    drawTrail();
+  }
+  function drawTrail() {
+    var nav = document.getElementById("wt-trail");
+    if (!TRAIL.length) { nav.innerHTML = ""; return; }
+    nav.innerHTML = '<span class="wt-trl">Your trail</span>' + TRAIL.map(function (t, i) {
+      var on = t.w === S.w && (t.fb || null) === (S.fb || null);
+      return (i ? '<span class="wt-trs" aria-hidden="true">›</span>' : "") + '<button class="wt-tri ' + (t.w.charAt(0) === "H" ? "wt-he" : "wt-gr") + (on ? " on" : "") + '" data-i="' + i + '"' + (on ? ' aria-current="true"' : "") + '>' +
+        '<span lang="' + (t.w.charAt(0) === "H" ? "he" : "grc") + '">' + esc(t.l) + "</span> " + esc(t.n) + "</button>";
+    }).join("") + '<button class="a-clear wt-trc">Clear the trail</button>';
+    [].forEach.call(nav.querySelectorAll(".wt-tri"), function (b) {
+      b.addEventListener("click", function () { var t = TRAIL[+b.getAttribute("data-i")]; go(t.w, t.fb, t.from); });
+    });
+    nav.querySelector(".wt-trc").addEventListener("click", function () { TRAIL = []; try { sessionStorage.removeItem("jayms.wordtrail.trail"); } catch (x) {} drawTrail(); });
+  }
   function render() {
     MOUNT.classList.toggle("wt-wide", S.view === "uses");
     [].forEach.call(MOUNT.querySelectorAll(".wt-tab"), function (b) { var on = b.getAttribute("data-view") === S.view; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     MAIN.innerHTML = '<div class="wt-loading">Loading…</div>';
     load().then(function () {
-      renderSide();
+      renderSide(); addTrail(CUR);
       ({ uses: viewUses, lands: viewLands, written: viewWritten, happened: viewHappened })[S.view]();
     }).catch(function (err) {
       MAIN.innerHTML = '<div class="a-box v-not"><div class="a-blabel">Did not load</div><div class="a-btext">The word data did not load. Reload the page to try again.</div></div>';
