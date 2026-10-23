@@ -785,8 +785,8 @@
           var card = MAIN.querySelector("#hp-card");
           card.innerHTML = '<div class="wt-pair"><div class="a-box v-witness"><div class="a-blabel">' + esc(st.n) + "</div><div class=\"a-btext\"><b>" + esc(it.n) + "</b><br>" + esc(it.d || sp2(it.a, it.b)) +
             (it.b - it.a >= 1 ? " · " + fmt(Math.round(it.b - it.a)) + " years" : "") + (it.ref ? "<br>" + esc(it.ref) : "") + (it.more ? '<br><span class="hp-more">' + esc(it.more) + "</span>" : "") + "</div>" +
-            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">' + (/jayms\.com\/bible-study-tools/.test(it.url) ? "Open it on the timeline ›" : "Read the post ›") + "</a>" : "") +
-            '<div class="a-bnote">Dates: ' + esc(it.note ? it.note.replace(/^vault: /, "") + ", in the study notes" : st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
+            (it.url ? '<a class="a-lnk" href="' + esc(it.url) + '">' + (it.lab ? esc(it.lab) + " ›" : /jayms\.com\/bible-study-tools/.test(it.url) ? "Open it on the timeline ›" : "Read the post ›") + "</a>" : "") +
+            '<div class="a-bnote">Dates: ' + esc(it.note ? (/^vault: /.test(it.note) ? it.note.replace(/^vault: /, "") + ", in the study notes" : it.note) : st.src) + "</div>" + (it.ref ? '<div class="a-btext" id="hp-v" style="margin-top:10px"></div>' : "") + "</div>" +
             '<div class="a-box v-explain"><div class="a-blabel">Meanwhile</div><ul class="wt-meanwhile">' + (meanwhile.length ? meanwhile.slice(0, 16).map(function (m) { return "<li><span><small>" + esc(m[0]) + ":</small> " + esc(m[1]) + "</span></li>"; }).join("") : "<li>Nothing else on the chart overlaps it.</li>") + "</ul></div></div>";
           if (it.ref) net(it.ref).then(function (t) { var v = card.querySelector("#hp-v"); if (v) v.textContent = t ? t + " (" + it.ref + ", NET)" : ""; });
         }

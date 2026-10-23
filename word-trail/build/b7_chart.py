@@ -105,7 +105,8 @@ bible = [{'n': t['n'], 'a': t['y'][0], 'b': t['y'][1], 't': 'seg' if t['y'][1] >
 bible += [{'n': w['n'] + ' copied', 'a': w['copy'][0], 'b': w['copy'][1], 't': 'seg' if w['copy'][1] > w['copy'][0] else 'pt', 'd': 'Copied ' + ('%d' % w['copy'][0]) + ('' if w['copy'][1] == w['copy'][0] else ' to %d' % w['copy'][1]) + '; found ' + str(w['found']) + '. ' + w['has'], 'url': w['src']} for w in CK['witness']]
 stream('bible', 'The Bible copied and translated', 'olive', bible, 'Standard dates, not yet checked in Logos', '')
 stream('fathers', 'The church fathers', 'lavender', crow('fathers'), "This site's Ante-Nicene Age and Gnostic Crisis timelines", CDAT.AN)
-stream('church', 'The church divides', 'rust', crow('church'), "This site's Crusades timeline and the Denominational Map", CDAT.CR)
+stream('church', 'The Crusades and their memory', 'rust', crow('church'), "This site's Crusades timeline", CDAT.CR)
+stream('denom', 'Denominations begin and split', 'gold', crow('denom'), 'The Denominational Map, in the study notes', '')
 
 # points that belong to no stream above: births, deaths, battles before the kingdom split
 pts = [it(r, 'pt') for r in rows if r['d'] < 1 and r['a'] < -5 and not r['part'].startswith(('Southern', 'Northern')) and r['n'] != 'The Great Flood']
@@ -115,6 +116,9 @@ stream('events', 'Events in Scripture', 'ink-soft', pts, THEO, TSRC)
 tp = [{'n': e['n'], 'a': e['a'], 'b': e['b'], 't': 'flag', 'ref': e.get('ref', '')} for e in W['events']['rows']]
 stream('turning', 'Turning points, on this site\'s dates', 'rust', tp, W['events']['source'], W['events']['src'])
 
+import stoic_data as SD
+stoics = [{'n': r[0], 'a': r[1], 'b': r[2], 't': 'seg' if r[2] > r[1] else 'pt', 'd': r[3], 'more': r[4], 'note': r[5], 'url': SD.SR, 'lab': 'Open the Stoic Reader'} for r in SD.LIVES]
+stream('stoics', 'The Stoics', 'aramaic', stoics, 'Stanford and Internet Encyclopedias of Philosophy', SD.SEP)
 COL = {'egypt': 'rust', 'meso': 'blue', 'anatolia': 'olive', 'persia': 'lavender', 'greece': 'aramaic', 'rome': 'rust',
        'china': 'gold', 'india': 'olive', 'africa': 'aramaic', 'americas': 'lavender'}
 for lane in W['world']['lanes']:
@@ -133,8 +137,10 @@ SOURCES = [
   ["The apostles and Paul: this site's Twelve Apostles and Apostle Paul timelines.", 'https://jayms.com/bible-study-tools-2/the-apostle-paul-timeline-and-letters/'],
   ["The New Testament gathered: this site's New Testament Canon timeline.", 'https://jayms.com/bible-study-tools-2/how-we-got-the-new-testament-canon-timeline/'],
   ["The church fathers: this site's Ante-Nicene Age and Gnostic Crisis timelines.", 'https://jayms.com/bible-study-tools-2/the-ante-nicene-age-timeline/'],
-  ["The church divides: this site's Crusades timeline and the Denominational Map in the study notes.", 'https://jayms.com/bible-study-tools-2/the-crusades-full-timeline/'],
+  ["The Crusades and their memory: this site's Crusades timeline.", 'https://jayms.com/bible-study-tools-2/the-crusades-full-timeline/'],
+  ['Denominations begin and split: The Denominational Map in the study notes, Logos-verified (Olson, Needham, McGuckin, Ladouceur, Fairbairn, Bray, Beeke, Wengert, Synan), with current figures web-verified.', ''],
   ['The nations: Cliopatria, Seshat Global History Databank, CC BY 4.0.', 'https://github.com/Seshat-Global-History-Databank/cliopatria'],
+  ['The Stoics: Stanford Encyclopedia of Philosophy (Stoicism, Seneca, Epictetus, Marcus Aurelius) and the Internet Encyclopedia of Philosophy (Chrysippus, Musonius Rufus, Stoicism).', 'https://plato.stanford.edu/entries/stoicism/'],
   ['Famous moments, translations and manuscripts: standard dates, not yet checked in Logos.', ''],
   ["The layout follows Adams' Synchronological Chart of Universal History (1871).", 'https://www.adamschart.org/']]
 json.dump({'streams': S, 'range': [-4004, 2026], 'eras': ERAS, 'sources': SOURCES,

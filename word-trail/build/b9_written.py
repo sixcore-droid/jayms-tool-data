@@ -110,10 +110,13 @@ other = [lb('Gospel of Thomas', 50, 150, 'Mid-1st to mid-2nd century, argued', '
          lb('Gospel of Philip', 200, 299, '3rd century', 'Valentinian; the famous Mary Magdalene line sits on a hole in the page.')]
 stream('other', 'Forged, with a different Christ', 'rust', other, LB)
 
+import stoic_data as SD
+sw = [{'n': r[0], 'a': r[1], 'b': r[2], 't': 'seg' if r[2] > r[1] else 'pt', 'd': r[3], 'more': r[4], 'note': r[5], 'url': SD.SR, 'lab': 'Open the Stoic Reader'} for r in SD.WORKS]
+stream('stoic', 'Stoic writings', 'lavender', sw, 'Stanford Encyclopedia of Philosophy')
 tr = [{'n': t['n'], 'a': t['y'][0], 'b': t['y'][1], 't': 'seg' if t['y'][1] > t['y'][0] else 'pt', 'd': t['note'], 'url': t.get('src', '')} for t in K['translations']]
 stream('trans', 'Translations', 'lavender', [x for x in tr if x['a'] < 1450], 'Standard dates, not yet checked in Logos')
 stream('print', 'Print and modern editions', 'rust', [x for x in tr if x['a'] >= 1450], 'Standard dates, not yet checked in Logos')
-ORDER = ['period', 'ot', 'second', 'nt', 'honest', 'forged', 'other', 'canon', 'rabbinic', 'copies', 'found', 'trans', 'print']
+ORDER = ['period', 'ot', 'second', 'stoic', 'nt', 'honest', 'forged', 'other', 'canon', 'rabbinic', 'copies', 'found', 'trans', 'print']
 S.sort(key=lambda x: ORDER.index(x['k']))
 ERAS = [['Full view', -2200, 2026], ['Torah to the kings', -1600, -900], ['Prophets and exile', -800, -400], ['The Second Temple', -560, 80],
         ['The New Testament', 40, 110], ['The other gospels', 40, 420], ['Mishnah, Talmud, Midrash', 150, 820], ['Gathered and copied', 90, 1100], ['Print to today', 1370, 2026]]
@@ -128,6 +131,7 @@ SOURCES = [['Old Testament written: Bible Knowledge Commentary dates, as shown i
            ["New Testament written and gathered: this site's Apostle Paul, Twelve Apostles and New Testament Canon timelines.", 'https://jayms.com/bible-study-tools-2/how-we-got-the-new-testament-canon-timeline/'],
            ["Second Temple writings: this site's Which Book of Enoch? post, the Lost Books draft and the Second Temple Judaism study note.", 'https://jayms.com/book-of-enoch/'],
            ['The other gospels, acts and letters: the Lost Books drafts in the study notes (Ehrman and Plese, Elliott, Metzger, Bruce, Kruger, DeConick, Vuong, Bernhard, Askeland, Sabar).', ''],
+           ['Stoic writings: Stanford Encyclopedia of Philosophy (Seneca, Epictetus, Marcus Aurelius).', 'https://plato.stanford.edu/entries/seneca/'],
            ['Mishnah, Talmud and Midrash: Strack and Stemberger, Introduction to the Talmud and Midrash, 2nd English ed. (Fortress, 1996), as the study notes record it.', ''],
            ['Which verses survive in the Dead Sea Scrolls: ETCBC/dss, Martin Abegg\'s data, CC BY-NC 4.0.', 'https://github.com/ETCBC/dss'],
            ['Manuscripts, find dates, translations and print: standard dates, not yet checked in Logos.', '']]
