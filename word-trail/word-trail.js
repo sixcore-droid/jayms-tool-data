@@ -270,12 +270,16 @@
       ntb.forEach(function (b, i) { var x = spread(ntb, (c.heb ? mid + 18 : L + 8), R - 8, i); nodes.push({ b: b, x: x, y: tierY((x - L) / (R - L)), from: c.heb ? [gx, gy] : [apx, apy], t: "nt" }); });
       var sel = nodes.filter(function (n) { return n.b === S.book; })[0];
       var vs = sel ? byBook[sel.b] : [];
-      var fan = "", dots = "", selLine = "";
+      var fan = "", dots = "", selLine = "", step = Math.max(1, Math.ceil(vs.length / 90));
       vs.forEach(function (i, k) {
         var x = spread(vs, L, R, k);
         fan += "M" + sel.x.toFixed(1) + " " + sel.y.toFixed(1) + "L" + x.toFixed(1) + " " + base;
         if (i === S.v) selLine = "M" + sel.x.toFixed(1) + " " + sel.y.toFixed(1) + "L" + x.toFixed(1) + " " + base;
         if (vs.length <= 220) dots += '<circle class="vd' + (i === S.v ? " on" : "") + '" cx="' + x.toFixed(1) + '" cy="' + base + '" r="' + (i === S.v ? 5 : 2.6) + '"></circle>';
+        if (k % step === 0 || i === S.v) {
+          var cv = refOf(i).split(" ").pop();
+          dots += '<text class="vn' + (i === S.v ? " on" : "") + '" x="' + x.toFixed(1) + '" y="' + (base + 10) + '" transform="rotate(60 ' + x.toFixed(1) + " " + (base + 10) + ')">' + cv + "</text>";
+        }
       });
       var links = nodes.map(function (n) {
         var w = (1 + 9 * byBook[n.b].length / max).toFixed(2), on = n.b === S.book;
@@ -290,8 +294,9 @@
           '<text class="ct" x="' + n.x.toFixed(1) + '" y="' + (n.y + r + 13).toFixed(1) + '" text-anchor="middle">' + byBook[n.b].length + "</text></g>";
       }).join("");
       var greek = c.heb && c.gEntry && ntb.length ? '<path class="lk t-grk" stroke-width="4" d="M' + apx + " " + apy + "Q" + apx + " " + gy + " " + gx.toFixed(1) + " " + gy + '"></path>' +
-        '<circle class="gn" cx="' + gx.toFixed(1) + '" cy="' + gy + '" r="9"></circle><text class="gl" x="' + gx.toFixed(1) + '" y="' + (gy - 18) + '" text-anchor="middle" lang="grc">' + esc(c.gEntry.l) + "</text>" +
-        '<text class="lbl" x="' + gx.toFixed(1) + '" y="' + (gy + 26) + '" text-anchor="middle">GREEK OLD TESTAMENT</text>' : "";
+        '<circle class="gn" cx="' + gx.toFixed(1) + '" cy="' + gy + '" r="9"></circle><text class="gl" x="' + gx.toFixed(1) + '" y="' + (gy - 16) + '" text-anchor="middle" lang="grc">' + esc(c.gEntry.l) + "</text>" +
+        '<text class="apg" x="' + (gx + 16).toFixed(1) + '" y="' + (gy + 5) + '">' + esc(c.gEntry.x) + (c.gEntry.g ? " · " + esc(c.gEntry.g) : "") + "</text>" +
+        '<text class="lbl" x="' + gx.toFixed(1) + '" y="' + (gy + 30) + '" text-anchor="middle">GREEK OLD TESTAMENT</text>' : "";
       var h = '<div class="wt-panel">' +
         '<p class="wt-stat">' + (c.heb ? "<b>" + fmt(heb.length) + "</b> Old Testament verses in <b>" + Object.keys(byBook).filter(function (b) { return b < 39; }).length + "</b> books" : "") +
         (c.gEntry && nt.length ? (c.heb ? ", and " : "") + "<b>" + fmt(nt.length) + "</b> New Testament verses with <span lang=\"grc\">" + esc(c.gEntry.l) + "</span>" : "") +
@@ -301,13 +306,14 @@
           layerBtn("nt", "c-nt", "Hide New Testament books", "Show New Testament books", !c.g) +
           '<button class="wt-lay on" data-order="1">' + (S.order === "canon" ? "Order by date written" : "Order by canon") + "</button>" +
         "</div>" +
-        '<div class="wt-arcwrap"><svg class="wt-pyr" viewBox="0 0 ' + W + " " + (base + 34) + '" role="img" aria-label="The word at the top, a line to each book that uses it, and the chosen book\'s verses along the bottom">' +
+        '<div class="wt-arcwrap"><svg class="wt-pyr" viewBox="0 0 ' + W + " " + (base + 72) + '" role="img" aria-label="The word at the top, a line to each book that uses it, and the chosen book\'s verses along the bottom">' +
           '<path class="fan t-' + (sel ? sel.t : "heb") + '" d="' + fan + '"></path>' + (selLine ? '<path class="sel" d="' + selLine + '"></path>' : "") +
           links + greek + nodeSvg + dots +
           '<circle class="apex" cx="' + apx + '" cy="' + apy + '" r="9"></circle>' +
-          '<text class="apl" x="' + apx + '" y="' + (apy - 20) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
-          '<text class="lbl" x="' + L + '" y="' + (base + 26) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + " verses").toUpperCase() : "") + "</text>" +
-          '<rect class="basehit" x="0" y="' + (base - 16) + '" width="' + W + '" height="34"></rect>' +
+          '<text class="apl" x="' + apx + '" y="' + (apy - 30) + '" text-anchor="middle" lang="' + lang(c.w) + '">' + esc(e.l) + "</text>" +
+          '<text class="apg" x="' + (apx + 18) + '" y="' + (apy + 5) + '">' + esc(e.x) + (e.g ? " · " + esc(e.g) : "") + "</text>" +
+          '<text class="lbl" x="' + L + '" y="' + (base + 62) + '">' + esc(sel ? (BOOKS[sel.b].n + " · " + vs.length + " verses").toUpperCase() : "") + "</text>" +
+          '<rect class="basehit" x="0" y="' + (base - 16) + '" width="' + W + '" height="60"></rect>' +
         "</svg></div>" +
         '<div class="wt-legend">' + (c.heb ? '<span class="c-heb"><i></i>Old Testament books</span><span class="c-grk"><i></i>Greek Old Testament word</span>' : "") +
         '<span class="c-nt"><i></i>New Testament books</span><span class="c-sel"><i></i>Selected verse</span><span id="wt-hovref"></span></div></div>' +

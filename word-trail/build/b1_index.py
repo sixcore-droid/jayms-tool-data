@@ -19,6 +19,7 @@ PREFIXNUM = {k: cons(LEX0[k]['strong']['lemma']) for k in ('H2050', 'H1886', 'H3
 # pass 1: English verse grid per book
 grid = []          # per book: {chapter: maxverse}
 tok = []           # (bookIdx, ec, ev, strong)
+gloss = collections.defaultdict(collections.Counter)   # strong -> English glosses as the interlinear gives them
 for bi, (name, slug, ab) in enumerate(BOOKS):
     f = files.get(slug) or files.get(slug.replace('songofsolomon','songofsongs'))
     d = json.load(open(f))
@@ -36,7 +37,11 @@ for bi, (name, slug, ab) in enumerate(BOOKS):
                 # and the compounds built on them (lakhen, lamah) carry the same borrowed number
                 if bi < 39 and s in PREFIXNUM and cons(w.get('lemma', '')) != PREFIXNUM[s]: continue
                 m = re.match(r'^([HG]?)0*(\d+)', s)
-                if m: tok.append((bi, ec, ev, (m.group(1) or ('H' if bi < 39 else 'G')) + m.group(2)))
+                if m:
+                    sid = (m.group(1) or ('H' if bi < 39 else 'G')) + m.group(2)
+                    tok.append((bi, ec, ev, sid))
+                    gl = (w.get('gloss') or '').replace('.', ' ').strip()
+                    if gl and not gl.startswith('('): gloss[sid][gl] += 1
     grid.append(dict(sorted(g.items())))
 # verse ids in canonical order
 vid = {}; n = 0; books_out = []
@@ -52,7 +57,7 @@ lex = json.load(open(IL/'lexicon.json'))
 shards = collections.defaultdict(dict)
 for s, ids in occ.items():
     e = (lex.get(s) or {}).get('strong') or {}
-    shards[s[0] + str(int(s[1:]) // 100)][s] = {"l": e.get("lemma",""), "x": e.get("xlit",""), "d": e.get("def",""), "p": e.get("pron",""), "v": sorted(ids)}
+    shards[s[0] + str(int(s[1:]) // 100)][s] = {"l": e.get("lemma",""), "x": e.get("xlit",""), "d": e.get("def",""), "p": e.get("pron",""), "g": (gloss[s].most_common(1)[0][0] if gloss[s] else ""), "v": sorted(ids)}
 (OUT/'words').mkdir(parents=True, exist_ok=True)
 for k, v in shards.items():
     json.dump(v, open(OUT/f'words/{k}.json', 'w'), ensure_ascii=False, separators=(',', ':'))
