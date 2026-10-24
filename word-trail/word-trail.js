@@ -879,7 +879,7 @@
   function save() { try { sessionStorage.setItem("jayms.bookechoes", JSON.stringify({ b: E.b, t: E.t })); } catch (e) {} }
 
   MOUNT.innerHTML = '<div class="be-head"><div class="wt-ctl" id="be-ctl"></div></div>' +
-    '<p class="wt-stat" id="be-stat"></p><div class="be-wrap"><div class="be-left"><div class="wt-sec">Book</div><div class="be-books" id="be-books"></div></div><div class="be-circle" id="be-circle"></div><div class="be-side" id="be-side"></div></div>' +
+    '<p class="wt-stat" id="be-stat"></p><div class="be-wrap"><div class="be-books" id="be-books" hidden></div><div class="be-circle" id="be-circle"></div><div class="be-side" id="be-side"></div></div>' +
     '<div id="be-pair"></div><div class="wt-list" id="be-list"></div>' +
     '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the links come from</div><div class="a-btext">' +
     "<b>Shared wording</b> is the UBS Parallel Passages Database: passages whose words match word by word, quotations among them. Strong means at least 40 percent of the words in one of the two verses match. " +
@@ -956,13 +956,13 @@
       CIRC.innerHTML = '<svg class="be-svg" viewBox="0 0 1000 1000" role="img" aria-label="' + esc(BOOKS[E.b].n) + ' and every book it is tied to">' + svg + "</svg>";
       [].forEach.call(CIRC.querySelectorAll(".be-rib"), function (p) { p.addEventListener("click", function () { E.t = +p.getAttribute("data-t"); E.pair = null; E.more = 0; save(); draw(); }); });
       [].forEach.call(CIRC.querySelectorAll(".be-arc"), function (g) {
-        function go() { var k = +g.getAttribute("data-b"); if (k === E.b) return; if (by[k] && E.t !== k) { E.t = k; E.pair = null; E.more = 0; save(); draw(); } else pickBook(k); }
+        // a book on the ring starts the chart from that book; a ribbon or Most links picks the book to compare
+        function go() { var k = +g.getAttribute("data-b"); if (k !== E.b) pickBook(k); }
         g.addEventListener("click", go);
-        g.addEventListener("dblclick", function () { pickBook(+g.getAttribute("data-b")); });
         g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } });
       });
       STAT.innerHTML = "<b>" + esc(BOOKS[E.b].n) + "</b> is tied to <b>" + targets.length + "</b> other books in <b>" + fmt(list.length) + "</b> links with these filters. " +
-        "Pick a book in the Book list to start from it. Pick a ribbon, or a book on the circle or in Most links, to list the links between the two.";
+        "Pick any book on the ring to start from it. Pick a ribbon, or a book in Most links, to list the links between the two.";
       var top = targets.slice().sort(function (a, b) { return by[b].length - by[a].length; });
       SIDE.innerHTML = '<div class="wt-sec">Most links</div><div class="be-tops">' + top.map(function (t) {
         return '<button class="a-chip be-top g-' + grp(t) + (E.t === t ? " on" : "") + '" data-t="' + t + '"><i></i>' + esc(BOOKS[t].n) + ' <span class="a-n">' + fmt(by[t].length) + "</span></button>";

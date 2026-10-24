@@ -367,7 +367,7 @@
 .jayms-book-echoes .be-lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .jayms-book-echoes .be-pick select{width:auto;min-width:220px;padding:9px 12px;font-size:15px}
 .jayms-book-echoes .be-head .wt-ctl{margin:0}
-.jayms-book-echoes .be-wrap{display:grid;grid-template-columns:220px minmax(0,1fr) 280px;gap:18px;align-items:start;margin:8px 0 14px}
+.jayms-book-echoes .be-wrap{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start;margin:8px 0 14px}
 .jayms-book-echoes .be-circle{min-width:0}
 .jayms-book-echoes .be-svg{display:block;width:100%;height:auto;max-width:860px;margin:0 auto}
 .jayms-book-echoes .be-rib{fill:var(--wt-c);fill-opacity:.62;stroke:var(--paper);stroke-width:.4;cursor:pointer;transition:fill-opacity .15s}
@@ -405,7 +405,7 @@
 .jayms-book-echoes .be-grp{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:10px 0 2px}
 .jayms-book-echoes .be-grp:first-child{margin-top:0}
 .jayms-book-echoes .be-bk.on{border-color:var(--ink-bright);background:var(--paper-deeper);color:var(--ink-bright)}
-@media (min-width:901px) and (max-width:1180px){.jayms-book-echoes .be-wrap{grid-template-columns:190px minmax(0,1fr) 220px}}
+@media (min-width:901px) and (max-width:1180px){.jayms-book-echoes .be-wrap{grid-template-columns:minmax(0,1fr) 230px}}
 @media (max-width:900px){
   .jayms-book-echoes .be-books{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;max-height:none;padding-bottom:4px}
   .jayms-book-echoes .be-bk{flex:0 0 auto}
@@ -468,3 +468,14 @@
 }
 .jayms-word-trail .hp-lab.odd{background:var(--paper-deeper)}
 .jayms-word-trail .hp-lab.thin{font-size:10.5px;color:var(--muted)}.jayms-word-trail .hp-lab.thin span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* brighter on black: ribbons in full site color, the others stay readable while one is picked */
+.jayms-book-echoes .be-books[hidden]{display:none !important}
+.jayms-book-echoes .be-rib{fill-opacity:.85;stroke:none}
+.jayms-book-echoes .be-rib:hover{fill-opacity:1}
+.jayms-book-echoes .be-rib.dim{fill-opacity:.55}
+.jayms-book-echoes .be-rib.on{fill-opacity:1}
+.jayms-book-echoes .be-arc.none .seg{fill:var(--border-bright)}
+.jayms-book-echoes .be-arc text{fill:var(--ink);font-size:14px}
+.jayms-book-echoes .be-arc.none text{fill:var(--ink-soft);opacity:.7}
+.jayms-book-echoes .be-arc:hover .seg{fill:var(--ink-bright)}
