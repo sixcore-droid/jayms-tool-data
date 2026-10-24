@@ -948,7 +948,7 @@
       });
       BOOKS.forEach(function (b, k) {
         var a = A[k], has = !!by[k] || k === E.b, mid = (a[0] + a[1]) / 2, deg = mid * 180 / Math.PI, flip = Math.cos(mid) < 0;
-        svg += '<g class="be-arc g-' + grp(k) + (k === E.b ? " src" : "") + (E.t === k ? " on" : "") + (has ? "" : " none") + '" data-b="' + k + '" tabindex="0" role="button" aria-label="' + esc(b.n + (by[k] ? ", " + by[k].length + " links" : "")) + '">' +
+        svg += '<g class="be-arc g-' + grp(k) + (k === E.b ? " src" : "") + (E.t === k ? " on" : "") + (E.t != null && E.t !== k && k !== E.b ? " dim2" : "") + (has ? "" : " none") + '" data-b="' + k + '" tabindex="0" role="button" aria-label="' + esc(b.n + (by[k] ? ", " + by[k].length + " links" : "")) + '">' +
           '<path class="hit" d="' + arcPath(a[0] - GAP / 2, a[1] + GAP / 2, R - 4, R + 46) + '"></path>' +
           '<path class="seg" d="' + arcPath(a[0], a[1], R + 2, R + (k === E.b ? 20 : 14)) + '"></path>' +
           '<text x="' + pt(mid, R + 26).split(" ")[0] + '" y="' + pt(mid, R + 26).split(" ")[1] + '" transform="rotate(' + (flip ? deg + 180 : deg).toFixed(1) + " " + pt(mid, R + 26) + ')" text-anchor="' + (flip ? "end" : "start") + '" dominant-baseline="middle">' + esc(b.a) + "</text></g>";

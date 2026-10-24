@@ -479,3 +479,25 @@
 .jayms-book-echoes .be-arc text{fill:var(--ink);font-size:14px}
 .jayms-book-echoes .be-arc.none text{fill:var(--ink-soft);opacity:.7}
 .jayms-book-echoes .be-arc:hover .seg{fill:var(--ink-bright)}
+
+/* ---- chart colors ----
+   The site's palette is built for type and boxes, and its olive, sage and gold read dull as data on black.
+   Charts and rings use their own brighter set, scoped to these tools only. Text and box colors are untouched. */
+.jayms-word-trail,.jayms-book-echoes{
+  --viz-red:#ff6b6b;--viz-orange:#ffa94d;--viz-yellow:#ffd43b;--viz-lime:#a9e34b;--viz-teal:#38d9a9;
+  --viz-blue:#4dabf7;--viz-violet:#da77f2;--viz-grey:#ced4da}
+.jayms-word-trail .g-law,.jayms-book-echoes .g-law{--wt-c:var(--viz-red)}
+.jayms-word-trail .g-hist,.jayms-book-echoes .g-hist{--wt-c:var(--viz-orange)}
+.jayms-word-trail .g-wis,.jayms-book-echoes .g-wis{--wt-c:var(--viz-yellow)}
+.jayms-word-trail .g-pro,.jayms-book-echoes .g-pro{--wt-c:var(--viz-blue)}
+.jayms-word-trail .g-gos,.jayms-book-echoes .g-gos{--wt-c:var(--viz-teal)}
+.jayms-word-trail .g-paul,.jayms-book-echoes .g-paul{--wt-c:var(--viz-violet)}
+.jayms-word-trail .g-gen,.jayms-book-echoes .g-gen{--wt-c:var(--viz-grey)}
+.jayms-word-trail .c-gold{--c:var(--viz-yellow)}.jayms-word-trail .c-olive{--c:var(--viz-lime)}.jayms-word-trail .c-rust{--c:var(--viz-red)}
+.jayms-word-trail .c-blue{--c:var(--viz-blue)}.jayms-word-trail .c-lavender{--c:var(--viz-violet)}.jayms-word-trail .c-aramaic{--c:var(--viz-teal)}
+.jayms-word-trail .c-ink-soft{--c:var(--viz-grey)}
+.jayms-word-trail .hp-split{stroke:var(--viz-yellow)}
+/* Book Echoes: picking a book in Most links leaves only its ribbon lit */
+.jayms-book-echoes .be-rib.dim{fill-opacity:.08}
+.jayms-book-echoes .be-rib.on{fill-opacity:1;stroke:var(--ink-bright);stroke-width:.8}
+.jayms-book-echoes .be-arc.dim2 .seg{opacity:.35}
