@@ -523,6 +523,8 @@
   var SRC = { q: "Shared wording", e: "Graded echo", x: "Cross reference" };
   var STR = { 3: "Strong", 2: "Medium", 1: "Light" };
   var SRCP = { q: "shared wording", e: "graded echoes", x: "cross references" };
+  // a list row names its source only when it is not a plain cross reference, the common case
+  function tagOf(r) { return (r[4] === "x" ? "" : SRC[r[4]].toLowerCase() + " · ") + STR[r[5]].toLowerCase(); }
   function grp(b) {
     return b < 5 ? "law" : b < 17 ? "hist" : b < 22 ? "wis" : b < 39 ? "pro" : b < 44 ? "gos" : b < 57 ? "paul" : "gen";
   }
@@ -583,7 +585,7 @@
         '<div class="wt-legend">' + ["law", "hist", "wis", "pro"].map(function (g) { return '<span class="g-' + g + '"><i></i>' + GRPN[g] + "</span>"; }).join("") + "</div></div>" +
         '<div id="wt-linkcard"></div>' +
         '<div class="wt-list">' + (list.length ? list.slice(0, 200).map(function (r) {
-          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (sel && sel.join() === r.join() ? " on" : "") + '" data-link="' + r.join() + '"><span>' + esc(rng(r[0], r[1]) + " ← " + rng(r[2], r[3])) + "</span></button>";
+          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (sel && sel.join() === r.join() ? " on" : "") + '" data-link="' + r.join() + '"><span>' + esc(rng(r[0], r[1]) + " ← " + rng(r[2], r[3])) + '</span><span class="a-tag">' + esc(tagOf(r)) + "</span></button>";
         }).join("") + (list.length > 200 ? '<div class="wt-li wt-empty"><span>The first 200 of ' + fmt(list.length) + ' are listed, strongest first.</span></div>' : "") : '<div class="wt-li wt-empty"><span>No link with these filters. Try showing light links, or every link.</span></div>') + "</div>" +
         '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the links come from</div><div class="a-btext">' +
         "<b>Shared wording</b> is the UBS Parallel Passages Database: passages whose words match, word by word, which is where the New Testament quotes the Old. Strong means at least 40 percent of the words in one of the two verses match. " +
@@ -873,6 +875,8 @@
   var GRPN = { law: "Law", hist: "History", wis: "Wisdom and poetry", pro: "Prophets", gos: "Gospels and Acts", paul: "Paul's letters", gen: "Hebrews to Revelation" };
   var SRC = { q: "Shared wording", e: "Graded echo", x: "Cross reference" }, SRCP = { q: "shared wording", e: "graded echoes", x: "cross references" };
   var STR = { 3: "Strong", 2: "Medium", 1: "Light" };
+  // a list row names its source only when it is not a plain cross reference, the common case
+  function tagOf(r) { return (r[4] === "x" ? "" : SRC[r[4]].toLowerCase() + " · ") + STR[r[5]].toLowerCase(); }
   function note(r) { return r[4] === "e" ? (r[5] === 3 ? "graded clear" : r[5] === 2 ? "graded probable" : "graded possible") : r[4] === "x" ? fmt(r[6]) + " reader votes" : r[6] + "% of the words match"; }
   var E = { b: 0, t: null, pair: null, src: { q: 1, e: 1, x: 1 }, st: { 3: 1, 2: 1, 1: 0 }, more: 0 };
   try { var saved = JSON.parse(sessionStorage.getItem("jayms.bookechoes") || "null"); if (saved && saved.b != null) { E.b = saved.b; E.t = saved.t; } } catch (e) {}
@@ -971,9 +975,9 @@
       // the list: one other book's links, or the strongest links from this book to all of them
       var rowsT = (E.t != null ? by[E.t] : list).slice().sort(function (a, b) { return b[5] - a[5] || (a[4] === "q" ? -1 : 0) - (b[4] === "q" ? -1 : 0) || a[0] - b[0]; });
       var lim = 150 + E.more * 300;
-      LIST.innerHTML = '<div class="wt-li wt-head"><span>' + (E.t != null ? esc(BOOKS[E.b].n + " and " + BOOKS[E.t].n) + " · " + fmt(rowsT.length) + " links, strongest first; pick one to see its source" : "The strongest links from " + esc(BOOKS[E.b].n) + ", all books") + "</span></div>" +
+      LIST.innerHTML = '<div class="wt-li wt-head"><span>' + (E.t != null ? esc(BOOKS[E.b].n + " and " + BOOKS[E.t].n) + " · " + fmt(rowsT.length) + " links, strongest first" : "The strongest links from " + esc(BOOKS[E.b].n) + ", all books") + "</span></div>" +
         rowsT.slice(0, lim).map(function (r, k) {
-          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (E.pair === r.join() ? " on" : "") + '" data-k="' + k + '"><span>' + esc(rng(r[0], r[1]) + "  ·  " + rng(r[2], r[3])) + "</span></button>";
+          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (E.pair === r.join() ? " on" : "") + '" data-k="' + k + '"><span>' + esc(rng(r[0], r[1]) + "  ·  " + rng(r[2], r[3])) + '</span><span class="a-tag">' + esc(tagOf(r)) + "</span></button>";
         }).join("") + (rowsT.length > lim ? '<button class="wt-li be-more"><span>Show more (' + fmt(rowsT.length - lim) + " left)</span></button>" : "");
       [].forEach.call(LIST.querySelectorAll("[data-k]"), function (b) { b.addEventListener("click", function () { var r = rowsT[+b.getAttribute("data-k")]; E.pair = r.join(); showPair(r); [].forEach.call(LIST.querySelectorAll(".wt-li.on"), function (x) { x.classList.remove("on"); }); b.classList.add("on"); }); });
       var mb = LIST.querySelector(".be-more"); if (mb) mb.addEventListener("click", function () { E.more++; draw(); });
