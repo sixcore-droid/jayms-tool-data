@@ -583,7 +583,7 @@
         '<div class="wt-legend">' + ["law", "hist", "wis", "pro"].map(function (g) { return '<span class="g-' + g + '"><i></i>' + GRPN[g] + "</span>"; }).join("") + "</div></div>" +
         '<div id="wt-linkcard"></div>' +
         '<div class="wt-list">' + (list.length ? list.slice(0, 200).map(function (r) {
-          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (sel && sel.join() === r.join() ? " on" : "") + '" data-link="' + r.join() + '"><span>' + esc(rng(r[0], r[1]) + " ← " + rng(r[2], r[3])) + '</span><span class="a-tag">' + esc(SRC[r[4]]) + " · " + STR[r[5]].toLowerCase() + "</span></button>";
+          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (sel && sel.join() === r.join() ? " on" : "") + '" data-link="' + r.join() + '"><span>' + esc(rng(r[0], r[1]) + " ← " + rng(r[2], r[3])) + "</span></button>";
         }).join("") + (list.length > 200 ? '<div class="wt-li wt-empty"><span>The first 200 of ' + fmt(list.length) + ' are listed, strongest first.</span></div>' : "") : '<div class="wt-li wt-empty"><span>No link with these filters. Try showing light links, or every link.</span></div>') + "</div>" +
         '<div class="a-box v-explain" style="margin-top:13px"><div class="a-blabel">Where the links come from</div><div class="a-btext">' +
         "<b>Shared wording</b> is the UBS Parallel Passages Database: passages whose words match, word by word, which is where the New Testament quotes the Old. Strong means at least 40 percent of the words in one of the two verses match. " +
@@ -971,9 +971,9 @@
       // the list: one other book's links, or the strongest links from this book to all of them
       var rowsT = (E.t != null ? by[E.t] : list).slice().sort(function (a, b) { return b[5] - a[5] || (a[4] === "q" ? -1 : 0) - (b[4] === "q" ? -1 : 0) || a[0] - b[0]; });
       var lim = 150 + E.more * 300;
-      LIST.innerHTML = '<div class="wt-li wt-head"><span>' + (E.t != null ? esc(BOOKS[E.b].n + " and " + BOOKS[E.t].n) + " · " + fmt(rowsT.length) + " links, strongest first" : "The strongest links from " + esc(BOOKS[E.b].n) + ", all books") + "</span></div>" +
+      LIST.innerHTML = '<div class="wt-li wt-head"><span>' + (E.t != null ? esc(BOOKS[E.b].n + " and " + BOOKS[E.t].n) + " · " + fmt(rowsT.length) + " links, strongest first; pick one to see its source" : "The strongest links from " + esc(BOOKS[E.b].n) + ", all books") + "</span></div>" +
         rowsT.slice(0, lim).map(function (r, k) {
-          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (E.pair === r.join() ? " on" : "") + '" data-k="' + k + '"><span>' + esc(rng(r[0], r[1]) + "  ·  " + rng(r[2], r[3])) + '</span><span class="a-tag">' + esc(SRC[r[4]] + " · " + STR[r[5]].toLowerCase()) + "</span></button>";
+          return '<button class="wt-li g-' + grp(bookOf(r[2])) + (E.pair === r.join() ? " on" : "") + '" data-k="' + k + '"><span>' + esc(rng(r[0], r[1]) + "  ·  " + rng(r[2], r[3])) + "</span></button>";
         }).join("") + (rowsT.length > lim ? '<button class="wt-li be-more"><span>Show more (' + fmt(rowsT.length - lim) + " left)</span></button>" : "");
       [].forEach.call(LIST.querySelectorAll("[data-k]"), function (b) { b.addEventListener("click", function () { var r = rowsT[+b.getAttribute("data-k")]; E.pair = r.join(); showPair(r); [].forEach.call(LIST.querySelectorAll(".wt-li.on"), function (x) { x.classList.remove("on"); }); b.classList.add("on"); }); });
       var mb = LIST.querySelector(".be-more"); if (mb) mb.addEventListener("click", function () { E.more++; draw(); });
