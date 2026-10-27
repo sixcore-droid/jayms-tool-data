@@ -49,6 +49,9 @@
   for (var k in DEFAULT_LAYERS) S.layers[k] = DEFAULT_LAYERS[k];
   function readHash() {
     var h = (location.hash || "").replace(/^#/, ""); if (!h) return;
+    // The address is the whole state. A part it does not name is cleared, not left over from the last word, or going
+    // to a word with no Greek chosen would keep following the Greek word of the one before it.
+    S.g = null; S.from = null; S.fb = null; S.v = null;
     h.split("&").forEach(function (kv) {
       var p = kv.split("="), k = p[0], v = decodeURIComponent(p[1] || "");
       if (k === "w" && /^[HG]\d+$/.test(v)) S.w = v;
@@ -85,6 +88,9 @@
   if (!VIEWS.length) VIEWS = ["uses"];
   S.view = VIEWS[0];
   var OTHER = MOUNT.getAttribute("data-other-url") || "", OTHERL = MOUNT.getAttribute("data-other-label") || "";
+  // data-parts="cards": draw the word cards and stop. Used where the cards sit in one place on a page and the
+  // diagram in another, each in its own frame; the frame that is only cards has no use for the diagram.
+  var PARTS = String(MOUNT.getAttribute("data-parts") || "");
   MOUNT.innerHTML =
     '<nav class="wt-trail" id="wt-trail" aria-label="Words looked at in this session"></nav>' +
     '<div class="wt-find">' +
@@ -337,10 +343,79 @@
       return (j || []).map(function (v) { return String(v.text).trim(); }).join(" ");
     }).catch(function () { return ""; });
   }
+
+  // ---------- the translation ----------
+  // One choice for the whole site, under the key the tool runner and the Interleaved Bible read, so a reader who
+  // picks KJV here is in KJV there. NET comes from the NET API as it always did; the rest go through the site's
+  // shared verse fetcher, which lives on the page. A frame cannot see the page's functions as its own, so it asks
+  // the page that holds it.
+  var VERS = ["net", "kjv", "web", "nlt", "esv"], VCACHE = {};
+  function version() { try { var v = localStorage.getItem("jayms.version"); if (VERS.indexOf(v) > -1) return v; } catch (e) {} return "net"; }
+  function setVersion(v) { try { localStorage.setItem("jayms.version", v); } catch (e) {} }
+  function shared(name) {
+    try {
+      if (typeof window[name] === "function") return window[name];
+      if (window.parent && window.parent !== window && typeof window.parent[name] === "function") return window.parent[name];
+    } catch (e) {}
+    return null;
+  }
+  function unsign(t) { return String(t == null ? "" : t).replace(/\s*\([A-Z]{2,6}\)\s*$/, "").trim(); }
+  function verseText(ref, ver) {
+    var key = ver + "|" + ref, p;
+    if (VCACHE[key]) return Promise.resolve(VCACHE[key]);
+    if (ver === "net") { p = net(ref); }
+    else {
+      var get = shared("jaymsFetchVerse"), norm = shared("jaymsNormRef");
+      if (!get) { p = Promise.resolve(""); }
+      else {
+        var r = norm ? norm(ref) : ref;
+        var one = function (q) { return get(q, ver).then(function (x) { return x && x.text ? unsign(x.text) : ""; }).catch(function () { return ""; }); };
+        p = one(r).then(function (t) {
+          if (t) return t;
+          // the KJV and WEB files are keyed one verse at a time, so a range is read verse by verse and put back together
+          var m = r.match(/^(.+?)\s+(\d+):(\d+)\s*[-\u2013]\s*(\d+)$/);
+          if (!m) return "";
+          var a = +m[3], z = +m[4]; if (z <= a || z - a > 60) return "";
+          var jobs = []; for (var n = a; n <= z; n++) jobs.push(one(m[1] + " " + m[2] + ":" + n));
+          return Promise.all(jobs).then(function (parts) { return parts.filter(Boolean).join(" "); });
+        });
+      }
+    }
+    return p.then(function (t) { if (t) VCACHE[key] = t; return t; });
+  }
+  function versionButtons(ver) {
+    var avail = ["net"].concat(shared("jaymsFetchVerse") ? VERS.slice(1) : []);
+    if (avail.length < 2) return "";
+    return '<div class="wt-vsw" role="group" aria-label="Translation">' + avail.map(function (v) {
+      return '<button type="button" class="wt-vb' + (v === ver ? " on" : "") + '" data-v="' + v + '" aria-pressed="' + (v === ver ? "true" : "false") + '">' + v.toUpperCase() + "</button>";
+    }).join("") + "</div>";
+  }
+  // The labels callers pass end in "NET" where they name a translation; that word follows the choice.
+  function verseLabel(label, ver) { return String(label).replace(/ \u00b7 NET$/, " \u00b7 " + ver.toUpperCase()); }
+
+  // A verse in a box, in the chosen translation, with the translation buttons in the box. Calling it again on the
+  // same box redraws it in place, so anything a caller added to the box afterwards (a link row) survives a switch.
   function verseBox(target, label, ref) {
-    target.innerHTML = '<div class="a-blabel">' + esc(label) + "</div><div class=\"a-btext\"><span class=\"a-loading\">Loading the NET text…</span></div>";
-    net(ref).then(function (t) {
-      target.querySelector(".a-btext").innerHTML = t ? esc(t) : '<span class="wt-empty">The NET text did not load. ' + esc(ref) + ".</span>";
+    var ver = version();
+    target.setAttribute("data-ref", ref); target.setAttribute("data-label", label);
+    if (!target.querySelector(".a-blabel")) {
+      target.innerHTML = '<div class="a-blabel"></div>' + versionButtons(ver) + '<div class="a-btext"></div>';
+      [].forEach.call(target.querySelectorAll(".wt-vb"), function (b) {
+        b.addEventListener("click", function () {
+          var v = b.getAttribute("data-v"); if (v === version()) return;
+          setVersion(v);
+          [].forEach.call(MOUNT.querySelectorAll(".a-box[data-ref]"), function (x) { verseBox(x, x.getAttribute("data-label"), x.getAttribute("data-ref")); });
+        });
+      });
+    }
+    target.querySelector(".a-blabel").textContent = verseLabel(label, ver);
+    [].forEach.call(target.querySelectorAll(".wt-vb"), function (b) { var on = b.getAttribute("data-v") === ver; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
+    var body = target.querySelector(".a-btext"), want = ver + "|" + ref;
+    target.setAttribute("data-want", want);
+    body.innerHTML = '<span class="a-loading">Loading the ' + ver.toUpperCase() + " text\u2026</span>";
+    verseText(ref, ver).then(function (t) {
+      if (target.getAttribute("data-want") !== want) return;   // a later choice has taken the box
+      body.innerHTML = t ? esc(t) : '<span class="wt-empty">The ' + ver.toUpperCase() + " text did not load. " + esc(ref) + ".</span>";
     });
   }
 
@@ -842,6 +917,7 @@
     if (S.view === "happened" || S.view === "written") { ({ happened: viewHappened, written: viewWritten })[S.view](); return; }   // no word on the clocks
     load().then(function () {
       renderSide(); addTrail(CUR);
+      if (PARTS === "cards") { MAIN.innerHTML = ""; return; }
       ({ uses: viewUses, lands: viewLands, written: viewWritten, happened: viewHappened })[S.view]();
     }).catch(function (err) {
       MAIN.innerHTML = '<div class="a-box v-not"><div class="a-blabel">Did not load</div><div class="a-btext">The word data did not load. Reload the page to try again.</div></div>';
