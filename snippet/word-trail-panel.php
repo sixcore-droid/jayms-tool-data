@@ -115,7 +115,7 @@ add_action( 'wp_footer', function () {
   // ------------------------------------------------------------------ the sealed frames
   function getBase() {
     if (!basePromise) {
-      basePromise = fetch(POINTER).then(function (r) { return r.ok ? r.json() : null; })
+      basePromise = fetch(POINTER, { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) { return j && /^https:\/\//.test(j.base || "") ? j.base : FALLBACK; })
         .catch(function () { return FALLBACK; });
     }
