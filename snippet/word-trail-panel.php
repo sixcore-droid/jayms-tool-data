@@ -166,10 +166,12 @@ add_action( 'wp_footer', function () {
   // ------------------------------------------------------------------ the box
   function attach(box, app) {
     if (box.getAttribute("data-wtp")) { return; }
-    box.setAttribute("data-wtp", "1");
     var word = wordFor(app, location.hash);
     var label = box.querySelector(".a-blabel");
+    // The Fact Book fills its "The word" box a moment after the page first draws. No word yet is not "no word":
+    // leave the box unmarked so the next change on the page looks again.
     if (!word || !label) { return; }
+    box.setAttribute("data-wtp", "1");
 
     // everything the box already held goes into one wrapper, untouched, so it can be hidden and shown again
     var list = el("div", "jwtp-list"), kids = [].slice.call(box.children), i;
