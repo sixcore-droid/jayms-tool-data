@@ -98,13 +98,14 @@ add_action( 'wp_footer', function () {
     return basePromise;
   }
 
-  // What the frame hides: the search box, the history strip, the tabs, the side column, the footer.
-  // The entry already says what the word is, so the frame is the picture and the verses it opens.
+  // What the frame hides: the search box, the history strip, the tabs, the side column, the two word cards
+  // and the Greek chooser, the footer. The entry's own "The word" box already says what the word is, so
+  // the frame is the picture and the verses it opens.
   var EMBED_CSS =
     "html,body{margin:0!important;padding:0!important;background:transparent!important;min-height:0!important}" +
     ".jayms-word-trail{max-width:none!important;margin:0!important;padding:0!important}" +
     ".jayms-word-trail .wt-trail,.jayms-word-trail .wt-find,.jayms-word-trail .wt-sugg,.jayms-word-trail .wt-tabs," +
-    ".jayms-word-trail .wt-side,.jayms-word-trail .a-foot{display:none!important}";
+    ".jayms-word-trail .wt-side,.jayms-word-trail #wt-greek,.jayms-word-trail .a-foot{display:none!important}";
 
   function frameDocument(base) {
     var css = [].map.call(document.head.querySelectorAll("link[rel=stylesheet],style"), function (n) { return n.outerHTML; }).join("\n");
