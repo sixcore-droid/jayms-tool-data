@@ -189,7 +189,8 @@ add_action( 'wp_footer', function () {
       pane.classList.toggle("jwtp-wait", state !== "ready");
       pane.hidden = !trail && state === "ready";
       list.hidden = trail;
-      btn.hidden = state === "failed" || state === "loading";
+      // while the diagram waits to scroll into view the book list is the whole box, so there is nothing to switch to yet
+      btn.hidden = state === "failed" || state === "loading" || (state === "idle" && mode === "trail");
       btn.textContent = trail ? "Show the book list" : "Show the word trail";
       note.textContent = state === "loading" ? "Loading the word trail…" : "";
     }
@@ -209,7 +210,7 @@ add_action( 'wp_footer', function () {
     });
 
     apply();
-    if (mode === "list") { btn.hidden = false; btn.textContent = "Show the word trail"; return; }
+    if (mode === "list") { return; }   // chose the list last time: load nothing until asked
     if (typeof IntersectionObserver !== "function") { start(); return; }
     var io = new IntersectionObserver(function (es) {
       if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); start(); }
