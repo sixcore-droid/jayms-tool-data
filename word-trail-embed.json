@@ -1,0 +1,4 @@
+{
+  "note": "Which build of Word Trail the 'Where it appears' panel loads. When Word Trail ships a new commit and the Word Trail, Bible Timelines and Book Echoes pages are repinned, change base here too. The panel snippet never needs editing for that. If this file cannot be read the snippet uses the build it was written against.",
+  "base": "https://cdn.jsdelivr.net/gh/sixcore-droid/jayms-tool-data@6906736e110f88b1ac94a3f9a7dd63098143f0a0/word-trail/"
+}
