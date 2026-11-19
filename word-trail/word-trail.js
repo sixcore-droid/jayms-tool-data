@@ -199,7 +199,12 @@
     var w = WSX && WSX[id];
     if (PARTS === "cards" || !w) return "";
     if (!w.versions || !w.versions.length) {
-      return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + '><div class="a-box v-wording wt-wsv wt-wsn"><div class="jayms-label">Versions differ here</div><div class="a-btext">Word Study has no translation-difference entry for ' + esc(wsName(id, w.title ? { t: w.title } : null)) + " yet.</div></div></div>";
+      // no curated translation-difference write-up: show what Word Study holds for every word
+      var kjv = String(w.kjv || "").replace(/[,\s]+$/, ""), forms = String(w.forms || "").trim();
+      return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + '><div class="a-box v-wording wt-wsv wt-wsn">' +
+        (kjv ? '<div class="wt-wsr wt-wsr0"><div class="jayms-label">How the King James renders it</div><div class="a-btext">' + esc(kjv) + "</div></div>" : "") +
+        (forms ? '<div class="wt-wsr' + (kjv ? "" : " wt-wsr0") + '"><div class="jayms-label">Forms in the text</div><div class="a-btext" lang="' + lang(id) + '">' + esc(forms) + "</div></div>" : "") +
+        '<div class="wt-wsr' + (kjv || forms ? "" : " wt-wsr0") + '"><div class="a-btext wt-empty">No translation-difference write-up for ' + esc(wsName(id, w.title ? { t: w.title } : null)) + " yet.</div></div></div></div>";
     }
     return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + ">" + w.versions.map(function (v, k) {
       var key = id + "|" + k, rows = (v.b || []).filter(function (r) { return r.l !== "The word"; });

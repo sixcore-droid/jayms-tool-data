@@ -527,5 +527,5 @@
 .jayms-word-trail .wt-wss{margin:0;padding-left:20px}
 @media (max-width:700px){.jayms-word-trail .wt-wsv>summary{flex-wrap:wrap;gap:4px 12px}.jayms-word-trail .wt-wsp{flex-basis:100%;order:3;white-space:normal}}
 @media (prefers-reduced-motion:reduce){.jayms-word-trail .wt-wsc{transition:none}}
-.jayms-word-trail .wt-wsn{padding:15px 18px!important}
-.jayms-word-trail .wt-wsn .jayms-label{margin-bottom:4px}
+.jayms-word-trail .wt-wsn{padding:15px 18px!important;display:flex;flex-direction:column;gap:10px}
+.jayms-word-trail .wt-wsn .jayms-label{margin-bottom:2px}
