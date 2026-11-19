@@ -201,10 +201,10 @@
     return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + ">" + w.versions.map(function (v, k) {
       var key = id + "|" + k, rows = (v.b || []).filter(function (r) { return r.l !== "The word"; });
       return '<details class="a-box v-wording wt-wsv" data-wsk="' + esc(key) + '"' + (WSD[key] === false ? "" : " open") + ">" +
-        '<summary><span class="a-blabel">Versions differ here' + (w.versions.length > 1 ? " \u00b7 " + esc(v.n) : "") + '</span><span class="wt-wsp">' + esc(v.s || "") + '</span><span class="wt-wsc" aria-hidden="true">\u203a</span></summary>' +
-        '<div class="wt-wsb">' + (v.s ? '<p class="a-btext">' + esc(v.s) + "</p>" : "") +
-        rows.map(function (r) { return '<div class="wt-wsr"><div class="a-blabel">' + esc(r.l) + '</div><div class="a-btext">' + esc(r.t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") + "</div></div>"; }).join("") +
-        ((v.src || []).length ? '<div class="wt-wsr"><div class="a-blabel">Sources</div><ol class="wt-wss">' + v.src.map(function (x) { return "<li>" + wsRefs(x) + "</li>"; }).join("") + "</ol></div>" : "") +
+        '<summary><span class="jayms-label">Versions differ here' + (w.versions.length > 1 ? " \u00b7 " + esc(v.n) : "") + '</span><span class="wt-wsp">' + esc(v.s || "") + '</span><span class="wt-wsc" aria-hidden="true">\u203a</span></summary>' +
+        '<div class="wt-wsb">' + (v.s ? '<div class="wt-wsr wt-wsr0">' + (v.n ? '<div class="jayms-label">' + esc(v.n) + "</div>" : "") + '<div class="a-btext">' + esc(v.s) + "</div></div>" : "") +
+        rows.map(function (r) { return '<div class="wt-wsr"><div class="jayms-label">' + esc(r.l) + '</div><div class="a-btext">' + esc(r.t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") + "</div></div>"; }).join("") +
+        ((v.src || []).length ? '<div class="wt-wsr"><div class="jayms-label">Sources</div><ol class="wt-wss">' + v.src.map(function (x) { return "<li>" + wsRefs(x) + "</li>"; }).join("") + "</ol></div>" : "") +
         (v.r ? '<div class="a-box v-scripture" data-wsref="' + esc(v.r) + '"></div>' : "") + "</div></details>";
     }).join("") + "</div>";
   }
