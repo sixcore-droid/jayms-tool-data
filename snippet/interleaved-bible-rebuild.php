@@ -197,16 +197,22 @@ add_action( 'wp_footer', function () {
    the word before it, or it reads as that word's footnote */
 .jayms-tool-outline .ib-vnum{align-self:flex-start;margin-left:14px;padding:0 1px;
   font-size:13px;font-weight:600;color:var(--gold);line-height:1.25}
-.jayms-tool-outline .ib-il > .ib-vnum:first-child{margin-left:0}
+.jayms-tool-outline .ib-il > .ib-vnum:first-child,
+.jayms-tool-outline .ib-vbreak + .ib-vnum{margin-left:0}
+/* each verse starts its own line: a zero-height full-width item forces the wrap */
+.jayms-tool-outline .ib-vbreak{flex:0 0 100%;height:0;margin-top:8px}
 .jayms-tool-outline .ib-u{display:inline-flex;flex-direction:column;align-items:center;
   gap:3px;padding:4px 5px;margin:0;border:0;border-radius:6px;background:none;
   font:inherit;color:inherit;cursor:pointer;text-align:center}
 .jayms-tool-outline .ib-u-en{font-size:24px;line-height:1.3;color:var(--ink-bright);white-space:nowrap}
 .jayms-tool-outline .ib-u-he{font-size:15px;line-height:1.25;color:var(--ink-soft);white-space:nowrap}
+/* the dictionary form the word comes from, in English letters, under the word as it stands */
+.jayms-tool-outline .ib-u-lem{font-size:14px;line-height:1.25;font-weight:600;color:var(--gold);white-space:nowrap}
 .jayms-tool-outline .ib-u:hover{background:var(--paper-deeper)}
 .jayms-tool-outline .ib-u.on{background:var(--gold)}
 .jayms-tool-outline .ib-u.on .ib-u-en,
-.jayms-tool-outline .ib-u.on .ib-u-he{color:var(--paper-deep)}
+.jayms-tool-outline .ib-u.on .ib-u-he,
+.jayms-tool-outline .ib-u.on .ib-u-lem{color:var(--paper-deep)}
 /* the versions differ on this word: say so before it is clicked */
 .jayms-tool-outline .ib-u-diff .ib-u-en{color:var(--rust);border-bottom:1px dotted var(--rust)}
 .jayms-tool-outline .ib-u-diff .ib-u-he{color:var(--rust)}
@@ -1469,9 +1475,10 @@ function pickerResultsBase() {
   // not split into fragments the eye has to reassemble.
   function interlinear(book, rows) {
     var out = [];
-    rows.forEach(function (row) {
+    rows.forEach(function (row, n) {
       var en = toEnglishVerse(book, row.c, row.v);
       var hits = diffsFor(book, en.chapter, en.verse);
+      if (n) out.push('<span class="ib-vbreak" aria-hidden="true"></span>');
       out.push(hits.length
         ? '<button type="button" class="ib-vnum ib-vnum-diff' + (uiDiff === hits[0] ? " on" : "") +
           '" id="v' + row.c + "-" + row.v + '" onclick="ibDiff(' + hits[0] + ')"' +
@@ -1487,6 +1494,49 @@ function pickerResultsBase() {
       if (run.length) out.push(unit(row, run, first));
     });
     return '<div class="ib-il">' + out.join("") + "</div>";
+  }
+
+  var plainLetters = function (s) { return String(s || "").normalize("NFD").replace(/[\u0300-\u036F]/g, ""); };
+  /* Greek in English letters only: the interlinear carries a transliteration for Hebrew but not for Greek. */
+  var GR = { "\u03B1": "a", "\u03B2": "b", "\u03B3": "g", "\u03B4": "d", "\u03B5": "e", "\u03B6": "z", "\u03B7": "e", "\u03B8": "th", "\u03B9": "i", "\u03BA": "k", "\u03BB": "l", "\u03BC": "m", "\u03BD": "n", "\u03BE": "x", "\u03BF": "o", "\u03C0": "p", "\u03C1": "r", "\u03C2": "s", "\u03C3": "s", "\u03C4": "t", "\u03C5": "u", "\u03C6": "ph", "\u03C7": "ch", "\u03C8": "ps", "\u03C9": "o" };
+  function greekLetters(t) {
+    var d = String(t || "").normalize("NFD").toLowerCase(), rough = /\u0314/.test(d);
+    d = d.replace(/[\u0300-\u036F]/g, "").replace(/\u03B3([\u03B3\u03BA\u03BE\u03C7])/g, "n$1");
+    var out = d.replace(/[\u03B1-\u03C9]/g, function (c) { return GR[c] || c; }).replace(/[^a-z]/g, "");
+    return (rough && /^[aeiou]/.test(out) ? "h" : "") + out;
+  }
+  var HE = { "\u05D0": "'", "\u05D1": "b", "\u05D2": "g", "\u05D3": "d", "\u05D4": "h", "\u05D5": "w", "\u05D6": "z", "\u05D7": "ch", "\u05D8": "t", "\u05D9": "y", "\u05DA": "k", "\u05DB": "k", "\u05DC": "l", "\u05DD": "m", "\u05DE": "m", "\u05DF": "n", "\u05E0": "n", "\u05E1": "s", "\u05E2": "'", "\u05E3": "p", "\u05E4": "p", "\u05E5": "ts", "\u05E6": "ts", "\u05E7": "q", "\u05E8": "r", "\u05E9": "sh", "\u05EA": "t" };
+  /* Hebrew in English letters, vowels included: consonant by consonant with its points.
+     Plain spelling, as the site prints it: no macrons, shva sounded only after a word's first letter, a yod or vav that
+     only carries a vowel stays silent, shureq is u, holam on vav is o, shin dot sh, sin dot s. */
+  var SOFT = { "\u05D1": "b", "\u05DB": "k", "\u05DA": "k", "\u05E4": "ph", "\u05E3": "ph", "\u05EA": "th" };
+  var HV = { "\u05B0": "e", "\u05B1": "e", "\u05B2": "a", "\u05B3": "o", "\u05B4": "i", "\u05B5": "e", "\u05B6": "e", "\u05B7": "a", "\u05B8": "a", "\u05B9": "o", "\u05BA": "o", "\u05BB": "u", "\u05C7": "o" };
+  function hebrewLetters(t) {
+    var d = String(t || "").normalize("NFD").replace(/[\u0591-\u05AF\u05BD\u05BF\u05C0\u05C3-\u05C6]/g, ""), out = "", n = 0, m;
+    var re = /([\u05D0-\u05EA])([\u05B0-\u05BC\u05C1\u05C2\u05C7]*)/g;
+    while ((m = re.exec(d))) {
+      var c = m[1], marks = m[2], v = "", hasDagesh = marks.indexOf("\u05BC") > -1;
+      for (var k = 0; k < marks.length; k++) if (HV[marks[k]] !== undefined) v = HV[marks[k]];
+      var cons = HE[c] || "";
+      if (!hasDagesh && SOFT[c]) cons = SOFT[c];                                     // p and t soften to ph and th; b and k stay b and k, the way the Word Study pages spell them
+      var doubled = hasDagesh && n > 0 && /[aeiou]$/.test(out) && !/[\u05D0\u05D4\u05D7\u05E2\u05E8\u05D5\u05D9]/.test(c);
+      if (marks.indexOf("\u05B0") > -1 && n !== 0 && !doubled) v = "";             // silent shva inside a word
+      if (c === "\u05E9") cons = marks.indexOf("\u05C2") > -1 ? "s" : "sh";
+      if (c === "\u05D5" && hasDagesh && !v && n > 0) { out += "u"; n++; continue; }  // shureq
+      if (c === "\u05D5" && marks.indexOf("\u05B9") > -1 && n > 0) { out += "o"; n++; continue; } // holam male
+      if (c === "\u05D9" && !v && n > 0 && /[ie]$/.test(out)) { n++; continue; }      // yod carrying hiriq or tsere
+      if (c === "\u05D0" && !v && re.lastIndex >= d.length) { n++; continue; }     // final silent alef
+      if (c === "\u05D7" && v === "a" && n > 0 && re.lastIndex >= d.length && /[aeiou]$/.test(out)) { out += "ach"; n++; continue; } // furtive patach: ruach, not rucha
+      if (c === "\u05D0" || c === "\u05E2") cons = "";                               // alef and ayin: plain spelling, no apostrophe
+      out += (doubled && cons.length === 1 ? cons : "") + cons + v; n++;
+    }
+    return out.replace(/^'/, "").replace(/[^a-z']/g, "");
+  }
+  // a word's lemma in English letters: the form a dictionary lists it under
+  function lemmaLatin(w) {
+    var l = String(w.lemma || "");
+    if (/[\u0370-\u03FF\u1F00-\u1FFF]/.test(l)) return greekLetters(l);
+    return hebrewLetters(l);
   }
 
   function unit(row, run, i) {
@@ -1505,12 +1555,14 @@ function pickerResultsBase() {
     var gloss = run.map(function (w) { return String(w.gloss || w.english || ""); })
                    .join(" ").replace(/\./g, " ").replace(/\s+/g, " ").trim();
     var rtl = /[\u0590-\u05FF]/.test(run[0].text || "");
+    var lemma = lemmaLatin(run[head - i]);
     return '<button type="button" class="ib-u' + (on ? " on" : "") + (argued ? " ib-u-diff" : "") +
       '" onclick="ibWord(' + row.c + "," + row.v + "," + head + ')"' +
       (argued ? ' title="The versions differ on this word"' : "") + ">" +
       '<span class="ib-u-en">' + esc(gloss || "\u00b7") + "</span>" +
       '<span class="ib-u-he" lang="' + (rtl ? "he" : "grc") + '"' + (rtl ? ' dir="rtl"' : "") + ">" +
-      word + "</span></button>";
+      word + "</span>" +
+      '<span class="ib-u-lem">' + esc(lemma || "\u00b7") + "</span></button>";
   }
 
   // the plain reading: the translations side by side, verse against verse
