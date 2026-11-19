@@ -185,7 +185,7 @@
       var n = w ? w.id : String(id).toLowerCase();
       return '<a class="a-lnk wt-wsl" href="' + WORDSTUDY + "#id=" + encodeURIComponent(n) + '">Open ' + esc(wsName(id, en)) + " in Word Study \u203a</a>";
     }
-    if (!w || !w.versions || !w.versions.length) return "";
+    if (!w) return "";
     return '<button type="button" class="a-lnk wt-wsl" data-wsid="' + esc(id) + '" data-wsname="' + esc(wsName(id, en)) + '" aria-expanded="' + (WSOPEN[id] ? "true" : "false") + '">' + esc(wsLabel(id, en, !!WSOPEN[id])) + "</button>";
   }
   function wsRefs(t) {
@@ -197,7 +197,10 @@
   }
   function wsBox(id) {
     var w = WSX && WSX[id];
-    if (PARTS === "cards" || !w || !w.versions || !w.versions.length) return "";
+    if (PARTS === "cards" || !w) return "";
+    if (!w.versions || !w.versions.length) {
+      return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + '><div class="a-box v-wording wt-wsv wt-wsn"><div class="jayms-label">Versions differ here</div><div class="a-btext">Word Study has no translation-difference entry for ' + esc(wsName(id, w.title ? { t: w.title } : null)) + " yet.</div></div></div>";
+    }
     return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + ">" + w.versions.map(function (v, k) {
       var key = id + "|" + k, rows = (v.b || []).filter(function (r) { return r.l !== "The word"; });
       return '<details class="a-box v-wording wt-wsv" data-wsk="' + esc(key) + '"' + (WSD[key] === false ? "" : " open") + ">" +
