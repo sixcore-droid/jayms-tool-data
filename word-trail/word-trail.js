@@ -173,11 +173,63 @@
     en.ws = { n: w.count, v: w.verses, b: w.nbooks };
     return en;
   }
-  // the word's own page in Word Study, by the address format Word Study publishes (wordStudy.url, #id={n})
+  // Word Study's "Versions differ here" box, folded open under the word it belongs to. The button that used to leave
+  // for Word Study now opens it in place. In the cards-only frames other tools embed, the button still goes to Word
+  // Study, and a word with no such box has no button.
+  var WSOPEN = {}, WSD = {};
+  function wsName(id, en) { return (en && (en.t || en.x)) || id; }
+  function wsLabel(id, en, on) { return (on ? "Close " : "Open ") + wsName(id, en) + " in Word Study " + (on ? "\u2303" : "\u2304"); }
   function wsLink(id, en) {
-    var w = WSX && WSX[id], n = w ? w.id : String(id).toLowerCase();
-    return '<a class="a-lnk wt-wsl" href="' + WORDSTUDY + "#id=" + encodeURIComponent(n) + '">Open ' + esc((en && (en.t || en.x)) || id) + " in Word Study ›</a>";
+    var w = WSX && WSX[id];
+    if (PARTS === "cards") {
+      var n = w ? w.id : String(id).toLowerCase();
+      return '<a class="a-lnk wt-wsl" href="' + WORDSTUDY + "#id=" + encodeURIComponent(n) + '">Open ' + esc(wsName(id, en)) + " in Word Study \u203a</a>";
+    }
+    if (!w || !w.versions || !w.versions.length) return "";
+    return '<button type="button" class="a-lnk wt-wsl" data-wsid="' + esc(id) + '" data-wsname="' + esc(wsName(id, en)) + '" aria-expanded="' + (WSOPEN[id] ? "true" : "false") + '">' + esc(wsLabel(id, en, !!WSOPEN[id])) + "</button>";
   }
+  function wsRefs(t) {
+    var url = shared("jaymsInterlinearURL");
+    return esc(t).replace(/((?:[1-3] )?[A-Z][a-z]+(?: of [A-Z][a-z]+)? \d+:\d+(?:[\u2013-]\d+)?)/g, function (m) {
+      var u = url ? url(m) : null;
+      return u ? '<a class="a-lnk" href="' + esc(u) + '" target="_top">' + m + "</a>" : m;
+    });
+  }
+  function wsBox(id) {
+    var w = WSX && WSX[id];
+    if (PARTS === "cards" || !w || !w.versions || !w.versions.length) return "";
+    return '<div class="wt-wsx" data-wsid="' + esc(id) + '"' + (WSOPEN[id] ? "" : " hidden") + ">" + w.versions.map(function (v, k) {
+      var key = id + "|" + k, rows = (v.b || []).filter(function (r) { return r.l !== "The word"; });
+      return '<details class="a-box v-wording wt-wsv" data-wsk="' + esc(key) + '"' + (WSD[key] === false ? "" : " open") + ">" +
+        '<summary><span class="a-blabel">Versions differ here' + (w.versions.length > 1 ? " \u00b7 " + esc(v.n) : "") + '</span><span class="wt-wsp">' + esc(v.s || "") + '</span><span class="wt-wsc" aria-hidden="true">\u203a</span></summary>' +
+        '<div class="wt-wsb">' + (v.s ? '<p class="a-btext">' + esc(v.s) + "</p>" : "") +
+        rows.map(function (r) { return '<div class="wt-wsr"><div class="a-blabel">' + esc(r.l) + '</div><div class="a-btext">' + esc(r.t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") + "</div></div>"; }).join("") +
+        ((v.src || []).length ? '<div class="wt-wsr"><div class="a-blabel">Sources</div><ol class="wt-wss">' + v.src.map(function (x) { return "<li>" + wsRefs(x) + "</li>"; }).join("") + "</ol></div>" : "") +
+        (v.r ? '<div class="a-box v-scripture" data-wsref="' + esc(v.r) + '"></div>' : "") + "</div></details>";
+    }).join("") + "</div>";
+  }
+  function fillWs(x) {
+    [].forEach.call(x.querySelectorAll(".a-box[data-wsref]"), function (b) {
+      if (b.getAttribute("data-ref")) return;
+      verseBox(b, b.getAttribute("data-wsref") + " \u00b7 NET", b.getAttribute("data-wsref"));
+    });
+  }
+  function syncWs(id) {
+    var on = !!WSOPEN[id];
+    [].forEach.call(MOUNT.querySelectorAll('.wt-wsl[data-wsid="' + id + '"]'), function (b) {
+      b.setAttribute("aria-expanded", on ? "true" : "false");
+      b.textContent = wsLabel(id, { t: b.getAttribute("data-wsname") }, on);
+    });
+    [].forEach.call(MOUNT.querySelectorAll('.wt-wsx[data-wsid="' + id + '"]'), function (x) { x.hidden = !on; if (on) fillWs(x); });
+  }
+  MOUNT.addEventListener("click", function (ev) {
+    var b = ev.target.closest ? ev.target.closest(".wt-wsl[data-wsid]") : null;
+    if (!b) return;
+    var id = b.getAttribute("data-wsid"); WSOPEN[id] = !WSOPEN[id]; syncWs(id);
+  });
+  MOUNT.addEventListener("toggle", function (ev) {
+    var d = ev.target; if (d && d.getAttribute && d.getAttribute("data-wsk")) WSD[d.getAttribute("data-wsk")] = d.open;
+  }, true);
   function wsCount(id) { var w = WSX && WSX[id]; return w ? w.count : null; }
   Q.addEventListener("focus", ensureSearch);
   ensureWS();
@@ -255,7 +307,7 @@
     return '<div class="wt-wb wt-gbar"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="grc">' + esc(g.l) + '</span><span class="wt-gloss">' + esc(g.t || g.x) + (g.g ? " · " + esc(g.g) : "") + "</span></div>" +
       '<div class="wt-code">' + esc(c.g) + (g.t ? " · " + esc(g.x) : "") + (g.p ? " · " + esc(g.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(g.d) + "</p>" +
-      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(g.ws ? g.ws.n : nt.length) + "</span> uses in <span class=\"wt-n\">" + fmt(g.ws ? g.ws.v : ntv.length) + "</span> verses across <span class=\"wt-n\">" + (g.ws ? g.ws.b : bookCount(ntv)) + "</span> New Testament books.</p>" + wsLink(c.g, g) + "</div>";
+      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(g.ws ? g.ws.n : nt.length) + "</span> uses in <span class=\"wt-n\">" + fmt(g.ws ? g.ws.v : ntv.length) + "</span> verses across <span class=\"wt-n\">" + (g.ws ? g.ws.b : bookCount(ntv)) + "</span> New Testament books.</p>" + wsLink(c.g, g) + "</div>" + wsBox(c.g);
   }
   function renderSide() {
     var c = CUR, e = c.entry;
@@ -266,7 +318,7 @@
       '<div class="wt-wb"><div class="wt-wb-word"><div class="wt-word"><span class="wt-lemma" lang="' + lang(c.w) + '">' + esc(e.l) + '</span><span class="wt-gloss">' + esc(e.t || e.x) + (e.g ? " · " + esc(e.g) : "") + "</span></div>" +
       '<div class="wt-code">' + esc(c.w) + (e.t ? " · " + esc(e.x) : "") + (e.p ? " · " + esc(e.p) : "") + "</div></div>" +
       '<p class="wt-def wt-wb-def">' + esc(e.d) + "</p>" +
-      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.ws ? e.ws.n : e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(e.ws ? e.ws.v : vs.length) + "</span> verses across <span class=\"wt-n\">" + (e.ws ? e.ws.b : bookCount(vs)) + "</span> books.</p>" + wsLink(c.w, e) + "</div></div>";
+      '<p class="wt-def wt-wb-n"><span class="wt-n">' + fmt(e.ws ? e.ws.n : e.v.length) + "</span> uses in <span class=\"wt-n\">" + fmt(e.ws ? e.ws.v : vs.length) + "</span> verses across <span class=\"wt-n\">" + (e.ws ? e.ws.b : bookCount(vs)) + "</span> books.</p>" + wsLink(c.w, e) + "</div>" + wsBox(c.w) + "</div>";
     // every Fact Book entry and every Gods of the Bible entry this word carries, one box per tool, all entries in
     // the box; the one picked in search leads. A tool the word is not in gets no box.
     function refBox(label, tool, base, list, leadId) {
@@ -319,6 +371,7 @@
     }
     h += '<div class="wt-links"><a class="a-lnk" href="' + WORDSTUDY + '">Open Word Study</a><a class="a-lnk" href="' + ECHO + '">Open Echoes of Revelation</a><a class="a-lnk" href="' + TDX + '">Why do translations differ?</a></div>';
     SIDE.innerHTML = h; GREEK.innerHTML = gh;
+    Object.keys(WSOPEN).forEach(function (id) { if (WSOPEN[id]) syncWs(id); });
     [].forEach.call(GREEK.querySelectorAll(".wt-rend[data-g]"), function (b) {
       b.addEventListener("click", function () { var g = b.getAttribute("data-g"); if (!g) return; S.g = g; S.from = null; S.v = null; S.book = null; S.ch = null; writeHash(); render(); });
     });
